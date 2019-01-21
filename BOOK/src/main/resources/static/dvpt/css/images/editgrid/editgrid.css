@@ -1,0 +1,57 @@
+/* =====start =====编辑表格2.0 */
+.e-grid-left{ float: left; top:0px; display:block; }
+.e-grid-right{ top:0px; /*float: left;*/ }
+.e-grid-hd-cell{ padding:0 10px; margin:0; overflow:hidden; text-align: left;border-right:1px dotted #BDD0DB; }
+.e-grid-hd-operate-cell{ padding:0; margin:0; overflow:hidden; text-align: left;border-right:1px dotted #BDD0DB; width: 85px;}
+.e-grid-hd-cell-text{ text-align:center; /*cursor:pointer;*/ overflow:hidden;color:#333; height: 36px; line-height: 36px;white-space: nowrap; }
+.e-grid-hd-cell-text a{color: #1e90ff; }
+.e-grid-hd-cell-inner{ text-align:center;}
+.e-grid-body-table tr.e-row-bg td{ background-color: #F5F9F5;}
+.e-grid-header { border-top: 1px solid #BDD0DB; border-bottom: 1px solid #BDD0DB;height: 38px; line-height: 38px; background: #E8F1F8; overflow: hidden;/* width: 100%;*/ }
+.e-grid-row-cell-inner{text-align:center; overflow:hidden; color:#333; line-height: 36px;white-space: nowrap;text-overflow: ellipsis;word-wrap: normal;}
+.e-grid-row-operate-cell a{display: inline-block;position: relative;top: 20%;padding: 0px 3px; color: #1e90ff; }
+.e-edit-row{margin: 2px;}
+.e-grid-body-table tr{height: 36px;}
+.e-grid-body-table input[type="radio"], input[type="checkbox"]{ margin-top:0px; }
+
+.e-bar-group { float: left; background: none; margin: 0px 5px; }
+.e-bar-message{ /*position:absolute; right:10px;*/}
+.e-bar-text,.e-bar-selectOption{height: 36px;line-height: 36px;}
+.e-bar-select{position: relative;top:20%;width:50px;}
+.e-bar-group.e-bar-pagination { float: right; background: none; margin: 0px 5px; /*position: absolute;right: 0px;*/ }
+.e-bar-group .pagination ul{ overflow: hidden;}
+.e-bar-group .pagination li{ float: left; margin-left: 10px;}
+.e-bar-group .pagination li.jumpto .textInput{ height:15px; }
+.e-bar-group .pagination { float:right; padding-left:7px; background-position:0 -199px;}
+.e-bar-group .pagination a{ color:#333;}
+.e-bar-group .pagination a, .pagination li.hover a, .pagination li span { float:left; display:block; text-decoration:none; line-height:36px;}
+.e-bar-group .pagination li.selected a{color:red; font-weight:bold;}
+.e-bar-group .pagination span, .pagination li.hover span { float:left; display:block; height:36px; line-height:36px; cursor:pointer;}
+.e-bar-group .pagination li.disabled { background:none;}
+.e-bar-group .pagination li.disabled span, .grid .pagination li.disabled a { cursor:default;}
+.e-bar-group .pagination li.disabled span span { color:#666;}
+.e-bar-group .pagination li.jumpto { padding:7px 2px 0 7px; background-position:0 -200px;}
+.e-bar-group .pagination li.jumpto .textInput { float:left; width:30px; padding:0 1px; height:20px; line-height: 20px; border-color:#acaeaf;}
+.e-bar-group .pagination li.jumpto .goto { float:left; height: 20px; line-height: 20px; padding:0 2px; margin-left: 5px; background-color: #E8F1F7; border:1px solid #BDD0DB; cursor:pointer; color: #225577;}
+.e-bar-group .j-first .first span{ background:url(images/icon-first.png) no-repeat; padding-left: 12px;}
+.e-bar-group .j-prev .previous span{ background:url(images/icon-prev.png) no-repeat; padding-left: 8px;}
+.e-bar-group .j-next .next span{ background:url(images/icon-next.png) no-repeat; padding-left: 8px;}
+.e-bar-group .j-last .last span{ background:url(images/icon-last.png) no-repeat; padding-left: 12px;}
+.e-bar-group .j-first a.first span{ background-position: 0 12px;}
+.e-bar-group .j-first a.first:hover span{ background-position: 0 -60px;}
+.e-bar-group .j-first span.first span{ background-position: 0 -24px;}
+.e-bar-group .j-prev a.previous span{ background-position: 0 12px;}
+.e-bar-group .j-prev a.previous:hover span{ background-position: 0 -61px;}
+.e-bar-group .j-prev span.previous span{ background-position: 0 -25px;}
+.e-bar-group .j-next a.next span{ background-position: 0 12px;}
+.e-bar-group .j-next a.next:hover span{ background-position: 0 -61px;}
+.e-bar-group .j-next span.next span{ background-position: 0 -25px;}
+.e-bar-group .j-last a.last span{ background-position: 0 12px;}
+.e-bar-group .j-last a.last:hover span{ background-position: 0 -60px;}
+.e-bar-group .j-last span.last span{ background-position: 0 -24px;}
+.e-bar-group .textInput{ border: 1px solid #ddd;}
+.e-bar-group .pagination li.disabled .first span { background-position: 0 -24px;}
+.e-bar-group .pagination li.disabled .previous span { background-position: 0 -25px;}
+.e-bar-group .pagination li.disabled .next span { background-position: 0 -25px;}
+.e-bar-group .pagination li.disabled .last span { background-position: 0 -24px;}
+/*=====end====*/

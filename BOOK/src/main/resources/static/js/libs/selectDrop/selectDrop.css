@@ -1,0 +1,12 @@
+/*民族下拉*/
+.nation{ position: relative; display: inline-block; position: relative; padding:3px 20px 3px 3px; border-radius: 3px; box-shadow: -2px -2px 5px rgba(83, 203, 255, 0.5) inset, 2px 2px 5px rgba(83, 203, 255, 0.5) inset;}
+.nation input{background:none; padding:0 3px; height: 22px; color:#ace5f2; border: 0px;}
+.drop-pop { width: 450px; display: inline-block; /*border: 2px solid #2a7094;*/ padding:70px 5px 5px 5px; background: url("./images/selectDrop/drop_bg.png") repeat 0 0; box-shadow: -2px -2px 5px rgba(83, 203, 255, 0.5) inset, 2px 2px 5px rgba(83, 203, 255, 0.5) inset; }
+.drop-pop .close{color: #ace5f2; height: 15px; width: 15px; line-height: 15px; text-align: center; border-radius: 3px; position: absolute; right: 10px; top: 10px; border: 1px solid #ace5f2; box-shadow: -2px -2px 5px rgba(83, 203, 255, 0.5) inset, 2px 2px 5px rgba(83, 203, 255, 0.5) inset; cursor: pointer;}
+.drop-pop .sd-list { height: 100%; overflow: auto; }
+.drop-pop .sd-list li{ width: 80px; height: 28px; display: inline-block; border-radius: 3px; background-color: #f5f5f5; color: #666; margin-left: 6px; margin-top: 3px; line-height: 28px; text-align: center; cursor: pointer; overflow: hidden; }
+.drop-pop .sd-list li:hover { color: #fff; background-color: #4bc3ef; }
+.spell-box { position: absolute; top: 10px; left: 10px; width: 420px; border-bottom: 1px solid #CCC; }
+.spell-box li { width: 12px; text-align: center; padding: 1px 8px; background: #F5F5F5; color: #999; border-radius: 2px; margin: 2px; cursor: pointer; float: left; }
+.spell-box li:hover { color: #FFF; background-color: #4bc3ef; }
+.spell-box li.active { color: #FFF; background-color: #9d5a46; }

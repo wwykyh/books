@@ -1,0 +1,10 @@
+[
+    {"code":"A","value":"博士"},
+    {"code":"B","value":"硕士"},
+    {"code":"C","value":"本科"},
+    {"code":"D","value":"大专"},
+    {"code":"E","value":"中专"},
+    {"code":"F","value":"高中"},
+    {"code":"G","value":"小学"},
+    {"code":"H","value":"其他"}
+]

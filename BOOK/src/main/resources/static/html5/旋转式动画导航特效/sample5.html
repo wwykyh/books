@@ -1,0 +1,59 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title></title>
+    <link href='css/lanren.css' rel='stylesheet' type='text/css'>
+</head>
+
+<body>
+    <!--代码部分begin-->
+    <div id="test-element"></div>
+    <script src="js/jquery.min.js"></script>
+    <script src="js/feature.presenter.1.5.min.js"></script>
+    <script>
+    var settings = [{
+        image: 'images/lanren1.jpg',
+        heading: '人',
+        description: '文字介绍文字介绍文字介绍文字介绍文字介绍文字介绍文字介绍'
+    }, {
+        image: 'images/lanren2.jpg',
+        heading: '车',
+        description: '文字介绍文字介绍文字介绍文字介绍文字介绍文字介绍文字介绍'
+    }, {
+        image: 'images/lanren3.jpg',
+        heading: '案',
+        description: '文字介绍文字介绍文字介绍文字介绍文字介绍文字介绍文字介绍'
+    }, {
+        image: 'images/lanren4.jpg',
+        heading: '身份',
+        description: '文字介绍文字介绍文字介绍文字介绍文字介绍文字介绍文字介绍'
+    }, {
+        image: 'images/lanren5.jpg',
+        heading: '组织',
+        description: '文字介绍文字介绍文字介绍文字介绍文字介绍文字介绍文字介绍'
+    }, {
+        image: 'images/lanren6.jpg',
+        heading: '物',
+        description: '文字介绍文字介绍文字介绍文字介绍文字介绍文字介绍文字介绍'
+    }];
+    var options = {
+        circle_radius: 220,
+        normal_feature_size: 100,
+        highlighted_feature_size: 150,
+        top_margin: 100,
+        bottom_margin: 50,
+        spacing: 40,
+        min_padding: 50,
+        heading_font_size: 30,
+        description_font_size: 20,
+        type: 'image'
+    };
+    var fp = new FeaturePresenter($("#test-element"), settings, options);
+    fp.createPresenter();
+    </script>
+    <!--代码部分end-->
+</body>
+
+</html>

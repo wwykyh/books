@@ -1,0 +1,12 @@
+.carendar-pannel { position: relative; }
+.carendar-tab { width: 960px; height: 48px; margin: 0 auto; }
+.carendar-tab .bar-date { width: 36px; height: 48px; background: #FFF; border-top-color: #fff; border-bottom: 1px solid #3D95EC; text-align: center; background-color: #F2F9FF; float: left; cursor: pointer; }
+.carendar-tab .bar-date b { display: inline-block; text-align: center; width: 9px; height: 15px; background: url('./images/un_list.png') no-repeat; border: 0 none; vertical-align: -18px; }
+.carendar-tab .prev-date b { background-position: -40px 0px; }
+.carendar-tab .next-date b { background-position: -60px 0; }
+.carendar-tab .prev-date-disabled b { background-position: -40px -40px; }
+.carendar-tab .next-date-disabled b { background-position: -60px -40px; }
+.carendar-tab .calendar-tab-list { position: relative; width: 888px; height: 100%; border-bottom: 1px solid #3D95EC; overflow: hidden; float: left; }
+.carendar-tab .calendar-tab-list ul { position: absolute; display: block; width: auto; height: 100%; }
+.carendar-tab .calendar-tab-list ul li { display: block; width: 109px; height: 48px; text-align: center; background-color: #F2F9FF; border: 1px solid #CCC; border-bottom: 1px solid #3D95EC; cursor: pointer; float: left; }
+.carendar-tab .calendar-tab-list ul li span { display: block; }

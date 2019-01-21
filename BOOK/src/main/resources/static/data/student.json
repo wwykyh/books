@@ -1,0 +1,24 @@
+{"statusCode":"200","message":"操作成功","navTabId":null,"rel":null,"callbackType":null,
+    "forwardUrl":null,"confirmMsg":null,
+    "result":[
+        {"stuId":"1","key":"1","name":"张三","age":"57","sex":"0","yingjie":"0",
+            "xueli":"本科","xueli_CODE":"C","birth":"2015-04-24","sfzh":"650201198805072652",
+            "address":"重庆市市辖区","address_CODE":"500100","note":"很好"},
+        {"stuId":"2","key":"0","name":"李四","age":"57","sex":"0","yingjie":"0",
+            "xueli":"硕士","xueli_CODE":"B","birth":"2015-04-24","sfzh":"650201198805072652",
+            "address":"重庆市市辖区","address_CODE":"500100","note":"很好"},
+        {"stuId":"3","key":"0","name":"王五","age":"57","sex":"0","yingjie":"1",
+            "xueli":"博士","xueli_CODE":"A","birth":"2015-04-24","sfzh":"650201198805072652",
+            "address":"重庆市市辖区","address_CODE":"500100","note":"很好"},
+        {"stuId":"4","key":"0","name":"AAA","age":"57","sex":"0","yingjie":"0",
+            "xueli":"硕士","xueli_CODE":"B","birth":"2015-04-24","sfzh":"650201198805072652",
+            "address":"重庆市市辖区","address_CODE":"500100","note":"很好"},
+        {"stuId":"5","key":"0","name":"BBB","age":"57","sex":"0","yingjie":"0",
+            "xueli":"硕士","xueli_CODE":"B","birth":"2015-04-24","sfzh":"650201198805072652",
+            "address":"重庆市市辖区","address_CODE":"500100","note":"很好"},
+        {"stuId":"6","key":"0","name":"CCC","age":"57","sex":"0","yingjie":"0",
+            "xueli":"硕士","xueli_CODE":"B","birth":"2015-04-24","sfzh":"650201198805072652",
+            "address":"重庆市市辖区","address_CODE":"500100","note":"很好"}
+    ]
+}
+

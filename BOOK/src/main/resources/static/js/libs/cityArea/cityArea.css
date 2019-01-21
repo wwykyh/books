@@ -1,0 +1,12 @@
+/*地址联动*/
+.location{ position: relative; display: inline-block; position: relative; padding:3px 20px 3px 3px; border-radius: 3px; box-shadow: -2px -2px 5px rgba(83, 203, 255, 0.5) inset, 2px 2px 5px rgba(83, 203, 255, 0.5) inset;}
+.location input{background:none; padding:0 3px; height: 22px; color:#ace5f2; border: 0px; }
+.location .arrow{ background: url("images/location/arrow_s.png") no-repeat 0 0; position: absolute; top:5px; cursor: pointer;}
+._citys { width: 450px; display: inline-block;/* border: 2px solid #2a7094;*/ padding: 5px; position: relative; background: url("images/location/drop_bg.png") repeat 0 0; box-shadow: -2px -2px 5px rgba(83, 203, 255, 0.5) inset, 2px 2px 5px rgba(83, 203, 255, 0.5) inset; }
+._citys span { color: #ace5f2; height: 15px; width: 15px; line-height: 15px; text-align: center; border-radius: 3px; position: absolute; right: 10px; top: 10px; border: 1px solid #ace5f2; box-shadow: -2px -2px 5px rgba(83, 203, 255, 0.5) inset, 2px 2px 5px rgba(83, 203, 255, 0.5) inset; cursor: pointer; }
+._citys0 { width: 100%; height: 34px; display: inline-block; border-bottom: 2px solid #4bc3ef; padding: 0; margin: 0; }
+._citys0 li { display: inline-block; line-height: 34px; font-size: 15px; color: #ace5f2; width: 80px; text-align: center; cursor: pointer; }
+._citys0 li.active { background-color: #4bc3ef; color: #fff !important; }
+._citys1 { width: 100%; display: inline-block; padding: 10px 0; }
+._citys1 a { width: 83px; height: 28px; display: inline-block; border-radius: 3px; background-color: #f5f5f5; color: #666; margin-left: 6px; margin-top: 3px; line-height: 28px; text-align: center; cursor: pointer; overflow: hidden; white-space: nowrap; text-overflow: ellipsis; }
+._citys1 a:hover { color: #fff; background-color: #4bc3ef; }

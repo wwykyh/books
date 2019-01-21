@@ -1,0 +1,175 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title></title>
+    <link href="css/layout.css" rel="stylesheet" type="text/css">
+    <!--[if lt IE 9]><script type="text/javascript" src="js/html5.js"></script><![endif]-->
+</head>
+
+<body>
+    <div id="wrap">
+        <div id="header">
+            <div class="logo">
+                <a href="index.html"><img src="images/logo.png" alt=""></a>
+            </div>
+            <div class="htop">
+                <ul>
+                    <li><a href="index.html">首页</a></li>
+                    <li><a href="总体介绍.html">总体介绍</a></li>
+                    <li><a href="接入指南.html">接入指南</a></li>
+                    <li><a href="应用场景.html">应用场景</a></li>
+                    <li><a href="知识库.html">知识库</a></li>
+                    <li><a href="实验室.html">实验室</a></li>
+                </ul>
+            </div>
+        </div>
+        <section id="banner">
+            <ul id="banner_img">
+                <li style="background-image:url(images/bg1.jpg);display:block;">
+                    <div class="wrapper">
+                        <div class="ad_txt">
+                            <h2>开发中心</h2>
+                            <p class="ad_p">总线配套产品，主要面向开发单位使用
+                                <br> 从开发角度，提供全面的开发指导
+                                <br> 包括应用/服务接入指南、真实应用场景模拟、完整的开发知识库以及在线实验室
+                            </p>
+                        </div>
+                        <div class="ad_img"> <img src="images/p1.png" width="506" height="401" alt="" /> </div>
+                    </div>
+                </li>
+                <li style="background-image:url(images/bg5.jpg);">
+                    <div class="wrapper">
+                        <div class="ad_txt ad_txt2">
+                            <h2>服务访问开发指南</h2>
+                            <p>全部服务类型
+                                <br> 如何访问服务
+                                <br> 如何开发服务
+                                <br>
+                            </p>
+                        </div>
+                        <div class="ad_img"> <img src="images/p5.png" width="518" height="389" alt="" /> </div>
+                    </div>
+                </li>
+                <li style="background-image:url(images/bg2.jpg);">
+                    <div class="wrapper">
+                        <div class="ad_txt ad_txt2">
+                            <h2>丰富的应用场景</h2>
+                            <p>分布式信息共享
+                                <br> 跨系统业务协作
+                                <br> 跨区域业务联动
+                                <br> 应用接口封装
+                            </p>
+                        </div>
+                        <div class="ad_img"> <img src="images/p2.png" alt="" /> </div>
+                    </div>
+                </li>
+                <li style="background-image:url(images/bg6.jpg);">
+                    <div class="wrapper">
+                        <div class="ad_txt ad_txt2" style="color:#fff">
+                            <h2>总线知识库</h2>
+                            <p>总线如何操作
+                                <br> 日常运维工作指导
+                                <br> 常见问题
+                            </p>
+                        </div>
+                        <div class="ad_img" style="top:90px;"> <img src="images/p6.png" alt="" /> </div>
+                    </div>
+                </li>
+                <li style="background-image:url(images/bg3.jpg);">
+                    <div class="wrapper">
+                        <div class="ad_txt ad_txt2">
+                            <h2>实验室</h2>
+                            <p>使用手册
+                                <br> 运维手册
+                                <br> 常见问题
+                            </p>
+                        </div>
+                        <div class="ad_img"> <img src="images/p3.png" alt="" /> </div>
+                    </div>
+                </li>
+            </ul>
+            <div id="banner_ctr">
+                <div id="drag_ctr"></div>
+                <ul>
+                    <li class="first-item"> </li>
+                    <li onClick="location.href='总体介绍.html'">总体介绍</li>
+                    <li onClick="location.href='接入指南.html'">接入指南</li>
+                    <li onClick="location.href='应用场景.html'">应用场景</li>
+                    <li onClick="location.href='知识库.html'">知识库</li>
+                    <li onClick="location.href='实验室.html'">实验室</li>
+                    <li class="last-item"> </li>
+                </ul>
+            </div>
+        </section>
+        <div id="bottom">
+            @Copyright 2015 厦门市巨龙信息科技有限公司
+        </div>
+    </div>
+    <script type="text/javascript" src="js/jquery.min.js"></script>
+    <script type="text/javascript">
+    $(function() {
+        //Banner Start
+        var curIndex = 0;
+        var time = 800;
+        var slideTime = 5000;
+        var adTxt = $("#banner_img>li>div>.ad_txt");
+        var adImg = $("#banner_img>li>div>.ad_img");
+        var int = setInterval("autoSlide()", slideTime);
+
+        $("#banner_ctr>ul>li[class!='first-item'][class!='last-item']").mouseover(function() {
+            show($(this).index("#banner_ctr>ul>li[class!='first-item'][class!='last-item']"));
+            window.clearInterval(int);
+            int = setInterval("autoSlide()", slideTime);
+        });
+
+        function autoSlide() {
+            curIndex + 1 >= $("#banner_img>li").size() ? curIndex = -1 : false;
+            show(curIndex + 1);
+        }
+
+        function show(index) {
+            $.easing.def = "easeOutQuad";
+            $("#drag_ctr,#drag_arrow").stop(false, true).animate({
+                left: index * 128 + 20
+            }, 300);
+            $("#banner_img>li").eq(curIndex).stop(false, true).fadeOut(time);
+            adTxt.eq(curIndex).stop(false, true).animate({
+                top: "340px"
+            }, time);
+            adImg.eq(curIndex).stop(false, true).animate({
+                right: "120px"
+            }, time);
+            setTimeout(function() {
+                $("#banner_img>li").eq(index).stop(false, true).fadeIn(time);
+                adTxt.eq(index).children("p").css({
+                    paddingTop: "50px",
+                    paddingBottom: "50px"
+                }).stop(false, true).animate({
+                    paddingTop: "0",
+                    paddingBottom: "0"
+                }, time);
+                adTxt.eq(index).css({
+                    top: "0",
+                    opacity: "0"
+                }).stop(false, true).animate({
+                    top: "170px",
+                    opacity: "1"
+                }, time);
+                adImg.eq(index).css({
+                    right: "-50px",
+                    opacity: "0"
+                }).stop(false, true).animate({
+                    right: "120px",
+                    opacity: "1"
+                }, time);
+            }, 200)
+            curIndex = index;
+        }
+        //Banner End
+    })
+    </script>
+</body>
+
+</html>

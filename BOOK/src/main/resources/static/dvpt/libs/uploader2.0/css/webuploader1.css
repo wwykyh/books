@@ -1,0 +1,39 @@
+/*====================webUploader上传 start===================*/
+/*.webuploader-container { position: relative; margin: 0px 5px; float: left; }*/
+.webuploader-element-invisible { position: absolute !important; clip: rect(1px 1px 1px 1px); /* IE6, IE7 */
+	clip: rect(1px,1px,1px,1px); }
+.webuploader-pick { position: relative; display: inline-block; cursor: pointer; background: #00b7ee; padding: 0px 5px; color: #fff; text-align: center; border-radius: 3px; overflow: hidden; }
+.webuploader-pick-hover { /*background: #00a2d4;*/ }
+.webuploader-pick-disable { opacity: 0.6; pointer-events:none; }
+.webUploader { position: relative;}
+.webUploader.fileUpload{ width: 350px;}
+.webUploader.imageUpload{ width: 130px;}
+.webUploader:hover .webUploader-button { background-color: #606060; background-image: linear-gradient(top, #606060 0%, #808080 100%); background-image: -o-linear-gradient(top, #606060 0%, #808080 100%); background-image: -moz-linear-gradient(top, #606060 0%, #808080 100%); background-image: -webkit-linear-gradient(top, #606060 0%, #808080 100%); background-image: -ms-linear-gradient(top, #606060 0%, #808080 100%); background-image: -webkit-gradient(linear,left bottom,left top,color-stop(0, #606060),color-stop(1, #808080)); background-position: center bottom; }
+.webUploader-button.disabled { background-color: #D0D0D0; color: #808080; }
+.webUploader-queue { margin-bottom: 1em; }
+.webUploader-queue-item { background-color: #F5F5F5; -webkit-border-radius: 3px; -moz-border-radius: 3px; border-radius: 3px; font: 12px Verdana, Geneva, sans-serif; margin-top: 5px; max-width: 350px; padding: 5px; }
+.webUploader-error { background-color: #FDE5DD !important; }
+.webUploader-queue-item .cancel a { background: url('../img/uploadify-cancel.png') 0 0 no-repeat; float: right; height:16px; text-indent: -9999px; width: 16px; }
+.webUploader-queue-item.completed { background-color: #E5E5E5; }
+.webUploader-progress { background-color: #E5E5E5; margin-top: 2px;margin-bottom: 5px; width: 100%; }
+.webUploader-progress-bar { background-color: #0099FF; height: 3px; width: 0px; }
+.my-webUploader-button { background:none; border: none; text-shadow: none; border-radius:0; }
+.webUploader:hover .my-uploadify-button { background:none; border: none; }
+.webUploader-queue-item span{margin:0 5px;}
+.webUploader-queue-item a{margin:0 5px;}
+.webUploader-queue-item .uploadbtn,
+.webUploader-queue-item .deletebtn,
+.webUploader-queue-item .pauseBtn{cursor: pointer;color: #0066CC;}
+.webUploader-queue-item .operateBar{float: right;}
+.webUploader-queue-item .state,
+.webUploader-queue-item .progressInfo{color: #0099FF;}
+
+.webUploader .btns{height: 30px; }
+.webUploader.imageUpload .uploader-list{text-align: center; }
+.webUploader .imgList{ /*margin: 0 20px;*/padding-bottom: 2px;display: inline-block; }
+.webUploader .imgBar{ position: absolute; left:2px; bottom:2px; width:100%; height:0px; margin-top:4px; overflow: hidden;z-index: 100;text-align: center;background:#000; opacity: 0.5; }
+.webUploader .imgBar span{ width: 24px;height:24px;display: inline-block; float: right;overflow: hidden;cursor: pointer; }
+.webUploader .divTc{text-align: center; }
+.webUploader.imageUpload .btns{height: 30px;display: inline-block; }
+
+/*====================end上传控件===================*/

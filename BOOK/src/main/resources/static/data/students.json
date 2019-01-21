@@ -1,0 +1,16 @@
+{"statusCode":"200","message":"操作成功","navTabId":null,"rel":null,"callbackType":null,
+    "forwardUrl":null,"confirmMsg":null,
+    "result":
+    {"content":[
+        {"stuId":"402880284ce4bd6d014ce4ccbd2d002a","name":"王二","sex":"男","birth":"2015-04-24 08:02:24","sfzh":"650102198706122368","address":"新疆维吾尔自治区克拉玛依市市辖区","address_CODE":"650201","note":"普通"},
+        {"stuId":"402880284ce4bd6d014ce4cb7df60026","name":"李四","sex":"男","birth":"2015-04-24 08:02:23","sfzh":"650102198706122368","address":"新疆维吾尔自治区克拉玛依市市辖区","address_CODE":"650201","note":"普通"},
+        {"stuId":"402880284ce3e31a014ce4340fab0064","name":"杨九","sex":"男","birth":"2015-04-24 08:02:17","sfzh":"650201198805072111","address":"新疆维吾尔自治区克拉玛依市市辖区","address_CODE":"650201","note":"很好"},
+        {"stuId":"402880284ce3e31a014ce433159b005e","name":"何三","sex":"女","birth":"2015-04-24 08:02:16","sfzh":"650201198805072111","address":"新疆维吾尔自治区克拉玛依市市辖区","address_CODE":"650201","note":"很好"},
+        {"stuId":"402880284ce3e31a014ce4304593005d","name":"林六","sex":"男","birth":"2015-04-24 08:02:15","sfzh":"650201198805072111","address":"新疆维吾尔自治区克拉玛依市市辖区","address_CODE":"650201","note":"很好"},
+        {"stuId":"402880284ce3e31a014ce42ec1c2005b","name":"黄五","sex":"女","birth":"2015-04-24 08:02:14","sfzh":"650201198805072111","address":"新疆维吾尔自治区克拉玛依市市辖区","address_CODE":"650201","note":"很好"},
+        {"stuId":"402880284ce3e31a014ce425a58b004f","name":"吴八","sex":"男","birth":"2015-04-24 08:02:13","sfzh":"650201198805072652","address":"新疆维吾尔自治区克拉玛依市市辖区","address_CODE":"650201","note":"很好"},
+        {"stuId":"402880284ce3e31a014ce423b14d004a","name":"喜七","sex":"女","birth":"2015-04-24 08:02:12","sfzh":"650201198805072652","address":"新疆维吾尔自治区克拉玛依市市辖区","address_CODE":"650201","note":"很好"},
+        {"stuId":"402880284ce3e31a014ce423b14d004b","name":"上午","sex":"女","birth":"2015-04-24 08:02:12","sfzh":"650201198805072652","address":"新疆维吾尔自治区克拉玛依市市辖区","address_CODE":"650201","note":"很好"},
+        {"stuId":"402880284ce3e31a014ce422985b0049","name":"按键","sex":"男","birth":"2015-04-24 08:02:11","sfzh":"650201198805072652","address":"新疆维吾尔自治区克拉玛依市市辖区","address_CODE":"650201","note":"很好"}],
+        "size":10,"number":1,"sort":[{"direction":"DESC","property":"xm","ascending":false},
+        {"direction":"ASC","property":"sfzh","ascending":true}],"firstPage":false,"lastPage":true,"totalPages":1,"numberOfElements":10,"totalElements":10},"conditionCache":"rO0ABXNyACtjb20uZHJhZ29uc29mdC5kdWNlYXAuY29yZS5zZWFyY2guU3FsU291cmNlJqb+ov/P1xMCAAJbAAZwYXJhbXN0ABNbTGphdmEvbGFuZy9PYmplY3Q7TAADc3FsdAASTGphdmEvbGFuZy9TdHJpbmc7eHB1cgATW0xqYXZhLmxhbmcuT2JqZWN0O5DOWJ8QcylsAgAAeHAAAAAAdAA3c2VsZWN0ICogZnJvbSBERU1PU1RBRkZJTkZPIG9yZGVyIGJ5IG5hbWUgREVTQyxzZnpoIEFTQw==","status":"200","success":true}
