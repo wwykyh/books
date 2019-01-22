@@ -7,7 +7,6 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 @Controller
 public class BookController {
-	//@ResponseBody
 	@GetMapping("/index")
 	public String bookIndex() throws Exception{
 		return "index";
