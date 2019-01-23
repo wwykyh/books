@@ -1,4 +1,4 @@
-package com.dragon;
+package com.dragon.book;
 
 import org.springframework.boot.builder.SpringApplicationBuilder;
 import org.springframework.boot.web.servlet.support.SpringBootServletInitializer;

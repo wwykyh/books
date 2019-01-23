@@ -11,12 +11,10 @@
 * 类描述：图书控制器
 * 
 */
-package com.dragon.controller;
+package com.dragon.book.controller;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
 
 @Controller
 public class BookController {

@@ -55,7 +55,7 @@
 		  <label class="week"></label>
 		  <label class="time"></label>
 		  </span> </li>
-						<li><i class="header-icon i-user"></i>admin(系统用户)</a>
+						<li><i class="header-icon i-user"></i>欢迎您！admin(系统用户)</a>
 						</li>
 						<li class="skin-change"><a href="javascript:;" title="皮肤" class="skin-change-acitve"><span><i class="header-icon i-skin"></i>换肤<i class="arrow"></i></span></a>
 							<div class="skin-changelist hide">
