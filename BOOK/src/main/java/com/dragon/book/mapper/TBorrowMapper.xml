@@ -1,0 +1,374 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.dragon.book.mapper.TBorrowMapper" >
+  <resultMap id="BaseResultMap" type="com.dragon.book.model.TBorrow" >
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="book_id" property="bookId" jdbcType="VARCHAR" />
+    <result column="sm" property="sm" jdbcType="VARCHAR" />
+    <result column="user_id" property="userId" jdbcType="VARCHAR" />
+    <result column="lxfs" property="lxfs" jdbcType="VARCHAR" />
+    <result column="jyrq" property="jyrq" jdbcType="DATE" />
+    <result column="jhghrq" property="jhghrq" jdbcType="DATE" />
+    <result column="xjrq" property="xjrq" jdbcType="DATE" />
+    <result column="ghrq" property="ghrq" jdbcType="DATE" />
+    <result column="status" property="status" jdbcType="INTEGER" />
+    <result column="jyzt" property="jyzt" jdbcType="INTEGER" />
+  </resultMap>
+  <resultMap id="ResultMapWithBLOBs" type="com.dragon.book.model.TBorrow" extends="BaseResultMap" >
+    <result column="bz" property="bz" jdbcType="LONGVARCHAR" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    id, book_id, sm, user_id, lxfs, jyrq, jhghrq, xjrq, ghrq, status, jyzt
+  </sql>
+  <sql id="Blob_Column_List" >
+    bz
+  </sql>
+  <select id="selectByExampleWithBLOBs" resultMap="ResultMapWithBLOBs" parameterType="com.dragon.book.model.TBorrowExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from t_borrow
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.dragon.book.model.TBorrowExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from t_borrow
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="ResultMapWithBLOBs" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from t_borrow
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from t_borrow
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.dragon.book.model.TBorrowExample" >
+    delete from t_borrow
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.dragon.book.model.TBorrow" >
+    insert into t_borrow (id, book_id, sm, 
+      user_id, lxfs, jyrq, jhghrq, 
+      xjrq, ghrq, status, jyzt, 
+      bz)
+    values (#{id,jdbcType=INTEGER}, #{bookId,jdbcType=VARCHAR}, #{sm,jdbcType=VARCHAR}, 
+      #{userId,jdbcType=VARCHAR}, #{lxfs,jdbcType=VARCHAR}, #{jyrq,jdbcType=DATE}, #{jhghrq,jdbcType=DATE}, 
+      #{xjrq,jdbcType=DATE}, #{ghrq,jdbcType=DATE}, #{status,jdbcType=INTEGER}, #{jyzt,jdbcType=INTEGER}, 
+      #{bz,jdbcType=LONGVARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.dragon.book.model.TBorrow" >
+    insert into t_borrow
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="bookId != null" >
+        book_id,
+      </if>
+      <if test="sm != null" >
+        sm,
+      </if>
+      <if test="userId != null" >
+        user_id,
+      </if>
+      <if test="lxfs != null" >
+        lxfs,
+      </if>
+      <if test="jyrq != null" >
+        jyrq,
+      </if>
+      <if test="jhghrq != null" >
+        jhghrq,
+      </if>
+      <if test="xjrq != null" >
+        xjrq,
+      </if>
+      <if test="ghrq != null" >
+        ghrq,
+      </if>
+      <if test="status != null" >
+        status,
+      </if>
+      <if test="jyzt != null" >
+        jyzt,
+      </if>
+      <if test="bz != null" >
+        bz,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="bookId != null" >
+        #{bookId,jdbcType=VARCHAR},
+      </if>
+      <if test="sm != null" >
+        #{sm,jdbcType=VARCHAR},
+      </if>
+      <if test="userId != null" >
+        #{userId,jdbcType=VARCHAR},
+      </if>
+      <if test="lxfs != null" >
+        #{lxfs,jdbcType=VARCHAR},
+      </if>
+      <if test="jyrq != null" >
+        #{jyrq,jdbcType=DATE},
+      </if>
+      <if test="jhghrq != null" >
+        #{jhghrq,jdbcType=DATE},
+      </if>
+      <if test="xjrq != null" >
+        #{xjrq,jdbcType=DATE},
+      </if>
+      <if test="ghrq != null" >
+        #{ghrq,jdbcType=DATE},
+      </if>
+      <if test="status != null" >
+        #{status,jdbcType=INTEGER},
+      </if>
+      <if test="jyzt != null" >
+        #{jyzt,jdbcType=INTEGER},
+      </if>
+      <if test="bz != null" >
+        #{bz,jdbcType=LONGVARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.dragon.book.model.TBorrowExample" resultType="java.lang.Integer" >
+    select count(*) from t_borrow
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update t_borrow
+    <set >
+      <if test="record.id != null" >
+        id = #{record.id,jdbcType=INTEGER},
+      </if>
+      <if test="record.bookId != null" >
+        book_id = #{record.bookId,jdbcType=VARCHAR},
+      </if>
+      <if test="record.sm != null" >
+        sm = #{record.sm,jdbcType=VARCHAR},
+      </if>
+      <if test="record.userId != null" >
+        user_id = #{record.userId,jdbcType=VARCHAR},
+      </if>
+      <if test="record.lxfs != null" >
+        lxfs = #{record.lxfs,jdbcType=VARCHAR},
+      </if>
+      <if test="record.jyrq != null" >
+        jyrq = #{record.jyrq,jdbcType=DATE},
+      </if>
+      <if test="record.jhghrq != null" >
+        jhghrq = #{record.jhghrq,jdbcType=DATE},
+      </if>
+      <if test="record.xjrq != null" >
+        xjrq = #{record.xjrq,jdbcType=DATE},
+      </if>
+      <if test="record.ghrq != null" >
+        ghrq = #{record.ghrq,jdbcType=DATE},
+      </if>
+      <if test="record.status != null" >
+        status = #{record.status,jdbcType=INTEGER},
+      </if>
+      <if test="record.jyzt != null" >
+        jyzt = #{record.jyzt,jdbcType=INTEGER},
+      </if>
+      <if test="record.bz != null" >
+        bz = #{record.bz,jdbcType=LONGVARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExampleWithBLOBs" parameterType="map" >
+    update t_borrow
+    set id = #{record.id,jdbcType=INTEGER},
+      book_id = #{record.bookId,jdbcType=VARCHAR},
+      sm = #{record.sm,jdbcType=VARCHAR},
+      user_id = #{record.userId,jdbcType=VARCHAR},
+      lxfs = #{record.lxfs,jdbcType=VARCHAR},
+      jyrq = #{record.jyrq,jdbcType=DATE},
+      jhghrq = #{record.jhghrq,jdbcType=DATE},
+      xjrq = #{record.xjrq,jdbcType=DATE},
+      ghrq = #{record.ghrq,jdbcType=DATE},
+      status = #{record.status,jdbcType=INTEGER},
+      jyzt = #{record.jyzt,jdbcType=INTEGER},
+      bz = #{record.bz,jdbcType=LONGVARCHAR}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update t_borrow
+    set id = #{record.id,jdbcType=INTEGER},
+      book_id = #{record.bookId,jdbcType=VARCHAR},
+      sm = #{record.sm,jdbcType=VARCHAR},
+      user_id = #{record.userId,jdbcType=VARCHAR},
+      lxfs = #{record.lxfs,jdbcType=VARCHAR},
+      jyrq = #{record.jyrq,jdbcType=DATE},
+      jhghrq = #{record.jhghrq,jdbcType=DATE},
+      xjrq = #{record.xjrq,jdbcType=DATE},
+      ghrq = #{record.ghrq,jdbcType=DATE},
+      status = #{record.status,jdbcType=INTEGER},
+      jyzt = #{record.jyzt,jdbcType=INTEGER}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.dragon.book.model.TBorrow" >
+    update t_borrow
+    <set >
+      <if test="bookId != null" >
+        book_id = #{bookId,jdbcType=VARCHAR},
+      </if>
+      <if test="sm != null" >
+        sm = #{sm,jdbcType=VARCHAR},
+      </if>
+      <if test="userId != null" >
+        user_id = #{userId,jdbcType=VARCHAR},
+      </if>
+      <if test="lxfs != null" >
+        lxfs = #{lxfs,jdbcType=VARCHAR},
+      </if>
+      <if test="jyrq != null" >
+        jyrq = #{jyrq,jdbcType=DATE},
+      </if>
+      <if test="jhghrq != null" >
+        jhghrq = #{jhghrq,jdbcType=DATE},
+      </if>
+      <if test="xjrq != null" >
+        xjrq = #{xjrq,jdbcType=DATE},
+      </if>
+      <if test="ghrq != null" >
+        ghrq = #{ghrq,jdbcType=DATE},
+      </if>
+      <if test="status != null" >
+        status = #{status,jdbcType=INTEGER},
+      </if>
+      <if test="jyzt != null" >
+        jyzt = #{jyzt,jdbcType=INTEGER},
+      </if>
+      <if test="bz != null" >
+        bz = #{bz,jdbcType=LONGVARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKeyWithBLOBs" parameterType="com.dragon.book.model.TBorrow" >
+    update t_borrow
+    set book_id = #{bookId,jdbcType=VARCHAR},
+      sm = #{sm,jdbcType=VARCHAR},
+      user_id = #{userId,jdbcType=VARCHAR},
+      lxfs = #{lxfs,jdbcType=VARCHAR},
+      jyrq = #{jyrq,jdbcType=DATE},
+      jhghrq = #{jhghrq,jdbcType=DATE},
+      xjrq = #{xjrq,jdbcType=DATE},
+      ghrq = #{ghrq,jdbcType=DATE},
+      status = #{status,jdbcType=INTEGER},
+      jyzt = #{jyzt,jdbcType=INTEGER},
+      bz = #{bz,jdbcType=LONGVARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.dragon.book.model.TBorrow" >
+    update t_borrow
+    set book_id = #{bookId,jdbcType=VARCHAR},
+      sm = #{sm,jdbcType=VARCHAR},
+      user_id = #{userId,jdbcType=VARCHAR},
+      lxfs = #{lxfs,jdbcType=VARCHAR},
+      jyrq = #{jyrq,jdbcType=DATE},
+      jhghrq = #{jhghrq,jdbcType=DATE},
+      xjrq = #{xjrq,jdbcType=DATE},
+      ghrq = #{ghrq,jdbcType=DATE},
+      status = #{status,jdbcType=INTEGER},
+      jyzt = #{jyzt,jdbcType=INTEGER}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

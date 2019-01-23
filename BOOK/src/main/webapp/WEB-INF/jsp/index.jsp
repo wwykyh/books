@@ -120,7 +120,7 @@
 						</dt>
 						<dd>
 							<ul>
-								<li><a _href="图书入库.html" data-name="图书入库" data-js="prettify" href="javascript:;">图书入库</a></li>
+								<li><a _href="user" data-name="图书入库" data-js="prettify" href="javascript:;">图书入库</a></li>
 							</ul>
 						</dd>
 					</dl>

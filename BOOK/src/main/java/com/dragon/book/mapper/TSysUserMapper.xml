@@ -1,0 +1,374 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.dragon.book.mapper.TSysUserMapper" >
+  <resultMap id="BaseResultMap" type="com.dragon.book.model.TSysUser" >
+    <id column="user_id" property="userId" jdbcType="INTEGER" />
+    <result column="sm" property="sm" jdbcType="VARCHAR" />
+    <result column="bm" property="bm" jdbcType="VARCHAR" />
+    <result column="pwd" property="pwd" jdbcType="VARCHAR" />
+    <result column="lxfs" property="lxfs" jdbcType="VARCHAR" />
+    <result column="dz" property="dz" jdbcType="VARCHAR" />
+    <result column="isadmin" property="isadmin" jdbcType="INTEGER" />
+    <result column="hmd" property="hmd" jdbcType="INTEGER" />
+    <result column="book_id" property="bookId" jdbcType="VARCHAR" />
+    <result column="kjtscs" property="kjtscs" jdbcType="INTEGER" />
+    <result column="cs" property="cs" jdbcType="INTEGER" />
+  </resultMap>
+  <resultMap id="ResultMapWithBLOBs" type="com.dragon.book.model.TSysUser" extends="BaseResultMap" >
+    <result column="grsm" property="grsm" jdbcType="LONGVARCHAR" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    user_id, sm, bm, pwd, lxfs, dz, isadmin, hmd, book_id, kjtscs, cs
+  </sql>
+  <sql id="Blob_Column_List" >
+    grsm
+  </sql>
+  <select id="selectByExampleWithBLOBs" resultMap="ResultMapWithBLOBs" parameterType="com.dragon.book.model.TSysUserExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from t_sys_user
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.dragon.book.model.TSysUserExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from t_sys_user
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="ResultMapWithBLOBs" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from t_sys_user
+    where user_id = #{userId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from t_sys_user
+    where user_id = #{userId,jdbcType=INTEGER}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.dragon.book.model.TSysUserExample" >
+    delete from t_sys_user
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.dragon.book.model.TSysUser" >
+    insert into t_sys_user (user_id, sm, bm, 
+      pwd, lxfs, dz, isadmin, 
+      hmd, book_id, kjtscs, 
+      cs, grsm)
+    values (#{userId,jdbcType=INTEGER}, #{sm,jdbcType=VARCHAR}, #{bm,jdbcType=VARCHAR}, 
+      #{pwd,jdbcType=VARCHAR}, #{lxfs,jdbcType=VARCHAR}, #{dz,jdbcType=VARCHAR}, #{isadmin,jdbcType=INTEGER}, 
+      #{hmd,jdbcType=INTEGER}, #{bookId,jdbcType=VARCHAR}, #{kjtscs,jdbcType=INTEGER}, 
+      #{cs,jdbcType=INTEGER}, #{grsm,jdbcType=LONGVARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.dragon.book.model.TSysUser" >
+    insert into t_sys_user
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="userId != null" >
+        user_id,
+      </if>
+      <if test="sm != null" >
+        sm,
+      </if>
+      <if test="bm != null" >
+        bm,
+      </if>
+      <if test="pwd != null" >
+        pwd,
+      </if>
+      <if test="lxfs != null" >
+        lxfs,
+      </if>
+      <if test="dz != null" >
+        dz,
+      </if>
+      <if test="isadmin != null" >
+        isadmin,
+      </if>
+      <if test="hmd != null" >
+        hmd,
+      </if>
+      <if test="bookId != null" >
+        book_id,
+      </if>
+      <if test="kjtscs != null" >
+        kjtscs,
+      </if>
+      <if test="cs != null" >
+        cs,
+      </if>
+      <if test="grsm != null" >
+        grsm,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="userId != null" >
+        #{userId,jdbcType=INTEGER},
+      </if>
+      <if test="sm != null" >
+        #{sm,jdbcType=VARCHAR},
+      </if>
+      <if test="bm != null" >
+        #{bm,jdbcType=VARCHAR},
+      </if>
+      <if test="pwd != null" >
+        #{pwd,jdbcType=VARCHAR},
+      </if>
+      <if test="lxfs != null" >
+        #{lxfs,jdbcType=VARCHAR},
+      </if>
+      <if test="dz != null" >
+        #{dz,jdbcType=VARCHAR},
+      </if>
+      <if test="isadmin != null" >
+        #{isadmin,jdbcType=INTEGER},
+      </if>
+      <if test="hmd != null" >
+        #{hmd,jdbcType=INTEGER},
+      </if>
+      <if test="bookId != null" >
+        #{bookId,jdbcType=VARCHAR},
+      </if>
+      <if test="kjtscs != null" >
+        #{kjtscs,jdbcType=INTEGER},
+      </if>
+      <if test="cs != null" >
+        #{cs,jdbcType=INTEGER},
+      </if>
+      <if test="grsm != null" >
+        #{grsm,jdbcType=LONGVARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.dragon.book.model.TSysUserExample" resultType="java.lang.Integer" >
+    select count(*) from t_sys_user
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update t_sys_user
+    <set >
+      <if test="record.userId != null" >
+        user_id = #{record.userId,jdbcType=INTEGER},
+      </if>
+      <if test="record.sm != null" >
+        sm = #{record.sm,jdbcType=VARCHAR},
+      </if>
+      <if test="record.bm != null" >
+        bm = #{record.bm,jdbcType=VARCHAR},
+      </if>
+      <if test="record.pwd != null" >
+        pwd = #{record.pwd,jdbcType=VARCHAR},
+      </if>
+      <if test="record.lxfs != null" >
+        lxfs = #{record.lxfs,jdbcType=VARCHAR},
+      </if>
+      <if test="record.dz != null" >
+        dz = #{record.dz,jdbcType=VARCHAR},
+      </if>
+      <if test="record.isadmin != null" >
+        isadmin = #{record.isadmin,jdbcType=INTEGER},
+      </if>
+      <if test="record.hmd != null" >
+        hmd = #{record.hmd,jdbcType=INTEGER},
+      </if>
+      <if test="record.bookId != null" >
+        book_id = #{record.bookId,jdbcType=VARCHAR},
+      </if>
+      <if test="record.kjtscs != null" >
+        kjtscs = #{record.kjtscs,jdbcType=INTEGER},
+      </if>
+      <if test="record.cs != null" >
+        cs = #{record.cs,jdbcType=INTEGER},
+      </if>
+      <if test="record.grsm != null" >
+        grsm = #{record.grsm,jdbcType=LONGVARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExampleWithBLOBs" parameterType="map" >
+    update t_sys_user
+    set user_id = #{record.userId,jdbcType=INTEGER},
+      sm = #{record.sm,jdbcType=VARCHAR},
+      bm = #{record.bm,jdbcType=VARCHAR},
+      pwd = #{record.pwd,jdbcType=VARCHAR},
+      lxfs = #{record.lxfs,jdbcType=VARCHAR},
+      dz = #{record.dz,jdbcType=VARCHAR},
+      isadmin = #{record.isadmin,jdbcType=INTEGER},
+      hmd = #{record.hmd,jdbcType=INTEGER},
+      book_id = #{record.bookId,jdbcType=VARCHAR},
+      kjtscs = #{record.kjtscs,jdbcType=INTEGER},
+      cs = #{record.cs,jdbcType=INTEGER},
+      grsm = #{record.grsm,jdbcType=LONGVARCHAR}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update t_sys_user
+    set user_id = #{record.userId,jdbcType=INTEGER},
+      sm = #{record.sm,jdbcType=VARCHAR},
+      bm = #{record.bm,jdbcType=VARCHAR},
+      pwd = #{record.pwd,jdbcType=VARCHAR},
+      lxfs = #{record.lxfs,jdbcType=VARCHAR},
+      dz = #{record.dz,jdbcType=VARCHAR},
+      isadmin = #{record.isadmin,jdbcType=INTEGER},
+      hmd = #{record.hmd,jdbcType=INTEGER},
+      book_id = #{record.bookId,jdbcType=VARCHAR},
+      kjtscs = #{record.kjtscs,jdbcType=INTEGER},
+      cs = #{record.cs,jdbcType=INTEGER}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.dragon.book.model.TSysUser" >
+    update t_sys_user
+    <set >
+      <if test="sm != null" >
+        sm = #{sm,jdbcType=VARCHAR},
+      </if>
+      <if test="bm != null" >
+        bm = #{bm,jdbcType=VARCHAR},
+      </if>
+      <if test="pwd != null" >
+        pwd = #{pwd,jdbcType=VARCHAR},
+      </if>
+      <if test="lxfs != null" >
+        lxfs = #{lxfs,jdbcType=VARCHAR},
+      </if>
+      <if test="dz != null" >
+        dz = #{dz,jdbcType=VARCHAR},
+      </if>
+      <if test="isadmin != null" >
+        isadmin = #{isadmin,jdbcType=INTEGER},
+      </if>
+      <if test="hmd != null" >
+        hmd = #{hmd,jdbcType=INTEGER},
+      </if>
+      <if test="bookId != null" >
+        book_id = #{bookId,jdbcType=VARCHAR},
+      </if>
+      <if test="kjtscs != null" >
+        kjtscs = #{kjtscs,jdbcType=INTEGER},
+      </if>
+      <if test="cs != null" >
+        cs = #{cs,jdbcType=INTEGER},
+      </if>
+      <if test="grsm != null" >
+        grsm = #{grsm,jdbcType=LONGVARCHAR},
+      </if>
+    </set>
+    where user_id = #{userId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKeyWithBLOBs" parameterType="com.dragon.book.model.TSysUser" >
+    update t_sys_user
+    set sm = #{sm,jdbcType=VARCHAR},
+      bm = #{bm,jdbcType=VARCHAR},
+      pwd = #{pwd,jdbcType=VARCHAR},
+      lxfs = #{lxfs,jdbcType=VARCHAR},
+      dz = #{dz,jdbcType=VARCHAR},
+      isadmin = #{isadmin,jdbcType=INTEGER},
+      hmd = #{hmd,jdbcType=INTEGER},
+      book_id = #{bookId,jdbcType=VARCHAR},
+      kjtscs = #{kjtscs,jdbcType=INTEGER},
+      cs = #{cs,jdbcType=INTEGER},
+      grsm = #{grsm,jdbcType=LONGVARCHAR}
+    where user_id = #{userId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.dragon.book.model.TSysUser" >
+    update t_sys_user
+    set sm = #{sm,jdbcType=VARCHAR},
+      bm = #{bm,jdbcType=VARCHAR},
+      pwd = #{pwd,jdbcType=VARCHAR},
+      lxfs = #{lxfs,jdbcType=VARCHAR},
+      dz = #{dz,jdbcType=VARCHAR},
+      isadmin = #{isadmin,jdbcType=INTEGER},
+      hmd = #{hmd,jdbcType=INTEGER},
+      book_id = #{bookId,jdbcType=VARCHAR},
+      kjtscs = #{kjtscs,jdbcType=INTEGER},
+      cs = #{cs,jdbcType=INTEGER}
+    where user_id = #{userId,jdbcType=INTEGER}
+  </update>
+</mapper>

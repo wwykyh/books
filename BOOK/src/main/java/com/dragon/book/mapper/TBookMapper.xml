@@ -1,0 +1,335 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.dragon.book.mapper.TBookMapper" >
+  <resultMap id="BaseResultMap" type="com.dragon.book.model.TBook" >
+    <id column="book_id" property="bookId" jdbcType="VARCHAR" />
+    <result column="sm" property="sm" jdbcType="VARCHAR" />
+    <result column="cbsmc" property="cbsmc" jdbcType="VARCHAR" />
+    <result column="cbrq" property="cbrq" jdbcType="DATE" />
+    <result column="zz" property="zz" jdbcType="VARCHAR" />
+    <result column="rkrq" property="rkrq" jdbcType="DATE" />
+    <result column="status" property="status" jdbcType="INTEGER" />
+    <result column="cs" property="cs" jdbcType="INTEGER" />
+    <result column="kc" property="kc" jdbcType="INTEGER" />
+    <result column="user_id" property="userId" jdbcType="INTEGER" />
+    <result column="sh" property="sh" jdbcType="INTEGER" />
+    <result column="TSZL" property="tszl" jdbcType="VARCHAR" />
+    <result column="wz" property="wz" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    book_id, sm, cbsmc, cbrq, zz, rkrq, status, cs, kc, user_id, sh, TSZL, wz
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.dragon.book.model.TBookExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from t_book
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from t_book
+    where book_id = #{bookId,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from t_book
+    where book_id = #{bookId,jdbcType=VARCHAR}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.dragon.book.model.TBookExample" >
+    delete from t_book
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.dragon.book.model.TBook" >
+    insert into t_book (book_id, sm, cbsmc, 
+      cbrq, zz, rkrq, status, 
+      cs, kc, user_id, sh, 
+      TSZL, wz)
+    values (#{bookId,jdbcType=VARCHAR}, #{sm,jdbcType=VARCHAR}, #{cbsmc,jdbcType=VARCHAR}, 
+      #{cbrq,jdbcType=DATE}, #{zz,jdbcType=VARCHAR}, #{rkrq,jdbcType=DATE}, #{status,jdbcType=INTEGER}, 
+      #{cs,jdbcType=INTEGER}, #{kc,jdbcType=INTEGER}, #{userId,jdbcType=INTEGER}, #{sh,jdbcType=INTEGER}, 
+      #{tszl,jdbcType=VARCHAR}, #{wz,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.dragon.book.model.TBook" >
+    insert into t_book
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="bookId != null" >
+        book_id,
+      </if>
+      <if test="sm != null" >
+        sm,
+      </if>
+      <if test="cbsmc != null" >
+        cbsmc,
+      </if>
+      <if test="cbrq != null" >
+        cbrq,
+      </if>
+      <if test="zz != null" >
+        zz,
+      </if>
+      <if test="rkrq != null" >
+        rkrq,
+      </if>
+      <if test="status != null" >
+        status,
+      </if>
+      <if test="cs != null" >
+        cs,
+      </if>
+      <if test="kc != null" >
+        kc,
+      </if>
+      <if test="userId != null" >
+        user_id,
+      </if>
+      <if test="sh != null" >
+        sh,
+      </if>
+      <if test="tszl != null" >
+        TSZL,
+      </if>
+      <if test="wz != null" >
+        wz,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="bookId != null" >
+        #{bookId,jdbcType=VARCHAR},
+      </if>
+      <if test="sm != null" >
+        #{sm,jdbcType=VARCHAR},
+      </if>
+      <if test="cbsmc != null" >
+        #{cbsmc,jdbcType=VARCHAR},
+      </if>
+      <if test="cbrq != null" >
+        #{cbrq,jdbcType=DATE},
+      </if>
+      <if test="zz != null" >
+        #{zz,jdbcType=VARCHAR},
+      </if>
+      <if test="rkrq != null" >
+        #{rkrq,jdbcType=DATE},
+      </if>
+      <if test="status != null" >
+        #{status,jdbcType=INTEGER},
+      </if>
+      <if test="cs != null" >
+        #{cs,jdbcType=INTEGER},
+      </if>
+      <if test="kc != null" >
+        #{kc,jdbcType=INTEGER},
+      </if>
+      <if test="userId != null" >
+        #{userId,jdbcType=INTEGER},
+      </if>
+      <if test="sh != null" >
+        #{sh,jdbcType=INTEGER},
+      </if>
+      <if test="tszl != null" >
+        #{tszl,jdbcType=VARCHAR},
+      </if>
+      <if test="wz != null" >
+        #{wz,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.dragon.book.model.TBookExample" resultType="java.lang.Integer" >
+    select count(*) from t_book
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update t_book
+    <set >
+      <if test="record.bookId != null" >
+        book_id = #{record.bookId,jdbcType=VARCHAR},
+      </if>
+      <if test="record.sm != null" >
+        sm = #{record.sm,jdbcType=VARCHAR},
+      </if>
+      <if test="record.cbsmc != null" >
+        cbsmc = #{record.cbsmc,jdbcType=VARCHAR},
+      </if>
+      <if test="record.cbrq != null" >
+        cbrq = #{record.cbrq,jdbcType=DATE},
+      </if>
+      <if test="record.zz != null" >
+        zz = #{record.zz,jdbcType=VARCHAR},
+      </if>
+      <if test="record.rkrq != null" >
+        rkrq = #{record.rkrq,jdbcType=DATE},
+      </if>
+      <if test="record.status != null" >
+        status = #{record.status,jdbcType=INTEGER},
+      </if>
+      <if test="record.cs != null" >
+        cs = #{record.cs,jdbcType=INTEGER},
+      </if>
+      <if test="record.kc != null" >
+        kc = #{record.kc,jdbcType=INTEGER},
+      </if>
+      <if test="record.userId != null" >
+        user_id = #{record.userId,jdbcType=INTEGER},
+      </if>
+      <if test="record.sh != null" >
+        sh = #{record.sh,jdbcType=INTEGER},
+      </if>
+      <if test="record.tszl != null" >
+        TSZL = #{record.tszl,jdbcType=VARCHAR},
+      </if>
+      <if test="record.wz != null" >
+        wz = #{record.wz,jdbcType=VARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update t_book
+    set book_id = #{record.bookId,jdbcType=VARCHAR},
+      sm = #{record.sm,jdbcType=VARCHAR},
+      cbsmc = #{record.cbsmc,jdbcType=VARCHAR},
+      cbrq = #{record.cbrq,jdbcType=DATE},
+      zz = #{record.zz,jdbcType=VARCHAR},
+      rkrq = #{record.rkrq,jdbcType=DATE},
+      status = #{record.status,jdbcType=INTEGER},
+      cs = #{record.cs,jdbcType=INTEGER},
+      kc = #{record.kc,jdbcType=INTEGER},
+      user_id = #{record.userId,jdbcType=INTEGER},
+      sh = #{record.sh,jdbcType=INTEGER},
+      TSZL = #{record.tszl,jdbcType=VARCHAR},
+      wz = #{record.wz,jdbcType=VARCHAR}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.dragon.book.model.TBook" >
+    update t_book
+    <set >
+      <if test="sm != null" >
+        sm = #{sm,jdbcType=VARCHAR},
+      </if>
+      <if test="cbsmc != null" >
+        cbsmc = #{cbsmc,jdbcType=VARCHAR},
+      </if>
+      <if test="cbrq != null" >
+        cbrq = #{cbrq,jdbcType=DATE},
+      </if>
+      <if test="zz != null" >
+        zz = #{zz,jdbcType=VARCHAR},
+      </if>
+      <if test="rkrq != null" >
+        rkrq = #{rkrq,jdbcType=DATE},
+      </if>
+      <if test="status != null" >
+        status = #{status,jdbcType=INTEGER},
+      </if>
+      <if test="cs != null" >
+        cs = #{cs,jdbcType=INTEGER},
+      </if>
+      <if test="kc != null" >
+        kc = #{kc,jdbcType=INTEGER},
+      </if>
+      <if test="userId != null" >
+        user_id = #{userId,jdbcType=INTEGER},
+      </if>
+      <if test="sh != null" >
+        sh = #{sh,jdbcType=INTEGER},
+      </if>
+      <if test="tszl != null" >
+        TSZL = #{tszl,jdbcType=VARCHAR},
+      </if>
+      <if test="wz != null" >
+        wz = #{wz,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where book_id = #{bookId,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.dragon.book.model.TBook" >
+    update t_book
+    set sm = #{sm,jdbcType=VARCHAR},
+      cbsmc = #{cbsmc,jdbcType=VARCHAR},
+      cbrq = #{cbrq,jdbcType=DATE},
+      zz = #{zz,jdbcType=VARCHAR},
+      rkrq = #{rkrq,jdbcType=DATE},
+      status = #{status,jdbcType=INTEGER},
+      cs = #{cs,jdbcType=INTEGER},
+      kc = #{kc,jdbcType=INTEGER},
+      user_id = #{userId,jdbcType=INTEGER},
+      sh = #{sh,jdbcType=INTEGER},
+      TSZL = #{tszl,jdbcType=VARCHAR},
+      wz = #{wz,jdbcType=VARCHAR}
+    where book_id = #{bookId,jdbcType=VARCHAR}
+  </update>
+</mapper>

@@ -27,4 +27,11 @@ public class BookController {
 	public String adminbookIndex() throws Exception{
 		return "adminIndex";
 	}
+	
+	
+	
+	@GetMapping("/user")
+	public String user() throws Exception{
+		return "user";
+	}
 }
