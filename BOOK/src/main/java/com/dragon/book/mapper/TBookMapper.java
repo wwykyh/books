@@ -10,7 +10,7 @@ public interface TBookMapper {
 
     int deleteByExample(TBookExample example);
 
-    int deleteByPrimaryKey(String bookId);
+    int deleteByPrimaryKey(String isbn);
 
     int insert(TBook record);
 
@@ -18,7 +18,7 @@ public interface TBookMapper {
 
     List<TBook> selectByExample(TBookExample example);
 
-    TBook selectByPrimaryKey(String bookId);
+    TBook selectByPrimaryKey(String isbn);
 
     int updateByExampleSelective(@Param("record") TBook record, @Param("example") TBookExample example);
 
