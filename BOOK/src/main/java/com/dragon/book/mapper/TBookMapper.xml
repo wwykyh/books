@@ -86,7 +86,7 @@
     </if>
   </select>
   <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
-    select 
+    select
     <include refid="Base_Column_List" />
     from t_book
     where isbn = #{isbn,jdbcType=VARCHAR}
@@ -102,10 +102,10 @@
     </if>
   </delete>
   <insert id="insert" parameterType="com.dragon.book.model.TBook" >
-    insert into t_book (isbn, sm, cbsmc, 
+    insert into t_book (isbn, sm, cbsmc,
       cbrq, zz, type_id, tsdl
       )
-    values (#{isbn,jdbcType=VARCHAR}, #{sm,jdbcType=VARCHAR}, #{cbsmc,jdbcType=VARCHAR}, 
+    values (#{isbn,jdbcType=VARCHAR}, #{sm,jdbcType=VARCHAR}, #{cbsmc,jdbcType=VARCHAR},
       #{cbrq,jdbcType=DATE}, #{zz,jdbcType=VARCHAR}, #{typeId,jdbcType=INTEGER}, #{tsdl,jdbcType=VARCHAR}
       )
   </insert>
@@ -196,12 +196,12 @@
   <update id="updateByExample" parameterType="map" >
     update t_book
     set isbn = #{record.isbn,jdbcType=VARCHAR},
-      sm = #{record.sm,jdbcType=VARCHAR},
-      cbsmc = #{record.cbsmc,jdbcType=VARCHAR},
-      cbrq = #{record.cbrq,jdbcType=DATE},
-      zz = #{record.zz,jdbcType=VARCHAR},
-      type_id = #{record.typeId,jdbcType=INTEGER},
-      tsdl = #{record.tsdl,jdbcType=VARCHAR}
+    sm = #{record.sm,jdbcType=VARCHAR},
+    cbsmc = #{record.cbsmc,jdbcType=VARCHAR},
+    cbrq = #{record.cbrq,jdbcType=DATE},
+    zz = #{record.zz,jdbcType=VARCHAR},
+    type_id = #{record.typeId,jdbcType=INTEGER},
+    tsdl = #{record.tsdl,jdbcType=VARCHAR}
     <if test="_parameter != null" >
       <include refid="Update_By_Example_Where_Clause" />
     </if>
