@@ -22,7 +22,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 @Controller
 public class BookController {
-	@GetMapping("/index")
+	@GetMapping("index")
 	public String bookIndex() throws Exception{
 		return "index";
 	}
@@ -31,9 +31,17 @@ public class BookController {
 	public String adminBookIndex() throws Exception{
 		return "adminIndex";
 	}
-	@GetMapping("/login")
+	@GetMapping("login")
 	public String login() throws Exception{
 		return "login";
 	}
+	@GetMapping("Home")
+	public String home() throws Exception{
+		return "home";
+	}
 	
+	@GetMapping("search")
+	public String search() throws Exception{
+		return "search";
+	}
 }

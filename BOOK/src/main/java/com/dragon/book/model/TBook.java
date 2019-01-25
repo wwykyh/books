@@ -3,7 +3,7 @@ package com.dragon.book.model;
 import java.util.Date;
 
 public class TBook {
-    private String bookId;
+    private String isbn;
 
     private String sm;
 
@@ -13,28 +13,16 @@ public class TBook {
 
     private String zz;
 
-    private Date rkrq;
+    private Integer typeId;
 
-    private Integer status;
+    private String tsdl;
 
-    private Integer cs;
-
-    private Integer kc;
-
-    private Integer userId;
-
-    private Integer sh;
-
-    private String tszl;
-
-    private String wz;
-
-    public String getBookId() {
-        return bookId;
+    public String getIsbn() {
+        return isbn;
     }
 
-    public void setBookId(String bookId) {
-        this.bookId = bookId == null ? null : bookId.trim();
+    public void setIsbn(String isbn) {
+        this.isbn = isbn == null ? null : isbn.trim();
     }
 
     public String getSm() {
@@ -69,67 +57,19 @@ public class TBook {
         this.zz = zz == null ? null : zz.trim();
     }
 
-    public Date getRkrq() {
-        return rkrq;
+    public Integer getTypeId() {
+        return typeId;
     }
 
-    public void setRkrq(Date rkrq) {
-        this.rkrq = rkrq;
+    public void setTypeId(Integer typeId) {
+        this.typeId = typeId;
     }
 
-    public Integer getStatus() {
-        return status;
+    public String getTsdl() {
+        return tsdl;
     }
 
-    public void setStatus(Integer status) {
-        this.status = status;
-    }
-
-    public Integer getCs() {
-        return cs;
-    }
-
-    public void setCs(Integer cs) {
-        this.cs = cs;
-    }
-
-    public Integer getKc() {
-        return kc;
-    }
-
-    public void setKc(Integer kc) {
-        this.kc = kc;
-    }
-
-    public Integer getUserId() {
-        return userId;
-    }
-
-    public void setUserId(Integer userId) {
-        this.userId = userId;
-    }
-
-    public Integer getSh() {
-        return sh;
-    }
-
-    public void setSh(Integer sh) {
-        this.sh = sh;
-    }
-
-    public String getTszl() {
-        return tszl;
-    }
-
-    public void setTszl(String tszl) {
-        this.tszl = tszl == null ? null : tszl.trim();
-    }
-
-    public String getWz() {
-        return wz;
-    }
-
-    public void setWz(String wz) {
-        this.wz = wz == null ? null : wz.trim();
+    public void setTsdl(String tsdl) {
+        this.tsdl = tsdl == null ? null : tsdl.trim();
     }
 }

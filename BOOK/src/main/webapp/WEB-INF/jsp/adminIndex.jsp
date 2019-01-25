@@ -55,7 +55,7 @@
 		  <label class="week"></label>
 		  <label class="time"></label>
 		  </span> </li>
-						<li><i class="header-icon i-user"></i>欢迎您！admin(系统用户)</a>
+						<li><i class="header-icon i-user"></i>欢迎您！${sessionScope.userName}</a>
 						</li>
 						<li class="skin-change"><a href="javascript:;" title="皮肤" class="skin-change-acitve"><span><i class="header-icon i-skin"></i>换肤<i class="arrow"></i></span></a>
 							<div class="skin-changelist hide">
@@ -66,7 +66,7 @@
 								<a href="javascript:;" class="skin-red" title="red"><i></i></a>
 							</div>
 						</li>
-						<li><span><a href="javascript:;" title="退出"><i class="header-icon i-logout"></i>退出</a></span> </li>
+						<li><span><a href="logout" title="退出"><i class="header-icon i-logout"></i>退出</a></span> </li>
 					</ul>
 				</div>
 			</div>
@@ -135,7 +135,7 @@
 				<div id="main-tab">
 					<div class="main-tab">
 						<ul>
-							<li class="active"><a _href="home.html" href="javascript:;">主页</a></li>
+							<li class="active"><a _href="Home">主页</a></li>
 						</ul>
 					</div>
 				</div>

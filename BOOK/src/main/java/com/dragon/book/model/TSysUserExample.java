@@ -164,73 +164,73 @@ public class TSysUserExample {
             return (Criteria) this;
         }
 
-        public Criteria andSmIsNull() {
-            addCriterion("sm is null");
+        public Criteria andXmIsNull() {
+            addCriterion("xm is null");
             return (Criteria) this;
         }
 
-        public Criteria andSmIsNotNull() {
-            addCriterion("sm is not null");
+        public Criteria andXmIsNotNull() {
+            addCriterion("xm is not null");
             return (Criteria) this;
         }
 
-        public Criteria andSmEqualTo(String value) {
-            addCriterion("sm =", value, "sm");
+        public Criteria andXmEqualTo(String value) {
+            addCriterion("xm =", value, "xm");
             return (Criteria) this;
         }
 
-        public Criteria andSmNotEqualTo(String value) {
-            addCriterion("sm <>", value, "sm");
+        public Criteria andXmNotEqualTo(String value) {
+            addCriterion("xm <>", value, "xm");
             return (Criteria) this;
         }
 
-        public Criteria andSmGreaterThan(String value) {
-            addCriterion("sm >", value, "sm");
+        public Criteria andXmGreaterThan(String value) {
+            addCriterion("xm >", value, "xm");
             return (Criteria) this;
         }
 
-        public Criteria andSmGreaterThanOrEqualTo(String value) {
-            addCriterion("sm >=", value, "sm");
+        public Criteria andXmGreaterThanOrEqualTo(String value) {
+            addCriterion("xm >=", value, "xm");
             return (Criteria) this;
         }
 
-        public Criteria andSmLessThan(String value) {
-            addCriterion("sm <", value, "sm");
+        public Criteria andXmLessThan(String value) {
+            addCriterion("xm <", value, "xm");
             return (Criteria) this;
         }
 
-        public Criteria andSmLessThanOrEqualTo(String value) {
-            addCriterion("sm <=", value, "sm");
+        public Criteria andXmLessThanOrEqualTo(String value) {
+            addCriterion("xm <=", value, "xm");
             return (Criteria) this;
         }
 
-        public Criteria andSmLike(String value) {
-            addCriterion("sm like", value, "sm");
+        public Criteria andXmLike(String value) {
+            addCriterion("xm like", value, "xm");
             return (Criteria) this;
         }
 
-        public Criteria andSmNotLike(String value) {
-            addCriterion("sm not like", value, "sm");
+        public Criteria andXmNotLike(String value) {
+            addCriterion("xm not like", value, "xm");
             return (Criteria) this;
         }
 
-        public Criteria andSmIn(List<String> values) {
-            addCriterion("sm in", values, "sm");
+        public Criteria andXmIn(List<String> values) {
+            addCriterion("xm in", values, "xm");
             return (Criteria) this;
         }
 
-        public Criteria andSmNotIn(List<String> values) {
-            addCriterion("sm not in", values, "sm");
+        public Criteria andXmNotIn(List<String> values) {
+            addCriterion("xm not in", values, "xm");
             return (Criteria) this;
         }
 
-        public Criteria andSmBetween(String value1, String value2) {
-            addCriterion("sm between", value1, value2, "sm");
+        public Criteria andXmBetween(String value1, String value2) {
+            addCriterion("xm between", value1, value2, "xm");
             return (Criteria) this;
         }
 
-        public Criteria andSmNotBetween(String value1, String value2) {
-            addCriterion("sm not between", value1, value2, "sm");
+        public Criteria andXmNotBetween(String value1, String value2) {
+            addCriterion("xm not between", value1, value2, "xm");
             return (Criteria) this;
         }
 

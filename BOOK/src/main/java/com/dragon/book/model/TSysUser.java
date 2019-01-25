@@ -3,7 +3,7 @@ package com.dragon.book.model;
 public class TSysUser {
     private Integer userId;
 
-    private String sm;
+    private String xm;
 
     private String bm;
 
@@ -33,12 +33,12 @@ public class TSysUser {
         this.userId = userId;
     }
 
-    public String getSm() {
-        return sm;
+    public String getXm() {
+        return xm;
     }
 
-    public void setSm(String sm) {
-        this.sm = sm == null ? null : sm.trim();
+    public void setXm(String xm) {
+        this.xm = xm == null ? null : xm.trim();
     }
 
     public String getBm() {

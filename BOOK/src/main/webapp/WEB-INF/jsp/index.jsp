@@ -55,7 +55,7 @@
 		  <label class="week"></label>
 		  <label class="time"></label>
 		  </span> </li>
-						<li><i class="header-icon i-user"></i>admin(系统用户)</a>
+						<li><i class="header-icon i-user"></i>欢迎您！${sessionScope.userName}</a>
 						</li>
 						<li class="skin-change"><a href="javascript:;" title="皮肤" class="skin-change-acitve"><span><i class="header-icon i-skin"></i>换肤<i class="arrow"></i></span></a>
 							<div class="skin-changelist hide">
@@ -66,7 +66,7 @@
 								<a href="javascript:;" class="skin-red" title="red"><i></i></a>
 							</div>
 						</li>
-						<li><span><a href="javascript:;" title="退出"><i class="header-icon i-logout"></i>退出</a></span> </li>
+						<li><span><a href="logout" title="退出"><i class="header-icon i-logout"></i>退出</a></span> </li>
 					</ul>
 				</div>
 			</div>
@@ -85,7 +85,7 @@
 						</dt>
 						<dd>
 							<ul>
-								<li><a _href="图书检索.html" data-name="图书检索" href="javascript:;">图书检索</a></li>
+								<li><a _href="search" data-name="图书检索" href="javascript:;">图书检索</a></li>
 								</li>
 							</ul>
 						</dd>
@@ -100,7 +100,7 @@
 						</dt>
 						<dd>
 							<ul>
-							<li><a _href="我的个人.html" data-name="我的个人" data-js="prettify" href="javascript:;">我的个人</a></li>
+							<li><a _href="" data-name="我的个人" data-js="prettify" >我的个人</a></li>
 								<li><a _href="修改资料.html" data-name="修改资料" data-js="prettify" href="javascript:;">修改资料</a></li>
 								<li><a _href="修改密码.html" data-name="修改密码" data-js="prettify" href="javascript:;">修改密码</a></li>
 								<li><a _href="借阅历史.html" data-name="借阅历史" data-js="prettify" href="javascript:;">借阅历史</a></li>
@@ -131,7 +131,7 @@
 				<div id="main-tab">
 					<div class="main-tab">
 						<ul>
-							<li class="active"><a _href="home.html" href="javascript:;">主页</a></li>
+							<li class="active"><a _href="Home" href="javascript:;">主页</a></li>
 						</ul>
 					</div>
 				</div>
