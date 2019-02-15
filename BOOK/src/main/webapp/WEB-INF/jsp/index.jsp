@@ -10,7 +10,7 @@
 	<link rel="stylesheet" type="text/css" href="dvpt/css/libs.css" />
 	<link rel="stylesheet" type="text/css" href="css/demo/style.css" />
 	<link rel="stylesheet" type="text/css" href="css/theme/blue.css" id="style" />
-		<script type="text/javascript" src="dvpt/config.js"></script>
+	<script type="text/javascript" src="dvpt/config.js"></script>
 	<!-- 改造的脚本 -->
 	<script type="text/javascript" src="js/extend.js"></script>
 	<!-- 共有的控件 -->
@@ -121,7 +121,7 @@
 						<dd>
 							<ul>
 								<li><a _href="${pageContext.request.contextPath}/eBookFile/toUpload" data-name="电子书入库" data-js="prettify" href="javascript:;">图书入库</a></li>
-								<li><a _href="${pageContext.request.contextPath}/eBookFile/ebookManger" data-name="电子书下载" data-js="prettify" href="javascript:;">图书下载</a></li>
+								<li><a _href="${pageContext.request.contextPath}/eBookFile/ebookManger" data-name="电子书下载" data-js="prettify" href="javascript:;">图书浏览和下载</a></li>
 							</ul>
 						</dd>
 					</dl>
@@ -137,7 +137,14 @@
 						</dt>
 						<dd>
 							<ul>
-								<li><a _href="user" data-name="图书入库" data-js="prettify" href="javascript:;">图书入库</a></li>
+								<li><a _href="${pageContext.request.contextPath}/book_manager" data-name="图书管理" data-js="prettify" href="javascript:;">图书管理</a></li>
+								<li><a _href="${pageContext.request.contextPath}/book_add" data-name="图书入库" data-js="prettify" href="javascript:;">图书入库</a></li>
+								<li><a _href="${pageContext.request.contextPath}/asset_analyze" data-name="资产分析" data-js="prettify" href="javascript:;">资产分析</a></li>
+								<li><a _href="${pageContext.request.contextPath}/borrow_history" data-name="借阅历史" data-js="prettify" href="javascript:;">借阅历史</a></li>
+								<li><a _href="${pageContext.request.contextPath}/book_analyze" data-name="图书分析" data-js="prettify" href="javascript:;">图书分析</a></li>
+								<li><a _href="${pageContext.request.contextPath}/type_manager" data-name="种类管理" data-js="prettify" href="javascript:;">种类管理</a></li>
+								<li><a _href="${pageContext.request.contextPath}/publish_house_manager" data-name="出版社管理" data-js="prettify" href="javascript:;">出版社管理</a></li>
+
 							</ul>
 						</dd>
 					</dl>
@@ -152,9 +159,7 @@
 						</ul>
 					</div>
 				</div>
-				<div id="main-content">
-				
-				</div>
+				<div id="main-content"></div>
 			</div>
 		</div>
 	</div>

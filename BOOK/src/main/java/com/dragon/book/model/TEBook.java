@@ -1,11 +1,9 @@
 package com.dragon.book.model;
 
-import java.util.Date;
-
 public class TEBook {
     private String eBookId;
 
-    private String eBookSm;
+    private String eBookXm;
 
     private Integer typeId;
 
@@ -13,11 +11,12 @@ public class TEBook {
 
     private String ms;
 
-    private Date scsj;
+    private String scsj;
 
     private String xzsj;
 
     private String tszl;
+
 
     public String geteBookId() {
         return eBookId;
@@ -27,12 +26,12 @@ public class TEBook {
         this.eBookId = eBookId == null ? null : eBookId.trim();
     }
 
-    public String geteBookSm() {
-        return eBookSm;
+    public String geteBookXm() {
+        return eBookXm;
     }
 
-    public void seteBookSm(String eBookXm) {
-        this.eBookSm = eBookXm == null ? null : eBookXm.trim();
+    public void seteBookXm(String eBookXm) {
+        this.eBookXm = eBookXm == null ? null : eBookXm.trim();
     }
 
     public Integer getTypeId() {
@@ -59,12 +58,12 @@ public class TEBook {
         this.ms = ms == null ? null : ms.trim();
     }
 
-    public Date getScsj() {
+    public String getScsj() {
         return scsj;
     }
 
-    public void setScsj(Date scsj) {
-        this.scsj = scsj;
+    public void setScsj(String scsj) {
+        this.scsj = scsj == null ? null : scsj.trim();
     }
 
     public String getXzsj() {
