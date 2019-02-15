@@ -113,7 +113,24 @@
 					<dl>
 						<dt>
 							<a href="javascript:;">
-								<i class="icon">&#xe657;</i><span>电子图书入库</span>
+								<i class="icon">&#xe657;</i><span>电子图书库</span>
+								<i class="icon arrow">&#xe658;</i>
+								<i class="icon arrow hide">&#xe659;</i>
+							</a>
+						</dt>
+						<dd>
+							<ul>
+								<li><a _href="${pageContext.request.contextPath}/eBookFile/toUpload" data-name="电子书入库" data-js="prettify" href="javascript:;">图书入库</a></li>
+								<li><a _href="${pageContext.request.contextPath}/eBookFile/ebookManger" data-name="电子书下载" data-js="prettify" href="javascript:;">图书下载</a></li>
+							</ul>
+						</dd>
+					</dl>
+
+					<!--图书管理-->
+					<dl>
+						<dt>
+							<a href="javascript:;">
+								<i class="icon">&#xe657;</i><span>图书管理</span>
 								<i class="icon arrow">&#xe658;</i>
 								<i class="icon arrow hide">&#xe659;</i>
 							</a>

@@ -5,7 +5,7 @@ import java.util.Date;
 public class TEBook {
     private String eBookId;
 
-    private String eBookXm;
+    private String eBookSm;
 
     private Integer typeId;
 
@@ -27,12 +27,12 @@ public class TEBook {
         this.eBookId = eBookId == null ? null : eBookId.trim();
     }
 
-    public String geteBookXm() {
-        return eBookXm;
+    public String geteBookSm() {
+        return eBookSm;
     }
 
-    public void seteBookXm(String eBookXm) {
-        this.eBookXm = eBookXm == null ? null : eBookXm.trim();
+    public void seteBookSm(String eBookXm) {
+        this.eBookSm = eBookXm == null ? null : eBookXm.trim();
     }
 
     public Integer getTypeId() {
