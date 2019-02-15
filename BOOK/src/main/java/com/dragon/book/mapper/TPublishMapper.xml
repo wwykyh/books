@@ -1,10 +1,12 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="com.dragon.book.mapper.TUserBookMapper" >
-  <resultMap id="BaseResultMap" type="com.dragon.book.model.TUserBook" >
-    <id column="id" property="id" jdbcType="INTEGER" />
-    <result column="user_id" property="userId" jdbcType="INTEGER" />
-    <result column="isbn" property="isbn" jdbcType="VARCHAR" />
+<mapper namespace="com.dragon.book.mapper.TPublishMapper" >
+  <resultMap id="BaseResultMap" type="com.dragon.book.model.TPublish" >
+    <id column="pub_id" property="pubId" jdbcType="INTEGER" />
+    <result column="pub_name" property="pubName" jdbcType="VARCHAR" />
+    <result column="pub_number" property="pubNumber" jdbcType="VARCHAR" />
+    <result column="pub_email" property="pubEmail" jdbcType="VARCHAR" />
+    <result column="pub_phone" property="pubPhone" jdbcType="VARCHAR" />
   </resultMap>
   <sql id="Example_Where_Clause" >
     <where >
@@ -65,15 +67,15 @@
     </where>
   </sql>
   <sql id="Base_Column_List" >
-    id, user_id, isbn
+    pub_id, pub_name, pub_number, pub_email, pub_phone
   </sql>
-  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.dragon.book.model.TUserBookExample" >
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.dragon.book.model.TPublishExample" >
     select
     <if test="distinct" >
       distinct
     </if>
     <include refid="Base_Column_List" />
-    from t_user_book
+    from t_publish
     <if test="_parameter != null" >
       <include refid="Example_Where_Clause" />
     </if>
@@ -84,67 +86,85 @@
   <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
     select 
     <include refid="Base_Column_List" />
-    from t_user_book
-    where id = #{id,jdbcType=INTEGER}
+    from t_publish
+    where pub_id = #{pubId,jdbcType=INTEGER}
   </select>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
-    delete from t_user_book
-    where id = #{id,jdbcType=INTEGER}
+    delete from t_publish
+    where pub_id = #{pubId,jdbcType=INTEGER}
   </delete>
-  <delete id="deleteByExample" parameterType="com.dragon.book.model.TUserBookExample" >
-    delete from t_user_book
+  <delete id="deleteByExample" parameterType="com.dragon.book.model.TPublishExample" >
+    delete from t_publish
     <if test="_parameter != null" >
       <include refid="Example_Where_Clause" />
     </if>
   </delete>
-  <insert id="insert" parameterType="com.dragon.book.model.TUserBook" >
-    insert into t_user_book (id, user_id, isbn
-      )
-    values (#{id,jdbcType=INTEGER}, #{userId,jdbcType=INTEGER}, #{isbn,jdbcType=VARCHAR}
-      )
+  <insert id="insert" parameterType="com.dragon.book.model.TPublish" >
+    insert into t_publish (pub_id, pub_name, pub_number, 
+      pub_email, pub_phone)
+    values (#{pubId,jdbcType=INTEGER}, #{pubName,jdbcType=VARCHAR}, #{pubNumber,jdbcType=VARCHAR}, 
+      #{pubEmail,jdbcType=VARCHAR}, #{pubPhone,jdbcType=VARCHAR})
   </insert>
-  <insert id="insertSelective" parameterType="com.dragon.book.model.TUserBook" >
-    insert into t_user_book
+  <insert id="insertSelective" parameterType="com.dragon.book.model.TPublish" >
+    insert into t_publish
     <trim prefix="(" suffix=")" suffixOverrides="," >
-      <if test="id != null" >
-        id,
+      <if test="pubId != null" >
+        pub_id,
       </if>
-      <if test="userId != null" >
-        user_id,
+      <if test="pubName != null" >
+        pub_name,
       </if>
-      <if test="isbn != null" >
-        isbn,
+      <if test="pubNumber != null" >
+        pub_number,
+      </if>
+      <if test="pubEmail != null" >
+        pub_email,
+      </if>
+      <if test="pubPhone != null" >
+        pub_phone,
       </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides="," >
-      <if test="id != null" >
-        #{id,jdbcType=INTEGER},
+      <if test="pubId != null" >
+        #{pubId,jdbcType=INTEGER},
       </if>
-      <if test="userId != null" >
-        #{userId,jdbcType=INTEGER},
+      <if test="pubName != null" >
+        #{pubName,jdbcType=VARCHAR},
       </if>
-      <if test="isbn != null" >
-        #{isbn,jdbcType=VARCHAR},
+      <if test="pubNumber != null" >
+        #{pubNumber,jdbcType=VARCHAR},
+      </if>
+      <if test="pubEmail != null" >
+        #{pubEmail,jdbcType=VARCHAR},
+      </if>
+      <if test="pubPhone != null" >
+        #{pubPhone,jdbcType=VARCHAR},
       </if>
     </trim>
   </insert>
-  <select id="countByExample" parameterType="com.dragon.book.model.TUserBookExample" resultType="java.lang.Integer" >
-    select count(*) from t_user_book
+  <select id="countByExample" parameterType="com.dragon.book.model.TPublishExample" resultType="java.lang.Integer" >
+    select count(*) from t_publish
     <if test="_parameter != null" >
       <include refid="Example_Where_Clause" />
     </if>
   </select>
   <update id="updateByExampleSelective" parameterType="map" >
-    update t_user_book
+    update t_publish
     <set >
-      <if test="record.id != null" >
-        id = #{record.id,jdbcType=INTEGER},
+      <if test="record.pubId != null" >
+        pub_id = #{record.pubId,jdbcType=INTEGER},
       </if>
-      <if test="record.userId != null" >
-        user_id = #{record.userId,jdbcType=INTEGER},
+      <if test="record.pubName != null" >
+        pub_name = #{record.pubName,jdbcType=VARCHAR},
       </if>
-      <if test="record.isbn != null" >
-        isbn = #{record.isbn,jdbcType=VARCHAR},
+      <if test="record.pubNumber != null" >
+        pub_number = #{record.pubNumber,jdbcType=VARCHAR},
+      </if>
+      <if test="record.pubEmail != null" >
+        pub_email = #{record.pubEmail,jdbcType=VARCHAR},
+      </if>
+      <if test="record.pubPhone != null" >
+        pub_phone = #{record.pubPhone,jdbcType=VARCHAR},
       </if>
     </set>
     <if test="_parameter != null" >
@@ -152,30 +172,40 @@
     </if>
   </update>
   <update id="updateByExample" parameterType="map" >
-    update t_user_book
-    set id = #{record.id,jdbcType=INTEGER},
-      user_id = #{record.userId,jdbcType=INTEGER},
-      isbn = #{record.isbn,jdbcType=VARCHAR}
+    update t_publish
+    set pub_id = #{record.pubId,jdbcType=INTEGER},
+      pub_name = #{record.pubName,jdbcType=VARCHAR},
+      pub_number = #{record.pubNumber,jdbcType=VARCHAR},
+      pub_email = #{record.pubEmail,jdbcType=VARCHAR},
+      pub_phone = #{record.pubPhone,jdbcType=VARCHAR}
     <if test="_parameter != null" >
       <include refid="Update_By_Example_Where_Clause" />
     </if>
   </update>
-  <update id="updateByPrimaryKeySelective" parameterType="com.dragon.book.model.TUserBook" >
-    update t_user_book
+  <update id="updateByPrimaryKeySelective" parameterType="com.dragon.book.model.TPublish" >
+    update t_publish
     <set >
-      <if test="userId != null" >
-        user_id = #{userId,jdbcType=INTEGER},
+      <if test="pubName != null" >
+        pub_name = #{pubName,jdbcType=VARCHAR},
       </if>
-      <if test="isbn != null" >
-        isbn = #{isbn,jdbcType=VARCHAR},
+      <if test="pubNumber != null" >
+        pub_number = #{pubNumber,jdbcType=VARCHAR},
+      </if>
+      <if test="pubEmail != null" >
+        pub_email = #{pubEmail,jdbcType=VARCHAR},
+      </if>
+      <if test="pubPhone != null" >
+        pub_phone = #{pubPhone,jdbcType=VARCHAR},
       </if>
     </set>
-    where id = #{id,jdbcType=INTEGER}
+    where pub_id = #{pubId,jdbcType=INTEGER}
   </update>
-  <update id="updateByPrimaryKey" parameterType="com.dragon.book.model.TUserBook" >
-    update t_user_book
-    set user_id = #{userId,jdbcType=INTEGER},
-      isbn = #{isbn,jdbcType=VARCHAR}
-    where id = #{id,jdbcType=INTEGER}
+  <update id="updateByPrimaryKey" parameterType="com.dragon.book.model.TPublish" >
+    update t_publish
+    set pub_name = #{pubName,jdbcType=VARCHAR},
+      pub_number = #{pubNumber,jdbcType=VARCHAR},
+      pub_email = #{pubEmail,jdbcType=VARCHAR},
+      pub_phone = #{pubPhone,jdbcType=VARCHAR}
+    where pub_id = #{pubId,jdbcType=INTEGER}
   </update>
 </mapper>

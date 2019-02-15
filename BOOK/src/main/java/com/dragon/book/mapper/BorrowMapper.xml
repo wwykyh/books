@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.dragon.book.mapper.BorrowMapper">
+
+	<resultMap id="BorrowResultMap" type="com.dragon.book.model.TBorrow">
+		<id column="id" property="id" />
+		<result column="isbn" property="isbn" />
+		<result column="sm" property="sm" />
+		<result column="cs" property="cs" />
+		<association property="user" javaType="com.dragon.book.model.TSysUser"
+			column="userId" foreignColumn="userId">
+			<id column="user_id" property="userId" />
+			<result column="xm" property="xm" />
+		</association>
+</resultMap>
+
+	<select id="selectByUserTop" resultMap="BorrowResultMap">
+		select
+		b.id,b.isbn,b.sm,u.xm,count(u.user_id)
+		as cs
+		from t_borrow b 
+		left outer join t_sys_user u on b.user_id = u.user_id 
+		GROUP BY u.user_id ORDER BY cs DESC LIMIT 10
+
+	</select>
+
+	<select id="selectByBookTop" resultMap="BorrowResultMap">
+		select
+		id,isbn,sm
+		,
+		COUNT(user_id) as cs
+		from t_borrow
+		GROUP BY user_id ORDER BY cs  LIMIT 10
+
+	</select>
+
+</mapper>

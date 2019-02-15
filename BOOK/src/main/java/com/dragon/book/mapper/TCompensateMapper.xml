@@ -3,7 +3,7 @@
 <mapper namespace="com.dragon.book.mapper.TCompensateMapper" >
   <resultMap id="BaseResultMap" type="com.dragon.book.model.TCompensate" >
     <id column="id" property="id" jdbcType="INTEGER" />
-    <result column="book_id" property="bookId" jdbcType="VARCHAR" />
+    <result column="isbn" property="isbn" jdbcType="VARCHAR" />
     <result column="user_id" property="userId" jdbcType="INTEGER" />
     <result column="sh" property="sh" jdbcType="INTEGER" />
   </resultMap>
@@ -69,7 +69,7 @@
     </where>
   </sql>
   <sql id="Base_Column_List" >
-    id, book_id, user_id, sh
+    id, isbn, user_id, sh
   </sql>
   <sql id="Blob_Column_List" >
     pc
@@ -123,9 +123,9 @@
     </if>
   </delete>
   <insert id="insert" parameterType="com.dragon.book.model.TCompensate" >
-    insert into t_compensate (id, book_id, user_id, 
+    insert into t_compensate (id, isbn, user_id, 
       sh, pc)
-    values (#{id,jdbcType=INTEGER}, #{bookId,jdbcType=VARCHAR}, #{userId,jdbcType=INTEGER}, 
+    values (#{id,jdbcType=INTEGER}, #{isbn,jdbcType=VARCHAR}, #{userId,jdbcType=INTEGER}, 
       #{sh,jdbcType=INTEGER}, #{pc,jdbcType=LONGVARCHAR})
   </insert>
   <insert id="insertSelective" parameterType="com.dragon.book.model.TCompensate" >
@@ -134,8 +134,8 @@
       <if test="id != null" >
         id,
       </if>
-      <if test="bookId != null" >
-        book_id,
+      <if test="isbn != null" >
+        isbn,
       </if>
       <if test="userId != null" >
         user_id,
@@ -151,8 +151,8 @@
       <if test="id != null" >
         #{id,jdbcType=INTEGER},
       </if>
-      <if test="bookId != null" >
-        #{bookId,jdbcType=VARCHAR},
+      <if test="isbn != null" >
+        #{isbn,jdbcType=VARCHAR},
       </if>
       <if test="userId != null" >
         #{userId,jdbcType=INTEGER},
@@ -177,8 +177,8 @@
       <if test="record.id != null" >
         id = #{record.id,jdbcType=INTEGER},
       </if>
-      <if test="record.bookId != null" >
-        book_id = #{record.bookId,jdbcType=VARCHAR},
+      <if test="record.isbn != null" >
+        isbn = #{record.isbn,jdbcType=VARCHAR},
       </if>
       <if test="record.userId != null" >
         user_id = #{record.userId,jdbcType=INTEGER},
@@ -197,7 +197,7 @@
   <update id="updateByExampleWithBLOBs" parameterType="map" >
     update t_compensate
     set id = #{record.id,jdbcType=INTEGER},
-      book_id = #{record.bookId,jdbcType=VARCHAR},
+      isbn = #{record.isbn,jdbcType=VARCHAR},
       user_id = #{record.userId,jdbcType=INTEGER},
       sh = #{record.sh,jdbcType=INTEGER},
       pc = #{record.pc,jdbcType=LONGVARCHAR}
@@ -208,7 +208,7 @@
   <update id="updateByExample" parameterType="map" >
     update t_compensate
     set id = #{record.id,jdbcType=INTEGER},
-      book_id = #{record.bookId,jdbcType=VARCHAR},
+      isbn = #{record.isbn,jdbcType=VARCHAR},
       user_id = #{record.userId,jdbcType=INTEGER},
       sh = #{record.sh,jdbcType=INTEGER}
     <if test="_parameter != null" >
@@ -218,8 +218,8 @@
   <update id="updateByPrimaryKeySelective" parameterType="com.dragon.book.model.TCompensate" >
     update t_compensate
     <set >
-      <if test="bookId != null" >
-        book_id = #{bookId,jdbcType=VARCHAR},
+      <if test="isbn != null" >
+        isbn = #{isbn,jdbcType=VARCHAR},
       </if>
       <if test="userId != null" >
         user_id = #{userId,jdbcType=INTEGER},
@@ -235,7 +235,7 @@
   </update>
   <update id="updateByPrimaryKeyWithBLOBs" parameterType="com.dragon.book.model.TCompensate" >
     update t_compensate
-    set book_id = #{bookId,jdbcType=VARCHAR},
+    set isbn = #{isbn,jdbcType=VARCHAR},
       user_id = #{userId,jdbcType=INTEGER},
       sh = #{sh,jdbcType=INTEGER},
       pc = #{pc,jdbcType=LONGVARCHAR}
@@ -243,7 +243,7 @@
   </update>
   <update id="updateByPrimaryKey" parameterType="com.dragon.book.model.TCompensate" >
     update t_compensate
-    set book_id = #{bookId,jdbcType=VARCHAR},
+    set isbn = #{isbn,jdbcType=VARCHAR},
       user_id = #{userId,jdbcType=INTEGER},
       sh = #{sh,jdbcType=INTEGER}
     where id = #{id,jdbcType=INTEGER}

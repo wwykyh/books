@@ -17,7 +17,7 @@ requirejs(['jquery', 'jquery.extend', 'basic-global'], function(jquery, extend, 
 
 	$(function() {
 		// 默认加载页面
-		$.openWindow({ url: 'home.html' });
+		$.openWindow({ url: 'Home' });
 
 		// 换肤操作
 		$.switchSkin('css');

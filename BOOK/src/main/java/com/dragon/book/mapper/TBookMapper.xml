@@ -2,9 +2,10 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="com.dragon.book.mapper.TBookMapper" >
   <resultMap id="BaseResultMap" type="com.dragon.book.model.TBook" >
-    <id column="isbn" property="isbn" jdbcType="VARCHAR" />
+    <id column="id" property="id" jdbcType="VARCHAR" />
+    <result column="isbn" property="isbn" jdbcType="VARCHAR" />
     <result column="sm" property="sm" jdbcType="VARCHAR" />
-    <result column="cbsmc" property="cbsmc" jdbcType="VARCHAR" />
+    <result column="pub_id" property="pubId" jdbcType="VARCHAR" />
     <result column="cbrq" property="cbrq" jdbcType="DATE" />
     <result column="zz" property="zz" jdbcType="VARCHAR" />
     <result column="type_id" property="typeId" jdbcType="INTEGER" />
@@ -69,7 +70,7 @@
     </where>
   </sql>
   <sql id="Base_Column_List" >
-    isbn, sm, cbsmc, cbrq, zz, type_id, tsdl
+    id, isbn, sm, pub_id, cbrq, zz, type_id, tsdl
   </sql>
   <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.dragon.book.model.TBookExample" >
     select
@@ -89,11 +90,11 @@
     select 
     <include refid="Base_Column_List" />
     from t_book
-    where isbn = #{isbn,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=VARCHAR}
   </select>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
     delete from t_book
-    where isbn = #{isbn,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=VARCHAR}
   </delete>
   <delete id="deleteByExample" parameterType="com.dragon.book.model.TBookExample" >
     delete from t_book
@@ -102,24 +103,27 @@
     </if>
   </delete>
   <insert id="insert" parameterType="com.dragon.book.model.TBook" >
-    insert into t_book (isbn, sm, cbsmc, 
-      cbrq, zz, type_id, tsdl
-      )
-    values (#{isbn,jdbcType=VARCHAR}, #{sm,jdbcType=VARCHAR}, #{cbsmc,jdbcType=VARCHAR}, 
-      #{cbrq,jdbcType=DATE}, #{zz,jdbcType=VARCHAR}, #{typeId,jdbcType=INTEGER}, #{tsdl,jdbcType=VARCHAR}
-      )
+    insert into t_book (id, isbn, sm, 
+      pub_id, cbrq, zz, type_id, 
+      tsdl)
+    values (#{id,jdbcType=VARCHAR}, #{isbn,jdbcType=VARCHAR}, #{sm,jdbcType=VARCHAR}, 
+      #{pubId,jdbcType=VARCHAR}, #{cbrq,jdbcType=DATE}, #{zz,jdbcType=VARCHAR}, #{typeId,jdbcType=INTEGER}, 
+      #{tsdl,jdbcType=VARCHAR})
   </insert>
   <insert id="insertSelective" parameterType="com.dragon.book.model.TBook" >
     insert into t_book
     <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
       <if test="isbn != null" >
         isbn,
       </if>
       <if test="sm != null" >
         sm,
       </if>
-      <if test="cbsmc != null" >
-        cbsmc,
+      <if test="pubId != null" >
+        pub_id,
       </if>
       <if test="cbrq != null" >
         cbrq,
@@ -135,14 +139,17 @@
       </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=VARCHAR},
+      </if>
       <if test="isbn != null" >
         #{isbn,jdbcType=VARCHAR},
       </if>
       <if test="sm != null" >
         #{sm,jdbcType=VARCHAR},
       </if>
-      <if test="cbsmc != null" >
-        #{cbsmc,jdbcType=VARCHAR},
+      <if test="pubId != null" >
+        #{pubId,jdbcType=VARCHAR},
       </if>
       <if test="cbrq != null" >
         #{cbrq,jdbcType=DATE},
@@ -167,14 +174,17 @@
   <update id="updateByExampleSelective" parameterType="map" >
     update t_book
     <set >
+      <if test="record.id != null" >
+        id = #{record.id,jdbcType=VARCHAR},
+      </if>
       <if test="record.isbn != null" >
         isbn = #{record.isbn,jdbcType=VARCHAR},
       </if>
       <if test="record.sm != null" >
         sm = #{record.sm,jdbcType=VARCHAR},
       </if>
-      <if test="record.cbsmc != null" >
-        cbsmc = #{record.cbsmc,jdbcType=VARCHAR},
+      <if test="record.pubId != null" >
+        pub_id = #{record.pubId,jdbcType=VARCHAR},
       </if>
       <if test="record.cbrq != null" >
         cbrq = #{record.cbrq,jdbcType=DATE},
@@ -195,9 +205,10 @@
   </update>
   <update id="updateByExample" parameterType="map" >
     update t_book
-    set isbn = #{record.isbn,jdbcType=VARCHAR},
+    set id = #{record.id,jdbcType=VARCHAR},
+      isbn = #{record.isbn,jdbcType=VARCHAR},
       sm = #{record.sm,jdbcType=VARCHAR},
-      cbsmc = #{record.cbsmc,jdbcType=VARCHAR},
+      pub_id = #{record.pubId,jdbcType=VARCHAR},
       cbrq = #{record.cbrq,jdbcType=DATE},
       zz = #{record.zz,jdbcType=VARCHAR},
       type_id = #{record.typeId,jdbcType=INTEGER},
@@ -209,11 +220,14 @@
   <update id="updateByPrimaryKeySelective" parameterType="com.dragon.book.model.TBook" >
     update t_book
     <set >
+      <if test="isbn != null" >
+        isbn = #{isbn,jdbcType=VARCHAR},
+      </if>
       <if test="sm != null" >
         sm = #{sm,jdbcType=VARCHAR},
       </if>
-      <if test="cbsmc != null" >
-        cbsmc = #{cbsmc,jdbcType=VARCHAR},
+      <if test="pubId != null" >
+        pub_id = #{pubId,jdbcType=VARCHAR},
       </if>
       <if test="cbrq != null" >
         cbrq = #{cbrq,jdbcType=DATE},
@@ -228,16 +242,17 @@
         tsdl = #{tsdl,jdbcType=VARCHAR},
       </if>
     </set>
-    where isbn = #{isbn,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=VARCHAR}
   </update>
   <update id="updateByPrimaryKey" parameterType="com.dragon.book.model.TBook" >
     update t_book
-    set sm = #{sm,jdbcType=VARCHAR},
-      cbsmc = #{cbsmc,jdbcType=VARCHAR},
+    set isbn = #{isbn,jdbcType=VARCHAR},
+      sm = #{sm,jdbcType=VARCHAR},
+      pub_id = #{pubId,jdbcType=VARCHAR},
       cbrq = #{cbrq,jdbcType=DATE},
       zz = #{zz,jdbcType=VARCHAR},
       type_id = #{typeId,jdbcType=INTEGER},
       tsdl = #{tsdl,jdbcType=VARCHAR}
-    where isbn = #{isbn,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=VARCHAR}
   </update>
 </mapper>

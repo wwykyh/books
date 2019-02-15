@@ -7,10 +7,11 @@
     <result column="bm" property="bm" jdbcType="VARCHAR" />
     <result column="pwd" property="pwd" jdbcType="VARCHAR" />
     <result column="lxfs" property="lxfs" jdbcType="VARCHAR" />
+    <result column="email" property="email" jdbcType="VARCHAR" />
     <result column="dz" property="dz" jdbcType="VARCHAR" />
     <result column="isadmin" property="isadmin" jdbcType="INTEGER" />
-    <result column="hmd" property="hmd" jdbcType="INTEGER" />
-    <result column="book_id" property="bookId" jdbcType="VARCHAR" />
+    <result column="ishmd" property="ishmd" jdbcType="INTEGER" />
+    <result column="isbn" property="isbn" jdbcType="VARCHAR" />
     <result column="kjtscs" property="kjtscs" jdbcType="INTEGER" />
     <result column="cs" property="cs" jdbcType="INTEGER" />
   </resultMap>
@@ -76,7 +77,7 @@
     </where>
   </sql>
   <sql id="Base_Column_List" >
-    user_id, xm, bm, pwd, lxfs, dz, isadmin, hmd, book_id, kjtscs, cs
+    user_id, xm, bm, pwd, lxfs, email, dz, isadmin, ishmd, isbn, kjtscs, cs
   </sql>
   <sql id="Blob_Column_List" >
     grsm
@@ -131,13 +132,15 @@
   </delete>
   <insert id="insert" parameterType="com.dragon.book.model.TSysUser" >
     insert into t_sys_user (user_id, xm, bm, 
-      pwd, lxfs, dz, isadmin, 
-      hmd, book_id, kjtscs, 
-      cs, grsm)
+      pwd, lxfs, email, dz, 
+      isadmin, ishmd, isbn, 
+      kjtscs, cs, grsm
+      )
     values (#{userId,jdbcType=INTEGER}, #{xm,jdbcType=VARCHAR}, #{bm,jdbcType=VARCHAR}, 
-      #{pwd,jdbcType=VARCHAR}, #{lxfs,jdbcType=VARCHAR}, #{dz,jdbcType=VARCHAR}, #{isadmin,jdbcType=INTEGER}, 
-      #{hmd,jdbcType=INTEGER}, #{bookId,jdbcType=VARCHAR}, #{kjtscs,jdbcType=INTEGER}, 
-      #{cs,jdbcType=INTEGER}, #{grsm,jdbcType=LONGVARCHAR})
+      #{pwd,jdbcType=VARCHAR}, #{lxfs,jdbcType=VARCHAR}, #{email,jdbcType=VARCHAR}, #{dz,jdbcType=VARCHAR}, 
+      #{isadmin,jdbcType=INTEGER}, #{ishmd,jdbcType=INTEGER}, #{isbn,jdbcType=VARCHAR}, 
+      #{kjtscs,jdbcType=INTEGER}, #{cs,jdbcType=INTEGER}, #{grsm,jdbcType=LONGVARCHAR}
+      )
   </insert>
   <insert id="insertSelective" parameterType="com.dragon.book.model.TSysUser" >
     insert into t_sys_user
@@ -157,17 +160,20 @@
       <if test="lxfs != null" >
         lxfs,
       </if>
+      <if test="email != null" >
+        email,
+      </if>
       <if test="dz != null" >
         dz,
       </if>
       <if test="isadmin != null" >
         isadmin,
       </if>
-      <if test="hmd != null" >
-        hmd,
+      <if test="ishmd != null" >
+        ishmd,
       </if>
-      <if test="bookId != null" >
-        book_id,
+      <if test="isbn != null" >
+        isbn,
       </if>
       <if test="kjtscs != null" >
         kjtscs,
@@ -195,17 +201,20 @@
       <if test="lxfs != null" >
         #{lxfs,jdbcType=VARCHAR},
       </if>
+      <if test="email != null" >
+        #{email,jdbcType=VARCHAR},
+      </if>
       <if test="dz != null" >
         #{dz,jdbcType=VARCHAR},
       </if>
       <if test="isadmin != null" >
         #{isadmin,jdbcType=INTEGER},
       </if>
-      <if test="hmd != null" >
-        #{hmd,jdbcType=INTEGER},
+      <if test="ishmd != null" >
+        #{ishmd,jdbcType=INTEGER},
       </if>
-      <if test="bookId != null" >
-        #{bookId,jdbcType=VARCHAR},
+      <if test="isbn != null" >
+        #{isbn,jdbcType=VARCHAR},
       </if>
       <if test="kjtscs != null" >
         #{kjtscs,jdbcType=INTEGER},
@@ -242,17 +251,20 @@
       <if test="record.lxfs != null" >
         lxfs = #{record.lxfs,jdbcType=VARCHAR},
       </if>
+      <if test="record.email != null" >
+        email = #{record.email,jdbcType=VARCHAR},
+      </if>
       <if test="record.dz != null" >
         dz = #{record.dz,jdbcType=VARCHAR},
       </if>
       <if test="record.isadmin != null" >
         isadmin = #{record.isadmin,jdbcType=INTEGER},
       </if>
-      <if test="record.hmd != null" >
-        hmd = #{record.hmd,jdbcType=INTEGER},
+      <if test="record.ishmd != null" >
+        ishmd = #{record.ishmd,jdbcType=INTEGER},
       </if>
-      <if test="record.bookId != null" >
-        book_id = #{record.bookId,jdbcType=VARCHAR},
+      <if test="record.isbn != null" >
+        isbn = #{record.isbn,jdbcType=VARCHAR},
       </if>
       <if test="record.kjtscs != null" >
         kjtscs = #{record.kjtscs,jdbcType=INTEGER},
@@ -275,10 +287,11 @@
       bm = #{record.bm,jdbcType=VARCHAR},
       pwd = #{record.pwd,jdbcType=VARCHAR},
       lxfs = #{record.lxfs,jdbcType=VARCHAR},
+      email = #{record.email,jdbcType=VARCHAR},
       dz = #{record.dz,jdbcType=VARCHAR},
       isadmin = #{record.isadmin,jdbcType=INTEGER},
-      hmd = #{record.hmd,jdbcType=INTEGER},
-      book_id = #{record.bookId,jdbcType=VARCHAR},
+      ishmd = #{record.ishmd,jdbcType=INTEGER},
+      isbn = #{record.isbn,jdbcType=VARCHAR},
       kjtscs = #{record.kjtscs,jdbcType=INTEGER},
       cs = #{record.cs,jdbcType=INTEGER},
       grsm = #{record.grsm,jdbcType=LONGVARCHAR}
@@ -293,10 +306,11 @@
       bm = #{record.bm,jdbcType=VARCHAR},
       pwd = #{record.pwd,jdbcType=VARCHAR},
       lxfs = #{record.lxfs,jdbcType=VARCHAR},
+      email = #{record.email,jdbcType=VARCHAR},
       dz = #{record.dz,jdbcType=VARCHAR},
       isadmin = #{record.isadmin,jdbcType=INTEGER},
-      hmd = #{record.hmd,jdbcType=INTEGER},
-      book_id = #{record.bookId,jdbcType=VARCHAR},
+      ishmd = #{record.ishmd,jdbcType=INTEGER},
+      isbn = #{record.isbn,jdbcType=VARCHAR},
       kjtscs = #{record.kjtscs,jdbcType=INTEGER},
       cs = #{record.cs,jdbcType=INTEGER}
     <if test="_parameter != null" >
@@ -318,17 +332,20 @@
       <if test="lxfs != null" >
         lxfs = #{lxfs,jdbcType=VARCHAR},
       </if>
+      <if test="email != null" >
+        email = #{email,jdbcType=VARCHAR},
+      </if>
       <if test="dz != null" >
         dz = #{dz,jdbcType=VARCHAR},
       </if>
       <if test="isadmin != null" >
         isadmin = #{isadmin,jdbcType=INTEGER},
       </if>
-      <if test="hmd != null" >
-        hmd = #{hmd,jdbcType=INTEGER},
+      <if test="ishmd != null" >
+        ishmd = #{ishmd,jdbcType=INTEGER},
       </if>
-      <if test="bookId != null" >
-        book_id = #{bookId,jdbcType=VARCHAR},
+      <if test="isbn != null" >
+        isbn = #{isbn,jdbcType=VARCHAR},
       </if>
       <if test="kjtscs != null" >
         kjtscs = #{kjtscs,jdbcType=INTEGER},
@@ -348,10 +365,11 @@
       bm = #{bm,jdbcType=VARCHAR},
       pwd = #{pwd,jdbcType=VARCHAR},
       lxfs = #{lxfs,jdbcType=VARCHAR},
+      email = #{email,jdbcType=VARCHAR},
       dz = #{dz,jdbcType=VARCHAR},
       isadmin = #{isadmin,jdbcType=INTEGER},
-      hmd = #{hmd,jdbcType=INTEGER},
-      book_id = #{bookId,jdbcType=VARCHAR},
+      ishmd = #{ishmd,jdbcType=INTEGER},
+      isbn = #{isbn,jdbcType=VARCHAR},
       kjtscs = #{kjtscs,jdbcType=INTEGER},
       cs = #{cs,jdbcType=INTEGER},
       grsm = #{grsm,jdbcType=LONGVARCHAR}
@@ -363,10 +381,11 @@
       bm = #{bm,jdbcType=VARCHAR},
       pwd = #{pwd,jdbcType=VARCHAR},
       lxfs = #{lxfs,jdbcType=VARCHAR},
+      email = #{email,jdbcType=VARCHAR},
       dz = #{dz,jdbcType=VARCHAR},
       isadmin = #{isadmin,jdbcType=INTEGER},
-      hmd = #{hmd,jdbcType=INTEGER},
-      book_id = #{bookId,jdbcType=VARCHAR},
+      ishmd = #{ishmd,jdbcType=INTEGER},
+      isbn = #{isbn,jdbcType=VARCHAR},
       kjtscs = #{kjtscs,jdbcType=INTEGER},
       cs = #{cs,jdbcType=INTEGER}
     where user_id = #{userId,jdbcType=INTEGER}

@@ -132,6 +132,76 @@ public class TBookExample {
             addCriterion(condition, new java.sql.Date(value1.getTime()), new java.sql.Date(value2.getTime()), property);
         }
 
+        public Criteria andIdIsNull() {
+            addCriterion("id is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andIdIsNotNull() {
+            addCriterion("id is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andIdEqualTo(String value) {
+            addCriterion("id =", value, "id");
+            return (Criteria) this;
+        }
+
+        public Criteria andIdNotEqualTo(String value) {
+            addCriterion("id <>", value, "id");
+            return (Criteria) this;
+        }
+
+        public Criteria andIdGreaterThan(String value) {
+            addCriterion("id >", value, "id");
+            return (Criteria) this;
+        }
+
+        public Criteria andIdGreaterThanOrEqualTo(String value) {
+            addCriterion("id >=", value, "id");
+            return (Criteria) this;
+        }
+
+        public Criteria andIdLessThan(String value) {
+            addCriterion("id <", value, "id");
+            return (Criteria) this;
+        }
+
+        public Criteria andIdLessThanOrEqualTo(String value) {
+            addCriterion("id <=", value, "id");
+            return (Criteria) this;
+        }
+
+        public Criteria andIdLike(String value) {
+            addCriterion("id like", value, "id");
+            return (Criteria) this;
+        }
+
+        public Criteria andIdNotLike(String value) {
+            addCriterion("id not like", value, "id");
+            return (Criteria) this;
+        }
+
+        public Criteria andIdIn(List<String> values) {
+            addCriterion("id in", values, "id");
+            return (Criteria) this;
+        }
+
+        public Criteria andIdNotIn(List<String> values) {
+            addCriterion("id not in", values, "id");
+            return (Criteria) this;
+        }
+
+        public Criteria andIdBetween(String value1, String value2) {
+            addCriterion("id between", value1, value2, "id");
+            return (Criteria) this;
+        }
+
+        public Criteria andIdNotBetween(String value1, String value2) {
+            addCriterion("id not between", value1, value2, "id");
+            return (Criteria) this;
+        }
+
         public Criteria andIsbnIsNull() {
             addCriterion("isbn is null");
             return (Criteria) this;
@@ -272,73 +342,73 @@ public class TBookExample {
             return (Criteria) this;
         }
 
-        public Criteria andCbsmcIsNull() {
-            addCriterion("cbsmc is null");
+        public Criteria andPubIdIsNull() {
+            addCriterion("pub_id is null");
             return (Criteria) this;
         }
 
-        public Criteria andCbsmcIsNotNull() {
-            addCriterion("cbsmc is not null");
+        public Criteria andPubIdIsNotNull() {
+            addCriterion("pub_id is not null");
             return (Criteria) this;
         }
 
-        public Criteria andCbsmcEqualTo(String value) {
-            addCriterion("cbsmc =", value, "cbsmc");
+        public Criteria andPubIdEqualTo(String value) {
+            addCriterion("pub_id =", value, "pubId");
             return (Criteria) this;
         }
 
-        public Criteria andCbsmcNotEqualTo(String value) {
-            addCriterion("cbsmc <>", value, "cbsmc");
+        public Criteria andPubIdNotEqualTo(String value) {
+            addCriterion("pub_id <>", value, "pubId");
             return (Criteria) this;
         }
 
-        public Criteria andCbsmcGreaterThan(String value) {
-            addCriterion("cbsmc >", value, "cbsmc");
+        public Criteria andPubIdGreaterThan(String value) {
+            addCriterion("pub_id >", value, "pubId");
             return (Criteria) this;
         }
 
-        public Criteria andCbsmcGreaterThanOrEqualTo(String value) {
-            addCriterion("cbsmc >=", value, "cbsmc");
+        public Criteria andPubIdGreaterThanOrEqualTo(String value) {
+            addCriterion("pub_id >=", value, "pubId");
             return (Criteria) this;
         }
 
-        public Criteria andCbsmcLessThan(String value) {
-            addCriterion("cbsmc <", value, "cbsmc");
+        public Criteria andPubIdLessThan(String value) {
+            addCriterion("pub_id <", value, "pubId");
             return (Criteria) this;
         }
 
-        public Criteria andCbsmcLessThanOrEqualTo(String value) {
-            addCriterion("cbsmc <=", value, "cbsmc");
+        public Criteria andPubIdLessThanOrEqualTo(String value) {
+            addCriterion("pub_id <=", value, "pubId");
             return (Criteria) this;
         }
 
-        public Criteria andCbsmcLike(String value) {
-            addCriterion("cbsmc like", value, "cbsmc");
+        public Criteria andPubIdLike(String value) {
+            addCriterion("pub_id like", value, "pubId");
             return (Criteria) this;
         }
 
-        public Criteria andCbsmcNotLike(String value) {
-            addCriterion("cbsmc not like", value, "cbsmc");
+        public Criteria andPubIdNotLike(String value) {
+            addCriterion("pub_id not like", value, "pubId");
             return (Criteria) this;
         }
 
-        public Criteria andCbsmcIn(List<String> values) {
-            addCriterion("cbsmc in", values, "cbsmc");
+        public Criteria andPubIdIn(List<String> values) {
+            addCriterion("pub_id in", values, "pubId");
             return (Criteria) this;
         }
 
-        public Criteria andCbsmcNotIn(List<String> values) {
-            addCriterion("cbsmc not in", values, "cbsmc");
+        public Criteria andPubIdNotIn(List<String> values) {
+            addCriterion("pub_id not in", values, "pubId");
             return (Criteria) this;
         }
 
-        public Criteria andCbsmcBetween(String value1, String value2) {
-            addCriterion("cbsmc between", value1, value2, "cbsmc");
+        public Criteria andPubIdBetween(String value1, String value2) {
+            addCriterion("pub_id between", value1, value2, "pubId");
             return (Criteria) this;
         }
 
-        public Criteria andCbsmcNotBetween(String value1, String value2) {
-            addCriterion("cbsmc not between", value1, value2, "cbsmc");
+        public Criteria andPubIdNotBetween(String value1, String value2) {
+            addCriterion("pub_id not between", value1, value2, "pubId");
             return (Criteria) this;
         }
 

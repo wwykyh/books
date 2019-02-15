@@ -3,11 +3,13 @@ package com.dragon.book.model;
 import java.util.Date;
 
 public class TBook {
+    private String id;
+
     private String isbn;
 
     private String sm;
 
-    private String cbsmc;
+    private String pubId;
 
     private Date cbrq;
 
@@ -16,6 +18,14 @@ public class TBook {
     private Integer typeId;
 
     private String tsdl;
+
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id == null ? null : id.trim();
+    }
 
     public String getIsbn() {
         return isbn;
@@ -33,12 +43,12 @@ public class TBook {
         this.sm = sm == null ? null : sm.trim();
     }
 
-    public String getCbsmc() {
-        return cbsmc;
+    public String getPubId() {
+        return pubId;
     }
 
-    public void setCbsmc(String cbsmc) {
-        this.cbsmc = cbsmc == null ? null : cbsmc.trim();
+    public void setPubId(String pubId) {
+        this.pubId = pubId == null ? null : pubId.trim();
     }
 
     public Date getCbrq() {
