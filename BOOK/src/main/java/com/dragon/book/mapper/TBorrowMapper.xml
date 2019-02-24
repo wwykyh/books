@@ -7,10 +7,10 @@
     <result column="sm" property="sm" jdbcType="VARCHAR" />
     <result column="user_id" property="userId" jdbcType="INTEGER" />
     <result column="lxfs" property="lxfs" jdbcType="VARCHAR" />
-    <result column="jyrq" property="jyrq" jdbcType="DATE" />
-    <result column="jhghrq" property="jhghrq" jdbcType="DATE" />
-    <result column="xjrq" property="xjrq" jdbcType="DATE" />
-    <result column="ghrq" property="ghrq" jdbcType="DATE" />
+    <result column="jyrq" property="jyrq" jdbcType="VARCHAR" />
+    <result column="jhghrq" property="jhghrq" jdbcType="VARCHAR" />
+    <result column="xjrq" property="xjrq" jdbcType="VARCHAR" />
+    <result column="ghrq" property="ghrq" jdbcType="VARCHAR" />
     <result column="status" property="status" jdbcType="INTEGER" />
     <result column="jyzt" property="jyzt" jdbcType="INTEGER" />
   </resultMap>
@@ -131,13 +131,15 @@
   </delete>
   <insert id="insert" parameterType="com.dragon.book.model.TBorrow" >
     insert into t_borrow (id, isbn, sm, 
-      user_id, lxfs, jyrq, jhghrq, 
-      xjrq, ghrq, status, jyzt, 
-      bz)
+      user_id, lxfs, jyrq, 
+      jhghrq, xjrq, ghrq, 
+      status, jyzt, bz
+      )
     values (#{id,jdbcType=INTEGER}, #{isbn,jdbcType=VARCHAR}, #{sm,jdbcType=VARCHAR}, 
-      #{userId,jdbcType=INTEGER}, #{lxfs,jdbcType=VARCHAR}, #{jyrq,jdbcType=DATE}, #{jhghrq,jdbcType=DATE}, 
-      #{xjrq,jdbcType=DATE}, #{ghrq,jdbcType=DATE}, #{status,jdbcType=INTEGER}, #{jyzt,jdbcType=INTEGER}, 
-      #{bz,jdbcType=LONGVARCHAR})
+      #{userId,jdbcType=INTEGER}, #{lxfs,jdbcType=VARCHAR}, #{jyrq,jdbcType=VARCHAR}, 
+      #{jhghrq,jdbcType=VARCHAR}, #{xjrq,jdbcType=VARCHAR}, #{ghrq,jdbcType=VARCHAR}, 
+      #{status,jdbcType=INTEGER}, #{jyzt,jdbcType=INTEGER}, #{bz,jdbcType=LONGVARCHAR}
+      )
   </insert>
   <insert id="insertSelective" parameterType="com.dragon.book.model.TBorrow" >
     insert into t_borrow
@@ -196,16 +198,16 @@
         #{lxfs,jdbcType=VARCHAR},
       </if>
       <if test="jyrq != null" >
-        #{jyrq,jdbcType=DATE},
+        #{jyrq,jdbcType=VARCHAR},
       </if>
       <if test="jhghrq != null" >
-        #{jhghrq,jdbcType=DATE},
+        #{jhghrq,jdbcType=VARCHAR},
       </if>
       <if test="xjrq != null" >
-        #{xjrq,jdbcType=DATE},
+        #{xjrq,jdbcType=VARCHAR},
       </if>
       <if test="ghrq != null" >
-        #{ghrq,jdbcType=DATE},
+        #{ghrq,jdbcType=VARCHAR},
       </if>
       <if test="status != null" >
         #{status,jdbcType=INTEGER},
@@ -243,16 +245,16 @@
         lxfs = #{record.lxfs,jdbcType=VARCHAR},
       </if>
       <if test="record.jyrq != null" >
-        jyrq = #{record.jyrq,jdbcType=DATE},
+        jyrq = #{record.jyrq,jdbcType=VARCHAR},
       </if>
       <if test="record.jhghrq != null" >
-        jhghrq = #{record.jhghrq,jdbcType=DATE},
+        jhghrq = #{record.jhghrq,jdbcType=VARCHAR},
       </if>
       <if test="record.xjrq != null" >
-        xjrq = #{record.xjrq,jdbcType=DATE},
+        xjrq = #{record.xjrq,jdbcType=VARCHAR},
       </if>
       <if test="record.ghrq != null" >
-        ghrq = #{record.ghrq,jdbcType=DATE},
+        ghrq = #{record.ghrq,jdbcType=VARCHAR},
       </if>
       <if test="record.status != null" >
         status = #{record.status,jdbcType=INTEGER},
@@ -275,10 +277,10 @@
       sm = #{record.sm,jdbcType=VARCHAR},
       user_id = #{record.userId,jdbcType=INTEGER},
       lxfs = #{record.lxfs,jdbcType=VARCHAR},
-      jyrq = #{record.jyrq,jdbcType=DATE},
-      jhghrq = #{record.jhghrq,jdbcType=DATE},
-      xjrq = #{record.xjrq,jdbcType=DATE},
-      ghrq = #{record.ghrq,jdbcType=DATE},
+      jyrq = #{record.jyrq,jdbcType=VARCHAR},
+      jhghrq = #{record.jhghrq,jdbcType=VARCHAR},
+      xjrq = #{record.xjrq,jdbcType=VARCHAR},
+      ghrq = #{record.ghrq,jdbcType=VARCHAR},
       status = #{record.status,jdbcType=INTEGER},
       jyzt = #{record.jyzt,jdbcType=INTEGER},
       bz = #{record.bz,jdbcType=LONGVARCHAR}
@@ -293,10 +295,10 @@
       sm = #{record.sm,jdbcType=VARCHAR},
       user_id = #{record.userId,jdbcType=INTEGER},
       lxfs = #{record.lxfs,jdbcType=VARCHAR},
-      jyrq = #{record.jyrq,jdbcType=DATE},
-      jhghrq = #{record.jhghrq,jdbcType=DATE},
-      xjrq = #{record.xjrq,jdbcType=DATE},
-      ghrq = #{record.ghrq,jdbcType=DATE},
+      jyrq = #{record.jyrq,jdbcType=VARCHAR},
+      jhghrq = #{record.jhghrq,jdbcType=VARCHAR},
+      xjrq = #{record.xjrq,jdbcType=VARCHAR},
+      ghrq = #{record.ghrq,jdbcType=VARCHAR},
       status = #{record.status,jdbcType=INTEGER},
       jyzt = #{record.jyzt,jdbcType=INTEGER}
     <if test="_parameter != null" >
@@ -319,16 +321,16 @@
         lxfs = #{lxfs,jdbcType=VARCHAR},
       </if>
       <if test="jyrq != null" >
-        jyrq = #{jyrq,jdbcType=DATE},
+        jyrq = #{jyrq,jdbcType=VARCHAR},
       </if>
       <if test="jhghrq != null" >
-        jhghrq = #{jhghrq,jdbcType=DATE},
+        jhghrq = #{jhghrq,jdbcType=VARCHAR},
       </if>
       <if test="xjrq != null" >
-        xjrq = #{xjrq,jdbcType=DATE},
+        xjrq = #{xjrq,jdbcType=VARCHAR},
       </if>
       <if test="ghrq != null" >
-        ghrq = #{ghrq,jdbcType=DATE},
+        ghrq = #{ghrq,jdbcType=VARCHAR},
       </if>
       <if test="status != null" >
         status = #{status,jdbcType=INTEGER},
@@ -348,10 +350,10 @@
       sm = #{sm,jdbcType=VARCHAR},
       user_id = #{userId,jdbcType=INTEGER},
       lxfs = #{lxfs,jdbcType=VARCHAR},
-      jyrq = #{jyrq,jdbcType=DATE},
-      jhghrq = #{jhghrq,jdbcType=DATE},
-      xjrq = #{xjrq,jdbcType=DATE},
-      ghrq = #{ghrq,jdbcType=DATE},
+      jyrq = #{jyrq,jdbcType=VARCHAR},
+      jhghrq = #{jhghrq,jdbcType=VARCHAR},
+      xjrq = #{xjrq,jdbcType=VARCHAR},
+      ghrq = #{ghrq,jdbcType=VARCHAR},
       status = #{status,jdbcType=INTEGER},
       jyzt = #{jyzt,jdbcType=INTEGER},
       bz = #{bz,jdbcType=LONGVARCHAR}
@@ -363,10 +365,10 @@
       sm = #{sm,jdbcType=VARCHAR},
       user_id = #{userId,jdbcType=INTEGER},
       lxfs = #{lxfs,jdbcType=VARCHAR},
-      jyrq = #{jyrq,jdbcType=DATE},
-      jhghrq = #{jhghrq,jdbcType=DATE},
-      xjrq = #{xjrq,jdbcType=DATE},
-      ghrq = #{ghrq,jdbcType=DATE},
+      jyrq = #{jyrq,jdbcType=VARCHAR},
+      jhghrq = #{jhghrq,jdbcType=VARCHAR},
+      xjrq = #{xjrq,jdbcType=VARCHAR},
+      ghrq = #{ghrq,jdbcType=VARCHAR},
       status = #{status,jdbcType=INTEGER},
       jyzt = #{jyzt,jdbcType=INTEGER}
     where id = #{id,jdbcType=INTEGER}

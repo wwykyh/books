@@ -5,7 +5,14 @@ public class TPublish {
 
     private String pubName;
 
-    private String pubNumber;
+    @Override
+	public String toString() {
+		return "TPublish [pubId=" + pubId + ", pubName=" + pubName
+				+ ", pubNumber=" + pubNumber + ", pubEmail=" + pubEmail
+				+ ", pubPhone=" + pubPhone + "]";
+	}
+
+	private String pubNumber;
 
     private String pubEmail;
 

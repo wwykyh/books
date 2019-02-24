@@ -1,7 +1,12 @@
 package com.dragon.book.model;
 
 public class TType {
-    private Integer typeId;
+    @Override
+	public String toString() {
+		return "TType [typeId=" + typeId + ", lxmc=" + lxmc + "]";
+	}
+
+	private Integer typeId;
 
     private String lxmc;
 

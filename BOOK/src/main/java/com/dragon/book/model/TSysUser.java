@@ -1,7 +1,16 @@
 package com.dragon.book.model;
 
 public class TSysUser {
-    private Integer userId;
+    @Override
+	public String toString() {
+		return "TSysUser [userId=" + userId + ", xm=" + xm + ", bm=" + bm
+				+ ", pwd=" + pwd + ", lxfs=" + lxfs + ", email=" + email
+				+ ", dz=" + dz + ", isadmin=" + isadmin + ", ishmd=" + ishmd
+				+ ", isbn=" + isbn + ", kjtscs=" + kjtscs + ", cs=" + cs
+				+ ", grsm=" + grsm + "]";
+	}
+
+	private Integer userId;
 
     private String xm;
 

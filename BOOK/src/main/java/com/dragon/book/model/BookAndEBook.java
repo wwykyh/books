@@ -1,15 +1,20 @@
 package com.dragon.book.model;
 
-public class TBook {
+public class BookAndEBook {
 	
+
+
 
 	@Override
 	public String toString() {
-		return "TBook [id=" + id + ", isbn=" + isbn + ", sm=" + sm + ", pubId="
-				+ pubId + ", cbrq=" + cbrq + ", zz=" + zz + ", typeId="
-				+ typeId + ", tsdl=" + tsdl + ", rkrq=" + rkrq + ", status="
-				+ status + ", cs=" + cs + ", tPublish=" + tPublish + ", tType="
-				+ tType + "]";
+		return "BookAndEBook [id=" + id + ", isbn=" + isbn + ", sm=" + sm
+				+ ", pubId=" + pubId + ", cbrq=" + cbrq + ", zz=" + zz
+				+ ", typeId=" + typeId + ", tsdl=" + tsdl + ", rkrq=" + rkrq
+				+ ", status=" + status + ", cs=" + cs + ", tPublish="
+				+ tPublish + ", tType=" + tType + ", eBookId=" + eBookId
+				+ ", eBookXm=" + eBookXm + ", wjdz=" + wjdz + ", ms=" + ms
+				+ ", scsj=" + scsj + ", xzsj=" + xzsj + ", tszl=" + tszl
+				+ ", userId=" + userId + "]";
 	}
 
 	private String id;
@@ -37,6 +42,90 @@ public class TBook {
 	private TPublish tPublish;
 	
 	private TType tType;
+
+	
+	private String eBookId;
+
+    private String eBookXm;
+
+   // private Integer typeId;
+
+    private String wjdz;
+
+    private String ms;
+
+    private String scsj;
+
+    private String xzsj;
+
+    private String tszl;
+
+    private Integer userId;
+	
+	
+	public String geteBookId() {
+		return eBookId;
+	}
+
+	public void seteBookId(String eBookId) {
+		this.eBookId = eBookId;
+	}
+
+	public String geteBookXm() {
+		return eBookXm;
+	}
+
+	public void seteBookXm(String eBookXm) {
+		this.eBookXm = eBookXm;
+	}
+
+	public String getWjdz() {
+		return wjdz;
+	}
+
+	public void setWjdz(String wjdz) {
+		this.wjdz = wjdz;
+	}
+
+	public String getMs() {
+		return ms;
+	}
+
+	public void setMs(String ms) {
+		this.ms = ms;
+	}
+
+	public String getScsj() {
+		return scsj;
+	}
+
+	public void setScsj(String scsj) {
+		this.scsj = scsj;
+	}
+
+	public String getXzsj() {
+		return xzsj;
+	}
+
+	public void setXzsj(String xzsj) {
+		this.xzsj = xzsj;
+	}
+
+	public String getTszl() {
+		return tszl;
+	}
+
+	public void setTszl(String tszl) {
+		this.tszl = tszl;
+	}
+
+	public Integer getUserId() {
+		return userId;
+	}
+
+	public void setUserId(Integer userId) {
+		this.userId = userId;
+	}
 
 	public TPublish gettPublish() {
 		return tPublish;

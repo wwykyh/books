@@ -1,7 +1,6 @@
 package com.dragon.book.model;
 
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 
 public class TEBookExample {
@@ -455,52 +454,62 @@ public class TEBookExample {
             return (Criteria) this;
         }
 
-        public Criteria andScsjEqualTo(Date value) {
+        public Criteria andScsjEqualTo(String value) {
             addCriterion("scsj =", value, "scsj");
             return (Criteria) this;
         }
 
-        public Criteria andScsjNotEqualTo(Date value) {
+        public Criteria andScsjNotEqualTo(String value) {
             addCriterion("scsj <>", value, "scsj");
             return (Criteria) this;
         }
 
-        public Criteria andScsjGreaterThan(Date value) {
+        public Criteria andScsjGreaterThan(String value) {
             addCriterion("scsj >", value, "scsj");
             return (Criteria) this;
         }
 
-        public Criteria andScsjGreaterThanOrEqualTo(Date value) {
+        public Criteria andScsjGreaterThanOrEqualTo(String value) {
             addCriterion("scsj >=", value, "scsj");
             return (Criteria) this;
         }
 
-        public Criteria andScsjLessThan(Date value) {
+        public Criteria andScsjLessThan(String value) {
             addCriterion("scsj <", value, "scsj");
             return (Criteria) this;
         }
 
-        public Criteria andScsjLessThanOrEqualTo(Date value) {
+        public Criteria andScsjLessThanOrEqualTo(String value) {
             addCriterion("scsj <=", value, "scsj");
             return (Criteria) this;
         }
 
-        public Criteria andScsjIn(List<Date> values) {
+        public Criteria andScsjLike(String value) {
+            addCriterion("scsj like", value, "scsj");
+            return (Criteria) this;
+        }
+
+        public Criteria andScsjNotLike(String value) {
+            addCriterion("scsj not like", value, "scsj");
+            return (Criteria) this;
+        }
+
+        public Criteria andScsjIn(List<String> values) {
             addCriterion("scsj in", values, "scsj");
             return (Criteria) this;
         }
 
-        public Criteria andScsjNotIn(List<Date> values) {
+        public Criteria andScsjNotIn(List<String> values) {
             addCriterion("scsj not in", values, "scsj");
             return (Criteria) this;
         }
 
-        public Criteria andScsjBetween(Date value1, Date value2) {
+        public Criteria andScsjBetween(String value1, String value2) {
             addCriterion("scsj between", value1, value2, "scsj");
             return (Criteria) this;
         }
 
-        public Criteria andScsjNotBetween(Date value1, Date value2) {
+        public Criteria andScsjNotBetween(String value1, String value2) {
             addCriterion("scsj not between", value1, value2, "scsj");
             return (Criteria) this;
         }
@@ -642,6 +651,66 @@ public class TEBookExample {
 
         public Criteria andTszlNotBetween(String value1, String value2) {
             addCriterion("tszl not between", value1, value2, "tszl");
+            return (Criteria) this;
+        }
+
+        public Criteria andUserIdIsNull() {
+            addCriterion("user_id is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andUserIdIsNotNull() {
+            addCriterion("user_id is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andUserIdEqualTo(Integer value) {
+            addCriterion("user_id =", value, "userId");
+            return (Criteria) this;
+        }
+
+        public Criteria andUserIdNotEqualTo(Integer value) {
+            addCriterion("user_id <>", value, "userId");
+            return (Criteria) this;
+        }
+
+        public Criteria andUserIdGreaterThan(Integer value) {
+            addCriterion("user_id >", value, "userId");
+            return (Criteria) this;
+        }
+
+        public Criteria andUserIdGreaterThanOrEqualTo(Integer value) {
+            addCriterion("user_id >=", value, "userId");
+            return (Criteria) this;
+        }
+
+        public Criteria andUserIdLessThan(Integer value) {
+            addCriterion("user_id <", value, "userId");
+            return (Criteria) this;
+        }
+
+        public Criteria andUserIdLessThanOrEqualTo(Integer value) {
+            addCriterion("user_id <=", value, "userId");
+            return (Criteria) this;
+        }
+
+        public Criteria andUserIdIn(List<Integer> values) {
+            addCriterion("user_id in", values, "userId");
+            return (Criteria) this;
+        }
+
+        public Criteria andUserIdNotIn(List<Integer> values) {
+            addCriterion("user_id not in", values, "userId");
+            return (Criteria) this;
+        }
+
+        public Criteria andUserIdBetween(Integer value1, Integer value2) {
+            addCriterion("user_id between", value1, value2, "userId");
+            return (Criteria) this;
+        }
+
+        public Criteria andUserIdNotBetween(Integer value1, Integer value2) {
+            addCriterion("user_id not between", value1, value2, "userId");
             return (Criteria) this;
         }
     }

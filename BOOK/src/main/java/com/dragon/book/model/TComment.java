@@ -1,7 +1,5 @@
 package com.dragon.book.model;
 
-import java.util.Date;
-
 public class TComment {
     private Integer commentId;
 
@@ -9,7 +7,7 @@ public class TComment {
 
     private Integer userId;
 
-    private Date pjrq;
+    private String pjrq;
 
     private String nr;
 
@@ -37,12 +35,12 @@ public class TComment {
         this.userId = userId;
     }
 
-    public Date getPjrq() {
+    public String getPjrq() {
         return pjrq;
     }
 
-    public void setPjrq(Date pjrq) {
-        this.pjrq = pjrq;
+    public void setPjrq(String pjrq) {
+        this.pjrq = pjrq == null ? null : pjrq.trim();
     }
 
     public String getNr() {
