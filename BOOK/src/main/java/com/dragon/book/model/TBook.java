@@ -1,7 +1,5 @@
 package com.dragon.book.model;
 
-import java.util.Date;
-
 public class TBook {
     private String isbn;
 
@@ -9,7 +7,7 @@ public class TBook {
 
     private String cbsmc;
 
-    private Date cbrq;
+    private String cbrq;
 
     private String zz;
 
@@ -41,12 +39,12 @@ public class TBook {
         this.cbsmc = cbsmc == null ? null : cbsmc.trim();
     }
 
-    public Date getCbrq() {
+    public String getCbrq() {
         return cbrq;
     }
 
-    public void setCbrq(Date cbrq) {
-        this.cbrq = cbrq;
+    public void setCbrq(String cbrq) {
+        this.cbrq = cbrq == null ? null : cbrq.trim();
     }
 
     public String getZz() {

@@ -221,7 +221,7 @@ ul.ztree.zTreeDragUL { margin:0; padding:0; position:absolute; width:auto; heigh
 /* Resizable */
 .l-resizable { display:none; overflow:hidden; border-style:dashed; border-width:1px; opacity:0.5; filter:alpha(opacity=50); position:absolute; top:0; left:0; z-index:15000; background:#f2f1f1; }
 .l-dragging-mask { width:100%; height:100%; overflow:hidden; position:absolute; top:0px; left:0px; z-index:11000; display:none; filter: Alpha
-(opacity=1); background:white; -moz-opacity:.01; opacity:0.01; }
+(opacity=1); background:white; -moz-opacity:.0 1; opacity:0.01; }
 /* -------------- *icon* ------------ */
 .l-icon-checkbox { background:url('images/ligerGrid/icon/checkbox.gif') no-repeat center; }
 .l-icon-cross{ background:url('images/ligerGrid/icon/cross.gif') no-repeat center; width:16px; height:16px; line-height:16px; }

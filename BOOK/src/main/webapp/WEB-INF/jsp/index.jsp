@@ -5,12 +5,12 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>图书管理系统</title>
-<link rel="stylesheet" type="text/css" href="css/common/iconfont/iconfont.css" />
+	<link rel="stylesheet" type="text/css" href="css/common/iconfont/iconfont.css" />
 	<link rel="stylesheet" type="text/css" href="css/common/layout.css" />
 	<link rel="stylesheet" type="text/css" href="dvpt/css/libs.css" />
 	<link rel="stylesheet" type="text/css" href="css/demo/style.css" />
 	<link rel="stylesheet" type="text/css" href="css/theme/blue.css" id="style" />
-		<script type="text/javascript" src="dvpt/config.js"></script>
+	<script type="text/javascript" src="dvpt/config.js"></script>
 	<!-- 改造的脚本 -->
 	<script type="text/javascript" src="js/extend.js"></script>
 	<!-- 共有的控件 -->

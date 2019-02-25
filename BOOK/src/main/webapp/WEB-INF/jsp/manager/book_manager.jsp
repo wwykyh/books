@@ -10,7 +10,7 @@
 <head>
     <title>图书管理</title>
 </head>
-<body>
+<body style="overflow: hidden;">
 <div class="panel">
     <div class="panel-header">
         <h2>图书管理</h2>
@@ -25,133 +25,150 @@
                         <tr>
                             <th></th>
                             <td>
-                                <input type="text" placeholder="书名、作者" class="input-text" />
+                                <input id="dim" type="text" placeholder="书名、作者" class="input-text" />
                             </td>
-                            <td colspan="2"><a href="javascript:;" class="btn"><span><i class="icon icon-search"></i>查询</span></a></td>
+                            <td colspan="2"><a href="javascript:;" class="btn"><span id="btnLoad"><i class="icon icon-search"></i>查询</span></a></td>
                         </tr>
                     </table>
                 </div>
-                <div class="table-outer">
-                    <table class="simple-table">
-                        <thead>
-                        <tr>
-                            <th width="30">图书编号</th>
-                            <th width="30">书名</th>
-                            <th>图书类型</th>
-                            <th>作者</th>
-                            <th>出版社名称</th>
-                            <th>出版日期</th>
-                            <th>入库时间</th>
-                            <th>状态</th>
-                            <th>库存</th>
-                            <th>损毁</th>
-                            <th>详情</th>
-                            <th>库存管理</th>
-                            <th>出库</th>
-                        </tr>
-                        </thead>
-                        <tbody>
-                        <tr>
-                            <td>123</td>
-                            <td>spring入门教程</td>
-                            <td>IT类</td>
-                            <td>杨开振</td>
-                            <td>电子工业出版社</td>
-                            <td>2016.9</td>
-                            <td>2019.1</td>
-                            <td>在库</td>
-                            <td>3</td>
-                            <td>无损毁</td>
-                            <td><a href="javascript:;" title="详情"  class="icon icon-info">图书详情</a></td>
-                            <td><a href="javascript:;" title="详情"  class="icon icon-info">库存管理</a></td>
-                            <td><a href="javascript:;" title="详情"  class="icon icon-info">出库</a></td>
-                        </tr>
-                        <tr>
-                            <td>123</td>
-                            <td>spring入门教程</td>
-                            <td>IT类</td>
-                            <td>杨开振</td>
-                            <td>电子工业出版社</td>
-                            <td>2016.9</td>
-                            <td>2019.1</td>
-                            <td>在库</td>
-                            <td>3</td>
-                            <td>无损毁</td>
-                            <td><a href="javascript:;" title="详情" class="icon icon-info">图书详情</a></td>
-                            <td><a href="javascript:;" title="详情" class="icon icon-info">库存管理</a></td>
-                            <td><a href="javascript:;" title="详情" class="icon icon-info">出库</a></td>
-                        </tr>
-                        <tr>
-                            <td>123</td>
-                            <td>spring入门教程</td>
-                            <td>IT类</td>
-                            <td>杨开振</td>
-                            <td>电子工业出版社</td>
-                            <td>2016.9</td>
-                            <td>2019.1</td>
-                            <td>在库</td>
-                            <td>3</td>
-                            <td>无损毁</td>
-                            <td><a href="javascript:;" title="详情" class="icon icon-info">图书详情</a></td>
-                            <td><a href="javascript:;" title="详情" class="icon icon-info">库存管理</a></td>
-                            <td><a href="javascript:;" title="详情" class="icon icon-info">出库</a></td>
-                        </tr>
-                        <tr>
-                            <td>123</td>
-                            <td>spring入门教程</td>
-                            <td>IT类</td>
-                            <td>杨开振</td>
-                            <td>电子工业出版社</td>
-                            <td>2016.9</td>
-                            <td>2019.1</td>
-                            <td>在库</td>
-                            <td>3</td>
-                            <td>无损毁</td>
-                            <td><a href="javascript:;" title="图书详情" class="icon icon-info">图书详情</a></td>
-                            <td><a href="javascript:;" title="库存管理" class="icon icon-info">库存管理</a></td>
-                            <td><a href="javascript:;" title="出库" class="icon icon-info">出库</a></td>
-                        </tr>
-                        </tbody>
-                    </table>
-                </div>
-                <div class="page">
-                    <div class="page-total left">每页
-                        <input type="text" class="input-text" value="10" /> 条 共21条</div>
-                    <ul class="page-link right">
-                        <li><a href="javascript:;">首页</a></li>
-                        <li><a href="javascript:;">上一页</a></li>
-                        <li>1/3</li>
-                        <li><a href="javascript:;">下一页</a></li>
-                        <li><a href="javascript:;">末页</a></li>
-                        <li>转到
-                            <input type="text" class="input-text" /> 页
-                        </li>
-                        <li><a href="javascript:;" class="btn btn-secondary a-go">跳转</a></li>
-                    </ul>
-                    <div class="clear"></div>
-                </div>
+
+                <div id="booksInfo"></div>
             </div>
         </div>
     </div>
 </div>
 <script type="text/javascript">
-    requirejs(['jquery', 'dg.datePicker', 'artdialog'], function($) {
-        $(function() {
-            $("#btn_info").click(function() {
-                art.dialog.open('简要列表-详情.html', {
-                    title: '详情',
-                    width: 900,
-                    height: 475,
-                    ok: true,
-                    okVal: "打印",
-                    cancel: true,
-                    cancelVal: "关闭"
-                });
-            });
+    var dim ;
+    requirejs(['jquery', 'ligerGrid','dg.datePicker', 'artdialog'], function($) {
+        $(function () {
+            select() ;
+        }) ;
+        function select() {
+            $("#booksInfo").ligerGrid({
+                columns: [{
+                    display: 'ISBN',
+                    name: 'isbn',
+                    width: 120,
+                    frozen: true
+                }, {
+                    display: '书名',
+                    name: 'sm',
+                    width: 200,
+                    frozen: true
+                }, {
+                    display: '出版社名称',
+                    name: 'cbsmc',
+                    width: 120,
+                    frozen: true
+                }, {
+                    display: '出版日期',
+                    name: 'cbrq',
+                    width: 100,
+                    frozen: true
+                }, {
+                    display: '作者',
+                    name: 'zz',
+                    width: 140,
+                    frozen: true
+                }, {
+                    display: '类型',
+                    name: 'lxmc',
+                    width: 70,
+                    frozen: true
+                }, {
+                    display: '所属类型',
+                    name: 'tsdl',
+                    width: 80,
+                    frozen: true
+                }, {
+                    display: '图书提供者',
+                    name: 'uname',
+                    width: 90,
+                    frozen: true
+                }, {
+                    display: '位置',
+                    name: 'wz',
+                    width: 80,
+                    frozen: true
+                }, {
+                    display: '损毁程度',
+                    name: 'sh',
+                    width: 90,
+                    frozen: true
+                }, {
+                    display: '入库时间',
+                    name: 'rksj',
+                    width: 100,
+                    frozen: true
+                }, {
+                    display: '图书状态',
+                    name: 'status',
+                    width: 80,
+                    frozen: true
+                }, {
+                    display: '操作',
+                    isAllowHide: false,
+                    render: function (row){
+                        if (row.id != undefined && row.id != null && row.id != ""){
+                            var html = '<a href="javascript:void(0);" onclick="onBookInfo(' + row.id + ')">查看详情</a>&nbsp;&nbsp;' ;
+                                //html = html + '<a href="javascript:void(0);" onclick="onBookEdit(' + row.id + ')">库存管理</a>&nbsp;&nbsp;';
+                                html = html + '<a href="javascript:void(0);" onclick="onBookDel(' + row.id + ')">出库</a>';
+                            return html;
+                        }else return "" ;
+                    }
+                }],
+                url: '/bookPage_manager',
+                method:'get',
+                dataType: 'server',
+                dataAction: 'server',
+                pageSize: 10,
+                width: '100%',
+                checkbox: false,
+                rownumbers: false,
+                parms:[{name:"dim",value:dim}],
+                fixedCellHeight: false,
+                iShowScroll: false,
+                allowAdjustColWidth: true
+            }) ;
+        };
 
-        });
+        $("#btnLoad").click(function(){
+            dim = $("#dim").val();
+            select() ;
+        }) ;
+
     });
-</script>
+    function onBookDel(id) {
+        if (confirm("你是否要将这本书出库？")){
+            $.ajax({url:"${pageContext.request.contextPath}/del_store?id="+id,
+                success:function(data){
+                    if (data == "0"){
+                        alert("出库成功，请刷新！") ;
+                    } else {
+                        alert("出库失败！") ;
+                    }
+                }
+            });
+        }
+    }
 
+    function onBookEdit(id) {
+        alert("编辑" + id) ;
+    }
+    function onBookInfo(id){
+        //alert("详情" + id) ;
+        art.dialog.open('book_info?id='+id, {
+            title: '图书详情',
+            width: 1200,
+            height: 675,
+            //ok: true,
+           // okVal: "打印",
+            cancel: true,
+            cancelVal: "关闭"
+        });
+    }
+
+</script>
+<!--http://localhost:9090/bookPage_manager?dim=a&page=1&pagesize=10-->
 </body>
 </html>

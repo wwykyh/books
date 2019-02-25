@@ -1,8 +1,6 @@
 package com.dragon.book.model;
 
 import java.util.ArrayList;
-import java.util.Date;
-import java.util.Iterator;
 import java.util.List;
 
 public class TBookExample {
@@ -104,32 +102,6 @@ public class TBookExample {
                 throw new RuntimeException("Between values for " + property + " cannot be null");
             }
             criteria.add(new Criterion(condition, value1, value2));
-        }
-
-        protected void addCriterionForJDBCDate(String condition, Date value, String property) {
-            if (value == null) {
-                throw new RuntimeException("Value for " + property + " cannot be null");
-            }
-            addCriterion(condition, new java.sql.Date(value.getTime()), property);
-        }
-
-        protected void addCriterionForJDBCDate(String condition, List<Date> values, String property) {
-            if (values == null || values.size() == 0) {
-                throw new RuntimeException("Value list for " + property + " cannot be null or empty");
-            }
-            List<java.sql.Date> dateList = new ArrayList<java.sql.Date>();
-            Iterator<Date> iter = values.iterator();
-            while (iter.hasNext()) {
-                dateList.add(new java.sql.Date(iter.next().getTime()));
-            }
-            addCriterion(condition, dateList, property);
-        }
-
-        protected void addCriterionForJDBCDate(String condition, Date value1, Date value2, String property) {
-            if (value1 == null || value2 == null) {
-                throw new RuntimeException("Between values for " + property + " cannot be null");
-            }
-            addCriterion(condition, new java.sql.Date(value1.getTime()), new java.sql.Date(value2.getTime()), property);
         }
 
         public Criteria andIsbnIsNull() {
@@ -352,53 +324,63 @@ public class TBookExample {
             return (Criteria) this;
         }
 
-        public Criteria andCbrqEqualTo(Date value) {
-            addCriterionForJDBCDate("cbrq =", value, "cbrq");
+        public Criteria andCbrqEqualTo(String value) {
+            addCriterion("cbrq =", value, "cbrq");
             return (Criteria) this;
         }
 
-        public Criteria andCbrqNotEqualTo(Date value) {
-            addCriterionForJDBCDate("cbrq <>", value, "cbrq");
+        public Criteria andCbrqNotEqualTo(String value) {
+            addCriterion("cbrq <>", value, "cbrq");
             return (Criteria) this;
         }
 
-        public Criteria andCbrqGreaterThan(Date value) {
-            addCriterionForJDBCDate("cbrq >", value, "cbrq");
+        public Criteria andCbrqGreaterThan(String value) {
+            addCriterion("cbrq >", value, "cbrq");
             return (Criteria) this;
         }
 
-        public Criteria andCbrqGreaterThanOrEqualTo(Date value) {
-            addCriterionForJDBCDate("cbrq >=", value, "cbrq");
+        public Criteria andCbrqGreaterThanOrEqualTo(String value) {
+            addCriterion("cbrq >=", value, "cbrq");
             return (Criteria) this;
         }
 
-        public Criteria andCbrqLessThan(Date value) {
-            addCriterionForJDBCDate("cbrq <", value, "cbrq");
+        public Criteria andCbrqLessThan(String value) {
+            addCriterion("cbrq <", value, "cbrq");
             return (Criteria) this;
         }
 
-        public Criteria andCbrqLessThanOrEqualTo(Date value) {
-            addCriterionForJDBCDate("cbrq <=", value, "cbrq");
+        public Criteria andCbrqLessThanOrEqualTo(String value) {
+            addCriterion("cbrq <=", value, "cbrq");
             return (Criteria) this;
         }
 
-        public Criteria andCbrqIn(List<Date> values) {
-            addCriterionForJDBCDate("cbrq in", values, "cbrq");
+        public Criteria andCbrqLike(String value) {
+            addCriterion("cbrq like", value, "cbrq");
             return (Criteria) this;
         }
 
-        public Criteria andCbrqNotIn(List<Date> values) {
-            addCriterionForJDBCDate("cbrq not in", values, "cbrq");
+        public Criteria andCbrqNotLike(String value) {
+            addCriterion("cbrq not like", value, "cbrq");
             return (Criteria) this;
         }
 
-        public Criteria andCbrqBetween(Date value1, Date value2) {
-            addCriterionForJDBCDate("cbrq between", value1, value2, "cbrq");
+        public Criteria andCbrqIn(List<String> values) {
+            addCriterion("cbrq in", values, "cbrq");
             return (Criteria) this;
         }
 
-        public Criteria andCbrqNotBetween(Date value1, Date value2) {
-            addCriterionForJDBCDate("cbrq not between", value1, value2, "cbrq");
+        public Criteria andCbrqNotIn(List<String> values) {
+            addCriterion("cbrq not in", values, "cbrq");
+            return (Criteria) this;
+        }
+
+        public Criteria andCbrqBetween(String value1, String value2) {
+            addCriterion("cbrq between", value1, value2, "cbrq");
+            return (Criteria) this;
+        }
+
+        public Criteria andCbrqNotBetween(String value1, String value2) {
+            addCriterion("cbrq not between", value1, value2, "cbrq");
             return (Criteria) this;
         }
 

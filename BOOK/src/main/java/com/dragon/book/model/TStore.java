@@ -1,7 +1,5 @@
 package com.dragon.book.model;
 
-import java.util.Date;
-
 public class TStore {
     private Integer id;
 
@@ -13,7 +11,7 @@ public class TStore {
 
     private Integer sh;
 
-    private Date rksj;
+    private String rksj;
 
     private Integer status;
 
@@ -57,12 +55,12 @@ public class TStore {
         this.sh = sh;
     }
 
-    public Date getRksj() {
+    public String getRksj() {
         return rksj;
     }
 
-    public void setRksj(Date rksj) {
-        this.rksj = rksj;
+    public void setRksj(String rksj) {
+        this.rksj = rksj == null ? null : rksj.trim();
     }
 
     public Integer getStatus() {

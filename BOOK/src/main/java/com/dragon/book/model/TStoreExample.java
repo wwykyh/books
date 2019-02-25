@@ -1,8 +1,6 @@
 package com.dragon.book.model;
 
 import java.util.ArrayList;
-import java.util.Date;
-import java.util.Iterator;
 import java.util.List;
 
 public class TStoreExample {
@@ -104,32 +102,6 @@ public class TStoreExample {
                 throw new RuntimeException("Between values for " + property + " cannot be null");
             }
             criteria.add(new Criterion(condition, value1, value2));
-        }
-
-        protected void addCriterionForJDBCDate(String condition, Date value, String property) {
-            if (value == null) {
-                throw new RuntimeException("Value for " + property + " cannot be null");
-            }
-            addCriterion(condition, new java.sql.Date(value.getTime()), property);
-        }
-
-        protected void addCriterionForJDBCDate(String condition, List<Date> values, String property) {
-            if (values == null || values.size() == 0) {
-                throw new RuntimeException("Value list for " + property + " cannot be null or empty");
-            }
-            List<java.sql.Date> dateList = new ArrayList<java.sql.Date>();
-            Iterator<Date> iter = values.iterator();
-            while (iter.hasNext()) {
-                dateList.add(new java.sql.Date(iter.next().getTime()));
-            }
-            addCriterion(condition, dateList, property);
-        }
-
-        protected void addCriterionForJDBCDate(String condition, Date value1, Date value2, String property) {
-            if (value1 == null || value2 == null) {
-                throw new RuntimeException("Between values for " + property + " cannot be null");
-            }
-            addCriterion(condition, new java.sql.Date(value1.getTime()), new java.sql.Date(value2.getTime()), property);
         }
 
         public Criteria andIdIsNull() {
@@ -462,53 +434,63 @@ public class TStoreExample {
             return (Criteria) this;
         }
 
-        public Criteria andRksjEqualTo(Date value) {
-            addCriterionForJDBCDate("rksj =", value, "rksj");
+        public Criteria andRksjEqualTo(String value) {
+            addCriterion("rksj =", value, "rksj");
             return (Criteria) this;
         }
 
-        public Criteria andRksjNotEqualTo(Date value) {
-            addCriterionForJDBCDate("rksj <>", value, "rksj");
+        public Criteria andRksjNotEqualTo(String value) {
+            addCriterion("rksj <>", value, "rksj");
             return (Criteria) this;
         }
 
-        public Criteria andRksjGreaterThan(Date value) {
-            addCriterionForJDBCDate("rksj >", value, "rksj");
+        public Criteria andRksjGreaterThan(String value) {
+            addCriterion("rksj >", value, "rksj");
             return (Criteria) this;
         }
 
-        public Criteria andRksjGreaterThanOrEqualTo(Date value) {
-            addCriterionForJDBCDate("rksj >=", value, "rksj");
+        public Criteria andRksjGreaterThanOrEqualTo(String value) {
+            addCriterion("rksj >=", value, "rksj");
             return (Criteria) this;
         }
 
-        public Criteria andRksjLessThan(Date value) {
-            addCriterionForJDBCDate("rksj <", value, "rksj");
+        public Criteria andRksjLessThan(String value) {
+            addCriterion("rksj <", value, "rksj");
             return (Criteria) this;
         }
 
-        public Criteria andRksjLessThanOrEqualTo(Date value) {
-            addCriterionForJDBCDate("rksj <=", value, "rksj");
+        public Criteria andRksjLessThanOrEqualTo(String value) {
+            addCriterion("rksj <=", value, "rksj");
             return (Criteria) this;
         }
 
-        public Criteria andRksjIn(List<Date> values) {
-            addCriterionForJDBCDate("rksj in", values, "rksj");
+        public Criteria andRksjLike(String value) {
+            addCriterion("rksj like", value, "rksj");
             return (Criteria) this;
         }
 
-        public Criteria andRksjNotIn(List<Date> values) {
-            addCriterionForJDBCDate("rksj not in", values, "rksj");
+        public Criteria andRksjNotLike(String value) {
+            addCriterion("rksj not like", value, "rksj");
             return (Criteria) this;
         }
 
-        public Criteria andRksjBetween(Date value1, Date value2) {
-            addCriterionForJDBCDate("rksj between", value1, value2, "rksj");
+        public Criteria andRksjIn(List<String> values) {
+            addCriterion("rksj in", values, "rksj");
             return (Criteria) this;
         }
 
-        public Criteria andRksjNotBetween(Date value1, Date value2) {
-            addCriterionForJDBCDate("rksj not between", value1, value2, "rksj");
+        public Criteria andRksjNotIn(List<String> values) {
+            addCriterion("rksj not in", values, "rksj");
+            return (Criteria) this;
+        }
+
+        public Criteria andRksjBetween(String value1, String value2) {
+            addCriterion("rksj between", value1, value2, "rksj");
+            return (Criteria) this;
+        }
+
+        public Criteria andRksjNotBetween(String value1, String value2) {
+            addCriterion("rksj not between", value1, value2, "rksj");
             return (Criteria) this;
         }
 
