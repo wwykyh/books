@@ -10,6 +10,7 @@
     <result column="scsj" property="scsj" jdbcType="VARCHAR" />
     <result column="xzsj" property="xzsj" jdbcType="VARCHAR" />
     <result column="tszl" property="tszl" jdbcType="VARCHAR" />
+    <result column="user_id" property="userId" jdbcType="INTEGER" />
   </resultMap>
   <sql id="Example_Where_Clause" >
     <where >
@@ -70,7 +71,7 @@
     </where>
   </sql>
   <sql id="Base_Column_List" >
-    e_book_id, e_book_xm, type_id, wjdz, ms, scsj, xzsj, tszl
+    e_book_id, e_book_xm, type_id, wjdz, ms, scsj, xzsj, tszl, user_id
   </sql>
   <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.dragon.book.model.TEBookExample" >
     select
@@ -87,7 +88,7 @@
     </if>
   </select>
   <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
-    select
+    select 
     <include refid="Base_Column_List" />
     from t_e_book
     where e_book_id = #{eBookId,jdbcType=VARCHAR}
@@ -103,12 +104,12 @@
     </if>
   </delete>
   <insert id="insert" parameterType="com.dragon.book.model.TEBook" >
-    insert into t_e_book (e_book_id, e_book_xm, type_id,
-      wjdz, ms, scsj, xzsj,
-      tszl)
-    values (#{eBookId,jdbcType=VARCHAR}, #{eBookXm,jdbcType=VARCHAR}, #{typeId,jdbcType=INTEGER},
-      #{wjdz,jdbcType=VARCHAR}, #{ms,jdbcType=VARCHAR}, #{scsj,jdbcType=VARCHAR}, #{xzsj,jdbcType=VARCHAR},
-      #{tszl,jdbcType=VARCHAR})
+    insert into t_e_book (e_book_id, e_book_xm, type_id, 
+      wjdz, ms, scsj, xzsj, 
+      tszl, user_id)
+    values (#{eBookId,jdbcType=VARCHAR}, #{eBookXm,jdbcType=VARCHAR}, #{typeId,jdbcType=INTEGER}, 
+      #{wjdz,jdbcType=VARCHAR}, #{ms,jdbcType=VARCHAR}, #{scsj,jdbcType=VARCHAR}, #{xzsj,jdbcType=VARCHAR}, 
+      #{tszl,jdbcType=VARCHAR}, #{userId,jdbcType=INTEGER})
   </insert>
   <insert id="insertSelective" parameterType="com.dragon.book.model.TEBook" >
     insert into t_e_book
@@ -137,6 +138,9 @@
       <if test="tszl != null" >
         tszl,
       </if>
+      <if test="userId != null" >
+        user_id,
+      </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides="," >
       <if test="eBookId != null" >
@@ -162,6 +166,9 @@
       </if>
       <if test="tszl != null" >
         #{tszl,jdbcType=VARCHAR},
+      </if>
+      <if test="userId != null" >
+        #{userId,jdbcType=INTEGER},
       </if>
     </trim>
   </insert>
@@ -198,6 +205,9 @@
       <if test="record.tszl != null" >
         tszl = #{record.tszl,jdbcType=VARCHAR},
       </if>
+      <if test="record.userId != null" >
+        user_id = #{record.userId,jdbcType=INTEGER},
+      </if>
     </set>
     <if test="_parameter != null" >
       <include refid="Update_By_Example_Where_Clause" />
@@ -206,13 +216,14 @@
   <update id="updateByExample" parameterType="map" >
     update t_e_book
     set e_book_id = #{record.eBookId,jdbcType=VARCHAR},
-    e_book_xm = #{record.eBookXm,jdbcType=VARCHAR},
-    type_id = #{record.typeId,jdbcType=INTEGER},
-    wjdz = #{record.wjdz,jdbcType=VARCHAR},
-    ms = #{record.ms,jdbcType=VARCHAR},
-    scsj = #{record.scsj,jdbcType=VARCHAR},
-    xzsj = #{record.xzsj,jdbcType=VARCHAR},
-    tszl = #{record.tszl,jdbcType=VARCHAR}
+      e_book_xm = #{record.eBookXm,jdbcType=VARCHAR},
+      type_id = #{record.typeId,jdbcType=INTEGER},
+      wjdz = #{record.wjdz,jdbcType=VARCHAR},
+      ms = #{record.ms,jdbcType=VARCHAR},
+      scsj = #{record.scsj,jdbcType=VARCHAR},
+      xzsj = #{record.xzsj,jdbcType=VARCHAR},
+      tszl = #{record.tszl,jdbcType=VARCHAR},
+      user_id = #{record.userId,jdbcType=INTEGER}
     <if test="_parameter != null" >
       <include refid="Update_By_Example_Where_Clause" />
     </if>
@@ -241,6 +252,9 @@
       <if test="tszl != null" >
         tszl = #{tszl,jdbcType=VARCHAR},
       </if>
+      <if test="userId != null" >
+        user_id = #{userId,jdbcType=INTEGER},
+      </if>
     </set>
     where e_book_id = #{eBookId,jdbcType=VARCHAR}
   </update>
@@ -252,7 +266,8 @@
       ms = #{ms,jdbcType=VARCHAR},
       scsj = #{scsj,jdbcType=VARCHAR},
       xzsj = #{xzsj,jdbcType=VARCHAR},
-      tszl = #{tszl,jdbcType=VARCHAR}
+      tszl = #{tszl,jdbcType=VARCHAR},
+      user_id = #{userId,jdbcType=INTEGER}
     where e_book_id = #{eBookId,jdbcType=VARCHAR}
   </update>
 </mapper>

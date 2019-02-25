@@ -55,4 +55,18 @@ public class UserSreviceImpl implements UserService {
 			return null;
 		}
 	}
+@Override
+public TSysUser getUserInfo(int userId) {
+	// TODO Auto-generated method stub
+	TSysUser user = userMapper.selectByPrimaryKey(userId);
+	System.out.println(user.toString());
+	return user;
+}
+	public TSysUserMapper getUserMapper() {
+		return userMapper;
+	}
+
+	public void setUserMapper(TSysUserMapper userMapper) {
+		this.userMapper = userMapper;
+	}
 }

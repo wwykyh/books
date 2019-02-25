@@ -151,9 +151,7 @@
 		</if>
 
 		<if test="dim !=null and dim !=''">
-			and b.sm like '%${dim}%' or
-			b.zz like
-			'%${dim}%'
+			and e.e_book_xm like '%${dim}%' 
 		</if>
 		ORDER BY e.e_book_xm limit #{page},#{pagesize}
 	</select>

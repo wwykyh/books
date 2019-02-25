@@ -17,6 +17,7 @@ public class TEBook {
 
     private String tszl;
 
+    private Integer userId;
 
     public String geteBookId() {
         return eBookId;
@@ -80,5 +81,13 @@ public class TEBook {
 
     public void setTszl(String tszl) {
         this.tszl = tszl == null ? null : tszl.trim();
+    }
+
+    public Integer getUserId() {
+        return userId;
+    }
+
+    public void setUserId(Integer userId) {
+        this.userId = userId;
     }
 }
