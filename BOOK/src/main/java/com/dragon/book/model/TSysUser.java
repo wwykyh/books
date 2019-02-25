@@ -1,9 +1,18 @@
 package com.dragon.book.model;
 
 public class TSysUser {
-    private Integer userId;
+    @Override
+	public String toString() {
+		return "TSysUser [userId=" + userId + ", xm=" + xm + ", bm=" + bm
+				+ ", pwd=" + pwd + ", lxfs=" + lxfs + ", email=" + email
+				+ ", dz=" + dz + ", isadmin=" + isadmin + ", ishmd=" + ishmd
+				+ ", isbn=" + isbn + ", kjtscs=" + kjtscs + ", cs=" + cs
+				+ ", grsm=" + grsm + "]";
+	}
 
-    private String sm;
+	private Integer userId;
+
+    private String xm;
 
     private String bm;
 
@@ -11,13 +20,15 @@ public class TSysUser {
 
     private String lxfs;
 
+    private String email;
+
     private String dz;
 
     private Integer isadmin;
 
-    private Integer hmd;
+    private Integer ishmd;
 
-    private String bookId;
+    private String isbn;
 
     private Integer kjtscs;
 
@@ -33,12 +44,12 @@ public class TSysUser {
         this.userId = userId;
     }
 
-    public String getSm() {
-        return sm;
+    public String getXm() {
+        return xm;
     }
 
-    public void setSm(String sm) {
-        this.sm = sm == null ? null : sm.trim();
+    public void setXm(String xm) {
+        this.xm = xm == null ? null : xm.trim();
     }
 
     public String getBm() {
@@ -65,6 +76,14 @@ public class TSysUser {
         this.lxfs = lxfs == null ? null : lxfs.trim();
     }
 
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email == null ? null : email.trim();
+    }
+
     public String getDz() {
         return dz;
     }
@@ -81,20 +100,20 @@ public class TSysUser {
         this.isadmin = isadmin;
     }
 
-    public Integer getHmd() {
-        return hmd;
+    public Integer getIshmd() {
+        return ishmd;
     }
 
-    public void setHmd(Integer hmd) {
-        this.hmd = hmd;
+    public void setIshmd(Integer ishmd) {
+        this.ishmd = ishmd;
     }
 
-    public String getBookId() {
-        return bookId;
+    public String getIsbn() {
+        return isbn;
     }
 
-    public void setBookId(String bookId) {
-        this.bookId = bookId == null ? null : bookId.trim();
+    public void setIsbn(String isbn) {
+        this.isbn = isbn == null ? null : isbn.trim();
     }
 
     public Integer getKjtscs() {

@@ -5,7 +5,7 @@ public class TUserBook {
 
     private Integer userId;
 
-    private String bookId;
+    private String isbn;
 
     public Integer getId() {
         return id;
@@ -23,11 +23,11 @@ public class TUserBook {
         this.userId = userId;
     }
 
-    public String getBookId() {
-        return bookId;
+    public String getIsbn() {
+        return isbn;
     }
 
-    public void setBookId(String bookId) {
-        this.bookId = bookId == null ? null : bookId.trim();
+    public void setIsbn(String isbn) {
+        this.isbn = isbn == null ? null : isbn.trim();
     }
 }

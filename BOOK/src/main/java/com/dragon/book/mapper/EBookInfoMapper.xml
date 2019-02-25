@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.dragon.book.mapper.EbookInfoMapper">
+    <resultMap id="BaseResultMap" type="com.dragon.book.model.TEBookVo">
+        <id column="e_book_id" property="eBookId" jdbcType="VARCHAR"/>
+        <result column="e_book_xm" property="eBookXm" jdbcType="VARCHAR"/>
+        <result column="type_id" property="typeId" jdbcType="INTEGER"/>
+        <result column="wjdz" property="wjdz" jdbcType="VARCHAR"/>
+        <result column="ms" property="ms" jdbcType="VARCHAR"/>
+        <result column="scsj" property="scsj" jdbcType="TIMESTAMP"/>
+        <result column="xzsj" property="xzsj" jdbcType="VARCHAR"/>
+        <result column="tszl" property="tszl" jdbcType="VARCHAR"/>
+        <result column="xm" property="xm" jdbcType="VARCHAR"/>
+        <result column="lxmc" property="lxmc" jdbcType="VARCHAR"/>
+
+        <!--<association property="tType" column="type_Id" select="com.dragon.book.mapper.TTypeMapper.selectByPrimaryKey"/>
+        <association property="tSysUser" column="user_Id"
+                     select="com.dragon.book.mapper.TSysUserMapper.selectByPrimaryKey"/>-->
+    </resultMap>
+
+    <select id="queryTEBookVo" resultMap="BaseResultMap" parameterType="map">
+        SELECT u.xm ,m.* FROM t_sys_user u,
+        (SELECT s.user_id ,e.* FROM t_user_book s,
+        (SELECT t.*,t2.lxmc lxmc FROM t_e_book t, t_type t2 WHERE t.type_id = t2.type_id) e
+        WHERE s.isbn = e.e_book_id) m WHERE u.user_id = m.user_id
+            <if test="eBookXm != null and eBookXm != '' ">
+                and m.e_book_xm like CONCAT('%',#{eBookXm,jdbcType=VARCHAR},'%')
+            </if>
+            <if test="typeId != null and typeId != '' ">
+                and m.type_id = #{typeId,jdbcType=INTEGER}
+            </if>
+            order by e_book_id
+            <if test="firstRow != null and rowNum != null">
+            limit #{firstRow,jdbcType=INTEGER},#{rowNum,jdbcType=INTEGER}
+            </if>
+    </select>
+
+    <select id="countTEBookVo" resultType="int" parameterType="map">
+        SELECT count(*) FROM t_sys_user u,
+        (SELECT s.user_id ,e.* FROM t_user_book s,
+        (SELECT t.*,t2.lxmc lxmc FROM t_e_book t, t_type t2 WHERE t.type_id = t2.type_id) e
+        WHERE s.isbn = e.e_book_id) m WHERE u.user_id = m.user_id
+        <if test="eBookXm != null and eBookXm != '' ">
+            and m.e_book_xm like CONCAT('%',#{eBookXm},'%')
+        </if>
+        <if test="typeId != null and typeId !='' ">
+            and m.type_id = #{typeId}
+        </if>
+    </select>
+</mapper>

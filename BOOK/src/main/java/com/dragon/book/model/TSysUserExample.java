@@ -164,73 +164,73 @@ public class TSysUserExample {
             return (Criteria) this;
         }
 
-        public Criteria andSmIsNull() {
-            addCriterion("sm is null");
+        public Criteria andXmIsNull() {
+            addCriterion("xm is null");
             return (Criteria) this;
         }
 
-        public Criteria andSmIsNotNull() {
-            addCriterion("sm is not null");
+        public Criteria andXmIsNotNull() {
+            addCriterion("xm is not null");
             return (Criteria) this;
         }
 
-        public Criteria andSmEqualTo(String value) {
-            addCriterion("sm =", value, "sm");
+        public Criteria andXmEqualTo(String value) {
+            addCriterion("xm =", value, "xm");
             return (Criteria) this;
         }
 
-        public Criteria andSmNotEqualTo(String value) {
-            addCriterion("sm <>", value, "sm");
+        public Criteria andXmNotEqualTo(String value) {
+            addCriterion("xm <>", value, "xm");
             return (Criteria) this;
         }
 
-        public Criteria andSmGreaterThan(String value) {
-            addCriterion("sm >", value, "sm");
+        public Criteria andXmGreaterThan(String value) {
+            addCriterion("xm >", value, "xm");
             return (Criteria) this;
         }
 
-        public Criteria andSmGreaterThanOrEqualTo(String value) {
-            addCriterion("sm >=", value, "sm");
+        public Criteria andXmGreaterThanOrEqualTo(String value) {
+            addCriterion("xm >=", value, "xm");
             return (Criteria) this;
         }
 
-        public Criteria andSmLessThan(String value) {
-            addCriterion("sm <", value, "sm");
+        public Criteria andXmLessThan(String value) {
+            addCriterion("xm <", value, "xm");
             return (Criteria) this;
         }
 
-        public Criteria andSmLessThanOrEqualTo(String value) {
-            addCriterion("sm <=", value, "sm");
+        public Criteria andXmLessThanOrEqualTo(String value) {
+            addCriterion("xm <=", value, "xm");
             return (Criteria) this;
         }
 
-        public Criteria andSmLike(String value) {
-            addCriterion("sm like", value, "sm");
+        public Criteria andXmLike(String value) {
+            addCriterion("xm like", value, "xm");
             return (Criteria) this;
         }
 
-        public Criteria andSmNotLike(String value) {
-            addCriterion("sm not like", value, "sm");
+        public Criteria andXmNotLike(String value) {
+            addCriterion("xm not like", value, "xm");
             return (Criteria) this;
         }
 
-        public Criteria andSmIn(List<String> values) {
-            addCriterion("sm in", values, "sm");
+        public Criteria andXmIn(List<String> values) {
+            addCriterion("xm in", values, "xm");
             return (Criteria) this;
         }
 
-        public Criteria andSmNotIn(List<String> values) {
-            addCriterion("sm not in", values, "sm");
+        public Criteria andXmNotIn(List<String> values) {
+            addCriterion("xm not in", values, "xm");
             return (Criteria) this;
         }
 
-        public Criteria andSmBetween(String value1, String value2) {
-            addCriterion("sm between", value1, value2, "sm");
+        public Criteria andXmBetween(String value1, String value2) {
+            addCriterion("xm between", value1, value2, "xm");
             return (Criteria) this;
         }
 
-        public Criteria andSmNotBetween(String value1, String value2) {
-            addCriterion("sm not between", value1, value2, "sm");
+        public Criteria andXmNotBetween(String value1, String value2) {
+            addCriterion("xm not between", value1, value2, "xm");
             return (Criteria) this;
         }
 
@@ -444,6 +444,76 @@ public class TSysUserExample {
             return (Criteria) this;
         }
 
+        public Criteria andEmailIsNull() {
+            addCriterion("email is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andEmailIsNotNull() {
+            addCriterion("email is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andEmailEqualTo(String value) {
+            addCriterion("email =", value, "email");
+            return (Criteria) this;
+        }
+
+        public Criteria andEmailNotEqualTo(String value) {
+            addCriterion("email <>", value, "email");
+            return (Criteria) this;
+        }
+
+        public Criteria andEmailGreaterThan(String value) {
+            addCriterion("email >", value, "email");
+            return (Criteria) this;
+        }
+
+        public Criteria andEmailGreaterThanOrEqualTo(String value) {
+            addCriterion("email >=", value, "email");
+            return (Criteria) this;
+        }
+
+        public Criteria andEmailLessThan(String value) {
+            addCriterion("email <", value, "email");
+            return (Criteria) this;
+        }
+
+        public Criteria andEmailLessThanOrEqualTo(String value) {
+            addCriterion("email <=", value, "email");
+            return (Criteria) this;
+        }
+
+        public Criteria andEmailLike(String value) {
+            addCriterion("email like", value, "email");
+            return (Criteria) this;
+        }
+
+        public Criteria andEmailNotLike(String value) {
+            addCriterion("email not like", value, "email");
+            return (Criteria) this;
+        }
+
+        public Criteria andEmailIn(List<String> values) {
+            addCriterion("email in", values, "email");
+            return (Criteria) this;
+        }
+
+        public Criteria andEmailNotIn(List<String> values) {
+            addCriterion("email not in", values, "email");
+            return (Criteria) this;
+        }
+
+        public Criteria andEmailBetween(String value1, String value2) {
+            addCriterion("email between", value1, value2, "email");
+            return (Criteria) this;
+        }
+
+        public Criteria andEmailNotBetween(String value1, String value2) {
+            addCriterion("email not between", value1, value2, "email");
+            return (Criteria) this;
+        }
+
         public Criteria andDzIsNull() {
             addCriterion("dz is null");
             return (Criteria) this;
@@ -574,133 +644,133 @@ public class TSysUserExample {
             return (Criteria) this;
         }
 
-        public Criteria andHmdIsNull() {
-            addCriterion("hmd is null");
+        public Criteria andIshmdIsNull() {
+            addCriterion("ishmd is null");
             return (Criteria) this;
         }
 
-        public Criteria andHmdIsNotNull() {
-            addCriterion("hmd is not null");
+        public Criteria andIshmdIsNotNull() {
+            addCriterion("ishmd is not null");
             return (Criteria) this;
         }
 
-        public Criteria andHmdEqualTo(Integer value) {
-            addCriterion("hmd =", value, "hmd");
+        public Criteria andIshmdEqualTo(Integer value) {
+            addCriterion("ishmd =", value, "ishmd");
             return (Criteria) this;
         }
 
-        public Criteria andHmdNotEqualTo(Integer value) {
-            addCriterion("hmd <>", value, "hmd");
+        public Criteria andIshmdNotEqualTo(Integer value) {
+            addCriterion("ishmd <>", value, "ishmd");
             return (Criteria) this;
         }
 
-        public Criteria andHmdGreaterThan(Integer value) {
-            addCriterion("hmd >", value, "hmd");
+        public Criteria andIshmdGreaterThan(Integer value) {
+            addCriterion("ishmd >", value, "ishmd");
             return (Criteria) this;
         }
 
-        public Criteria andHmdGreaterThanOrEqualTo(Integer value) {
-            addCriterion("hmd >=", value, "hmd");
+        public Criteria andIshmdGreaterThanOrEqualTo(Integer value) {
+            addCriterion("ishmd >=", value, "ishmd");
             return (Criteria) this;
         }
 
-        public Criteria andHmdLessThan(Integer value) {
-            addCriterion("hmd <", value, "hmd");
+        public Criteria andIshmdLessThan(Integer value) {
+            addCriterion("ishmd <", value, "ishmd");
             return (Criteria) this;
         }
 
-        public Criteria andHmdLessThanOrEqualTo(Integer value) {
-            addCriterion("hmd <=", value, "hmd");
+        public Criteria andIshmdLessThanOrEqualTo(Integer value) {
+            addCriterion("ishmd <=", value, "ishmd");
             return (Criteria) this;
         }
 
-        public Criteria andHmdIn(List<Integer> values) {
-            addCriterion("hmd in", values, "hmd");
+        public Criteria andIshmdIn(List<Integer> values) {
+            addCriterion("ishmd in", values, "ishmd");
             return (Criteria) this;
         }
 
-        public Criteria andHmdNotIn(List<Integer> values) {
-            addCriterion("hmd not in", values, "hmd");
+        public Criteria andIshmdNotIn(List<Integer> values) {
+            addCriterion("ishmd not in", values, "ishmd");
             return (Criteria) this;
         }
 
-        public Criteria andHmdBetween(Integer value1, Integer value2) {
-            addCriterion("hmd between", value1, value2, "hmd");
+        public Criteria andIshmdBetween(Integer value1, Integer value2) {
+            addCriterion("ishmd between", value1, value2, "ishmd");
             return (Criteria) this;
         }
 
-        public Criteria andHmdNotBetween(Integer value1, Integer value2) {
-            addCriterion("hmd not between", value1, value2, "hmd");
+        public Criteria andIshmdNotBetween(Integer value1, Integer value2) {
+            addCriterion("ishmd not between", value1, value2, "ishmd");
             return (Criteria) this;
         }
 
-        public Criteria andBookIdIsNull() {
-            addCriterion("book_id is null");
+        public Criteria andIsbnIsNull() {
+            addCriterion("isbn is null");
             return (Criteria) this;
         }
 
-        public Criteria andBookIdIsNotNull() {
-            addCriterion("book_id is not null");
+        public Criteria andIsbnIsNotNull() {
+            addCriterion("isbn is not null");
             return (Criteria) this;
         }
 
-        public Criteria andBookIdEqualTo(String value) {
-            addCriterion("book_id =", value, "bookId");
+        public Criteria andIsbnEqualTo(String value) {
+            addCriterion("isbn =", value, "isbn");
             return (Criteria) this;
         }
 
-        public Criteria andBookIdNotEqualTo(String value) {
-            addCriterion("book_id <>", value, "bookId");
+        public Criteria andIsbnNotEqualTo(String value) {
+            addCriterion("isbn <>", value, "isbn");
             return (Criteria) this;
         }
 
-        public Criteria andBookIdGreaterThan(String value) {
-            addCriterion("book_id >", value, "bookId");
+        public Criteria andIsbnGreaterThan(String value) {
+            addCriterion("isbn >", value, "isbn");
             return (Criteria) this;
         }
 
-        public Criteria andBookIdGreaterThanOrEqualTo(String value) {
-            addCriterion("book_id >=", value, "bookId");
+        public Criteria andIsbnGreaterThanOrEqualTo(String value) {
+            addCriterion("isbn >=", value, "isbn");
             return (Criteria) this;
         }
 
-        public Criteria andBookIdLessThan(String value) {
-            addCriterion("book_id <", value, "bookId");
+        public Criteria andIsbnLessThan(String value) {
+            addCriterion("isbn <", value, "isbn");
             return (Criteria) this;
         }
 
-        public Criteria andBookIdLessThanOrEqualTo(String value) {
-            addCriterion("book_id <=", value, "bookId");
+        public Criteria andIsbnLessThanOrEqualTo(String value) {
+            addCriterion("isbn <=", value, "isbn");
             return (Criteria) this;
         }
 
-        public Criteria andBookIdLike(String value) {
-            addCriterion("book_id like", value, "bookId");
+        public Criteria andIsbnLike(String value) {
+            addCriterion("isbn like", value, "isbn");
             return (Criteria) this;
         }
 
-        public Criteria andBookIdNotLike(String value) {
-            addCriterion("book_id not like", value, "bookId");
+        public Criteria andIsbnNotLike(String value) {
+            addCriterion("isbn not like", value, "isbn");
             return (Criteria) this;
         }
 
-        public Criteria andBookIdIn(List<String> values) {
-            addCriterion("book_id in", values, "bookId");
+        public Criteria andIsbnIn(List<String> values) {
+            addCriterion("isbn in", values, "isbn");
             return (Criteria) this;
         }
 
-        public Criteria andBookIdNotIn(List<String> values) {
-            addCriterion("book_id not in", values, "bookId");
+        public Criteria andIsbnNotIn(List<String> values) {
+            addCriterion("isbn not in", values, "isbn");
             return (Criteria) this;
         }
 
-        public Criteria andBookIdBetween(String value1, String value2) {
-            addCriterion("book_id between", value1, value2, "bookId");
+        public Criteria andIsbnBetween(String value1, String value2) {
+            addCriterion("isbn between", value1, value2, "isbn");
             return (Criteria) this;
         }
 
-        public Criteria andBookIdNotBetween(String value1, String value2) {
-            addCriterion("book_id not between", value1, value2, "bookId");
+        public Criteria andIsbnNotBetween(String value1, String value2) {
+            addCriterion("isbn not between", value1, value2, "isbn");
             return (Criteria) this;
         }
 

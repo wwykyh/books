@@ -1,8 +1,6 @@
 package com.dragon.book.model;
 
 import java.util.ArrayList;
-import java.util.Date;
-import java.util.Iterator;
 import java.util.List;
 
 public class TBorrowExample {
@@ -106,32 +104,6 @@ public class TBorrowExample {
             criteria.add(new Criterion(condition, value1, value2));
         }
 
-        protected void addCriterionForJDBCDate(String condition, Date value, String property) {
-            if (value == null) {
-                throw new RuntimeException("Value for " + property + " cannot be null");
-            }
-            addCriterion(condition, new java.sql.Date(value.getTime()), property);
-        }
-
-        protected void addCriterionForJDBCDate(String condition, List<Date> values, String property) {
-            if (values == null || values.size() == 0) {
-                throw new RuntimeException("Value list for " + property + " cannot be null or empty");
-            }
-            List<java.sql.Date> dateList = new ArrayList<java.sql.Date>();
-            Iterator<Date> iter = values.iterator();
-            while (iter.hasNext()) {
-                dateList.add(new java.sql.Date(iter.next().getTime()));
-            }
-            addCriterion(condition, dateList, property);
-        }
-
-        protected void addCriterionForJDBCDate(String condition, Date value1, Date value2, String property) {
-            if (value1 == null || value2 == null) {
-                throw new RuntimeException("Between values for " + property + " cannot be null");
-            }
-            addCriterion(condition, new java.sql.Date(value1.getTime()), new java.sql.Date(value2.getTime()), property);
-        }
-
         public Criteria andIdIsNull() {
             addCriterion("id is null");
             return (Criteria) this;
@@ -192,73 +164,73 @@ public class TBorrowExample {
             return (Criteria) this;
         }
 
-        public Criteria andBookIdIsNull() {
-            addCriterion("book_id is null");
+        public Criteria andIsbnIsNull() {
+            addCriterion("isbn is null");
             return (Criteria) this;
         }
 
-        public Criteria andBookIdIsNotNull() {
-            addCriterion("book_id is not null");
+        public Criteria andIsbnIsNotNull() {
+            addCriterion("isbn is not null");
             return (Criteria) this;
         }
 
-        public Criteria andBookIdEqualTo(String value) {
-            addCriterion("book_id =", value, "bookId");
+        public Criteria andIsbnEqualTo(String value) {
+            addCriterion("isbn =", value, "isbn");
             return (Criteria) this;
         }
 
-        public Criteria andBookIdNotEqualTo(String value) {
-            addCriterion("book_id <>", value, "bookId");
+        public Criteria andIsbnNotEqualTo(String value) {
+            addCriterion("isbn <>", value, "isbn");
             return (Criteria) this;
         }
 
-        public Criteria andBookIdGreaterThan(String value) {
-            addCriterion("book_id >", value, "bookId");
+        public Criteria andIsbnGreaterThan(String value) {
+            addCriterion("isbn >", value, "isbn");
             return (Criteria) this;
         }
 
-        public Criteria andBookIdGreaterThanOrEqualTo(String value) {
-            addCriterion("book_id >=", value, "bookId");
+        public Criteria andIsbnGreaterThanOrEqualTo(String value) {
+            addCriterion("isbn >=", value, "isbn");
             return (Criteria) this;
         }
 
-        public Criteria andBookIdLessThan(String value) {
-            addCriterion("book_id <", value, "bookId");
+        public Criteria andIsbnLessThan(String value) {
+            addCriterion("isbn <", value, "isbn");
             return (Criteria) this;
         }
 
-        public Criteria andBookIdLessThanOrEqualTo(String value) {
-            addCriterion("book_id <=", value, "bookId");
+        public Criteria andIsbnLessThanOrEqualTo(String value) {
+            addCriterion("isbn <=", value, "isbn");
             return (Criteria) this;
         }
 
-        public Criteria andBookIdLike(String value) {
-            addCriterion("book_id like", value, "bookId");
+        public Criteria andIsbnLike(String value) {
+            addCriterion("isbn like", value, "isbn");
             return (Criteria) this;
         }
 
-        public Criteria andBookIdNotLike(String value) {
-            addCriterion("book_id not like", value, "bookId");
+        public Criteria andIsbnNotLike(String value) {
+            addCriterion("isbn not like", value, "isbn");
             return (Criteria) this;
         }
 
-        public Criteria andBookIdIn(List<String> values) {
-            addCriterion("book_id in", values, "bookId");
+        public Criteria andIsbnIn(List<String> values) {
+            addCriterion("isbn in", values, "isbn");
             return (Criteria) this;
         }
 
-        public Criteria andBookIdNotIn(List<String> values) {
-            addCriterion("book_id not in", values, "bookId");
+        public Criteria andIsbnNotIn(List<String> values) {
+            addCriterion("isbn not in", values, "isbn");
             return (Criteria) this;
         }
 
-        public Criteria andBookIdBetween(String value1, String value2) {
-            addCriterion("book_id between", value1, value2, "bookId");
+        public Criteria andIsbnBetween(String value1, String value2) {
+            addCriterion("isbn between", value1, value2, "isbn");
             return (Criteria) this;
         }
 
-        public Criteria andBookIdNotBetween(String value1, String value2) {
-            addCriterion("book_id not between", value1, value2, "bookId");
+        public Criteria andIsbnNotBetween(String value1, String value2) {
+            addCriterion("isbn not between", value1, value2, "isbn");
             return (Criteria) this;
         }
 
@@ -342,62 +314,52 @@ public class TBorrowExample {
             return (Criteria) this;
         }
 
-        public Criteria andUserIdEqualTo(String value) {
+        public Criteria andUserIdEqualTo(Integer value) {
             addCriterion("user_id =", value, "userId");
             return (Criteria) this;
         }
 
-        public Criteria andUserIdNotEqualTo(String value) {
+        public Criteria andUserIdNotEqualTo(Integer value) {
             addCriterion("user_id <>", value, "userId");
             return (Criteria) this;
         }
 
-        public Criteria andUserIdGreaterThan(String value) {
+        public Criteria andUserIdGreaterThan(Integer value) {
             addCriterion("user_id >", value, "userId");
             return (Criteria) this;
         }
 
-        public Criteria andUserIdGreaterThanOrEqualTo(String value) {
+        public Criteria andUserIdGreaterThanOrEqualTo(Integer value) {
             addCriterion("user_id >=", value, "userId");
             return (Criteria) this;
         }
 
-        public Criteria andUserIdLessThan(String value) {
+        public Criteria andUserIdLessThan(Integer value) {
             addCriterion("user_id <", value, "userId");
             return (Criteria) this;
         }
 
-        public Criteria andUserIdLessThanOrEqualTo(String value) {
+        public Criteria andUserIdLessThanOrEqualTo(Integer value) {
             addCriterion("user_id <=", value, "userId");
             return (Criteria) this;
         }
 
-        public Criteria andUserIdLike(String value) {
-            addCriterion("user_id like", value, "userId");
-            return (Criteria) this;
-        }
-
-        public Criteria andUserIdNotLike(String value) {
-            addCriterion("user_id not like", value, "userId");
-            return (Criteria) this;
-        }
-
-        public Criteria andUserIdIn(List<String> values) {
+        public Criteria andUserIdIn(List<Integer> values) {
             addCriterion("user_id in", values, "userId");
             return (Criteria) this;
         }
 
-        public Criteria andUserIdNotIn(List<String> values) {
+        public Criteria andUserIdNotIn(List<Integer> values) {
             addCriterion("user_id not in", values, "userId");
             return (Criteria) this;
         }
 
-        public Criteria andUserIdBetween(String value1, String value2) {
+        public Criteria andUserIdBetween(Integer value1, Integer value2) {
             addCriterion("user_id between", value1, value2, "userId");
             return (Criteria) this;
         }
 
-        public Criteria andUserIdNotBetween(String value1, String value2) {
+        public Criteria andUserIdNotBetween(Integer value1, Integer value2) {
             addCriterion("user_id not between", value1, value2, "userId");
             return (Criteria) this;
         }
@@ -482,53 +444,63 @@ public class TBorrowExample {
             return (Criteria) this;
         }
 
-        public Criteria andJyrqEqualTo(Date value) {
-            addCriterionForJDBCDate("jyrq =", value, "jyrq");
+        public Criteria andJyrqEqualTo(String value) {
+            addCriterion("jyrq =", value, "jyrq");
             return (Criteria) this;
         }
 
-        public Criteria andJyrqNotEqualTo(Date value) {
-            addCriterionForJDBCDate("jyrq <>", value, "jyrq");
+        public Criteria andJyrqNotEqualTo(String value) {
+            addCriterion("jyrq <>", value, "jyrq");
             return (Criteria) this;
         }
 
-        public Criteria andJyrqGreaterThan(Date value) {
-            addCriterionForJDBCDate("jyrq >", value, "jyrq");
+        public Criteria andJyrqGreaterThan(String value) {
+            addCriterion("jyrq >", value, "jyrq");
             return (Criteria) this;
         }
 
-        public Criteria andJyrqGreaterThanOrEqualTo(Date value) {
-            addCriterionForJDBCDate("jyrq >=", value, "jyrq");
+        public Criteria andJyrqGreaterThanOrEqualTo(String value) {
+            addCriterion("jyrq >=", value, "jyrq");
             return (Criteria) this;
         }
 
-        public Criteria andJyrqLessThan(Date value) {
-            addCriterionForJDBCDate("jyrq <", value, "jyrq");
+        public Criteria andJyrqLessThan(String value) {
+            addCriterion("jyrq <", value, "jyrq");
             return (Criteria) this;
         }
 
-        public Criteria andJyrqLessThanOrEqualTo(Date value) {
-            addCriterionForJDBCDate("jyrq <=", value, "jyrq");
+        public Criteria andJyrqLessThanOrEqualTo(String value) {
+            addCriterion("jyrq <=", value, "jyrq");
             return (Criteria) this;
         }
 
-        public Criteria andJyrqIn(List<Date> values) {
-            addCriterionForJDBCDate("jyrq in", values, "jyrq");
+        public Criteria andJyrqLike(String value) {
+            addCriterion("jyrq like", value, "jyrq");
             return (Criteria) this;
         }
 
-        public Criteria andJyrqNotIn(List<Date> values) {
-            addCriterionForJDBCDate("jyrq not in", values, "jyrq");
+        public Criteria andJyrqNotLike(String value) {
+            addCriterion("jyrq not like", value, "jyrq");
             return (Criteria) this;
         }
 
-        public Criteria andJyrqBetween(Date value1, Date value2) {
-            addCriterionForJDBCDate("jyrq between", value1, value2, "jyrq");
+        public Criteria andJyrqIn(List<String> values) {
+            addCriterion("jyrq in", values, "jyrq");
             return (Criteria) this;
         }
 
-        public Criteria andJyrqNotBetween(Date value1, Date value2) {
-            addCriterionForJDBCDate("jyrq not between", value1, value2, "jyrq");
+        public Criteria andJyrqNotIn(List<String> values) {
+            addCriterion("jyrq not in", values, "jyrq");
+            return (Criteria) this;
+        }
+
+        public Criteria andJyrqBetween(String value1, String value2) {
+            addCriterion("jyrq between", value1, value2, "jyrq");
+            return (Criteria) this;
+        }
+
+        public Criteria andJyrqNotBetween(String value1, String value2) {
+            addCriterion("jyrq not between", value1, value2, "jyrq");
             return (Criteria) this;
         }
 
@@ -542,53 +514,63 @@ public class TBorrowExample {
             return (Criteria) this;
         }
 
-        public Criteria andJhghrqEqualTo(Date value) {
-            addCriterionForJDBCDate("jhghrq =", value, "jhghrq");
+        public Criteria andJhghrqEqualTo(String value) {
+            addCriterion("jhghrq =", value, "jhghrq");
             return (Criteria) this;
         }
 
-        public Criteria andJhghrqNotEqualTo(Date value) {
-            addCriterionForJDBCDate("jhghrq <>", value, "jhghrq");
+        public Criteria andJhghrqNotEqualTo(String value) {
+            addCriterion("jhghrq <>", value, "jhghrq");
             return (Criteria) this;
         }
 
-        public Criteria andJhghrqGreaterThan(Date value) {
-            addCriterionForJDBCDate("jhghrq >", value, "jhghrq");
+        public Criteria andJhghrqGreaterThan(String value) {
+            addCriterion("jhghrq >", value, "jhghrq");
             return (Criteria) this;
         }
 
-        public Criteria andJhghrqGreaterThanOrEqualTo(Date value) {
-            addCriterionForJDBCDate("jhghrq >=", value, "jhghrq");
+        public Criteria andJhghrqGreaterThanOrEqualTo(String value) {
+            addCriterion("jhghrq >=", value, "jhghrq");
             return (Criteria) this;
         }
 
-        public Criteria andJhghrqLessThan(Date value) {
-            addCriterionForJDBCDate("jhghrq <", value, "jhghrq");
+        public Criteria andJhghrqLessThan(String value) {
+            addCriterion("jhghrq <", value, "jhghrq");
             return (Criteria) this;
         }
 
-        public Criteria andJhghrqLessThanOrEqualTo(Date value) {
-            addCriterionForJDBCDate("jhghrq <=", value, "jhghrq");
+        public Criteria andJhghrqLessThanOrEqualTo(String value) {
+            addCriterion("jhghrq <=", value, "jhghrq");
             return (Criteria) this;
         }
 
-        public Criteria andJhghrqIn(List<Date> values) {
-            addCriterionForJDBCDate("jhghrq in", values, "jhghrq");
+        public Criteria andJhghrqLike(String value) {
+            addCriterion("jhghrq like", value, "jhghrq");
             return (Criteria) this;
         }
 
-        public Criteria andJhghrqNotIn(List<Date> values) {
-            addCriterionForJDBCDate("jhghrq not in", values, "jhghrq");
+        public Criteria andJhghrqNotLike(String value) {
+            addCriterion("jhghrq not like", value, "jhghrq");
             return (Criteria) this;
         }
 
-        public Criteria andJhghrqBetween(Date value1, Date value2) {
-            addCriterionForJDBCDate("jhghrq between", value1, value2, "jhghrq");
+        public Criteria andJhghrqIn(List<String> values) {
+            addCriterion("jhghrq in", values, "jhghrq");
             return (Criteria) this;
         }
 
-        public Criteria andJhghrqNotBetween(Date value1, Date value2) {
-            addCriterionForJDBCDate("jhghrq not between", value1, value2, "jhghrq");
+        public Criteria andJhghrqNotIn(List<String> values) {
+            addCriterion("jhghrq not in", values, "jhghrq");
+            return (Criteria) this;
+        }
+
+        public Criteria andJhghrqBetween(String value1, String value2) {
+            addCriterion("jhghrq between", value1, value2, "jhghrq");
+            return (Criteria) this;
+        }
+
+        public Criteria andJhghrqNotBetween(String value1, String value2) {
+            addCriterion("jhghrq not between", value1, value2, "jhghrq");
             return (Criteria) this;
         }
 
@@ -602,53 +584,63 @@ public class TBorrowExample {
             return (Criteria) this;
         }
 
-        public Criteria andXjrqEqualTo(Date value) {
-            addCriterionForJDBCDate("xjrq =", value, "xjrq");
+        public Criteria andXjrqEqualTo(String value) {
+            addCriterion("xjrq =", value, "xjrq");
             return (Criteria) this;
         }
 
-        public Criteria andXjrqNotEqualTo(Date value) {
-            addCriterionForJDBCDate("xjrq <>", value, "xjrq");
+        public Criteria andXjrqNotEqualTo(String value) {
+            addCriterion("xjrq <>", value, "xjrq");
             return (Criteria) this;
         }
 
-        public Criteria andXjrqGreaterThan(Date value) {
-            addCriterionForJDBCDate("xjrq >", value, "xjrq");
+        public Criteria andXjrqGreaterThan(String value) {
+            addCriterion("xjrq >", value, "xjrq");
             return (Criteria) this;
         }
 
-        public Criteria andXjrqGreaterThanOrEqualTo(Date value) {
-            addCriterionForJDBCDate("xjrq >=", value, "xjrq");
+        public Criteria andXjrqGreaterThanOrEqualTo(String value) {
+            addCriterion("xjrq >=", value, "xjrq");
             return (Criteria) this;
         }
 
-        public Criteria andXjrqLessThan(Date value) {
-            addCriterionForJDBCDate("xjrq <", value, "xjrq");
+        public Criteria andXjrqLessThan(String value) {
+            addCriterion("xjrq <", value, "xjrq");
             return (Criteria) this;
         }
 
-        public Criteria andXjrqLessThanOrEqualTo(Date value) {
-            addCriterionForJDBCDate("xjrq <=", value, "xjrq");
+        public Criteria andXjrqLessThanOrEqualTo(String value) {
+            addCriterion("xjrq <=", value, "xjrq");
             return (Criteria) this;
         }
 
-        public Criteria andXjrqIn(List<Date> values) {
-            addCriterionForJDBCDate("xjrq in", values, "xjrq");
+        public Criteria andXjrqLike(String value) {
+            addCriterion("xjrq like", value, "xjrq");
             return (Criteria) this;
         }
 
-        public Criteria andXjrqNotIn(List<Date> values) {
-            addCriterionForJDBCDate("xjrq not in", values, "xjrq");
+        public Criteria andXjrqNotLike(String value) {
+            addCriterion("xjrq not like", value, "xjrq");
             return (Criteria) this;
         }
 
-        public Criteria andXjrqBetween(Date value1, Date value2) {
-            addCriterionForJDBCDate("xjrq between", value1, value2, "xjrq");
+        public Criteria andXjrqIn(List<String> values) {
+            addCriterion("xjrq in", values, "xjrq");
             return (Criteria) this;
         }
 
-        public Criteria andXjrqNotBetween(Date value1, Date value2) {
-            addCriterionForJDBCDate("xjrq not between", value1, value2, "xjrq");
+        public Criteria andXjrqNotIn(List<String> values) {
+            addCriterion("xjrq not in", values, "xjrq");
+            return (Criteria) this;
+        }
+
+        public Criteria andXjrqBetween(String value1, String value2) {
+            addCriterion("xjrq between", value1, value2, "xjrq");
+            return (Criteria) this;
+        }
+
+        public Criteria andXjrqNotBetween(String value1, String value2) {
+            addCriterion("xjrq not between", value1, value2, "xjrq");
             return (Criteria) this;
         }
 
@@ -662,53 +654,63 @@ public class TBorrowExample {
             return (Criteria) this;
         }
 
-        public Criteria andGhrqEqualTo(Date value) {
-            addCriterionForJDBCDate("ghrq =", value, "ghrq");
+        public Criteria andGhrqEqualTo(String value) {
+            addCriterion("ghrq =", value, "ghrq");
             return (Criteria) this;
         }
 
-        public Criteria andGhrqNotEqualTo(Date value) {
-            addCriterionForJDBCDate("ghrq <>", value, "ghrq");
+        public Criteria andGhrqNotEqualTo(String value) {
+            addCriterion("ghrq <>", value, "ghrq");
             return (Criteria) this;
         }
 
-        public Criteria andGhrqGreaterThan(Date value) {
-            addCriterionForJDBCDate("ghrq >", value, "ghrq");
+        public Criteria andGhrqGreaterThan(String value) {
+            addCriterion("ghrq >", value, "ghrq");
             return (Criteria) this;
         }
 
-        public Criteria andGhrqGreaterThanOrEqualTo(Date value) {
-            addCriterionForJDBCDate("ghrq >=", value, "ghrq");
+        public Criteria andGhrqGreaterThanOrEqualTo(String value) {
+            addCriterion("ghrq >=", value, "ghrq");
             return (Criteria) this;
         }
 
-        public Criteria andGhrqLessThan(Date value) {
-            addCriterionForJDBCDate("ghrq <", value, "ghrq");
+        public Criteria andGhrqLessThan(String value) {
+            addCriterion("ghrq <", value, "ghrq");
             return (Criteria) this;
         }
 
-        public Criteria andGhrqLessThanOrEqualTo(Date value) {
-            addCriterionForJDBCDate("ghrq <=", value, "ghrq");
+        public Criteria andGhrqLessThanOrEqualTo(String value) {
+            addCriterion("ghrq <=", value, "ghrq");
             return (Criteria) this;
         }
 
-        public Criteria andGhrqIn(List<Date> values) {
-            addCriterionForJDBCDate("ghrq in", values, "ghrq");
+        public Criteria andGhrqLike(String value) {
+            addCriterion("ghrq like", value, "ghrq");
             return (Criteria) this;
         }
 
-        public Criteria andGhrqNotIn(List<Date> values) {
-            addCriterionForJDBCDate("ghrq not in", values, "ghrq");
+        public Criteria andGhrqNotLike(String value) {
+            addCriterion("ghrq not like", value, "ghrq");
             return (Criteria) this;
         }
 
-        public Criteria andGhrqBetween(Date value1, Date value2) {
-            addCriterionForJDBCDate("ghrq between", value1, value2, "ghrq");
+        public Criteria andGhrqIn(List<String> values) {
+            addCriterion("ghrq in", values, "ghrq");
             return (Criteria) this;
         }
 
-        public Criteria andGhrqNotBetween(Date value1, Date value2) {
-            addCriterionForJDBCDate("ghrq not between", value1, value2, "ghrq");
+        public Criteria andGhrqNotIn(List<String> values) {
+            addCriterion("ghrq not in", values, "ghrq");
+            return (Criteria) this;
+        }
+
+        public Criteria andGhrqBetween(String value1, String value2) {
+            addCriterion("ghrq between", value1, value2, "ghrq");
+            return (Criteria) this;
+        }
+
+        public Criteria andGhrqNotBetween(String value1, String value2) {
+            addCriterion("ghrq not between", value1, value2, "ghrq");
             return (Criteria) this;
         }
 
