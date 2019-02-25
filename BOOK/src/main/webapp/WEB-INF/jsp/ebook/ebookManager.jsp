@@ -11,7 +11,6 @@
 <html>
 <head>
     <title>电子书浏览</title>
-    <script type="text/javascript" src="../js/ebook/ebook.js"></script>
 </head>
 <body>
 <div class="panel">
@@ -56,21 +55,8 @@
 </div>
 </body>
 <script type="text/javascript">
-    function downLoadFile(node) {
-        // 获取到书名  (链接的父节点的父节点是tr)
-        var tr1 = node.parentNode.parentNode;
-        /*alert(tr1.rowIndex);
-        alert(tr1.cells[1].innerText);
-        alert(tr1.cells[1]);*/
-        var bookName = tr1.cells[1].innerText;
-        alert(bookName);
-        // 获取当前行隐藏输入框中的值 服务器端的路径
-        var ftpPath = $(node).parents("tr").find(".ftp").val();
-        window.location.href = '${pageContext.request.contextPath}/eBookFile/bookDownload?bookName=' + bookName + "&ftpPath=" + ftpPath;
-    }
-
-    var eBookXm;
-    var typeId;
+    var eBookXm = "";
+    var typeId = "";
     function submit() {
         eBookXm = $("#eBookXm").val();
         typeId = $("#typeId").val();
@@ -127,7 +113,7 @@
                 dataAction: 'server',
                 pageSize: 2,
                 width: '100%',
-                parms: [{name: "eBookXm", value: eBookXm},{name:"typeId",value:typeId}],
+                parms: [{name: "search_eBookXm", value: eBookXm},{name:"search_typeId",value:typeId}],
                 checkbox: false,
                 rownumbers: true,
                 fixedCellHeight: false,

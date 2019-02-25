@@ -14,15 +14,14 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.web.multipart.MultipartFile;
 
+import javax.servlet.ServletOutputStream;
 import java.io.*;
 import java.net.URLEncoder;
 import java.nio.charset.StandardCharsets;
 import java.text.SimpleDateFormat;
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 @Service
 @Transactional(propagation = Propagation.NOT_SUPPORTED)
@@ -156,5 +155,57 @@ public class EbookFileServiceImpl implements EbookFileService {
     @Override
     public Integer getCount(Map filter) {
         return ebookInfoMapper.countTEBookVo(filter);
+    }
+
+    // 封装的单个或多个文件上传代码
+    @Override
+    public boolean ebookFileSingleOrMulUpload(MultipartFile[] ebookFile, TEBook teBook) {
+        boolean result = false, flag = false;
+        TType tType = getTTypeByPk(teBook.getTypeId());
+        String typeName = tType.getLxmc();
+//        String[] xmsArr = teBook.geteBookXm().split("；"); // 分割 书名
+        String[] msArr = teBook.getMs().split("；");  // 分割 描述
+        try {
+            for (int i = 0; i < ebookFile.length; i++) {
+                String ebookId = UUID.randomUUID().toString().replace("-", "");
+                String fileName = ebookFile[i].getOriginalFilename();  // 上传到服务器的文件名
+
+                InputStream inputStream = ebookFile[i].getInputStream();
+                FTPClient ftp = getFtpConfig();
+                result = uploadEbookFile(ftp, inputStream, "/" + typeName + "/", fileName);  // 上传到服务器
+
+                if (result) {
+                    teBook.seteBookId(ebookId);
+//                    teBook.seteBookXm(xmsArr[i]);   // 存在数据库中的文件地址
+                    teBook.seteBookXm(fileName);      // 存在数据库中的文件地址
+                    teBook.setMs(msArr[i]);
+                    flag = saveEbookFile(teBook);
+                }
+            }
+        } catch (Exception e) {
+            System.out.println("上传失败");
+            e.printStackTrace();
+        }
+        if (result && flag) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    // 封装的文件下载代码
+    @Override
+    public boolean serviceDownload(InputStream inputStream, OutputStream outputStream) {
+        boolean result;
+        try {
+            BufferedInputStream bufferedInputStream = new BufferedInputStream(inputStream);
+            BufferedOutputStream bufferedOutputStream = new BufferedOutputStream(outputStream);
+            // 将输入流中的数据写入到输出流中
+            result = FtpUtils.fileReadWrite(bufferedInputStream, bufferedOutputStream);
+        } catch (Exception e) {
+            e.printStackTrace();
+            return false;
+        }
+        return result;
     }
 }

@@ -18,10 +18,10 @@ public class FtpUtils {
      * @param ftpPort     端口号
      * @param ftpUserName 用户名
      * @param ftpPassword 密码
-     * @return  客户端的对象
+     * @return 客户端的对象
      */
     public static FTPClient getLocalFtpConnection(String ftpHost, String ftpUserName,
-                                                  String ftpPassword, int ftpPort){
+                                                  String ftpPassword, int ftpPort) {
         try {
             ftpClient = new FTPClient();
             ftpClient.connect(ftpHost, ftpPort);// 连接FTP服务器
@@ -48,33 +48,56 @@ public class FtpUtils {
      * @param ftpPath   FTP服务器中文件所在路径 格式： ftptest/aa
      */
     public static boolean upload(FTPClient ftpClient, InputStream input, String ftpPath, String fileName) {
-        boolean success = false;
+        boolean result = false;
         try {
             FTPClientConfig conf = new FTPClientConfig(FTPClientConfig.SYST_NT);
             conf.setServerLanguageCode("zh");
             ftpClient.setControlEncoding("UTF-8"); // 中文支持
             ftpClient.setFileType(FTPClient.BINARY_FILE_TYPE);
-            ftpClient.enterLocalPassiveMode();
+            ftpClient.enterLocalPassiveMode();   // 每次数据连接之前，ftp client告诉ftp server开通一个端口来传输数据
             ftpClient.changeWorkingDirectory(new String(ftpPath.getBytes("GBK"), StandardCharsets.ISO_8859_1));
 
             System.out.println(fileName);
-            success = ftpClient.storeFile(new String(fileName.getBytes("GBK"), StandardCharsets.ISO_8859_1), input);
-            System.out.println(fileName + " 上传状态:" + success);
-            input.close();
+            OutputStream out = ftpClient.storeFileStream(new String(fileName.getBytes("GBK"), StandardCharsets.ISO_8859_1));
+            result = fileReadWrite(input, out);
+
+            System.out.println(fileName + " 上传状态:" + result);
         } catch (IOException e) {
             e.printStackTrace();
+            result = false;
         } finally {
-            closeConnection();
-            return success;
+            closeConnection(ftpClient);
+            return result;
         }
     }
 
     /**
-     *
+     * 上传下载的文件读写方法
+     * @param input 输入流
+     * @param out   输出流
+     * @return     读写结果
+     */
+    public static boolean fileReadWrite(InputStream input, OutputStream out) {
+        try {
+            byte[] byteArray = new byte[4096];
+            int read;
+            while ((read = input.read(byteArray)) != -1) {
+                out.write(byteArray, 0, read);
+            }
+            out.close();
+            input.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+            return false;
+        }
+        return true;
+    }
+
+    /**
      * @param ftpClient ftp对象
      * @param fileName  要下载的文件名
-     * @param ftpPath   文件所在路径
-     * @return   返回一个inputStream ，controller用读取输入流返回到界面
+     * @param ftpPath   文件所在路径 (即文件所在文件夹)
+     * @return 返回一个inputStream ，controller用读取输入流返回到界面
      */
     public static InputStream getFileStream(FTPClient ftpClient, String fileName, String ftpPath) {
         InputStream inputStream = null;
@@ -83,12 +106,12 @@ public class FtpUtils {
             ftpClient.setFileType(FTPClient.BINARY_FILE_TYPE);
             ftpClient.enterLocalPassiveMode();
             ftpClient.changeWorkingDirectory(new String(ftpPath.getBytes("GBK"), StandardCharsets.ISO_8859_1));
-            System.out.println("当前文件夹："+new String(ftpClient.printWorkingDirectory().getBytes(StandardCharsets.ISO_8859_1), "GBK"));
+            System.out.println("当前文件夹：" + new String(ftpClient.printWorkingDirectory().getBytes(StandardCharsets.ISO_8859_1), "GBK"));
             FTPFile[] ftpFiles = ftpClient.listFiles();
             for (FTPFile ftpFile : ftpFiles) {
                 if (ftpFile.getName().equals(fileName)) {
                     inputStream = ftpClient.retrieveFileStream(new String(fileName.getBytes("GBK"), StandardCharsets.ISO_8859_1));
-                    System.out.println("inputStream: "+inputStream);
+                    System.out.println("inputStream: " + inputStream);
                 }
             }
         } catch (FileNotFoundException e) {
@@ -101,6 +124,8 @@ public class FtpUtils {
             e.printStackTrace();
             System.out.println("文件读取错误。");
             e.printStackTrace();
+        }finally {
+            FtpUtils.closeConnection(ftpClient);
         }
         return inputStream;
     }
@@ -108,7 +133,7 @@ public class FtpUtils {
     /**
      * 关闭连接
      */
-    private static void closeConnection() {
+    public static void closeConnection(FTPClient ftpClient) {
         try {
             if (ftpClient != null) {
                 ftpClient.logout();
@@ -143,6 +168,7 @@ public class FtpUtils {
 
     /**
      * 删除
+     *
      * @param files 删除的文件对象
      */
     public static void deleteFile(File... files) {

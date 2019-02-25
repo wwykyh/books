@@ -23,10 +23,10 @@
         (SELECT s.user_id ,e.* FROM t_user_book s,
         (SELECT t.*,t2.lxmc lxmc FROM t_e_book t, t_type t2 WHERE t.type_id = t2.type_id) e
         WHERE s.isbn = e.e_book_id) m WHERE u.user_id = m.user_id
-            <if test="eBookXm!=null">
+            <if test="eBookXm != null and eBookXm != '' ">
                 and m.e_book_xm like CONCAT('%',#{eBookXm,jdbcType=VARCHAR},'%')
             </if>
-            <if test="typeId != null">
+            <if test="typeId != null and typeId != '' ">
                 and m.type_id = #{typeId,jdbcType=INTEGER}
             </if>
             order by e_book_id
@@ -40,10 +40,10 @@
         (SELECT s.user_id ,e.* FROM t_user_book s,
         (SELECT t.*,t2.lxmc lxmc FROM t_e_book t, t_type t2 WHERE t.type_id = t2.type_id) e
         WHERE s.isbn = e.e_book_id) m WHERE u.user_id = m.user_id
-        <if test="eBookXm!=null">
+        <if test="eBookXm != null and eBookXm != '' ">
             and m.e_book_xm like CONCAT('%',#{eBookXm},'%')
         </if>
-        <if test="typeId != null">
+        <if test="typeId != null and typeId !='' ">
             and m.type_id = #{typeId}
         </if>
     </select>

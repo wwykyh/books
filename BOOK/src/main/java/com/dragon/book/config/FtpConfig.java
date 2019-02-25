@@ -13,7 +13,7 @@ import java.util.Map;
 /**
  * ftp服务器类，用来初始化ftp的属性参数
  */
-@SpringBootApplication
+/*@SpringBootApplication*/
 @RestController
 public class FtpConfig {
 
@@ -99,8 +99,8 @@ public class FtpConfig {
         // map.put("title", new String(title.getBytes("ISO-8859-1"), "UTF-8"));
         return map;
     }
-    public  static void main(String [] args){
+   /* public  static void main(String [] args){
         SpringApplication application = new SpringApplication(FtpConfig.class);
         application.run(args);
-    }
+    }*/
 }
