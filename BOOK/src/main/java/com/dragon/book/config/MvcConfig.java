@@ -15,10 +15,10 @@ public class MvcConfig implements WebMvcConfigurer {
 	@Override
 	public void addInterceptors(InterceptorRegistry registry) {
 
-		String[] excludes = new String[] { "/login", "/dologin", "/css/**",
+		/*String[] excludes = new String[] { "/login", "/dologin", "/css/**",
 				"/js/**", "/images/**", "/data/**", "/dvpt/**", "/html5/**",
 				"/error", "/register", "/doreg", "/checkName" };
 		registry.addInterceptor(new LoginInterceptor()).addPathPatterns("/**")
-				.excludePathPatterns(excludes);
+				.excludePathPatterns(excludes);*/
 	}
 }
