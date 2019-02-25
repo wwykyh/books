@@ -1,6 +1,6 @@
 package com.dragon.book.service.impl;
 
-import com.dragon.book.mapper.BookMapper;
+import com.dragon.book.mapper.BookInfoMapper;
 import com.dragon.book.mapper.TBookMapper;
 import com.dragon.book.mapper.TCommentMapper;
 import com.dragon.book.mapper.TStoreMapper;
@@ -31,7 +31,7 @@ public class BookServiceImpl implements BookService {
     @Autowired
     private TStoreMapper storeMapper ;
     @Autowired
-    private BookMapper mapperBook ;
+    private BookInfoMapper mapperBook ;
     @Autowired
     private TCommentMapper commentMapper ;
     @Override

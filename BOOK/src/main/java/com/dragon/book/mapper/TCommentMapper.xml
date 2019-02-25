@@ -3,9 +3,9 @@
 <mapper namespace="com.dragon.book.mapper.TCommentMapper" >
   <resultMap id="BaseResultMap" type="com.dragon.book.model.TComment" >
     <id column="comment_id" property="commentId" jdbcType="INTEGER" />
-    <result column="book_id" property="bookId" jdbcType="VARCHAR" />
+    <result column="isbn" property="isbn" jdbcType="VARCHAR" />
     <result column="user_id" property="userId" jdbcType="INTEGER" />
-    <result column="pjrq" property="pjrq" jdbcType="DATE" />
+    <result column="pjrq" property="pjrq" jdbcType="VARCHAR" />
   </resultMap>
   <resultMap id="ResultMapWithBLOBs" type="com.dragon.book.model.TComment" extends="BaseResultMap" >
     <result column="nr" property="nr" jdbcType="LONGVARCHAR" />
@@ -69,7 +69,7 @@
     </where>
   </sql>
   <sql id="Base_Column_List" >
-    comment_id, book_id, user_id, pjrq
+    comment_id, isbn, user_id, pjrq
   </sql>
   <sql id="Blob_Column_List" >
     nr
@@ -105,7 +105,7 @@
     </if>
   </select>
   <select id="selectByPrimaryKey" resultMap="ResultMapWithBLOBs" parameterType="java.lang.Integer" >
-    select 
+    select
     <include refid="Base_Column_List" />
     ,
     <include refid="Blob_Column_List" />
@@ -123,10 +123,10 @@
     </if>
   </delete>
   <insert id="insert" parameterType="com.dragon.book.model.TComment" >
-    insert into t_comment (comment_id, book_id, user_id, 
+    insert into t_comment (comment_id, isbn, user_id,
       pjrq, nr)
-    values (#{commentId,jdbcType=INTEGER}, #{bookId,jdbcType=VARCHAR}, #{userId,jdbcType=INTEGER}, 
-      #{pjrq,jdbcType=DATE}, #{nr,jdbcType=LONGVARCHAR})
+    values (#{commentId,jdbcType=INTEGER}, #{isbn,jdbcType=VARCHAR}, #{userId,jdbcType=INTEGER},
+      #{pjrq,jdbcType=VARCHAR}, #{nr,jdbcType=LONGVARCHAR})
   </insert>
   <insert id="insertSelective" parameterType="com.dragon.book.model.TComment" >
     insert into t_comment
@@ -134,8 +134,8 @@
       <if test="commentId != null" >
         comment_id,
       </if>
-      <if test="bookId != null" >
-        book_id,
+      <if test="isbn != null" >
+        isbn,
       </if>
       <if test="userId != null" >
         user_id,
@@ -151,14 +151,14 @@
       <if test="commentId != null" >
         #{commentId,jdbcType=INTEGER},
       </if>
-      <if test="bookId != null" >
-        #{bookId,jdbcType=VARCHAR},
+      <if test="isbn != null" >
+        #{isbn,jdbcType=VARCHAR},
       </if>
       <if test="userId != null" >
         #{userId,jdbcType=INTEGER},
       </if>
       <if test="pjrq != null" >
-        #{pjrq,jdbcType=DATE},
+        #{pjrq,jdbcType=VARCHAR},
       </if>
       <if test="nr != null" >
         #{nr,jdbcType=LONGVARCHAR},
@@ -177,14 +177,14 @@
       <if test="record.commentId != null" >
         comment_id = #{record.commentId,jdbcType=INTEGER},
       </if>
-      <if test="record.bookId != null" >
-        book_id = #{record.bookId,jdbcType=VARCHAR},
+      <if test="record.isbn != null" >
+        isbn = #{record.isbn,jdbcType=VARCHAR},
       </if>
       <if test="record.userId != null" >
         user_id = #{record.userId,jdbcType=INTEGER},
       </if>
       <if test="record.pjrq != null" >
-        pjrq = #{record.pjrq,jdbcType=DATE},
+        pjrq = #{record.pjrq,jdbcType=VARCHAR},
       </if>
       <if test="record.nr != null" >
         nr = #{record.nr,jdbcType=LONGVARCHAR},
@@ -197,10 +197,10 @@
   <update id="updateByExampleWithBLOBs" parameterType="map" >
     update t_comment
     set comment_id = #{record.commentId,jdbcType=INTEGER},
-      book_id = #{record.bookId,jdbcType=VARCHAR},
-      user_id = #{record.userId,jdbcType=INTEGER},
-      pjrq = #{record.pjrq,jdbcType=DATE},
-      nr = #{record.nr,jdbcType=LONGVARCHAR}
+    isbn = #{record.isbn,jdbcType=VARCHAR},
+    user_id = #{record.userId,jdbcType=INTEGER},
+    pjrq = #{record.pjrq,jdbcType=VARCHAR},
+    nr = #{record.nr,jdbcType=LONGVARCHAR}
     <if test="_parameter != null" >
       <include refid="Update_By_Example_Where_Clause" />
     </if>
@@ -208,9 +208,9 @@
   <update id="updateByExample" parameterType="map" >
     update t_comment
     set comment_id = #{record.commentId,jdbcType=INTEGER},
-      book_id = #{record.bookId,jdbcType=VARCHAR},
-      user_id = #{record.userId,jdbcType=INTEGER},
-      pjrq = #{record.pjrq,jdbcType=DATE}
+    isbn = #{record.isbn,jdbcType=VARCHAR},
+    user_id = #{record.userId,jdbcType=INTEGER},
+    pjrq = #{record.pjrq,jdbcType=VARCHAR}
     <if test="_parameter != null" >
       <include refid="Update_By_Example_Where_Clause" />
     </if>
@@ -218,14 +218,14 @@
   <update id="updateByPrimaryKeySelective" parameterType="com.dragon.book.model.TComment" >
     update t_comment
     <set >
-      <if test="bookId != null" >
-        book_id = #{bookId,jdbcType=VARCHAR},
+      <if test="isbn != null" >
+        isbn = #{isbn,jdbcType=VARCHAR},
       </if>
       <if test="userId != null" >
         user_id = #{userId,jdbcType=INTEGER},
       </if>
       <if test="pjrq != null" >
-        pjrq = #{pjrq,jdbcType=DATE},
+        pjrq = #{pjrq,jdbcType=VARCHAR},
       </if>
       <if test="nr != null" >
         nr = #{nr,jdbcType=LONGVARCHAR},
@@ -235,17 +235,17 @@
   </update>
   <update id="updateByPrimaryKeyWithBLOBs" parameterType="com.dragon.book.model.TComment" >
     update t_comment
-    set book_id = #{bookId,jdbcType=VARCHAR},
+    set isbn = #{isbn,jdbcType=VARCHAR},
       user_id = #{userId,jdbcType=INTEGER},
-      pjrq = #{pjrq,jdbcType=DATE},
+      pjrq = #{pjrq,jdbcType=VARCHAR},
       nr = #{nr,jdbcType=LONGVARCHAR}
     where comment_id = #{commentId,jdbcType=INTEGER}
   </update>
   <update id="updateByPrimaryKey" parameterType="com.dragon.book.model.TComment" >
     update t_comment
-    set book_id = #{bookId,jdbcType=VARCHAR},
+    set isbn = #{isbn,jdbcType=VARCHAR},
       user_id = #{userId,jdbcType=INTEGER},
-      pjrq = #{pjrq,jdbcType=DATE}
+      pjrq = #{pjrq,jdbcType=VARCHAR}
     where comment_id = #{commentId,jdbcType=INTEGER}
   </update>
 </mapper>
