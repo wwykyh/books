@@ -7,7 +7,7 @@
     <result column="user_id" property="userId" jdbcType="INTEGER" />
     <result column="wz" property="wz" jdbcType="VARCHAR" />
     <result column="sh" property="sh" jdbcType="INTEGER" />
-    <result column="rksj" property="rksj" jdbcType="DATE" />
+    <result column="rksj" property="rksj" jdbcType="VARCHAR" />
     <result column="status" property="status" jdbcType="INTEGER" />
   </resultMap>
   <sql id="Example_Where_Clause" >
@@ -106,7 +106,7 @@
       wz, sh, rksj, status
       )
     values (#{id,jdbcType=INTEGER}, #{isbn,jdbcType=VARCHAR}, #{userId,jdbcType=INTEGER}, 
-      #{wz,jdbcType=VARCHAR}, #{sh,jdbcType=INTEGER}, #{rksj,jdbcType=DATE}, #{status,jdbcType=INTEGER}
+      #{wz,jdbcType=VARCHAR}, #{sh,jdbcType=INTEGER}, #{rksj,jdbcType=VARCHAR}, #{status,jdbcType=INTEGER}
       )
   </insert>
   <insert id="insertSelective" parameterType="com.dragon.book.model.TStore" >
@@ -151,7 +151,7 @@
         #{sh,jdbcType=INTEGER},
       </if>
       <if test="rksj != null" >
-        #{rksj,jdbcType=DATE},
+        #{rksj,jdbcType=VARCHAR},
       </if>
       <if test="status != null" >
         #{status,jdbcType=INTEGER},
@@ -183,7 +183,7 @@
         sh = #{record.sh,jdbcType=INTEGER},
       </if>
       <if test="record.rksj != null" >
-        rksj = #{record.rksj,jdbcType=DATE},
+        rksj = #{record.rksj,jdbcType=VARCHAR},
       </if>
       <if test="record.status != null" >
         status = #{record.status,jdbcType=INTEGER},
@@ -200,7 +200,7 @@
       user_id = #{record.userId,jdbcType=INTEGER},
       wz = #{record.wz,jdbcType=VARCHAR},
       sh = #{record.sh,jdbcType=INTEGER},
-      rksj = #{record.rksj,jdbcType=DATE},
+      rksj = #{record.rksj,jdbcType=VARCHAR},
       status = #{record.status,jdbcType=INTEGER}
     <if test="_parameter != null" >
       <include refid="Update_By_Example_Where_Clause" />
@@ -222,7 +222,7 @@
         sh = #{sh,jdbcType=INTEGER},
       </if>
       <if test="rksj != null" >
-        rksj = #{rksj,jdbcType=DATE},
+        rksj = #{rksj,jdbcType=VARCHAR},
       </if>
       <if test="status != null" >
         status = #{status,jdbcType=INTEGER},
@@ -236,7 +236,7 @@
       user_id = #{userId,jdbcType=INTEGER},
       wz = #{wz,jdbcType=VARCHAR},
       sh = #{sh,jdbcType=INTEGER},
-      rksj = #{rksj,jdbcType=DATE},
+      rksj = #{rksj,jdbcType=VARCHAR},
       status = #{status,jdbcType=INTEGER}
     where id = #{id,jdbcType=INTEGER}
   </update>

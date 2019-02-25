@@ -1,7 +1,5 @@
 package com.dragon.book.model;
 
-import java.util.Date;
-
 public class TBorrow {
 	private Integer id;
 
@@ -13,13 +11,13 @@ public class TBorrow {
 
 	private String lxfs;
 
-	private Date jyrq;
+	private String jyrq;
 
-	private Date jhghrq;
+	private String jhghrq;
 
-	private Date xjrq;
+	private String xjrq;
 
-	private Date ghrq;
+	private String ghrq;
 
 	private Integer status;
 
@@ -28,8 +26,28 @@ public class TBorrow {
 	private String bz;
 
 	private TSysUser user;
-	
-	private int cs;
+
+	private TPublish publish;
+
+	public TPublish getPublish() {
+		return publish;
+	}
+
+	public void setPublish(TPublish publish) {
+		this.publish = publish;
+	}
+
+	private int cs;// 次数
+
+	@Override
+	public String toString() {
+		return "TBorrow [id=" + id + ", isbn=" + isbn + ", sm=" + sm
+				+ ", userId=" + userId + ", lxfs=" + lxfs + ", jyrq=" + jyrq
+				+ ", jhghrq=" + jhghrq + ", xjrq=" + xjrq + ", ghrq=" + ghrq
+				+ ", status=" + status + ", jyzt=" + jyzt + ", bz=" + bz
+				+ ", user=" + user + ", publish=" + publish + ", cs=" + cs
+				+ "]";
+	}
 
 	public TSysUser getUser() {
 		return user;
@@ -87,36 +105,36 @@ public class TBorrow {
 		this.lxfs = lxfs == null ? null : lxfs.trim();
 	}
 
-	public Date getJyrq() {
+	public String getJyrq() {
 		return jyrq;
 	}
 
-	public void setJyrq(Date jyrq) {
-		this.jyrq = jyrq;
+	public void setJyrq(String jyrq) {
+		this.jyrq = jyrq == null ? null : jyrq.trim();
 	}
 
-	public Date getJhghrq() {
+	public String getJhghrq() {
 		return jhghrq;
 	}
 
-	public void setJhghrq(Date jhghrq) {
-		this.jhghrq = jhghrq;
+	public void setJhghrq(String jhghrq) {
+		this.jhghrq = jhghrq == null ? null : jhghrq.trim();
 	}
 
-	public Date getXjrq() {
+	public String getXjrq() {
 		return xjrq;
 	}
 
-	public void setXjrq(Date xjrq) {
-		this.xjrq = xjrq;
+	public void setXjrq(String xjrq) {
+		this.xjrq = xjrq == null ? null : xjrq.trim();
 	}
 
-	public Date getGhrq() {
+	public String getGhrq() {
 		return ghrq;
 	}
 
-	public void setGhrq(Date ghrq) {
-		this.ghrq = ghrq;
+	public void setGhrq(String ghrq) {
+		this.ghrq = ghrq == null ? null : ghrq.trim();
 	}
 
 	public Integer getStatus() {

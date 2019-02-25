@@ -8,10 +8,10 @@
 <link rel="stylesheet" type="text/css" href="css/home.css" />
 </head>
 <body>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-	<div class="divcss5 left">1</div>
-	<div class="divcss5 right">2</div>
-	<div class="divcss5 left">
+	<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+	<div class="left" style="width:49.5%;height:300px ">1</div>
+	<div  class="right" style="width:49.5%;height:300px ">2</div>
+	<div class="left" style="width:49.5%;height:300px ">
 		<p style="text-align: center; font-size: 20px;">图书排行榜</p>
 		<table class="simple-table">
 			<thead>
@@ -23,18 +23,18 @@
 				</tr>
 			</thead>
 			<tbody>
-			<c:forEach items="${bookList }" var="bl" varStatus="status">
-				<tr>
-					<td>${requestScope.offset+status.index+1}</td>
-					<td>${bl.isbn }</td>
-					<td>${bl.sm }</td>
-					<td>${bl.cs }</td>
-				</tr>
+				<c:forEach items="${bookList }" var="bl" varStatus="status">
+					<tr>
+						<td>${requestScope.offset+status.index+1}</td>
+						<td>${bl.isbn }</td>
+						<td>${bl.sm }</td>
+						<td>${bl.cs }</td>
+					</tr>
 				</c:forEach>
 			</tbody>
 		</table>
 	</div>
-	<div class="divcss5 right">
+	<div class="right" style="width:49.5%;height:300px">
 		<p style="text-align: center; font-size: 20px;">用户排行榜</p>
 		<table class="simple-table">
 			<thead>
@@ -45,12 +45,13 @@
 				</tr>
 			</thead>
 			<tbody>
-			<c:forEach items="${userList }" var="ul" varStatus="status">
-				<tr>
-					<td>${requestScope.offset+status.index+1}</td>
-					<td>${ul.user.xm}</td>
-					<td>${ul.cs }</td>
-				</tr></c:forEach>
+				<c:forEach items="${userList }" var="ul" varStatus="status">
+					<tr>
+						<td>${requestScope.offset+status.index+1}</td>
+						<td>${ul.user.xm}</td>
+						<td>${ul.cs }</td>
+					</tr>
+				</c:forEach>
 			</tbody>
 		</table>
 	</div>

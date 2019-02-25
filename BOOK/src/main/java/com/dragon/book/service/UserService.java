@@ -35,4 +35,6 @@ public interface UserService {
 	 * @return
 	 */
 	public int regUser(String username, String pwd, String email);
+	
+	public TSysUser getUserInfo(int userId);
 }
