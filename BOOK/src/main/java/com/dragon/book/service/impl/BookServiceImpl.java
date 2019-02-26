@@ -9,8 +9,12 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Random;
 
+import javax.servlet.ServletContext;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.web.context.ContextLoader;
+import org.springframework.web.context.WebApplicationContext;
 
 import com.dragon.book.mapper.BookMapper;
 import com.dragon.book.mapper.BorrowMapper;
@@ -127,7 +131,7 @@ public class BookServiceImpl implements BookService {
 			allKey.addAll(ebookKey);
 			HashSet<String> set = new HashSet<String>();
 			for (BookAndEBook b : allKey) {
-				String str = b.getId().substring(b.getId().length() - 3);
+				String str = b.getIsbn().substring( b.getIsbn().length() - 3);
 				set.add(str);
 			}
 			Random rd = new Random();
@@ -176,11 +180,14 @@ public class BookServiceImpl implements BookService {
 			List<BookAndEBook> EBookslist) {
 		// TODO Auto-generated method stub
 
+		System.out.println(booksList.toString());
 		List<BookAndEBook> books = new ArrayList<>();
 		books.addAll(booksList);
 		books.addAll(EBookslist);
 		return books;
 	}
+	
+	
 	public BorrowMapper getBorrowMapper() {
 		return borrowMapper;
 	}

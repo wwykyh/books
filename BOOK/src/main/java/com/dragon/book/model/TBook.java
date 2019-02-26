@@ -1,24 +1,11 @@
 package com.dragon.book.model;
 
 public class TBook {
-	
-
-	@Override
-	public String toString() {
-		return "TBook [id=" + id + ", isbn=" + isbn + ", sm=" + sm + ", pubId="
-				+ pubId + ", cbrq=" + cbrq + ", zz=" + zz + ", typeId="
-				+ typeId + ", tsdl=" + tsdl + ", rkrq=" + rkrq + ", status="
-				+ status + ", cs=" + cs + ", tPublish=" + tPublish + ", tType="
-				+ tType + "]";
-	}
-
-	private String id;
-
 	private String isbn;
 
 	private String sm;
 
-	private String pubId;
+	private String cbsmc;
 
 	private String cbrq;
 
@@ -28,22 +15,16 @@ public class TBook {
 
 	private String tsdl;
 
-	private String rkrq;
-
-	private Integer status;
-
-	private Integer cs;
-	
-	private TPublish tPublish;
-	
 	private TType tType;
 
-	public TPublish gettPublish() {
-		return tPublish;
-	}
+	private TStore tStore;
 
-	public void settPublish(TPublish tPublish) {
-		this.tPublish = tPublish;
+	@Override
+	public String toString() {
+		return "TBook [isbn=" + isbn + ", sm=" + sm + ", cbsmc=" + cbsmc
+				+ ", cbrq=" + cbrq + ", zz=" + zz + ", typeId=" + typeId
+				+ ", tsdl=" + tsdl + ", tType=" + tType + ", tStore=" + tStore
+				+ "]";
 	}
 
 	public TType gettType() {
@@ -54,12 +35,12 @@ public class TBook {
 		this.tType = tType;
 	}
 
-	public String getId() {
-		return id;
+	public TStore gettStore() {
+		return tStore;
 	}
 
-	public void setId(String id) {
-		this.id = id == null ? null : id.trim();
+	public void settStore(TStore tStore) {
+		this.tStore = tStore;
 	}
 
 	public String getIsbn() {
@@ -78,12 +59,12 @@ public class TBook {
 		this.sm = sm == null ? null : sm.trim();
 	}
 
-	public String getPubId() {
-		return pubId;
+	public String getCbsmc() {
+		return cbsmc;
 	}
 
-	public void setPubId(String pubId) {
-		this.pubId = pubId == null ? null : pubId.trim();
+	public void setCbsmc(String cbsmc) {
+		this.cbsmc = cbsmc == null ? null : cbsmc.trim();
 	}
 
 	public String getCbrq() {
@@ -116,29 +97,5 @@ public class TBook {
 
 	public void setTsdl(String tsdl) {
 		this.tsdl = tsdl == null ? null : tsdl.trim();
-	}
-
-	public String getRkrq() {
-		return rkrq;
-	}
-
-	public void setRkrq(String rkrq) {
-		this.rkrq = rkrq == null ? null : rkrq.trim();
-	}
-
-	public Integer getStatus() {
-		return status;
-	}
-
-	public void setStatus(Integer status) {
-		this.status = status;
-	}
-
-	public Integer getCs() {
-		return cs;
-	}
-
-	public void setCs(Integer cs) {
-		this.cs = cs;
 	}
 }
