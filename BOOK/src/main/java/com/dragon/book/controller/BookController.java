@@ -13,7 +13,6 @@
  */
 package com.dragon.book.controller;
 
-import GenerateId;
 
 import java.util.List;
 
@@ -49,8 +48,6 @@ public class BookController {
 	@Autowired
 	private TypeService typeService;
 
-	@Autowired
-	private GenerateId key;
 
 	@Autowired
 	private UserService userService;
@@ -244,14 +241,6 @@ public class BookController {
 
 	public void setTypeService(TypeService typeService) {
 		this.typeService = typeService;
-	}
-
-	public GenerateId getKey() {
-		return key;
-	}
-
-	public void setKey(GenerateId key) {
-		this.key = key;
 	}
 
 	public UserService getUserService() {
