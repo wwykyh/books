@@ -86,9 +86,9 @@ public class BookInfo extends TBook implements Serializable {
     }
 
     public String getStatus() {
-        if(this.status == 1){
+        if(this.status == 0){
             return "在库" ;
-        }else if(this.status == 0){
+        }else if(this.status == 1){
             return "借出" ;
         }else if (this.status == 2){
             return "续借" ;
