@@ -5,28 +5,26 @@ import com.dragon.book.model.TEBook;
 import com.dragon.book.model.TEBookVo;
 import com.dragon.book.model.TType;
 import com.dragon.book.service.ebookService.EbookFileService;
-import com.dragon.book.utils.FtpUtils;
-import com.dragon.book.utils.PageBean;
+import com.dragon.book.util.PageBean;
 import org.apache.commons.net.ftp.FTPClient;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
-import org.springside.modules.persistence.SearchFilter;
 import org.springside.modules.web.Servlets;
 
 import javax.servlet.ServletOutputStream;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.*;
-import java.nio.charset.StandardCharsets;
-import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+/**
+ * 电子书上传下载控制层
+ */
 @Controller
 @RequestMapping(value = "/eBookFile")
 public class EbookFileController {
