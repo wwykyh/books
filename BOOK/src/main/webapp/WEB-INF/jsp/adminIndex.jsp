@@ -112,27 +112,31 @@
                         </ul>
                     </dd>
                 </dl>
+                <!--图书管理-->
                 <dl>
                     <dt>
-                        <a href="javascript:;"> <i class="icon">&#xe6b3;</i><span>图书</span>
-                            <i class="icon arrow">&#xe658;</i> <i class="icon arrow hide">&#xe659;</i>
+                        <a href="javascript:;">
+                            <i class="icon">&#xe657;</i><span>图书管理</span>
+                            <i class="icon arrow">&#xe658;</i>
+                            <i class="icon arrow hide">&#xe659;</i>
                         </a>
                     </dt>
                     <dd>
                         <ul>
-                            <li><a _href="图书管理.html" data-name="图书管理"
-                                   href="javascript:;">图书管理</a></li>
-                            <li><a _href="资产.html" data-name="资产" href="javascript:;">资产</a></li>
-                            <li><a _href="图书分析.html" data-name="图书分析"
-                                   href="javascript:;">图书分析</a></li>
-                            <li><a _href="库存管理.html" data-name="库存管理"
-                                   href="javascript:;">库存管理</a></li>
-                            <li><a _href="借阅历史.html" data-name="借阅历史"
-                                   href="javascript:;">借阅历史</a></li>
-                            <li><a _href="图书类型管理.html" data-name="图书种类管理"
-                                   href="javascript:;">图书种类管理</a></li>
-                            <li><a _href="图书类型管理.html" data-name="出版社管理"
-                                   href="javascript:;">出版社管理</a></li>
+                            <li><a _href="${pageContext.request.contextPath}/book_manager" data-name="图书管理"
+                                   data-js="prettify" href="javascript:;">图书管理</a></li>
+                            <li><a _href="${pageContext.request.contextPath}/book_add" data-name="图书入库"
+                                   data-js="prettify" href="javascript:;">图书入库</a></li>
+                            <li><a _href="${pageContext.request.contextPath}/asset_analyze" data-name="资产分析"
+                                   data-js="prettify" href="javascript:;">资产分析</a></li>
+                            <li><a _href="${pageContext.request.contextPath}/borrow_history" data-name="借阅历史"
+                                   data-js="prettify" href="javascript:;">借阅历史</a></li>
+                            <li><a _href="${pageContext.request.contextPath}/book_analyze" data-name="图书分析"
+                                   data-js="prettify" href="javascript:;">图书分析</a></li>
+                            <li><a _href="${pageContext.request.contextPath}/type_manager" data-name="种类管理"
+                                   data-js="prettify" href="javascript:;">种类管理</a></li>
+                            <li><a _href="${pageContext.request.contextPath}/publish_house_manager" data-name="出版社管理"
+                                   data-js="prettify" href="javascript:;">出版社管理</a></li>
 
                         </ul>
                     </dd>
