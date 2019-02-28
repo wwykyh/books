@@ -20,7 +20,7 @@ public class TStore {
     }
 
     public void setId(String id) {
-        this.id = id == null ? null : id.trim();
+        this.id = id;
     }
 
     public String getIsbn() {
@@ -70,4 +70,12 @@ public class TStore {
     public void setStatus(Integer status) {
         this.status = status;
     }
+
+	@Override
+	public String toString() {
+		return "TStore [id=" + id + ", isbn=" + isbn + ", userId=" + userId
+				+ ", wz=" + wz + ", sh=" + sh + ", rksj=" + rksj + ", status="
+				+ status + "]";
+	}
+    
 }

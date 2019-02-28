@@ -17,19 +17,19 @@ import java.util.Map;
 @RestController
 public class FtpConfig {
 
-    @Value("${ftp.host}")
+    @Value("${ftp.host:172.16.101.245}")
     private String ftpHost;
 
-    @Value("${ftp.port}")
+    @Value("${ftp.port:21}")
     private Integer ftpPort ;
 
-    @Value("${ftp.username}")
+    @Value("${ftp.username:test}")
     private String ftpUserName;
 
-    @Value("${ftp.password}")
+    @Value("${ftp.password:test}")
     private String ftpPassWord;
 
-    @Value("${ftp.path}")
+    @Value("${ftp.path:/}")
     private String ftpPath;
 
     public String getFtpHost() {

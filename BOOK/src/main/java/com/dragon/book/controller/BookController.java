@@ -96,9 +96,8 @@ public class BookController {
 		List<TBorrow> userList = bookService.getUserTop();
 		model.addAttribute("bookList", bookList);
 		model.addAttribute("userList", userList);
-		
-		String path = request.getServletContext().getRealPath("/js");
-		System.out.println(path+"-------------------------------");
+		/*String path = request.getServletContext().getRealPath("/js");
+		System.out.println(path+"-------------------------------");*/
 		
 		return "home";
 	}
