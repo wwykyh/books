@@ -5,7 +5,7 @@ import com.dragon.book.util.PageBean;
 
 import java.util.List;
 
-public interface PublishService {
+public interface PublishManagerService {
 
     /**
      * 查询所有出版社信息列表

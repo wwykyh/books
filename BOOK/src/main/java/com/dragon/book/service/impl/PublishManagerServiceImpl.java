@@ -3,7 +3,7 @@ package com.dragon.book.service.impl;
 import com.dragon.book.mapper.TPublishMapper;
 import com.dragon.book.model.TPublish;
 import com.dragon.book.model.TPublishExample;
-import com.dragon.book.service.PublishService;
+import com.dragon.book.service.PublishManagerService;
 import com.dragon.book.util.PageBean;
 import com.github.pagehelper.PageHelper;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,7 +18,7 @@ import java.util.List;
  * @Date 2019/1/25
  */
 @Service
-public class PublishServiceImpl implements PublishService {
+public class PublishManagerServiceImpl implements PublishManagerService {
 
     @Autowired
     private TPublishMapper publishMapper ;
