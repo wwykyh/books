@@ -6,17 +6,23 @@ import com.dragon.book.model.TPublish;
 import com.dragon.book.model.TType;
 import com.dragon.book.pojo.BookInfo;
 import com.dragon.book.pojo.CommentInfo;
-import com.dragon.book.pojo.PageBean;
 import com.dragon.book.pojo.QueryVo;
-import com.dragon.book.service.BookService;
-import com.dragon.book.service.PublishService;
-import com.dragon.book.service.TypeService;
+import com.dragon.book.service.*;
+import com.dragon.book.util.FileDownloadUtils;
+import com.dragon.book.util.PageBean;
+import org.apache.poi.hssf.usermodel.HSSFRow;
+import org.apache.poi.hssf.usermodel.HSSFSheet;
+import org.apache.poi.hssf.usermodel.HSSFWorkbook;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import javax.servlet.ServletOutputStream;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import java.io.IOException;
 import java.util.List;
 
 /**
@@ -28,12 +34,11 @@ import java.util.List;
 @Controller
 public class BookManagerController {
     @Autowired
-    private TypeService typeService ;
+    private TypeManagerService typeService ;
     @Autowired
-    private BookService bookService ;
+    private BookManagerService bookService ;
     @Autowired
-    private PublishService publishService ;
-
+    private PublishManagerService publishManagerService;
 
     @RequestMapping("/book_manager")
     public String showBookManagerPage(){
@@ -41,7 +46,7 @@ public class BookManagerController {
     }
     @RequestMapping("/book_add")
     public  String showBookAddPage(Model model){
-        List<TPublish> publishList = publishService.getPublishList();
+        List<TPublish> publishList = publishManagerService.getPublishList();
         List<TType> typeList = typeService.getTypeList();
         model.addAttribute("publishList",publishList) ;
         model.addAttribute("typeList",typeList) ;
@@ -98,12 +103,12 @@ public class BookManagerController {
     @RequestMapping("/publish_manager")
     @ResponseBody
     public String getPublishList(PageBean pageBean){
-        PageBean pageBean1=publishService.getPublishListByPageBean(pageBean);
+        PageBean pageBean1= publishManagerService.getPublishListByPageBean(pageBean);
         return JSON.toJSONString(pageBean1).replaceAll("rows","Rows").replaceAll("total","Total");
     }
     @RequestMapping("/bookPage_manager")
     @ResponseBody
-    public String selectBookPage(PageBean pageBean,String dim){
+    public String selectBookPage(PageBean pageBean, String dim){
         QueryVo vo = new QueryVo() ;
         vo.setDim(dim);
         vo.setStart((pageBean.getPage()-1) * pageBean.getPagesize());
@@ -120,7 +125,7 @@ public class BookManagerController {
     }
     @RequestMapping("/comment_manager")
     @ResponseBody
-    public String selectCommentPage(PageBean pageBean,String isbn){
+    public String selectCommentPage(PageBean pageBean, String isbn){
         QueryVo vo = new QueryVo() ;
         vo.setDim(isbn);
         vo.setStart((pageBean.getPage()-1) * pageBean.getPagesize());
@@ -143,11 +148,13 @@ public class BookManagerController {
         model.addAttribute("commentInfo",commentInfo) ;
         return "manager/comment_info" ;
     }
-
+    /**
+     * 出版社管理部分
+     * */
     @RequestMapping("/publish_del")
     @ResponseBody
     public String publishDel(String pubId){
-        boolean status = publishService.deletePublish(pubId);
+        boolean status = publishManagerService.deletePublish(pubId);
         return status == true ? "0" : "1" ;
     }
     @RequestMapping("/publish_add")
@@ -157,13 +164,13 @@ public class BookManagerController {
     @RequestMapping("/publishAdd")
     @ResponseBody
     public String publishAdd(TPublish publish){
-        boolean status = publishService.addPublish(publish) ;
+        boolean status = publishManagerService.addPublish(publish) ;
         return status == true ? "0" : "1" ;
     }
 
     @RequestMapping("/publish_edit")
     public String showPublishEdit(String pubId,Model model){
-        TPublish publish = publishService.getPublishById(pubId);
+        TPublish publish = publishManagerService.getPublishById(pubId);
         model.addAttribute("publish",publish) ;
         return "manager/publish_edit" ;
     }
@@ -171,7 +178,7 @@ public class BookManagerController {
     @RequestMapping("/publishEdit")
     @ResponseBody
     public String publishUpdate(TPublish publish){
-        boolean status = publishService.updatePublish(publish);
+        boolean status = publishManagerService.updatePublish(publish);
         return status == true ? "0" : "1" ;
     }
 
@@ -184,5 +191,92 @@ public class BookManagerController {
         PageBean commentInfo = typeService.getTypePageByPageBean(pageBean);
         return JSON.toJSONString(commentInfo).replaceAll("rows","Rows").replaceAll("total","Total");
     }
+    @RequestMapping("/type_add")
+    public String showTypeAdd(){
+        return "manager/type_add" ;
+    }
+    @RequestMapping("/typeAdd")
+    @ResponseBody
+    public String publishAdd(TType type){
+        boolean status = typeService.addType(type) ;
+        return status == true ? "0" : "1" ;
+    }
+    @RequestMapping("/type_edit")
+    public String showTypeEdit(String typeId,Model model){
+        TType type = typeService.getTypeByTypeId(typeId);
+        model.addAttribute("type",type) ;
+        return "manager/type_edit" ;
+    }
+    @RequestMapping("/typeEdit")
+    @ResponseBody
+    public String typeUpdate(TType type){
+        boolean status = typeService.updateType(type) ;
+        return status == true ? "0" : "1" ;
+    }
+    @RequestMapping("/type_del")
+    @ResponseBody
+    public String typeDel(String typeId){
+        boolean status = typeService.deleteTypeByTyepId(typeId) ;
+        return status == true ? "0" : "1" ;
+    }
 
+    /**
+     * 图书资产导出功能
+     * */
+    @RequestMapping("/book_export")
+    @ResponseBody
+    public String bookExport(HttpServletRequest request, HttpServletResponse response){
+        //第一步：查询所有的数据
+        List<BookInfo> bookInfos = bookService.selectAllBookInfo();
+        //第二步：使用POI将数据写到Excel文件中
+        //在内存中创建excel文件
+        HSSFWorkbook hssfWorkbook = new HSSFWorkbook() ;
+        //创建标签页
+        HSSFSheet sheet = hssfWorkbook.createSheet("图书数据");
+        //创建标题行
+        HSSFRow headRow = sheet.createRow(0) ;
+        //设置标题行
+        headRow.createCell(0).setCellValue("ISBN");
+        headRow.createCell(1).setCellValue("图书名称");
+        headRow.createCell(2).setCellValue("出版社名称");
+        headRow.createCell(3).setCellValue("出版日期");
+        headRow.createCell(4).setCellValue("作者");
+        headRow.createCell(5).setCellValue("图书类型");
+        headRow.createCell(6).setCellValue("图书提供者");
+        headRow.createCell(7).setCellValue("位置");
+        headRow.createCell(8).setCellValue("损毁程度");
+        headRow.createCell(9).setCellValue("入库时间");
+        headRow.createCell(10).setCellValue("状态");
+        //遍历数据集合设置填入数据行内容
+        for (BookInfo book:bookInfos) {
+            HSSFRow dataRow = sheet.createRow(sheet.getLastRowNum() + 1);
+            dataRow.createCell(0).setCellValue(book.getIsbn()) ;
+            dataRow.createCell(1).setCellValue(book.getSm()) ;
+            dataRow.createCell(2).setCellValue(book.getCbsmc()) ;
+            dataRow.createCell(3).setCellValue(book.getCbrq()) ;
+            dataRow.createCell(4).setCellValue(book.getZz()) ;
+            dataRow.createCell(5).setCellValue(book.getLxmc()) ;
+            dataRow.createCell(6).setCellValue(book.getUname()) ;
+            dataRow.createCell(7).setCellValue(book.getWz()) ;
+            dataRow.createCell(8).setCellValue(book.getSh()) ;
+            dataRow.createCell(9).setCellValue(book.getRksj()) ;
+            dataRow.createCell(10).setCellValue(book.getStatus()) ;
+        }
+        //第三步：使用输出流进行文件下载（一个流、两个头）
+        String filename = "图书数据.xls";
+        String contentType = request.getServletContext().getMimeType(filename) ;
+        try {
+            ServletOutputStream out = response.getOutputStream();
+            response.setContentType(contentType);
+            //获取客户端浏览器类型
+            String agent = request.getHeader("User-Agent");
+            filename = FileDownloadUtils.encodeDownloadFilename(filename,agent) ;
+            response.setHeader("content-disposition", "attachment;filename="+filename) ;
+            hssfWorkbook.write(out);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }finally {
+            return null ;
+        }
+    }
 }

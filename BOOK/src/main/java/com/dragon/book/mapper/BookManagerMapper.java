@@ -13,7 +13,7 @@ import java.util.List;
  * @Author liulei
  * @Date 2019/1/29
  */
-public interface BookInfoMapper {
+public interface BookManagerMapper {
     int selectByDimTotal(QueryVo vo) ;
     List<BookInfo> selectByDimPage(QueryVo vo) ;
     int selectCommentByIsbnTotal(QueryVo vo) ;
