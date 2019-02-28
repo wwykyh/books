@@ -1,106 +1,207 @@
 package com.dragon.book.service.impl;
 
-import com.dragon.book.mapper.BookInfoMapper;
-import com.dragon.book.mapper.TBookMapper;
-import com.dragon.book.mapper.TCommentMapper;
-import com.dragon.book.mapper.TStoreMapper;
-import com.dragon.book.model.TBook;
-import com.dragon.book.model.TStore;
-import com.dragon.book.pojo.BookInfo;
-import com.dragon.book.pojo.CommentInfo;
-import com.dragon.book.pojo.PageBean;
-import com.dragon.book.pojo.QueryVo;
-import com.dragon.book.service.BookService;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Random;
+
+import javax.servlet.ServletContext;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.web.context.ContextLoader;
+import org.springframework.web.context.WebApplicationContext;
 
-import java.text.SimpleDateFormat;
-import java.util.Date;
-import java.util.List;
+import com.dragon.book.mapper.BookMapper;
+import com.dragon.book.mapper.BorrowMapper;
+import com.dragon.book.mapper.TBorrowMapper;
+import com.dragon.book.model.BookAndEBook;
+import com.dragon.book.model.TBook;
+import com.dragon.book.model.TBorrow;
+import com.dragon.book.service.BookService;
+import com.dragon.book.util.PageBean;
 
-/**
- * @ClassNameBookServiceImpl
- * @Description TODO
- * @Author liulei
- * @Date 2019/1/24
- */
 @Service
 public class BookServiceImpl implements BookService {
+
+    final int Max = 100;
+
     @Autowired
-    private TBookMapper bookMapper ;
+    BorrowMapper borrowMapper;
+
     @Autowired
-    private TStoreMapper storeMapper ;
+    TBorrowMapper tBorrowMapper;
+
     @Autowired
-    private BookInfoMapper mapperBook ;
-    @Autowired
-    private TCommentMapper commentMapper ;
+    BookMapper bookMapper;
+
     @Override
-    public TBook getBookById(String bookId) {
-        return bookMapper.selectByPrimaryKey(bookId);
+    public List<TBorrow> getBookTop() {
+        // TODO Auto-generated method stub
+        return borrowMapper.selectByBookTop();
     }
 
     @Override
-    public boolean insertBook(QueryVo vo) {
+    public List<TBorrow> getUserTop() {
+        // TODO Auto-generated method stub
+        return borrowMapper.selectByUserTop();
+    }
 
-        TBook book = vo.getBook();
-        TBook tBook = bookMapper.selectByPrimaryKey(book.getIsbn());
-        if (tBook == null){
-            bookMapper.insert(book) ;
+    @Override
+    public List<BookAndEBook> getBooks(PageBean pagebean) {
+        // TODO Auto-generated method stub
+        return bookMapper.selectByDim(pagebean);
+    }
+
+    @Override
+    public List<BookAndEBook> getEBooks(PageBean pagebean) {
+        // TODO Auto-generated method stub
+        return bookMapper.selectEBookByDim(pagebean);
+    }
+
+    @Override
+    public int getTotal(PageBean pagebean) {
+        // TODO Auto-generated method stub
+        return bookMapper.getTotal(pagebean);
+    }
+
+    @Override
+    public TBook getBook(String id) {
+        // TODO Auto-generated method stub
+        return bookMapper.selectById(id);
+    }
+
+    @Override
+    public List<BookAndEBook> getBooksKey() {
+        // TODO Auto-generated method stub
+        return bookMapper.getBooksKey();
+    }
+
+    @Override
+    public List<BookAndEBook> getEBookKey() {
+        // TODO Auto-generated method stub
+        return bookMapper.getEBookKey();
+    }
+
+    @Override
+    public int insertBorrow(TBorrow borrow) {
+        // TODO Auto-generated method stub
+        return tBorrowMapper.insertSelective(borrow);
+    }
+
+    @Override
+    public String getKey(String wz, String tsdl) {
+        // TODO Auto-generated method stub
+        String id = "DBD";
+        String st = null;
+
+        if ("纸质".equals(tsdl)) {
+            id = id + "Z";
+        } else {
+            id = id + "E";
         }
-        TStore store = vo.getStore();
-        //补全库存信息的属性
-        store.setIsbn(book.getIsbn());
+
+        long time = System.currentTimeMillis();
+        Date date = new Date(time);
+        String ma = "yyyyMMdd";
+
+        SimpleDateFormat forma = new SimpleDateFormat(ma);
+        String nwdate = forma.format(date);
+
+        st = getDbKey();
+
+        id = id + wz + nwdate + st;
+
+        return id;
+    }
+
+    @Override
+    public String getDbKey() {
+        // TODO Auto-generated method stub
+
+        try {
+            List<BookAndEBook> ebookKey = getEBookKey();
+            List<BookAndEBook> bookKey = getBooksKey();
+            List<BookAndEBook> allKey = new ArrayList<BookAndEBook>();
+            allKey.addAll(bookKey);
+            allKey.addAll(ebookKey);
+            HashSet<String> set = new HashSet<String>();
+            for (BookAndEBook b : allKey) {
+                String str = b.getIsbn().substring( b.getIsbn().length() - 3);
+                set.add(str);
+            }
+            Random rd = new Random();
+            Boolean flag = true;
+            do {
+                int t = rd.nextInt(Max);
+                String st = "" + t;
+                if (!set.contains(st)) {
+                    if (st.length() == 1) {
+                        st = "00" + st;
+                    }
+                    if (st.length() == 2) {
+                        st = "0" + st;
+                    }
+
+                    return st;
+                }
+            } while (flag);
+        } catch (NullPointerException e) {
+            System.out.println(e);
+        }
+
+        return null;
+    }
+
+    @Override
+    public String getTime(String jyrq, String jhghrq) {
+        // TODO Auto-generated method stub
         Date date = new Date();
-        SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd") ;
-        String time = format.format(date);
-        store.setRksj(time);
-        //是否在库 0 不在，1 在库
-        store.setStatus(1);
-        storeMapper.insert(store) ;
-        return true;
-    }
-
-    @Override
-    public PageBean selectBookInfo(PageBean pageBean,QueryVo vo) {
-        if (vo.getDim() == null || vo.getDim() ==""){
-            vo.setDim(null);
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+        try {
+            date = sdf.parse(jyrq);// 字符串转换为data
+        } catch (ParseException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
         }
-        int total = mapperBook.selectByDimTotal(vo);
-        pageBean.setTotal(total);
-        List<BookInfo> tBooks = mapperBook.selectByDimPage(vo);
-        pageBean.setRows(tBooks);
-        return pageBean;
+        Calendar cal = Calendar.getInstance();
+        cal.setTime(date);
+        cal.add(Calendar.DATE, Integer.parseInt(jhghrq));
+        String time = sdf.format(cal.getTime());// data转换为字符串
+        return time;
     }
 
     @Override
-    public PageBean selectCommentInfo(PageBean pageBean, QueryVo vo) {
-        int total = mapperBook.selectCommentByIsbnTotal(vo) ;
-        pageBean.setTotal(total);
-        List<CommentInfo> commentList = mapperBook.selectCommentByIsbnList(vo);
-        pageBean.setRows(commentList);
-        return pageBean;
+    public List<BookAndEBook> joinBook(List<BookAndEBook> booksList,
+                                       List<BookAndEBook> EBookslist) {
+        // TODO Auto-generated method stub
+
+        System.out.println(booksList.toString());
+        List<BookAndEBook> books = new ArrayList<>();
+        books.addAll(booksList);
+        books.addAll(EBookslist);
+        return books;
     }
 
-    @Override
-    public BookInfo selectBookInfoById(String id) {
-        return mapperBook.selectBookInfoById(Integer.parseInt(id));
+
+    public BorrowMapper getBorrowMapper() {
+        return borrowMapper;
     }
 
-    @Override
-    public boolean delBook(String id) {
-        int rows = storeMapper.deleteByPrimaryKey(Integer.parseInt(id)) ;
-        return rows > 0 ? true : false;
+    public void setBorrowMapper(BorrowMapper borrowMapper) {
+        this.borrowMapper = borrowMapper;
     }
 
-    @Override
-    public boolean delComment(String id) {
-        int i = commentMapper.deleteByPrimaryKey(Integer.parseInt(id));
-        return i > 0 ? true : false ;
+    public BookMapper getBookMapper() {
+        return bookMapper;
     }
 
-    @Override
-    public CommentInfo selectCommentInfoById(String id) {
-        CommentInfo commentInfo = mapperBook.selectCommentInfoById(Integer.parseInt(id));
-        return commentInfo;
+    public void setBookMapper(BookMapper bookMapper) {
+        this.bookMapper = bookMapper;
     }
+
 }

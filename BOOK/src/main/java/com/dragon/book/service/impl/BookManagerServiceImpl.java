@@ -91,7 +91,7 @@ public class BookManagerServiceImpl implements BookManagerService {
 
     @Override
     public boolean delBook(String id) {
-        int rows = storeMapper.deleteByPrimaryKey(Integer.parseInt(id)) ;
+        int rows = storeMapper.deleteByPrimaryKey(id) ;
         return rows > 0 ? true : false;
     }
 
