@@ -97,4 +97,22 @@
           ) tb
       on su.isbn = tb.isbn
   </select>
+    <select id="bookExport" resultType="com.dragon.book.pojo.BookInfo">
+        select
+	    su.id,tb.isbn,tb.sm,tb.cbsmc,tb.cbrq,tb.zz,tb.lxmc,tb.tsdl,su.sm uname,su.wz,su.sh,su.rksj,su.status
+      from (
+                  select s.*,u.sm
+                  from t_store s
+                  left join t_sys_user u
+                  on s.user_id = u.user_id
+          ) su
+      left join (
+                  select b.*,t.lxmc
+                  from t_book b
+                  left join t_type t
+                  on b.type_id = t.type_id
+          ) tb
+      on su.isbn = tb.isbn
+      order by su.status
+    </select>
 </mapper>

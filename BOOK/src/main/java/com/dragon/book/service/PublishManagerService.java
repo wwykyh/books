@@ -1,8 +1,7 @@
 package com.dragon.book.service;
 
-import com.dragon.book.mapper.TPublishMapper;
 import com.dragon.book.model.TPublish;
-import com.dragon.book.pojo.PageBean;
+import com.dragon.book.util.PageBean;
 
 import java.util.List;
 

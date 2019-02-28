@@ -1,73 +1,101 @@
 package com.dragon.book.model;
 
 public class TBook {
-    private String isbn;
+	private String isbn;
 
-    private String sm;
+	private String sm;
 
-    private String cbsmc;
+	private String cbsmc;
 
-    private String cbrq;
+	private String cbrq;
 
-    private String zz;
+	private String zz;
 
-    private Integer typeId;
+	private Integer typeId;
 
-    private String tsdl;
+	private String tsdl;
 
-    public String getIsbn() {
-        return isbn;
-    }
+	private TType tType;
 
-    public void setIsbn(String isbn) {
-        this.isbn = isbn == null ? null : isbn.trim();
-    }
+	private TStore tStore;
 
-    public String getSm() {
-        return sm;
-    }
+	@Override
+	public String toString() {
+		return "TBook [isbn=" + isbn + ", sm=" + sm + ", cbsmc=" + cbsmc
+				+ ", cbrq=" + cbrq + ", zz=" + zz + ", typeId=" + typeId
+				+ ", tsdl=" + tsdl + ", tType=" + tType + ", tStore=" + tStore
+				+ "]";
+	}
 
-    public void setSm(String sm) {
-        this.sm = sm == null ? null : sm.trim();
-    }
+	public TType gettType() {
+		return tType;
+	}
 
-    public String getCbsmc() {
-        return cbsmc;
-    }
+	public void settType(TType tType) {
+		this.tType = tType;
+	}
 
-    public void setCbsmc(String cbsmc) {
-        this.cbsmc = cbsmc == null ? null : cbsmc.trim();
-    }
+	public TStore gettStore() {
+		return tStore;
+	}
 
-    public String getCbrq() {
-        return cbrq;
-    }
+	public void settStore(TStore tStore) {
+		this.tStore = tStore;
+	}
 
-    public void setCbrq(String cbrq) {
-        this.cbrq = cbrq == null ? null : cbrq.trim();
-    }
+	public String getIsbn() {
+		return isbn;
+	}
 
-    public String getZz() {
-        return zz;
-    }
+	public void setIsbn(String isbn) {
+		this.isbn = isbn == null ? null : isbn.trim();
+	}
 
-    public void setZz(String zz) {
-        this.zz = zz == null ? null : zz.trim();
-    }
+	public String getSm() {
+		return sm;
+	}
 
-    public Integer getTypeId() {
-        return typeId;
-    }
+	public void setSm(String sm) {
+		this.sm = sm == null ? null : sm.trim();
+	}
 
-    public void setTypeId(Integer typeId) {
-        this.typeId = typeId;
-    }
+	public String getCbsmc() {
+		return cbsmc;
+	}
 
-    public String getTsdl() {
-        return tsdl;
-    }
+	public void setCbsmc(String cbsmc) {
+		this.cbsmc = cbsmc == null ? null : cbsmc.trim();
+	}
 
-    public void setTsdl(String tsdl) {
-        this.tsdl = tsdl == null ? null : tsdl.trim();
-    }
+	public String getCbrq() {
+		return cbrq;
+	}
+
+	public void setCbrq(String cbrq) {
+		this.cbrq = cbrq == null ? null : cbrq.trim();
+	}
+
+	public String getZz() {
+		return zz;
+	}
+
+	public void setZz(String zz) {
+		this.zz = zz == null ? null : zz.trim();
+	}
+
+	public Integer getTypeId() {
+		return typeId;
+	}
+
+	public void setTypeId(Integer typeId) {
+		this.typeId = typeId;
+	}
+
+	public String getTsdl() {
+		return tsdl;
+	}
+
+	public void setTsdl(String tsdl) {
+		this.tsdl = tsdl == null ? null : tsdl.trim();
+	}
 }

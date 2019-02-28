@@ -10,7 +10,7 @@ public interface TStoreMapper {
 
     int deleteByExample(TStoreExample example);
 
-    int deleteByPrimaryKey(Integer id);
+    int deleteByPrimaryKey(String id);
 
     int insert(TStore record);
 
@@ -18,7 +18,7 @@ public interface TStoreMapper {
 
     List<TStore> selectByExample(TStoreExample example);
 
-    TStore selectByPrimaryKey(Integer id);
+    TStore selectByPrimaryKey(String id);
 
     int updateByExampleSelective(@Param("record") TStore record, @Param("example") TStoreExample example);
 

@@ -31,13 +31,13 @@
 							<tr>
 								<th></th>
 								<td><select id="s_tsdl" name="s_tsdl" class="select">
-										<option value="">-------------请选择图书大类------------</option>
+										<option value="">------------------请选择图书大类------------------</option>
 										<option value="纸质">纸质</option>
 										<option value="电子书">电子书</option>
 										<option value="CSDN">CSDN</option>
 								</select></td>
 								<td><select id="s_type" name="s_type" class="select">
-										<option value="">-------------请选择图书类型-------------</option>
+										<option value="">------------------请选择图书类型------------------</option>
 										<c:forEach items="${typeList }" var="t">
 											<option value="${t.typeId }">${t.lxmc }</option>
 										</c:forEach>
@@ -93,23 +93,31 @@
 																}
 															}
 														}
+													},{
+														display : '图书编号',
+														name : 'id',
+														width : 150,
+														frozen : true,
+														
 													},
 													{
 														display : 'ISBN',
 														//name : 'isbn',
-														width : 120,
+														width : 150,
 														frozen : true,
 														render : function(row) {
 															if (row.id != undefined
 																	&& row.id != null
 																	&& row.id != "") {
-																if (row.isbn != undefined
-																		&& row.isbn != null
-																		&& row.isbn != "") {
-																	return row.isbn;
-																} else {
-																	return "无相关信息";
-																}
+															
+																	
+																
+																	if (row.tsdl == '纸质') {
+																		return  row.isbn;
+																	}else{
+																		return "无相关信息";
+																	}
+																
 															}
 														}
 													},
@@ -170,7 +178,7 @@
 													},
 													{
 														display : '类型',
-														name : 'tType.lxmc',
+														name : 'lxmc',
 														width : 120,
 														frozen : true
 													},
@@ -198,25 +206,7 @@
 															}
 														}
 													},
-													{
-														display : '可借图书数量',
-														//	name : 'cs',
-														width : 120,
-														frozen : true,
-														render : function(row) {
-															if (row.id != undefined
-																	&& row.id != null
-																	&& row.id != "") {
-																if (row.cs != undefined
-																		&& row.cs != null
-																		&& row.cs != "") {
-																	return row.cs;
-																} else {
-																	return "无";
-																}
-															}
-														}
-													},
+													
 													{
 														display : '操作',
 														isAllowHide : false,
@@ -236,7 +226,7 @@
 																} else if (row.tszl == "电子书"
 																		|| row.tszl == "CSDN") {
 																	html = html
-																			+ '<a href="javascript:void(0);" onclick="download('
+																			+ '<a href="javascript:void(0);" onclick="borrow('
 																			+ row.id
 																			+ ')">下载</a>';
 																}

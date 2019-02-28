@@ -20,4 +20,5 @@ public interface BookInfoMapper {
     List<CommentInfo> selectCommentByIsbnList(QueryVo vo) ;
     BookInfo selectBookInfoById(Integer id) ;
     CommentInfo selectCommentInfoById(Integer commentId) ;
+    List<BookInfo> bookExport() ;
 }

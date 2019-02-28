@@ -13,11 +13,14 @@
  */
 package com.dragon.book.controller;
 
+
 import java.util.List;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpRequest;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -32,7 +35,6 @@ import com.dragon.book.model.TType;
 import com.dragon.book.service.BookService;
 import com.dragon.book.service.TypeService;
 import com.dragon.book.service.UserService;
-import com.dragon.book.util.GenerateId;
 import com.dragon.book.util.PageBean;
 
 @Controller
@@ -46,8 +48,6 @@ public class BookController {
 	@Autowired
 	private TypeService typeService;
 
-	@Autowired
-	private GenerateId key;
 
 	@Autowired
 	private UserService userService;
@@ -59,6 +59,8 @@ public class BookController {
 	 */
 	@GetMapping("/index")
 	public String bookIndex() {
+		
+	
 		return "index";
 	}
 
@@ -89,11 +91,15 @@ public class BookController {
 	 * @return
 	 */
 	@GetMapping("/Home")
-	public String home(Model model) {
+	public String home(Model model,HttpServletRequest request) {
 		List<TBorrow> bookList = bookService.getBookTop();
 		List<TBorrow> userList = bookService.getUserTop();
 		model.addAttribute("bookList", bookList);
 		model.addAttribute("userList", userList);
+		
+		String path = request.getServletContext().getRealPath("/js");
+		System.out.println(path+"-------------------------------");
+		
 		return "home";
 	}
 
@@ -166,7 +172,7 @@ public class BookController {
 				userService.getUserInfo((int) session.getAttribute("userId")));
 		TBook book = bookService.getBook(id);
 		model.addAttribute("book", book);
-		if (0 == book.getStatus()) {
+		if (0 == book.gettStore().getStatus()) {
 			model.addAttribute("status", "出库");
 		} else {
 			model.addAttribute("status", "在库");
@@ -195,7 +201,7 @@ public class BookController {
 	 * @return
 	 */
 	@GetMapping("/doBorrow")
-	public String doBorrow(@RequestParam("id") String id,
+	public String doBorrow(
 			@RequestParam("isbn") String isbn, @RequestParam String sm,
 			@RequestParam String lxfs, @RequestParam String jyrq,
 			@RequestParam String jhghrq, @RequestParam String userId,
@@ -207,6 +213,7 @@ public class BookController {
 		borrow.setLxfs(lxfs);
 		borrow.setJyrq(jyrq);
 		borrow.setJhghrq(bookService.getTime(jyrq, jhghrq));
+		borrow.setStatus(2);
 		bookService.insertBorrow(borrow);
 		return "redirect:/sea";
 	}
@@ -234,14 +241,6 @@ public class BookController {
 
 	public void setTypeService(TypeService typeService) {
 		this.typeService = typeService;
-	}
-
-	public GenerateId getKey() {
-		return key;
-	}
-
-	public void setKey(GenerateId key) {
-		this.key = key;
 	}
 
 	public UserService getUserService() {
