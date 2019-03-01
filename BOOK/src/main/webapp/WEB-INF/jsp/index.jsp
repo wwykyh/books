@@ -89,7 +89,7 @@
                     </dt>
                     <dd>
                         <ul>
-                            <li><a _href="search" data-name="图书检索" href="javascript:;">图书检索</a></li>
+                            <li><a _href="sea" data-name="图书检索" href="javascript:;">图书检索</a></li>
                             </li>
                         </ul>
                     </dd>

@@ -10,7 +10,7 @@
 		<result column="type_id" property="typeId" jdbcType="INTEGER" />
 		<result column="tsdl" property="tsdl" jdbcType="VARCHAR" />
 		<association property="tStore" javaType="com.dragon.book.model.TStore"
-					 column="isbn" foreignColumn="isbn">
+			column="isbn" foreignColumn="isbn">
 			<id column="id" property="id" jdbcType="INTEGER" />
 			<result column="user_id" property="userId" jdbcType="INTEGER" />
 			<result column="wz" property="wz" jdbcType="VARCHAR" />

@@ -7,7 +7,7 @@ import com.dragon.book.mapper.TUserBookMapper;
 import com.dragon.book.model.*;
 import com.dragon.book.service.ebookService.EbookFileService;
 import com.dragon.book.config.FtpConfig;
-import com.dragon.book.util.FtpUtils;
+import com.dragon.book.utils.FtpUtils;
 import org.apache.commons.net.ftp.FTPClient;
 import org.apache.commons.net.ftp.FTPFile;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,6 +16,7 @@ import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.multipart.MultipartFile;
 
+import javax.servlet.ServletOutputStream;
 import java.io.*;
 import java.net.URLEncoder;
 import java.nio.charset.StandardCharsets;

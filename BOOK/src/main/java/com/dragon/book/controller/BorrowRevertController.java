@@ -2,7 +2,9 @@ package com.dragon.book.controller;
 
 import com.alibaba.fastjson.JSON;
 import com.dragon.book.model.TBorrow;
+import com.dragon.book.model.TBorrowVo;
 import com.dragon.book.model.TType;
+import com.dragon.book.service.ebookService.BorrowCheckService;
 import com.dragon.book.service.ebookService.EbookFileService;
 import com.dragon.book.service.ebookService.RevertCheckService;
 import com.dragon.book.util.PageBean;
@@ -15,6 +17,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springside.modules.web.Servlets;
 
 import javax.servlet.http.HttpServletRequest;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 

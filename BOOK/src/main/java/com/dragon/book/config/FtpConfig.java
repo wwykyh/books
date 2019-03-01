@@ -13,23 +13,23 @@ import java.util.Map;
 /**
  * ftp服务器类，用来初始化ftp的属性参数
  */
-/*@SpringBootApplication*/
+@SpringBootApplication
 @RestController
 public class FtpConfig {
 
-    @Value("${ftp.host:172.16.101.245}")
+    @Value("${ftp.host}")
     private String ftpHost;
 
-    @Value("${ftp.port:21}")
+    @Value("${ftp.port}")
     private Integer ftpPort ;
 
-    @Value("${ftp.username:test}")
+    @Value("${ftp.username}")
     private String ftpUserName;
 
-    @Value("${ftp.password:test}")
+    @Value("${ftp.password}")
     private String ftpPassWord;
 
-    @Value("${ftp.path:/}")
+    @Value("${ftp.path}")
     private String ftpPath;
 
     public String getFtpHost() {
@@ -99,8 +99,8 @@ public class FtpConfig {
         // map.put("title", new String(title.getBytes("ISO-8859-1"), "UTF-8"));
         return map;
     }
-   /* public  static void main(String [] args){
+    public  static void main(String [] args){
         SpringApplication application = new SpringApplication(FtpConfig.class);
         application.run(args);
-    }*/
+    }
 }

@@ -1,4 +1,4 @@
-package com.dragon.book.util;
+package com.dragon.book.utils;
 
 import org.apache.commons.net.ftp.FTPClient;
 import org.apache.commons.net.ftp.FTPClientConfig;

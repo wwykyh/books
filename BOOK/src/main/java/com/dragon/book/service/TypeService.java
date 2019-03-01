@@ -5,5 +5,5 @@ import java.util.List;
 import com.dragon.book.model.TType;
 
 public interface TypeService {
-    public List<TType> getAllTypes();
+public List<TType> getAllTypes();
 }
