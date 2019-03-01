@@ -15,34 +15,6 @@ public class TBook {
 
 	private String tsdl;
 
-	private TType tType;
-
-	private TStore tStore;
-
-	@Override
-	public String toString() {
-		return "TBook [isbn=" + isbn + ", sm=" + sm + ", cbsmc=" + cbsmc
-				+ ", cbrq=" + cbrq + ", zz=" + zz + ", typeId=" + typeId
-				+ ", tsdl=" + tsdl + ", tType=" + tType + ", tStore=" + tStore
-				+ "]";
-	}
-
-	public TType gettType() {
-		return tType;
-	}
-
-	public void settType(TType tType) {
-		this.tType = tType;
-	}
-
-	public TStore gettStore() {
-		return tStore;
-	}
-
-	public void settStore(TStore tStore) {
-		this.tStore = tStore;
-	}
-
 	public String getIsbn() {
 		return isbn;
 	}

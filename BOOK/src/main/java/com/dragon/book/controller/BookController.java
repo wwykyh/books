@@ -19,6 +19,7 @@ import java.util.List;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
+import com.dragon.book.pojo.Book;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpRequest;
 import org.springframework.stereotype.Controller;
@@ -143,7 +144,6 @@ public class BookController {
 		pagebean.setPagesize(pagesize);
 		pagebean.setS_tsdl(s_tsdl);
 		pagebean.setS_type(s_type);
-
 		List<BookAndEBook> allBookList = bookService
 				.joinBook(bookService.getBooks(pagebean),
 						bookService.getEBooks(pagebean));
@@ -170,7 +170,7 @@ public class BookController {
 
 		model.addAttribute("user",
 				userService.getUserInfo((int) session.getAttribute("userId")));
-		TBook book = bookService.getBook(id);
+		Book book = bookService.getBook(id);
 		model.addAttribute("book", book);
 		if (0 == book.gettStore().getStatus()) {
 			model.addAttribute("status", "出库");
@@ -185,8 +185,6 @@ public class BookController {
 	 * 
 	 * @param id
 	 *            图书id
-	 * @param isbn
-	 *            图书isbn
 	 * @param sm
 	 *            图书书名
 	 * @param lxfs
@@ -202,18 +200,12 @@ public class BookController {
 	 */
 	@GetMapping("/doBorrow")
 	public String doBorrow(
-			@RequestParam("isbn") String isbn, @RequestParam String sm,
+			@RequestParam String id, @RequestParam String sm,
 			@RequestParam String lxfs, @RequestParam String jyrq,
 			@RequestParam String jhghrq, @RequestParam String userId,
 			Model model) {
-		TBorrow borrow = new TBorrow();
-		borrow.setIsbn(isbn);
-		borrow.setUserId(Integer.parseInt(userId));
-		borrow.setSm(sm);
-		borrow.setLxfs(lxfs);
-		borrow.setJyrq(jyrq);
-		borrow.setJhghrq(bookService.getTime(jyrq, jhghrq));
-		borrow.setStatus(2);
+
+		TBorrow borrow =bookService.setBorrow(id,Integer.parseInt(userId),sm,lxfs,jyrq,bookService.getTime(jyrq, jhghrq),2);
 		bookService.insertBorrow(borrow);
 		return "redirect:/sea";
 	}
