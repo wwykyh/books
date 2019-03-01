@@ -82,7 +82,7 @@
             $("#commemt").ligerGrid({
                 columns: [{
                     display: '用户',
-                    name: 'sm',
+                    name: 'xm',
                     width: 120,
                     frozen: true
                 }, {
