@@ -3,7 +3,7 @@
 <mapper namespace="com.dragon.book.mapper.TBorrowMapper" >
   <resultMap id="BaseResultMap" type="com.dragon.book.model.TBorrow" >
     <id column="id" property="id" jdbcType="INTEGER" />
-    <result column="isbn" property="isbn" jdbcType="VARCHAR" />
+    <result column="s_id" property="sId" jdbcType="VARCHAR" />
     <result column="sm" property="sm" jdbcType="VARCHAR" />
     <result column="user_id" property="userId" jdbcType="INTEGER" />
     <result column="lxfs" property="lxfs" jdbcType="VARCHAR" />
@@ -76,7 +76,7 @@
     </where>
   </sql>
   <sql id="Base_Column_List" >
-    id, isbn, sm, user_id, lxfs, jyrq, jhghrq, xjrq, ghrq, status, jyzt
+    id, s_id, sm, user_id, lxfs, jyrq, jhghrq, xjrq, ghrq, status, jyzt
   </sql>
   <sql id="Blob_Column_List" >
     bz
@@ -130,12 +130,12 @@
     </if>
   </delete>
   <insert id="insert" parameterType="com.dragon.book.model.TBorrow" >
-    insert into t_borrow (id, isbn, sm, 
+    insert into t_borrow (id, s_id, sm, 
       user_id, lxfs, jyrq, 
       jhghrq, xjrq, ghrq, 
       status, jyzt, bz
       )
-    values (#{id,jdbcType=INTEGER}, #{isbn,jdbcType=VARCHAR}, #{sm,jdbcType=VARCHAR}, 
+    values (#{id,jdbcType=INTEGER}, #{sId,jdbcType=VARCHAR}, #{sm,jdbcType=VARCHAR}, 
       #{userId,jdbcType=INTEGER}, #{lxfs,jdbcType=VARCHAR}, #{jyrq,jdbcType=VARCHAR}, 
       #{jhghrq,jdbcType=VARCHAR}, #{xjrq,jdbcType=VARCHAR}, #{ghrq,jdbcType=VARCHAR}, 
       #{status,jdbcType=INTEGER}, #{jyzt,jdbcType=INTEGER}, #{bz,jdbcType=LONGVARCHAR}
@@ -147,8 +147,8 @@
       <if test="id != null" >
         id,
       </if>
-      <if test="isbn != null" >
-        isbn,
+      <if test="sId != null" >
+        s_id,
       </if>
       <if test="sm != null" >
         sm,
@@ -185,8 +185,8 @@
       <if test="id != null" >
         #{id,jdbcType=INTEGER},
       </if>
-      <if test="isbn != null" >
-        #{isbn,jdbcType=VARCHAR},
+      <if test="sId != null" >
+        #{sId,jdbcType=VARCHAR},
       </if>
       <if test="sm != null" >
         #{sm,jdbcType=VARCHAR},
@@ -232,8 +232,8 @@
       <if test="record.id != null" >
         id = #{record.id,jdbcType=INTEGER},
       </if>
-      <if test="record.isbn != null" >
-        isbn = #{record.isbn,jdbcType=VARCHAR},
+      <if test="record.sId != null" >
+        s_id = #{record.sId,jdbcType=VARCHAR},
       </if>
       <if test="record.sm != null" >
         sm = #{record.sm,jdbcType=VARCHAR},
@@ -273,7 +273,7 @@
   <update id="updateByExampleWithBLOBs" parameterType="map" >
     update t_borrow
     set id = #{record.id,jdbcType=INTEGER},
-      isbn = #{record.isbn,jdbcType=VARCHAR},
+      s_id = #{record.sId,jdbcType=VARCHAR},
       sm = #{record.sm,jdbcType=VARCHAR},
       user_id = #{record.userId,jdbcType=INTEGER},
       lxfs = #{record.lxfs,jdbcType=VARCHAR},
@@ -291,7 +291,7 @@
   <update id="updateByExample" parameterType="map" >
     update t_borrow
     set id = #{record.id,jdbcType=INTEGER},
-      isbn = #{record.isbn,jdbcType=VARCHAR},
+      s_id = #{record.sId,jdbcType=VARCHAR},
       sm = #{record.sm,jdbcType=VARCHAR},
       user_id = #{record.userId,jdbcType=INTEGER},
       lxfs = #{record.lxfs,jdbcType=VARCHAR},
@@ -308,8 +308,8 @@
   <update id="updateByPrimaryKeySelective" parameterType="com.dragon.book.model.TBorrow" >
     update t_borrow
     <set >
-      <if test="isbn != null" >
-        isbn = #{isbn,jdbcType=VARCHAR},
+      <if test="sId != null" >
+        s_id = #{sId,jdbcType=VARCHAR},
       </if>
       <if test="sm != null" >
         sm = #{sm,jdbcType=VARCHAR},
@@ -346,7 +346,7 @@
   </update>
   <update id="updateByPrimaryKeyWithBLOBs" parameterType="com.dragon.book.model.TBorrow" >
     update t_borrow
-    set isbn = #{isbn,jdbcType=VARCHAR},
+    set s_id = #{sId,jdbcType=VARCHAR},
       sm = #{sm,jdbcType=VARCHAR},
       user_id = #{userId,jdbcType=INTEGER},
       lxfs = #{lxfs,jdbcType=VARCHAR},
@@ -361,7 +361,7 @@
   </update>
   <update id="updateByPrimaryKey" parameterType="com.dragon.book.model.TBorrow" >
     update t_borrow
-    set isbn = #{isbn,jdbcType=VARCHAR},
+    set s_id = #{sId,jdbcType=VARCHAR},
       sm = #{sm,jdbcType=VARCHAR},
       user_id = #{userId,jdbcType=INTEGER},
       lxfs = #{lxfs,jdbcType=VARCHAR},

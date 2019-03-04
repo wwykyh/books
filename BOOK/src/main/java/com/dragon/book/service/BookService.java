@@ -5,6 +5,8 @@ import java.util.List;
 import com.dragon.book.model.BookAndEBook;
 import com.dragon.book.model.TBook;
 import com.dragon.book.model.TBorrow;
+import com.dragon.book.pojo.Book;
+import com.dragon.book.pojo.Borrow;
 import com.dragon.book.util.PageBean;
 
 public interface BookService {
@@ -47,7 +49,7 @@ public interface BookService {
 	 *            图书id
 	 * @return 检索结果实体
 	 */
-	public TBook getBook(String id);
+	public Book getBook(String id);
 
 	/**
 	 * 插入图书的借阅记录
@@ -120,4 +122,6 @@ public interface BookService {
 	 */
 	public List<BookAndEBook> joinBook(List<BookAndEBook> booksList,
 			List<BookAndEBook> EBookslist);
+
+	public TBorrow setBorrow(String isbn, int parseInt, String sm, String lxfs, String jyrq, String time, int i);
 }

@@ -9,13 +9,13 @@ import com.dragon.book.model.TComment;
  * @Date 2019/2/12
  */
 public class CommentInfo extends TComment {
-    private String sm ;
+    private String xm ;
 
-    public String getSm() {
-        return sm;
+    public String getXm() {
+        return xm;
     }
 
-    public void setSm(String sm) {
-        this.sm = sm;
+    public void setXm(String xm) {
+        this.xm = xm;
     }
 }
