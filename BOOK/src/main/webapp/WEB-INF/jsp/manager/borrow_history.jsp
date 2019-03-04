@@ -9,6 +9,10 @@
 <html>
 <head>
     <title>借阅历史</title>
+    <!-- 日期插件，使用jquery -->
+    <link rel="stylesheet" href="js/libs/jquery/jquery.datepick.css" type="text/css">
+    <script type="text/javascript" src="js/libs/jquery/jquery.datepick.js"></script>
+    <script type="text/javascript" src="js/libs/jquery/jquery.datepick-zh-CN.js"></script>
 </head>
 <body>
     <div class="panel">
@@ -16,6 +20,133 @@
             <h2>借阅历史</h2>
             <a href="javascript:;" class="arrow up"></a>
         </div>
+
+        <div class="main-cont">
+            <div class="tab tab-default">
+                <div class="tab-contbox">
+                    <div class="search-box">
+                        <table class="search-table">
+                            <tr>
+                                <td>
+                                    <input id="start_time" type="text" placeholder="开始时间" class="input-text" />
+                                </td>
+                                <td>
+                                    <input id="end_time" type="text" placeholder="结束时间" class="input-text" />
+                                </td>
+                                <td>
+                                    <input id="dim" type="text" placeholder="书名、作者" class="input-text" />
+                                </td>
+                                <td>
+                                    <input id="user" type="text" placeholder="用户ID、用户名" class="input-text" />
+                                </td>
+                                <td colspan="2"><a href="javascript:;" class="btn"><span id="btnLoad"><i class="icon icon-search"></i>查询</span></a></td>
+                            </tr>
+                        </table>
+                    </div>
+
+                    <div id="historyInfo"></div>
+                </div>
+            </div>
+        </div>
     </div>
 </body>
+<script>
+
+    var start_time ;
+    var end_time ;
+    var dim ;
+    var user ;
+    requirejs(['jquery', 'ligerGrid','dg.datePicker', 'artdialog'], function($) {
+        $(function () {
+            select() ;
+        }) ;
+        function select() {
+            $("#historyInfo").ligerGrid({
+                columns: [{
+                    display: 'ISBN',
+                    name: 'isbn',
+                    width: 120,
+                    frozen: true
+                }, {
+                    display: '书名',
+                    name: 'sm',
+                    width: 200,
+                    frozen: true
+                }, {
+                    display: '出版社名称',
+                    name: 'cbsmc',
+                    width: 120,
+                    frozen: true
+                }, {
+                    display: '作者',
+                    name: 'zz',
+                    width: 140,
+                    frozen: true
+                }, {
+                    display: '类型',
+                    name: 'lxmc',
+                    width: 70,
+                    frozen: true
+                }, {
+                    display: '所属类型',
+                    name: 'tsdl',
+                    width: 80,
+                    frozen: true
+                }, {
+                    display: '借阅日期',
+                    name: 'uname',
+                    width: 90,
+                    frozen: true
+                }, {
+                    display: '归还日期',
+                    name: 'wz',
+                    width: 80,
+                    frozen: true
+                },{
+                    display: '操作',
+                    isAllowHide: false,
+                    render: function (row){
+                        if (row.id != undefined && row.id != null && row.id != ""){
+                            var html = '<a href="javascript:void(0);" onclick="onBookInfo(' + row.id + ')">查看详情</a>&nbsp;&nbsp;' ;
+                            //html = html + '<a href="javascript:void(0);" onclick="onBookEdit(' + row.id + ')">库存管理</a>&nbsp;&nbsp;';
+                            html = html + '<a href="javascript:void(0);" onclick="onBookDel(' + row.id + ')">出库</a>';
+                            return html;
+                        }else return "" ;
+                    }
+                }],
+                url: '/historyPage_manager',
+                method:'get',
+                dataType: 'server',
+                dataAction: 'server',
+                pageSize: 10,
+                width: '100%',
+                checkbox: false,
+                rownumbers: false,
+                parms:[
+                    {name:"startTime",value:start_time},
+                    {name:"endTime",value:end_time},
+                    {name:"dim",value:dim},
+                    {name:"user",value:user}
+                ],
+                fixedCellHeight: false,
+                iShowScroll: false,
+                allowAdjustColWidth: true
+            }) ;
+        };
+
+        $("#btnLoad").click(function(){
+            start_time = $("#start_time").val() ;
+            end_time = $("#end_time").val() ;
+            dim = $("#dim").val();
+            user = $("#user").val() ;
+            select() ;
+        }) ;
+    });
+
+    $(document).ready(function(){
+        //使用class属性处理  'yy-mm-dd' 设置格式"yy-mm-dd"
+        $('#start_time').datepick({dateFormat: 'yy-mm-dd'});
+        $('#end_time').datepick({dateFormat: 'yy-mm-dd'});
+    });
+</script>
 </html>

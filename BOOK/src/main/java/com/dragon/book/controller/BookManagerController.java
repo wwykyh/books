@@ -33,6 +33,7 @@ import java.util.List;
  */
 @Controller
 public class BookManagerController {
+
     @Autowired
     private TypeManagerService typeService ;
     @Autowired
@@ -278,5 +279,15 @@ public class BookManagerController {
         }finally {
             return null ;
         }
+    }
+
+    /**
+     * 借阅历史
+     * */
+    @RequestMapping("/historyPage_manager")
+    public String HistoryPageManager(PageBean pageBean){
+        //System.err.print("\n"+pageBean.getStartTime()+"/"+pageBean.getEndTime()+"/"+pageBean.getDim()+"/"+pageBean.getUser()+"/"+pageBean.getPage()+"/"+pageBean.getPagesize());
+
+        return null ;
     }
 }

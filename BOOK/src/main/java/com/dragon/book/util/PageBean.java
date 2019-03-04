@@ -21,6 +21,7 @@ public class PageBean implements Serializable {
 	private String endTime;// 结束时间
 	private String s_tsdl;// 图书大类
 	private String s_type;// 图书类型
+	private String user ;//用户名称或用户id
 
 	@Override
 	public String toString() {
@@ -100,5 +101,13 @@ public class PageBean implements Serializable {
 
 	public void setTotal(Integer total) {
 		this.total = total;
+	}
+
+	public String getUser() {
+		return user;
+	}
+
+	public void setUser(String user) {
+		this.user = user;
 	}
 }
