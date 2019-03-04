@@ -2,9 +2,6 @@ package com.dragon.book.service.impl;
 
 import java.util.List;
 
-import com.dragon.book.util.Caesar;
-import com.dragon.book.util.DataOperator;
-import com.dragon.book.util.PasswordAdapter;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -65,16 +62,6 @@ public TSysUser getUserInfo(int userId) {
 	System.out.println(user.toString());
 	return user;
 }
-
-    public String encryption(String pwd){
-        DataOperator data;
-        String pass;
-        Caesar caesar = new Caesar();
-        data = new PasswordAdapter( caesar);
-        pass = data.doEncrypt(pwd);
-        data.setPassword(pass);
-        return data.getPassword();
-    }
 	public TSysUserMapper getUserMapper() {
 		return userMapper;
 	}

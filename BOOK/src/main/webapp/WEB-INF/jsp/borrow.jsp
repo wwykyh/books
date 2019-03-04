@@ -34,7 +34,7 @@
 			<tr><th width="20%">图书编号：</th>
 				<td width="35%">
 				 <input type="text" class="input-text"
-					readonly="readonly" name="id" value="${book.tStore.id }" /></td>
+					readonly="readonly" name="isbn" value="${book.tStore.id }" /></td>
 				<th width="20%">isbn：</th>
 				<td width="35%">
 				 <input type="text" class="input-text"

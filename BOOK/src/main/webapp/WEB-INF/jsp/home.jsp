@@ -26,7 +26,7 @@
 				<c:forEach items="${bookList }" var="bl" varStatus="status">
 					<tr>
 						<td>${requestScope.offset+status.index+1}</td>
-						<td>${bl.sId }</td>
+						<td>${bl.isbn }</td>
 						<td>${bl.sm }</td>
 						<td>${bl.cs }</td>
 					</tr>

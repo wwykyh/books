@@ -9,7 +9,6 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Random;
 
-import com.dragon.book.pojo.Book;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -67,7 +66,7 @@ public class BookServiceImpl implements BookService {
 	}
 
 	@Override
-	public Book getBook(String id) {
+	public TBook getBook(String id) {
 		// TODO Auto-generated method stub
 		return bookMapper.selectById(id);
 	}
@@ -182,20 +181,6 @@ public class BookServiceImpl implements BookService {
 		books.addAll(EBookslist);
 		return books;
 	}
-    public TBorrow setBorrow(String isbn, int userId, String sm, String lxfs, String jyrq, String jhghrq, int i){
-
-        TBorrow borrow = new TBorrow();
-        borrow.setsId(isbn);
-        borrow.setUserId(userId);
-        borrow.setSm(sm);
-        borrow.setLxfs(lxfs);
-        borrow.setJyrq(jyrq);
-        borrow.setJhghrq(jhghrq);
-        borrow.setStatus(2);
-	    return borrow;
-    }
-
-
 	public BorrowMapper getBorrowMapper() {
 		return borrowMapper;
 	}

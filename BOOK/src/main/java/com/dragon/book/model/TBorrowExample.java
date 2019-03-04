@@ -164,73 +164,73 @@ public class TBorrowExample {
             return (Criteria) this;
         }
 
-        public Criteria andSIdIsNull() {
-            addCriterion("s_id is null");
+        public Criteria andIsbnIsNull() {
+            addCriterion("isbn is null");
             return (Criteria) this;
         }
 
-        public Criteria andSIdIsNotNull() {
-            addCriterion("s_id is not null");
+        public Criteria andIsbnIsNotNull() {
+            addCriterion("isbn is not null");
             return (Criteria) this;
         }
 
-        public Criteria andSIdEqualTo(String value) {
-            addCriterion("s_id =", value, "sId");
+        public Criteria andIsbnEqualTo(String value) {
+            addCriterion("isbn =", value, "isbn");
             return (Criteria) this;
         }
 
-        public Criteria andSIdNotEqualTo(String value) {
-            addCriterion("s_id <>", value, "sId");
+        public Criteria andIsbnNotEqualTo(String value) {
+            addCriterion("isbn <>", value, "isbn");
             return (Criteria) this;
         }
 
-        public Criteria andSIdGreaterThan(String value) {
-            addCriterion("s_id >", value, "sId");
+        public Criteria andIsbnGreaterThan(String value) {
+            addCriterion("isbn >", value, "isbn");
             return (Criteria) this;
         }
 
-        public Criteria andSIdGreaterThanOrEqualTo(String value) {
-            addCriterion("s_id >=", value, "sId");
+        public Criteria andIsbnGreaterThanOrEqualTo(String value) {
+            addCriterion("isbn >=", value, "isbn");
             return (Criteria) this;
         }
 
-        public Criteria andSIdLessThan(String value) {
-            addCriterion("s_id <", value, "sId");
+        public Criteria andIsbnLessThan(String value) {
+            addCriterion("isbn <", value, "isbn");
             return (Criteria) this;
         }
 
-        public Criteria andSIdLessThanOrEqualTo(String value) {
-            addCriterion("s_id <=", value, "sId");
+        public Criteria andIsbnLessThanOrEqualTo(String value) {
+            addCriterion("isbn <=", value, "isbn");
             return (Criteria) this;
         }
 
-        public Criteria andSIdLike(String value) {
-            addCriterion("s_id like", value, "sId");
+        public Criteria andIsbnLike(String value) {
+            addCriterion("isbn like", value, "isbn");
             return (Criteria) this;
         }
 
-        public Criteria andSIdNotLike(String value) {
-            addCriterion("s_id not like", value, "sId");
+        public Criteria andIsbnNotLike(String value) {
+            addCriterion("isbn not like", value, "isbn");
             return (Criteria) this;
         }
 
-        public Criteria andSIdIn(List<String> values) {
-            addCriterion("s_id in", values, "sId");
+        public Criteria andIsbnIn(List<String> values) {
+            addCriterion("isbn in", values, "isbn");
             return (Criteria) this;
         }
 
-        public Criteria andSIdNotIn(List<String> values) {
-            addCriterion("s_id not in", values, "sId");
+        public Criteria andIsbnNotIn(List<String> values) {
+            addCriterion("isbn not in", values, "isbn");
             return (Criteria) this;
         }
 
-        public Criteria andSIdBetween(String value1, String value2) {
-            addCriterion("s_id between", value1, value2, "sId");
+        public Criteria andIsbnBetween(String value1, String value2) {
+            addCriterion("isbn between", value1, value2, "isbn");
             return (Criteria) this;
         }
 
-        public Criteria andSIdNotBetween(String value1, String value2) {
-            addCriterion("s_id not between", value1, value2, "sId");
+        public Criteria andIsbnNotBetween(String value1, String value2) {
+            addCriterion("isbn not between", value1, value2, "isbn");
             return (Criteria) this;
         }
 

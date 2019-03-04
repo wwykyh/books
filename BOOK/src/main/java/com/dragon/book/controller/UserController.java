@@ -33,9 +33,7 @@ public class UserController {
 	public String doLogin(@RequestParam String username,
 			@RequestParam String pwd, HttpSession session,
 			HttpServletRequest request) {
-		String pass =userService.encryption(pwd);
-		TSysUser user = userService.getUser(username, pass);
-
+		TSysUser user = userService.getUser(username, pwd);
 		if (user != null) {
 			session.setAttribute("userId", user.getUserId());
 			session.setAttribute("userName", user.getXm());
@@ -90,14 +88,12 @@ public class UserController {
 			HttpServletRequest request) throws Exception {
 		int i = 0;
 		try {
-			String pass =userService.encryption(pwd);
-			i = userService.regUser(username, pass, email);
+			i = userService.regUser(username, pwd, email);
 		} catch (NullPointerException e) {
 			System.out.println(e);
 		}
 		if (i == 0) {
 			request.setAttribute("tip", "注册失败");
-
 			return "register";
 		} else {
 			request.setAttribute("tip", "注册成功");
