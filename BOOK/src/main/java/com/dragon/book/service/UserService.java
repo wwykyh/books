@@ -37,4 +37,11 @@ public interface UserService {
 	public int regUser(String username, String pwd, String email);
 	
 	public TSysUser getUserInfo(int userId);
+
+	/**
+	 * 进行密码加密
+	 * 	 * @param pwd 密码
+	 * 	 * @return
+	 */
+	public String encryption(String pwd);
 }
