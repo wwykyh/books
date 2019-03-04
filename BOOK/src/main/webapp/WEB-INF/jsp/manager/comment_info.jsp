@@ -32,7 +32,7 @@
                 <table class="form-table" width="100%">
                     <tr>
                         <th width="17%"><span class="ft-need"></span>用户：</th>
-                        <td width="33%">${commentInfo.xm}</td>
+                        <td width="33%">${commentInfo.sm}</td>
                         <th width="17%"><span class="ft-need"></span>图书名称：</th>
                         <td width="33%"> ${tsmc}</td>
                     </tr>
