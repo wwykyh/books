@@ -1,21 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="com.dragon.book.mapper.BookManagerMapper" >
-  <resultMap id="BookResultMap" type="com.dragon.book.mapper.BookManagerMapper" >
-    <id column="id" property="id" jdbcType="VARCHAR" />
-    <result column="isbn" property="isbn" jdbcType="VARCHAR"/>
-    <result column="xm" property="xm" jdbcType="VARCHAR" />
-    <result column="cbsmc" property="cbsmc" jdbcType="VARCHAR" />
-    <result column="cbrq" property="cbrq" jdbcType="VARCHAR" />
-    <result column="zz" property="zz" jdbcType="VARCHAR" />
-    <result column="lxmc" property="lxmc" jdbcType="VARCHAR" />
-    <result column="tsdl" property="tsdl" jdbcType="VARCHAR" />
-    <result column="uname" property="uname" jdbcType="VARCHAR" />
-    <result column="wz" property="wz" jdbcType="VARCHAR" />
-    <result column="sh" property="sh" jdbcType="INTEGER" />
-    <result column="rksj" property="rksj" jdbcType="VARCHAR" />
-    <result column="status" property="status" jdbcType="INTEGER" />
-  </resultMap>
   <select id="selectByDimPage" resultType="com.dragon.book.pojo.BookInfo" parameterType="com.dragon.book.pojo.QueryVo">
       select
 	    su.id,tb.isbn,tb.sm,tb.cbsmc,tb.cbrq,tb.zz,tb.lxmc,tb.tsdl,su.xm uname,su.wz,su.sh,su.rksj,su.status
@@ -67,12 +52,12 @@
       </if>
   </select>
   <select id="selectCommentInfoById" resultType="com.dragon.book.pojo.CommentInfo" parameterType="int">
-      select u.sm,c.pjrq,c.nr,c.comment_id commentId
+      select u.xm,c.pjrq,c.nr,c.comment_id commentId
       from t_comment c LEFT JOIN t_sys_user u on c.user_id = u.user_id
       where c.comment_id = #{commentId}
   </select>
   <select id="selectCommentByIsbnList" resultType="com.dragon.book.pojo.CommentInfo" parameterType="com.dragon.book.pojo.QueryVo">
-      select u.sm,c.pjrq,c.nr,c.comment_id commentId
+      select u.xm,c.pjrq,c.nr,c.comment_id commentId
       from t_comment c LEFT JOIN t_sys_user u on c.user_id = u.user_id
       <if test="dim != null and dim != ''">
          WHERE c.isbn = ${dim}

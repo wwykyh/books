@@ -1,163 +1,133 @@
 package com.dragon.book.model;
 
 public class TBorrow {
-	private Integer id;
+    private Integer id;
 
-	private String isbn;
+    private String sId;
 
-	private String sm;
+    private String sm;
 
-	private Integer userId;
+    private Integer userId;
 
-	private String lxfs;
+    private String lxfs;
 
-	private String jyrq;
+    private String jyrq;
 
-	private String jhghrq;
+    private String jhghrq;
 
-	private String xjrq;
+    private String xjrq;
 
-	private String ghrq;
+    private String ghrq;
 
-	private Integer status;
+    private Integer status;
 
-	private Integer jyzt;
+    private Integer jyzt;
 
-	private String bz;
+    private String bz;
 
-	private TSysUser user;
+    private TSysUser user;
 
-	private TPublish publish;
+    public TSysUser getUser() {
+        return user;
+    }
 
-	public TPublish getPublish() {
-		return publish;
-	}
+    public void setUser(TSysUser user) {
+        this.user = user;
+    }
 
-	public void setPublish(TPublish publish) {
-		this.publish = publish;
-	}
+    public Integer getId() {
+        return id;
+    }
 
-	private int cs;// 次数
+    public void setId(Integer id) {
+        this.id = id;
+    }
 
-	@Override
-	public String toString() {
-		return "TBorrow [id=" + id + ", isbn=" + isbn + ", sm=" + sm
-				+ ", userId=" + userId + ", lxfs=" + lxfs + ", jyrq=" + jyrq
-				+ ", jhghrq=" + jhghrq + ", xjrq=" + xjrq + ", ghrq=" + ghrq
-				+ ", status=" + status + ", jyzt=" + jyzt + ", bz=" + bz
-				+ ", user=" + user + ", publish=" + publish + ", cs=" + cs
-				+ "]";
-	}
+    public String getsId() {
+        return sId;
+    }
 
-	public TSysUser getUser() {
-		return user;
-	}
+    public void setsId(String sId) {
+        this.sId = sId == null ? null : sId.trim();
+    }
 
-	public void setUser(TSysUser user) {
-		this.user = user;
-	}
+    public String getSm() {
+        return sm;
+    }
 
-	public int getCs() {
-		return cs;
-	}
+    public void setSm(String sm) {
+        this.sm = sm == null ? null : sm.trim();
+    }
 
-	public void setCs(int cs) {
-		this.cs = cs;
-	}
+    public Integer getUserId() {
+        return userId;
+    }
 
-	public Integer getId() {
-		return id;
-	}
+    public void setUserId(Integer userId) {
+        this.userId = userId;
+    }
 
-	public void setId(Integer id) {
-		this.id = id;
-	}
+    public String getLxfs() {
+        return lxfs;
+    }
 
-	public String getIsbn() {
-		return isbn;
-	}
+    public void setLxfs(String lxfs) {
+        this.lxfs = lxfs == null ? null : lxfs.trim();
+    }
 
-	public void setIsbn(String isbn) {
-		this.isbn = isbn == null ? null : isbn.trim();
-	}
+    public String getJyrq() {
+        return jyrq;
+    }
 
-	public String getSm() {
-		return sm;
-	}
+    public void setJyrq(String jyrq) {
+        this.jyrq = jyrq == null ? null : jyrq.trim();
+    }
 
-	public void setSm(String sm) {
-		this.sm = sm == null ? null : sm.trim();
-	}
+    public String getJhghrq() {
+        return jhghrq;
+    }
 
-	public Integer getUserId() {
-		return userId;
-	}
+    public void setJhghrq(String jhghrq) {
+        this.jhghrq = jhghrq == null ? null : jhghrq.trim();
+    }
 
-	public void setUserId(Integer userId) {
-		this.userId = userId;
-	}
+    public String getXjrq() {
+        return xjrq;
+    }
 
-	public String getLxfs() {
-		return lxfs;
-	}
+    public void setXjrq(String xjrq) {
+        this.xjrq = xjrq == null ? null : xjrq.trim();
+    }
 
-	public void setLxfs(String lxfs) {
-		this.lxfs = lxfs == null ? null : lxfs.trim();
-	}
+    public String getGhrq() {
+        return ghrq;
+    }
 
-	public String getJyrq() {
-		return jyrq;
-	}
+    public void setGhrq(String ghrq) {
+        this.ghrq = ghrq == null ? null : ghrq.trim();
+    }
 
-	public void setJyrq(String jyrq) {
-		this.jyrq = jyrq == null ? null : jyrq.trim();
-	}
+    public Integer getStatus() {
+        return status;
+    }
 
-	public String getJhghrq() {
-		return jhghrq;
-	}
+    public void setStatus(Integer status) {
+        this.status = status;
+    }
 
-	public void setJhghrq(String jhghrq) {
-		this.jhghrq = jhghrq == null ? null : jhghrq.trim();
-	}
+    public Integer getJyzt() {
+        return jyzt;
+    }
 
-	public String getXjrq() {
-		return xjrq;
-	}
+    public void setJyzt(Integer jyzt) {
+        this.jyzt = jyzt;
+    }
 
-	public void setXjrq(String xjrq) {
-		this.xjrq = xjrq == null ? null : xjrq.trim();
-	}
+    public String getBz() {
+        return bz;
+    }
 
-	public String getGhrq() {
-		return ghrq;
-	}
-
-	public void setGhrq(String ghrq) {
-		this.ghrq = ghrq == null ? null : ghrq.trim();
-	}
-
-	public Integer getStatus() {
-		return status;
-	}
-
-	public void setStatus(Integer status) {
-		this.status = status;
-	}
-
-	public Integer getJyzt() {
-		return jyzt;
-	}
-
-	public void setJyzt(Integer jyzt) {
-		this.jyzt = jyzt;
-	}
-
-	public String getBz() {
-		return bz;
-	}
-
-	public void setBz(String bz) {
-		this.bz = bz == null ? null : bz.trim();
-	}
+    public void setBz(String bz) {
+        this.bz = bz == null ? null : bz.trim();
+    }
 }

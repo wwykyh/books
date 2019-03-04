@@ -43,7 +43,7 @@ public class RevertCheckServiceImpl implements RevertCheckService {
     @Override
     public boolean updateRevertTBorrowSh(Integer id, Integer sh) {
         TBorrow tBorrow = tBorrowMapper.selectByPrimaryKey(id);
-        String isbn = tBorrow.getIsbn();
+        String isbn = tBorrow.getsId();
         Map<String,Object> filter = new HashMap<>();
         filter.put("isbn",isbn);
         filter.put("sh", sh);
