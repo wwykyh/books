@@ -24,48 +24,53 @@
     <script type="text/javascript" >
         requirejs(['jquery', 'ligerGrid','artdialog'], function($) {
             $(function() {
-                $("#studentsInfo").ligerGrid({
-                    columns: [{
-                        display: '出版社名称',
-                        name: 'pubName'
-                    }, {
-                        display: '出版社代码',
-                        name: 'pubNumber'
-                    }, {
-                        display: '联系电话号码',
-                        name: 'pubPhone'
-                    }, {
-                        display: '邮箱',
-                        name: 'pubEmail'
-                    },{
-                        display: '操作',
-                        isAllowHide: false,
-                        render: function (row){
-                            if (row.pubId != undefined && row.pubId != null && row.pubId != ""){
-                                var html = '<a href="javascript:void(0);" onclick="onPublishEdit(' + row.pubId + ')">修改</a>&nbsp;&nbsp;' ;
-                                html = html + '<a href="javascript:void(0);" onclick="onPublishDel(' + row.pubId + ')">删除</a>';
-                                return html;
-                            }else return "" ;
-                        }
-                    }],
-                    url: '/publish_manager',
-                    method:'get',
-                    dataType: 'server',
-                    dataAction: 'server',
-                    pageSize: 10,
-                    width: '100%',
-                    checkbox: false,
-                    fixedCellHeight: false,
-                    iShowScroll: false
-                });
+                publish_select() ;
             });
         });
+
+        function publish_select() {
+            $("#studentsInfo").ligerGrid({
+                columns: [{
+                    display: '出版社名称',
+                    name: 'pubName'
+                }, {
+                    display: '出版社代码',
+                    name: 'pubNumber'
+                }, {
+                    display: '联系电话号码',
+                    name: 'pubPhone'
+                }, {
+                    display: '邮箱',
+                    name: 'pubEmail'
+                },{
+                    display: '操作',
+                    isAllowHide: false,
+                    render: function (row){
+                        if (row.pubId != undefined && row.pubId != null && row.pubId != ""){
+                            var html = '<a href="javascript:void(0);" onclick="onPublishEdit(' + row.pubId + ')">修改</a>&nbsp;&nbsp;' ;
+                            html = html + '<a href="javascript:void(0);" onclick="onPublishDel(' + row.pubId + ')">删除</a>';
+                            return html;
+                        }else return "" ;
+                    }
+                }],
+                url: '/publish_manager',
+                method:'get',
+                dataType: 'server',
+                dataAction: 'server',
+                pageSize: 10,
+                width: '100%',
+                checkbox: false,
+                fixedCellHeight: false,
+                iShowScroll: false
+            });
+        }
     function onPublishAdd() {
         art.dialog.open('publish_add', {
             title: '出版社添加',
             width: 700,
             height: 375,
             cancel: true,
+            id:'pub_add_window',
             cancelVal: "关闭"
         });
     }
@@ -75,6 +80,7 @@
             width: 700,
             height: 375,
             cancel: true,
+            id:'pub_edit_window',
             cancelVal: "关闭"
         });
     }
@@ -83,7 +89,7 @@
             $.ajax({url:"${pageContext.request.contextPath}/publish_del?pubId="+pubId,
                 success:function(data){
                     if (data == '0'){
-                        alert("删除成功，请刷新！") ;
+                        publish_select() ;
                     }else {
                         alert("删除失败！") ;
                     }

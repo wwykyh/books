@@ -58,8 +58,10 @@
                 },
                 success: function(data) {
                     if(data == "0"){
-                        alert("类型添加成功！") ;
-                        $("table input:lt(1)").val("") ;
+                        //alert("类型添加成功！") ;
+                        //$("table input:lt(1)").val("") ;
+                        parent.type_select() ;
+                        parent.art.dialog({id:'type_add_window'}).close() ;
                     }else {
                         alert("类型添加失败！");
                     }

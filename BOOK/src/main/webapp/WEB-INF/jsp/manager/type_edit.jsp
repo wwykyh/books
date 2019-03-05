@@ -59,8 +59,10 @@
                 },
                 success: function(data) {
                     if(data == "0"){
-                        alert("类型修改成功！") ;
-                        $("table input:lt(1)").val("") ;
+                        //alert("类型修改成功！") ;
+                        //$("table input:lt(1)").val("") ;
+                        parent.type_select() ;
+                        parent.art.dialog({id:'type_edit_window'}).close() ;
                     }else {
                         alert("类型修改失败！");
                     }

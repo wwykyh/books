@@ -71,8 +71,10 @@
                 },
                 success: function(data) {
                     if(data == "0"){
-                        alert("出版社修改成功！") ;
-                        $("table input:lt(4)").val("") ;
+                        //alert("出版社修改成功！") ;
+                        //$("table input:lt(4)").val("") ;
+                        parent.publish_select() ;
+                        parent.art.dialog({id:'pub_edit_window'}).close() ;
                     }else {
                         alert("出版社修改失败！");
                     }

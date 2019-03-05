@@ -43,107 +43,105 @@
         $(function () {
             select() ;
         }) ;
-        function select() {
-            $("#booksInfo").ligerGrid({
-                columns: [{
-                    display: 'ISBN',
-                    name: 'isbn',
-                    width: 120,
-                    frozen: true
-                }, {
-                    display: '书名',
-                    name: 'sm',
-                    width: 200,
-                    frozen: true
-                }, {
-                    display: '出版社名称',
-                    name: 'cbsmc',
-                    width: 120,
-                    frozen: true
-                }, {
-                    display: '出版日期',
-                    name: 'cbrq',
-                    width: 100,
-                    frozen: true
-                }, {
-                    display: '作者',
-                    name: 'zz',
-                    width: 140,
-                    frozen: true
-                }, {
-                    display: '类型',
-                    name: 'lxmc',
-                    width: 70,
-                    frozen: true
-                }, {
-                    display: '所属类型',
-                    name: 'tsdl',
-                    width: 80,
-                    frozen: true
-                }, {
-                    display: '图书提供者',
-                    name: 'uname',
-                    width: 90,
-                    frozen: true
-                }, {
-                    display: '位置',
-                    name: 'wz',
-                    width: 80,
-                    frozen: true
-                }, {
-                    display: '损毁程度',
-                    name: 'sh',
-                    width: 90,
-                    frozen: true
-                }, {
-                    display: '入库时间',
-                    name: 'rksj',
-                    width: 100,
-                    frozen: true
-                }, {
-                    display: '图书状态',
-                    name: 'status',
-                    width: 80,
-                    frozen: true
-                }, {
-                    display: '操作',
-                    isAllowHide: false,
-                    render: function (row){
-                        if (row.id != undefined && row.id != null && row.id != ""){
-                            var html = '<a href="javascript:void(0);" onclick="onBookInfo(' + row.id + ')">查看详情</a>&nbsp;&nbsp;' ;
-                                //html = html + '<a href="javascript:void(0);" onclick="onBookEdit(' + row.id + ')">库存管理</a>&nbsp;&nbsp;';
-                                html = html + '<a href="javascript:void(0);" onclick="onBookDel(' + row.id + ')">出库</a>';
-                            return html;
-                        }else return "" ;
-                    }
-                }],
-                url: '/bookPage_manager',
-                method:'get',
-                dataType: 'server',
-                dataAction: 'server',
-                pageSize: 10,
-                width: '100%',
-                checkbox: false,
-                rownumbers: false,
-                parms:[{name:"dim",value:dim}],
-                fixedCellHeight: false,
-                iShowScroll: false,
-                allowAdjustColWidth: true
-            }) ;
-        };
-
         $("#btnLoad").click(function(){
             dim = $("#dim").val();
             select() ;
         }) ;
-
     });
+    function select() {
+        $("#booksInfo").ligerGrid({
+            columns: [{
+                display: 'ISBN',
+                name: 'isbn',
+                width: 120,
+                frozen: true
+            }, {
+                display: '书名',
+                name: 'sm',
+                width: 200,
+                frozen: true
+            }, {
+                display: '出版社名称',
+                name: 'cbsmc',
+                width: 120,
+                frozen: true
+            }, {
+                display: '出版日期',
+                name: 'cbrq',
+                width: 100,
+                frozen: true
+            }, {
+                display: '作者',
+                name: 'zz',
+                width: 140,
+                frozen: true
+            }, {
+                display: '类型',
+                name: 'lxmc',
+                width: 70,
+                frozen: true
+            }, {
+                display: '所属类型',
+                name: 'tsdl',
+                width: 80,
+                frozen: true
+            }, {
+                display: '图书提供者',
+                name: 'uname',
+                width: 90,
+                frozen: true
+            }, {
+                display: '位置',
+                name: 'wz',
+                width: 80,
+                frozen: true
+            }, {
+                display: '损毁程度',
+                name: 'sh',
+                width: 90,
+                frozen: true
+            }, {
+                display: '入库时间',
+                name: 'rksj',
+                width: 100,
+                frozen: true
+            }, {
+                display: '图书状态',
+                name: 'status',
+                width: 80,
+                frozen: true
+            }, {
+                display: '操作',
+                isAllowHide: false,
+                render: function (row){
+                    if (row.id != undefined && row.id != null && row.id != ""){
+                        var html = '<a href="javascript:void(0);" onclick="onBookInfo(' + row.id + ')">查看详情</a>&nbsp;&nbsp;' ;
+                        //html = html + '<a href="javascript:void(0);" onclick="onBookEdit(' + row.id + ')">库存管理</a>&nbsp;&nbsp;';
+                        html = html + '<a href="javascript:void(0);" onclick="onBookDel(' + row.id + ')">出库</a>';
+                        return html;
+                    }else return "" ;
+                }
+            }],
+            url: '/bookPage_manager',
+            method:'get',
+            dataType: 'server',
+            dataAction: 'server',
+            pageSize: 10,
+            width: '100%',
+            checkbox: false,
+            rownumbers: false,
+            parms:[{name:"dim",value:dim}],
+            fixedCellHeight: false,
+            iShowScroll: false,
+            allowAdjustColWidth: true
+        }) ;
+    };
     function onBookDel(id) {
         if (confirm("你是否要将这本书出库？")){
             $.ajax({url:"${pageContext.request.contextPath}/del_store?id="+id,
                 success:function(data){
                     if (data == "0"){
-                        alert("出库成功，请刷新！") ;
+                        select() ;
                     } else {
                         alert("出库失败！") ;
                     }

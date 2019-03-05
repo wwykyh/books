@@ -79,48 +79,51 @@
 <script type="text/javascript">
     requirejs(['jquery','ligerGrid','artdialog'], function($) {
         $(function() {
-            $("#commemt").ligerGrid({
-                columns: [{
-                    display: '用户',
-                    name: 'sm',
-                    width: 120,
-                    frozen: true
-                }, {
-                    display: '日期',
-                    name: 'pjrq',
-                    width: 120,
-                    frozen: true
-                }, {
-                    display: '内容',
-                    name: 'nr',
-                    width: 620,
-                    frozen: true
-                },{
-                    display: '操作',
-                    isAllowHide: false,
-                    render: function (row){
-                        if (row.commentId != undefined && row.commentId != null && row.commentId != ""){
-                            var html = '<a href="javascript:void(0);" onclick="onComInfo(' + row.commentId + ')">查看详情</a>&nbsp;&nbsp;' ;
-                            html = html + '<a href="javascript:void(0);" onclick="onComDel(' + row.commentId + ')">删除</a>';
-                            return html;
-                        }else return "" ;
-                    }
-                }],
-                url: '/comment_manager',
-                method:'get',
-                dataType: 'server',
-                dataAction: 'server',
-                pageSize: 5,
-                width: '100%',
-                parms:[{name:"isbn",value:"${bookInfo.isbn}"}],
-                checkbox: false,
-                rownumbers: false,
-                fixedCellHeight: false,
-                iShowScroll: false
-            });
+            bookInfo_select() ;
         });
     });
 
+    function bookInfo_select() {
+        $("#commemt").ligerGrid({
+            columns: [{
+                display: '用户',
+                name: 'xm',
+                width: 120,
+                frozen: true
+            }, {
+                display: '日期',
+                name: 'pjrq',
+                width: 120,
+                frozen: true
+            }, {
+                display: '内容',
+                name: 'nr',
+                width: 620,
+                frozen: true
+            },{
+                display: '操作',
+                isAllowHide: false,
+                render: function (row){
+                    if (row.commentId != undefined && row.commentId != null && row.commentId != ""){
+                        var html = '<a href="javascript:void(0);" onclick="onComInfo(' + row.commentId + ')">查看详情</a>&nbsp;&nbsp;' ;
+                        html = html + '<a href="javascript:void(0);" onclick="onComDel(' + row.commentId + ')">删除</a>';
+                        return html;
+                    }else return "" ;
+                }
+            }],
+            url: '/comment_manager',
+            method:'get',
+            dataType: 'server',
+            dataAction: 'server',
+            pageSize: 5,
+            width: '100%',
+            parms:[{name:"isbn",value:"${bookInfo.isbn}"}],
+            checkbox: false,
+            rownumbers: false,
+            fixedCellHeight: false,
+            iShowScroll: false
+        });
+    }
     function onComInfo(commentId){
         art.dialog.open('comment_info?commentId='+commentId+'&tsmc=${bookInfo.sm}', {
             title: '评价详情',
@@ -135,7 +138,7 @@
             $.ajax({url:"${pageContext.request.contextPath}/del_comment?commentId="+commentId,
                 success:function(data){
                     if (data == "0") {
-                        alert("删除成功，请刷新！");
+                        bookInfo_select() ;
                     }else {
                         alert("删除失败！") ;
                     }

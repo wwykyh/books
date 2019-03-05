@@ -23,39 +23,44 @@
     <script type="text/javascript">
         requirejs(['jquery', 'ligerGrid','artdialog'], function($) {
             $(function() {
-                $("#typeInfo").ligerGrid({
-                    columns: [{
-                        display: '类型名称',
-                        name: 'lxmc'
-                    }, {
-                        display: '操作',
-                        isAllowHide: false,
-                        render: function (row){
-                            if (row.typeId != undefined && row.typeId != null && row.typeId != ""){
-                                var html = '<a href="javascript:void(0);" onclick="onTypeEdit(' + row.typeId + ')">修改</a>&nbsp;&nbsp;' ;
-                                html = html + '<a href="javascript:void(0);" onclick="onTypeDel(' + row.typeId + ')">删除</a>';
-                                return html;
-                            }else return "" ;
-                        }
-                    }],
-                    url: '/typeManager',
-                    method:'get',
-                    dataType: 'server',
-                    dataAction: 'server',
-                    pageSize: 5,
-                    width: '100%',
-                    checkbox: false,
-                    fixedCellHeight: false,
-                    iShowScroll: false
-                });
+                type_select() ;
             });
         });
+
+        function type_select(){
+            $("#typeInfo").ligerGrid({
+                columns: [{
+                    display: '类型名称',
+                    name: 'lxmc'
+                }, {
+                    display: '操作',
+                    isAllowHide: false,
+                    render: function (row){
+                        if (row.typeId != undefined && row.typeId != null && row.typeId != ""){
+                            var html = '<a href="javascript:void(0);" onclick="onTypeEdit(' + row.typeId + ')">修改</a>&nbsp;&nbsp;' ;
+                            html = html + '<a href="javascript:void(0);" onclick="onTypeDel(' + row.typeId + ')">删除</a>';
+                            return html;
+                        }else return "" ;
+                    }
+                }],
+                url: '/typeManager',
+                method:'get',
+                dataType: 'server',
+                dataAction: 'server',
+                pageSize: 5,
+                width: '100%',
+                checkbox: false,
+                fixedCellHeight: false,
+                iShowScroll: false
+            });
+        }
         function onTypeAdd() {
             art.dialog.open('type_add', {
                 title: '出版社添加',
                 width: 700,
                 height: 375,
                 cancel: true,
+                id:'type_add_window',
                 cancelVal: "关闭"
             });
         }
@@ -65,6 +70,7 @@
                 width: 700,
                 height: 375,
                 cancel: true,
+                id:'type_edit_window',
                 cancelVal: "关闭"
             });
         }
@@ -73,7 +79,7 @@
                 $.ajax({url:"${pageContext.request.contextPath}/type_del?typeId="+typeId,
                     success:function(data){
                         if (data == '0'){
-                            alert("删除成功，请刷新！") ;
+                            type_select() ;
                         }else {
                             alert("删除失败！") ;
                         }
