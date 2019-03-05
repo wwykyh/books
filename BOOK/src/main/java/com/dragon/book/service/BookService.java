@@ -123,5 +123,24 @@ public interface BookService {
 	public List<BookAndEBook> joinBook(List<BookAndEBook> booksList,
 			List<BookAndEBook> EBookslist);
 
+    /**
+     * 插入借阅记录
+     * @param isbn 图书id
+     * @param parseInt 用户id
+     * @param sm 书名
+     * @param lxfs 联系方式
+     * @param jyrq 借阅日期
+     * @param time 计划归还日期
+     * @param i 待审核
+     * @return
+     */
 	public TBorrow setBorrow(String isbn, int parseInt, String sm, String lxfs, String jyrq, String time, int i);
+
+    /**
+     * 修改图书状态
+     * @param id 图书id
+     * @param status 图书状态
+     * @return
+     */
+	public int updateByKey(String id,int status);
 }

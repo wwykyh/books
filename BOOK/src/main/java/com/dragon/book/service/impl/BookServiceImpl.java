@@ -9,6 +9,8 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Random;
 
+import com.dragon.book.mapper.TStoreMapper;
+import com.dragon.book.model.TStore;
 import com.dragon.book.pojo.Book;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -35,6 +37,9 @@ public class BookServiceImpl implements BookService {
 
 	@Autowired
 	BookMapper bookMapper;
+
+	@Autowired
+    TStoreMapper storeMapper;
 
 	@Override
 	public List<TBorrow> getBookTop() {
@@ -195,7 +200,13 @@ public class BookServiceImpl implements BookService {
 	    return borrow;
     }
 
-
+    public int updateByKey(String id,int status){
+	    TStore store = new TStore();
+	    store.setId(id);
+	    store.setStatus(status);
+	    int i =storeMapper.updateByPrimaryKeySelective(store);
+return i;
+    }
 	public BorrowMapper getBorrowMapper() {
 		return borrowMapper;
 	}
