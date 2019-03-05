@@ -7,14 +7,6 @@
 <link rel="stylesheet" type="text/css"
 	href="dvpt/libs/My97DatePicker/skin/WdatePicker.css" />
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<script type="text/javascript">
-	function StateFn(v) {
-		if (v == 0) {
-			return "出库";//正常情况下：$("国际化名称")
-		} else
-			return "在库";
-	}
-</script>
 </head>
 <body style="overflow: hidden;">
 	<div class="panel">
@@ -240,7 +232,7 @@
 											method : 'get',
 											dataType : 'server',
 											dataAction : 'server',
-											pageSize : 5,
+											pageSize : 10,
 											width : '100%',
 											checkbox : false,
 											rownumbers : false,
