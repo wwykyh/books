@@ -2,8 +2,11 @@ package com.dragon.book.service.impl;
 
 import java.util.List;
 
+import com.dragon.book.mapper.UserMapper;
+import com.dragon.book.pojo.QueryVo;
 import com.dragon.book.util.Caesar;
 import com.dragon.book.util.DataOperator;
+import com.dragon.book.util.PageBean;
 import com.dragon.book.util.PasswordAdapter;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -19,6 +22,9 @@ public class UserSreviceImpl implements UserService {
 
     @Autowired
     private TSysUserMapper userMapper;
+
+    @Autowired
+    private UserMapper userMapperWn;
 
     @Override
     public TSysUser getUser(String username, String pwd) {
@@ -84,5 +90,54 @@ public class UserSreviceImpl implements UserService {
 
     public void setUserMapper(TSysUserMapper userMapper) {
         this.userMapper = userMapper;
+    }
+
+    //加入的按页查找信息
+    @Override
+    public PageBean getAllUserByPage(PageBean pageBean, QueryVo vo) {
+        if (vo.getDim() == null || vo.getDim() ==""){
+            vo.setDim(null);
+        }
+        List<TSysUser> users = userMapperWn.selectAllUserByPage(vo);
+        int Total =userMapperWn.selectByDimTotal(vo);
+        pageBean.setTotal(Total);
+        pageBean.setRows(users);
+        return pageBean;
+    }
+
+
+    @Override
+    public boolean deleteBlackUser(int userId) {
+        int i = userMapperWn.deleteBlackUser(userId);
+        return i>0 ? true:false;
+    }
+
+    @Override
+    public PageBean getBlackListByPage(PageBean pageBean, QueryVo vo) {
+        if (vo.getDim() == null || vo.getDim() ==""){
+            vo.setDim(null);
+        }
+        List<TSysUser> users = userMapperWn.selectBlackListByPage(vo);
+        int Total =userMapperWn.selectBlackListTotalByDim(vo);
+        pageBean.setTotal(Total);
+        pageBean.setRows(users);
+        return pageBean;
+    }
+
+    @Override
+    public TSysUser getUserInfo(String name) {
+        return null;
+    }
+
+    @Override
+    public boolean deleteUser(int userId) {
+        int i = userMapperWn.deleteUser(userId);
+        return i>0 ? true:false;
+    }
+
+    @Override
+    public boolean updataUser(TSysUser user) {
+        int row = userMapperWn.updataUser(user);
+        return row > 0 ? true : false ;
     }
 }
