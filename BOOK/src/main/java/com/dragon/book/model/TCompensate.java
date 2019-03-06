@@ -9,6 +9,12 @@ public class TCompensate {
 
     private Integer sh;
 
+    private String pcdate;
+
+    private Integer sfpc;
+
+    private Integer iscount;
+
     private String pc;
 
     public Integer getId() {
@@ -41,6 +47,30 @@ public class TCompensate {
 
     public void setSh(Integer sh) {
         this.sh = sh;
+    }
+
+    public String getPcdate() {
+        return pcdate;
+    }
+
+    public void setPcdate(String pcdate) {
+        this.pcdate = pcdate == null ? null : pcdate.trim();
+    }
+
+    public Integer getSfpc() {
+        return sfpc;
+    }
+
+    public void setSfpc(Integer sfpc) {
+        this.sfpc = sfpc;
+    }
+
+    public Integer getIscount() {
+        return iscount;
+    }
+
+    public void setIscount(Integer iscount) {
+        this.iscount = iscount;
     }
 
     public String getPc() {

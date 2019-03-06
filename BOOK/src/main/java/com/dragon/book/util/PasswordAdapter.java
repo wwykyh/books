@@ -1,12 +1,12 @@
 package com.dragon.book.util;
 
-public class PasswordAdapter  extends DataOperator {
+public class PasswordAdapter extends DataOperator {
 
-    final  int key =20;
+    final int key = 20;
 
     Caesar caesar;
 
-    public PasswordAdapter( Caesar caesar) {
+    public PasswordAdapter(Caesar caesar) {
 
         this.caesar = caesar;
     }

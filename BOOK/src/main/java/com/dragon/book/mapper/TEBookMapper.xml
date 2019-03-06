@@ -87,7 +87,7 @@
     </if>
   </select>
   <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
-    select
+    select 
     <include refid="Base_Column_List" />
     from t_e_book
     where e_book_id = #{eBookId,jdbcType=VARCHAR}
@@ -103,11 +103,11 @@
     </if>
   </delete>
   <insert id="insert" parameterType="com.dragon.book.model.TEBook" >
-    insert into t_e_book (e_book_id, e_book_xm, type_id,
-      wjdz, ms, scsj, xzsj,
+    insert into t_e_book (e_book_id, e_book_xm, type_id, 
+      wjdz, ms, scsj, xzsj, 
       tszl)
-    values (#{eBookId,jdbcType=VARCHAR}, #{eBookXm,jdbcType=VARCHAR}, #{typeId,jdbcType=INTEGER},
-      #{wjdz,jdbcType=VARCHAR}, #{ms,jdbcType=VARCHAR}, #{scsj,jdbcType=VARCHAR}, #{xzsj,jdbcType=VARCHAR},
+    values (#{eBookId,jdbcType=VARCHAR}, #{eBookXm,jdbcType=VARCHAR}, #{typeId,jdbcType=INTEGER}, 
+      #{wjdz,jdbcType=VARCHAR}, #{ms,jdbcType=VARCHAR}, #{scsj,jdbcType=VARCHAR}, #{xzsj,jdbcType=VARCHAR}, 
       #{tszl,jdbcType=VARCHAR})
   </insert>
   <insert id="insertSelective" parameterType="com.dragon.book.model.TEBook" >
@@ -206,13 +206,13 @@
   <update id="updateByExample" parameterType="map" >
     update t_e_book
     set e_book_id = #{record.eBookId,jdbcType=VARCHAR},
-    e_book_xm = #{record.eBookXm,jdbcType=VARCHAR},
-    type_id = #{record.typeId,jdbcType=INTEGER},
-    wjdz = #{record.wjdz,jdbcType=VARCHAR},
-    ms = #{record.ms,jdbcType=VARCHAR},
-    scsj = #{record.scsj,jdbcType=VARCHAR},
-    xzsj = #{record.xzsj,jdbcType=VARCHAR},
-    tszl = #{record.tszl,jdbcType=VARCHAR}
+      e_book_xm = #{record.eBookXm,jdbcType=VARCHAR},
+      type_id = #{record.typeId,jdbcType=INTEGER},
+      wjdz = #{record.wjdz,jdbcType=VARCHAR},
+      ms = #{record.ms,jdbcType=VARCHAR},
+      scsj = #{record.scsj,jdbcType=VARCHAR},
+      xzsj = #{record.xzsj,jdbcType=VARCHAR},
+      tszl = #{record.tszl,jdbcType=VARCHAR}
     <if test="_parameter != null" >
       <include refid="Update_By_Example_Where_Clause" />
     </if>
