@@ -285,9 +285,10 @@ public class BookManagerController {
      * 借阅历史
      * */
     @RequestMapping("/historyPage_manager")
+    @ResponseBody
     public String HistoryPageManager(PageBean pageBean){
         //System.err.print("\n"+pageBean.getStartTime()+"/"+pageBean.getEndTime()+"/"+pageBean.getDim()+"/"+pageBean.getUser()+"/"+pageBean.getPage()+"/"+pageBean.getPagesize());
-
-        return null ;
+        PageBean commentInfo = bookService.selectHistoryInfo(pageBean);
+        return JSON.toJSONString(commentInfo).replaceAll("rows","Rows").replaceAll("total","Total");
     }
 }

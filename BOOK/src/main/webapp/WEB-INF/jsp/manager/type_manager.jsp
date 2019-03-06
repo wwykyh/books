@@ -16,9 +16,11 @@
             <h2>种类管理</h2>
             <a href="javascript:;" class="arrow up"></a>
         </div>
+
+        <a href="javascript:void(0);" class="btn" onclick="onTypeAdd()"><span id="btnTypeLoad"><i class="icon icon-add"></i>添加</span></a>
+        <div id="typeInfo"></div>
     </div>
-    <a href="javascript:void(0);" class="btn" onclick="onTypeAdd()"><span id="btnTypeLoad"><i class="icon icon-add"></i>添加</span></a>
-    <div id="typeInfo"></div>
+
 
     <script type="text/javascript">
         requirejs(['jquery', 'ligerGrid','artdialog'], function($) {
@@ -47,7 +49,7 @@
                 method:'get',
                 dataType: 'server',
                 dataAction: 'server',
-                pageSize: 5,
+                pageSize: 10,
                 width: '100%',
                 checkbox: false,
                 fixedCellHeight: false,

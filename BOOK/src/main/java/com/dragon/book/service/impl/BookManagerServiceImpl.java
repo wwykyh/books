@@ -8,9 +8,12 @@ import com.dragon.book.model.TBook;
 import com.dragon.book.model.TStore;
 import com.dragon.book.pojo.BookInfo;
 import com.dragon.book.pojo.CommentInfo;
+import com.dragon.book.pojo.HistoryInfo;
 import com.dragon.book.pojo.QueryVo;
 import com.dragon.book.service.BookManagerService;
 import com.dragon.book.util.PageBean;
+import com.github.pagehelper.PageHelper;
+import com.github.pagehelper.PageInfo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -110,5 +113,15 @@ public class BookManagerServiceImpl implements BookManagerService {
     @Override
     public List<BookInfo> selectAllBookInfo() {
         return mapperBook.bookExport();
+    }
+
+    @Override
+    public PageBean selectHistoryInfo(PageBean pageBean) {
+        PageHelper.startPage(pageBean.getPage(),pageBean.getPagesize()) ;
+        List<HistoryInfo> list = mapperBook.selectHistoryPage(pageBean);
+        PageInfo<HistoryInfo> info = new PageInfo<>(list) ;
+        pageBean.setTotal((int)info.getTotal());
+        pageBean.setRows(info.getList());
+        return pageBean;
     }
 }
