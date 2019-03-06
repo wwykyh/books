@@ -353,6 +353,196 @@ public class TCompensateExample {
             addCriterion("sh not between", value1, value2, "sh");
             return (Criteria) this;
         }
+
+        public Criteria andPcdateIsNull() {
+            addCriterion("pcdate is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andPcdateIsNotNull() {
+            addCriterion("pcdate is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andPcdateEqualTo(String value) {
+            addCriterion("pcdate =", value, "pcdate");
+            return (Criteria) this;
+        }
+
+        public Criteria andPcdateNotEqualTo(String value) {
+            addCriterion("pcdate <>", value, "pcdate");
+            return (Criteria) this;
+        }
+
+        public Criteria andPcdateGreaterThan(String value) {
+            addCriterion("pcdate >", value, "pcdate");
+            return (Criteria) this;
+        }
+
+        public Criteria andPcdateGreaterThanOrEqualTo(String value) {
+            addCriterion("pcdate >=", value, "pcdate");
+            return (Criteria) this;
+        }
+
+        public Criteria andPcdateLessThan(String value) {
+            addCriterion("pcdate <", value, "pcdate");
+            return (Criteria) this;
+        }
+
+        public Criteria andPcdateLessThanOrEqualTo(String value) {
+            addCriterion("pcdate <=", value, "pcdate");
+            return (Criteria) this;
+        }
+
+        public Criteria andPcdateLike(String value) {
+            addCriterion("pcdate like", value, "pcdate");
+            return (Criteria) this;
+        }
+
+        public Criteria andPcdateNotLike(String value) {
+            addCriterion("pcdate not like", value, "pcdate");
+            return (Criteria) this;
+        }
+
+        public Criteria andPcdateIn(List<String> values) {
+            addCriterion("pcdate in", values, "pcdate");
+            return (Criteria) this;
+        }
+
+        public Criteria andPcdateNotIn(List<String> values) {
+            addCriterion("pcdate not in", values, "pcdate");
+            return (Criteria) this;
+        }
+
+        public Criteria andPcdateBetween(String value1, String value2) {
+            addCriterion("pcdate between", value1, value2, "pcdate");
+            return (Criteria) this;
+        }
+
+        public Criteria andPcdateNotBetween(String value1, String value2) {
+            addCriterion("pcdate not between", value1, value2, "pcdate");
+            return (Criteria) this;
+        }
+
+        public Criteria andSfpcIsNull() {
+            addCriterion("sfpc is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andSfpcIsNotNull() {
+            addCriterion("sfpc is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andSfpcEqualTo(Integer value) {
+            addCriterion("sfpc =", value, "sfpc");
+            return (Criteria) this;
+        }
+
+        public Criteria andSfpcNotEqualTo(Integer value) {
+            addCriterion("sfpc <>", value, "sfpc");
+            return (Criteria) this;
+        }
+
+        public Criteria andSfpcGreaterThan(Integer value) {
+            addCriterion("sfpc >", value, "sfpc");
+            return (Criteria) this;
+        }
+
+        public Criteria andSfpcGreaterThanOrEqualTo(Integer value) {
+            addCriterion("sfpc >=", value, "sfpc");
+            return (Criteria) this;
+        }
+
+        public Criteria andSfpcLessThan(Integer value) {
+            addCriterion("sfpc <", value, "sfpc");
+            return (Criteria) this;
+        }
+
+        public Criteria andSfpcLessThanOrEqualTo(Integer value) {
+            addCriterion("sfpc <=", value, "sfpc");
+            return (Criteria) this;
+        }
+
+        public Criteria andSfpcIn(List<Integer> values) {
+            addCriterion("sfpc in", values, "sfpc");
+            return (Criteria) this;
+        }
+
+        public Criteria andSfpcNotIn(List<Integer> values) {
+            addCriterion("sfpc not in", values, "sfpc");
+            return (Criteria) this;
+        }
+
+        public Criteria andSfpcBetween(Integer value1, Integer value2) {
+            addCriterion("sfpc between", value1, value2, "sfpc");
+            return (Criteria) this;
+        }
+
+        public Criteria andSfpcNotBetween(Integer value1, Integer value2) {
+            addCriterion("sfpc not between", value1, value2, "sfpc");
+            return (Criteria) this;
+        }
+
+        public Criteria andIscountIsNull() {
+            addCriterion("iscount is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andIscountIsNotNull() {
+            addCriterion("iscount is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andIscountEqualTo(Integer value) {
+            addCriterion("iscount =", value, "iscount");
+            return (Criteria) this;
+        }
+
+        public Criteria andIscountNotEqualTo(Integer value) {
+            addCriterion("iscount <>", value, "iscount");
+            return (Criteria) this;
+        }
+
+        public Criteria andIscountGreaterThan(Integer value) {
+            addCriterion("iscount >", value, "iscount");
+            return (Criteria) this;
+        }
+
+        public Criteria andIscountGreaterThanOrEqualTo(Integer value) {
+            addCriterion("iscount >=", value, "iscount");
+            return (Criteria) this;
+        }
+
+        public Criteria andIscountLessThan(Integer value) {
+            addCriterion("iscount <", value, "iscount");
+            return (Criteria) this;
+        }
+
+        public Criteria andIscountLessThanOrEqualTo(Integer value) {
+            addCriterion("iscount <=", value, "iscount");
+            return (Criteria) this;
+        }
+
+        public Criteria andIscountIn(List<Integer> values) {
+            addCriterion("iscount in", values, "iscount");
+            return (Criteria) this;
+        }
+
+        public Criteria andIscountNotIn(List<Integer> values) {
+            addCriterion("iscount not in", values, "iscount");
+            return (Criteria) this;
+        }
+
+        public Criteria andIscountBetween(Integer value1, Integer value2) {
+            addCriterion("iscount between", value1, value2, "iscount");
+            return (Criteria) this;
+        }
+
+        public Criteria andIscountNotBetween(Integer value1, Integer value2) {
+            addCriterion("iscount not between", value1, value2, "iscount");
+            return (Criteria) this;
+        }
     }
 
     public static class Criteria extends GeneratedCriteria {
