@@ -87,19 +87,13 @@
         $("#commemt").ligerGrid({
             columns: [{
                 display: '用户',
-                name: 'xm',
-                width: 120,
-                frozen: true
+                name: 'xm'
             }, {
                 display: '日期',
-                name: 'pjrq',
-                width: 120,
-                frozen: true
+                name: 'pjrq'
             }, {
                 display: '内容',
-                name: 'nr',
-                width: 620,
-                frozen: true
+                name: 'nr'
             },{
                 display: '操作',
                 isAllowHide: false,
