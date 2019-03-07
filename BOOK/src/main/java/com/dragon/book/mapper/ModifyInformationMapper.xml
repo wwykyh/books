@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.dragon.book.mapper.my.ModifyInformationDao" >
+
+    <update id="upDataInformation">
+      update t_sys_user set xm=#{xm},lxfs=#{lxfs},dz=#{dz},bm=#{bm},grsm=#{grsm}where user_id=#{userid}
+    </update>
+
+</mapper>
