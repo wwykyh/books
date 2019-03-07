@@ -23,4 +23,5 @@ public interface BookManagerMapper {
     CommentInfo selectCommentInfoById(Integer commentId) ;
     List<BookInfo> bookExport() ;
     List<HistoryInfo> selectHistoryPage(PageBean pageBean) ;
+    HistoryInfo selectHistoryById(Integer id) ;
 }

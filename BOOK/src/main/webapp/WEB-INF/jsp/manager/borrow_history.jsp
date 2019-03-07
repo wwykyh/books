@@ -136,5 +136,15 @@
         $('#start_time').datepick({dateFormat: 'yy-mm-dd'});
         $('#end_time').datepick({dateFormat: 'yy-mm-dd'});
     });
+
+    function onHistoryInfo(id){
+        art.dialog.open('history_info?id='+id, {
+            title: '借阅详情',
+            width: 850,
+            height: 575,
+            cancel: true,
+            cancelVal: "关闭"
+        });
+    }
 </script>
 </html>

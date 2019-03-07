@@ -20,4 +20,5 @@ public interface BookManagerService {
     PageBean selectCommentInfo(PageBean pageBean,QueryVo vo) ;
     List<BookInfo> selectAllBookInfo() ;
     PageBean selectHistoryInfo(PageBean pageBean) ;
+    HistoryInfo selectHistoryById(Integer id) ;
 }
