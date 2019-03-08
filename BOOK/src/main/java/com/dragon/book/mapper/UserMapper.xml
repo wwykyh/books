@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.dragon.book.mapper.UserMapper" >
+  <resultMap id="BaseResultMap" type="com.dragon.book.model.TSysUser" >
+    <id column="user_id" property="userId" jdbcType="INTEGER" />
+    <result column="xm" property="xm" jdbcType="VARCHAR" />
+    <result column="bm" property="bm" jdbcType="VARCHAR" />
+    <result column="pwd" property="pwd" jdbcType="VARCHAR" />
+    <result column="lxfs" property="lxfs" jdbcType="VARCHAR" />
+    <result column="email" property="email" jdbcType="VARCHAR" />
+    <result column="dz" property="dz" jdbcType="VARCHAR" />
+    <result column="isadmin" property="isadmin" jdbcType="INTEGER" />
+    <result column="ishmd" property="ishmd" jdbcType="INTEGER" />
+    <result column="isbn" property="isbn" jdbcType="VARCHAR" />
+    <result column="kjtscs" property="kjtscs" jdbcType="INTEGER" />
+    <result column="cs" property="cs" jdbcType="INTEGER" />
+  </resultMap>
+  <resultMap id="ResultMapWithBLOBs" type="com.dragon.book.model.TSysUser" extends="BaseResultMap" >
+    <result column="grsm" property="grsm" jdbcType="LONGVARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    user_id, xm, bm, pwd, lxfs, email, dz, isadmin, ishmd, isbn, kjtscs, cs
+  </sql>
+  <!--通过主键修改用户-->
+  <update id="updataUser" parameterType="com.dragon.book.model.TSysUser" >
+    update t_sys_user
+    set xm = #{xm,jdbcType=VARCHAR},
+      bm = #{bm,jdbcType=VARCHAR},
+      pwd = #{pwd,jdbcType=VARCHAR},
+      lxfs = #{lxfs,jdbcType=VARCHAR},
+      email = #{email,jdbcType=VARCHAR},
+      dz = #{dz,jdbcType=VARCHAR},
+      isadmin = #{isadmin,jdbcType=INTEGER},
+      ishmd = #{ishmd,jdbcType=INTEGER},
+      isbn = #{isbn,jdbcType=VARCHAR},
+      kjtscs = #{kjtscs,jdbcType=INTEGER},
+      cs = #{cs,jdbcType=INTEGER}
+    where user_id = #{userId,jdbcType=INTEGER}
+</update>
+<!--删除-->
+  <delete id="deleteUser" parameterType="java.lang.Integer" >
+    delete from t_sys_user
+    where user_id = #{userId,jdbcType=INTEGER}
+  </delete>
+  <!--按页查询用户-->
+  <select id="selectAllUserByPage" resultMap="BaseResultMap" parameterType="com.dragon.book.pojo.QueryVo"  >
+    select
+    <include refid="Base_Column_List" />
+    from t_sys_user
+    <if test="dim != null and dim != ''">
+      where xm like '%${dim}%'
+    </if>
+    limit #{start},${end}
+  </select>
+  <!--按id查询用户-->
+  <select id="selectOneUserById" resultMap="BaseResultMap" parameterType="java.lang.Integer"  >
+    select
+    <include refid="Base_Column_List" />
+    from t_sys_user
+    where user_id = #{userId,jdbcType=INTEGER}
+  </select>
+  <!--按姓名查询用户-->
+  <select id="selectOneUserByName" resultMap="BaseResultMap" parameterType="java.lang.String"  >
+    select
+    *
+    from t_sys_user
+    where xm like '%${name}%'
+  </select>
+<!--按姓名查询用户总条数-->
+  <select id="selectByDimTotal" resultType="int" parameterType="com.dragon.book.pojo.QueryVo">
+    select count(*) from t_sys_user
+    where xm like '%${dim}%'
+  </select>
+  <!--按姓名查询黑名单用户总条数-->
+  <select id="selectBlackListTotalByDim" resultType="int" parameterType="com.dragon.book.pojo.QueryVo">
+    select count(*) from t_sys_user
+    where xm like '%${dim}%' and ishmd=1
+  </select>
+  <!--从黑名单移除用户-->
+  <update id="deleteBlackUser" parameterType="java.lang.Integer" >
+    update t_sys_user set ishmd=0 where user_id=#{userId,jdbcType=INTEGER}
+  </update>
+  <!--按页查询黑名单用户-->
+  <select id="selectBlackListByPage" resultMap="BaseResultMap" parameterType="com.dragon.book.pojo.QueryVo"  >
+    select
+    <include refid="Base_Column_List" />
+    from t_sys_user
+    where  ishmd=1
+    <if test="dim != null and dim != ''">
+     and xm like '%${dim}%'
+    </if >
+    limit #{start},${end}
+  </select>
+  </mapper>

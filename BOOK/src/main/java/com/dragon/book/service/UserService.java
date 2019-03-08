@@ -1,6 +1,8 @@
 package com.dragon.book.service;
 
 import com.dragon.book.model.TSysUser;
+import com.dragon.book.pojo.QueryVo;
+import com.dragon.book.util.PageBean;
 
 public interface UserService {
 
@@ -37,4 +39,21 @@ public interface UserService {
      * * @return
      */
     public String encryption(String pwd);
+
+    /**
+     * 用户管理
+     * @param name 用户名
+     * @return
+     */
+    public TSysUser getUserInfo(String name);
+
+    public boolean deleteUser(int userId);
+
+    public boolean updataUser(TSysUser user);
+
+    public PageBean getAllUserByPage(PageBean pageBean, QueryVo vo);
+
+    public boolean deleteBlackUser(int userId);
+
+    public PageBean getBlackListByPage(PageBean pageBean, QueryVo vo);
 }
