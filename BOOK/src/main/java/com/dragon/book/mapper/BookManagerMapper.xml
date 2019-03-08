@@ -152,4 +152,19 @@
         </if>
         ORDER BY temp.jyrq DESC
     </select>
+    <select id="selectHistoryById" resultMap="HistoryResult" parameterType="Integer">
+        SELECT temp.id,temp.jyrq,temp.ghrq,temp.isbn,temp.xm,tb.sm,tb.tsdl,tb.zz,tb.cbsmc,
+        temp.`status`,temp.jyzt,temp.jhghrq,temp.xjrq,
+        temp.lxfs,temp.bm,temp.dz,temp.user_id userId
+        FROM
+        (SELECT b.id id,b.jyrq,b.ghrq,
+        b.`status`,b.jyzt,b.jhghrq,b.xjrq,
+        s.isbn,u.xm,u.lxfs,u.bm,u.dz,u.user_id
+        FROM t_borrow b
+        LEFT JOIN t_store s ON b.s_id = s.id
+        LEFT JOIN t_sys_user u ON b.user_id = u.user_id
+        WHERE b.id = #{id}
+        ) temp
+        LEFT JOIN t_book tb ON temp.isbn = tb.isbn
+    </select>
 </mapper>

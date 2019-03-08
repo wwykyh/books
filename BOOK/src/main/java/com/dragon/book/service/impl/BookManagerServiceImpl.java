@@ -124,4 +124,9 @@ public class BookManagerServiceImpl implements BookManagerService {
         pageBean.setRows(info.getList());
         return pageBean;
     }
+
+    @Override
+    public HistoryInfo selectHistoryById(Integer id) {
+        return mapperBook.selectHistoryById(id);
+    }
 }

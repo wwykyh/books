@@ -6,6 +6,7 @@ import com.dragon.book.model.TPublish;
 import com.dragon.book.model.TType;
 import com.dragon.book.pojo.BookInfo;
 import com.dragon.book.pojo.CommentInfo;
+import com.dragon.book.pojo.HistoryInfo;
 import com.dragon.book.pojo.QueryVo;
 import com.dragon.book.service.*;
 import com.dragon.book.util.FileDownloadUtils;
@@ -291,4 +292,12 @@ public class BookManagerController {
         PageBean commentInfo = bookService.selectHistoryInfo(pageBean);
         return JSON.toJSONString(commentInfo).replaceAll("rows","Rows").replaceAll("total","Total");
     }
+    @RequestMapping("/history_info")
+    public String HistoryInfo(Integer id,Model model){
+        System.out.println(id);
+        HistoryInfo history = bookService.selectHistoryById(id);
+        model.addAttribute("history",history) ;
+        return "manager/history_info";
+    }
+
 }
