@@ -21,17 +21,27 @@ public class ModifyInfotmationController {
     /**
      * 跳转到修改信息界面
      * @return
+     * zzm
      */
     @RequestMapping("/modifyindex")
     public String modifyInfotmationIndex(){
         return "my/modifyInformation";
     }
 
-
+    /**
+     * 修改信息
+     * @param xm
+     * @param lxfs
+     * @param dz
+     * @param bm
+     * @param grsm
+     * @param userid
+     * @return
+     */
     @RequestMapping("/domodifyinfotmation")
     @ResponseBody
     public String modifyInfotmation(@Param("xm")String xm,@Param("lxfs")String lxfs,@Param("dz")String dz,@Param("bm")String bm,@Param("grsm")String grsm,@Param("userid")int userid){
-        if(xm!=null||lxfs!=null||dz!=null||bm!=null||grsm!=null){
+        if(null!=xm||null!=lxfs||null!=dz||null!=bm||null!=grsm){
             modifyInformationService.modifyInformation(xm,lxfs,dz,bm,grsm,userid);
         return "success";
         }else {

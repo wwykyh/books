@@ -3,7 +3,25 @@
 <mapper namespace="com.dragon.book.mapper.my.ModifyInformationDao" >
 
     <update id="upDataInformation">
-      update t_sys_user set xm=#{xm},lxfs=#{lxfs},dz=#{dz},bm=#{bm},grsm=#{grsm}where user_id=#{userid}
+      update t_sys_user
+      <set>
+          <if test="xm != null and xm != ''">
+              xm=#{xm},
+          </if>
+          <if test="lxfs != null and lxfs !=''">
+              lxfs=#{lxfs},
+          </if>
+          <if test="dz != null and dz != ''">
+              dz=#{dz},
+          </if>
+          <if test="bm != null and bm != ''">
+              bm=#{bm},
+          </if>
+          <if test="grsm != null and grsm != ''">
+              grsm=#{grsm}
+          </if>
+      </set>
+      where user_id=#{userid}
     </update>
 
 </mapper>

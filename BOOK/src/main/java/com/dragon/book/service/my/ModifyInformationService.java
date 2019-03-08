@@ -14,6 +14,15 @@ public class ModifyInformationService {
     @Autowired
     private ModifyInformationDao modifyInformationDao;
 
+    /**
+     * 修改信息Servicec层方法
+     * @param xm
+     * @param lxfs
+     * @param dz
+     * @param bm
+     * @param grsm
+     * @param userid
+     */
     public void modifyInformation(String xm,String lxfs,String dz,String bm,String grsm,int userid){
         modifyInformationDao.upDataInformation(xm,lxfs,dz,bm,grsm,userid);
     }

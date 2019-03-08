@@ -105,13 +105,13 @@
                     <dd>
                         <ul>
                             <li><a _href="" data-name="我的个人" data-js="prettify">我的个人</a></li>
-                            <li><a _href="修改资料.html" data-name="修改资料" data-js="prettify" href="javascript:;">修改资料</a>
+                            <li><a _href="${pageContext.request.contextPath}/modifyinformation/modifyindex" data-name="修改资料" data-js="prettify" href="javascript:;">修改资料</a>
                             </li>
-                            <li><a _href="修改密码.html" data-name="修改密码" data-js="prettify" href="javascript:;">修改密码</a>
+                            <li><a _href="${pageContext.request.contextPath}/modifypassword/tomodifypassword" data-name="修改密码" data-js="prettify" href="javascript:;">修改密码</a>
                             </li>
-                            <li><a _href="借阅历史.html" data-name="借阅历史" data-js="prettify" href="javascript:;">借阅历史</a>
+                            <li><a _href="" data-name="借阅历史" data-js="prettify" href="javascript:;">借阅历史</a>
                             </li>
-                            <li><a _href="超时归还.html" data-name="超时归还" href="javascript:;">超时归还</a></li>
+                            <li><a _href="${pageContext.request.contextPath}/overtimepayment/toovertimepayment" data-name="超时归还" href="javascript:;">超时归还</a></li>
 
                         </ul>
                     </dd>
