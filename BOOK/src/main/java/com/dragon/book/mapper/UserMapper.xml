@@ -33,6 +33,7 @@
       isadmin = #{isadmin,jdbcType=INTEGER},
       ishmd = #{ishmd,jdbcType=INTEGER},
       isbn = #{isbn,jdbcType=VARCHAR},
+      grsm=#{grsm,jdbcType=VARCHAR},
       kjtscs = #{kjtscs,jdbcType=INTEGER},
       cs = #{cs,jdbcType=INTEGER}
     where user_id = #{userId,jdbcType=INTEGER}

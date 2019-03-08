@@ -10,16 +10,14 @@
 <html>
 <head>
     <title>用户信息修改</title>
-    <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/common/iconfont/iconfont.css" />
-    <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/common/layout.css" />
-    <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/dvpt/css/libs.css" />
-    <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/demo/style.css" />
-    <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/theme/blue.css" id="style" />
-    <script type="text/javascript" src="${pageContext.request.contextPath}/dvpt/config.js"></script>
-    <!-- 改造的脚本 -->
-    <script type="text/javascript" src="${pageContext.request.contextPath}/js/extend.js"></script>
+    <link rel="stylesheet" type="text/css" href="../css/common/iconfont/iconfont.css" />
+    <link rel="stylesheet" type="text/css" href="../css/common/layout.css" />
+    <link rel="stylesheet" type="text/css" href="../dvpt/css/libs.css" />
+    <link rel="stylesheet" type="text/css" href="../css/demo/style.css" />
+    <link rel="stylesheet" type="text/css" href="../css/theme/blue.css" id="style" />
+
     <!-- 共有的控件 -->
-    <script data-main="main" src="${pageContext.request.contextPath}/dvpt/require.min.2.1.11.js"></script>
+    <script data-main="main" src="../dvpt/jquery.min.js"></script>
 </head>
 <body>
     <div class="panel">
@@ -33,47 +31,47 @@
                 <table class="form-table" width="100%">
                     <tr>
                         <th width="17%"><span class="ft-need">*</span>用户姓名：</th>
-                        <td width="33%"><input id="userName" name="userName" value="${userInfo.xm}" data-validate="required" type="text" class="input-text "></td>
+                        <td width="33%"><input id="xm" name="xm" value="${userInfo.xm}" data-validate="required" type="text" class="input-text "></td>
                     </tr>
                     <tr>
                         <th width="17%"><span class="ft-need">*</span>密码：</th>
-                        <td width="33%"><input id="userPwd" name="userPwd" value="${userInfo.pwd}" data-validate="required" type="text" class="input-text "></td>
+                        <td width="33%"><input id="pwd" name="pwd" value="${userInfo.pwd}" data-validate="required" type="text" class="input-text "></td>
                     </tr>
                     <tr>
                         <th width="17%"><span class="ft-need">*</span>部门：</th>
-                        <td width="33%"><input id="userDepartment" name="userDepartment" value="${userInfo.bm}" data-validate="required email" type="text" class="input-text "></td>
+                        <td width="33%"><input id="bm" name="bm" value="${userInfo.bm}" data-validate="required" type="text" class="input-text "></td>
                     </tr>
                     <tr>
                         <th width="17%"><span class="ft-need">*</span>Email：</th>
-                        <td width="33%"><input id="userEmail" name="userEmail" value="${userInfo.email}" data-validate="required phone" type="text" class="input-text "></td>
+                        <td width="33%"><input id="email" name="email" value="${userInfo.email}"  data-validate="required email" type="text" class="input-text "></td>
                     </tr>
                     <tr>
                         <th width="17%"><span class="ft-need">*</span>联系电话：</th>
-                        <td width="33%"><input id="userTel" name="userTel" value="${userInfo.lxfs}" data-validate="required phone" type="text" class="input-text "></td>
+                        <td width="33%"><input id="lxfs" name="lxfs" value="${userInfo.lxfs}" data-validate="required phone" type="text" class="input-text "></td>
                     </tr>
                     <tr>
                         <th width="17%"><span class="ft-need"></span>地址：</th>
-                        <td width="33%"><input id="userAddress" name="userAddress" value="${userInfo.dz}" data-validate="required phone" type="text" class="input-text "></td>
+                        <td width="33%"><input id="dz" name="dz" value="${userInfo.dz}" data-validate="required" type="text" class="input-text "></td>
                     </tr>
                     <tr>
                         <th width="17%"><span class="ft-need"></span>是否黑名单：</th>
-                        <td width="33%"><input id="isBlacklist" name="isBlacklist" value="${userInfo.ishmd}" data-validate="required phone" type="text" class="input-text "></td>
+                        <td width="33%"><input id="ishmd" name="ishmd" value="${userInfo.ishmd}" data-validate="required" type="text" class="input-text "></td>
                     </tr>
                     <tr>
                         <th width="17%"><span class="ft-need"></span>个人说明：</th>
-                        <td width="33%"><input id="userIntroduce" name="userIntroduce" value="${userInfo.grsm}" data-validate="required phone" type="text" class="input-text "></td>
+                        <td width="33%"><input id="grsm" name="grsm" value="${userInfo.grsm}" data-validate="required" type="text" class="input-text "></td>
                     </tr>
                     <tr>
                         <th width="17%"><span class="ft-need"></span>可借图书册数：</th>
-                        <td width="33%"><input id="userBroNum" name="userBroNum" value="${userInfo.kjtscs}" data-validate="required phone" type="text" class="input-text "></td>
+                        <td width="33%"><input id="kjtscs" name="kjtscs" value="${userInfo.kjtscs}" data-validate="required" type="text" class="input-text "></td>
                     </tr>
                     <tr>
                         <th width="17%"><span class="ft-need"></span>次数：</th>
-                        <td width="33%"><input id="userTimes" name="userTimes" value="${userInfo.cs}" data-validate="required phone" type="text" class="input-text "></td>
+                        <td width="33%"><input id="cs" name="cs" value="${userInfo.cs}" data-validate="required" type="text" class="input-text "></td>
                     </tr>
                     <tr>
                         <th width="17%"><span class="ft-need"></span>是否为管理员：</th>
-                        <td width="33%"><input id="isAdmin" name="isAdmin" value="${userInfo.isadmin}" data-validate="required phone" type="text" class="input-text "></td>
+                        <td width="33%"><input id="isadmin" name="isadmin" value="${userInfo.isadmin}" data-validate="required" type="text" class="input-text "></td>
                     </tr>
                     <tr>
                         <th></th>
@@ -85,6 +83,8 @@
         </div>
     </div>
     <script type="text/javascript">
+
+
         //ajax提交表单
         function sub() {
             $.ajax({
@@ -98,14 +98,19 @@
                 },
                 success: function(data) {
                     if(data == "0"){
-                        alert("用户信息修改成功！") ;
-                        $("table input:lt(4)").val("") ;
+                        parent.select();
+                        parent.art.dialog({id:'user_edit_window'}).close() ;
                     }else {
                         alert("用户信息修改失败！");
                     }
                 }
             });
         }
+
+
+
+
+
     </script>
 </body>
 </html>

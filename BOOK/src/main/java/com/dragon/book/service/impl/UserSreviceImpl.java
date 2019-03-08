@@ -3,6 +3,7 @@ package com.dragon.book.service.impl;
 import java.util.List;
 
 import com.dragon.book.mapper.UserMapper;
+import com.dragon.book.model.TCompensate;
 import com.dragon.book.pojo.QueryVo;
 import com.dragon.book.util.Caesar;
 import com.dragon.book.util.DataOperator;
@@ -139,5 +140,25 @@ public class UserSreviceImpl implements UserService {
     public boolean updataUser(TSysUser user) {
         int row = userMapperWn.updataUser(user);
         return row > 0 ? true : false ;
+    }
+
+    @Override
+    public PageBean getPcByPage(PageBean pageBean, QueryVo vo) {
+        return null;
+    }
+
+    @Override
+    public boolean updataPc(TCompensate compensate) {
+        return false;
+    }
+
+    @Override
+    public boolean addPc(TCompensate compensate) {
+        return false;
+    }
+
+    @Override
+    public boolean delPc(int id) {
+        return false;
     }
 }

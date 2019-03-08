@@ -105,7 +105,7 @@
                         <ul>
                             <li><a _href="${pageContext.request.contextPath}/usermanage/showuser" data-name="用户管理"
                                    href="javascript:;">用户管理</a></li>
-                            <li><a _href="赔偿.html" data-name="赔偿" href="javascript:;">赔偿</a></li>
+                            <li><a _href=${pageContext.request.contextPath}/usermanage/show_pc" data-name="赔偿" href="javascript:;">赔偿</a></li>
                             <li><a _href="${pageContext.request.contextPath}/usermanage/show_blacklist" data-name="黑名单" href="javascript:;">黑名单</a></li>
                             <li><a _href="借阅历史.html" data-name="借阅历史"
                                    href="javascript:;">借阅历史</a></li>
