@@ -107,10 +107,12 @@
         </div>
     </div>
     <script type="text/javascript">
+
         $(document).ready(function(){
             //使用class属性处理  'yy-mm-dd' 设置格式"yy-mm-dd"
             $('#cbrq').datepick({dateFormat: 'yy-mm-dd'});
         });
+
         //ajax提交表单
         function sub() {
             $.ajax({

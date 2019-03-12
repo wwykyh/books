@@ -20,6 +20,6 @@ public interface ModifyPasswordDao {
      * @param userid
      * @return
      */
-    String selectOldpwd(int userid);
+    String selectolddpwd(int userid);
 
 }
