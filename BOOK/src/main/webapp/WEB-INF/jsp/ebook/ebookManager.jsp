@@ -70,25 +70,23 @@
     function select(){
         requirejs(['jquery', 'ligerGrid', 'artdialog'], function ($) {
             $("#comment").ligerGrid({
-                columns: [{
+                columns: [
+                    /*{
                     display: '图书编号',
                     name: 'eBookId',
                     width: 240,
                     frozen: true
-                }, {
+                },*/ {
                     display: '书名',
                     name: 'eBookXm',
-                    width: 200
+                    width: 240
                 }, {
                     display: '类型',
                     name: 'lxmc'
                 }, {
                     display: '上传时间',
                     name: 'scsj'
-                }, {
-                    display: '下载时间',
-                    name: 'xzsj'
-                }, {
+                },  {
                     display: '上传用户',
                     name: 'xm'
                 }, {
@@ -101,6 +99,7 @@
                         if (row.eBookId != null && row.eBookId !== "") {
                             var id = row.eBookId;
                             var html = "<a href='/eBookFile/bookDownload?eBookId="+id+"'>下载</a>&nbsp;&nbsp;&nbsp;";
+                            // var html2 = "<a href='javascript:void(0) ' onclick='downFile(\""+id+"\")';>下载2</a>&nbsp;&nbsp;&nbsp;";
                             html += "<a href='#'>预览</a>";
                             return html;
                         } else return "";
@@ -111,7 +110,7 @@
                 url: '${path}/eBookFile/ebookPage',
                 dataType: 'server',
                 dataAction: 'server',
-                pageSize: 2,
+                pageSize: 5,
                 width: '100%',
                 parms: [{name: "search_eBookXm", value: eBookXm},{name:"search_typeId",value:typeId}],
                 checkbox: false,
@@ -121,5 +120,19 @@
             });
         });
     }
+    /*function downFile(id) {
+        alert(id);
+        $.ajax({
+            data:{eBookId:id},
+            url:'eBookFile/bookDownload',
+            type:'get',
+            success:function () {
+                select();
+            },
+            error:function () {
+                alert("文件下载失败");
+            }
+        });
+    }*/
 </script>
 </html>

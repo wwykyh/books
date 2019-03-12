@@ -26,12 +26,10 @@ public class HistoryInfo extends TBorrow implements Serializable {
         this.book = book;
     }
 
-    @Override
     public TSysUser getUser() {
         return user;
     }
 
-    @Override
     public void setUser(TSysUser user) {
         this.user = user;
     }

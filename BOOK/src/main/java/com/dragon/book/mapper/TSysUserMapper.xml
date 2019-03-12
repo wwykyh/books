@@ -14,6 +14,7 @@
     <result column="isbn" property="isbn" jdbcType="VARCHAR" />
     <result column="kjtscs" property="kjtscs" jdbcType="INTEGER" />
     <result column="cs" property="cs" jdbcType="INTEGER" />
+    <result column="book_id" property="bookId" jdbcType="VARCHAR" />
   </resultMap>
   <resultMap id="ResultMapWithBLOBs" type="com.dragon.book.model.TSysUser" extends="BaseResultMap" >
     <result column="grsm" property="grsm" jdbcType="LONGVARCHAR" />
@@ -77,7 +78,7 @@
     </where>
   </sql>
   <sql id="Base_Column_List" >
-    user_id, xm, bm, pwd, lxfs, email, dz, isadmin, ishmd, isbn, kjtscs, cs
+    user_id, xm, bm, pwd, lxfs, email, dz, isadmin, ishmd, isbn, kjtscs, cs, book_id
   </sql>
   <sql id="Blob_Column_List" >
     grsm
@@ -134,13 +135,13 @@
     insert into t_sys_user (user_id, xm, bm, 
       pwd, lxfs, email, dz, 
       isadmin, ishmd, isbn, 
-      kjtscs, cs, grsm
-      )
+      kjtscs, cs, book_id, 
+      grsm)
     values (#{userId,jdbcType=INTEGER}, #{xm,jdbcType=VARCHAR}, #{bm,jdbcType=VARCHAR}, 
       #{pwd,jdbcType=VARCHAR}, #{lxfs,jdbcType=VARCHAR}, #{email,jdbcType=VARCHAR}, #{dz,jdbcType=VARCHAR}, 
       #{isadmin,jdbcType=INTEGER}, #{ishmd,jdbcType=INTEGER}, #{isbn,jdbcType=VARCHAR}, 
-      #{kjtscs,jdbcType=INTEGER}, #{cs,jdbcType=INTEGER}, #{grsm,jdbcType=LONGVARCHAR}
-      )
+      #{kjtscs,jdbcType=INTEGER}, #{cs,jdbcType=INTEGER}, #{bookId,jdbcType=VARCHAR}, 
+      #{grsm,jdbcType=LONGVARCHAR})
   </insert>
   <insert id="insertSelective" parameterType="com.dragon.book.model.TSysUser" >
     insert into t_sys_user
@@ -180,6 +181,9 @@
       </if>
       <if test="cs != null" >
         cs,
+      </if>
+      <if test="bookId != null" >
+        book_id,
       </if>
       <if test="grsm != null" >
         grsm,
@@ -221,6 +225,9 @@
       </if>
       <if test="cs != null" >
         #{cs,jdbcType=INTEGER},
+      </if>
+      <if test="bookId != null" >
+        #{bookId,jdbcType=VARCHAR},
       </if>
       <if test="grsm != null" >
         #{grsm,jdbcType=LONGVARCHAR},
@@ -272,6 +279,9 @@
       <if test="record.cs != null" >
         cs = #{record.cs,jdbcType=INTEGER},
       </if>
+      <if test="record.bookId != null" >
+        book_id = #{record.bookId,jdbcType=VARCHAR},
+      </if>
       <if test="record.grsm != null" >
         grsm = #{record.grsm,jdbcType=LONGVARCHAR},
       </if>
@@ -294,6 +304,7 @@
       isbn = #{record.isbn,jdbcType=VARCHAR},
       kjtscs = #{record.kjtscs,jdbcType=INTEGER},
       cs = #{record.cs,jdbcType=INTEGER},
+      book_id = #{record.bookId,jdbcType=VARCHAR},
       grsm = #{record.grsm,jdbcType=LONGVARCHAR}
     <if test="_parameter != null" >
       <include refid="Update_By_Example_Where_Clause" />
@@ -312,7 +323,8 @@
       ishmd = #{record.ishmd,jdbcType=INTEGER},
       isbn = #{record.isbn,jdbcType=VARCHAR},
       kjtscs = #{record.kjtscs,jdbcType=INTEGER},
-      cs = #{record.cs,jdbcType=INTEGER}
+      cs = #{record.cs,jdbcType=INTEGER},
+      book_id = #{record.bookId,jdbcType=VARCHAR}
     <if test="_parameter != null" >
       <include refid="Update_By_Example_Where_Clause" />
     </if>
@@ -353,6 +365,9 @@
       <if test="cs != null" >
         cs = #{cs,jdbcType=INTEGER},
       </if>
+      <if test="bookId != null" >
+        book_id = #{bookId,jdbcType=VARCHAR},
+      </if>
       <if test="grsm != null" >
         grsm = #{grsm,jdbcType=LONGVARCHAR},
       </if>
@@ -372,6 +387,7 @@
       isbn = #{isbn,jdbcType=VARCHAR},
       kjtscs = #{kjtscs,jdbcType=INTEGER},
       cs = #{cs,jdbcType=INTEGER},
+      book_id = #{bookId,jdbcType=VARCHAR},
       grsm = #{grsm,jdbcType=LONGVARCHAR}
     where user_id = #{userId,jdbcType=INTEGER}
   </update>
@@ -387,7 +403,8 @@
       ishmd = #{ishmd,jdbcType=INTEGER},
       isbn = #{isbn,jdbcType=VARCHAR},
       kjtscs = #{kjtscs,jdbcType=INTEGER},
-      cs = #{cs,jdbcType=INTEGER}
+      cs = #{cs,jdbcType=INTEGER},
+      book_id = #{bookId,jdbcType=VARCHAR}
     where user_id = #{userId,jdbcType=INTEGER}
   </update>
 </mapper>

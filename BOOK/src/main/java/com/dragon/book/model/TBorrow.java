@@ -25,16 +25,6 @@ public class TBorrow {
 
     private String bz;
 
-    private TSysUser user;
-
-    public TSysUser getUser() {
-        return user;
-    }
-
-    public void setUser(TSysUser user) {
-        this.user = user;
-    }
-
     public Integer getId() {
         return id;
     }

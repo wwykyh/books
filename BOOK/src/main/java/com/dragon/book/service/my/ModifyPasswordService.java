@@ -23,7 +23,7 @@ public class ModifyPasswordService {
      */
     public int modifyPassword(String oldpwd,int userid,String pwd){
         String flag;
-        flag = modifyPasswordDao.selectOldpwd(userid);
+        flag = modifyPasswordDao.selectolddpwd(userid);
         if(flag.equals(oldpwd)){
         modifyPasswordDao.upDataPwd(userid,pwd);
         return 1;

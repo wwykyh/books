@@ -39,4 +39,7 @@ public interface EbookFileService {
     boolean ebookFileSingleOrMulUpload(MultipartFile[] ebookFile, TEBook teBook);
 
     boolean serviceDownload(InputStream inputStream, OutputStream outputStream);
+
+    // 下载后更新数据库中的数据
+    boolean updateDownloadDate(TEBook teBook);
 }
