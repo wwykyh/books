@@ -107,7 +107,7 @@
                                    href="javascript:;">用户管理</a></li>
                             <li><a _href="赔偿.html" data-name="赔偿" href="javascript:;">赔偿</a></li>
                             <li><a _href="${pageContext.request.contextPath}/usermanage/show_blacklist" data-name="黑名单" href="javascript:;">黑名单</a></li>
-                            <li><a _href="借阅历史.html" data-name="借阅历史"
+                            <li><a _href="添加用户.html" data-name="添加用户"
                                    href="javascript:;">借阅历史</a></li>
                         </ul>
                     </dd>
@@ -137,6 +137,7 @@
                                    data-js="prettify" href="javascript:;">种类管理</a></li>
                             <li><a _href="${pageContext.request.contextPath}/publish_house_manager" data-name="出版社管理"
                                    data-js="prettify" href="javascript:;">出版社管理</a></li>
+
 
                         </ul>
                     </dd>
