@@ -1,6 +1,7 @@
 package com.dragon.book.service.ebookService;
 
 import com.dragon.book.model.TBorrow;
+import com.dragon.book.pojo.TBorrowInfo;
 
 import java.util.List;
 import java.util.Map;
@@ -10,9 +11,9 @@ import java.util.Map;
  */
 public interface BorrowCheckService {
 
-    TBorrow getSingleTBorrow(Integer id);
+    TBorrowInfo getSingleTBorrow(Integer id);
 
-    List<TBorrow> getTBorrowCheckList(Map filter);
+    List<TBorrowInfo> getTBorrowCheckList(Map filter);
 
     Integer getCounts(Map filter);
 

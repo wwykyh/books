@@ -2,11 +2,13 @@ package com.dragon.book.service.impl;
 
 import com.dragon.book.mapper.CheckMapper;
 import com.dragon.book.mapper.TBorrowMapper;
+import com.dragon.book.mapper.TCompensateMapper;
 import com.dragon.book.mapper.TStoreMapper;
 import com.dragon.book.model.TBorrow;
 import com.dragon.book.model.TBorrowVo;
+import com.dragon.book.model.TCompensate;
 import com.dragon.book.model.TStore;
-import com.dragon.book.model.TStoreExample;
+import com.dragon.book.pojo.TBorrowInfo;
 import com.dragon.book.service.ebookService.RevertCheckService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -24,9 +26,14 @@ public class RevertCheckServiceImpl implements RevertCheckService {
     @Autowired
     private TBorrowMapper tBorrowMapper;  // 生成的
 
+    @Autowired
+    private TCompensateMapper tCompensateMapper;
+
+    @Autowired
+    private TStoreMapper tStoreMapper;
 
     @Override
-    public List<TBorrow> getTBorrowRevertList(Map filter) {
+    public List<TBorrowInfo> getTBorrowRevertList(Map filter) {
         return checkMapper.getTBorrowRevertList(filter);
     }
 
@@ -41,14 +48,21 @@ public class RevertCheckServiceImpl implements RevertCheckService {
     }
 
     @Override
-    public boolean updateRevertTBorrowSh(Integer id, Integer sh) {
+    public boolean updateRevertTBorrowSh(Integer id, Integer sh, String statusPay) {
         TBorrow tBorrow = tBorrowMapper.selectByPrimaryKey(id);
-        String isbn = tBorrow.getsId();
+        String sId = tBorrow.getsId();
         Map<String,Object> filter = new HashMap<>();
-        filter.put("isbn",isbn);
+        filter.put("sId",sId);
         filter.put("sh", sh);
         tBorrow.setJyzt(2);  // 2  代表的是归还状态；tBorrow.setJyzt(3); 3 代表超时归还
-       //  tBorrowMapper.updateByPrimaryKey(tBorrow);
-        return checkMapper.updateRevertTBorrowSh(filter) >= 0 && tBorrowMapper.updateByPrimaryKey(tBorrow) > 0;
+        // 更新赔偿表
+        TStore tStore = tStoreMapper.selectByPrimaryKey(sId);
+        TCompensate tCompensate = new TCompensate();
+        tCompensate.setIsbn(tStore.getIsbn());
+        tCompensate.setUserId(tBorrow.getUserId());
+        tCompensate.setSh(sh);
+        return checkMapper.updateRevertTBorrowSh(filter) >= 0 &&
+                tBorrowMapper.updateByPrimaryKey(tBorrow) > 0 &&
+                tCompensateMapper.updateByPrimaryKey(tCompensate) > 0;
     }
 }

@@ -3,6 +3,7 @@ package com.dragon.book.service.impl;
 import com.dragon.book.mapper.CheckMapper;
 import com.dragon.book.mapper.TBorrowMapper;
 import com.dragon.book.model.TBorrow;
+import com.dragon.book.pojo.TBorrowInfo;
 import com.dragon.book.service.ebookService.BorrowCheckService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -19,12 +20,12 @@ public class BorrowCheckServiceImpl implements BorrowCheckService {
     private TBorrowMapper tBorrowMapper;  // 生成的
 
     @Override
-    public TBorrow getSingleTBorrow(Integer id) {
+    public TBorrowInfo getSingleTBorrow(Integer id) {
         return checkMapper.getSingleCheckTBorrow(id);
     }
 
     @Override
-    public List<TBorrow> getTBorrowCheckList(Map filter) {
+    public List<TBorrowInfo> getTBorrowCheckList(Map filter) {
         return checkMapper.getTBorrowCheckList(filter);
     }
 

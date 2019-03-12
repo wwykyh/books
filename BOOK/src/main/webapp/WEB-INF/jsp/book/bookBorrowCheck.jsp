@@ -56,13 +56,13 @@
                 <tr>
                     <th width="17%">用户id：</th>
                     <td width="33%">
-                        <span>${singleTBorrow.user.userId}</span>
+                        <span>${singleTBorrow.userId}</span>
                     </td>
                 </tr>
                 <tr>
                     <th width="17%">用户名：</th>
                     <td width="33%">
-                        <span>${singleTBorrow.user.xm}</span>
+                        <span>${singleTBorrow.xm}</span>
                     </td>
                 </tr>
                 <tr>

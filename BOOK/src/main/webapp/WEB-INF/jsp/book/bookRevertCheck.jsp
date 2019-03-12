@@ -56,13 +56,13 @@
                 <tr>
                     <th width="17%">用户id：</th>
                     <td width="33%">
-                        <span>${singleTBorrow.user.userId}</span>
+                        <span>${singleTBorrow.userId}</span>
                     </td>
                 </tr>
                 <tr>
                     <th width="17%">用户名：</th>
                     <td width="33%">
-                        <span>${singleTBorrow.user.xm}</span>
+                        <span>${singleTBorrow.xm}</span>
                     </td>
                 </tr>
                 <tr>
@@ -115,6 +115,17 @@
                     </td>
                 </tr>
                 <tr>
+                    <th width="17%">是否需要赔偿：</th>
+                    <td width="33%">
+                        <label>
+                            <input type="radio" name="pay" value="1"/>&nbsp;<label>是</label>
+                        </label>&nbsp;&nbsp;&nbsp;&nbsp;
+                        <label>
+                            <input type="radio" name="pay" value="0" checked="checked"/>&nbsp;<label>否</label>
+                        </label>
+                    </td>
+                </tr>
+                <tr>
                     <th width="17%"></th>
                     <td width="33%">
                         <c:if test="${singleTBorrow.jyzt == 0}">
@@ -158,7 +169,8 @@
     function pass() {
         var idPk = $("#idPk").val();
         var sh = $("#sh").val();
-        $.get('${path}/revertCheck/check', {id: idPk, sh: sh}, function (msg) {
+        var pays = $("input[name='pay']:checked").val();
+        $.get('${path}/revertCheck/check', {id: idPk, sh: sh, status:pays, function (msg) {
             if (msg) {
                 alert("审核完成");
             } else {

@@ -3,6 +3,7 @@ package com.dragon.book.controller;
 import com.alibaba.fastjson.JSON;
 import com.dragon.book.model.TBorrow;
 import com.dragon.book.model.TType;
+import com.dragon.book.pojo.TBorrowInfo;
 import com.dragon.book.service.ebookService.BorrowCheckService;
 import com.dragon.book.service.ebookService.EbookFileService;
 import com.dragon.book.util.PageBean;
@@ -43,7 +44,7 @@ public class BorrowCheckController {
         Integer total = borrowCheckService.getCounts(searchParams);
         searchParams.put("first", (pageBean.getPage() - 1) * pageBean.getPagesize());
         searchParams.put("rowNum", pageBean.getPagesize());
-        List<TBorrow> tBorrows = borrowCheckService.getTBorrowCheckList(searchParams);
+        List<TBorrowInfo> tBorrows = borrowCheckService.getTBorrowCheckList(searchParams);
 
         pageBean.setRows(tBorrows);
         pageBean.setTotal(total);

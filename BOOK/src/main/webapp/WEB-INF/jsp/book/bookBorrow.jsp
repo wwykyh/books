@@ -92,6 +92,12 @@
                     name: 'sm',
                     width: 200
                 }, {
+                    display: '类型名称',
+                    name: 'lxmc'
+                }, {
+                    display: '图书大类',
+                    name: 'tsdl'
+                }, {
                     display: '联系方式',
                     name: 'lxfs'
                 }, {
@@ -112,7 +118,7 @@
                     }
                 }, {
                     display: '借阅人',
-                    name: 'user.xm'
+                    name: 'xm'
                 }, {
                     display: '操作',
                     isAllowHide: false,
@@ -144,10 +150,11 @@
                 dataAction: 'server',
                 pageSize: 5,
                 width: '100%',
-                parms: [{name: "search_typeId", value: typeId},
-                        {name: "search_status", value: status},
-                        {name: "search_eBookXm", value: eBookXm}
-                        ],
+                parms: [
+                    {name: "search_typeId", value: typeId},
+                    {name: "search_status", value: status},
+                    {name: "search_eBookXm", value: eBookXm}
+                ],
                 checkbox: false,
                 rownumbers: true,
                 fixedCellHeight: false,

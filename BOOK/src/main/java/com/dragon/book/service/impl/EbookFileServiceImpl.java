@@ -1,22 +1,24 @@
 package com.dragon.book.service.impl;
 
-import com.dragon.book.mapper.EbookInfoMapper;
-import com.dragon.book.mapper.TEBookMapper;
-import com.dragon.book.mapper.TTypeMapper;
-import com.dragon.book.mapper.TUserBookMapper;
+import com.dragon.book.mapper.*;
 import com.dragon.book.model.*;
 import com.dragon.book.service.ebookService.EbookFileService;
 import com.dragon.book.config.FtpConfig;
 import com.dragon.book.utils.FtpUtils;
 import org.apache.commons.net.ftp.FTPClient;
 import org.apache.commons.net.ftp.FTPFile;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.web.context.request.RequestContextHolder;
+import org.springframework.web.context.request.ServletRequestAttributes;
 import org.springframework.web.multipart.MultipartFile;
 
-import javax.servlet.ServletOutputStream;
+import javax.servlet.ServletRequest;
+import javax.servlet.http.HttpServletRequest;
 import java.io.*;
 import java.net.URLEncoder;
 import java.nio.charset.StandardCharsets;
@@ -27,6 +29,7 @@ import java.util.*;
 @Transactional(propagation = Propagation.NOT_SUPPORTED)
 public class EbookFileServiceImpl implements EbookFileService {
 
+    private final Logger logger = LoggerFactory.getLogger(getClass());
     @Autowired
     private FtpConfig ftpConfig;
 
@@ -41,6 +44,10 @@ public class EbookFileServiceImpl implements EbookFileService {
 
     @Autowired
     private TUserBookMapper tUserBookMapper;
+
+    @Autowired
+    private TEbookDownMapper tEbookDownMapper;
+
 
     /**
      * 获取ftp服务器的配置
@@ -110,6 +117,7 @@ public class EbookFileServiceImpl implements EbookFileService {
     }
 
     @Override
+    @Transactional(propagation = Propagation.REQUIRED)
     public boolean saveEbookFile(TEBook teBook) {
         Date date = new Date();
         SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:ss:mm");
@@ -120,7 +128,9 @@ public class EbookFileServiceImpl implements EbookFileService {
         int row = teBookMapper.insert(teBook);
         TUserBook tUserBook = new TUserBook();
         tUserBook.setIsbn(teBook.geteBookId());
-        tUserBook.setUserId(10001);
+        HttpServletRequest request = ((ServletRequestAttributes)RequestContextHolder.getRequestAttributes()).getRequest();
+        Integer userId = (Integer) Objects.requireNonNull(request).getSession().getAttribute("userId");
+        tUserBook.setUserId(userId);
         int row2 = tUserBookMapper.insert(tUserBook);
         return row > 0 && row2 > 0;
     }
@@ -163,34 +173,31 @@ public class EbookFileServiceImpl implements EbookFileService {
         boolean result = false, flag = false;
         TType tType = getTTypeByPk(teBook.getTypeId());
         String typeName = tType.getLxmc();
-//        String[] xmsArr = teBook.geteBookXm().split("；"); // 分割 书名
         String[] msArr = teBook.getMs().split("；");  // 分割 描述
         try {
             for (int i = 0; i < ebookFile.length; i++) {
                 String ebookId = UUID.randomUUID().toString().replace("-", "");
-                String fileName = ebookFile[i].getOriginalFilename();  // 上传到服务器的文件名
+                // 上传到服务器的文件名
+                String fileName = ebookFile[i].getOriginalFilename();
 
                 InputStream inputStream = ebookFile[i].getInputStream();
                 FTPClient ftp = getFtpConfig();
-                result = uploadEbookFile(ftp, inputStream, "/" + typeName + "/", fileName);  // 上传到服务器
+                // 上传到服务器
+                result = uploadEbookFile(ftp, inputStream, typeName, fileName);
 
                 if (result) {
                     teBook.seteBookId(ebookId);
-//                    teBook.seteBookXm(xmsArr[i]);   // 存在数据库中的文件地址
-                    teBook.seteBookXm(fileName);      // 存在数据库中的文件地址
+                    // 存在数据库中的文件地址 ,这里只是存了文件名，目录就是type类型
+                    teBook.seteBookXm(fileName);
                     teBook.setMs(msArr[i]);
                     flag = saveEbookFile(teBook);
                 }
             }
         } catch (Exception e) {
-            System.out.println("上传失败");
+            logger.error("上传失败--->" + e.getMessage());
             e.printStackTrace();
         }
-        if (result && flag) {
-            return true;
-        } else {
-            return false;
-        }
+        return result && flag;
     }
 
     // 封装的文件下载代码
@@ -207,5 +214,18 @@ public class EbookFileServiceImpl implements EbookFileService {
             return false;
         }
         return result;
+    }
+
+    @Override
+    public boolean updateDownloadDate(TEBook teBook) {
+        SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+        String downloadTime = df.format(new Date());
+        TEbookDown tEbookDown = new TEbookDown();
+        tEbookDown.setEbookId(teBook.geteBookId());
+        tEbookDown.setXzsj(downloadTime);
+        HttpServletRequest request = ((ServletRequestAttributes)RequestContextHolder.getRequestAttributes()).getRequest();
+        Integer userId = (Integer) Objects.requireNonNull(request).getSession().getAttribute("userId");
+        tEbookDown.setUserId(userId);
+        return tEbookDownMapper.insert(tEbookDown) > 0;
     }
 }

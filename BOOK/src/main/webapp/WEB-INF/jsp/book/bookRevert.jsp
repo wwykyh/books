@@ -91,7 +91,13 @@
                     display: '图书名称',
                     name: 'sm',
                     width: 200
+                },, {
+                    display: '类型名称',
+                    name: 'lxmc'
                 }, {
+                    display: '图书大类',
+                    name: 'tsdl'
+                } ,{
                     display: '联系方式',
                     name: 'lxfs'
                 }, {
@@ -120,7 +126,7 @@
                     }
                 }, {
                     display: '借阅人',
-                    name: 'user.xm'
+                    name: 'xm'
                 }, {
                     display: '操作',
                     isAllowHide: false,

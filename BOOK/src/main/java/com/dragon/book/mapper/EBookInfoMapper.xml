@@ -8,14 +8,9 @@
         <result column="wjdz" property="wjdz" jdbcType="VARCHAR"/>
         <result column="ms" property="ms" jdbcType="VARCHAR"/>
         <result column="scsj" property="scsj" jdbcType="TIMESTAMP"/>
-        <result column="xzsj" property="xzsj" jdbcType="VARCHAR"/>
         <result column="tszl" property="tszl" jdbcType="VARCHAR"/>
         <result column="xm" property="xm" jdbcType="VARCHAR"/>
         <result column="lxmc" property="lxmc" jdbcType="VARCHAR"/>
-
-        <!--<association property="tType" column="type_Id" select="com.dragon.book.mapper.TTypeMapper.selectByPrimaryKey"/>
-        <association property="tSysUser" column="user_Id"
-                     select="com.dragon.book.mapper.TSysUserMapper.selectByPrimaryKey"/>-->
     </resultMap>
 
     <select id="queryTEBookVo" resultMap="BaseResultMap" parameterType="map">
