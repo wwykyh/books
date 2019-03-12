@@ -66,6 +66,4 @@ public class BorrowRevertController {
     public Object borrowCheck(String id, String sh, String status) {
         return revertCheckService.updateRevertTBorrowSh(Integer.parseInt(id),Integer.parseInt(sh), status);
     }
-
-    // 修复了电子书下载的bug，新增了一个电子书下载类，更改了电子书浏览下载界面和审核界面，以及将输出改为了日志打印
 }

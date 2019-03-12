@@ -115,7 +115,7 @@
 
     <update id="updateRevertTBorrowSh" parameterType="map" >
         update t_store
-        set sh = #{sh,jdbcType=INTEGER}
+        set sh = #{sh,jdbcType=INTEGER},status='0'
         where id=#{sId,jdbcType=VARCHAR}
     </update>
 </mapper>

@@ -72,98 +72,101 @@
         typeId = $("#typeId").val();
         jyzt = $("#jyzt").val();
         eBookXm = $("#eBookXm").val();
-        select();
+        bookRevertInfo();
     }
 
-    $(function () {
-        select();   // 界面第一次加载时调出数据
+    requirejs(['jquery', 'ligerGrid', 'artdialog'], function ($) {
+        $(function () {
+            bookRevertInfo();   // 界面第一次加载时调出数据
+        });
     });
 
-    function select() {
-        requirejs(['jquery', 'ligerGrid', 'artdialog'], function ($) {
-            $("#comment").ligerGrid({
-                columns: [{
-                    display: '图书编号',
-                    name: 'isbn',
-                    width: 120,
-                    frozen: true
-                }, {
-                    display: '图书名称',
-                    name: 'sm',
-                    width: 200
-                },, {
-                    display: '类型名称',
-                    name: 'lxmc'
-                }, {
-                    display: '图书大类',
-                    name: 'tsdl'
-                } ,{
-                    display: '联系方式',
-                    name: 'lxfs'
-                }, {
-                    display: '借阅日期',
-                    name: 'jyrq',
-                    render: function (row) {
-                        if (row.jyrq != null && row.jyrq !== "") {
-                            return getColumnDate(row.jyrq);
-                        }
-                    }
-                },{
-                    display: '计划归还日期',
-                    name: 'jhghrq',
-                    render: function (row) {
-                        if (row.jhghrq != null && row.jhghrq !== "") {
-                            return getColumnDate(row.jhghrq);
-                        }
-                    }
-                }, {
-                    display: '归还日期',
-                    name: 'ghrq',
-                    render: function (row) {
-                        if (row.ghrq != null && row.ghrq !== "") {
-                            return getColumnDate(row.ghrq);
-                        }
-                    }
-                }, {
-                    display: '借阅人',
-                    name: 'xm'
-                }, {
-                    display: '操作',
-                    isAllowHide: false,
-                    render: function (row) {
-                        var id = row.id;
-                        if (row.jyzt != null && row.jyzt !== "" && row.jyzt === 0) {
-                            var html = '<div style="margin-top: 10px;">' +
-                                '<input name="check" type="button" class="layer-btn" id="check" value="归还审核" onclick="borCheck(' + id + ')"/>' +
-                                '</div>';
-                            return html;
-                        } else if (row.jyzt != null && row.jyzt !== "" && row.jyzt === 1) {
-                            var html = '<div style="margin-top: 10px;">' +
-                                '<input name="check" type="button" class="layer-btn" id="check" value="图书续借" onclick="borCheckContinue(' + id + ')"/>' +
-                                '</div>';
-                            return html;
-                        } else if (row.jyzt != null && row.jyzt !== "" && row.jyzt === 2) {
-                            var html = '<div style="margin-top: 10px;">' +
-                                '<input name="check" type="button" class="layer-btn" id="check" value="已归还" onclick="borCheck(' + id + ')"/>' +
-                                '</div>';
-                            return html;
-                        }
-                        ;
+    function bookRevertInfo() {
+        $("#comment").ligerGrid({
+            columns: [{
+                display: '图书编号',
+                name: 'isbn',
+                width: 120,
+                frozen: true
+            }, {
+                display: '图书名称',
+                name: 'sm',
+                width: 200
+            }, , {
+                display: '类型名称',
+                name: 'lxmc'
+            }, {
+                display: '图书大类',
+                name: 'tsdl'
+            }, {
+                display: '联系方式',
+                name: 'lxfs'
+            }, {
+                display: '借阅日期',
+                name: 'jyrq',
+                render: function (row) {
+                    if (row.jyrq != null && row.jyrq !== "") {
+                        return getColumnDate(row.jyrq);
                     }
                 }
-                ],
-                method: 'get',
-                url: '${path}/revertCheck/page',
-                dataType: 'server',
-                dataAction: 'server',
-                pageSize: 5,
-                width: '100%',
-                parms: [{name: "search_typeId", value: typeId}, {name: "search_jyzt", value: jyzt},{name: "search_eBookXm", value: eBookXm}],
-                checkbox: false,
-                rownumbers: true,
-                fixedCellHeight: false,
-                iShowScroll: false
-            });
+            }, {
+                display: '计划归还日期',
+                name: 'jhghrq',
+                render: function (row) {
+                    if (row.jhghrq != null && row.jhghrq !== "") {
+                        return getColumnDate(row.jhghrq);
+                    }
+                }
+            }, {
+                display: '归还日期',
+                name: 'ghrq',
+                render: function (row) {
+                    if (row.ghrq != null && row.ghrq !== "") {
+                        return getColumnDate(row.ghrq);
+                    }
+                }
+            }, {
+                display: '借阅人',
+                name: 'xm'
+            }, {
+                display: '操作',
+                isAllowHide: false,
+                render: function (row) {
+                    var id = row.id;
+                    if (row.jyzt != null && row.jyzt !== "" && row.jyzt === 0) {
+                        var html = '<div style="margin-top: 10px;">' +
+                            '<input name="check" type="button" class="layer-btn" id="check" value="归还审核" onclick="borCheck(' + id + ')"/>' +
+                            '</div>';
+                        return html;
+                    } else if (row.jyzt != null && row.jyzt !== "" && row.jyzt === 1) {
+                        var html = '<div style="margin-top: 10px;">' +
+                            '<input name="check" type="button" class="layer-btn" id="check" value="图书续借" onclick="borCheckContinue(' + id + ')"/>' +
+                            '</div>';
+                        return html;
+                    } else if (row.jyzt != null && row.jyzt !== "" && row.jyzt === 2) {
+                        var html = '<div style="margin-top: 10px;">' +
+                            '<input name="check" type="button" class="layer-btn" id="check" value="已归还" onclick="borCheck(' + id + ')"/>' +
+                            '</div>';
+                        return html;
+                    }
+                    ;
+                }
+            }
+            ],
+            method: 'get',
+            url: '${path}/revertCheck/page',
+            dataType: 'server',
+            dataAction: 'server',
+            pageSize: 5,
+            width: '100%',
+            parms: [{name: "search_typeId", value: typeId}, {name: "search_jyzt", value: jyzt}, {
+                name: "search_eBookXm",
+                value: eBookXm
+            }],
+            checkbox: false,
+            rownumbers: true,
+            fixedCellHeight: false,
+            iShowScroll: false
         });
     }
 
@@ -185,7 +188,8 @@
                     ok: true,
                     okVal: "确定",
                     cancel: true,
-                    cancelVal: "取消"
+                    cancelVal: "取消",
+                    id: "borrowRevertChild"
                 });
             });
         });

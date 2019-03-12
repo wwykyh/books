@@ -2,7 +2,9 @@ package com.dragon.book.service.impl;
 
 import com.dragon.book.mapper.CheckMapper;
 import com.dragon.book.mapper.TBorrowMapper;
+import com.dragon.book.mapper.TStoreMapper;
 import com.dragon.book.model.TBorrow;
+import com.dragon.book.model.TStore;
 import com.dragon.book.pojo.TBorrowInfo;
 import com.dragon.book.service.ebookService.BorrowCheckService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,6 +20,9 @@ public class BorrowCheckServiceImpl implements BorrowCheckService {
 
     @Autowired
     private TBorrowMapper tBorrowMapper;  // 生成的
+
+    @Autowired
+    private TStoreMapper tStoreMapper;
 
     @Override
     public TBorrowInfo getSingleTBorrow(Integer id) {
@@ -36,6 +41,10 @@ public class BorrowCheckServiceImpl implements BorrowCheckService {
 
     @Override
     public boolean updateTBorrow(TBorrow tBorrow) {
+        TStore tStore = tStoreMapper.selectByPrimaryKey(tBorrow.getsId());
+        // 修改图书的库存状态，0：在库，1：出库
+        tStore.setStatus(1);
+        tStoreMapper.updateByPrimaryKey(tStore);
         return tBorrowMapper.updateByPrimaryKeyWithBLOBs(tBorrow) > 0;
     }
 }

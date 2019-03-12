@@ -128,7 +128,7 @@ public class EbookFileServiceImpl implements EbookFileService {
         int row = teBookMapper.insert(teBook);
         TUserBook tUserBook = new TUserBook();
         tUserBook.setIsbn(teBook.geteBookId());
-        HttpServletRequest request = ((ServletRequestAttributes)RequestContextHolder.getRequestAttributes()).getRequest();
+        HttpServletRequest request = ((ServletRequestAttributes) Objects.requireNonNull(RequestContextHolder.getRequestAttributes())).getRequest();
         Integer userId = (Integer) Objects.requireNonNull(request).getSession().getAttribute("userId");
         tUserBook.setUserId(userId);
         int row2 = tUserBookMapper.insert(tUserBook);
@@ -223,7 +223,7 @@ public class EbookFileServiceImpl implements EbookFileService {
         TEbookDown tEbookDown = new TEbookDown();
         tEbookDown.setEbookId(teBook.geteBookId());
         tEbookDown.setXzsj(downloadTime);
-        HttpServletRequest request = ((ServletRequestAttributes)RequestContextHolder.getRequestAttributes()).getRequest();
+        HttpServletRequest request = ((ServletRequestAttributes) Objects.requireNonNull(RequestContextHolder.getRequestAttributes())).getRequest();
         Integer userId = (Integer) Objects.requireNonNull(request).getSession().getAttribute("userId");
         tEbookDown.setUserId(userId);
         return tEbookDownMapper.insert(tEbookDown) > 0;
