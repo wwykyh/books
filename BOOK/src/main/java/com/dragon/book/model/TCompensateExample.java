@@ -424,63 +424,63 @@ public class TCompensateExample {
             return (Criteria) this;
         }
 
-        public Criteria andSfpcIsNull() {
-            addCriterion("sfpc is null");
+        public Criteria andIspcIsNull() {
+            addCriterion("ispc is null");
             return (Criteria) this;
         }
 
-        public Criteria andSfpcIsNotNull() {
-            addCriterion("sfpc is not null");
+        public Criteria andIspcIsNotNull() {
+            addCriterion("ispc is not null");
             return (Criteria) this;
         }
 
-        public Criteria andSfpcEqualTo(Integer value) {
-            addCriterion("sfpc =", value, "sfpc");
+        public Criteria andIspcEqualTo(Integer value) {
+            addCriterion("ispc =", value, "ispc");
             return (Criteria) this;
         }
 
-        public Criteria andSfpcNotEqualTo(Integer value) {
-            addCriterion("sfpc <>", value, "sfpc");
+        public Criteria andIspcNotEqualTo(Integer value) {
+            addCriterion("ispc <>", value, "ispc");
             return (Criteria) this;
         }
 
-        public Criteria andSfpcGreaterThan(Integer value) {
-            addCriterion("sfpc >", value, "sfpc");
+        public Criteria andIspcGreaterThan(Integer value) {
+            addCriterion("ispc >", value, "ispc");
             return (Criteria) this;
         }
 
-        public Criteria andSfpcGreaterThanOrEqualTo(Integer value) {
-            addCriterion("sfpc >=", value, "sfpc");
+        public Criteria andIspcGreaterThanOrEqualTo(Integer value) {
+            addCriterion("ispc >=", value, "ispc");
             return (Criteria) this;
         }
 
-        public Criteria andSfpcLessThan(Integer value) {
-            addCriterion("sfpc <", value, "sfpc");
+        public Criteria andIspcLessThan(Integer value) {
+            addCriterion("ispc <", value, "ispc");
             return (Criteria) this;
         }
 
-        public Criteria andSfpcLessThanOrEqualTo(Integer value) {
-            addCriterion("sfpc <=", value, "sfpc");
+        public Criteria andIspcLessThanOrEqualTo(Integer value) {
+            addCriterion("ispc <=", value, "ispc");
             return (Criteria) this;
         }
 
-        public Criteria andSfpcIn(List<Integer> values) {
-            addCriterion("sfpc in", values, "sfpc");
+        public Criteria andIspcIn(List<Integer> values) {
+            addCriterion("ispc in", values, "ispc");
             return (Criteria) this;
         }
 
-        public Criteria andSfpcNotIn(List<Integer> values) {
-            addCriterion("sfpc not in", values, "sfpc");
+        public Criteria andIspcNotIn(List<Integer> values) {
+            addCriterion("ispc not in", values, "ispc");
             return (Criteria) this;
         }
 
-        public Criteria andSfpcBetween(Integer value1, Integer value2) {
-            addCriterion("sfpc between", value1, value2, "sfpc");
+        public Criteria andIspcBetween(Integer value1, Integer value2) {
+            addCriterion("ispc between", value1, value2, "ispc");
             return (Criteria) this;
         }
 
-        public Criteria andSfpcNotBetween(Integer value1, Integer value2) {
-            addCriterion("sfpc not between", value1, value2, "sfpc");
+        public Criteria andIspcNotBetween(Integer value1, Integer value2) {
+            addCriterion("ispc not between", value1, value2, "ispc");
             return (Criteria) this;
         }
 

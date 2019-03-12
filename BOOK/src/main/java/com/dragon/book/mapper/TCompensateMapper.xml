@@ -7,7 +7,7 @@
     <result column="user_id" property="userId" jdbcType="INTEGER" />
     <result column="sh" property="sh" jdbcType="INTEGER" />
     <result column="pcdate" property="pcdate" jdbcType="VARCHAR" />
-    <result column="sfpc" property="sfpc" jdbcType="INTEGER" />
+    <result column="ispc" property="ispc" jdbcType="INTEGER" />
     <result column="iscount" property="iscount" jdbcType="INTEGER" />
   </resultMap>
   <resultMap id="ResultMapWithBLOBs" type="com.dragon.book.model.TCompensate" extends="BaseResultMap" >
@@ -72,7 +72,7 @@
     </where>
   </sql>
   <sql id="Base_Column_List" >
-    id, isbn, user_id, sh, pcdate, sfpc, iscount
+    id, isbn, user_id, sh, pcdate, ispc, iscount
   </sql>
   <sql id="Blob_Column_List" >
     pc
@@ -127,10 +127,10 @@
   </delete>
   <insert id="insert" parameterType="com.dragon.book.model.TCompensate" >
     insert into t_compensate (id, isbn, user_id, 
-      sh, pcdate, sfpc, iscount, 
+      sh, pcdate, ispc, iscount, 
       pc)
     values (#{id,jdbcType=INTEGER}, #{isbn,jdbcType=VARCHAR}, #{userId,jdbcType=INTEGER}, 
-      #{sh,jdbcType=INTEGER}, #{pcdate,jdbcType=VARCHAR}, #{sfpc,jdbcType=INTEGER}, #{iscount,jdbcType=INTEGER}, 
+      #{sh,jdbcType=INTEGER}, #{pcdate,jdbcType=VARCHAR}, #{ispc,jdbcType=INTEGER}, #{iscount,jdbcType=INTEGER}, 
       #{pc,jdbcType=LONGVARCHAR})
   </insert>
   <insert id="insertSelective" parameterType="com.dragon.book.model.TCompensate" >
@@ -151,8 +151,8 @@
       <if test="pcdate != null" >
         pcdate,
       </if>
-      <if test="sfpc != null" >
-        sfpc,
+      <if test="ispc != null" >
+        ispc,
       </if>
       <if test="iscount != null" >
         iscount,
@@ -177,8 +177,8 @@
       <if test="pcdate != null" >
         #{pcdate,jdbcType=VARCHAR},
       </if>
-      <if test="sfpc != null" >
-        #{sfpc,jdbcType=INTEGER},
+      <if test="ispc != null" >
+        #{ispc,jdbcType=INTEGER},
       </if>
       <if test="iscount != null" >
         #{iscount,jdbcType=INTEGER},
@@ -212,8 +212,8 @@
       <if test="record.pcdate != null" >
         pcdate = #{record.pcdate,jdbcType=VARCHAR},
       </if>
-      <if test="record.sfpc != null" >
-        sfpc = #{record.sfpc,jdbcType=INTEGER},
+      <if test="record.ispc != null" >
+        ispc = #{record.ispc,jdbcType=INTEGER},
       </if>
       <if test="record.iscount != null" >
         iscount = #{record.iscount,jdbcType=INTEGER},
@@ -233,7 +233,7 @@
       user_id = #{record.userId,jdbcType=INTEGER},
       sh = #{record.sh,jdbcType=INTEGER},
       pcdate = #{record.pcdate,jdbcType=VARCHAR},
-      sfpc = #{record.sfpc,jdbcType=INTEGER},
+      ispc = #{record.ispc,jdbcType=INTEGER},
       iscount = #{record.iscount,jdbcType=INTEGER},
       pc = #{record.pc,jdbcType=LONGVARCHAR}
     <if test="_parameter != null" >
@@ -247,7 +247,7 @@
       user_id = #{record.userId,jdbcType=INTEGER},
       sh = #{record.sh,jdbcType=INTEGER},
       pcdate = #{record.pcdate,jdbcType=VARCHAR},
-      sfpc = #{record.sfpc,jdbcType=INTEGER},
+      ispc = #{record.ispc,jdbcType=INTEGER},
       iscount = #{record.iscount,jdbcType=INTEGER}
     <if test="_parameter != null" >
       <include refid="Update_By_Example_Where_Clause" />
@@ -268,8 +268,8 @@
       <if test="pcdate != null" >
         pcdate = #{pcdate,jdbcType=VARCHAR},
       </if>
-      <if test="sfpc != null" >
-        sfpc = #{sfpc,jdbcType=INTEGER},
+      <if test="ispc != null" >
+        ispc = #{ispc,jdbcType=INTEGER},
       </if>
       <if test="iscount != null" >
         iscount = #{iscount,jdbcType=INTEGER},
@@ -286,7 +286,7 @@
       user_id = #{userId,jdbcType=INTEGER},
       sh = #{sh,jdbcType=INTEGER},
       pcdate = #{pcdate,jdbcType=VARCHAR},
-      sfpc = #{sfpc,jdbcType=INTEGER},
+      ispc = #{ispc,jdbcType=INTEGER},
       iscount = #{iscount,jdbcType=INTEGER},
       pc = #{pc,jdbcType=LONGVARCHAR}
     where id = #{id,jdbcType=INTEGER}
@@ -297,7 +297,7 @@
       user_id = #{userId,jdbcType=INTEGER},
       sh = #{sh,jdbcType=INTEGER},
       pcdate = #{pcdate,jdbcType=VARCHAR},
-      sfpc = #{sfpc,jdbcType=INTEGER},
+      ispc = #{ispc,jdbcType=INTEGER},
       iscount = #{iscount,jdbcType=INTEGER}
     where id = #{id,jdbcType=INTEGER}
   </update>
