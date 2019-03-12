@@ -43,65 +43,63 @@
         $(function () {
             select() ;
         }) ;
-        function select() {
-            $("#usersInfo").ligerGrid({
-                columns: [{
-                    display: '用户ID',
-                    name: 'userId',
-                    width: 180,
-                    frozen: true
-                }, {
-                    display: '姓名',
-                    name: 'xm',
-                    width: 180,
-                    frozen: true
-                }, {
-                    display: '部门',
-                    name: 'bm',
-                    width: 350,
-                    frozen: true
-                }, {
-                    display: '联系方式',
-                    name: 'lxfs',
-                    width: 350,
-                    frozen: true
-                }, {
-                    display: '操作',
-                    isAllowHide: false,
-                    render: function (row){
-                        if (row.userId != undefined && row.userId != null && row.userId != ""){
-                            var   html =  '&nbsp;&nbsp;&nbsp;<a href="javascript:void(0);" onclick="onDelInfo(' + row.userId + ')">删除</a>';
-                            return html;
-                        }else return "" ;
-                    }
-                }],
-                url: '/usermanage/get_blacklist_data',
-                method:'get',
-                dataType: 'server',
-                dataAction: 'server',
-                pageSize: 10,
-                width: '100%',
-                checkbox: false,
-                rownumbers: false,
-                parms:[{name:"dim",value:dim}],
-                fixedCellHeight: false,
-                iShowScroll: false,
-                allowAdjustColWidth: true
-            }) ;
-        };
-
         $("#btnLoad").click(function(){
             dim = $("#dim").val();
             select() ;
         }) ;
-
     });
+    function select() {
+        $("#usersInfo").ligerGrid({
+            columns: [{
+                display: '用户ID',
+                name: 'userId',
+                width: 180,
+                frozen: true
+            }, {
+                display: '姓名',
+                name: 'xm',
+                width: 180,
+                frozen: true
+            }, {
+                display: '部门',
+                name: 'bm',
+                width: 350,
+                frozen: true
+            }, {
+                display: '联系方式',
+                name: 'lxfs',
+                width: 350,
+                frozen: true
+            }, {
+                display: '操作',
+                isAllowHide: false,
+                render: function (row){
+                    if (row.userId != undefined && row.userId != null && row.userId != ""){
+                        var   html =  '&nbsp;&nbsp;&nbsp;<a href="javascript:void(0);" onclick="onDelInfo(' + row.userId + ')">删除</a>';
+                        return html;
+                    }else return "" ;
+                }
+            }],
+            url: '/usermanage/get_blacklist_data',
+            method:'get',
+            dataType: 'server',
+            dataAction: 'server',
+            pageSize: 10,
+            width: '100%',
+            checkbox: false,
+            rownumbers: false,
+            parms:[{name:"dim",value:dim}],
+            fixedCellHeight: false,
+            iShowScroll: false,
+            allowAdjustColWidth: true
+        }) ;
+    };
     function onDelInfo(userId) {
         if (confirm("你是否要把这个用户从黑名单中移除？")){
             $.ajax({url:"${pageContext.request.contextPath}/usermanage/del_black_user?id="+userId,
                 success:function(data){
                     if (data){
-                        alert("移除成功，请刷新！") ;
+                        select();
                     } else {
                         alert("移除失败！") ;
                     }

@@ -1,8 +1,10 @@
 package com.dragon.book.service;
 
+import com.dragon.book.model.TCompensate;
 import com.dragon.book.model.TSysUser;
 import com.dragon.book.pojo.QueryVo;
 import com.dragon.book.util.PageBean;
+import com.github.pagehelper.Page;
 
 public interface UserService {
 
@@ -56,4 +58,12 @@ public interface UserService {
     public boolean deleteBlackUser(int userId);
 
     public PageBean getBlackListByPage(PageBean pageBean, QueryVo vo);
+
+    public PageBean getPcByPage(PageBean pageBean,QueryVo vo);
+
+    public boolean updataPc(TCompensate compensate);
+
+    public boolean addPc(TCompensate compensate);
+
+    public boolean delPc(int id);
 }

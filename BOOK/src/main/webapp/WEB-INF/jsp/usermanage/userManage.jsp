@@ -43,67 +43,65 @@
         $(function () {
             select() ;
         }) ;
-        function select() {
-            $("#usersInfo").ligerGrid({
-                columns: [{
-                    display: '用户ID',
-                    name: 'userId',
-                    width: 180,
-                    frozen: true
-                }, {
-                    display: '姓名',
-                    name: 'xm',
-                    width: 180,
-                    frozen: true
-                }, {
-                    display: '部门',
-                    name: 'bm',
-                    width: 350,
-                    frozen: true
-                }, {
-                    display: '联系方式',
-                    name: 'lxfs',
-                    width: 350,
-                    frozen: true
-                }, {
-                    display: '操作',
-                    isAllowHide: false,
-                    render: function (row){
-                        if (row.userId != undefined && row.userId != null && row.userId != ""){
-                            var html = '<a href="javascript:void(0);" onclick="onCheckInfo(' + row.userId + ')">查看资料</a>&nbsp;&nbsp;' ;
-                                html = html + '<a href="javascript:void(0);" onclick="onEditInfo(' + row.userId + ')">修改资料</a>&nbsp;&nbsp;';
-                                html = html + '<a href="javascript:void(0);" onclick="onDelInfo(' + row.userId + ')">删除</a>';
-                            return html;
-                        }else return "" ;
-                    }
-                }],
-                url: '/usermanage/usergetdata',
-                method:'get',
-                dataType: 'server',
-                dataAction: 'server',
-                pageSize: 10,
-                width: '100%',
-                checkbox: false,
-                rownumbers: false,
-                parms:[{name:"dim",value:dim}],
-                fixedCellHeight: false,
-                iShowScroll: false,
-                allowAdjustColWidth: true
-            }) ;
-        };
-
         $("#btnLoad").click(function(){
             dim = $("#dim").val();
             select() ;
         }) ;
-
     });
+    function select() {
+        $("#usersInfo").ligerGrid({
+            columns: [{
+                display: '用户ID',
+                name: 'userId',
+                width: 180,
+                frozen: true
+            }, {
+                display: '姓名',
+                name: 'xm',
+                width: 180,
+                frozen: true
+            }, {
+                display: '部门',
+                name: 'bm',
+                width: 350,
+                frozen: true
+            }, {
+                display: '联系方式',
+                name: 'lxfs',
+                width: 350,
+                frozen: true
+            }, {
+                display: '操作',
+                isAllowHide: false,
+                render: function (row){
+                    if (row.userId != undefined && row.userId != null && row.userId != ""){
+                        var html = '<a href="javascript:void(0);" onclick="onCheckInfo(' + row.userId + ')">查看资料</a>&nbsp;&nbsp;' ;
+                        html = html + '<a href="javascript:void(0);" onclick="onEditInfo(' + row.userId + ')">修改资料</a>&nbsp;&nbsp;';
+                        html = html + '<a href="javascript:void(0);" onclick="onDelInfo(' + row.userId + ')">删除</a>';
+                        return html;
+                    }else return "" ;
+                }
+            }],
+            url: '/usermanage/usergetdata',
+            method:'get',
+            dataType: 'server',
+            dataAction: 'server',
+            pageSize: 10,
+            width: '100%',
+            checkbox: false,
+            rownumbers: false,
+            parms:[{name:"dim",value:dim}],
+            fixedCellHeight: false,
+            iShowScroll: false,
+            allowAdjustColWidth: true
+        }) ;
+    };
     function onDelInfo(userId) {
         if (confirm("你是否要删除这个用户？")){
             $.ajax({url:"${pageContext.request.contextPath}/usermanage/del_user?id="+userId,
                 success:function(data){
                     if (data){
-                        alert("删除成功，请刷新！") ;
+                        select();
                     } else {
                         alert("删除失败！") ;
                     }
@@ -115,6 +113,7 @@
     function onEditInfo(userId) {
         art.dialog.open('/usermanage/showuser_edit?id='+userId, {
             title: '用户信息修改',
+            id:'user_edit_window',
             width: 700,
             height: 600,
             cancel: true,

@@ -20,7 +20,9 @@
     <script type="text/javascript" src="${pageContext.request.contextPath}/js/extend.js"></script>
     <!-- 共有的控件 -->
     <script data-main="main" src="${pageContext.request.contextPath}/dvpt/require.min.2.1.11.js"></script>
+
 </head>
+
 <body>
 <div class="panel">
     <div class="panel-header">
@@ -56,7 +58,7 @@
                     </tr>
                     <tr>
                         <th width="17%"><span class="ft-need"></span>是否黑名单：</th>
-                        <td width="33%">${userInfo.ishmd}</td>
+                        <td width="33%" id="ishmd">${userInfo.ishmd}</td>
                         <th width="17%"><span class="ft-need"></span>可借图书册数：</th>
                         <td width="33%"> ${userInfo.kjtscs}</td>
                     </tr>
@@ -64,7 +66,7 @@
                         <th width="17%"><span class="ft-need"></span>当前借阅图书ID：</th>
                         <td width="33%">${userInfo.isbn}</td>
                         <th width="17%"><span class="ft-need"></span>是否为管理员：</th>
-                        <td width="33%"> ${userInfo.isadmin}</td>
+                        <td width="33%" id="isadmin">${userInfo.isadmin}</td>
                     </tr>
                 </table>
         </div>
