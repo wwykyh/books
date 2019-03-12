@@ -3,6 +3,7 @@ package com.dragon.book.service;
 import com.dragon.book.model.TBook;
 import com.dragon.book.pojo.BookInfo;
 import com.dragon.book.pojo.CommentInfo;
+import com.dragon.book.pojo.HistoryInfo;
 import com.dragon.book.pojo.QueryVo;
 import com.dragon.book.util.PageBean;
 
@@ -18,4 +19,6 @@ public interface BookManagerService {
     boolean delComment(String id) ;
     PageBean selectCommentInfo(PageBean pageBean,QueryVo vo) ;
     List<BookInfo> selectAllBookInfo() ;
+    PageBean selectHistoryInfo(PageBean pageBean) ;
+    HistoryInfo selectHistoryById(Integer id) ;
 }

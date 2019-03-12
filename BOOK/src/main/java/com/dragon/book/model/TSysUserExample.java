@@ -893,6 +893,76 @@ public class TSysUserExample {
             addCriterion("cs not between", value1, value2, "cs");
             return (Criteria) this;
         }
+
+        public Criteria andBookIdIsNull() {
+            addCriterion("book_id is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andBookIdIsNotNull() {
+            addCriterion("book_id is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andBookIdEqualTo(String value) {
+            addCriterion("book_id =", value, "bookId");
+            return (Criteria) this;
+        }
+
+        public Criteria andBookIdNotEqualTo(String value) {
+            addCriterion("book_id <>", value, "bookId");
+            return (Criteria) this;
+        }
+
+        public Criteria andBookIdGreaterThan(String value) {
+            addCriterion("book_id >", value, "bookId");
+            return (Criteria) this;
+        }
+
+        public Criteria andBookIdGreaterThanOrEqualTo(String value) {
+            addCriterion("book_id >=", value, "bookId");
+            return (Criteria) this;
+        }
+
+        public Criteria andBookIdLessThan(String value) {
+            addCriterion("book_id <", value, "bookId");
+            return (Criteria) this;
+        }
+
+        public Criteria andBookIdLessThanOrEqualTo(String value) {
+            addCriterion("book_id <=", value, "bookId");
+            return (Criteria) this;
+        }
+
+        public Criteria andBookIdLike(String value) {
+            addCriterion("book_id like", value, "bookId");
+            return (Criteria) this;
+        }
+
+        public Criteria andBookIdNotLike(String value) {
+            addCriterion("book_id not like", value, "bookId");
+            return (Criteria) this;
+        }
+
+        public Criteria andBookIdIn(List<String> values) {
+            addCriterion("book_id in", values, "bookId");
+            return (Criteria) this;
+        }
+
+        public Criteria andBookIdNotIn(List<String> values) {
+            addCriterion("book_id not in", values, "bookId");
+            return (Criteria) this;
+        }
+
+        public Criteria andBookIdBetween(String value1, String value2) {
+            addCriterion("book_id between", value1, value2, "bookId");
+            return (Criteria) this;
+        }
+
+        public Criteria andBookIdNotBetween(String value1, String value2) {
+            addCriterion("book_id not between", value1, value2, "bookId");
+            return (Criteria) this;
+        }
     }
 
     public static class Criteria extends GeneratedCriteria {

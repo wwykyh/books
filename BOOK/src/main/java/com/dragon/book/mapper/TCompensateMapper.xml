@@ -6,6 +6,9 @@
     <result column="isbn" property="isbn" jdbcType="VARCHAR" />
     <result column="user_id" property="userId" jdbcType="INTEGER" />
     <result column="sh" property="sh" jdbcType="INTEGER" />
+    <result column="pcdate" property="pcdate" jdbcType="VARCHAR" />
+    <result column="ispc" property="ispc" jdbcType="INTEGER" />
+    <result column="iscount" property="iscount" jdbcType="INTEGER" />
   </resultMap>
   <resultMap id="ResultMapWithBLOBs" type="com.dragon.book.model.TCompensate" extends="BaseResultMap" >
     <result column="pc" property="pc" jdbcType="LONGVARCHAR" />
@@ -69,7 +72,7 @@
     </where>
   </sql>
   <sql id="Base_Column_List" >
-    id, isbn, user_id, sh
+    id, isbn, user_id, sh, pcdate, ispc, iscount
   </sql>
   <sql id="Blob_Column_List" >
     pc
@@ -124,9 +127,11 @@
   </delete>
   <insert id="insert" parameterType="com.dragon.book.model.TCompensate" >
     insert into t_compensate (id, isbn, user_id, 
-      sh, pc)
+      sh, pcdate, ispc, iscount, 
+      pc)
     values (#{id,jdbcType=INTEGER}, #{isbn,jdbcType=VARCHAR}, #{userId,jdbcType=INTEGER}, 
-      #{sh,jdbcType=INTEGER}, #{pc,jdbcType=LONGVARCHAR})
+      #{sh,jdbcType=INTEGER}, #{pcdate,jdbcType=VARCHAR}, #{ispc,jdbcType=INTEGER}, #{iscount,jdbcType=INTEGER}, 
+      #{pc,jdbcType=LONGVARCHAR})
   </insert>
   <insert id="insertSelective" parameterType="com.dragon.book.model.TCompensate" >
     insert into t_compensate
@@ -142,6 +147,15 @@
       </if>
       <if test="sh != null" >
         sh,
+      </if>
+      <if test="pcdate != null" >
+        pcdate,
+      </if>
+      <if test="ispc != null" >
+        ispc,
+      </if>
+      <if test="iscount != null" >
+        iscount,
       </if>
       <if test="pc != null" >
         pc,
@@ -159,6 +173,15 @@
       </if>
       <if test="sh != null" >
         #{sh,jdbcType=INTEGER},
+      </if>
+      <if test="pcdate != null" >
+        #{pcdate,jdbcType=VARCHAR},
+      </if>
+      <if test="ispc != null" >
+        #{ispc,jdbcType=INTEGER},
+      </if>
+      <if test="iscount != null" >
+        #{iscount,jdbcType=INTEGER},
       </if>
       <if test="pc != null" >
         #{pc,jdbcType=LONGVARCHAR},
@@ -186,6 +209,15 @@
       <if test="record.sh != null" >
         sh = #{record.sh,jdbcType=INTEGER},
       </if>
+      <if test="record.pcdate != null" >
+        pcdate = #{record.pcdate,jdbcType=VARCHAR},
+      </if>
+      <if test="record.ispc != null" >
+        ispc = #{record.ispc,jdbcType=INTEGER},
+      </if>
+      <if test="record.iscount != null" >
+        iscount = #{record.iscount,jdbcType=INTEGER},
+      </if>
       <if test="record.pc != null" >
         pc = #{record.pc,jdbcType=LONGVARCHAR},
       </if>
@@ -200,6 +232,9 @@
       isbn = #{record.isbn,jdbcType=VARCHAR},
       user_id = #{record.userId,jdbcType=INTEGER},
       sh = #{record.sh,jdbcType=INTEGER},
+      pcdate = #{record.pcdate,jdbcType=VARCHAR},
+      ispc = #{record.ispc,jdbcType=INTEGER},
+      iscount = #{record.iscount,jdbcType=INTEGER},
       pc = #{record.pc,jdbcType=LONGVARCHAR}
     <if test="_parameter != null" >
       <include refid="Update_By_Example_Where_Clause" />
@@ -210,7 +245,10 @@
     set id = #{record.id,jdbcType=INTEGER},
       isbn = #{record.isbn,jdbcType=VARCHAR},
       user_id = #{record.userId,jdbcType=INTEGER},
-      sh = #{record.sh,jdbcType=INTEGER}
+      sh = #{record.sh,jdbcType=INTEGER},
+      pcdate = #{record.pcdate,jdbcType=VARCHAR},
+      ispc = #{record.ispc,jdbcType=INTEGER},
+      iscount = #{record.iscount,jdbcType=INTEGER}
     <if test="_parameter != null" >
       <include refid="Update_By_Example_Where_Clause" />
     </if>
@@ -227,6 +265,15 @@
       <if test="sh != null" >
         sh = #{sh,jdbcType=INTEGER},
       </if>
+      <if test="pcdate != null" >
+        pcdate = #{pcdate,jdbcType=VARCHAR},
+      </if>
+      <if test="ispc != null" >
+        ispc = #{ispc,jdbcType=INTEGER},
+      </if>
+      <if test="iscount != null" >
+        iscount = #{iscount,jdbcType=INTEGER},
+      </if>
       <if test="pc != null" >
         pc = #{pc,jdbcType=LONGVARCHAR},
       </if>
@@ -238,6 +285,9 @@
     set isbn = #{isbn,jdbcType=VARCHAR},
       user_id = #{userId,jdbcType=INTEGER},
       sh = #{sh,jdbcType=INTEGER},
+      pcdate = #{pcdate,jdbcType=VARCHAR},
+      ispc = #{ispc,jdbcType=INTEGER},
+      iscount = #{iscount,jdbcType=INTEGER},
       pc = #{pc,jdbcType=LONGVARCHAR}
     where id = #{id,jdbcType=INTEGER}
   </update>
@@ -245,7 +295,10 @@
     update t_compensate
     set isbn = #{isbn,jdbcType=VARCHAR},
       user_id = #{userId,jdbcType=INTEGER},
-      sh = #{sh,jdbcType=INTEGER}
+      sh = #{sh,jdbcType=INTEGER},
+      pcdate = #{pcdate,jdbcType=VARCHAR},
+      ispc = #{ispc,jdbcType=INTEGER},
+      iscount = #{iscount,jdbcType=INTEGER}
     where id = #{id,jdbcType=INTEGER}
   </update>
 </mapper>

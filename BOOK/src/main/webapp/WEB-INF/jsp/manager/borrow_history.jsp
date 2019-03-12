@@ -37,7 +37,7 @@
                                     <input id="dim" type="text" placeholder="书名、作者" class="input-text" />
                                 </td>
                                 <td>
-                                    <input id="user" type="text" placeholder="用户ID、用户名" class="input-text" />
+                                    <input id="user" type="text" placeholder="用户名" class="input-text" />
                                 </td>
                                 <td colspan="2"><a href="javascript:;" class="btn"><span id="btnLoad"><i class="icon icon-search"></i>查询</span></a></td>
                             </tr>
@@ -58,58 +58,46 @@
     var user ;
     requirejs(['jquery', 'ligerGrid','dg.datePicker', 'artdialog'], function($) {
         $(function () {
+            start_time = "" ;
+            end_time = "" ;
+            dim = "" ;
+            user = "" ;
             select() ;
         }) ;
         function select() {
             $("#historyInfo").ligerGrid({
                 columns: [{
                     display: 'ISBN',
-                    name: 'isbn',
-                    width: 120,
-                    frozen: true
+                    name: 'book.isbn'
                 }, {
                     display: '书名',
-                    name: 'sm',
-                    width: 200,
-                    frozen: true
+                    name: 'book.sm'
                 }, {
                     display: '出版社名称',
-                    name: 'cbsmc',
-                    width: 120,
-                    frozen: true
+                    name: 'book.cbsmc'
                 }, {
                     display: '作者',
-                    name: 'zz',
-                    width: 140,
-                    frozen: true
-                }, {
-                    display: '类型',
-                    name: 'lxmc',
-                    width: 70,
-                    frozen: true
+                    name: 'book.zz'
                 }, {
                     display: '所属类型',
-                    name: 'tsdl',
-                    width: 80,
-                    frozen: true
+                    name: 'book.tsdl'
+                }, {
+                    display: '借阅用户',
+                    name: 'user.xm'
                 }, {
                     display: '借阅日期',
-                    name: 'uname',
-                    width: 90,
-                    frozen: true
+                    name: 'jyrq'
                 }, {
                     display: '归还日期',
-                    name: 'wz',
-                    width: 80,
-                    frozen: true
+                    name: 'ghrq'
                 },{
                     display: '操作',
                     isAllowHide: false,
                     render: function (row){
                         if (row.id != undefined && row.id != null && row.id != ""){
-                            var html = '<a href="javascript:void(0);" onclick="onBookInfo(' + row.id + ')">查看详情</a>&nbsp;&nbsp;' ;
+                            var html = '<a href="javascript:void(0);" onclick="onHistoryInfo(' + row.id + ')">查看详情</a>&nbsp;&nbsp;' ;
                             //html = html + '<a href="javascript:void(0);" onclick="onBookEdit(' + row.id + ')">库存管理</a>&nbsp;&nbsp;';
-                            html = html + '<a href="javascript:void(0);" onclick="onBookDel(' + row.id + ')">出库</a>';
+                            //html = html + '<a href="javascript:void(0);" onclick="onHistoryDel(' + row.id + ')">删除</a>';
                             return html;
                         }else return "" ;
                     }
@@ -148,5 +136,15 @@
         $('#start_time').datepick({dateFormat: 'yy-mm-dd'});
         $('#end_time').datepick({dateFormat: 'yy-mm-dd'});
     });
+
+    function onHistoryInfo(id){
+        art.dialog.open('history_info?id='+id, {
+            title: '借阅详情',
+            width: 850,
+            height: 575,
+            cancel: true,
+            cancelVal: "关闭"
+        });
+    }
 </script>
 </html>

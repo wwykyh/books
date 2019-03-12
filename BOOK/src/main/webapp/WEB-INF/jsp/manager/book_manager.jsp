@@ -41,6 +41,7 @@
     var dim ;
     requirejs(['jquery', 'ligerGrid','dg.datePicker', 'artdialog'], function($) {
         $(function () {
+            dim = "" ;
             select() ;
         }) ;
         $("#btnLoad").click(function(){
@@ -52,64 +53,40 @@
         $("#booksInfo").ligerGrid({
             columns: [{
                 display: 'ISBN',
-                name: 'isbn',
-                width: 120,
-                frozen: true
+                name: 'isbn'
             }, {
                 display: '书名',
-                name: 'sm',
-                width: 200,
-                frozen: true
+                name: 'sm'
             }, {
                 display: '出版社名称',
-                name: 'cbsmc',
-                width: 120,
-                frozen: true
+                name: 'cbsmc'
             }, {
                 display: '出版日期',
-                name: 'cbrq',
-                width: 100,
-                frozen: true
+                name: 'cbrq'
             }, {
                 display: '作者',
-                name: 'zz',
-                width: 140,
-                frozen: true
+                name: 'zz'
             }, {
                 display: '类型',
-                name: 'lxmc',
-                width: 70,
-                frozen: true
+                name: 'lxmc'
             }, {
                 display: '所属类型',
-                name: 'tsdl',
-                width: 80,
-                frozen: true
+                name: 'tsdl'
             }, {
                 display: '图书提供者',
-                name: 'uname',
-                width: 90,
-                frozen: true
+                name: 'uname'
             }, {
                 display: '位置',
-                name: 'wz',
-                width: 80,
-                frozen: true
+                name: 'wz'
             }, {
                 display: '损毁程度',
-                name: 'sh',
-                width: 90,
-                frozen: true
+                name: 'sh'
             }, {
                 display: '入库时间',
-                name: 'rksj',
-                width: 100,
-                frozen: true
+                name: 'rksj'
             }, {
                 display: '图书状态',
-                name: 'status',
-                width: 80,
-                frozen: true
+                name: 'status'
             }, {
                 display: '操作',
                 isAllowHide: false,

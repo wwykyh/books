@@ -1,9 +1,10 @@
 package com.dragon.book.mapper;
 
-import com.dragon.book.model.TBook;
 import com.dragon.book.pojo.BookInfo;
 import com.dragon.book.pojo.CommentInfo;
+import com.dragon.book.pojo.HistoryInfo;
 import com.dragon.book.pojo.QueryVo;
+import com.dragon.book.util.PageBean;
 
 import java.util.List;
 
@@ -21,4 +22,6 @@ public interface BookManagerMapper {
     BookInfo selectBookInfoById(Integer id) ;
     CommentInfo selectCommentInfoById(Integer commentId) ;
     List<BookInfo> bookExport() ;
+    List<HistoryInfo> selectHistoryPage(PageBean pageBean) ;
+    HistoryInfo selectHistoryById(Integer id) ;
 }

@@ -112,6 +112,8 @@
                             <li><a _href="借阅历史.html" data-name="借阅历史" data-js="prettify" href="javascript:;">借阅历史</a>
                             </li>
                             <li><a _href="超时归还.html" data-name="超时归还" href="javascript:;">超时归还</a></li>
+                            <li><a _href="我喜欢的书籍.html" data-name="我喜欢的书籍" href="javascript:;">我喜欢的书籍</a></li>
+                            <li><a _href="我的消息.html" data-name="我的消息" href="javascript:;">我的消息</a></li>
 
                         </ul>
                     </dd>

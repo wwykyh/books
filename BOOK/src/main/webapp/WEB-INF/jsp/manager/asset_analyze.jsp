@@ -52,39 +52,25 @@
                 $("#booksInfo").ligerGrid({
                     columns: [{
                         display: 'ISBN',
-                        name: 'isbn',
-                        width: 120,
-                        frozen: true
+                        name: 'isbn'
                     }, {
                         display: '书名',
-                        name: 'sm',
-                        width: 200,
-                        frozen: true
+                        name: 'sm'
                     }, {
                         display: '出版社名称',
-                        name: 'cbsmc',
-                        width: 120,
-                        frozen: true
+                        name: 'cbsmc'
                     }, {
                         display: '出版日期',
-                        name: 'cbrq',
-                        width: 100,
-                        frozen: true
+                        name: 'cbrq'
                     }, {
                         display: '作者',
-                        name: 'zz',
-                        width: 160,
-                        frozen: true
+                        name: 'zz'
                     }, {
                         display: '类型',
-                        name: 'lxmc',
-                        width: 70,
-                        frozen: true
+                        name: 'lxmc'
                     }, {
                         display: '所属类型',
-                        name: 'tsdl',
-                        width: 80,
-                        frozen: true
+                        name: 'tsdl'
                     }, {
                         display: '图书提供者',
                         name: 'uname'

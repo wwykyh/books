@@ -17,9 +17,11 @@
             <h2>出版社管理</h2>
             <a href="javascript:;" class="arrow up"></a>
         </div>
+
+        <a href="javascript:void(0);" class="btn" onclick="onPublishAdd()"><span id="btnLoad"><i class="icon icon-add"></i>添加</span></a>
+        <div id="studentsInfo"></div>
     </div>
-    <a href="javascript:void(0);" class="btn" onclick="onPublishAdd()"><span id="btnLoad"><i class="icon icon-add"></i>添加</span></a>
-    <div id="studentsInfo"></div>
+
 
     <script type="text/javascript" >
         requirejs(['jquery', 'ligerGrid','artdialog'], function($) {

@@ -1,16 +1,7 @@
 package com.dragon.book.model;
 
 public class TSysUser {
-    @Override
-	public String toString() {
-		return "TSysUser [userId=" + userId + ", xm=" + xm + ", bm=" + bm
-				+ ", pwd=" + pwd + ", lxfs=" + lxfs + ", email=" + email
-				+ ", dz=" + dz + ", isadmin=" + isadmin + ", ishmd=" + ishmd
-				+ ", isbn=" + isbn + ", kjtscs=" + kjtscs + ", cs=" + cs
-				+ ", grsm=" + grsm + "]";
-	}
-
-	private Integer userId;
+    private Integer userId;
 
     private String xm;
 
@@ -33,6 +24,8 @@ public class TSysUser {
     private Integer kjtscs;
 
     private Integer cs;
+
+    private String bookId;
 
     private String grsm;
 
@@ -130,6 +123,14 @@ public class TSysUser {
 
     public void setCs(Integer cs) {
         this.cs = cs;
+    }
+
+    public String getBookId() {
+        return bookId;
+    }
+
+    public void setBookId(String bookId) {
+        this.bookId = bookId == null ? null : bookId.trim();
     }
 
     public String getGrsm() {
