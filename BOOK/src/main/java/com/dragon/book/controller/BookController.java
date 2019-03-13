@@ -13,25 +13,26 @@
 package com.dragon.book.controller;
 
 
+import java.io.IOException;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
+import javax.websocket.Session;
 
+import com.dragon.book.model.*;
 import com.dragon.book.pojo.Book;
+import com.dragon.book.util.WordToPDF;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpRequest;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.alibaba.fastjson.JSON;
-import com.dragon.book.model.BookAndEBook;
-import com.dragon.book.model.TBook;
-import com.dragon.book.model.TBorrow;
-import com.dragon.book.model.TType;
 import com.dragon.book.service.BookService;
 import com.dragon.book.service.TypeService;
 import com.dragon.book.service.UserService;
@@ -113,23 +114,16 @@ public class BookController {
     public String Sea(Model model) {
         List<TType> typeList = typeService.getAllTypes();
         model.addAttribute("typeList", typeList);
-        return "search";
+        return "book/search";
     }
 
     /**
-     *
-     * @param dim
-     *            书名、作者
-     * @param s_tsdl
-     *            图书大类
-     * @param s_type
-     *            图书类型
-     * @param page
-     *            当前页
-     * @param pagesize
-     *            页面大小
-     * @param model
-     *            返回数据
+     * @param dim      书名、作者
+     * @param s_tsdl   图书大类
+     * @param s_type   图书类型
+     * @param page     当前页
+     * @param pagesize 页面大小
+     * @param model    返回数据
      * @return
      */
     @GetMapping("/search")
@@ -157,8 +151,7 @@ public class BookController {
     /**
      * 借阅
      *
-     * @param id
-     *            图书id
+     * @param id      图书id
      * @param model
      * @param session
      * @return
@@ -176,24 +169,18 @@ public class BookController {
         } else {
             model.addAttribute("status", "在库");
         }
-        return "borrow";
+        return "book/borrow";
     }
 
     /**
      * 借阅申请处理
      *
-     * @param id
-     *            图书id
-     * @param sm
-     *            图书书名
-     * @param lxfs
-     *            用户联系方式
-     * @param jyrq
-     *            借阅日期
-     * @param jhghrq
-     *            借阅周期
-     * @param userId
-     *            用户id
+     * @param id     图书id
+     * @param sm     图书书名
+     * @param lxfs   用户联系方式
+     * @param jyrq   借阅日期
+     * @param jhghrq 借阅周期
+     * @param userId 用户id
      * @param model
      * @return
      */
@@ -211,12 +198,50 @@ public class BookController {
         return "redirect:/sea";
     }
 
+
+    @GetMapping("like")
+    @ResponseBody
+    public String like(String bookId, HttpSession session) {
+
+        TSysUser user = (TSysUser) session.getAttribute("user");
+        String id = user.getBookId();
+        System.out.println(id);
+        if (id.contains(bookId)){
+            return "0";
+        }
+        if ("".equals(id)||id==null){
+            id=bookId;
+        }
+        else{
+            id = id + ","+bookId;
+        }
+
+        user.setBookId(id);
+
+        boolean b = userService.updataByUser(user);
+        if (b) {
+            session.setAttribute("user", user);
+            return "1";
+        } else
+            return "0";
+    }
+
     @GetMapping("pdf")
     public String pdf(Model model) {
 
         // model.addAttribute("url",
         // "https://view.officeapps.live.com/op/view.aspx?src=http://storage.xuetangx.com/public_assets/xuetangx/PDF/1.xls");
-        model.addAttribute("url", "images/1.doc");
+       // model.addAttribute("url", "images/1.doc");
+
+
+            WordToPDF wordToPDF = new WordToPDF();
+            try {
+                wordToPDF.WordToPDF("e://简历.doc","e://成了.pdf");
+            } catch (IOException e) {
+                e.printStackTrace();
+
+
+        }
         return "PDF";
     }
 

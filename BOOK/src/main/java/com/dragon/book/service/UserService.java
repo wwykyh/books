@@ -42,6 +42,9 @@ public interface UserService {
      */
     public String encryption(String pwd);
 
+    public boolean updataByUser(TSysUser user);
+
+    
     /**
      * 用户管理
      * @param name 用户名

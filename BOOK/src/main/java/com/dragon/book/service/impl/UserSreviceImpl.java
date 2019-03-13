@@ -85,6 +85,14 @@ public class UserSreviceImpl implements UserService {
         return data.getPassword();
     }
 
+    @Override
+    public boolean updataByUser(TSysUser user) {
+
+        int i = userMapper.updateByPrimaryKeySelective(user);
+
+        return i>0 ? true:false;
+    }
+
     public TSysUserMapper getUserMapper() {
         return userMapper;
     }

@@ -35,8 +35,8 @@ public class UserController {
         TSysUser user = userService.getUser(username, pass);
 
         if (user != null) {
-            session.setAttribute("userId", user.getUserId());
-            session.setAttribute("userName", user.getXm());
+            session.setAttribute("user", user);
+        //    session.setAttribute("userName", user.getXm());
             session.setMaxInactiveInterval(30 * 60);
             if (user.getXm().equals("admin")) {
                 return "adminIndex";
@@ -71,6 +71,15 @@ public class UserController {
         return "register";
     }
 
+    /**
+     * 注册界面
+     *
+     * @return
+     */
+    @GetMapping("/addUser")
+    public String addUser() {
+        return "usermanage/addUser";
+    }
     /**
      * 处理注册
      *
