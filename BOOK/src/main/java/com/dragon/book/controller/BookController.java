@@ -189,7 +189,7 @@ public class BookController {
             @RequestParam String jhghrq, @RequestParam String userId,
             Model model) {
 
-        TBorrow borrow = bookService.setBorrow(id, Integer.parseInt(userId), sm, lxfs, jyrq, bookService.getTime(jyrq, jhghrq), 2);
+        TBorrow borrow = bookService.setBorrow(id, Integer.parseInt(userId), sm, lxfs, jyrq, bookService.getTime(jyrq, jhghrq), 2,0);
         int i = bookService.insertBorrow(borrow);
 
 if (i>0){

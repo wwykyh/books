@@ -9,6 +9,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>图书借阅</title>
+    <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 	<link rel="stylesheet" type="text/css" href="css/common/iconfont/iconfont.css" />
 	<link rel="stylesheet" type="text/css" href="css/common/layout.css" />
 	<link rel="stylesheet" type="text/css" href="dvpt/css/libs.css" />
@@ -63,8 +64,9 @@
 			<tr>
 			<th width="20%">状态：</th>
 				<td><input type="hidden" class="input-text" readonly="readonly"
-					value="${book.tStore.status }" name="status" /> <input type="text"
-					class="input-text" readonly="readonly" value="${book.tStore.status }"
+					value="${book.tStore.status }" name="status" />
+                    <input type="text"
+					class="input-text" readonly="readonly"   value="${status }"
 					name="status" /></td>
 				<th width="20%">出版社：</th>
 				<td width="35%"><input type="text" class="input-text"
@@ -117,11 +119,11 @@
             },
             success: function(data) {
                 if(data == "0"){
-                    alert("图书借阅成功！") ;
+                    alert("图书借阅申请成功，请到图书管理员处拿书！") ;
                     parent.select();
                     parent.art.dialog({id:'borrow_id'}).close() ;
                 }else {
-                    alert("图书借阅失败！");
+                    alert("图书借阅申请失败！");
                 }
             }
         });

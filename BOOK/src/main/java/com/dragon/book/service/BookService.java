@@ -134,7 +134,7 @@ public interface BookService {
      * @param i 待审核
      * @return
      */
-	public TBorrow setBorrow(String isbn, int parseInt, String sm, String lxfs, String jyrq, String time, int i);
+	public TBorrow setBorrow(String isbn, int parseInt, String sm, String lxfs, String jyrq, String time, int i,int jyzt);
 
     /**
      * 修改图书状态
