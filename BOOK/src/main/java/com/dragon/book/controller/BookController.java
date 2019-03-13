@@ -27,10 +27,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpRequest;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
 
 import com.alibaba.fastjson.JSON;
 import com.dragon.book.service.BookService;
@@ -161,7 +158,7 @@ public class BookController {
                          HttpSession session) {
 
         model.addAttribute("user",
-                userService.getUserInfo((int) session.getAttribute("userId")));
+                (TSysUser)session.getAttribute("user"));
         Book book = bookService.getBook(id);
         model.addAttribute("book", book);
         if (0 == book.gettStore().getStatus()) {
@@ -184,7 +181,8 @@ public class BookController {
      * @param model
      * @return
      */
-    @GetMapping("/doBorrow")
+    @PostMapping("/doBorrow")
+    @ResponseBody
     public String doBorrow(
             @RequestParam String id, @RequestParam String sm,
             @RequestParam String lxfs, @RequestParam String jyrq,
@@ -192,10 +190,14 @@ public class BookController {
             Model model) {
 
         TBorrow borrow = bookService.setBorrow(id, Integer.parseInt(userId), sm, lxfs, jyrq, bookService.getTime(jyrq, jhghrq), 2);
-        bookService.insertBorrow(borrow);
-        bookService.updateByKey(id, 0);
+        int i = bookService.insertBorrow(borrow);
 
-        return "redirect:/sea";
+if (i>0){
+    bookService.updateByKey(id, 0);
+    return "0";
+}else
+    return "1";
+
     }
 
 

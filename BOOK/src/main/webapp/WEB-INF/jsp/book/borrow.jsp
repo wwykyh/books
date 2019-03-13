@@ -9,9 +9,19 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>图书借阅</title>
+	<link rel="stylesheet" type="text/css" href="css/common/iconfont/iconfont.css" />
+	<link rel="stylesheet" type="text/css" href="css/common/layout.css" />
+	<link rel="stylesheet" type="text/css" href="dvpt/css/libs.css" />
+	<link rel="stylesheet" type="text/css" href="css/demo/style.css" />
+	<link rel="stylesheet" type="text/css" href="css/theme/blue.css" id="style" />
+	<script type="text/javascript" src="dvpt/config.js"></script>
+	<!-- 改造的脚本 -->
+	<script type="text/javascript" src="js/extend.js"></script>
+	<!-- 共有的控件 -->
+	<script data-main="main" src="dvpt/require.min.2.1.11.js"></script>
 </head>
 <body>
-	<form action="doBorrow" method="get" name="borrow">
+	<form  name="borrow" id="borrow">
 		<table class="form-table">
 			<tr>
 				<th width="20%">用户名：</th>
@@ -87,9 +97,34 @@
 			</tr>
 			<tr>
 			
-				<th width="20%"><input type="submit" value="提交"></th>
+				<th width="20%"><input type="button" class="btn" value="提交" onclick="sub()"></th>
 			</tr>
 		</table>
 	</form>
 </body>
+<
+<script type="text/javascript">
+    //ajax提交表单
+    function sub() {
+        $.ajax({
+            cache: true,
+            type: "POST",
+            url:"doBorrow",
+            data:$('#borrow').serialize(),// 你的form id
+            async: false,
+            error: function(request) {
+                alert("Connection error:"+request.error);
+            },
+            success: function(data) {
+                if(data == "0"){
+                    alert("图书借阅成功！") ;
+                    parent.select();
+                    parent.art.dialog({id:'borrow_id'}).close() ;
+                }else {
+                    alert("图书借阅失败！");
+                }
+            }
+        });
+    }
+</script>
 </html>

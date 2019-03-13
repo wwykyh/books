@@ -63,7 +63,7 @@
 					});
 					$(function() {
 						select();
-					});
+					});});
 					function select() {
 						$("#booksInfo")
 								.ligerGrid(
@@ -263,13 +263,14 @@
 						select();
 					});
 
-				});
+
 		function borrow(id) {
 			//alert("详情" + id) ;
 			art.dialog.open('borrow?id=' + id, {
 				title : '图书借阅',
 				width : 1200,
 				height : 675,
+                id:'borrow_id',
 				//ok: true,
 				// okVal: "打印",
 				cancel : true,
