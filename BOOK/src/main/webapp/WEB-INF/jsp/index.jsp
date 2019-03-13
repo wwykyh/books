@@ -104,7 +104,7 @@
                     </dt>
                     <dd>
                         <ul>
-                            <li><a _href="" data-name="我的个人" data-js="prettify">我的个人</a></li>
+                            <li><a _href="${pageContext.request.contextPath}/personal/topersonalindex?userid=${sessionScope.userId}" data-name="我的个人" data-js="prettify" href="javascript:;">我的个人</a></li>
                             <li><a _href="${pageContext.request.contextPath}/modifyinformation/modifyindex" data-name="修改资料" data-js="prettify" href="javascript:;">修改资料</a>
                             </li>
                             <li><a _href="${pageContext.request.contextPath}/modifypassword/tomodifypassword" data-name="修改密码" data-js="prettify" href="javascript:;">修改密码</a>
