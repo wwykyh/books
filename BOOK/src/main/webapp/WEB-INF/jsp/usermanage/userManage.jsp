@@ -13,7 +13,7 @@
 <body style="overflow: hidden;">
 <div class="panel">
     <div class="panel-header">
-        <h2>用户管理</h2>
+        <h2>用户管理 </h2>
         <a href="javascript:;" class="arrow up"></a>
     </div>
 
@@ -27,6 +27,14 @@
                             <td>
                                 <input id="dim" type="text" placeholder="用户姓名" class="input-text" />
                             </td>
+                            <td>
+                                是否为管理员：
+                                <select class="select"  style="width:180px" name="dim2" id="dim2">
+                                    <option value="1">是</option>
+                                    <option value="0" selected>否</option>
+                                    <option value="" selected>全部</option>
+                                </select>
+                            </td>
                             <td colspan="2"><a href="javascript:;" class="btn"><span id="btnLoad"><i class="icon icon-search"></i>查询</span></a></td>
                         </tr>
                     </table>
@@ -39,12 +47,14 @@
 </div>
 <script type="text/javascript">
     var dim ;
+    var dim2 ;
     requirejs(['jquery', 'ligerGrid','dg.datePicker', 'artdialog'], function($) {
         $(function () {
             select() ;
         }) ;
         $("#btnLoad").click(function(){
             dim = $("#dim").val();
+            dim2 = $("#dim2").val();
             select() ;
         }) ;
     });
@@ -90,7 +100,7 @@
             width: '100%',
             checkbox: false,
             rownumbers: false,
-            parms:[{name:"dim",value:dim}],
+            parms:[{name:"search_dim",value:dim},{name:"search_dim2",value:dim2}],
             fixedCellHeight: false,
             iShowScroll: false,
             allowAdjustColWidth: true
