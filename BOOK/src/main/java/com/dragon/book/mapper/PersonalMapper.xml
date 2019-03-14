@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.dragon.book.mapper.my.PersonalDao" >
+
+    <resultMap id="bookborrow" type="com.dragon.book.pojo.BookBorrow">
+        <id column="isbn"  property="isbn"/>
+        <result column="sm" property="sm"/>
+        <result column="zz" property="zz"/>
+        <collection property="tBorrow" ofType="com.dragon.book.model.TBorrow">
+            <result column="id" property="id"/>
+            <result column="jyrq" property="jyrq"/>
+            <result column="jhghrq" property="jhghrq"/>
+        </collection>
+    </resultMap>
+
+    <select id="selectBookInformation" resultMap="bookborrow">
+        SELECT
+        t_book.isbn,t_book.sm,t_book.zz,t_borrow.id,t_borrow.jyrq,t_borrow.jhghrq
+         FROM t_book RIGHT JOIN t_borrow
+         on t_book.isbn=t_borrow.s_id
+         where t_borrow.user_id=#{userid}
+    </select>
+
+    <select id="selectUserInformation" resultType="com.dragon.book.model.TSysUser">
+        select
+         a.xm,
+         a.lxfs,
+         a.dz,
+         a.bm,
+         a.kjtscs,
+         a.grsm
+         from
+         t_sys_user as a
+         where user_id=#{userid}
+    </select>
+
+    <update id="updateBorrow">
+      UPDATE t_borrow  set jyzt=2 WHERE s_id=#{isbn} and user_id=#{userid}
+    </update>
+
+    <update id="updatejszt">
+      UPDATE t_borrow  set jyzt=1 WHERE s_id=#{isbn} and user_id=#{userid}
+    </update>
+
+    <select id="selectBorrowInfo" resultType="com.dragon.book.model.TBorrow">
+        select id,s_id as sId,sm,jyrq,jhghrq,xjrq,ghrq,status,jyzt,bz from t_borrow where id=#{id}
+    </select>
+
+</mapper>
