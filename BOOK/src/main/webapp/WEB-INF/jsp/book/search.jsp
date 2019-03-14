@@ -63,7 +63,7 @@
 					});
 					$(function() {
 						select();
-					});
+					});});
 					function select() {
 						$("#booksInfo")
 								.ligerGrid(
@@ -184,15 +184,15 @@
 																	&& row.id != null
 																	&& row.id != "") {
 																var st = null;
-																if (row.status == 0) {
-																	var st = "出库";
-																}
-																if (row.status == 1) {
+																if (row.status == 0 &&(row.tsdl == '纸质')) {
+                                                                    var st = "出库";
+                                                                }
+																else {
 																	var st = "在库";
 																}
-																if (!(row.tsdl == '纸质')) {
+																/*if (!(row.tsdl == '纸质')) {
 																	var st = "在库";
-																}
+																}*/
 
 																return st;
 															}
@@ -206,22 +206,25 @@
 															if (row.id != undefined
 																	&& row.id != null
 																	&& row.id != "") {
-																var html = '<a href="javascript:void(0);" onclick="onBookInfo('
+																var html = '<a href="javascript:void(0);" onclick="onBookInfo(\''
 																		+ row.id
-																		+ ')">查看详情</a>&nbsp;&nbsp;';
+																		+ '\')">查看详情</a>&nbsp;&nbsp;';
 																if (row.tsdl == "纸质"
 																		&& row.status == 1) {
 																	html = html
-																			+ '<a href="javascript:void(0);" onclick="borrow('
-																			+ row.id
-																			+ ')">借阅</a>';
+																			+ '<a href="javascript:void(0);" onclick="borrow(\''
+                                                                        + row.id
+                                                                        + '\')">借阅&nbsp;&nbsp;</a>';
 																} else if (row.tszl == "电子书"
 																		|| row.tszl == "CSDN") {
 																	html = html
-																			+ '<a href="javascript:void(0);" onclick="borrow('
-																			+ row.id
-																			+ ')">下载</a>';
+																			+ '<a href="javascript:void(0);" onclick="borrow(\''
+                                                                        + row.id
+                                                                        + '\')">下载&nbsp;&nbsp;</a>';
 																}
+																html = html+'<a href="javascript:void(0);" onclick="like(\''
+                                                                    + row.id
+                                                                    + '\')">喜欢&nbsp;&nbsp;</a>';
 
 																return html;
 															} else
@@ -260,19 +263,38 @@
 						select();
 					});
 
-				});
+
 		function borrow(id) {
 			//alert("详情" + id) ;
 			art.dialog.open('borrow?id=' + id, {
 				title : '图书借阅',
 				width : 1200,
 				height : 675,
+                id:'borrow_id',
 				//ok: true,
 				// okVal: "打印",
 				cancel : true,
 				cancelVal : "关闭"
 			});
 		}
+
+        function like(id) {
+            alert("详情" + id) ;
+            $.ajax({
+                type : 'GET',
+                url : "like",
+                data :{"bookId":id},
+                success : function(data) {
+                    if(data=='1'){
+                        alert("收藏成功");
+
+                    }
+                    else {
+                        alert("收藏失败,您已收藏");
+					}
+                }
+            })
+        }
 
 		function onBookEdit(id) {
 			alert("编辑" + id);

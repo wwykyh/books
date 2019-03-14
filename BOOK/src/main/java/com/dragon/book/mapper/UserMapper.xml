@@ -92,4 +92,26 @@
     </if >
     limit #{start},${end}
   </select>
+  <!--按条件查询用户总条数-->
+  <select id="getCounts" resultType="int" >
+    select count(*) from t_sys_user
+    where xm like '%${dim}%'
+    <if test="dim2!= null and dim2 != ''">
+      and isadmin = '${dim2}'
+    </if>
+  </select>
+  <!--按页和条件查询用户-->
+  <select id="selectAllUserByPage2" resultMap="BaseResultMap" parameterType="map"  >
+    select
+    <include refid="Base_Column_List" />
+    from t_sys_user
+    where xm like '%${dim}%'
+    <if test="dim2 != null and dim2 != ''">
+        and isadmin = '${dim2}'
+    </if>
+    order by  user_id
+    <if test="first != null and rowNum != null">
+      limit #{first,jdbcType=INTEGER},#{rowNum,jdbcType=INTEGER}
+    </if>
+  </select>
   </mapper>
