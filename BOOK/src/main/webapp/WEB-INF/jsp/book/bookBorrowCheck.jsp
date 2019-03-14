@@ -56,13 +56,13 @@
                 <tr>
                     <th width="17%">用户id：</th>
                     <td width="33%">
-                        <span>${singleTBorrow.user.userId}</span>
+                        <span>${singleTBorrow.userId}</span>
                     </td>
                 </tr>
                 <tr>
                     <th width="17%">用户名：</th>
                     <td width="33%">
-                        <span>${singleTBorrow.user.xm}</span>
+                        <span>${singleTBorrow.xm}</span>
                     </td>
                 </tr>
                 <tr>
@@ -86,7 +86,7 @@
                 <tr>
                     <th width="17%">备注(不同意请填写理由)：</th>
                     <td width="33%">
-                        <textarea class="textarea input-wl" id="bz">${singleTBorrow.bz}</textarea>
+                        <textarea class="textarea input-wl" id="bz" name="bz">${singleTBorrow.bz}</textarea>
                     </td>
                 </tr>
                 <tr>
@@ -133,6 +133,10 @@
         $.get('${path}/borrowCheck/check', {id: idPk, status: 1, bz: bz}, function (msg) {
             if (msg) {
                 alert("审核完成");
+                // 调用父级窗口的方法，重新刷新界面
+                parent.borrowInfo();
+                // 调用框架的close事件
+                parent.art.dialog({id:'borrowCheckChild'}).close();
             } else {
                 alert("审核出错");
             }

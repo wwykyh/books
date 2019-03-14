@@ -4,7 +4,9 @@ import com.dragon.book.model.TCompensate;
 import com.dragon.book.model.TSysUser;
 import com.dragon.book.pojo.QueryVo;
 import com.dragon.book.util.PageBean;
-import com.github.pagehelper.Page;
+
+import java.util.List;
+import java.util.Map;
 
 public interface UserService {
 
@@ -59,11 +61,17 @@ public interface UserService {
 
     public PageBean getBlackListByPage(PageBean pageBean, QueryVo vo);
 
-    public PageBean getPcByPage(PageBean pageBean,QueryVo vo);
+    public PageBean getPcByPage(PageBean pageBean, QueryVo vo);
 
     public boolean updataPc(TCompensate compensate);
 
     public boolean addPc(TCompensate compensate);
 
     public boolean delPc(int id);
+
+    Integer getCounts(Map<String, Object> searchParams);
+
+    List<TSysUser> getAllUserByPage(Map<String, Object> searchParams);
+
+    boolean updataByUser(TSysUser user);
 }

@@ -4,6 +4,7 @@ import com.dragon.book.model.TSysUser;
 import com.dragon.book.pojo.QueryVo;
 
 import java.util.List;
+import java.util.Map;
 
 public interface UserMapper {
     List<TSysUser> selectAllUserByPage(QueryVo vo);
@@ -23,4 +24,8 @@ public interface UserMapper {
     List<TSysUser> selectBlackListByPage(QueryVo vo);
 
     int selectBlackListTotalByDim(QueryVo vo);
+
+    int getCounts(Map filter);
+
+    List<TSysUser> selectAllUserByPage2(Map filter);
 }

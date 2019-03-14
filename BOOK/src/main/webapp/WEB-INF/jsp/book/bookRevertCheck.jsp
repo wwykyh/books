@@ -56,13 +56,13 @@
                 <tr>
                     <th width="17%">用户id：</th>
                     <td width="33%">
-                        <span>${singleTBorrow.user.userId}</span>
+                        <span>${singleTBorrow.userId}</span>
                     </td>
                 </tr>
                 <tr>
                     <th width="17%">用户名：</th>
                     <td width="33%">
-                        <span>${singleTBorrow.user.xm}</span>
+                        <span>${singleTBorrow.xm}</span>
                     </td>
                 </tr>
                 <tr>
@@ -92,39 +92,57 @@
                 <tr>
                     <th width="17%">图书损耗程度：</th>
                     <td width="33%">
-                        <select class="select" name="sh" id="sh">
-                            <option value="">==请选择==</option>
-                            <c:choose>
-                                <c:when test="${singleTBorrow.sh == 1}">
-                                    <option value="1" selected="selected">轻度</option>
-                                </c:when>
-                                <c:when test="${singleTBorrow.sh == 2}">
-                                    <option value="2" selected="selected">中度</option>
-                                </c:when>
-                                <c:when test="${singleTBorrow.sh == 3}">
-                                    <option value="3" selected="selected">重度</option>
-                                </c:when>
-                                <c:otherwise>
-                                    <option value="0" >无损耗</option>
-                                    <option value="1" selected="selected">轻度</option>
-                                    <option value="2" >中度</option>
-                                    <option value="3" >重度</option>
-                                </c:otherwise>
-                            </c:choose>
-                        </select>
+                        <c:choose>
+                            <c:when test="${singleTBorrow.jyzt == 2 or singleTBorrow.jyzt == 3}">
+                                <select class="select" name="sh" id="sh">
+                                    <c:if test="${singleTBorrow.sh == 0}">
+                                        <option value="0">无损耗</option>
+                                    </c:if>
+                                    <c:if test="${singleTBorrow.sh == 1}">
+                                        <option value="1">轻度</option>
+                                    </c:if>
+                                    <c:if test="${singleTBorrow.sh == 2}">
+                                        <option value="2">中度</option>
+                                    </c:if>
+                                    <c:if test="${singleTBorrow.sh == 3}">
+                                        <option value="3">重度</option>
+                                    </c:if>
+                                </select>
+                            </c:when>
+                            <c:otherwise>
+                                <select class="select" name="sh" id="sh">
+                                    <option value="">==请选择==</option>
+                                    <option value="0">无损耗</option>
+                                    <option value="1">轻度</option>
+                                    <option value="2">中度</option>
+                                    <option value="3">重度</option>
+                                </select>
+                            </c:otherwise>
+                        </c:choose>
                     </td>
                 </tr>
-                <tr>
-                    <th width="17%"></th>
-                    <td width="33%">
-                        <c:if test="${singleTBorrow.jyzt == 0}">
-                        <input name="check" type="button" class="layer-btn" id="check" value="通过"
-                               onclick="pass();"/>
-                        <%--<input name="uncheck" type="button" class="layer-btn" id="uncheck" value="不通过"
-                               onclick="unPass();"/>--%>
-                        </c:if>
-                    </td>
-                </tr>
+                <c:if test="${singleTBorrow.jyzt == 0}">
+                    <tr>
+                        <th width="17%">是否需要赔偿：</th>
+                        <td width="33%">
+                            <label>
+                                <input type="radio" name="pay" value="1"/>&nbsp;<label>是</label>
+                            </label>&nbsp;&nbsp;&nbsp;&nbsp;
+                            <label>
+                                <input type="radio" name="pay" value="0" checked="checked"/>&nbsp;<label>否</label>
+                            </label>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th width="17%"></th>
+                        <td width="33%">
+                            <input name="check" type="button" class="layer-btn" id="check" value="通过"
+                                   onclick="pass();"/>
+                                <%--<input name="uncheck" type="button" class="layer-btn" id="uncheck" value="不通过"
+                                       onclick="unPass();"/>--%>
+                        </td>
+                    </tr>
+                </c:if>
             </table>
         </div>
     </div>
@@ -146,6 +164,7 @@
     function getDateString(data) {
         return data.getFullYear() + "-" + (data.getMonth() + 1) + "-" + data.getDate() + " " +
             data.getHours() + ":" + change(data.getMinutes()) + ":" + change(data.getSeconds());
+
         function change(t) {
             if (t < 10) {
                 return "0" + t;
@@ -158,9 +177,14 @@
     function pass() {
         var idPk = $("#idPk").val();
         var sh = $("#sh").val();
-        $.get('${path}/revertCheck/check', {id: idPk, sh: sh}, function (msg) {
+        var pays = $("input[name='pay']:checked").val();
+        $.get('${path}/revertCheck/check', {id: idPk, sh: sh, status: pays}, function (msg) {
             if (msg) {
                 alert("审核完成");
+                // 调用父级窗口的方法，重新刷新界面
+                parent.bookRevertInfo();
+                // 调用框架的close事件
+                parent.art.dialog({id: 'borrowRevertChild'}).close();
             } else {
                 alert("审核出错");
             }

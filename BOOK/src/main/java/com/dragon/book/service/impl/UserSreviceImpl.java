@@ -1,10 +1,13 @@
 package com.dragon.book.service.impl;
 
-import java.util.List;
-
+import com.dragon.book.mapper.TSysUserMapper;
 import com.dragon.book.mapper.UserMapper;
 import com.dragon.book.model.TCompensate;
+import com.dragon.book.model.TSysUser;
+import com.dragon.book.model.TSysUserExample;
+import com.dragon.book.model.TSysUserExample.Criteria;
 import com.dragon.book.pojo.QueryVo;
+import com.dragon.book.service.UserService;
 import com.dragon.book.util.Caesar;
 import com.dragon.book.util.DataOperator;
 import com.dragon.book.util.PageBean;
@@ -12,11 +15,8 @@ import com.dragon.book.util.PasswordAdapter;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.dragon.book.mapper.TSysUserMapper;
-import com.dragon.book.model.TSysUser;
-import com.dragon.book.model.TSysUserExample;
-import com.dragon.book.model.TSysUserExample.Criteria;
-import com.dragon.book.service.UserService;
+import java.util.List;
+import java.util.Map;
 
 @Service
 public class UserSreviceImpl implements UserService {
@@ -83,6 +83,14 @@ public class UserSreviceImpl implements UserService {
         pass = data.doEncrypt(pwd);
         data.setPassword(pass);
         return data.getPassword();
+    }
+
+    @Override
+    public boolean updataByUser(TSysUser user) {
+
+        int i = userMapper.updateByPrimaryKeySelective(user);
+
+        return i>0 ? true:false;
     }
 
     public TSysUserMapper getUserMapper() {
@@ -161,4 +169,15 @@ public class UserSreviceImpl implements UserService {
     public boolean delPc(int id) {
         return false;
     }
+
+    @Override
+    public Integer getCounts(Map<String, Object> searchParams) {
+        return userMapperWn.getCounts(searchParams);
+    }
+
+    @Override
+    public List<TSysUser> getAllUserByPage(Map<String, Object> searchParams) {
+        return userMapperWn.selectAllUserByPage2(searchParams);
+    }
+
 }

@@ -13,8 +13,6 @@ public class TEBook {
 
     private String scsj;
 
-    private String xzsj;
-
     private String tszl;
 
     public String geteBookId() {
@@ -63,14 +61,6 @@ public class TEBook {
 
     public void setScsj(String scsj) {
         this.scsj = scsj == null ? null : scsj.trim();
-    }
-
-    public String getXzsj() {
-        return xzsj;
-    }
-
-    public void setXzsj(String xzsj) {
-        this.xzsj = xzsj == null ? null : xzsj.trim();
     }
 
     public String getTszl() {

@@ -54,7 +54,7 @@
                             class="data"></label> <label class="week"></label> <label
                             class="time"></label>
 						</span></li>
-                    <li><i class="header-icon i-user"></i>欢迎您！${sessionScope.userName}</a>
+                    <li><i class="header-icon i-user"></i>欢迎您！${user.xm}</a>
                     </li>
                     <li class="skin-change"><a href="javascript:;" title="皮肤"
                                                class="skin-change-acitve"><span><i
@@ -107,8 +107,8 @@
                                    href="javascript:;">用户管理</a></li>
                             <li><a _href=${pageContext.request.contextPath}/usermanage/show_pc" data-name="赔偿" href="javascript:;">赔偿</a></li>
                             <li><a _href="${pageContext.request.contextPath}/usermanage/show_blacklist" data-name="黑名单" href="javascript:;">黑名单</a></li>
-                            <li><a _href="借阅历史.html" data-name="借阅历史"
-                                   href="javascript:;">借阅历史</a></li>
+                            <li><a _href="addUser" data-name="添加用户"
+                                   href="javascript:;">添加用户</a></li>
                         </ul>
                     </dd>
                 </dl>
@@ -137,6 +137,7 @@
                                    data-js="prettify" href="javascript:;">种类管理</a></li>
                             <li><a _href="${pageContext.request.contextPath}/publish_house_manager" data-name="出版社管理"
                                    data-js="prettify" href="javascript:;">出版社管理</a></li>
+
 
                         </ul>
                     </dd>

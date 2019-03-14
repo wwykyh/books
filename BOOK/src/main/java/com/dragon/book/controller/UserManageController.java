@@ -13,7 +13,11 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springside.modules.web.Servlets;
 
+import javax.servlet.http.HttpServletRequest;
+import java.util.List;
+import java.util.Map;
 
 
 @Controller
@@ -29,13 +33,21 @@ public class UserManageController {
 
     @RequestMapping("/usergetdata")
     @ResponseBody
-    public String showUser(PageBean pageBean, String dim) {
-        QueryVo vo = new QueryVo() ;
-        vo.setDim(dim);
-        vo.setStart((pageBean.getPage()-1) * pageBean.getPagesize());
-        vo.setEnd(pageBean.getPage() * pageBean.getPagesize());
-        PageBean pageBean1 = userService.getAllUserByPage(pageBean, vo);
-        return JSON.toJSONString(pageBean1).replaceAll("rows","Rows").replaceAll("total","Total");
+    public String showUser(PageBean pageBean, HttpServletRequest request) {
+        Map<String, Object> searchParams = Servlets.getParametersStartingWith(request, "search_");
+
+        Integer total = userService.getCounts(searchParams);
+        searchParams.put("first", (pageBean.getPage() - 1) * pageBean.getPagesize());
+        searchParams.put("rowNum", pageBean.getPagesize());
+        List<TSysUser> tSysUsers = userService.getAllUserByPage(searchParams);
+        pageBean.setRows(tSysUsers);
+        pageBean.setTotal(total);
+//        QueryVo vo = new QueryVo() ;
+//        vo.setDim(dim);
+//        vo.setStart((pageBean.getPage()-1) * pageBean.getPagesize());
+//        vo.setEnd(pageBean.getPage() * pageBean.getPagesize());
+//        PageBean pageBean1 = userService.getAllUserByPage(pageBean, vo);
+        return JSON.toJSONString(pageBean).replaceAll("rows","Rows").replaceAll("total","Total");
     }
 
     @RequestMapping("/del_user")

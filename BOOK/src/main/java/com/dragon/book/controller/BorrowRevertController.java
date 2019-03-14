@@ -1,10 +1,8 @@
 package com.dragon.book.controller;
 
 import com.alibaba.fastjson.JSON;
-import com.dragon.book.model.TBorrow;
-import com.dragon.book.model.TBorrowVo;
 import com.dragon.book.model.TType;
-import com.dragon.book.service.ebookService.BorrowCheckService;
+import com.dragon.book.pojo.TBorrowInfo;
 import com.dragon.book.service.ebookService.EbookFileService;
 import com.dragon.book.service.ebookService.RevertCheckService;
 import com.dragon.book.util.PageBean;
@@ -17,7 +15,6 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springside.modules.web.Servlets;
 
 import javax.servlet.http.HttpServletRequest;
-import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -49,7 +46,7 @@ public class BorrowRevertController {
         Integer total = revertCheckService.getTBorrowRevertListCounts(searchParams);
         searchParams.put("first", (pageBean.getPage() - 1) * pageBean.getPagesize());
         searchParams.put("rowNum", pageBean.getPagesize());
-        List<TBorrow> tBorrows = revertCheckService.getTBorrowRevertList(searchParams);
+        List<TBorrowInfo> tBorrows = revertCheckService.getTBorrowRevertList(searchParams);
 
         pageBean.setRows(tBorrows);
         pageBean.setTotal(total);
@@ -66,7 +63,7 @@ public class BorrowRevertController {
 
     @RequestMapping("/check")
     @ResponseBody
-    public Object borrowCheck(String id, String sh) {
-        return revertCheckService.updateRevertTBorrowSh(Integer.parseInt(id),Integer.parseInt(sh));
+    public Object borrowCheck(String id, String sh, String status) {
+        return revertCheckService.updateRevertTBorrowSh(Integer.parseInt(id),Integer.parseInt(sh), status);
     }
 }

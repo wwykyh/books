@@ -11,7 +11,7 @@ public class TCompensate {
 
     private String pcdate;
 
-    private Integer sfpc;
+    private Integer ispc;
 
     private Integer iscount;
 
@@ -57,12 +57,12 @@ public class TCompensate {
         this.pcdate = pcdate == null ? null : pcdate.trim();
     }
 
-    public Integer getSfpc() {
-        return sfpc;
+    public Integer getIspc() {
+        return ispc;
     }
 
-    public void setSfpc(Integer sfpc) {
-        this.sfpc = sfpc;
+    public void setIspc(Integer ispc) {
+        this.ispc = ispc;
     }
 
     public Integer getIscount() {

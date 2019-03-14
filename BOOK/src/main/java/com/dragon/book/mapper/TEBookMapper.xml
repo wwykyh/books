@@ -8,7 +8,6 @@
     <result column="wjdz" property="wjdz" jdbcType="VARCHAR" />
     <result column="ms" property="ms" jdbcType="VARCHAR" />
     <result column="scsj" property="scsj" jdbcType="VARCHAR" />
-    <result column="xzsj" property="xzsj" jdbcType="VARCHAR" />
     <result column="tszl" property="tszl" jdbcType="VARCHAR" />
   </resultMap>
   <sql id="Example_Where_Clause" >
@@ -70,7 +69,7 @@
     </where>
   </sql>
   <sql id="Base_Column_List" >
-    e_book_id, e_book_xm, type_id, wjdz, ms, scsj, xzsj, tszl
+    e_book_id, e_book_xm, type_id, wjdz, ms, scsj, tszl
   </sql>
   <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.dragon.book.model.TEBookExample" >
     select
@@ -104,11 +103,11 @@
   </delete>
   <insert id="insert" parameterType="com.dragon.book.model.TEBook" >
     insert into t_e_book (e_book_id, e_book_xm, type_id, 
-      wjdz, ms, scsj, xzsj, 
-      tszl)
+      wjdz, ms, scsj, tszl
+      )
     values (#{eBookId,jdbcType=VARCHAR}, #{eBookXm,jdbcType=VARCHAR}, #{typeId,jdbcType=INTEGER}, 
-      #{wjdz,jdbcType=VARCHAR}, #{ms,jdbcType=VARCHAR}, #{scsj,jdbcType=VARCHAR}, #{xzsj,jdbcType=VARCHAR}, 
-      #{tszl,jdbcType=VARCHAR})
+      #{wjdz,jdbcType=VARCHAR}, #{ms,jdbcType=VARCHAR}, #{scsj,jdbcType=VARCHAR}, #{tszl,jdbcType=VARCHAR}
+      )
   </insert>
   <insert id="insertSelective" parameterType="com.dragon.book.model.TEBook" >
     insert into t_e_book
@@ -130,9 +129,6 @@
       </if>
       <if test="scsj != null" >
         scsj,
-      </if>
-      <if test="xzsj != null" >
-        xzsj,
       </if>
       <if test="tszl != null" >
         tszl,
@@ -156,9 +152,6 @@
       </if>
       <if test="scsj != null" >
         #{scsj,jdbcType=VARCHAR},
-      </if>
-      <if test="xzsj != null" >
-        #{xzsj,jdbcType=VARCHAR},
       </if>
       <if test="tszl != null" >
         #{tszl,jdbcType=VARCHAR},
@@ -192,9 +185,6 @@
       <if test="record.scsj != null" >
         scsj = #{record.scsj,jdbcType=VARCHAR},
       </if>
-      <if test="record.xzsj != null" >
-        xzsj = #{record.xzsj,jdbcType=VARCHAR},
-      </if>
       <if test="record.tszl != null" >
         tszl = #{record.tszl,jdbcType=VARCHAR},
       </if>
@@ -211,7 +201,6 @@
       wjdz = #{record.wjdz,jdbcType=VARCHAR},
       ms = #{record.ms,jdbcType=VARCHAR},
       scsj = #{record.scsj,jdbcType=VARCHAR},
-      xzsj = #{record.xzsj,jdbcType=VARCHAR},
       tszl = #{record.tszl,jdbcType=VARCHAR}
     <if test="_parameter != null" >
       <include refid="Update_By_Example_Where_Clause" />
@@ -235,9 +224,6 @@
       <if test="scsj != null" >
         scsj = #{scsj,jdbcType=VARCHAR},
       </if>
-      <if test="xzsj != null" >
-        xzsj = #{xzsj,jdbcType=VARCHAR},
-      </if>
       <if test="tszl != null" >
         tszl = #{tszl,jdbcType=VARCHAR},
       </if>
@@ -251,7 +237,6 @@
       wjdz = #{wjdz,jdbcType=VARCHAR},
       ms = #{ms,jdbcType=VARCHAR},
       scsj = #{scsj,jdbcType=VARCHAR},
-      xzsj = #{xzsj,jdbcType=VARCHAR},
       tszl = #{tszl,jdbcType=VARCHAR}
     where e_book_id = #{eBookId,jdbcType=VARCHAR}
   </update>

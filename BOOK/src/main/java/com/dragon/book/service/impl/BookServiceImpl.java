@@ -187,7 +187,7 @@ public class BookServiceImpl implements BookService {
 		books.addAll(EBookslist);
 		return books;
 	}
-    public TBorrow setBorrow(String isbn, int userId, String sm, String lxfs, String jyrq, String jhghrq, int i){
+    public TBorrow setBorrow(String isbn, int userId, String sm, String lxfs, String jyrq, String jhghrq, int i,int jyzt){
 
         TBorrow borrow = new TBorrow();
         borrow.setsId(isbn);
@@ -196,7 +196,8 @@ public class BookServiceImpl implements BookService {
         borrow.setLxfs(lxfs);
         borrow.setJyrq(jyrq);
         borrow.setJhghrq(jhghrq);
-        borrow.setStatus(2);
+        borrow.setStatus(i);
+        borrow.setJyzt(jyzt);
 	    return borrow;
     }
 
