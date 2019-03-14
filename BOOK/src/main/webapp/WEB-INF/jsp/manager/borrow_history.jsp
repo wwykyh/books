@@ -68,12 +68,12 @@
             start_time = "" ;
             end_time = "" ;
             dim = "" ;
-            if("${sessionScope.userName}"=="admin"){
+            if("${user.xm}"=="admin"){
                 user = "" ;
             }else {
-                user="${sessionScope.userName}"
+                user="${user.xm}";
             }
-            KeyHide()
+            KeyHide();
             select() ;
         }) ;
         function select() {
@@ -141,10 +141,10 @@
             start_time = $("#start_time").val() ;
             end_time = $("#end_time").val() ;
             dim = $("#dim").val();
-            if("${sessionScope.userName}"=="admin"){
-                user = $("#user").val() ;
+            if("${user.xm}"=="admin"){
+                user = " " ;
             }else {
-                user="${sessionScope.userName}"
+                user="${user.xm}"
             }
             select() ;
         }) ;
