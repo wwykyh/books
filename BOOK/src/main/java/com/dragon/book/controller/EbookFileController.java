@@ -3,7 +3,9 @@ package com.dragon.book.controller;
 import com.alibaba.fastjson.JSON;
 import com.dragon.book.model.TEBook;
 import com.dragon.book.model.TEBookVo;
+import com.dragon.book.model.TEbookType;
 import com.dragon.book.model.TType;
+import com.dragon.book.service.ebookService.EBookTypeService;
 import com.dragon.book.service.ebookService.EbookFileService;
 import com.dragon.book.util.PageBean;
 import com.dragon.book.utils.FtpUtils;
@@ -12,6 +14,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -37,10 +40,13 @@ public class EbookFileController {
     @Autowired
     private EbookFileService ebookFileService;
 
+    @Autowired
+    private EBookTypeService eBookTypeService;
+
     @RequestMapping(value = "/toUpload", method = RequestMethod.GET)
     public String toUpload(HttpServletRequest request) {
         try {
-            List<TType> types = ebookFileService.getTypeList();
+            List<TEbookType> types = ebookFileService.getTypeList();
             request.setAttribute("types", types);
         } catch (Exception e) {
             e.printStackTrace();
@@ -65,7 +71,7 @@ public class EbookFileController {
      */
     @RequestMapping(value = "/ebookManger", method = RequestMethod.GET)
     public String toEbookManager(HttpServletRequest request) {
-        List<TType> types = ebookFileService.getTypeList();
+        List<TEbookType> types = ebookFileService.getTypeList();
         request.setAttribute("types", types);
         return "ebook/ebookManager";
     }
@@ -109,5 +115,54 @@ public class EbookFileController {
         pageBean.setRows(TEBookVoList);
         pageBean.setTotal(count);
         return JSON.toJSONString(pageBean).replaceAll("rows", "Rows").replaceAll("total", "Total");
+    }
+
+    /**
+     *   电子书类型管理部分
+     *
+     * */
+
+    @RequestMapping("/eBookTypeManager")
+    public String showTypeManagerPage(){
+        return "ebook/ebooktypeManager";
+    }
+
+    @RequestMapping("/typeManager")
+    @ResponseBody
+    public String typeManagerPage(PageBean pageBean){
+        PageBean pageInfo = eBookTypeService.getTEbookTypePageByPageBean(pageBean);
+        return JSON.toJSONString(pageInfo).replaceAll("rows","Rows").replaceAll("total","Total");
+    }
+    @RequestMapping("/toTypeAdd")
+    public String toTypeAddPage(){
+        return "ebook/typeAdd" ;
+    }
+
+    @RequestMapping(value = "/typeAdd")
+    @ResponseBody
+    public String typeAdd(TEbookType tEbookType){
+        boolean status = eBookTypeService.addTEbookType(tEbookType);
+        System.out.println(status);
+        return status ? "0" : "1" ;
+    }
+
+    @RequestMapping(value = "/typeDel",method = RequestMethod.DELETE)
+    @ResponseBody
+    public String typeDel(String eBookTypeId){
+        boolean status = eBookTypeService.delTEbookType(Integer.parseInt(eBookTypeId));
+        return status ? "0" : "1" ;
+    }
+
+    @RequestMapping("/toTypeEdit")
+    public String showTypeEdit(String typeId, Model model){
+        TEbookType type = eBookTypeService.getSingleTEbookType(Integer.parseInt(typeId));
+        model.addAttribute("type",type) ;
+        return "ebook/typeEdit" ;
+    }
+    @RequestMapping("/typeEdit")
+    @ResponseBody
+    public String typeUpdate(TEbookType tEbookType){
+        boolean status = eBookTypeService.updateTEbookType(tEbookType);
+        return status ? "0" : "1" ;
     }
 }

@@ -31,7 +31,7 @@ public class BorrowCheckController {
 
     @RequestMapping("/borrow")
     public String showBookBorrow(HttpServletRequest request) {
-        List<TType> types = ebookFileService.getTypeList();
+        List<TType> types = ebookFileService.getPageTypeList();
         request.setAttribute("types", types);
         return "book/bookBorrow";
     }

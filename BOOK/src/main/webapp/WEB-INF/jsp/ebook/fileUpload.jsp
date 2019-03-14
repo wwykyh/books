@@ -58,7 +58,7 @@
                             <select class="select" name="typeId" id="type">
                                 <option value="">==请选择==</option>
                                 <c:forEach items="${types}" var="type">
-                                    <option value="${type.typeId}">${type.lxmc}</option>
+                                    <option value="${type.ebookTypeid}">${type.ebookTypemc}</option>
                                 </c:forEach>
                             </select>
                         </td>

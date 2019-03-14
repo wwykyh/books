@@ -4,7 +4,7 @@
     <resultMap id="BaseResultMap" type="com.dragon.book.model.TEBookVo">
         <id column="e_book_id" property="eBookId" jdbcType="VARCHAR"/>
         <result column="e_book_xm" property="eBookXm" jdbcType="VARCHAR"/>
-        <result column="type_id" property="typeId" jdbcType="INTEGER"/>
+        <result column="ebook_typeid" property="typeId" jdbcType="INTEGER"/>
         <result column="wjdz" property="wjdz" jdbcType="VARCHAR"/>
         <result column="ms" property="ms" jdbcType="VARCHAR"/>
         <result column="scsj" property="scsj" jdbcType="TIMESTAMP"/>
@@ -16,13 +16,13 @@
     <select id="queryTEBookVo" resultMap="BaseResultMap" parameterType="map">
         SELECT u.xm ,m.* FROM t_sys_user u,
         (SELECT s.user_id ,e.* FROM t_user_book s,
-        (SELECT t.*,t2.lxmc lxmc FROM t_e_book t, t_type t2 WHERE t.type_id = t2.type_id) e
+        (SELECT t.*,t2.ebook_typemc lxmc FROM t_e_book t, t_ebook_type t2 WHERE t.ebook_typeid = t2.ebook_typeid) e
         WHERE s.isbn = e.e_book_id) m WHERE u.user_id = m.user_id
             <if test="eBookXm != null and eBookXm != '' ">
                 and m.e_book_xm like CONCAT('%',#{eBookXm,jdbcType=VARCHAR},'%')
             </if>
             <if test="typeId != null and typeId != '' ">
-                and m.type_id = #{typeId,jdbcType=INTEGER}
+                and m.ebook_typeid = #{typeId,jdbcType=INTEGER}
             </if>
             order by e_book_id
             <if test="firstRow != null and rowNum != null">
@@ -33,13 +33,13 @@
     <select id="countTEBookVo" resultType="int" parameterType="map">
         SELECT count(*) FROM t_sys_user u,
         (SELECT s.user_id ,e.* FROM t_user_book s,
-        (SELECT t.*,t2.lxmc lxmc FROM t_e_book t, t_type t2 WHERE t.type_id = t2.type_id) e
+        (SELECT t.*,t2.ebook_typemc lxmc FROM t_e_book t, t_ebook_type t2 WHERE t.ebook_typeid = t2.ebook_typeid) e
         WHERE s.isbn = e.e_book_id) m WHERE u.user_id = m.user_id
         <if test="eBookXm != null and eBookXm != '' ">
             and m.e_book_xm like CONCAT('%',#{eBookXm},'%')
         </if>
         <if test="typeId != null and typeId !='' ">
-            and m.type_id = #{typeId}
+            and m.ebook_typeid = #{typeId}
         </if>
     </select>
 </mapper>

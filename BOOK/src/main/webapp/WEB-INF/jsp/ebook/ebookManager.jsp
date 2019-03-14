@@ -35,7 +35,7 @@
                                     <select class="select" name="typeId" id="typeId">
                                         <option value="">==请选择==</option>
                                         <c:forEach items="${types}" var="type">
-                                            <option  value="${type.typeId}">${type.lxmc}</option>
+                                            <option value="${type.ebookTypeid}">${type.ebookTypemc}</option>
                                         </c:forEach>
                                     </select>
                                 </td>
@@ -100,7 +100,7 @@
                             var id = row.eBookId;
                             var html = "<a href='/eBookFile/bookDownload?eBookId="+id+"'>下载</a>&nbsp;&nbsp;&nbsp;";
                             // var html2 = "<a href='javascript:void(0) ' onclick='downFile(\""+id+"\")';>下载2</a>&nbsp;&nbsp;&nbsp;";
-                            html += "<a href='#'>预览</a>";
+                            // html += "<a href='#'>预览</a>";
                             return html;
                         } else return "";
                     }

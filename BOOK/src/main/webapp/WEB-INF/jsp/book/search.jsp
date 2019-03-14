@@ -180,6 +180,7 @@
 														width : 120,
 														frozen : true,
 														render : function(row) {
+															//alert(row.id);
 															if (row.id != undefined
 																	&& row.id != null
 																	&& row.id != "") {

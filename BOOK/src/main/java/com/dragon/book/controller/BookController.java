@@ -22,7 +22,6 @@ import javax.websocket.Session;
 
 import com.dragon.book.model.*;
 import com.dragon.book.pojo.Book;
-import com.dragon.book.util.WordToPDF;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpRequest;
 import org.springframework.stereotype.Controller;
@@ -236,14 +235,14 @@ if (i>0){
        // model.addAttribute("url", "images/1.doc");
 
 
-            WordToPDF wordToPDF = new WordToPDF();
+          /*  WordToPDF wordToPDF = new WordToPDF();
             try {
                 wordToPDF.WordToPDF("e://简历.doc","e://成了.pdf");
             } catch (IOException e) {
-                e.printStackTrace();
+                e.printStackTrace();*/
 
 
-        }
+       // }
         return "PDF";
     }
 

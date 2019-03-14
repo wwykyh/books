@@ -2,6 +2,7 @@ package com.dragon.book.service.ebookService;
 
 import com.dragon.book.model.TEBook;
 import com.dragon.book.model.TEBookVo;
+import com.dragon.book.model.TEbookType;
 import com.dragon.book.model.TType;
 import org.apache.commons.net.ftp.FTPClient;
 import org.springframework.web.multipart.MultipartFile;
@@ -26,9 +27,12 @@ public interface EbookFileService {
     // 获取ftp服务器上文件的inputStream
     InputStream getFtpInputStream(FTPClient ftpClient, String fileName, String ftpPath);
 
-    TType getTTypeByPk(int pk);
+    TEbookType getTTypeByPk(int pk);
 
-    List<TType> getTypeList();
+    List<TEbookType> getTypeList();
+
+    // 获取纸质书的类型列表
+    List<TType> getPageTypeList();
 
     TEBook getSingleEbook(String ebookId);
 

@@ -17,7 +17,6 @@ import org.springframework.web.context.request.RequestContextHolder;
 import org.springframework.web.context.request.ServletRequestAttributes;
 import org.springframework.web.multipart.MultipartFile;
 
-import javax.servlet.ServletRequest;
 import javax.servlet.http.HttpServletRequest;
 import java.io.*;
 import java.net.URLEncoder;
@@ -35,6 +34,9 @@ public class EbookFileServiceImpl implements EbookFileService {
 
     @Autowired
     private TEBookMapper teBookMapper;
+
+    @Autowired
+    private TEbookTypeMapper tEbookTypeMapper;
 
     @Autowired
     private TTypeMapper tTypeMapper;
@@ -122,8 +124,8 @@ public class EbookFileServiceImpl implements EbookFileService {
         Date date = new Date();
         SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:ss:mm");
         teBook.setScsj(df.format(date));
-        TType tType = tTypeMapper.selectByPrimaryKey(teBook.getTypeId());
-        String wjdz = tType.getLxmc();
+        TEbookType ebookType = tEbookTypeMapper.selectByPrimaryKey(teBook.getTypeId());
+        String wjdz = ebookType.getEbookTypemc();
         teBook.setWjdz(wjdz);
         int row = teBookMapper.insert(teBook);
         TUserBook tUserBook = new TUserBook();
@@ -142,14 +144,19 @@ public class EbookFileServiceImpl implements EbookFileService {
     }
 
     @Override
-    public TType getTTypeByPk(int pk) {
-        return tTypeMapper.selectByPrimaryKey(pk);
+    public TEbookType getTTypeByPk(int pk) {
+        return tEbookTypeMapper.selectByPrimaryKey(pk);
     }
 
     @Override
-    public List<TType> getTypeList() {
-        TTypeExample example = new TTypeExample();
-        return tTypeMapper.selectByExample(example);
+    public List<TEbookType> getTypeList() {
+        TEbookTypeExample example = new TEbookTypeExample();
+        return tEbookTypeMapper.selectByExample(example);
+    }
+
+    @Override
+    public List<TType> getPageTypeList() {
+        return tTypeMapper.selectByExample(new TTypeExample());
     }
 
     @Override
@@ -171,8 +178,8 @@ public class EbookFileServiceImpl implements EbookFileService {
     @Override
     public boolean ebookFileSingleOrMulUpload(MultipartFile[] ebookFile, TEBook teBook) {
         boolean result = false, flag = false;
-        TType tType = getTTypeByPk(teBook.getTypeId());
-        String typeName = tType.getLxmc();
+        TEbookType tType = getTTypeByPk(teBook.getTypeId());
+        String typeName = tType.getEbookTypemc();
         String[] msArr = teBook.getMs().split("；");  // 分割 描述
         try {
             for (int i = 0; i < ebookFile.length; i++) {

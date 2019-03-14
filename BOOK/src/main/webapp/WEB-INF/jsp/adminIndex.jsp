@@ -135,6 +135,8 @@
                                    data-js="prettify" href="javascript:;">图书分析</a></li>
                             <li><a _href="${pageContext.request.contextPath}/type_manager" data-name="种类管理"
                                    data-js="prettify" href="javascript:;">种类管理</a></li>
+                            <li><a _href="${pageContext.request.contextPath}/eBookFile/eBookTypeManager" data-name="电子书种类管理"
+                                   data-js="prettify" href="javascript:;">电子书种类管理</a></li>
                             <li><a _href="${pageContext.request.contextPath}/publish_house_manager" data-name="出版社管理"
                                    data-js="prettify" href="javascript:;">出版社管理</a></li>
 
