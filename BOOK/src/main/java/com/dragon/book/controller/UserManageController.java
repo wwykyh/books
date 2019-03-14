@@ -108,4 +108,9 @@ public  String backBlackListView(){
         boolean status = userService.deleteBlackUser(id);
         return status ;
     }
+    @RequestMapping("/evaluation")
+    public String userEvaluation(){
+        boolean status =false;
+        return status == true ? "0" : "1" ;
+    }
 }

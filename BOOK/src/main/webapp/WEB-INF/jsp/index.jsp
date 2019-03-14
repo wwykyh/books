@@ -58,7 +58,7 @@
 		                </span>
                     </li>
                     <li>
-                        <i class="header-icon i-user"></i>欢迎您！${user.xm}</a>
+                        <i class="header-icon i-user"></i>欢迎您！${sessionScope.userName}</a>
                     </li>
                     <li class="skin-change"><a href="javascript:;" title="皮肤" class="skin-change-acitve"><span><i
                             class="header-icon i-skin"></i>换肤<i class="arrow"></i></span></a>
@@ -104,14 +104,15 @@
                     </dt>
                     <dd>
                         <ul>
-                            <li><a _href="${pageContext.request.contextPath}/personal/topersonalindex?userid=${user.userId}" data-name="我的个人" data-js="prettify" href="javascript:;">我的个人</a></li>
-                            <li><a _href="${pageContext.request.contextPath}/modifyinformation/modifyindex" data-name="修改资料" data-js="prettify" href="javascript:;">修改资料</a>
+                            <li><a _href="" data-name="我的个人" data-js="prettify">我的个人</a></li>
+                            <li><a _href="修改资料.html" data-name="修改资料" data-js="prettify" href="javascript:;">修改资料</a>
                             </li>
-                            <li><a _href="${pageContext.request.contextPath}/modifypassword/tomodifypassword" data-name="修改密码" data-js="prettify" href="javascript:;">修改密码</a>
+                            <li><a _href="修改密码.html" data-name="修改密码" data-js="prettify" href="javascript:;">修改密码</a>
                             </li>
-                            <li><a _href="" data-name="借阅历史" data-js="prettify" href="javascript:;">借阅历史</a>
+                            <li><a _href="${pageContext.request.contextPath}/borrow_history" data-name="借阅历史"
+                                   data-js="prettify" href="javascript:;">借阅历史</a>
                             </li>
-                            <li><a _href="${pageContext.request.contextPath}/overtimepayment/toovertimepayment" data-name="超时归还" href="javascript:;">超时归还</a></li>
+                            <li><a _href="超时归还.html" data-name="超时归还" href="javascript:;">超时归还</a></li>
 
                         </ul>
                     </dd>
