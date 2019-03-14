@@ -299,5 +299,11 @@ public class BookManagerController {
         model.addAttribute("history",history) ;
         return "manager/history_info";
     }
-
+    @RequestMapping("/evaluation_info")
+    public String EvaluationInfo(Integer id,Model model){
+        System.out.println(id);
+        HistoryInfo history = bookService.selectHistoryById(id);
+        model.addAttribute("history",history) ;
+        return "manager/evaluation_info";
+    }
 }

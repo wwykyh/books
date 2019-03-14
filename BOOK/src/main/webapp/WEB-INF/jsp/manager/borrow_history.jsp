@@ -56,12 +56,24 @@
     var end_time ;
     var dim ;
     var user ;
+    function KeyHide(){
+        if("${sessionScope.userName}"!="admin"){
+            $("#dim").hide();
+            $("#user").hide();
+        }
+    }
+
     requirejs(['jquery', 'ligerGrid','dg.datePicker', 'artdialog'], function($) {
         $(function () {
             start_time = "" ;
             end_time = "" ;
             dim = "" ;
-            user = "" ;
+            if("${sessionScope.userName}"=="admin"){
+                user = "" ;
+            }else {
+                user="${sessionScope.userName}"
+            }
+            KeyHide()
             select() ;
         }) ;
         function select() {
@@ -97,9 +109,12 @@
                         if (row.id != undefined && row.id != null && row.id != ""){
                             var html = '<a href="javascript:void(0);" onclick="onHistoryInfo(' + row.id + ')">查看详情</a>&nbsp;&nbsp;' ;
                             //html = html + '<a href="javascript:void(0);" onclick="onBookEdit(' + row.id + ')">库存管理</a>&nbsp;&nbsp;';
-                            //html = html + '<a href="javascript:void(0);" onclick="onHistoryDel(' + row.id + ')">删除</a>';
+                            if("${sessionScope.userName}"!="admin"){
+                                html = html + '<a href="javascript:void(0);" onclick="evaluationInfo(' + row.id + ')">评价</a>';
+                            }
                             return html;
-                        }else return "" ;
+                        }
+                        else return "" ;
                     }
                 }],
                 url: '/historyPage_manager',
@@ -126,7 +141,11 @@
             start_time = $("#start_time").val() ;
             end_time = $("#end_time").val() ;
             dim = $("#dim").val();
-            user = $("#user").val() ;
+            if("${sessionScope.userName}"=="admin"){
+                user = $("#user").val() ;
+            }else {
+                user="${sessionScope.userName}"
+            }
             select() ;
         }) ;
     });
@@ -146,5 +165,15 @@
             cancelVal: "关闭"
         });
     }
+    function evaluationInfo(id){
+        art.dialog.open('evaluation_info?id='+id, {
+            title: '评价',
+            width: 850,
+            height: 575,
+            cancel: true,
+            cancelVal: "关闭"
+        });
+    }
+
 </script>
 </html>
