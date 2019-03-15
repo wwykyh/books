@@ -48,7 +48,7 @@
         var oldpwd=$("#oldPwd").val();
         var newpwd=$("#newPwd").val();
         var newpwdt=$("#newPwdT").val();
-        var userid=${sessionScope.userId};
+        var userid=${user.userId};
         // alert(userid);
         // alert(oldpwd);
         // alert(newpwd);
