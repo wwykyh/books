@@ -2,6 +2,7 @@ package com.dragon.book.service;
 
 import com.dragon.book.model.TCompensate;
 import com.dragon.book.model.TSysUser;
+import com.dragon.book.pojo.PcInfo;
 import com.dragon.book.pojo.QueryVo;
 import com.dragon.book.util.PageBean;
 
@@ -74,4 +75,14 @@ public interface UserService {
     List<TSysUser> getAllUserByPage(Map<String, Object> searchParams);
 
     boolean updataByUser(TSysUser user);
+
+    Integer getPcCounts();
+
+    PageBean gestAllPcInfoByPage(PageBean pageBean);
+
+    boolean deletePcById(int pcId);
+
+    PcInfo selectPcById(int pcId);
+
+    boolean updataByPc(TCompensate tCompensate);
 }

@@ -6,12 +6,16 @@ import com.dragon.book.model.TCompensate;
 import com.dragon.book.model.TSysUser;
 import com.dragon.book.model.TSysUserExample;
 import com.dragon.book.model.TSysUserExample.Criteria;
+import com.dragon.book.pojo.HistoryInfo;
+import com.dragon.book.pojo.PcInfo;
 import com.dragon.book.pojo.QueryVo;
 import com.dragon.book.service.UserService;
 import com.dragon.book.util.Caesar;
 import com.dragon.book.util.DataOperator;
 import com.dragon.book.util.PageBean;
 import com.dragon.book.util.PasswordAdapter;
+import com.github.pagehelper.PageHelper;
+import com.github.pagehelper.PageInfo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -180,4 +184,36 @@ public class UserSreviceImpl implements UserService {
         return userMapperWn.selectAllUserByPage2(searchParams);
     }
 
+    @Override
+    public Integer getPcCounts() {
+        return userMapperWn.getPcCounts();
+    }
+
+    @Override
+    public PageBean gestAllPcInfoByPage(PageBean pageBean) {
+        PageHelper.startPage(pageBean.getPage(),pageBean.getPagesize()) ;
+        List<PcInfo> list =  userMapperWn.selectAllPcInfoByPage(pageBean);
+        PageInfo<PcInfo> info = new PageInfo<>(list) ;
+        pageBean.setTotal(userMapperWn.getPcCounts());
+        pageBean.setRows(info.getList());
+        return pageBean;
+    }
+
+    @Override
+    public boolean deletePcById(int pcId) {
+        int status = userMapperWn.deletePcById(pcId);
+        return status>0?true:false;
+    }
+
+    @Override
+    public PcInfo selectPcById(int id) {
+        PcInfo pcInfo = userMapperWn.selectPcById(id);
+        return pcInfo;
+    }
+
+    @Override
+    public boolean updataByPc(TCompensate tCompensate) {
+        int i = userMapperWn.updatePc(tCompensate);
+        return i>0?true:false;
+    }
 }

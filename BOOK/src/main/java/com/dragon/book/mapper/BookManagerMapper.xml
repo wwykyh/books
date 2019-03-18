@@ -23,7 +23,6 @@
             <result column="dz" property="dz"/>
             <result column="bm" property="bm"/>
         </association>
-
     </resultMap>
   <select id="selectByDimPage" resultType="com.dragon.book.pojo.BookInfo" parameterType="com.dragon.book.pojo.QueryVo">
       select

@@ -1,7 +1,10 @@
 package com.dragon.book.mapper;
 
+import com.dragon.book.model.TCompensate;
 import com.dragon.book.model.TSysUser;
+import com.dragon.book.pojo.PcInfo;
 import com.dragon.book.pojo.QueryVo;
+import com.dragon.book.util.PageBean;
 
 import java.util.List;
 import java.util.Map;
@@ -28,4 +31,14 @@ public interface UserMapper {
     int getCounts(Map filter);
 
     List<TSysUser> selectAllUserByPage2(Map filter);
+
+    Integer getPcCounts();
+
+    List<PcInfo> selectAllPcInfoByPage(PageBean pageBean);
+
+    int  deletePcById(int id);
+
+    PcInfo selectPcById(Integer id);
+
+    int updatePc(TCompensate tCompensate);
 }

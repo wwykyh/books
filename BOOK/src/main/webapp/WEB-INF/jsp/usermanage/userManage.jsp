@@ -125,7 +125,7 @@
             title: '用户信息修改',
             id:'user_edit_window',
             width: 700,
-            height: 600,
+            height: 650,
             cancel: true,
             cancelVal: "关闭"
         });

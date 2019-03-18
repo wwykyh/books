@@ -55,11 +55,10 @@
                     </tr>
                     <tr>
                         <th width="17%"><span class="ft-need"></span>是否黑名单：</th>
-                        <td width="33%"><input id="ishmd" name="ishmd" value="${userInfo.ishmd}" data-validate="required" type="text" class="input-text "></td>
-                    </tr>
-                    <tr>
-                        <th width="17%"><span class="ft-need"></span>个人说明：</th>
-                        <td width="33%"><input id="grsm" name="grsm" value="${userInfo.grsm}" data-validate="required" type="text" class="input-text "></td>
+                        <td width="33%"><select id="ishmd" name="ishmd" value="${userInfo.ishmd}" style="width: 200px">
+                            <option value="1" selected>是</option>
+                            <option value="0" >否</option>
+                        </select></td>
                     </tr>
                     <tr>
                         <th width="17%"><span class="ft-need"></span>可借图书册数：</th>
@@ -71,11 +70,18 @@
                     </tr>
                     <tr>
                         <th width="17%"><span class="ft-need"></span>是否为管理员：</th>
-                        <td width="33%"><input id="isadmin" name="isadmin" value="${userInfo.isadmin}" data-validate="required" type="text" class="input-text "></td>
+                        <td width="33%"><select id="isadmin" name="isadmin" value="${userInfo.isadmin}" style="width: 200px">
+                            <option value="1" selected>是</option>
+                            <option value="0" >否</option>
+                        </select></td>
+                    </tr>
+                    <tr>
+                        <th width="17%"><span class="ft-need"></span>个人说明：</th>
+                        <td width="33%"><textarea id="grsm" style="width: 200px;height:100px">${userInfo.grsm}</textarea></td>
                     </tr>
                     <tr>
                         <th></th>
-                        <td><input  type="button" class="btn" value="修改"  onclick="sub()"></td>
+                        <td><input  type="button" class="btn" value="修改"  onclick="sub()"><input  type="button" class="btn" value="重置"  onclick="reset()"></td>
                     </tr>
                 </table>
                 </form>
@@ -108,7 +114,18 @@
         }
 
 
+        $(document).ready(function (){
+            var isadmin = ${userInfo.isadmin};
+            var ishmd  = ${userInfo.ishmd};
 
+            if (isadmin==0){
+                $("#isadmin").val('0');
+            }
+
+            if (ishmd==0){
+                $("#ishmd").val('0');
+            }
+        });
 
 
     </script>

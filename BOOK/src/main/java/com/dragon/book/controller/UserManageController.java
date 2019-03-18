@@ -2,7 +2,9 @@ package com.dragon.book.controller;
 
 
 import com.alibaba.fastjson.JSON;
+import com.dragon.book.model.TCompensate;
 import com.dragon.book.model.TSysUser;
+import com.dragon.book.pojo.PcInfo;
 import com.dragon.book.pojo.QueryVo;
 import com.dragon.book.service.UserService;
 import com.dragon.book.util.PageBean;
@@ -86,8 +88,8 @@ public class UserManageController {
     }
 
 //    黑名单
-@RequestMapping("/show_blacklist")
-public  String backBlackListView(){
+   @RequestMapping("/show_blacklist")
+    public  String backBlackListView(){
     return "/usermanage/blacListManage";
 }
 
@@ -107,6 +109,47 @@ public  String backBlackListView(){
     public boolean delBlackUser(int id){
         boolean status = userService.deleteBlackUser(id);
         return status ;
+    }
+
+    @RequestMapping("/showallpc")
+    public  String backPcView(){
+        return "/usermanage/show_pc";
+    }
+
+    @RequestMapping("/getpcdata")
+    @ResponseBody
+    public String showPcList(PageBean pageBean) {
+        PageBean pageBean1 = userService.gestAllPcInfoByPage(pageBean);
+        return JSON.toJSONString(pageBean1).replaceAll("rows","Rows").replaceAll("total","Total");
+    }
+    @RequestMapping("/pc_add")
+    public String showPcAddView(){
+        return "usermanage/pc_add" ;
+    }
+
+    @RequestMapping("/pc_del")
+    @ResponseBody
+    public boolean delPcInfo(int pcId){
+        boolean status = userService.deletePcById(pcId);
+        return  status;
+    }
+    @GetMapping("/pc_info")
+    public String showPcInfo(@RequestParam("id") int id,Model model){
+        PcInfo pcInfo = userService.selectPcById(id);
+        model.addAttribute("pc",pcInfo) ;
+        return  "/usermanage/pc_info";
+    }
+    @GetMapping("/showPc_edit")
+    public String showPcEditInfo(@RequestParam("id") int id,Model model){
+        PcInfo pcInfo = userService.selectPcById(id);
+        model.addAttribute("pc",pcInfo) ;
+        return  "/usermanage/pc_edit";
+    }
+    @RequestMapping("/pc_edit")
+    @ResponseBody
+    public boolean editPcInfo(TCompensate tCompensate){
+        boolean status = userService.updataByPc(tCompensate);
+        return  status;
     }
     @RequestMapping("/evaluation")
     public String userEvaluation(){
