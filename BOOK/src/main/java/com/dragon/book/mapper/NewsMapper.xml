@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.dragon.book.mapper.my.NewsDao" >
+
+    <select id="getNews" resultType="com.dragon.book.model.TBookNews">
+    select
+    *
+    from
+    t_book_news
+    where
+    user_id=#{userid}
+    </select>
+
+    <delete id="deleteNews">
+        delete
+        from
+        t_book_news
+        where
+        id=#{id}
+    </delete>
+
+    <select id="findDetailInfo" resultType="com.dragon.book.model.TBorrow">
+     select
+     s_id as sId,
+     sm,
+     jyrq,
+     jhghrq
+     from
+     t_borrow
+     where
+     s_id=#{isbn}
+     and
+     user_id=#{userid}
+    </select>
+
+</mapper>
