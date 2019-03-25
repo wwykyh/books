@@ -18,8 +18,10 @@
     <script type="text/javascript" src="${pageContext.request.contextPath}/dvpt/config.js"></script>
     <!-- 改造的脚本 -->
     <script type="text/javascript" src="${pageContext.request.contextPath}/js/extend.js"></script>
+    <%--弹窗引用Jquery--%>
+    <script type="text/javascript" src="../dvpt/jquery.min.js"></script>
     <!-- 共有的控件 -->
-    <script data-main="main" src="${pageContext.request.contextPath}/dvpt/require.min.2.1.11.js"></script>
+    <%--<script data-main="main" src="${pageContext.request.contextPath}/dvpt/require.min.2.1.11.js"></script>--%>
 
 </head>
 
@@ -58,7 +60,7 @@
                     </tr>
                     <tr>
                         <th width="17%"><span class="ft-need"></span>是否黑名单：</th>
-                        <td width="33%" id="ishmd">${userInfo.ishmd}</td>
+                        <td width="33%" id="ishmd"><div id="showIshmd" style="font-size: 16px">未赔偿</div></td>
                         <th width="17%"><span class="ft-need"></span>可借图书册数：</th>
                         <td width="33%"> ${userInfo.kjtscs}</td>
                     </tr>
@@ -66,11 +68,29 @@
                         <th width="17%"><span class="ft-need"></span>当前借阅图书ID：</th>
                         <td width="33%">${userInfo.isbn}</td>
                         <th width="17%"><span class="ft-need"></span>是否为管理员：</th>
-                        <td width="33%" id="isadmin">${userInfo.isadmin}</td>
+                        <td width="33%" id="isadmin"><div id="showIsadmin" style="font-size: 16px">未赔偿</div></td>
                     </tr>
                 </table>
         </div>
     </div>
 </div>
+<script type="text/javascript">
+    $(document).ready(function (){
+        var ishmd = ${userInfo.ishmd};
+        var isadmin  = ${userInfo.isadmin};
+
+        if (ishmd==1){
+            $("#showIshmd").text("是");
+        }else {
+            $("#showIshmd").text("否");
+        }
+
+        if (isadmin==1){
+            $("#showIsadmin").text("是");
+        }else {
+            $("#showIsadmin").text("否");
+        }
+    });
+</script>
 </body>
 </html>

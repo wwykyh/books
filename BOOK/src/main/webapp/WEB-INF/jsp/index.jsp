@@ -109,9 +109,9 @@
                             </li>
                             <li><a _href="${pageContext.request.contextPath}/modifypassword/tomodifypassword" data-name="修改密码" data-js="prettify" href="javascript:;">修改密码</a>
                             </li>
-                            <li><a _href="" data-name="借阅历史" data-js="prettify" href="javascript:;">借阅历史</a>
                             </li>
                             <li><a _href="${pageContext.request.contextPath}/news/tonews?userid=${user.userId}" data-name="消息通知" data-js="prettify" href="javascript:;">消息通知</a>
+                            <li><a _href="${pageContext.request.contextPath}/borrow_history" data-name="借阅历史" data-js="prettify" href="javascript:;">借阅历史</a>
                             </li>
                             <li><a _href="${pageContext.request.contextPath}/overtimepayment/toovertimepayment" data-name="超时归还" href="javascript:;">超时归还</a></li>
 

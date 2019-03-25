@@ -14,7 +14,7 @@
     <!-- 改造的脚本 -->
     <script type="text/javascript" src="js/extend.js"></script>
     <!-- 共有的控件 -->
-    <script data-main="main" src="dvpt/require.min.2.1.11.js"></script>
+    <script data-main="main" src="${pageContext.request.contextPath}/dvpt/require.min.2.1.11.js"></script>
     <script type="text/javascript">
         requirejs(['main'], function (main) {
             requirejs(['jquery', 'jquery.extend', 'basic-global'], function (jquery, extend, basic) {
@@ -54,7 +54,7 @@
                             class="data"></label> <label class="week"></label> <label
                             class="time"></label>
 						</span></li>
-                    <li><i class="header-icon i-user"></i>欢迎您！${user.xm}</a>
+                    <li><i class="header-icon i-user"></i>欢迎您！${user.xm}
                     </li>
                     <li class="skin-change"><a href="javascript:;" title="皮肤"
                                                class="skin-change-acitve"><span><i
@@ -103,12 +103,10 @@
                     </dt>
                     <dd>
                         <ul>
-                            <li><a _href="${pageContext.request.contextPath}/usermanage/showuser" data-name="用户管理"
-                                   href="javascript:;">用户管理</a></li>
-                            <li><a _href=${pageContext.request.contextPath}/usermanage/show_pc" data-name="赔偿" href="javascript:;">赔偿</a></li>
+                            <li><a _href="${pageContext.request.contextPath}/usermanage/showuser" data-name="用户管理" href="javascript:;">用户管理</a></li>
+                            <li><a _href="${pageContext.request.contextPath}/usermanage/showallpc" data-name="赔偿" href="javascript:;">赔偿</a></li>
                             <li><a _href="${pageContext.request.contextPath}/usermanage/show_blacklist" data-name="黑名单" href="javascript:;">黑名单</a></li>
-                            <li><a _href="addUser" data-name="添加用户"
-                                   href="javascript:;">添加用户</a></li>
+                            <li><a _href="addUser" data-name="添加用户" href="javascript:;">添加用户</a></li>
                         </ul>
                     </dd>
                 </dl>

@@ -15,6 +15,32 @@
     <result column="kjtscs" property="kjtscs" jdbcType="INTEGER" />
     <result column="cs" property="cs" jdbcType="INTEGER" />
   </resultMap>
+  <resultMap id="PcInfoResult" type="com.dragon.book.pojo.PcInfo">
+    <id column="id" property="id"/>
+    <result column="isbn" property="isbn"/>
+    <result column="user_id" property="userId"/>
+    <result column="sh" property="sh"/>
+    <result column="pc" property="pc"/>
+    <result column="pcdate" property="pcdate"/>
+    <result column="ispc" property="ispc"/>
+    <result column="iscount" property="iscount"/>
+    <association property="book" javaType="com.dragon.book.model.TBook">
+      <id column="isbn" property="isbn"/>
+      <result column="sm" property="sm"/>
+      <result column="zz" property="zz"/>
+      <result column="cbsmc" property="cbsmc"/>
+      <result column="tsdl" property="tsdl"/>
+    </association>
+    <association property="user" javaType="com.dragon.book.model.TSysUser">
+      <id column="userId" property="userId"/>
+      <result column="xm" property="xm"/>
+      <result column="lxfs" property="lxfs"/>
+      <result column="dz" property="dz"/>
+      <result column="bm" property="bm"/>
+        <result column="email" property="email"/>
+    </association>
+
+  </resultMap>
   <resultMap id="ResultMapWithBLOBs" type="com.dragon.book.model.TSysUser" extends="BaseResultMap" >
     <result column="grsm" property="grsm" jdbcType="LONGVARCHAR" />
   </resultMap>
@@ -114,4 +140,49 @@
       limit #{first,jdbcType=INTEGER},#{rowNum,jdbcType=INTEGER}
     </if>
   </select>
+  <!--按条件查询赔偿信息总条数-->
+  <select id="getPcCounts" resultType="int" >
+ select count(*) from t_compensate
+  </select>
+  <!--按页和条件查询赔偿信息-->
+  <select id="selectAllPcInfoByPage" resultMap="PcInfoResult" parameterType="com.dragon.book.util.PageBean"  >
+select *
+FROM t_compensate com INNER JOIN t_sys_user sysuser ON com.user_id = sysuser.user_id INNER JOIN t_book tbook ON com.isbn = tbook.isbn
+where 1=1
+    <if test="user != null and user != ''">
+      AND sysuser.xm LIKE '%${user}%'
+    </if>
+    <if test="startTime != null and startTime != ''">
+      AND com.pcdate &gt;= '${startTime}'
+    </if>
+    <if test="endTime != null and endTime != ''">
+      AND com.pcdate &lt;= '${endTime}'
+    </if>
+    <if test="dim != null and dim != ''">
+      AND tbook.sm LIKE '%${dim}%'
+    </if>
+    ORDER BY com.pcdate DESC
+  </select>
+  <!--删除赔偿表记录-->
+  <delete id="deletePcById" parameterType="java.lang.Integer" >
+    delete from t_compensate where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <!--按Id查询赔偿信息-->
+  <select id="selectPcById" resultMap="PcInfoResult" parameterType="java.lang.Integer"  >
+    select *
+    FROM t_compensate com INNER JOIN t_sys_user sysuser ON com.user_id = sysuser.user_id INNER JOIN t_book tbook ON com.isbn = tbook.isbn
+    where id = #{pcId,jdbcType=INTEGER}
+  </select>
+  <!--通过主键修改赔偿信息-->
+  <update id="updatePc" parameterType="com.dragon.book.model.TCompensate" >
+    update t_compensate
+    set isbn = #{isbn,jdbcType=VARCHAR},
+      user_id = #{userId,jdbcType=INTEGER},
+      sh = #{sh,jdbcType=INTEGER},
+      pc = #{pc,jdbcType=VARCHAR},
+      pcdate = #{pcdate,jdbcType=VARCHAR},
+      ispc = #{ispc,jdbcType=INTEGER},
+      iscount = #{iscount,jdbcType=INTEGER}
+    where id = #{id,jdbcType=INTEGER}
+</update>
   </mapper>
