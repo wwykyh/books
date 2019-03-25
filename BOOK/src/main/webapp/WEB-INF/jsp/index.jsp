@@ -104,12 +104,14 @@
                     </dt>
                     <dd>
                         <ul>
-                            <li><a _href="${pageContext.request.contextPath}/personal/topersonalindex?userid=${user.userId}" data-name="我的个人" data-js="prettify" href="javascript:;">我的个人</a></li>
+                            <li><a _href="${pageContext.request.contextPath}/personal/topersonalindex?userid=${user.userId}" data-name="个人中心" data-js="prettify" href="javascript:;">个人中心</a></li>
                             <li><a _href="${pageContext.request.contextPath}/modifyinformation/modifyindex" data-name="修改资料" data-js="prettify" href="javascript:;">修改资料</a>
                             </li>
                             <li><a _href="${pageContext.request.contextPath}/modifypassword/tomodifypassword" data-name="修改密码" data-js="prettify" href="javascript:;">修改密码</a>
                             </li>
                             <li><a _href="" data-name="借阅历史" data-js="prettify" href="javascript:;">借阅历史</a>
+                            </li>
+                            <li><a _href="${pageContext.request.contextPath}/news/tonews?userid=${user.userId}" data-name="消息通知" data-js="prettify" href="javascript:;">消息通知</a>
                             </li>
                             <li><a _href="${pageContext.request.contextPath}/overtimepayment/toovertimepayment" data-name="超时归还" href="javascript:;">超时归还</a></li>
 
