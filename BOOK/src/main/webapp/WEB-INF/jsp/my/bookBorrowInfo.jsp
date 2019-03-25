@@ -9,7 +9,6 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <html>
 <head>
-    <title>用户详情</title>
     <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/common/iconfont/iconfont.css" />
     <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/common/layout.css" />
     <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/dvpt/css/libs.css" />
@@ -25,10 +24,6 @@
 
 <body>
 <div class="panel">
-    <div class="panel-header">
-        <h2>借阅详情</h2>
-        <a href="javascript:" class="arrow up"></a>
-    </div>
     <div class="panel-body panel-noborder">
         <div class="write-box">
             <table class="form-table" width="100%">

@@ -82,7 +82,7 @@
 
         function onCheckInfo(userId){
             art.dialog.open('/personal/borrowinfo?id='+userId, {
-                title: '用户详情',
+                title: '借阅详情',
                 width: 900,
                 height: 350,
                 cancel: true,
