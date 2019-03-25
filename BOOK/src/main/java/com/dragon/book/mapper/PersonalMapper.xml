@@ -15,10 +15,20 @@
 
     <select id="selectBookInformation" resultMap="bookborrow">
         SELECT
-        t_book.isbn,t_book.sm,t_book.zz,t_borrow.id,t_borrow.jyrq,t_borrow.jhghrq
-         FROM t_book RIGHT JOIN t_borrow
-         on t_book.isbn=t_borrow.s_id
-         where t_borrow.user_id=#{userid}
+        t_book.isbn,
+        t_book.sm,
+        t_book.zz,
+        t_borrow.id,
+        t_borrow.jyrq,
+        t_borrow.jhghrq
+         FROM
+         t_book
+         RIGHT JOIN
+         t_borrow
+         on
+         t_book.isbn=t_borrow.s_id
+         where
+         t_borrow.user_id=#{userid}
     </select>
 
     <select id="selectUserInformation" resultType="com.dragon.book.model.TSysUser">
@@ -35,15 +45,41 @@
     </select>
 
     <update id="updateBorrow">
-      UPDATE t_borrow  set jyzt=2 WHERE s_id=#{isbn} and user_id=#{userid}
+      UPDATE
+      t_borrow
+      set
+      jyzt=2
+      WHERE
+      s_id=#{isbn}
+      and
+      user_id=#{userid}
     </update>
 
     <update id="updatejszt">
-      UPDATE t_borrow  set jyzt=1 WHERE s_id=#{isbn} and user_id=#{userid}
+      UPDATE
+      t_borrow
+       set
+       jyzt=1
+       WHERE
+       s_id=#{isbn}
+        and
+        user_id=#{userid}
     </update>
 
     <select id="selectBorrowInfo" resultType="com.dragon.book.model.TBorrow">
-        select id,s_id as sId,sm,jyrq,jhghrq,xjrq,ghrq,status,jyzt,bz from t_borrow where id=#{id}
+        select
+         id,s_id as sId,
+         sm,
+         jyrq,
+         jhghrq,
+         xjrq,
+         ghrq,
+         status,
+         jyzt,
+         bz
+         from
+         t_borrow
+          where id=#{id}
     </select>
 
 </mapper>

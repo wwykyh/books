@@ -5,6 +5,7 @@ import com.dragon.book.model.TBorrow;
 import com.dragon.book.pojo.BookBorrow;
 import com.dragon.book.pojo.Borrow;
 import com.dragon.book.model.TSysUser;
+import com.dragon.book.service.my.I.IPersonalService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -17,7 +18,7 @@ import java.util.List;
  * zzm
  */
 @Service
-public class PersonalService {
+public class PersonalServiceImpl implements IPersonalService {
 
     @Autowired
     private PersonalDao personalDao;

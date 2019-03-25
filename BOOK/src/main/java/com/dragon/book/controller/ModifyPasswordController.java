@@ -1,12 +1,11 @@
 package com.dragon.book.controller;
 
-import com.dragon.book.service.my.ModifyPasswordService;
+import com.dragon.book.service.my.ModifyPasswordServiceImpl;
 import org.apache.ibatis.annotations.Param;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.bind.annotation.RequestParam;
 
 /**
  * 我的模块：修改密码Conrtoller层
@@ -16,7 +15,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 public class ModifyPasswordController {
 
     @Autowired
-    private ModifyPasswordService modifyPasswordService;
+    private ModifyPasswordServiceImpl modifyPasswordServiceImpl;
 
     /**
      * 跳转到修改密码界面
@@ -37,7 +36,7 @@ public class ModifyPasswordController {
     public String upDataPassword(@Param("oldpwd")String oldpwd,@Param("newpwd")String newpwd,@Param("userid")int userid){
         if(newpwd!=null){
             int flag;
-            flag =  modifyPasswordService.modifyPassword(oldpwd,userid,newpwd);
+            flag =  modifyPasswordServiceImpl.modifyPassword(oldpwd,userid,newpwd);
             if(flag==1){
             return "success";
             }else {

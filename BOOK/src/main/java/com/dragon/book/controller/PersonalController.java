@@ -4,10 +4,9 @@ package com.dragon.book.controller;
 import com.dragon.book.model.TBorrow;
 import com.dragon.book.model.TSysUser;
 import com.dragon.book.pojo.BookBorrow;
-import com.dragon.book.service.my.PersonalService;
+import com.dragon.book.service.my.PersonalServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -25,7 +24,7 @@ import java.util.Map;
 public class PersonalController {
 
     @Autowired
-    private PersonalService personalService;
+    private PersonalServiceImpl personalServiceImpl;
 
     /**
      * 转到personal界面，并加载数据
@@ -38,8 +37,8 @@ public class PersonalController {
 //        System.out.print(uid);
           int userid = Integer.parseInt(uid);
         if(0!=userid){
-            TSysUser userInformation = personalService.selectUserIndormation(userid);
-            List<BookBorrow> bookBorrow = personalService.selectBookInformation(userid);
+            TSysUser userInformation = personalServiceImpl.selectUserIndormation(userid);
+            List<BookBorrow> bookBorrow = personalServiceImpl.selectBookInformation(userid);
             map.put("userInformation",userInformation);
             map.put("bookBorrow",bookBorrow);
         }
@@ -58,7 +57,7 @@ public class PersonalController {
             return "error";
         }
         int userid = Integer.parseInt(uid);
-        personalService.returnBook(isbn,userid);
+        personalServiceImpl.returnBook(isbn,userid);
         return "success";
     }
 
@@ -75,7 +74,7 @@ public class PersonalController {
             return "error";
         }
         int userid = Integer.parseInt(uid);
-        personalService.renew(isbn,userid);
+        personalServiceImpl.renew(isbn,userid);
         return "success";
     }
 
@@ -88,8 +87,8 @@ public class PersonalController {
     @RequestMapping("/borrowinfo")
     public String borrowInfo(@RequestParam("id")String id,Map map){
         int tborrowrid = Integer.parseInt(id);
-        TBorrow tborrow = personalService.borrowInfo(tborrowrid);
+        TBorrow tborrow = personalServiceImpl.borrowInfo(tborrowrid);
         map.put("tborrow",tborrow);
-        return "/my/bookborrow_info";
+        return "/my/bookBorrowInfo";
     }
 }

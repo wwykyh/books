@@ -5,7 +5,7 @@ package com.dragon.book.controller;
  * zzm
  */
 
-import com.dragon.book.service.my.ModifyInformationService;
+import com.dragon.book.service.my.ModifyInformationServiceImpl;
 import org.apache.ibatis.annotations.Param;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -14,9 +14,9 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 @Controller
 @RequestMapping("/modifyinformation")
-public class ModifyInfotmationController {
+public class ModifyInformationController {
     @Autowired
-    private ModifyInformationService modifyInformationService;
+    private ModifyInformationServiceImpl modifyInformationServiceImpl;
 
     /**
      * 跳转到修改信息界面
@@ -42,7 +42,7 @@ public class ModifyInfotmationController {
     @ResponseBody
     public String modifyInfotmation(@Param("xm")String xm,@Param("lxfs")String lxfs,@Param("dz")String dz,@Param("bm")String bm,@Param("grsm")String grsm,@Param("userid")int userid){
         if(null!=xm||null!=lxfs||null!=dz||null!=bm||null!=grsm){
-            modifyInformationService.modifyInformation(xm,lxfs,dz,bm,grsm,userid);
+            modifyInformationServiceImpl.modifyInformation(xm,lxfs,dz,bm,grsm,userid);
         return "success";
         }else {
             return "error";

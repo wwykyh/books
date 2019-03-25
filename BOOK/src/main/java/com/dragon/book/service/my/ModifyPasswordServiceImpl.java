@@ -1,6 +1,7 @@
 package com.dragon.book.service.my;
 
 import com.dragon.book.mapper.my.ModifyPasswordDao;
+import com.dragon.book.service.my.I.IModifyPasswordService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -9,7 +10,7 @@ import org.springframework.stereotype.Service;
  * zzm
  */
 @Service
-public class ModifyPasswordService {
+public class ModifyPasswordServiceImpl implements IModifyPasswordService {
 
     @Autowired
     private ModifyPasswordDao modifyPasswordDao;
@@ -23,7 +24,7 @@ public class ModifyPasswordService {
      */
     public int modifyPassword(String oldpwd,int userid,String pwd){
         String flag;
-        flag = modifyPasswordDao.selectolddpwd(userid);
+        flag = modifyPasswordDao.selectOldPwd(userid);
         if(flag.equals(oldpwd)){
         modifyPasswordDao.upDataPwd(userid,pwd);
         return 1;

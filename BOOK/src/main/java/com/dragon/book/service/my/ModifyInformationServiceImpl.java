@@ -5,11 +5,12 @@ package com.dragon.book.service.my;
  */
 
 import com.dragon.book.mapper.my.ModifyInformationDao;
+import com.dragon.book.service.my.I.IModifyInformationService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 @Service
-public class ModifyInformationService {
+public class ModifyInformationServiceImpl implements IModifyInformationService {
 
     @Autowired
     private ModifyInformationDao modifyInformationDao;
