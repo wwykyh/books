@@ -177,12 +177,12 @@ where 1=1
   <update id="updatePc" parameterType="com.dragon.book.model.TCompensate" >
     update t_compensate
     set isbn = #{isbn,jdbcType=VARCHAR},
-      user_id = #{user_id,jdbcType=INTEGER},
+      user_id = #{userId,jdbcType=INTEGER},
       sh = #{sh,jdbcType=INTEGER},
       pc = #{pc,jdbcType=VARCHAR},
       pcdate = #{pcdate,jdbcType=VARCHAR},
       ispc = #{ispc,jdbcType=INTEGER},
-      iscount = #{iscount,jdbcType=INTEGER},
+      iscount = #{iscount,jdbcType=INTEGER}
     where id = #{id,jdbcType=INTEGER}
 </update>
   </mapper>

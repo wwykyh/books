@@ -57,8 +57,8 @@
 		<result column="user_id" property="userId" jdbcType="INTEGER" />
 
 		
-			<result column="type_id" property="typeId" jdbcType="INTEGER" />
-			<result column="lxmc" property="lxmc" jdbcType="VARCHAR" />
+		<result column="type_id" property="typeId" jdbcType="INTEGER" />
+		<result column="lxmc" property="lxmc" jdbcType="VARCHAR" />
 		
 	</resultMap>
 

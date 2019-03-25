@@ -46,7 +46,7 @@
                     </tr>
                     <tr>
                         <th width="17%"><span class="ft-need">*</span>损毁程度：</th>
-                        <td width="33%"><select id="sh" name="pc.sh"  style="width: 200px">
+                        <td width="33%"><select id="sh" name="sh"  style="width: 200px">
                             <option value="1" selected>轻度</option>
                             <option value="2" >中度</option>
                             <option value="3" >重度</option>
@@ -73,7 +73,7 @@
                     </tr>
                     <tr>
                         <th width="17%"><span class="ft-need"></span>备注：</th>
-                        <td width="33%"><textarea id="pc" name="pc" value="${pc.pc}" style="width: 200px;height:100px"></textarea></td>
+                        <td width="33%"><textarea id="pc" name="pc"  style="width: 200px;height:100px">${pc.pc}</textarea></td>
                     </tr>
                     <tr>
                         <th></th>
@@ -116,18 +116,18 @@
             $.ajax({
                 cache: true,
                 type: "POST",
-                url:"pcAdd",
+                url:"pc_edit",
                 data:$('#form-type').serialize(),// 你的formid
                 async: false,
                 error: function(request) {
                     alert("Connection error:"+request.error);
                 },
                 success: function(data) {
-                    if(data == "0"){
+                    if(data){
                         parent.select() ;
-                        parent.art.dialog({id:'pc_add_window'}).close() ;
+                        parent.art.dialog({id:'pc_edit_window'}).close() ;
                     }else {
-                        alert("类型添加失败！");
+                        alert("修改失败！");
                     }
                 }
             });

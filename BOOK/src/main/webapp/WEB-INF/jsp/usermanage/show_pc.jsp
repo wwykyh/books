@@ -169,7 +169,7 @@
             width: 800,
             height: 500,
             cancel: true,
-            id:'pc_add_window',
+            id:'pc_edit_window',
             cancelVal: "关闭"
         });
     }
