@@ -70,7 +70,7 @@
                         alert("删除成功！");
                         $("tr").remove("#tr_"+id);
                     } else {
-                        alert("删除失败！") ;
+                        alert(data) ;
                     }
                 }
             });

@@ -117,7 +117,7 @@
                             alert("归还申请成功，请等待管理员审核");
                             // $("tr").remove("#tr_"+isbn);
                         } else {
-                            alert("归还申请失败！") ;
+                            alert(data) ;
                         }
                     }
                 });

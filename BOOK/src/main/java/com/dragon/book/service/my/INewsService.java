@@ -1,4 +1,4 @@
-package com.dragon.book.service.my.I;
+package com.dragon.book.service.my;
 
 import com.dragon.book.model.TBookNews;
 import com.dragon.book.model.TBorrow;
@@ -11,6 +11,6 @@ public interface INewsService {
 
     public void deleteNews(int id);
 
-    public TBorrow findDetailInfo(int isbn, int uid);
+    public TBorrow findDetailInfo(String isbn, int uid);
 
 }

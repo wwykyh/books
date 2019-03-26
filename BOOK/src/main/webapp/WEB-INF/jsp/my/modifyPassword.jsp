@@ -52,19 +52,14 @@
         // alert(userid);
         // alert(oldpwd);
         // alert(newpwd);
-        if (oldpwd==null){
+        if (null==oldpwd && ""==oldpwd){
             alert("旧密码不能为空！")
-
         } else if(newpwdt==newpwd){
             $.ajax({
                 url: "/modifypassword/updatapassword",
                 data: {"oldpwd":oldpwd,"newpwd":newpwd,"userid":userid},
                 success: function (data) {
-                    if (data == "success") {
-                        alert("密码修改成功！");
-                    } else {
-                        alert("密码修改失败！");
-                    }
+                    alert(data);
                 }
             });
         } else {

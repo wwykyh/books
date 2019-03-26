@@ -26,5 +26,5 @@ public interface NewsDao {
      * @param isbn
      * @param userid
      */
-    public TBorrow findDetailInfo(@Param("isbn") int isbn, @Param("userid") int userid);
+    public TBorrow findDetailInfo(@Param("isbn") String isbn, @Param("userid") int userid);
 }

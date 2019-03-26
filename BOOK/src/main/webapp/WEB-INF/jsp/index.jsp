@@ -97,14 +97,14 @@
                 <dl>
                     <dt>
                         <a href="javascript:;">
-                            <i class="icon">&#xe6c2;</i><span>我的</span>
+                            <i class="icon">&#xe6c2;</i><span>个人中心</span>
                             <i class="icon arrow">&#xe658;</i>
                             <i class="icon arrow hide">&#xe659;</i>
                         </a>
                     </dt>
                     <dd>
                         <ul>
-                            <li><a _href="${pageContext.request.contextPath}/personal/topersonalindex?userid=${user.userId}" data-name="个人中心" data-js="prettify" href="javascript:;">个人中心</a></li>
+                            <li><a _href="${pageContext.request.contextPath}/personal/topersonalindex?userid=${user.userId}" data-name="信息详情" data-js="prettify" href="javascript:;">信息详情</a></li>
                             <li><a _href="${pageContext.request.contextPath}/modifyinformation/modifyindex" data-name="修改资料" data-js="prettify" href="javascript:;">修改资料</a>
                             </li>
                             <li><a _href="${pageContext.request.contextPath}/modifypassword/tomodifypassword" data-name="修改密码" data-js="prettify" href="javascript:;">修改密码</a>
