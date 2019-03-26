@@ -40,8 +40,11 @@ public class PersonalController {
             List<BookBorrow> bookBorrow = personalService.selectBookInformation(uid);
             map.put("userInformation",userInformation);
             map.put("bookBorrow",bookBorrow);
+            return "/my/personal";
+        }else {
+            return "/my/error";
         }
-        return "/my/personal";
+
     }
 
     /**
