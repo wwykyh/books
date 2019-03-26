@@ -248,4 +248,21 @@
       pjrq = #{pjrq,jdbcType=VARCHAR}
     where comment_id = #{commentId,jdbcType=INTEGER}
   </update>
+
+  <select id="selectByUserId" resultMap="BaseResultMap" parameterType="com.dragon.book.model.TComment">
+    SELECT
+        tc.*
+    FROM
+        t_comment tc
+    WHERE
+        tc.user_id = (
+            SELECT
+                ts.user_id
+            FROM
+                t_borrow tb
+            LEFT JOIN t_sys_user ts ON tb.user_id = ts.user_id
+            WHERE
+                tb.id = #{user_id}
+        )
+  </select>
 </mapper>

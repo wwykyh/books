@@ -129,7 +129,7 @@
                                    data-js="prettify" href="javascript:;">资产分析</a></li>
                             <li><a _href="${pageContext.request.contextPath}/borrow_history" data-name="借阅历史"
                                    data-js="prettify" href="javascript:;">借阅历史</a></li>
-                            <li><a _href="${pageContext.request.contextPath}/book_analyze" data-name="图书分析"
+                            <li><a _href="${pageContext.request.contextPath}/bookAnalyze" data-name="图书分析"
                                    data-js="prettify" href="javascript:;">图书分析</a></li>
                             <li><a _href="${pageContext.request.contextPath}/type_manager" data-name="种类管理"
                                    data-js="prettify" href="javascript:;">种类管理</a></li>

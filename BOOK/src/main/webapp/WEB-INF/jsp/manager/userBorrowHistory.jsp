@@ -1,9 +1,5 @@
 <%--
-  Created by IntelliJ IDEA.
-  User: liulei
-  Date: 2019/1/23
-  Time: 15:11
-  To change this template use File | Settings | File Templates.
+  用户借阅界面
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
@@ -34,10 +30,10 @@
                                     <input id="end_time" type="text" placeholder="结束时间" class="input-text" />
                                 </td>
                                 <td>
-                                    <input id="dim" type="text" placeholder="书名、作者" class="input-text" />
+                                    <input id="dim" type="text"  style="display:none" placeholder="书名、作者" class="input-text" />
                                 </td>
                                 <td>
-                                    <input id="user" type="text" placeholder="用户名" class="input-text" />
+                                    <input id="user" type="text"  style="display:none" placeholder="用户名" class="input-text" />
                                 </td>
                                 <td colspan="2"><a href="javascript:;" class="btn"><span id="btnLoad"><i class="icon icon-search"></i>查询</span></a></td>
                             </tr>
@@ -56,12 +52,7 @@
     var end_time ;
     var dim ;
     var user ;
-    function KeyHide(){
-        if("${sessionScope.userName}"!="admin"){
-            $("#dim").hide();
-            $("#user").hide();
-        }
-    }
+
 
     requirejs(['jquery', 'ligerGrid','dg.datePicker', 'artdialog'], function($) {
         $(function () {
@@ -73,7 +64,6 @@
             }else {
                 user="${user.xm}";
             }
-            KeyHide();
             select() ;
         }) ;
         function select() {
@@ -108,13 +98,14 @@
                     render: function (row){
                         if (row.id != undefined && row.id != null && row.id != ""){
                             var html = '<a href="javascript:void(0);" onclick="onHistoryInfo(' + row.id + ')">查看详情</a>&nbsp;&nbsp;' ;
-                            //html = html + '<a href="javascript:void(0);" onclick="onBookEdit(' + row.id + ')">库存管理</a>&nbsp;&nbsp;';
+
+                                html = html + '<a href="javascript:void(0);" onclick="commentInfo(' + row.id + ')">评价</a>';
                             return html;
                         }
                         else return "" ;
                     }
                 }],
-                url: '/historyPage_manager',
+                url: '/userBorrow/user_historyPage',
                 method:'get',
                 dataType: 'server',
                 dataAction: 'server',
@@ -148,12 +139,12 @@
     });
 
     $(document).ready(function(){
-        //使用class属性处理  'yy-mm-dd' 设置格式"yy-mm-dd"
         $('#start_time').datepick({dateFormat: 'yy-mm-dd'});
         $('#end_time').datepick({dateFormat: 'yy-mm-dd'});
     });
 
     function onHistoryInfo(id){
+        alert(id);
         art.dialog.open('history_info?id='+id, {
             title: '借阅详情',
             width: 850,
@@ -162,6 +153,15 @@
             cancelVal: "关闭"
         });
     }
+    function commentInfo(id){
 
+        art.dialog.open('userBorrow/commentInfo?id='+id, {
+            title: '评价',
+            width: 850,
+            height: 575,
+            cancel: true,
+            cancelVal: "关闭"
+        });
+    }
 </script>
 </html>

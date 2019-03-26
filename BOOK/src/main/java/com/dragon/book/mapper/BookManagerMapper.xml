@@ -23,71 +23,72 @@
             <result column="dz" property="dz"/>
             <result column="bm" property="bm"/>
         </association>
+
     </resultMap>
-  <select id="selectByDimPage" resultType="com.dragon.book.pojo.BookInfo" parameterType="com.dragon.book.pojo.QueryVo">
-      select
-	    su.id,tb.isbn,tb.sm,tb.cbsmc,tb.cbrq,tb.zz,tb.lxmc,tb.tsdl,su.xm uname,su.wz,su.sh,su.rksj,su.status
-      from (
-                  select s.*,u.xm
-                  from t_store s
-                  left join t_sys_user u
-                  on s.user_id = u.user_id
-          ) su
-      left join (
-                  select b.*,t.lxmc
-                  from t_book b
-                  left join t_type t
-                  on b.type_id = t.type_id
+    <select id="selectByDimPage" resultType="com.dragon.book.pojo.BookInfo" parameterType="com.dragon.book.pojo.QueryVo">
+        select
+        su.id,tb.isbn,tb.sm,tb.cbsmc,tb.cbrq,tb.zz,tb.lxmc,tb.tsdl,su.xm uname,su.wz,su.sh,su.rksj,su.status
+        from (
+        select s.*,u.xm
+        from t_store s
+        left join t_sys_user u
+        on s.user_id = u.user_id
+        ) su
+        left join (
+        select b.*,t.lxmc
+        from t_book b
+        left join t_type t
+        on b.type_id = t.type_id
 
-          ) tb
-      on su.isbn = tb.isbn
-      <if test="dim != null and dim != ''">
-          where tb.sm like '%${dim}%' or tb.zz like '%${dim}%'
-      </if>
-      limit #{start},${end}
-  </select>
+        ) tb
+        on su.isbn = tb.isbn
+        <if test="dim != null and dim != ''">
+            where tb.sm like '%${dim}%' or tb.zz like '%${dim}%'
+        </if>
+        limit #{start},${end}
+    </select>
 
-  <select id="selectByDimTotal" resultType="int" parameterType="com.dragon.book.pojo.QueryVo">
-    select count(*)
-    from (
-    select s.*,u.xm
-    from t_store s
-    left join t_sys_user u
-    on s.user_id = u.user_id
-    ) su
-    left join (
-    select b.*,t.lxmc
-    from t_book b
-    left join t_type t
-    on b.type_id = t.type_id
-    ) tb
-    on su.isbn = tb.isbn
-    <if test="dim != null and dim != ''">
-      where tb.sm like '%${dim}%' or tb.zz like '%${dim}%'
-    </if>
-  </select>
+    <select id="selectByDimTotal" resultType="int" parameterType="com.dragon.book.pojo.QueryVo">
+        select count(*)
+        from (
+        select s.*,u.xm
+        from t_store s
+        left join t_sys_user u
+        on s.user_id = u.user_id
+        ) su
+        left join (
+        select b.*,t.lxmc
+        from t_book b
+        left join t_type t
+        on b.type_id = t.type_id
+        ) tb
+        on su.isbn = tb.isbn
+        <if test="dim != null and dim != ''">
+            where tb.sm like '%${dim}%' or tb.zz like '%${dim}%'
+        </if>
+    </select>
 
-  <select id="selectCommentByIsbnTotal" resultType="int" parameterType="com.dragon.book.pojo.QueryVo">
-      select count(*)
-      from t_comment c LEFT JOIN t_sys_user u on c.user_id = u.user_id
-      <if test="dim != null and dim != ''">
-          WHERE c.isbn = ${dim}
-      </if>
-  </select>
-  <select id="selectCommentInfoById" resultType="com.dragon.book.pojo.CommentInfo" parameterType="int">
+    <select id="selectCommentByIsbnTotal" resultType="int" parameterType="com.dragon.book.pojo.QueryVo">
+        select count(*)
+        from t_comment c LEFT JOIN t_sys_user u on c.user_id = u.user_id
+        <if test="dim != null and dim != ''">
+            WHERE c.isbn = ${dim}
+        </if>
+    </select>
+    <select id="selectCommentInfoById" resultType="com.dragon.book.pojo.CommentInfo" parameterType="int">
       select u.xm,c.pjrq,c.nr,c.comment_id commentId
       from t_comment c LEFT JOIN t_sys_user u on c.user_id = u.user_id
       where c.comment_id = #{commentId}
   </select>
-  <select id="selectCommentByIsbnList" resultType="com.dragon.book.pojo.CommentInfo" parameterType="com.dragon.book.pojo.QueryVo">
-      select u.xm,c.pjrq,c.nr,c.comment_id commentId
-      from t_comment c LEFT JOIN t_sys_user u on c.user_id = u.user_id
-      <if test="dim != null and dim != ''">
-         WHERE c.isbn = ${dim}
-      </if>
-       limit #{start},${end}
-  </select>
-  <select id="selectBookInfoById" resultType="com.dragon.book.pojo.BookInfo" parameterType="int">
+    <select id="selectCommentByIsbnList" resultType="com.dragon.book.pojo.CommentInfo" parameterType="com.dragon.book.pojo.QueryVo">
+        select u.xm,c.pjrq,c.nr,c.comment_id commentId
+        from t_comment c LEFT JOIN t_sys_user u on c.user_id = u.user_id
+        <if test="dim != null and dim != ''">
+            WHERE c.isbn = ${dim}
+        </if>
+        limit #{start},${end}
+    </select>
+    <select id="selectBookInfoById" resultType="com.dragon.book.pojo.BookInfo" parameterType="int">
       select
 	    su.id,tb.isbn,tb.sm,tb.cbsmc,tb.cbrq,tb.zz,tb.lxmc,tb.tsdl,su.xm uname,su.wz,su.sh,su.rksj,su.status
       from (
@@ -96,6 +97,7 @@
                   left join t_sys_user u
                   on s.user_id = u.user_id
                   where s.id = #{id}
+                  c
           ) su
       left join (
                   select b.*,t.lxmc

@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.dragon.book.mapper.BookAnalyzeMapper">
+    <resultMap id="BaseResultMap" type="com.dragon.book.model.TBookAnalyze">
+        <id column="type_id" property="type_id" />
+        <result column="lxmc" property="lxmc" />
+        <result column="num" property="num" />
+    </resultMap>
+
+    <select id="selBorrowNum" resultMap="BaseResultMap" >
+    SELECT ty.type_id ,ty.lxmc,tn.num
+    FROM t_type ty LEFT OUTER JOIN
+    (SELECT
+		COUNT(tb.type_id) AS num,tb.type_id as tp
+	FROM
+		t_borrow tw
+	LEFT OUTER JOIN t_book tb ON tw.s_id = tb.isbn
+	GROUP BY
+		tb.type_id ) AS tn
+		 on tn.tp=ty.type_id
+    </select>
+</mapper>
