@@ -51,7 +51,7 @@
     function onCheckNewsInfo(book_isbn,user_id){
         var isbn = book_isbn;
         var id = user_id;
-        art.dialog.open('/news/toNewsDetailInfo?isbn='+isbn+'&userid='+id+'',{
+        art.dialog.open('/news/toNewsDetailInfo?isbn='+isbn+'&userId='+id+'',{
             title: '消息详情',
             width: 900,
             height: 200,

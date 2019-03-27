@@ -81,7 +81,7 @@
         });
 
         function onCheckInfo(userId){
-            art.dialog.open('/personal/borrowinfo?id='+userId, {
+            art.dialog.open('/personal/borrowInfo?id='+userId, {
                 title: '借阅详情',
                 width: 900,
                 height: 350,
@@ -93,7 +93,7 @@
         function renew(isbn,userid) {
             if (confirm("你是否要续借图书？")){
                 $.ajax({
-                    url:"/personal/renew?isbn="+isbn+"&userid="+userid+"",
+                    url:"/personal/reNew?isbn="+isbn+"&userId="+userid+"",
                     success:function(data){
                         if (data=="success"){
                             alert("续借申请成功，请等待管理员审核");
@@ -111,7 +111,7 @@
             // alert(userid);
             if (confirm("你是否要归还图书？")){
                 $.ajax({
-                    url:"/personal/returnbook?isbn="+isbn+"&userid="+userid+"",
+                    url:"/personal/returnBook?isbn="+isbn+"&userId="+userid+"",
                     success:function(data){
                         if (data=="success"){
                             alert("归还申请成功，请等待管理员审核");

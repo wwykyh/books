@@ -45,19 +45,19 @@
 <script type="text/javascript">
 
     function updata(){
-        var oldpwd=$("#oldPwd").val();
-        var newpwd=$("#newPwd").val();
-        var newpwdt=$("#newPwdT").val();
-        var userid=${user.userId};
+        var oldPwd=$("#oldPwd").val();
+        var newPwd=$("#newPwd").val();
+        var newPwdt=$("#newPwdT").val();
+        var userId=${user.userId};
         // alert(userid);
         // alert(oldpwd);
         // alert(newpwd);
-        if (null==oldpwd && ""==oldpwd){
+        if (null==oldPwd && ""==oldPwd){
             alert("旧密码不能为空！")
-        } else if(newpwdt==newpwd){
+        } else if(newPwdt==newPwd){
             $.ajax({
-                url: "/modifypassword/updatapassword",
-                data: {"oldpwd":oldpwd,"newpwd":newpwd,"userid":userid},
+                url: "/modifyPassword/updataPassword",
+                data: {"oldPwd":oldPwd,"newPwd":newPwd,"userId":userId},
                 success: function (data) {
                     alert(data);
                 }

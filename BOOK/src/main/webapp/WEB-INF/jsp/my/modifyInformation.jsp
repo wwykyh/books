@@ -63,7 +63,7 @@
         // alert(lxfs);
         // alert(dz);
         $.ajax({
-                url: "/modifyinformation/domodifyinfotmation",
+                url: "/modifyInformation/doModifyInfortmation",
                 data: {"xm":xm,"lxfs":lxfs,"dz":dz,"bm":bm,"grsm":grsm,"userid":userid},
                 success: function (data) {
                    alert(data);

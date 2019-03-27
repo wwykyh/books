@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.dragon.book.mapper.my.OvertimePaymentDao" >
+
+    <select id="findOvertimeBorrow" resultType="com.dragon.book.model.TBorrow">
+        select
+        id,
+        s_id as sId,
+        user_id as userId,
+        sm,
+        jyrq,
+        jhghrq,
+        xjrq,
+        ghrq,
+        status,
+        jyzt,
+        DATEDIFF(#{currentTime},jhghrq) as bz
+        from
+        t_borrow
+        where
+        user_id = #{userId}
+        and
+        #{currentTime}>jhghrq
+    </select>
+
+</mapper>
