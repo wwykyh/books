@@ -33,4 +33,6 @@ public interface TCommentMapper {
     int updateByPrimaryKeyWithBLOBs(TComment record);
 
     int updateByPrimaryKey(TComment record);
+
+    List< TComment> selectByUserId(String UserId);
 }

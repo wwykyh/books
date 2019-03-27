@@ -23,18 +23,17 @@
     <script type="text/javascript" src="../js/libs/jquery/jquery.datepick-zh-CN.js"></script>
     <!-- 改造的脚本 -->
     <script type="text/javascript" src="../js/extend.js"></script>
-
     <!-- 共有的控件 -->
     <%--<script data-main="main" src="../dvpt/require.min.2.1.11.js"></script>--%>
 </head>
-<body>
+<body >
     <div class="panel">
         <div class="panel-header">
             <h2>修改赔偿信息</h2>
             <a href="javascript:;" class="arrow up"></a></div>
         <div class="panel-body panel-noborder">
             <div class="write-box">
-                <form action="typeAdd" method="post" class="form-libs" name="form-libs" id="form-type">
+                <form action="pcEdit" method="post" class="form-libs" name="form-libs" id="form-type">
                 <table class="form-table" width="100%">
                     <tr>
                         <th width="17%"><span class="ft-need">*</span>用户ID：</th>
@@ -77,7 +76,7 @@
                     </tr>
                     <tr>
                         <th></th>
-                        <td><input type="button" class="btn" value="提交" onclick="sub()" ><input type="reset" class="btn" value="重置"></td>
+                        <td><input type="button" class="btn" value="提交" onclick="sub()" ><input type="reset" class="btn" onclick="reset()" value="重置"></td>
                     </tr>
                 </table>
                 </form>

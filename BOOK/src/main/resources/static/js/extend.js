@@ -60,7 +60,8 @@ requireManage.config({
 
 		// d3 组件
 		'd3.v3': './libs/d3/d3.v3.min',
-		'd3.force': './libs/d3/d3.force'
+		'd3.force': './libs/d3/d3.force',
+        'echarts':'./echarts.min'
 	},
 	shim: {
 		// 系统结构
