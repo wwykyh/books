@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
  * 我的模块：修改密码Conrtoller层
  */
 @Controller
-@RequestMapping("/modifypassword")
+@RequestMapping("/modifyPassword")
 public class ModifyPasswordController {
 
     @Autowired
@@ -22,24 +22,24 @@ public class ModifyPasswordController {
      * @return
      * zzm
      */
-    @RequestMapping("/tomodifypassword")
+    @RequestMapping("/toModifyPassword")
     public String modifyPasswordIndex(){
         return "/my/modifyPassword";
     }
 
     /**
      * 密码修改
-     * @param oldpwd 旧密码
-     * @param newpwd 新密码
-     * @param userid 用户ID
+     * @param oldPwd 旧密码
+     * @param newPwd 新密码
+     * @param userId 用户ID
      * @return
      */
-    @RequestMapping("/updatapassword")
+    @RequestMapping("/updataPassword")
     @ResponseBody
-    public String upDataPassword(@Param("oldpwd")String oldpwd,@Param("newpwd")String newpwd,@Param("userid")int userid) {
+    public String upDataPassword(@Param("oldPwd")String oldPwd,@Param("newPwd")String newPwd,@Param("userId")int userId) {
         String message;
-        if (null != oldpwd && null != newpwd &&  userid!=0&& "" != oldpwd&& "" != newpwd) {
-            message = modifyPasswordServiceImpl.modifyPassword(oldpwd, userid, newpwd);
+        if (null != oldPwd && null != newPwd &&  userId!=0&& "" != oldPwd&& "" != newPwd) {
+            message = modifyPasswordServiceImpl.modifyPassword(oldPwd, userId, newPwd);
             return message;
         } else {
             message = "用户ID与新密码或旧密码不能为空！";

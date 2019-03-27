@@ -20,11 +20,11 @@ public class NewsServiceImpl implements INewsService {
 
     /**
      * 获得个人消息总览
-     * @param userid
+     * @param userId
      * @return
      */
-    public List<TBookNews> getNews(int userid){
-        List<TBookNews> tBookNews = newsDao.getNews(userid);
+    public List<TBookNews> findNews(int userId){
+        List<TBookNews> tBookNews = newsDao.findNews(userId);
         return tBookNews;
     }
 
@@ -36,7 +36,7 @@ public class NewsServiceImpl implements INewsService {
         newsDao.deleteNews(id);
     }
 
-    public TBorrow findDetailInfo(String isbn,int uid){
-        return newsDao.findDetailInfo(isbn,uid);
+    public TBorrow findDetailInfo(String isbn,int uId){
+        return newsDao.findDetailInfo(isbn, uId);
     }
 }

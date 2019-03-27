@@ -32,8 +32,8 @@ public class PersonalController {
      * @param map
      * @return
      */
-    @RequestMapping("/topersonalindex")
-    public String toPersonalIndex(@RequestParam("userid")int uid,Map map){
+    @RequestMapping("/toPersonalIndex")
+    public String toPersonalIndex(@RequestParam("userId")int uid,Map map){
 //        System.out.print(uid);
         if(0!=uid){
             TSysUser userInformation = personalService.selectUserIndormation(uid);
@@ -50,34 +50,34 @@ public class PersonalController {
     /**
      * 归还图书
      *@param isbn 图书编号
-     *@param uid 用户id
+     *@param uId 用户id
      * @return
      */
-    @RequestMapping("/returnbook")
+    @RequestMapping("/returnBook")
     @ResponseBody
-    public String returnBook(@RequestParam("isbn")String isbn,@RequestParam("userid")int uid){
-        if(""==isbn&&null==isbn&&0==uid) {
+    public String returnBook(@RequestParam("isbn")String isbn,@RequestParam("userId")int uId){
+        if(""==isbn&&null==isbn&&0==uId) {
             String data = "图书编号或用户ID不能为空！";
             return data;
         }
-        personalService.returnBook(isbn,uid);
+        personalService.returnBook(isbn,uId);
         return "success";
     }
 
     /**
      * 续借
      * @param isbn 图书编号
-     * @param uid 用户id
+     * @param uId 用户id
      * @return
      */
-    @RequestMapping("/renew")
+    @RequestMapping("/reNew")
     @ResponseBody
-    public String renew(@RequestParam("isbn")String isbn,@RequestParam("userid")int uid){
-        if(""==isbn&&null==isbn&&0==uid) {
+    public String renew(@RequestParam("isbn")String isbn,@RequestParam("userId")int uId){
+        if(""==isbn&&null==isbn&&0==uId) {
             String data = "图书编号或用户ID不能为空！";
             return data;
         }
-        personalService.renew(isbn,uid);
+        personalService.renew(isbn,uId);
         return "success";
     }
 
@@ -87,7 +87,7 @@ public class PersonalController {
      * @param map
      * @return
      */
-    @RequestMapping("/borrowinfo")
+    @RequestMapping("/borrowInfo")
     public String borrowInfo(@RequestParam("id")int id,Map map){
         if(0!=id){
         TBorrow tborrow = personalService.borrowInfo(id);

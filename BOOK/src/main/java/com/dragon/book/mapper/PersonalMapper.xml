@@ -28,7 +28,7 @@
          on
          t_book.isbn=t_borrow.s_id
          where
-         t_borrow.user_id=#{userid}
+         t_borrow.user_id=#{userId}
     </select>
 
     <select id="selectUserInformation" resultType="com.dragon.book.model.TSysUser">
@@ -41,7 +41,7 @@
          a.grsm
          from
          t_sys_user as a
-         where user_id=#{userid}
+         where user_id=#{userId}
     </select>
 
     <update id="updateBorrow">
@@ -52,7 +52,7 @@
       WHERE
       s_id=#{isbn}
       and
-      user_id=#{userid}
+      user_id=#{userId}
     </update>
 
     <update id="updatejszt">
@@ -63,7 +63,7 @@
        WHERE
        s_id=#{isbn}
         and
-        user_id=#{userid}
+        user_id=#{userId}
     </update>
 
     <select id="selectBorrowInfo" resultType="com.dragon.book.model.TBorrow">

@@ -22,44 +22,44 @@ public class PersonalServiceImpl implements IPersonalService {
 
     /**
      * 获取用户信息
-     * @param userid
+     * @param userId
      * @return
      */
-    public TSysUser selectUserIndormation(int userid){
-        TSysUser userinfo = personalDao.selectUserInformation(userid);
+    public TSysUser selectUserIndormation(int userId){
+        TSysUser userinfo = personalDao.selectUserInformation(userId);
         return userinfo;
     }
 
     /**
      * 获取用户借书信息
-     * @param userid
+     * @param userId
      * @return
      */
-    public List<BookBorrow> selectBookInformation(int userid){
-        List<BookBorrow> bookBorrow = personalDao.selectBookInformation(userid);
+    public List<BookBorrow> selectBookInformation(int userId){
+        List<BookBorrow> bookBorrow = personalDao.selectBookInformation(userId);
         return bookBorrow;
     }
 
     /**
      * 归还图书
      * @param isbn
-     * @param userid
+     * @param userId
      */
-    public void returnBook(String isbn,int userid){
+    public void returnBook(String isbn,int userId){
 //        long time = System.currentTimeMillis();
 //        Date date = new Date(time);
 //        SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
 //        String ghrq = dateFormat.format(date);
-        personalDao.updateBorrow(isbn,userid);
+        personalDao.updateBorrow(isbn, userId);
     }
 
     /**
      * 续借图书
      * @param isbn
-     * @param userid
+     * @param userId
      */
-    public void renew(String isbn,int userid){
-        personalDao.updatejszt(isbn,userid);
+    public void renew(String isbn,int userId){
+        personalDao.updatejszt(isbn, userId);
     }
 
     /**

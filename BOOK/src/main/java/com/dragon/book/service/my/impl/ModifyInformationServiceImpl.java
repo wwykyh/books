@@ -22,12 +22,12 @@ public class ModifyInformationServiceImpl implements IModifyInformationService {
      * @param dz
      * @param bm
      * @param grsm
-     * @param userid
+     * @param userId
      */
-    public String modifyInformation(String xm,String lxfs,String dz,String bm,String grsm,int userid){
+    public String modifyInformation(String xm,String lxfs,String dz,String bm,String grsm,int userId){
         String message;
-        if(0!=userid){
-        modifyInformationDao.upDataInformation(xm,lxfs,dz,bm,grsm,userid);
+        if(0!=userId){
+        modifyInformationDao.upDataInformation(xm,lxfs,dz,bm,grsm,userId);
         }
         message = "用户ID不能为空！";
         return message;

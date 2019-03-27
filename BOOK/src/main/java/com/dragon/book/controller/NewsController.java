@@ -25,14 +25,14 @@ public class NewsController {
 
     /**
      * 获得个人消息总览
-     * @param uid 用户ID
+     * @param uId 用户ID
      * @param map
      * @return
      */
-    @RequestMapping("/tonews")
-    public String toNewsIndex(@RequestParam("userid")int uid, Map map){
-        if(0!=uid){
-            List<TBookNews> tBookNews = newsServiceImpl.getNews(uid);
+    @RequestMapping("/toNews")
+    public String toNewsIndex(@RequestParam("userId")int uId, Map map){
+        if(0!=uId){
+            List<TBookNews> tBookNews = newsServiceImpl.findNews(uId);
             map.put("tBookNews",tBookNews);
             return "/my/news";
         }else {
@@ -60,14 +60,14 @@ public class NewsController {
     /**
      * 获取详细信息
      * @param isbn 图书编号
-     * @param uid 用户ID
+     * @param uId 用户ID
      * @param map
      * @return
      */
     @RequestMapping("/toNewsDetailInfo")
-    public String toNewsDetailInfo(@RequestParam("isbn")String isbn,@RequestParam("userid")int uid, Map map){
-        if(null!=isbn&&""!=isbn&&0!=uid) {
-            TBorrow tBorrow = newsServiceImpl.findDetailInfo(isbn, uid);
+    public String toNewsDetailInfo(@RequestParam("isbn")String isbn, @RequestParam("userId")int uId, Map map){
+        if(null!=isbn&&""!=isbn&&0!= uId) {
+            TBorrow tBorrow = newsServiceImpl.findDetailInfo(isbn, uId);
             map.put("tborrow", tBorrow);
             return "/my/bookNewsInfo";
         }else {

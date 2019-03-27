@@ -7,10 +7,10 @@ import java.util.List;
 
 public interface INewsService {
 
-    public List<TBookNews> getNews(int userid);
+    public List<TBookNews> findNews(int userId);
 
     public void deleteNews(int id);
 
-    public TBorrow findDetailInfo(String isbn, int uid);
+    public TBorrow findDetailInfo(String isbn, int uId);
 
 }

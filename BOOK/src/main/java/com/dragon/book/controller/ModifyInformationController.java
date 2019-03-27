@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 @Controller
-@RequestMapping("/modifyinformation")
+@RequestMapping("/modifyInformation")
 public class ModifyInformationController {
     @Autowired
     private ModifyInformationServiceImpl modifyInformationServiceImpl;
@@ -23,7 +23,7 @@ public class ModifyInformationController {
      * @return
      * zzm
      */
-    @RequestMapping("/modifyindex")
+    @RequestMapping("/modifyIndex")
     public String modifyInfotmationIndex(){
         return "my/modifyInformation";
     }
@@ -38,7 +38,7 @@ public class ModifyInformationController {
      * @param userid 用户ID
      * @return
      */
-    @RequestMapping("/domodifyinfotmation")
+    @RequestMapping("/doModifyInfortmation")
     @ResponseBody
     public String modifyInfotmation(@Param("xm")String xm,@Param("lxfs")String lxfs,@Param("dz")String dz,@Param("bm")String bm,@Param("grsm")String grsm,@Param("userid")int userid){
         String message;

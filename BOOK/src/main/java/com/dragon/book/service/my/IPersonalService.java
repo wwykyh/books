@@ -8,13 +8,13 @@ import java.util.List;
 
 public interface IPersonalService {
 
-    public TSysUser selectUserIndormation(int userid);
+    public TSysUser selectUserIndormation(int userId);
 
-    public List<BookBorrow> selectBookInformation(int userid);
+    public List<BookBorrow> selectBookInformation(int userId);
 
-    public void returnBook(String isbn,int userid);
+    public void returnBook(String isbn,int userId);
 
-    public void renew(String isbn,int userid);
+    public void renew(String isbn,int userId);
 
     public TBorrow borrowInfo(int id);
 }

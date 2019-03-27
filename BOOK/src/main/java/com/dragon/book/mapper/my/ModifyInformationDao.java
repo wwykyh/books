@@ -17,6 +17,6 @@ public interface ModifyInformationDao {
      * @param grsm
      * @param userid
      */
-    public void upDataInformation(@Param("xm")String xm, @Param("lxfs")String lxfs, @Param("dz")String dz, @Param("bm")String bm, @Param("grsm")String grsm, @Param("userid")int userid);
+    public void upDataInformation(@Param("xm")String xm, @Param("lxfs")String lxfs, @Param("dz")String dz, @Param("bm")String bm, @Param("grsm")String grsm, @Param("userId")int userId);
 
 }
