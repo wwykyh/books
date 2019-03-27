@@ -77,12 +77,11 @@ function fuzhi(myChart){
         }
     });
 }
-    requirejs(['main'], function (main) {
+
         requirejs(['jquery', 'echarts'], function (jqeury, echarts) {
             var myChart = echarts.init(document.getElementById("testMain"));
             fuzhi(myChart);
         });
-    });
 
 </script>
 
