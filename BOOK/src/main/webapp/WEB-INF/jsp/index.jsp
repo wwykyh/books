@@ -58,7 +58,7 @@
 		                </span>
                     </li>
                     <li>
-                        <i class="header-icon i-user"></i>欢迎您！${user.xm}</a>
+                        <a><i class="header-icon i-user"></i>欢迎您！${user.xm}</a>
                     </li>
                     <li class="skin-change"><a href="javascript:;" title="皮肤" class="skin-change-acitve"><span><i
                             class="header-icon i-skin"></i>换肤<i class="arrow"></i></span></a>
@@ -89,8 +89,9 @@
                     </dt>
                     <dd>
                         <ul>
-                            <li><a _href="sea" data-name="图书检索" href="javascript:;">图书检索</a></li>
+                            <li><a _href="sea" class="borrow" data-name="图书检索" href="javascript:;">图书检索</a></li>
                             </li>
+
                         </ul>
                     </dd>
                 </dl>
@@ -136,7 +137,6 @@
                         </ul>
                     </dd>
                 </dl>
-
             </div>
         </div>
         <div id="main">
@@ -147,7 +147,8 @@
                     </ul>
                 </div>
             </div>
-            <div id="main-content"></div>
+            <div id="main-content">
+            </div>
         </div>
     </div>
 </div>
