@@ -4,7 +4,7 @@ package com.dragon.book.controller;
 import com.dragon.book.model.TBorrow;
 import com.dragon.book.model.TSysUser;
 import com.dragon.book.pojo.BookBorrow;
-import com.dragon.book.service.my.PersonalServiceImpl;
+import com.dragon.book.service.my.IPersonalService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -24,71 +24,77 @@ import java.util.Map;
 public class PersonalController {
 
     @Autowired
-    private PersonalServiceImpl personalServiceImpl;
+    private IPersonalService personalService;
 
     /**
      * 转到personal界面，并加载数据
-     * @param uid
+     * @param uid 用户id
      * @param map
      * @return
      */
-    @RequestMapping("/topersonalindex")
-    public String toPersonalIndex(@RequestParam("userid")String uid,Map map){
+    @RequestMapping("/toPersonalIndex")
+    public String toPersonalIndex(@RequestParam("userId")int uid,Map map){
 //        System.out.print(uid);
-          int userid = Integer.parseInt(uid);
-        if(0!=userid){
-            TSysUser userInformation = personalServiceImpl.selectUserIndormation(userid);
-            List<BookBorrow> bookBorrow = personalServiceImpl.selectBookInformation(userid);
+        if(0!=uid){
+            TSysUser userInformation = personalService.selectUserIndormation(uid);
+            List<BookBorrow> bookBorrow = personalService.selectBookInformation(uid);
             map.put("userInformation",userInformation);
             map.put("bookBorrow",bookBorrow);
+            return "/my/personal";
+        }else {
+            return "/my/error";
         }
-        return "/my/personal";
+
     }
 
     /**
      * 归还图书
-     * @param
+     *@param isbn 图书编号
+     *@param uId 用户id
      * @return
      */
-    @RequestMapping("/returnbook")
+    @RequestMapping("/returnBook")
     @ResponseBody
-    public String returnBook(@RequestParam("isbn")String isbn,@RequestParam("userid")String uid){
-        if(isbn.equals("")||isbn.equals(null)) {
-            return "error";
+    public String returnBook(@RequestParam("isbn")String isbn,@RequestParam("userId")int uId){
+        if(""==isbn&&null==isbn&&0==uId) {
+            String data = "图书编号或用户ID不能为空！";
+            return data;
         }
-        int userid = Integer.parseInt(uid);
-        personalServiceImpl.returnBook(isbn,userid);
+        personalService.returnBook(isbn,uId);
         return "success";
     }
 
     /**
      * 续借
-     * @param isbn
-     * @param uid
+     * @param isbn 图书编号
+     * @param uId 用户id
      * @return
      */
-    @RequestMapping("/renew")
+    @RequestMapping("/reNew")
     @ResponseBody
-    public String renew(@RequestParam("isbn")String isbn,@RequestParam("userid")String uid){
-        if(isbn.equals("")||isbn.equals(null)) {
-            return "error";
+    public String renew(@RequestParam("isbn")String isbn,@RequestParam("userId")int uId){
+        if(""==isbn&&null==isbn&&0==uId) {
+            String data = "图书编号或用户ID不能为空！";
+            return data;
         }
-        int userid = Integer.parseInt(uid);
-        personalServiceImpl.renew(isbn,userid);
+        personalService.renew(isbn,uId);
         return "success";
     }
 
     /**
      * 借阅详情
-     * @param id
+     * @param id 借书消息id
      * @param map
      * @return
      */
-    @RequestMapping("/borrowinfo")
-    public String borrowInfo(@RequestParam("id")String id,Map map){
-        int tborrowrid = Integer.parseInt(id);
-        TBorrow tborrow = personalServiceImpl.borrowInfo(tborrowrid);
+    @RequestMapping("/borrowInfo")
+    public String borrowInfo(@RequestParam("id")int id,Map map){
+        if(0!=id){
+        TBorrow tborrow = personalService.borrowInfo(id);
         map.put("tborrow",tborrow);
         return "/my/bookBorrowInfo";
+        }else {
+            return "/my/error";
+        }
     }
 }

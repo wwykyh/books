@@ -63,14 +63,10 @@
         // alert(lxfs);
         // alert(dz);
         $.ajax({
-                url: "/modifyinformation/domodifyinfotmation",
+                url: "/modifyInformation/doModifyInfortmation",
                 data: {"xm":xm,"lxfs":lxfs,"dz":dz,"bm":bm,"grsm":grsm,"userid":userid},
                 success: function (data) {
-                    if (data == "success") {
-                        alert("信息修改成功！");
-                    } else {
-                        alert("信息修改失败！");
-                    }
+                   alert(data);
                 }
             });
 

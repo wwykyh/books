@@ -1,7 +1,7 @@
-package com.dragon.book.service.my;
+package com.dragon.book.service.my.impl;
 
 import com.dragon.book.mapper.my.ModifyPasswordDao;
-import com.dragon.book.service.my.I.IModifyPasswordService;
+import com.dragon.book.service.my.IModifyPasswordService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -17,19 +17,19 @@ public class ModifyPasswordServiceImpl implements IModifyPasswordService {
 
     /**
      * 修改密码Service层方法
-     * @param oldpwd
-     * @param userid
+     * @param oldPwd
+     * @param userId
      * @param pwd
      * @return
      */
-    public int modifyPassword(String oldpwd,int userid,String pwd){
+    public String modifyPassword(String oldPwd, int userId, String pwd){
         String flag;
-        flag = modifyPasswordDao.selectOldPwd(userid);
-        if(flag.equals(oldpwd)){
-        modifyPasswordDao.upDataPwd(userid,pwd);
-        return 1;
+        flag = modifyPasswordDao.selectOldPwd(userId);
+        if(flag.equals(oldPwd)){
+        modifyPasswordDao.upDataPwd(userId,pwd);
+        return "密码修改成功！";
         }else {
-            return 0;
+            return "两次密码输入不一致";
         }
     }
 }

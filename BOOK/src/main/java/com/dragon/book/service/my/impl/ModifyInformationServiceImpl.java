@@ -1,11 +1,11 @@
-package com.dragon.book.service.my;
+package com.dragon.book.service.my.impl;
 /**
  * 我的模块：修改信息service层
  *zzm
  */
 
 import com.dragon.book.mapper.my.ModifyInformationDao;
-import com.dragon.book.service.my.I.IModifyInformationService;
+import com.dragon.book.service.my.IModifyInformationService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -22,9 +22,14 @@ public class ModifyInformationServiceImpl implements IModifyInformationService {
      * @param dz
      * @param bm
      * @param grsm
-     * @param userid
+     * @param userId
      */
-    public void modifyInformation(String xm,String lxfs,String dz,String bm,String grsm,int userid){
-        modifyInformationDao.upDataInformation(xm,lxfs,dz,bm,grsm,userid);
+    public String modifyInformation(String xm,String lxfs,String dz,String bm,String grsm,int userId){
+        String message;
+        if(0!=userId){
+        modifyInformationDao.upDataInformation(xm,lxfs,dz,bm,grsm,userId);
+        }
+        message = "用户ID不能为空！";
+        return message;
     }
 }
