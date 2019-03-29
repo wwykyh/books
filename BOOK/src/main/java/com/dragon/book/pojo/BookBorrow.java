@@ -5,6 +5,7 @@ import com.dragon.book.model.TBorrow;
 
 /**
  * 借阅信息POJO
+ * zzm
  */
 public class BookBorrow extends TBook {
     private TBorrow tBorrow;

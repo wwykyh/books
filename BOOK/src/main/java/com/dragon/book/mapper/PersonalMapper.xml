@@ -2,7 +2,7 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="com.dragon.book.mapper.my.PersonalDao" >
 
-    <resultMap id="bookborrow" type="com.dragon.book.pojo.BookBorrow">
+    <resultMap id="bookBorrow" type="com.dragon.book.pojo.BookBorrow">
         <id column="isbn"  property="isbn"/>
         <result column="sm" property="sm"/>
         <result column="zz" property="zz"/>
@@ -13,17 +13,17 @@
         </collection>
     </resultMap>
 
-    <select id="selectBookInformation" resultMap="bookborrow">
-        SELECT
+    <select id="selectBookInformation" resultMap="bookBorrow">
+        select
         t_book.isbn,
         t_book.sm,
         t_book.zz,
         t_borrow.id,
         t_borrow.jyrq,
         t_borrow.jhghrq
-         FROM
+         from
          t_book
-         RIGHT JOIN
+        right join
          t_borrow
          on
          t_book.isbn=t_borrow.s_id
@@ -45,22 +45,22 @@
     </select>
 
     <update id="updateBorrow">
-      UPDATE
+      update
       t_borrow
       set
       jyzt=2
-      WHERE
+      where
       s_id=#{isbn}
       and
       user_id=#{userId}
     </update>
 
     <update id="updatejszt">
-      UPDATE
+      update
       t_borrow
        set
        jyzt=1
-       WHERE
+       where
        s_id=#{isbn}
         and
         user_id=#{userId}
