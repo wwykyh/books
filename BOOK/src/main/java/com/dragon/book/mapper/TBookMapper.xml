@@ -9,6 +9,10 @@
     <result column="zz" property="zz" jdbcType="VARCHAR" />
     <result column="type_id" property="typeId" jdbcType="INTEGER" />
     <result column="tsdl" property="tsdl" jdbcType="VARCHAR" />
+    <result column="picture" property="picture" jdbcType="VARCHAR" />
+  </resultMap>
+  <resultMap id="ResultMapWithBLOBs" type="com.dragon.book.model.TBook" extends="BaseResultMap" >
+    <result column="jj" property="jj" jdbcType="LONGVARCHAR" />
   </resultMap>
   <sql id="Example_Where_Clause" >
     <where >
@@ -69,8 +73,27 @@
     </where>
   </sql>
   <sql id="Base_Column_List" >
-    isbn, sm, cbsmc, cbrq, zz, type_id, tsdl
+    isbn, sm, cbsmc, cbrq, zz, type_id, tsdl, picture
   </sql>
+  <sql id="Blob_Column_List" >
+    jj
+  </sql>
+  <select id="selectByExampleWithBLOBs" resultMap="ResultMapWithBLOBs" parameterType="com.dragon.book.model.TBookExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from t_book
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
   <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.dragon.book.model.TBookExample" >
     select
     <if test="distinct" >
@@ -85,9 +108,11 @@
       order by ${orderByClause}
     </if>
   </select>
-  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+  <select id="selectByPrimaryKey" resultMap="ResultMapWithBLOBs" parameterType="java.lang.String" >
     select 
     <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
     from t_book
     where isbn = #{isbn,jdbcType=VARCHAR}
   </select>
@@ -103,11 +128,11 @@
   </delete>
   <insert id="insert" parameterType="com.dragon.book.model.TBook" >
     insert into t_book (isbn, sm, cbsmc, 
-      cbrq, zz, type_id, tsdl
-      )
+      cbrq, zz, type_id, tsdl, 
+      picture, jj)
     values (#{isbn,jdbcType=VARCHAR}, #{sm,jdbcType=VARCHAR}, #{cbsmc,jdbcType=VARCHAR}, 
-      #{cbrq,jdbcType=VARCHAR}, #{zz,jdbcType=VARCHAR}, #{typeId,jdbcType=INTEGER}, #{tsdl,jdbcType=VARCHAR}
-      )
+      #{cbrq,jdbcType=VARCHAR}, #{zz,jdbcType=VARCHAR}, #{typeId,jdbcType=INTEGER}, #{tsdl,jdbcType=VARCHAR}, 
+      #{picture,jdbcType=VARCHAR}, #{jj,jdbcType=LONGVARCHAR})
   </insert>
   <insert id="insertSelective" parameterType="com.dragon.book.model.TBook" >
     insert into t_book
@@ -133,6 +158,12 @@
       <if test="tsdl != null" >
         tsdl,
       </if>
+      <if test="picture != null" >
+        picture,
+      </if>
+      <if test="jj != null" >
+        jj,
+      </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides="," >
       <if test="isbn != null" >
@@ -155,6 +186,12 @@
       </if>
       <if test="tsdl != null" >
         #{tsdl,jdbcType=VARCHAR},
+      </if>
+      <if test="picture != null" >
+        #{picture,jdbcType=VARCHAR},
+      </if>
+      <if test="jj != null" >
+        #{jj,jdbcType=LONGVARCHAR},
       </if>
     </trim>
   </insert>
@@ -188,7 +225,28 @@
       <if test="record.tsdl != null" >
         tsdl = #{record.tsdl,jdbcType=VARCHAR},
       </if>
+      <if test="record.picture != null" >
+        picture = #{record.picture,jdbcType=VARCHAR},
+      </if>
+      <if test="record.jj != null" >
+        jj = #{record.jj,jdbcType=LONGVARCHAR},
+      </if>
     </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExampleWithBLOBs" parameterType="map" >
+    update t_book
+    set isbn = #{record.isbn,jdbcType=VARCHAR},
+      sm = #{record.sm,jdbcType=VARCHAR},
+      cbsmc = #{record.cbsmc,jdbcType=VARCHAR},
+      cbrq = #{record.cbrq,jdbcType=VARCHAR},
+      zz = #{record.zz,jdbcType=VARCHAR},
+      type_id = #{record.typeId,jdbcType=INTEGER},
+      tsdl = #{record.tsdl,jdbcType=VARCHAR},
+      picture = #{record.picture,jdbcType=VARCHAR},
+      jj = #{record.jj,jdbcType=LONGVARCHAR}
     <if test="_parameter != null" >
       <include refid="Update_By_Example_Where_Clause" />
     </if>
@@ -201,7 +259,8 @@
       cbrq = #{record.cbrq,jdbcType=VARCHAR},
       zz = #{record.zz,jdbcType=VARCHAR},
       type_id = #{record.typeId,jdbcType=INTEGER},
-      tsdl = #{record.tsdl,jdbcType=VARCHAR}
+      tsdl = #{record.tsdl,jdbcType=VARCHAR},
+      picture = #{record.picture,jdbcType=VARCHAR}
     <if test="_parameter != null" >
       <include refid="Update_By_Example_Where_Clause" />
     </if>
@@ -227,7 +286,25 @@
       <if test="tsdl != null" >
         tsdl = #{tsdl,jdbcType=VARCHAR},
       </if>
+      <if test="picture != null" >
+        picture = #{picture,jdbcType=VARCHAR},
+      </if>
+      <if test="jj != null" >
+        jj = #{jj,jdbcType=LONGVARCHAR},
+      </if>
     </set>
+    where isbn = #{isbn,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKeyWithBLOBs" parameterType="com.dragon.book.model.TBook" >
+    update t_book
+    set sm = #{sm,jdbcType=VARCHAR},
+      cbsmc = #{cbsmc,jdbcType=VARCHAR},
+      cbrq = #{cbrq,jdbcType=VARCHAR},
+      zz = #{zz,jdbcType=VARCHAR},
+      type_id = #{typeId,jdbcType=INTEGER},
+      tsdl = #{tsdl,jdbcType=VARCHAR},
+      picture = #{picture,jdbcType=VARCHAR},
+      jj = #{jj,jdbcType=LONGVARCHAR}
     where isbn = #{isbn,jdbcType=VARCHAR}
   </update>
   <update id="updateByPrimaryKey" parameterType="com.dragon.book.model.TBook" >
@@ -237,7 +314,8 @@
       cbrq = #{cbrq,jdbcType=VARCHAR},
       zz = #{zz,jdbcType=VARCHAR},
       type_id = #{typeId,jdbcType=INTEGER},
-      tsdl = #{tsdl,jdbcType=VARCHAR}
+      tsdl = #{tsdl,jdbcType=VARCHAR},
+      picture = #{picture,jdbcType=VARCHAR}
     where isbn = #{isbn,jdbcType=VARCHAR}
   </update>
 </mapper>

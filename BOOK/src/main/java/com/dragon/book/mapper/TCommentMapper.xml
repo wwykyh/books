@@ -8,7 +8,7 @@
     <result column="pjrq" property="pjrq" jdbcType="VARCHAR" />
   </resultMap>
   <resultMap id="ResultMapWithBLOBs" type="com.dragon.book.model.TComment" extends="BaseResultMap" >
-    <result column="nr" property="nr" jdbcType="LONGVARCHAR" />
+    <result column="nr" property="nr" jdbcType="LONGVARBINARY" />
   </resultMap>
   <sql id="Example_Where_Clause" >
     <where >
@@ -105,7 +105,7 @@
     </if>
   </select>
   <select id="selectByPrimaryKey" resultMap="ResultMapWithBLOBs" parameterType="java.lang.Integer" >
-    select
+    select 
     <include refid="Base_Column_List" />
     ,
     <include refid="Blob_Column_List" />
@@ -123,10 +123,10 @@
     </if>
   </delete>
   <insert id="insert" parameterType="com.dragon.book.model.TComment" >
-    insert into t_comment (comment_id, isbn, user_id,
+    insert into t_comment (comment_id, isbn, user_id, 
       pjrq, nr)
-    values (#{commentId,jdbcType=INTEGER}, #{isbn,jdbcType=VARCHAR}, #{userId,jdbcType=INTEGER},
-      #{pjrq,jdbcType=VARCHAR}, #{nr,jdbcType=LONGVARCHAR})
+    values (#{commentId,jdbcType=INTEGER}, #{isbn,jdbcType=VARCHAR}, #{userId,jdbcType=INTEGER}, 
+      #{pjrq,jdbcType=VARCHAR}, #{nr,jdbcType=LONGVARBINARY})
   </insert>
   <insert id="insertSelective" parameterType="com.dragon.book.model.TComment" >
     insert into t_comment
@@ -161,7 +161,7 @@
         #{pjrq,jdbcType=VARCHAR},
       </if>
       <if test="nr != null" >
-        #{nr,jdbcType=LONGVARCHAR},
+        #{nr,jdbcType=LONGVARBINARY},
       </if>
     </trim>
   </insert>
@@ -187,7 +187,7 @@
         pjrq = #{record.pjrq,jdbcType=VARCHAR},
       </if>
       <if test="record.nr != null" >
-        nr = #{record.nr,jdbcType=LONGVARCHAR},
+        nr = #{record.nr,jdbcType=LONGVARBINARY},
       </if>
     </set>
     <if test="_parameter != null" >
@@ -197,10 +197,10 @@
   <update id="updateByExampleWithBLOBs" parameterType="map" >
     update t_comment
     set comment_id = #{record.commentId,jdbcType=INTEGER},
-    isbn = #{record.isbn,jdbcType=VARCHAR},
-    user_id = #{record.userId,jdbcType=INTEGER},
-    pjrq = #{record.pjrq,jdbcType=VARCHAR},
-    nr = #{record.nr,jdbcType=LONGVARCHAR}
+      isbn = #{record.isbn,jdbcType=VARCHAR},
+      user_id = #{record.userId,jdbcType=INTEGER},
+      pjrq = #{record.pjrq,jdbcType=VARCHAR},
+      nr = #{record.nr,jdbcType=LONGVARBINARY}
     <if test="_parameter != null" >
       <include refid="Update_By_Example_Where_Clause" />
     </if>
@@ -208,9 +208,9 @@
   <update id="updateByExample" parameterType="map" >
     update t_comment
     set comment_id = #{record.commentId,jdbcType=INTEGER},
-    isbn = #{record.isbn,jdbcType=VARCHAR},
-    user_id = #{record.userId,jdbcType=INTEGER},
-    pjrq = #{record.pjrq,jdbcType=VARCHAR}
+      isbn = #{record.isbn,jdbcType=VARCHAR},
+      user_id = #{record.userId,jdbcType=INTEGER},
+      pjrq = #{record.pjrq,jdbcType=VARCHAR}
     <if test="_parameter != null" >
       <include refid="Update_By_Example_Where_Clause" />
     </if>
@@ -228,7 +228,7 @@
         pjrq = #{pjrq,jdbcType=VARCHAR},
       </if>
       <if test="nr != null" >
-        nr = #{nr,jdbcType=LONGVARCHAR},
+        nr = #{nr,jdbcType=LONGVARBINARY},
       </if>
     </set>
     where comment_id = #{commentId,jdbcType=INTEGER}
@@ -238,7 +238,7 @@
     set isbn = #{isbn,jdbcType=VARCHAR},
       user_id = #{userId,jdbcType=INTEGER},
       pjrq = #{pjrq,jdbcType=VARCHAR},
-      nr = #{nr,jdbcType=LONGVARCHAR}
+      nr = #{nr,jdbcType=LONGVARBINARY}
     where comment_id = #{commentId,jdbcType=INTEGER}
   </update>
   <update id="updateByPrimaryKey" parameterType="com.dragon.book.model.TComment" >
@@ -248,21 +248,4 @@
       pjrq = #{pjrq,jdbcType=VARCHAR}
     where comment_id = #{commentId,jdbcType=INTEGER}
   </update>
-
-  <select id="selectByUserId" resultMap="BaseResultMap" parameterType="com.dragon.book.model.TComment">
-    SELECT
-        tc.*
-    FROM
-        t_comment tc
-    WHERE
-        tc.user_id = (
-            SELECT
-                ts.user_id
-            FROM
-                t_borrow tb
-            LEFT JOIN t_sys_user ts ON tb.user_id = ts.user_id
-            WHERE
-                tb.id = #{user_id}
-        )
-  </select>
 </mapper>

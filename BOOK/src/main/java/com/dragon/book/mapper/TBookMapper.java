@@ -16,15 +16,21 @@ public interface TBookMapper {
 
     int insertSelective(TBook record);
 
+    List<TBook> selectByExampleWithBLOBs(TBookExample example);
+
     List<TBook> selectByExample(TBookExample example);
 
     TBook selectByPrimaryKey(String isbn);
 
     int updateByExampleSelective(@Param("record") TBook record, @Param("example") TBookExample example);
 
+    int updateByExampleWithBLOBs(@Param("record") TBook record, @Param("example") TBookExample example);
+
     int updateByExample(@Param("record") TBook record, @Param("example") TBookExample example);
 
     int updateByPrimaryKeySelective(TBook record);
+
+    int updateByPrimaryKeyWithBLOBs(TBook record);
 
     int updateByPrimaryKey(TBook record);
 }
