@@ -82,7 +82,6 @@
 
     }
     function tijiao() {
-        alert();
         var userId=form_eva.userId.value;
         var bookId=form_eva.bookId.value;
         $.ajax({
