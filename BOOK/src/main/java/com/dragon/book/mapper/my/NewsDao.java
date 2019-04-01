@@ -10,10 +10,10 @@ public interface NewsDao {
 
     /**
      * 获得个人消息总览
-     * @param userid
+     * @param userId
      * @return
      */
-    public List<TBookNews> getNews(@Param("userid") int userid);
+    public List<TBookNews> findNews(@Param("userId") int userId);
 
     /**
      * 删除用户信息
@@ -24,7 +24,7 @@ public interface NewsDao {
     /**
      * 查询消息详情
      * @param isbn
-     * @param userid
+     * @param userId
      */
-    public TBorrow findDetailInfo(@Param("isbn") int isbn, @Param("userid") int userid);
+    public TBorrow findDetailInfo(@Param("isbn") String isbn, @Param("userId") int userId);
 }

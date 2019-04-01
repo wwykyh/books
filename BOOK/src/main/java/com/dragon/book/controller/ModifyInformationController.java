@@ -5,7 +5,7 @@ package com.dragon.book.controller;
  * zzm
  */
 
-import com.dragon.book.service.my.ModifyInformationServiceImpl;
+import com.dragon.book.service.my.impl.ModifyInformationServiceImpl;
 import org.apache.ibatis.annotations.Param;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 @Controller
-@RequestMapping("/modifyinformation")
+@RequestMapping("/modifyInformation")
 public class ModifyInformationController {
     @Autowired
     private ModifyInformationServiceImpl modifyInformationServiceImpl;
@@ -23,29 +23,32 @@ public class ModifyInformationController {
      * @return
      * zzm
      */
-    @RequestMapping("/modifyindex")
+    @RequestMapping("/modifyIndex")
     public String modifyInfotmationIndex(){
         return "my/modifyInformation";
     }
 
     /**
      * 修改信息
-     * @param xm
-     * @param lxfs
-     * @param dz
-     * @param bm
-     * @param grsm
-     * @param userid
+     * @param xm 姓名
+     * @param lxfs 联系方式
+     * @param dz 地址
+     * @param bm 部门
+     * @param grsm 个人说明
+     * @param userid 用户ID
      * @return
      */
-    @RequestMapping("/domodifyinfotmation")
+    @RequestMapping("/doModifyInfortmation")
     @ResponseBody
     public String modifyInfotmation(@Param("xm")String xm,@Param("lxfs")String lxfs,@Param("dz")String dz,@Param("bm")String bm,@Param("grsm")String grsm,@Param("userid")int userid){
-        if(null!=xm||null!=lxfs||null!=dz||null!=bm||null!=grsm){
+        String message;
+        if(""!=xm||""!=lxfs||""!=dz||""!=bm||""!=grsm){
             modifyInformationServiceImpl.modifyInformation(xm,lxfs,dz,bm,grsm,userid);
-        return "success";
+            message = "修改成功！";
+        return message;
         }else {
-            return "error";
+            message = "修改失败！";
+            return message;
         }
     }
 

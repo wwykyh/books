@@ -9,7 +9,7 @@ public class TComment {
 
     private String pjrq;
 
-    private String nr;
+    private byte[] nr;
 
     public Integer getCommentId() {
         return commentId;
@@ -43,12 +43,12 @@ public class TComment {
         this.pjrq = pjrq == null ? null : pjrq.trim();
     }
 
-    public String getNr() {
+    public byte[] getNr() {
         return nr;
     }
 
-    public void setNr(String nr) {
-        this.nr = nr == null ? null : nr.trim();
+    public void setNr(byte[] nr) {
+        this.nr = nr;
     }
 
     @Override

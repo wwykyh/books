@@ -43,7 +43,7 @@
                             </tr>
                         </table>
                     </div>
-                    <a href="javascript:void(0);" class="btn" onclick="onPcAdd()"><span id="btnTypeLoad"><i class="icon icon-add"></i>添加</span></a>
+                    <%--<a href="javascript:void(0);" class="btn" onclick="onPcAdd()"><span id="btnTypeLoad"><i class="icon icon-add"></i>添加</span></a>--%>
                     <div id="typeInfo"></div>
                     <div id="pcInfo"></div>
                 </div>

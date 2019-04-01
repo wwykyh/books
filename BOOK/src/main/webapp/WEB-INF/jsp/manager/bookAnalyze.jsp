@@ -45,6 +45,7 @@ function fuzhi(myChart){
                     },
                     x:'center',
 					top:'20'
+
                 },
                 tooltip : {
                     trigger: 'item',
@@ -86,5 +87,11 @@ requirejs(['jquery', 'echarts'], function (jqeury, echarts) {
 	fuzhi(myChart);
 });
 
+        requirejs(['jquery', 'echarts'], function (jqeury, echarts) {
+            var myChart = echarts.init(document.getElementById("testMain"));
+            fuzhi(myChart);
+        });
+
 </script>
+
 </html>

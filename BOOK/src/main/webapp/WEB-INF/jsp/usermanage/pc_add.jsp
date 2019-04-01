@@ -10,20 +10,19 @@
 <html>
 <head>
     <title>赔偿信息添加</title>
-    <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/common/iconfont/iconfont.css" />
-    <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/common/layout.css" />
-    <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/dvpt/css/libs.css" />
-    <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/demo/style.css" />
-    <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/theme/blue.css" id="style" />
-    <script type="text/javascript" src="${pageContext.request.contextPath}/dvpt/config.js"></script>
+    <link rel="stylesheet" type="text/css" href="../css/common/iconfont/iconfont.css" />
+    <link rel="stylesheet" type="text/css" href="../css/common/layout.css" />
+    <link rel="stylesheet" type="text/css" href="../dvpt/css/libs.css" />
+    <link rel="stylesheet" type="text/css" href="../css/demo/style.css" />
+    <link rel="stylesheet" type="text/css" href="../css/theme/blue.css" id="style" />
+    <script type="text/javascript" src="../dvpt/config.js"></script>
+    <script type="text/javascript" src="../dvpt/jquery.min.js"></script>
     <!-- 日期插件，使用jquery -->
-    <link rel="stylesheet" href="js/libs/jquery/jquery.datepick.css" type="text/css">
-    <script type="text/javascript" src="js/libs/jquery/jquery.datepick.js"></script>
-    <script type="text/javascript" src="js/libs/jquery/jquery.datepick-zh-CN.js"></script>
+    <link rel="stylesheet" href="../js/libs/jquery/jquery.datepick.css" type="text/css">
+    <script type="text/javascript" src="../js/libs/jquery/jquery.datepick.js"></script>
+    <script type="text/javascript" src="../js/libs/jquery/jquery.datepick-zh-CN.js"></script>
     <!-- 改造的脚本 -->
-    <script type="text/javascript" src="${pageContext.request.contextPath}/js/extend.js"></script>
-    <!-- 共有的控件 -->
-    <script data-main="main" src="${pageContext.request.contextPath}/dvpt/require.min.2.1.11.js"></script>
+    <script type="text/javascript" src="../js/extend.js"></script>
 </head>
 <body>
     <div class="panel">
@@ -39,7 +38,7 @@
                         <td width="33%"><input id="userId" name="userId" data-validate="required" type="text" class="input-text "></td>
                     </tr>
                     <tr>
-                        <th width="17%"><span class="ft-need">*</span>图书ISBN：</th>
+                        <th width="17%"><span class="ft-need">*</span>图书Sid：</th>
                         <td width="33%"><input id="isbn" name="isbn" data-validate="required" type="text" class="input-text "></td>
                     </tr>
                     <tr>
@@ -86,7 +85,6 @@
         $(document).ready(function(){
             //使用class属性处理  'yy-mm-dd' 设置格式"yy-mm-dd"
             var date = new Date();
-            alert(date.toString());
             $('#pcdate').valueOf(date.toString());
             $('#pcdate').datepick({dateFormat: 'yy-mm-dd'});
         });
@@ -108,7 +106,7 @@
                         parent.select() ;
                         parent.art.dialog({id:'pc_add_window'}).close() ;
                     }else {
-                        alert("类型添加失败！");
+                        alert("添加失败！");
                     }
                 }
             });

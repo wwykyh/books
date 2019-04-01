@@ -2,7 +2,7 @@ package com.dragon.book.controller;
 
 import com.dragon.book.model.TBookNews;
 import com.dragon.book.model.TBorrow;
-import com.dragon.book.service.my.NewsServiceImpl;
+import com.dragon.book.service.my.impl.NewsServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -25,46 +25,53 @@ public class NewsController {
 
     /**
      * 获得个人消息总览
-     * @param uid
+     * @param uId 用户ID
      * @param map
      * @return
      */
-    @RequestMapping("/tonews")
-    public String toNewsIndex(@RequestParam("userid")String uid, Map map){
-        int userid = Integer.parseInt(uid);
-        if(0!=userid){
-            List<TBookNews> tBookNews = newsServiceImpl.getNews(userid);
+    @RequestMapping("/toNews")
+    public String toNewsIndex(@RequestParam("userId")int uId, Map map){
+        if(0!=uId){
+            List<TBookNews> tBookNews = newsServiceImpl.findNews(uId);
             map.put("tBookNews",tBookNews);
+            return "/my/news";
+        }else {
+            return "/my/error";
         }
-        return "/my/news";
     }
 
     /**
      * 删除消息
-     * @param id
+     * @param id 消息ID
      * @return
      */
     @RequestMapping("/deleteNews")
     @ResponseBody
     public String deleteNews(@RequestParam("id")int id){
+        String message;
         if(0!=id){
             newsServiceImpl.deleteNews(id);
             return "success";
         }
-        return "error";
+        message = "删除失败！";
+        return message;
     }
 
     /**
      * 获取详细信息
-     * @param isbn
-     * @param uid
+     * @param isbn 图书编号
+     * @param uId 用户ID
      * @param map
      * @return
      */
     @RequestMapping("/toNewsDetailInfo")
-    public String toNewsDetailInfo(@RequestParam("isbn")int isbn,@RequestParam("userid")int uid, Map map){
-        TBorrow tBorrow = newsServiceImpl.findDetailInfo(isbn,uid);
-        map.put("tborrow",tBorrow);
-        return "/my/bookNewsInfo";
+    public String toNewsDetailInfo(@RequestParam("isbn")String isbn, @RequestParam("userId")int uId, Map map){
+        if(null!=isbn&&""!=isbn&&0!= uId) {
+            TBorrow tBorrow = newsServiceImpl.findDetailInfo(isbn, uId);
+            map.put("tborrow", tBorrow);
+            return "/my/bookNewsInfo";
+        }else {
+            return "/my/error";
+        }
     }
 }

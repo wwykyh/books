@@ -1,30 +1,17 @@
 package com.dragon.book.model;
 
 public class TBookNews {
-
     private Integer id;
 
-    private Integer user_id;
+    private Integer userId;
 
-    private String book_isbn;
+    private String bookIsbn;
 
-    private String news_name;
+    private String newsName;
 
-    private String news_date;
+    private String newsDate;
 
-    private String news_type;
-
-    @Override
-    public String toString() {
-        return "TBookNews{" +
-                "id=" + id +
-                ", user_id=" + user_id +
-                ", book_isbn='" + book_isbn + '\'' +
-                ", news_name='" + news_name + '\'' +
-                ", news_date='" + news_date + '\'' +
-                ", news_type='" + news_type + '\'' +
-                '}';
-    }
+    private String newsType;
 
     public Integer getId() {
         return id;
@@ -34,43 +21,43 @@ public class TBookNews {
         this.id = id;
     }
 
-    public Integer getUser_id() {
-        return user_id;
+    public Integer getUserId() {
+        return userId;
     }
 
-    public void setUser_id(Integer user_id) {
-        this.user_id = user_id;
+    public void setUserId(Integer userId) {
+        this.userId = userId;
     }
 
-    public String getBook_isbn() {
-        return book_isbn;
+    public String getBookIsbn() {
+        return bookIsbn;
     }
 
-    public void setBook_isbn(String book_isbn) {
-        this.book_isbn = book_isbn;
+    public void setBookIsbn(String bookIsbn) {
+        this.bookIsbn = bookIsbn == null ? null : bookIsbn.trim();
     }
 
-    public String getNews_name() {
-        return news_name;
+    public String getNewsName() {
+        return newsName;
     }
 
-    public void setNews_name(String news_name) {
-        this.news_name = news_name;
+    public void setNewsName(String newsName) {
+        this.newsName = newsName == null ? null : newsName.trim();
     }
 
-    public String getNews_date() {
-        return news_date;
+    public String getNewsDate() {
+        return newsDate;
     }
 
-    public void setNews_date(String news_date) {
-        this.news_date = news_date;
+    public void setNewsDate(String newsDate) {
+        this.newsDate = newsDate == null ? null : newsDate.trim();
     }
 
-    public String getNews_type() {
-        return news_type;
+    public String getNewsType() {
+        return newsType;
     }
 
-    public void setNews_type(String news_type) {
-        this.news_type = news_type;
+    public void setNewsType(String newsType) {
+        this.newsType = newsType == null ? null : newsType.trim();
     }
 }

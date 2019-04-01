@@ -3,14 +3,14 @@ package com.dragon.book.model;
 import java.util.ArrayList;
 import java.util.List;
 
-public class TCompensateExample {
+public class TBookNewsExample {
     protected String orderByClause;
 
     protected boolean distinct;
 
     protected List<Criteria> oredCriteria;
 
-    public TCompensateExample() {
+    public TBookNewsExample() {
         oredCriteria = new ArrayList<Criteria>();
     }
 
@@ -164,76 +164,6 @@ public class TCompensateExample {
             return (Criteria) this;
         }
 
-        public Criteria andSIdIsNull() {
-            addCriterion("s_id is null");
-            return (Criteria) this;
-        }
-
-        public Criteria andSIdIsNotNull() {
-            addCriterion("s_id is not null");
-            return (Criteria) this;
-        }
-
-        public Criteria andSIdEqualTo(String value) {
-            addCriterion("s_id =", value, "sId");
-            return (Criteria) this;
-        }
-
-        public Criteria andSIdNotEqualTo(String value) {
-            addCriterion("s_id <>", value, "sId");
-            return (Criteria) this;
-        }
-
-        public Criteria andSIdGreaterThan(String value) {
-            addCriterion("s_id >", value, "sId");
-            return (Criteria) this;
-        }
-
-        public Criteria andSIdGreaterThanOrEqualTo(String value) {
-            addCriterion("s_id >=", value, "sId");
-            return (Criteria) this;
-        }
-
-        public Criteria andSIdLessThan(String value) {
-            addCriterion("s_id <", value, "sId");
-            return (Criteria) this;
-        }
-
-        public Criteria andSIdLessThanOrEqualTo(String value) {
-            addCriterion("s_id <=", value, "sId");
-            return (Criteria) this;
-        }
-
-        public Criteria andSIdLike(String value) {
-            addCriterion("s_id like", value, "sId");
-            return (Criteria) this;
-        }
-
-        public Criteria andSIdNotLike(String value) {
-            addCriterion("s_id not like", value, "sId");
-            return (Criteria) this;
-        }
-
-        public Criteria andSIdIn(List<String> values) {
-            addCriterion("s_id in", values, "sId");
-            return (Criteria) this;
-        }
-
-        public Criteria andSIdNotIn(List<String> values) {
-            addCriterion("s_id not in", values, "sId");
-            return (Criteria) this;
-        }
-
-        public Criteria andSIdBetween(String value1, String value2) {
-            addCriterion("s_id between", value1, value2, "sId");
-            return (Criteria) this;
-        }
-
-        public Criteria andSIdNotBetween(String value1, String value2) {
-            addCriterion("s_id not between", value1, value2, "sId");
-            return (Criteria) this;
-        }
-
         public Criteria andUserIdIsNull() {
             addCriterion("user_id is null");
             return (Criteria) this;
@@ -294,253 +224,283 @@ public class TCompensateExample {
             return (Criteria) this;
         }
 
-        public Criteria andShIsNull() {
-            addCriterion("sh is null");
+        public Criteria andBookIsbnIsNull() {
+            addCriterion("book_isbn is null");
             return (Criteria) this;
         }
 
-        public Criteria andShIsNotNull() {
-            addCriterion("sh is not null");
+        public Criteria andBookIsbnIsNotNull() {
+            addCriterion("book_isbn is not null");
             return (Criteria) this;
         }
 
-        public Criteria andShEqualTo(Integer value) {
-            addCriterion("sh =", value, "sh");
+        public Criteria andBookIsbnEqualTo(String value) {
+            addCriterion("book_isbn =", value, "bookIsbn");
             return (Criteria) this;
         }
 
-        public Criteria andShNotEqualTo(Integer value) {
-            addCriterion("sh <>", value, "sh");
+        public Criteria andBookIsbnNotEqualTo(String value) {
+            addCriterion("book_isbn <>", value, "bookIsbn");
             return (Criteria) this;
         }
 
-        public Criteria andShGreaterThan(Integer value) {
-            addCriterion("sh >", value, "sh");
+        public Criteria andBookIsbnGreaterThan(String value) {
+            addCriterion("book_isbn >", value, "bookIsbn");
             return (Criteria) this;
         }
 
-        public Criteria andShGreaterThanOrEqualTo(Integer value) {
-            addCriterion("sh >=", value, "sh");
+        public Criteria andBookIsbnGreaterThanOrEqualTo(String value) {
+            addCriterion("book_isbn >=", value, "bookIsbn");
             return (Criteria) this;
         }
 
-        public Criteria andShLessThan(Integer value) {
-            addCriterion("sh <", value, "sh");
+        public Criteria andBookIsbnLessThan(String value) {
+            addCriterion("book_isbn <", value, "bookIsbn");
             return (Criteria) this;
         }
 
-        public Criteria andShLessThanOrEqualTo(Integer value) {
-            addCriterion("sh <=", value, "sh");
+        public Criteria andBookIsbnLessThanOrEqualTo(String value) {
+            addCriterion("book_isbn <=", value, "bookIsbn");
             return (Criteria) this;
         }
 
-        public Criteria andShIn(List<Integer> values) {
-            addCriterion("sh in", values, "sh");
+        public Criteria andBookIsbnLike(String value) {
+            addCriterion("book_isbn like", value, "bookIsbn");
             return (Criteria) this;
         }
 
-        public Criteria andShNotIn(List<Integer> values) {
-            addCriterion("sh not in", values, "sh");
+        public Criteria andBookIsbnNotLike(String value) {
+            addCriterion("book_isbn not like", value, "bookIsbn");
             return (Criteria) this;
         }
 
-        public Criteria andShBetween(Integer value1, Integer value2) {
-            addCriterion("sh between", value1, value2, "sh");
+        public Criteria andBookIsbnIn(List<String> values) {
+            addCriterion("book_isbn in", values, "bookIsbn");
             return (Criteria) this;
         }
 
-        public Criteria andShNotBetween(Integer value1, Integer value2) {
-            addCriterion("sh not between", value1, value2, "sh");
+        public Criteria andBookIsbnNotIn(List<String> values) {
+            addCriterion("book_isbn not in", values, "bookIsbn");
             return (Criteria) this;
         }
 
-        public Criteria andPcdateIsNull() {
-            addCriterion("pcdate is null");
+        public Criteria andBookIsbnBetween(String value1, String value2) {
+            addCriterion("book_isbn between", value1, value2, "bookIsbn");
             return (Criteria) this;
         }
 
-        public Criteria andPcdateIsNotNull() {
-            addCriterion("pcdate is not null");
+        public Criteria andBookIsbnNotBetween(String value1, String value2) {
+            addCriterion("book_isbn not between", value1, value2, "bookIsbn");
             return (Criteria) this;
         }
 
-        public Criteria andPcdateEqualTo(String value) {
-            addCriterion("pcdate =", value, "pcdate");
+        public Criteria andNewsNameIsNull() {
+            addCriterion("news_name is null");
             return (Criteria) this;
         }
 
-        public Criteria andPcdateNotEqualTo(String value) {
-            addCriterion("pcdate <>", value, "pcdate");
+        public Criteria andNewsNameIsNotNull() {
+            addCriterion("news_name is not null");
             return (Criteria) this;
         }
 
-        public Criteria andPcdateGreaterThan(String value) {
-            addCriterion("pcdate >", value, "pcdate");
+        public Criteria andNewsNameEqualTo(String value) {
+            addCriterion("news_name =", value, "newsName");
             return (Criteria) this;
         }
 
-        public Criteria andPcdateGreaterThanOrEqualTo(String value) {
-            addCriterion("pcdate >=", value, "pcdate");
+        public Criteria andNewsNameNotEqualTo(String value) {
+            addCriterion("news_name <>", value, "newsName");
             return (Criteria) this;
         }
 
-        public Criteria andPcdateLessThan(String value) {
-            addCriterion("pcdate <", value, "pcdate");
+        public Criteria andNewsNameGreaterThan(String value) {
+            addCriterion("news_name >", value, "newsName");
             return (Criteria) this;
         }
 
-        public Criteria andPcdateLessThanOrEqualTo(String value) {
-            addCriterion("pcdate <=", value, "pcdate");
+        public Criteria andNewsNameGreaterThanOrEqualTo(String value) {
+            addCriterion("news_name >=", value, "newsName");
             return (Criteria) this;
         }
 
-        public Criteria andPcdateLike(String value) {
-            addCriterion("pcdate like", value, "pcdate");
+        public Criteria andNewsNameLessThan(String value) {
+            addCriterion("news_name <", value, "newsName");
             return (Criteria) this;
         }
 
-        public Criteria andPcdateNotLike(String value) {
-            addCriterion("pcdate not like", value, "pcdate");
+        public Criteria andNewsNameLessThanOrEqualTo(String value) {
+            addCriterion("news_name <=", value, "newsName");
             return (Criteria) this;
         }
 
-        public Criteria andPcdateIn(List<String> values) {
-            addCriterion("pcdate in", values, "pcdate");
+        public Criteria andNewsNameLike(String value) {
+            addCriterion("news_name like", value, "newsName");
             return (Criteria) this;
         }
 
-        public Criteria andPcdateNotIn(List<String> values) {
-            addCriterion("pcdate not in", values, "pcdate");
+        public Criteria andNewsNameNotLike(String value) {
+            addCriterion("news_name not like", value, "newsName");
             return (Criteria) this;
         }
 
-        public Criteria andPcdateBetween(String value1, String value2) {
-            addCriterion("pcdate between", value1, value2, "pcdate");
+        public Criteria andNewsNameIn(List<String> values) {
+            addCriterion("news_name in", values, "newsName");
             return (Criteria) this;
         }
 
-        public Criteria andPcdateNotBetween(String value1, String value2) {
-            addCriterion("pcdate not between", value1, value2, "pcdate");
+        public Criteria andNewsNameNotIn(List<String> values) {
+            addCriterion("news_name not in", values, "newsName");
             return (Criteria) this;
         }
 
-        public Criteria andIspcIsNull() {
-            addCriterion("ispc is null");
+        public Criteria andNewsNameBetween(String value1, String value2) {
+            addCriterion("news_name between", value1, value2, "newsName");
             return (Criteria) this;
         }
 
-        public Criteria andIspcIsNotNull() {
-            addCriterion("ispc is not null");
+        public Criteria andNewsNameNotBetween(String value1, String value2) {
+            addCriterion("news_name not between", value1, value2, "newsName");
             return (Criteria) this;
         }
 
-        public Criteria andIspcEqualTo(Integer value) {
-            addCriterion("ispc =", value, "ispc");
+        public Criteria andNewsDateIsNull() {
+            addCriterion("news_date is null");
             return (Criteria) this;
         }
 
-        public Criteria andIspcNotEqualTo(Integer value) {
-            addCriterion("ispc <>", value, "ispc");
+        public Criteria andNewsDateIsNotNull() {
+            addCriterion("news_date is not null");
             return (Criteria) this;
         }
 
-        public Criteria andIspcGreaterThan(Integer value) {
-            addCriterion("ispc >", value, "ispc");
+        public Criteria andNewsDateEqualTo(String value) {
+            addCriterion("news_date =", value, "newsDate");
             return (Criteria) this;
         }
 
-        public Criteria andIspcGreaterThanOrEqualTo(Integer value) {
-            addCriterion("ispc >=", value, "ispc");
+        public Criteria andNewsDateNotEqualTo(String value) {
+            addCriterion("news_date <>", value, "newsDate");
             return (Criteria) this;
         }
 
-        public Criteria andIspcLessThan(Integer value) {
-            addCriterion("ispc <", value, "ispc");
+        public Criteria andNewsDateGreaterThan(String value) {
+            addCriterion("news_date >", value, "newsDate");
             return (Criteria) this;
         }
 
-        public Criteria andIspcLessThanOrEqualTo(Integer value) {
-            addCriterion("ispc <=", value, "ispc");
+        public Criteria andNewsDateGreaterThanOrEqualTo(String value) {
+            addCriterion("news_date >=", value, "newsDate");
             return (Criteria) this;
         }
 
-        public Criteria andIspcIn(List<Integer> values) {
-            addCriterion("ispc in", values, "ispc");
+        public Criteria andNewsDateLessThan(String value) {
+            addCriterion("news_date <", value, "newsDate");
             return (Criteria) this;
         }
 
-        public Criteria andIspcNotIn(List<Integer> values) {
-            addCriterion("ispc not in", values, "ispc");
+        public Criteria andNewsDateLessThanOrEqualTo(String value) {
+            addCriterion("news_date <=", value, "newsDate");
             return (Criteria) this;
         }
 
-        public Criteria andIspcBetween(Integer value1, Integer value2) {
-            addCriterion("ispc between", value1, value2, "ispc");
+        public Criteria andNewsDateLike(String value) {
+            addCriterion("news_date like", value, "newsDate");
             return (Criteria) this;
         }
 
-        public Criteria andIspcNotBetween(Integer value1, Integer value2) {
-            addCriterion("ispc not between", value1, value2, "ispc");
+        public Criteria andNewsDateNotLike(String value) {
+            addCriterion("news_date not like", value, "newsDate");
             return (Criteria) this;
         }
 
-        public Criteria andIscountIsNull() {
-            addCriterion("iscount is null");
+        public Criteria andNewsDateIn(List<String> values) {
+            addCriterion("news_date in", values, "newsDate");
             return (Criteria) this;
         }
 
-        public Criteria andIscountIsNotNull() {
-            addCriterion("iscount is not null");
+        public Criteria andNewsDateNotIn(List<String> values) {
+            addCriterion("news_date not in", values, "newsDate");
             return (Criteria) this;
         }
 
-        public Criteria andIscountEqualTo(Integer value) {
-            addCriterion("iscount =", value, "iscount");
+        public Criteria andNewsDateBetween(String value1, String value2) {
+            addCriterion("news_date between", value1, value2, "newsDate");
             return (Criteria) this;
         }
 
-        public Criteria andIscountNotEqualTo(Integer value) {
-            addCriterion("iscount <>", value, "iscount");
+        public Criteria andNewsDateNotBetween(String value1, String value2) {
+            addCriterion("news_date not between", value1, value2, "newsDate");
             return (Criteria) this;
         }
 
-        public Criteria andIscountGreaterThan(Integer value) {
-            addCriterion("iscount >", value, "iscount");
+        public Criteria andNewsTypeIsNull() {
+            addCriterion("news_type is null");
             return (Criteria) this;
         }
 
-        public Criteria andIscountGreaterThanOrEqualTo(Integer value) {
-            addCriterion("iscount >=", value, "iscount");
+        public Criteria andNewsTypeIsNotNull() {
+            addCriterion("news_type is not null");
             return (Criteria) this;
         }
 
-        public Criteria andIscountLessThan(Integer value) {
-            addCriterion("iscount <", value, "iscount");
+        public Criteria andNewsTypeEqualTo(String value) {
+            addCriterion("news_type =", value, "newsType");
             return (Criteria) this;
         }
 
-        public Criteria andIscountLessThanOrEqualTo(Integer value) {
-            addCriterion("iscount <=", value, "iscount");
+        public Criteria andNewsTypeNotEqualTo(String value) {
+            addCriterion("news_type <>", value, "newsType");
             return (Criteria) this;
         }
 
-        public Criteria andIscountIn(List<Integer> values) {
-            addCriterion("iscount in", values, "iscount");
+        public Criteria andNewsTypeGreaterThan(String value) {
+            addCriterion("news_type >", value, "newsType");
             return (Criteria) this;
         }
 
-        public Criteria andIscountNotIn(List<Integer> values) {
-            addCriterion("iscount not in", values, "iscount");
+        public Criteria andNewsTypeGreaterThanOrEqualTo(String value) {
+            addCriterion("news_type >=", value, "newsType");
             return (Criteria) this;
         }
 
-        public Criteria andIscountBetween(Integer value1, Integer value2) {
-            addCriterion("iscount between", value1, value2, "iscount");
+        public Criteria andNewsTypeLessThan(String value) {
+            addCriterion("news_type <", value, "newsType");
             return (Criteria) this;
         }
 
-        public Criteria andIscountNotBetween(Integer value1, Integer value2) {
-            addCriterion("iscount not between", value1, value2, "iscount");
+        public Criteria andNewsTypeLessThanOrEqualTo(String value) {
+            addCriterion("news_type <=", value, "newsType");
+            return (Criteria) this;
+        }
+
+        public Criteria andNewsTypeLike(String value) {
+            addCriterion("news_type like", value, "newsType");
+            return (Criteria) this;
+        }
+
+        public Criteria andNewsTypeNotLike(String value) {
+            addCriterion("news_type not like", value, "newsType");
+            return (Criteria) this;
+        }
+
+        public Criteria andNewsTypeIn(List<String> values) {
+            addCriterion("news_type in", values, "newsType");
+            return (Criteria) this;
+        }
+
+        public Criteria andNewsTypeNotIn(List<String> values) {
+            addCriterion("news_type not in", values, "newsType");
+            return (Criteria) this;
+        }
+
+        public Criteria andNewsTypeBetween(String value1, String value2) {
+            addCriterion("news_type between", value1, value2, "newsType");
+            return (Criteria) this;
+        }
+
+        public Criteria andNewsTypeNotBetween(String value1, String value2) {
+            addCriterion("news_type not between", value1, value2, "newsType");
             return (Criteria) this;
         }
     }
