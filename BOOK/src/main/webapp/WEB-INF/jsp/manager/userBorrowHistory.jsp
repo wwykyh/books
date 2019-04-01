@@ -105,7 +105,7 @@
                         else return "" ;
                     }
                 }],
-                url: '/userBorrow/user_historyPage',
+                url: '/user_historyPage',
                 method:'get',
                 dataType: 'server',
                 dataAction: 'server',
@@ -144,7 +144,6 @@
     });
 
     function onHistoryInfo(id){
-        alert(id);
         art.dialog.open('history_info?id='+id, {
             title: '借阅详情',
             width: 850,
@@ -154,11 +153,11 @@
         });
     }
     function commentInfo(id){
-
-        art.dialog.open('userBorrow/commentInfo?id='+id, {
+        art.dialog.open('commentInfo?id='+id, {
             title: '评价',
             width: 850,
-            height: 575,
+            height: 550,
+            id:'commentInfo_window',
             cancel: true,
             cancelVal: "关闭"
         });

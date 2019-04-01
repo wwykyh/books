@@ -2,14 +2,17 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="com.dragon.book.mapper.TCommentMapper" >
   <resultMap id="BaseResultMap" type="com.dragon.book.model.TComment" >
-    <id column="comment_id" property="commentId" jdbcType="INTEGER" />
-    <result column="isbn" property="isbn" jdbcType="VARCHAR" />
-    <result column="user_id" property="userId" jdbcType="INTEGER" />
-    <result column="pjrq" property="pjrq" jdbcType="VARCHAR" />
-  </resultMap>
+        <id column="comment_id" property="commentId" jdbcType="INTEGER" />
+        <result column="isbn" property="isbn" jdbcType="VARCHAR" />
+        <result column="user_id" property="userId" jdbcType="INTEGER" />
+        <result column="pjrq" property="pjrq" jdbcType="VARCHAR" />
+    </resultMap>
+
   <resultMap id="ResultMapWithBLOBs" type="com.dragon.book.model.TComment" extends="BaseResultMap" >
     <result column="nr" property="nr" jdbcType="LONGVARCHAR" />
   </resultMap>
+
+
   <sql id="Example_Where_Clause" >
     <where >
       <foreach collection="oredCriteria" item="criteria" separator="or" >
@@ -248,21 +251,4 @@
       pjrq = #{pjrq,jdbcType=VARCHAR}
     where comment_id = #{commentId,jdbcType=INTEGER}
   </update>
-
-  <select id="selectByUserId" resultMap="BaseResultMap" parameterType="com.dragon.book.model.TComment">
-    SELECT
-        tc.*
-    FROM
-        t_comment tc
-    WHERE
-        tc.user_id = (
-            SELECT
-                ts.user_id
-            FROM
-                t_borrow tb
-            LEFT JOIN t_sys_user ts ON tb.user_id = ts.user_id
-            WHERE
-                tb.id = #{user_id}
-        )
-  </select>
 </mapper>

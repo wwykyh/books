@@ -295,7 +295,6 @@ public class BookManagerController {
     }
     @RequestMapping("/history_info")
     public String HistoryInfo(Integer id,Model model){
-        System.out.println(id);
         HistoryInfo history = bookService.selectHistoryById(id);
         model.addAttribute("history",history) ;
         return "manager/history_info";
@@ -304,17 +303,16 @@ public class BookManagerController {
      * 图书分析控制
      */
     @RequestMapping("/bookAnalyze")
-    public String showBookAnalyzePage(Model model){
+    public String showBookAnalyzePage(){
         return "manager/bookAnalyze";
     }
+
     /**
      * 异步获取数据
      */
     @RequestMapping(value="/borrowInfo",method=RequestMethod.GET)
     public @ResponseBody List<TBookAnalyze> charts(){
         List<TBookAnalyze> user =bookAnalyzeService.getBoorowNum();
-        System.out.println(user);
-        System.out.println(user);
         return user;
     }
 }

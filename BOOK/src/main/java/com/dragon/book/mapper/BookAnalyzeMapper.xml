@@ -8,15 +8,26 @@
     </resultMap>
 
     <select id="selBorrowNum" resultMap="BaseResultMap" >
-    SELECT ty.type_id ,ty.lxmc,tn.num
-    FROM t_type ty LEFT OUTER JOIN
-    (SELECT
-		COUNT(tb.type_id) AS num,tb.type_id as tp
-	FROM
-		t_borrow tw
-	LEFT OUTER JOIN t_book tb ON tw.s_id = tb.isbn
-	GROUP BY
-		tb.type_id ) AS tn
-		 on tn.tp=ty.type_id
+        SELECT
+            ty.type_id,
+            ty.lxmc,
+            tn.num
+        FROM
+            t_type ty
+        LEFT OUTER JOIN (
+            SELECT
+                COUNT(tb.type_id) AS num,
+                tb.type_id AS tp
+            FROM
+                t_book tb
+            RIGHT  OUTER JOIN  (
+            SELECT
+                ts.isbn,ts.id,tw.s_id
+            FROM
+                t_borrow tw, t_store ts where tw.s_id = ts.id
+            ) AS tbt ON tbt.isbn= tb.isbn
+            GROUP BY
+                tb.type_id
+        ) AS tn ON tn.tp = ty.type_id
     </select>
 </mapper>

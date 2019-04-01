@@ -1,6 +1,7 @@
 package com.dragon.book.service;
 
 import com.dragon.book.model.TComment;
+import com.dragon.book.pojo.CommentInfo;
 
 import java.util.List;
 
@@ -8,6 +9,6 @@ public interface UserBorrowService {
 
     public int addUserComment(TComment tComment);
 
-    List<TComment> selUserComment(String user_id);
+    List<CommentInfo> selUserComment(Integer bookId);
 
 }

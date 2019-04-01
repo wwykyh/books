@@ -45,7 +45,6 @@ function fuzhi(myChart){
                     },
                     x:'center',
 					top:'20'
-
                 },
                 tooltip : {
                     trigger: 'item',
@@ -55,7 +54,7 @@ function fuzhi(myChart){
                     type: 'scroll',
                     orient: 'vertical',
                     right:10,
-                    top:20,
+                    top:10,
                     bottom:20,
                     data: legendData
                 },
@@ -74,16 +73,18 @@ function fuzhi(myChart){
                     }
                 }]
             });
+        } ,
+        error: function(msg) {
+            console.log(msg)
         }
     });
+    myChart.hideLoading();
 }
-    requirejs(['main'], function (main) {
-        requirejs(['jquery', 'echarts'], function (jqeury, echarts) {
-            var myChart = echarts.init(document.getElementById("testMain"));
-            fuzhi(myChart);
-        });
-    });
+requirejs(['jquery', 'echarts'], function (jqeury, echarts) {
+	var myChart = echarts.init(document.getElementById("testMain"));
+    myChart.showLoading();
+	fuzhi(myChart);
+});
 
 </script>
-
 </html>

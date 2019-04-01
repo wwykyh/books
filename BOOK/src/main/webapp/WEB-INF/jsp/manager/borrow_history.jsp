@@ -56,24 +56,12 @@
     var end_time ;
     var dim ;
     var user ;
-    function KeyHide(){
-        if("${sessionScope.userName}"!="admin"){
-            $("#dim").hide();
-            $("#user").hide();
-        }
-    }
-
     requirejs(['jquery', 'ligerGrid','dg.datePicker', 'artdialog'], function($) {
         $(function () {
             start_time = "" ;
             end_time = "" ;
             dim = "" ;
-            if("${user.xm}"=="admin"){
-                user = "" ;
-            }else {
-                user="${user.xm}";
-            }
-            KeyHide();
+            user = "" ;
             select() ;
         }) ;
         function select() {
@@ -138,11 +126,7 @@
             start_time = $("#start_time").val() ;
             end_time = $("#end_time").val() ;
             dim = $("#dim").val();
-            if("${user.xm}"=="admin"){
-                user = " " ;
-            }else {
-                user="${user.xm}"
-            }
+            user = $("#user").val();
             select() ;
         }) ;
     });
