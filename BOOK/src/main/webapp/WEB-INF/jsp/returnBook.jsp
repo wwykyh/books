@@ -44,9 +44,7 @@
     </div>
     <script type="text/javascript">
         $(document).ready(function (){
-            <%--if (${books}==null){--%>
-                <%--alert("当前未有尚未归还的图书")--%>
-        <%--}--%>
+
         });
 
         //ajax提交表单

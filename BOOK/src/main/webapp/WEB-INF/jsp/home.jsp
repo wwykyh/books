@@ -44,7 +44,7 @@
             <span  style="display: block;font-size: 20px;margin-top: 20px">还书</span><i class="icon-envelope"></i><i class="icon-envelope"></i>
         </a>
         <marquee id="affiche" align="right"  behavior="scroll"   loop="-1"  onMouseOut="this.start()" onMouseOver="this.stop()">
-            <font color=red size="4px" style="font-weight: bold" >大数据事业部周赵茂借的“Java编程思想”逾期未还，请尽快归还！！！</font>
+            <div id="scrollbar"  style="height:23px;font-size:16px;color:red" >${overTimeUsers}&emsp;</div>
         </marquee>
 	</div>
   </div>
@@ -74,7 +74,7 @@
                       </tr>
                       <tr >
                           <td ><img src="home/img/num1.png" height="40" width="40"></td>
-                          <td id="name1"><font size="4px">周赵茂</font></td>
+                          <td id="name1"><font size="4px">周赵茂${rankingListUsers}</font></td>
                           <td id="depart1"><font size="4px">大数据事业部</font></td>
                           <td id="times1"><font size="4px">16次</font></td>
                       </tr>
@@ -217,11 +217,26 @@
 </section>
 
 <script type="text/javascript">
-    $(document).ready(function (){
-        getHomeInfo();
-    });
+    // requirejs(['jquery', 'ligerGrid','dg.datePicker', 'artdialog'], function($) {
+    // $(document).ready(function (){
+    //     $.ajax({
+    //         cache: true,
+    //         type: "GET",
+    //         url:"/get_home",
+    //         async: false,
+    //         error: function(request) {
+    //             alert("Connection error:"+request.error);
+    //         },
+    //         success: function(data) {
+    //             if(data !=null){
+    //                 $("#scrollbar").text(data);
+    //             }
+    //         }
+    //     });
+    // });
+    //
+    // });
 
-    function getHomeInfo(){}
 
     requirejs(['jquery', 'ligerGrid','dg.datePicker', 'artdialog'], function($) {
     //快捷还书方法

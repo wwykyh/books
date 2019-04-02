@@ -29,9 +29,8 @@ public class HomeController {
         return "returnBook" ;
     }
 
-    //排行榜
-    @GetMapping("/get_home")
-    @ResponseBody
+    //主页
+    @GetMapping("/Home")
     public String getRankList(Model model) {
         List<Borrow> rankingListUsers = homeService.getRankingList();
         List<Borrow> hotBooks = homeService.getHotBooks();
@@ -40,6 +39,7 @@ public class HomeController {
         model.addAttribute("rankingListUsers",rankingListUsers);
         model.addAttribute("hotBooks",hotBooks);
         model.addAttribute("newBooks",newBooks);
-        return overTimeUsers ;
+        model.addAttribute("overTimeUsers",overTimeUsers);
+        return "home" ;
     }
 }

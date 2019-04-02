@@ -87,7 +87,7 @@ public class BookController {
      * @param model
      * @return
      */
-    @GetMapping("/Home")
+    @GetMapping("/Home1")
     public String home(Model model, HttpServletRequest request) {
         List<TBorrow> bookList = bookService.getBookTop();
         List<TBorrow> userList = bookService.getUserTop();
