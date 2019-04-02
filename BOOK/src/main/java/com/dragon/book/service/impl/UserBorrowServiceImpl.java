@@ -20,8 +20,9 @@ public class UserBorrowServiceImpl implements UserBorrowService {
     }
 
     //查找用户的评论
-    public List<TComment> selUserComment(String user_id){
+    public List<TComment> selUserComment(String user_id) {
 
-       return  tCommentMapper.selectByUserId(user_id);
+        // return  tCommentMapper.selectByUserId(user_id);
+        return null;
     }
 }

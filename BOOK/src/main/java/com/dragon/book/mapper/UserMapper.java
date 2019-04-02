@@ -1,5 +1,7 @@
 package com.dragon.book.mapper;
 
+import com.dragon.book.model.TBorrow;
+import com.dragon.book.pojo.Book;
 import com.dragon.book.model.TCompensate;
 import com.dragon.book.model.TSysUser;
 import com.dragon.book.pojo.PcInfo;
@@ -41,4 +43,8 @@ public interface UserMapper {
     PcInfo selectPcById(Integer id);
 
     int updatePc(TCompensate tCompensate);
+
+    //主页
+    List<TBorrow> selectUserBorrow(int userid);
+
 }

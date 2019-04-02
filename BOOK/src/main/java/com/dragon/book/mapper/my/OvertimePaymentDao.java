@@ -21,7 +21,7 @@ public interface OvertimePaymentDao {
     public List<TBorrow> findOvertimeBorrow(@Param("userId") int uid);
 
     /**
-     * 差寻用户是否有超时图书
+     * 查询超时用户信息
      * @return
      */
     public List<UserBorrow> findOvertimeUser();

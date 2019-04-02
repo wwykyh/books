@@ -33,14 +33,14 @@
 		<div class="top_left_cont zoomIn wow animated">
             <div style="margin-left: 90px "><h2><strong>巨龙</strong> 图书馆</h2></div>
             <div style="width: 500px;margin-left: 90px "><p id="dragonLibraryIntro">巨龙图书馆成立于2019年4月21日，管理的图书高达50本,活跃用户20人；图书馆中囊括了大多数精品图书和电子书。</p></div>
-            <div style="margin-left: 90px "><a href="" class="btn btn-raised btn-lg">了解更多</a></div>
+            <div style="margin-left: 90px "><a href="javascript:0" class="btn btn-raised btn-lg">了解更多</a></div>
 		</div>
       </div>
 		<img src="home/img/booker1.png"  class="zoomIn wow animated" alt="" />
         <a onclick="javascript:$('.borrow').click();"  class="btn btn-effect scroll-link" style="position: absolute;left: 1280px;top: 60px;height:80px;width:230px;">
             <span  style="display: block;font-size: 20px;margin-top: 20px">借书</span><i class="icon-envelope"></i>
         </a>
-        <a href="#aboutUs" class="btn btn-effect scroll-link" style="position: absolute;left: 1280px;top: 230px;height:80px;width:230px; " >
+        <a href="javascript:;" id="returnBook" class="btn btn-effect scroll-link" style="position: absolute;left: 1280px;top: 230px;height:80px;width:230px; " >
             <span  style="display: block;font-size: 20px;margin-top: 20px">还书</span><i class="icon-envelope"></i><i class="icon-envelope"></i>
         </a>
         <marquee id="affiche" align="right"  behavior="scroll"   loop="-1"  onMouseOut="this.start()" onMouseOver="this.stop()">
@@ -218,16 +218,26 @@
 
 <script type="text/javascript">
     $(document).ready(function (){
-        var userName="wangnan";
-        alert(userName);
+        getHomeInfo();
+    });
+
+    function getHomeInfo(){}
+
+    requirejs(['jquery', 'ligerGrid','dg.datePicker', 'artdialog'], function($) {
+    //快捷还书方法
+        $("#returnBook").click(function () {
+            art.dialog.open('/return_book?userid='+${ user.userId}, {
+                title: '快捷还书',
+                width: 700,
+                height: 350,
+                cancel: true,
+                cancelVal: "关闭"
+            });
+        })
     });
 </script>
 </body>
 </html>
 
 
-<%--<script>--%>
-<%--$(function () {--%>
-<%--$.material.init(); --%>
-<%--});--%>
-<%--</script>--%>
+

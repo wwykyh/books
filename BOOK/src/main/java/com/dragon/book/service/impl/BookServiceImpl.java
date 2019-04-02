@@ -44,13 +44,13 @@ public class BookServiceImpl implements BookService {
 	@Override
 	public List<TBorrow> getBookTop() {
 		// TODO Auto-generated method stub
-		return borrowMapper.selectByBookTop();
+		return null;
 	}
 
 	@Override
 	public List<TBorrow> getUserTop() {
 		// TODO Auto-generated method stub
-		return borrowMapper.selectByUserTop();
+		return null;
 	}
 
 	@Override
