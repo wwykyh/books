@@ -7,32 +7,44 @@
         <result column="s_id" property="sId"  />
         <result column="sm" property="sm"  />
         <result column="cs" property="cs"/>
+		<result column="rksj" property="rksj"/>
         <association property="user" javaType="com.dragon.book.model.TSysUser"
                      column="userId" foreignColumn="userId">
             <id column="user_id" property="userId"/>
             <result column="xm" property="xm"/>
+			<result column="bm" property="bm"  />
         </association>
+		<association property="book" javaType="com.dragon.book.model.TBook"
+					 column="isbn" foreignColumn="isbn">
+			<id column="sm" property="sm"/>
+			<result column="jj" property="jj"/>
+			<result column="picture" property="picture"  />
+		</association>
     </resultMap>
 
 
     <select id="selectByUserTop" resultMap="BorrowResultMap">
 		select
-		b.id,b.s_id,b.sm,u.xm,count(u.user_id)
+		b.id,b.s_id,u.xm,u.bm,count(u.user_id)
 		as cs
 		from t_borrow b 
 		left outer join t_sys_user u on b.user_id = u.user_id 
-		GROUP BY u.user_id ORDER BY cs DESC LIMIT 10
+		GROUP BY u.user_id ORDER BY cs DESC LIMIT 3
 
 	</select>
 
     <select id="selectByBookTop" resultMap="BorrowResultMap">
 		select
-		id,s_id,sm
-		,
+		book.isbn,s_id,book.sm,jj,picture,
 		COUNT(s_id) as cs
-		from t_borrow
-		GROUP BY s_id ORDER BY cs desc LIMIT 10
-
+		from t_borrow b left outer join t_store s ON b.s_id = s.id left outer join t_book book  ON s.isbn = book.isbn
+		GROUP BY book.isbn ORDER BY cs desc LIMIT 6
 	</select>
 
+	<select id="selectByBookNew" resultMap="BorrowResultMap">
+		select
+		b.isbn,b.sm,jj,picture,s.rksj
+		from t_book b left outer join t_store s ON b.isbn = s.isbn
+	    ORDER BY s.rksj desc LIMIT 6
+	</select>
 </mapper>

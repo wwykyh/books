@@ -91,6 +91,7 @@
                                    data-js="prettify" href="javascript:;">借阅审核</a></li>
                             <li><a _href="${pageContext.request.contextPath}/revertCheck/revert" data-name="归还审核"
                                    data-js="prettify" href="javascript:;">归还审核</a></li>
+
                         </ul>
                     </dd>
                 </dl>
@@ -135,8 +136,6 @@
                                    data-js="prettify" href="javascript:;">种类管理</a></li>
                             <li><a _href="${pageContext.request.contextPath}/publish_house_manager" data-name="出版社管理"
                                    data-js="prettify" href="javascript:;">出版社管理</a></li>
-
-
                         </ul>
                     </dd>
                 </dl>

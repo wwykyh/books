@@ -1,12 +1,13 @@
 package com.dragon.book.mapper;
 
 import java.util.List;
-import java.util.Map;
 
-import com.dragon.book.model.TBorrow;
+import com.dragon.book.pojo.Borrow;
 
 public interface BorrowMapper {
-	List<TBorrow> selectByUserTop();
+	List<Borrow> selectByUserTop();
 
-	List<TBorrow> selectByBookTop();
+	List<Borrow> selectByBookTop();
+
+	List<Borrow> selectByBookNew();
 }

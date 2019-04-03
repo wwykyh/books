@@ -77,11 +77,11 @@
                     </tr>
                     <tr>
                         <th width="17%"><span class="ft-need"></span>个人说明：</th>
-                        <td width="33%"><textarea id="grsm" style="width: 200px;height:100px">${userInfo.grsm}</textarea></td>
+                        <td width="33%"><textarea id="grsm" name="grsm" style="width: 200px;height:100px">${userInfo.grsm}</textarea></td>
                     </tr>
                     <tr>
                         <th></th>
-                        <td><input  type="button" class="btn" value="修改"  onclick="sub()"><input  type="button" class="btn" value="重置"  onclick="reset()"></td>
+                        <td><input  type="button" class="btn" value="修改"  id="sub1" ><input  type="button" class="btn" value="重置"  onclick="reset()"></td>
                     </tr>
                 </table>
                 </form>
@@ -89,34 +89,38 @@
         </div>
     </div>
     <script type="text/javascript">
+            //快捷还书方法
+            $("#sub1").click(function () {
+                $.ajax({
+                    cache: true,
+                    type: "POST",
+                    url:"/usermanage/user_edit",
+                    data:$('#form-libs').serialize(),// 你的formid
+                    async: false,
+                    error: function(request) {
+                        alert("Connection error:"+request.error);
+                    },
+                    success: function(data) {
+                        if(data == "0"){
+                            parent.select();
+                            parent.art.dialog({id:'user_edit_window'}).close() ;
+                        }else {
+                            alert("用户信息修改失败！");
+                        }
+                    }
+                });
+            })
 
 
         //ajax提交表单
         function sub() {
-            $.ajax({
-                cache: true,
-                type: "POST",
-                url:"/usermanage/user_edit",
-                data:$('#form-libs').serialize(),// 你的formid
-                async: false,
-                error: function(request) {
-                    alert("Connection error:"+request.error);
-                },
-                success: function(data) {
-                    if(data == "0"){
-                        parent.select();
-                        parent.art.dialog({id:'user_edit_window'}).close() ;
-                    }else {
-                        alert("用户信息修改失败！");
-                    }
-                }
-            });
+
         }
 
 
         $(document).ready(function (){
-            var isadmin = ${userInfo.isadmin};
-            var ishmd  = ${userInfo.ishmd};
+            var isadmin = "${userInfo.isadmin}";
+            var ishmd  = "${userInfo.ishmd}";
 
             if (isadmin==0){
                 $("#isadmin").val('0');
