@@ -10,7 +10,7 @@ import com.dragon.book.util.PageBean;
 public interface BookMapper {
 	List<TBook> selectAllBook(PageBean pagebean);
 	int getTotal(PageBean pagebean);
-	List<BookAndEBook> selectByDim(PageBean pagebean);
+	List<Book> selectByDim(PageBean pagebean);
 	Book selectById(String id);
 	List<BookAndEBook> selectEBookByDim(PageBean pagebean);
 	

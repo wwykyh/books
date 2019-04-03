@@ -7,6 +7,7 @@ import com.dragon.book.model.TBook;
 import com.dragon.book.model.TBorrow;
 import com.dragon.book.pojo.Book;
 import com.dragon.book.pojo.Borrow;
+import com.dragon.book.util.Page;
 import com.dragon.book.util.PageBean;
 
 public interface BookService {
@@ -32,7 +33,7 @@ public interface BookService {
 	 *            搜索类
 	 * @return 检索的结果集合
 	 */
-	public List<BookAndEBook> getBooks(PageBean pagebean);
+	public List<BookAndEBook> getBooks(Page pagebean);
 
 	/**
 	 * 获取查询的总数，用于分页的total
@@ -143,4 +144,9 @@ public interface BookService {
      * @return
      */
 	public int updateByKey(String id,int status);
+
+	public Page<Book> getPage(int pageNumber,int pageSize,String dim,String s_type,int total);
+
+	public List<Book> getPageInfo(String dim,String s_type,int pageNum);
+
 }

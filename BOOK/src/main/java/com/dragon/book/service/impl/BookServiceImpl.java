@@ -12,6 +12,8 @@ import java.util.Random;
 import com.dragon.book.mapper.TStoreMapper;
 import com.dragon.book.model.TStore;
 import com.dragon.book.pojo.Book;
+import com.dragon.book.util.Page;
+import com.github.pagehelper.PageHelper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -41,6 +43,13 @@ public class BookServiceImpl implements BookService {
 	@Autowired
     TStoreMapper storeMapper;
 
+
+
+	@Override
+	public List<BookAndEBook> getBooks(Page pagebean) {
+		return null;
+	}
+
 	@Override
 	public List<TBorrow> getBookTop() {
 		// TODO Auto-generated method stub
@@ -53,8 +62,8 @@ public class BookServiceImpl implements BookService {
 		return null;
 	}
 
-	@Override
-	public List<BookAndEBook> getBooks(PageBean pagebean) {
+
+	public List<Book> getBooks(PageBean pagebean) {
 		// TODO Auto-generated method stub
 		return bookMapper.selectByDim(pagebean);
 	}
@@ -65,7 +74,7 @@ public class BookServiceImpl implements BookService {
 		return bookMapper.selectEBookByDim(pagebean);
 	}
 
-	@Override
+
 	public int getTotal(PageBean pagebean) {
 		// TODO Auto-generated method stub
 		return bookMapper.getTotal(pagebean);
@@ -208,6 +217,44 @@ public class BookServiceImpl implements BookService {
 	    int i =storeMapper.updateByPrimaryKeySelective(store);
 return i;
     }
+
+	@Override
+	public Page<Book> getPage(int pageNumber, int pageSize, String dim, String s_type,int total) {
+	//	int pageNo=1;      //设置默认页码，当pageNumber类型转换出错时，会起作用，否则值被覆盖
+		Page<Book> page=null;
+		PageBean pageBean = new PageBean();
+		pageBean.setDim(dim);
+		pageBean.setS_type(s_type);
+		pageBean.setPagesize(pageSize);
+
+		/*try {
+			//servlet层获取的参数类型为string，需要转换为整型
+			pageNo=Integer.parseInt(pageNumber);
+		} catch (Exception e) {
+			System.out.println("字符串转换出错");
+		}*/
+		//1.获取总记录数
+		int totalRecord=bookMapper.getTotal(pageBean);
+		//2.封装page对象
+		System.out.println("+++++"+pageNumber);
+
+		page=new Page<Book>(pageNumber, total, pageSize);
+		pageBean.setPage(page.getIndex());
+		System.out.println("page:"+pageBean.getPage()+"pagesize:"+pageBean.getPagesize());
+		//3.查询当前页对应的数据列表并封装到page对象中
+		List<Book> list=bookMapper.selectByDim(pageBean);
+		page.setList(list);
+		System.out.println(list.toString()+"size:"+list.size()+list.get(0).gettStore().getId());
+		return page;	}
+
+	@Override
+	public List<Book> getPageInfo(String dim, String s_type,int pageNum) {
+		PageHelper.startPage(pageNum,2);
+		PageBean pageBean = new PageBean();
+		List<Book> list= bookMapper.selectByDim(pageBean);
+		return list;
+	}
+
 	public BorrowMapper getBorrowMapper() {
 		return borrowMapper;
 	}

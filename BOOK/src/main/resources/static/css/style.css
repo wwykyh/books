@@ -1,0 +1,33 @@
+
+
+
+.new_prod_box{
+float:left;
+text-align:center;
+    width: 20%;
+    height:42.5%;
+}
+
+/*.new_prod_bg{
+    width: 20%;
+    height:20%;
+    text-align:center;
+    background:url(new_prod_box.gif) no-repeat center;
+    position:relative;
+}*/
+img.thumb{
+    padding:10% 0 0 0;
+}
+.new_prod_box a{
+padding:5px 0 5px 0;
+color:#b5b5b6;
+text-decoration:none;
+display:block;
+}
+
+
+.new_products{
+clear:both;
+padding:0px;
+}
+
