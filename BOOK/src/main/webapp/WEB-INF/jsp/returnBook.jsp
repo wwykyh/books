@@ -30,34 +30,40 @@
                 <form action="" method="post" class="form-libs" name="form-libs" id="form-libs">
                 <table class="form-table" width="100%">
                     <c:if test="${empty books}">
-                        <tr><th width="17%"><span class="ft-need"></span></th>
+                        <tr><th width="20%"><span class="ft-need"></span></th>
                             <td width="33%">未借图书，无需还书</td>
+                        </tr>
+                        <tr><th width="20%"><span class="ft-need"></span></th>
+                            <td width="33%"></td>
+                        </tr>
+                        <tr><th width="20%"><span class="ft-need"></span></th>
+                            <td width="33%"><input  type="button" class="btn" value="确定"  onclick="myClose();" style="margin-left: 45px"></td>
                         </tr>
                     </c:if>
                     <c:forEach items="${books}" var="base" varStatus="sta">
                             <c:if test="${not empty base}">
                             <c:if test="${sta.first}">
                                 <tr>
-                                    <th width="17%"><span class="ft-need"></span>已借图书：</th>
+                                    <th width="30%"><span class="ft-need"></span>已借图书：</th>
                                     <td width="33%">${base.sm}&nbsp;<input type="checkbox" name="category" value="${base.sId}" checked="checked"/></td>
                                 </tr>
                             </c:if>
                             <c:if test="${not sta.first and not sta.last}">
                                 <tr>
-                                    <th width="17%"><span class="ft-need"></span>已借图书：</th>
+                                    <th width="30%"><span class="ft-need"></span>已借图书：</th>
                                     <td width="33%">${base.sm}&nbsp;<input type="checkbox" name="category" value="${base.sId}" /></td>
                                 </tr>
                             </c:if>
-                            <c:if test="${sta.last}">
+                            <c:if test="${sta.last and not sta.first}">
                                 <tr>
-                                    <th width="17%"><span class="ft-need"></span>已借图书：</th>
-                                    <td width="33%">${base.sm}&nbsp;<input type="checkbox" name="category" value="${base.sId}" /></td>
-                                </tr>
-                                <tr>
-                                <th></th>
-                                <td><input  type="button" class="btn" value="还书"  onclick="sub()"><input  type="button" class="btn" value="取消"  onclick="close();"></td>
+                                    <th width="30%"><span class="ft-need"></span>已借图书：</th>
+                                    <td width="33%">${base.sm}&nbsp;<input  type="checkbox" name="category" value="${base.sId}" /></td>
                                 </tr>
                             </c:if>
+                                <tr>
+                                    <th><input  type="button" class="btn" value="还书"  onclick="sub()"></th>
+                                    <td><input  type="button" class="btn" value="取消"  onclick="myClose();"></td>
+                                </tr>
                         </c:if>
                     </c:forEach>
                 </table>
@@ -66,21 +72,24 @@
         </div>
     </div>
     <script type="text/javascript">
+        function myClose() {
+            parent.art.dialog({id:'returnMyBook'}).close() ;
+        }
         //ajax提交表单
         function sub() {
             $.ajax({
                 cache: true,
                 type: "POST",
-                url:"/usermanage/user_edit",
+                url:"/return_book_request",
                 data:$('#form-libs').serialize(),// 你的formid
                 async: false,
                 error: function(request) {
                     alert("Connection error:"+request.error);
                 },
-                success: function(data) {
-                    if(data == "0"){
+                success: function(status) {
+                    if(status){
                         alert("还书成功！");
-                        parent.art.dialog({id:'user_edit_window'}).close() ;
+                        parent.art.dialog({id:'returnMyBook'}).close() ;
                     }else {
                         alert("还书操作失败！");
                     }

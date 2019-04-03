@@ -48,4 +48,11 @@
 		from t_book b left outer join t_store s ON b.isbn = s.isbn
 	    ORDER BY s.rksj desc LIMIT 6
 	</select>
+
+	<update id="returnBookRequest" parameterType="java.lang.String">
+		update
+		t_borrow
+		set status=2,jyzt=2
+		where s_id = #{sId,jdbcType=VARCHAR}
+	</update>
 </mapper>

@@ -8,8 +8,10 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 
+import javax.servlet.http.HttpServletRequest;
 import java.util.List;
 
 
@@ -18,13 +20,25 @@ public class HomeController {
     @Autowired
     private HomeService homeService;
 
-   //还书
+   //显示还书界面
     @RequestMapping("/return_book")
     public String returnBook( @RequestParam("userid")int userid, Model model) {
         List<TBorrow> books = homeService.getUserBorrow(userid);
         model.addAttribute("books",books);
         return "returnBook" ;
     }
+
+    //还书
+    @RequestMapping("/return_book_request")
+    @ResponseBody
+    public boolean returnBookRequest(HttpServletRequest request) {
+        String[] checkboxs;
+        //用来获取多个复选按钮的值
+        checkboxs = request.getParameterValues("category");
+        boolean status = homeService.returnBookRequest(checkboxs);
+        return status ;
+    }
+
 
     //主页
     @RequestMapping("/Home")

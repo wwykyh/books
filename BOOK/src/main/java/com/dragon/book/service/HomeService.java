@@ -42,5 +42,10 @@ public interface HomeService {
      */
     public List<Borrow> getNewBooks();
 
-
+    /**
+     * 传入图书sid还书申请
+     *
+     * @return
+     */
+    public boolean returnBookRequest(String[] BookSid);
 }

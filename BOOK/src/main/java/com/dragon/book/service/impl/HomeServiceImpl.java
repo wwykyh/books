@@ -10,7 +10,6 @@ import com.dragon.book.service.HomeService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import javax.servlet.http.HttpSession;
 import java.util.List;
 
 @Service
@@ -55,8 +54,18 @@ public class HomeServiceImpl implements HomeService {
 
     @Override
     public List<Borrow> getNewBooks() {
-        List<Borrow> newBooks = borrowMapper.selectByBookTop();
+        List<Borrow> newBooks = borrowMapper.selectByBookNew();
         return newBooks;
+    }
+
+    @Override
+    public boolean returnBookRequest(String[] BookSid) {
+        int status = 0;
+        for (int i=0;i<BookSid.length;i++){
+            int a = borrowMapper.returnBookRequest(BookSid[i]);
+            status=status+a;
+        }
+        return status>0?true:false;
     }
 
 }

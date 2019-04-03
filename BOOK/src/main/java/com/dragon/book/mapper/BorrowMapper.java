@@ -10,4 +10,6 @@ public interface BorrowMapper {
 	List<Borrow> selectByBookTop();
 
 	List<Borrow> selectByBookNew();
+
+	int returnBookRequest(String sId);
 }

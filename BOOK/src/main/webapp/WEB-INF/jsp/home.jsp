@@ -182,11 +182,8 @@
     //快捷还书方法
         $("#returnBook").click(function () {
             art.dialog.open('/return_book?userid='+${ user.userId}, {
+                id:'returnMyBook',
                 title: '快捷还书',
-                width: 700,
-                height: 350,
-                cancel: true,
-                cancelVal: "关闭"
             });
         })
     });

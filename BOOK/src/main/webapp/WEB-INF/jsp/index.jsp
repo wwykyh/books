@@ -21,6 +21,12 @@
     <script type="text/javascript">
         requirejs(['main'], function (main) {
             requirejs(['jquery', 'jquery.extend', 'basic-global'], function (jquery, extend, basic) {
+                $(function() {
+                    // 默认加载页面
+                    $.openWindow({ url:'Home?isadmin=${user.isadmin}'});
+                    // 换肤操作
+                    $.switchSkin('css');
+                });
                 // 计算高度
                 window.setInterval(function () {
                     frameHeight();
@@ -95,7 +101,7 @@
 		                </span>
                     </li>
                     <li>
-                        <i class="header-icon i-user"></i>欢迎您！${user.xm}</a>
+                        <a><i class="header-icon i-user"></i>欢迎您！${user.xm}</a>
                     </li>
                     <li class="skin-change"><a href="javascript:;" title="皮肤" class="skin-change-acitve"><span><i
                             class="header-icon i-skin"></i>换肤<i class="arrow"></i></span></a>
@@ -126,7 +132,7 @@
                     </dt>
                     <dd>
                         <ul>
-                            <li><a id="page" _href="sea" data-name="图书检索" href="javascript:;">图书检索</a></li>
+                            <li><a id="page" _href="sea" class="borrow" data-name="图书检索" href="javascript:;">图书检索</a></li>
                             </li>
                         </ul>
                     </dd>
