@@ -26,12 +26,16 @@
         </form>
     </div>--%>
     <div >
-        <div style="text-align:center">
-            <tr>
-            <textarea id="container" style="width:825px; height: 180px"></textarea>
-                <input type="button" class="btn" value="清空文档" onclick="qingkong()" />
-                <input type="button"  class="btn" value="发表评论"  onclick="tijiao()"/>
+        <div >
+            <tr style="text-align:center">
+            <textarea id="container" style="width:815px; height: 180px"></textarea>
             </tr>
+            <div style="text-align:right">
+                <tr >
+                    <input type="button" class="btn" value="清空文档" onclick="qingkong()" />
+                    <input type="button"  class="btn" value="发表评论"  onclick="tijiao()"/>
+                </tr>
+            </div>
         </div>
         <div class="write-box">
             <form  method="post" class="form_eva" name="form_eva"id="form_eva"  action="userBorrow/commentService">
@@ -43,19 +47,21 @@
                 </table>
             </form>
         </div>
-        <div >
-            <table class="form-table" width="100%" id="commentTable" >
-                <th width="10%" style="text-align: left" ><span> <font size="4">历史评价：</font></span></th>
+        <th width="10%" style="text-align: left" ><span> <font size="4">历史评论：</font></span></th>
+        <div style="padding-left:5% ; padding-right: 5%">
+            <table class="form-table" width="100%" id="commentTable" border="1">
+
                 <c:forEach items="${tCommentInfo}" var="arr">
                    <div >
-                     <tr  >
-                         <td width="10%" style="padding-left:10px" ><h1  style="font-family:微软雅黑 ">${arr.xm}：</h1></td>
+                     <tr style="background:#a7d0ef;" >
+                         <td width="50%" style="padding-left:10px" ><h1  style="font-family:微软雅黑 ">${arr.xm}：</h1></td>
+                         <td  width="30%" >${arr.pjrq}</td>
+                         <td width="10%"  ><a href="javascript:void(0);"  onclick="delComment('${arr.commentId}')">删除</a></td>
                      </tr>
                      <tr style="background:#EFEFEF;">
                          <td width="80%" style="padding-left: 35px">${arr.nr}</td>
-                         <%--删除评论
-                         <td width="10%" style="text-align:right"><a href="javascript:void(0);"  onclick="delComment('${arr.commentId}')">删除</a></td>--%>
-                         <td width="10%" style="padding-right:10px" >${arr.pjrq}</td>
+                         <td width="10%"></td>
+                         <td width="10%"></td>
                      </tr>
                 </c:forEach>
                    </div>
@@ -133,7 +139,7 @@
                 'customstyle', 'paragraph', 'fontfamily', 'fontsize', '|',
                 'directionalityltr', 'directionalityrtl', 'indent', '|',
                 'justifyleft', 'justifycenter', 'justifyright', 'justifyjustify', '|', 'touppercase', 'tolowercase', '|',
-                'link', 'unlink', 'anchor', '|', 'imagenone', 'imageleft', 'imageright', 'imagecenter', '|',
+                'link', 'unlink',  '|',
                 'emotion',    'insertcode',  'pagebreak',   '|',
                 'horizontal', 'date', 'time', 'spechars', 'snapscreen',  '|',
                 'print', 'preview', 'searchreplace','help'

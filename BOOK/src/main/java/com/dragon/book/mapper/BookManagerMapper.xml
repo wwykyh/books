@@ -15,6 +15,8 @@
             <result column="zz" property="zz"/>
             <result column="cbsmc" property="cbsmc"/>
             <result column="tsdl" property="tsdl"/>
+            <result column="picture" property="picture"/>
+            <result column="jj" property="jj"/>
         </association>
         <association property="user" javaType="com.dragon.book.model.TSysUser">
             <id column="userId" property="userId"/>
@@ -27,7 +29,7 @@
     </resultMap>
     <select id="selectByDimPage" resultType="com.dragon.book.pojo.BookInfo" parameterType="com.dragon.book.pojo.QueryVo">
         select
-        su.id,tb.isbn,tb.sm,tb.cbsmc,tb.cbrq,tb.zz,tb.lxmc,tb.tsdl,su.xm uname,su.wz,su.sh,su.rksj,su.status
+        su.id,tb.isbn,tb.sm,tb.cbsmc,tb.cbrq,tb.zz,tb.lxmc,tb.tsdl,su.xm uname,su.wz,su.sh,su.rksj,su.status,tb.jj,tb.picture
         from (
         select s.*,u.xm
         from t_store s
@@ -109,7 +111,7 @@
   </select>
     <select id="bookExport" resultType="com.dragon.book.pojo.BookInfo">
         select
-	    su.id,tb.isbn,tb.sm,tb.cbsmc,tb.cbrq,tb.zz,tb.lxmc,tb.tsdl,su.xm uname,su.wz,su.sh,su.rksj,su.status
+	    su.id,tb.isbn,tb.sm,tb.cbsmc,tb.cbrq,tb.zz,tb.lxmc,tb.tsdl,su.xm uname,su.wz,su.sh,su.rksj,su.status,tb.jj,tb.picture
       from (
                   select s.*,u.xm
                   from t_store s
@@ -154,8 +156,7 @@
         ORDER BY temp.jyrq DESC
     </select>
     <select id="selectHistoryById" resultMap="HistoryResult" parameterType="Integer">
-        SELECT temp.id,temp.jyrq,temp.ghrq,temp.isbn,temp.xm,tb.sm,tb.tsdl,tb.zz,tb.cbsmc,
-        temp.`status`,temp.jyzt,temp.jhghrq,temp.xjrq,
+        SELECT temp.id,temp.jyrq,temp.ghrq,temp.isbn,temp.xm,tb.sm,tb.tsdl,tb.zz,tb.cbsmc,tb.jj,tb.picture,temp.`status`,temp.jyzt,temp.jhghrq,temp.xjrq,
         temp.lxfs,temp.bm,temp.dz,temp.user_id userId
         FROM
         (SELECT b.id id,b.jyrq,b.ghrq,

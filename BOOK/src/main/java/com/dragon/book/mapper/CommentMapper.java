@@ -9,5 +9,7 @@ import java.util.List;
 
 public interface CommentMapper extends TCommentMapper{
 
-    List<CommentInfo> selectByUserId(Integer bookId);
+    List<CommentInfo> selectByBorrowId(Integer borrowId);
+    List<CommentInfo> selectByBorrow(Integer borrowId);
+   List<CommentInfo> selectComment(String id);
 }

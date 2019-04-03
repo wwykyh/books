@@ -66,22 +66,13 @@
         }) ;
         function select() {
             $("#historyInfo").ligerGrid({
-                columns: [{
-                    display: 'ISBN',
-                    name: 'book.isbn'
-                }, {
+                columns: [ {
                     display: '书名',
                     name: 'book.sm'
                 }, {
-                    display: '出版社名称',
-                    name: 'book.cbsmc'
-                }, {
                     display: '作者',
                     name: 'book.zz'
-                }, {
-                    display: '所属类型',
-                    name: 'book.tsdl'
-                }, {
+                },{
                     display: '借阅用户',
                     name: 'user.xm'
                 }, {
@@ -96,7 +87,7 @@
                     render: function (row){
                         if (row.id != undefined && row.id != null && row.id != ""){
                             var html = '<a href="javascript:void(0);" onclick="onHistoryInfo(' + row.id + ')">查看详情</a>&nbsp;&nbsp;' ;
-                            //html = html + '<a href="javascript:void(0);" onclick="onBookEdit(' + row.id + ')">库存管理</a>&nbsp;&nbsp;';
+                           /* html = html + '<a href="javascript:void(0);" onclick="onCommentManager(' + row.id + ')">评论管理</a>&nbsp;&nbsp;';*/
                             return html;
                         }
                         else return "" ;
@@ -144,6 +135,14 @@
             height: 575,
             cancel: true,
             cancelVal: "关闭"
+        });
+    }
+    function onCommentManager(id) {
+        alert(id)
+        art.dialog.open('getBookComment?id='+id, {
+            title: '评论详情',
+            width: 850,
+            height: 575
         });
     }
 

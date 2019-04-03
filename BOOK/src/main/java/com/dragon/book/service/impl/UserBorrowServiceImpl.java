@@ -22,9 +22,14 @@ public class UserBorrowServiceImpl implements UserBorrowService {
         return commentMapper.insert(tComment);
     }
 
-    //查找用户的评论
-    public List<CommentInfo> selUserComment(Integer bookId){
-        List<CommentInfo> commentInfos = commentMapper.selectByUserId(bookId);
+    //查找用户个人的评论
+    public List<CommentInfo> selUserComment(Integer borrowId){
+        List<CommentInfo> commentInfos = commentMapper.selectByBorrowId(borrowId);
+        return commentInfos ;
+    }
+
+    public List<CommentInfo> selBookComment(String id){
+        List<CommentInfo> commentInfos = commentMapper.selectComment(id);
         return commentInfos ;
     }
 }

@@ -11,8 +11,41 @@
         <result column="nr" property="nr" jdbcType="LONGVARCHAR" />
     </resultMap>
 
-  <select id="selectByUserId" resultMap="NewResultMap" parameterType="com.dragon.book.pojo.CommentInfo">
+  <select id="selectByBorrowId" resultMap="NewResultMap" parameterType="com.dragon.book.pojo.CommentInfo">
 
+        SELECT
+            tc.comment_id,
+            tc.isbn,
+            tc.user_id,
+            tc.pjrq,
+            tc.nr,
+            ts.xm
+        FROM
+            t_comment tc,
+            t_sys_user ts
+        WHERE
+            tc.isbn IN (
+                SELECT
+                    tst.isbn
+                FROM
+                    t_borrow tw
+                LEFT JOIN t_sys_user ts ON tw.user_id = ts.user_id
+                LEFT JOIN t_store tst ON tw.s_id = tst.id
+                LEFT JOIN t_comment tc ON tst.isbn = tc.isbn
+                WHERE
+                    tw.id = #{borrowId}
+            )
+        AND tc.user_id = (
+            SELECT
+                tw.user_id
+            FROM
+                t_borrow tw
+            WHERE
+                tw.id = #{borrowId}
+        )
+        AND tc.user_id = ts.user_id
+  </select>
+   <select id="selectByBorrow" resultMap="NewResultMap" parameterType="com.dragon.book.pojo.CommentInfo">
     SELECT
         tc.comment_id,
         tc.isbn,
@@ -31,18 +64,24 @@
                 t_borrow tw
             LEFT JOIN t_sys_user ts ON tw.user_id = ts.user_id
             LEFT JOIN t_store tst ON tw.s_id = tst.id
-            LEFT JOIN t_comment tc ON tst.id = tc.isbn
+            LEFT JOIN t_comment tc ON tst.isbn = tc.isbn
             WHERE
-                tw.id = #{booId}
+                tw.id = #{borrowId}
         )
-    AND tc.user_id = (
-        SELECT
-            tw.user_id
-        FROM
-            t_borrow tw
-        WHERE
-            tw.id = #{booId}
-    )
     AND tc.user_id = ts.user_id
-  </select>
+   </select>
+    <select id="selectComment" resultMap="NewResultMap" parameterType="com.dragon.book.pojo.CommentInfo">
+        SELECT
+            tc.comment_id,
+            tc.isbn,
+            tc.user_id,
+            tc.pjrq,
+            tc.nr,
+            ts.xm
+        FROM
+           t_comment tc
+        LEFT OUTER JOIN t_store tst ON tst.isbn = tc.isbn
+        LEFT OUTER JOIN t_sys_user ts ON ts.user_id=tc.user_id
+        where tst.id=#{id} ORDER BY tc.pjrq DESC
+    </select>
 </mapper>

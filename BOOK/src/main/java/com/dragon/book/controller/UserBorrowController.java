@@ -74,9 +74,8 @@ public class UserBorrowController {
         tComment.setIsbn(bookId);
         tComment.setNr(userComment);
         tComment.setUserId(userid);
-        SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd ");
+        SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd  HH:mm:ss  ");
         tComment.setPjrq(dateFormat.format(new Date()));
-        System.out.println(tComment.getNr());
         String status="0";
         int i =userBorrowService.addUserComment(tComment);
         if(i>=0){

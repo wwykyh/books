@@ -9,6 +9,7 @@ public interface UserBorrowService {
 
     public int addUserComment(TComment tComment);
 
-    List<CommentInfo> selUserComment(Integer bookId);
+    List<CommentInfo> selUserComment(Integer borrowId);
+    List<CommentInfo> selBookComment(String id);
 
 }

@@ -69,21 +69,12 @@
         function select() {
             $("#historyInfo").ligerGrid({
                 columns: [{
-                    display: 'ISBN',
-                    name: 'book.isbn'
-                }, {
                     display: '书名',
                     name: 'book.sm'
                 }, {
-                    display: '出版社名称',
-                    name: 'book.cbsmc'
-                }, {
                     display: '作者',
                     name: 'book.zz'
-                }, {
-                    display: '所属类型',
-                    name: 'book.tsdl'
-                }, {
+                },  {
                     display: '借阅用户',
                     name: 'user.xm'
                 }, {
@@ -157,9 +148,7 @@
             title: '评价',
             width: 850,
             height: 550,
-            id:'commentInfo_window',
-            cancel: true,
-            cancelVal: "关闭"
+            id:'commentInfo_window'
         });
     }
 </script>
