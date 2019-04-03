@@ -26,7 +26,14 @@ public class LoginInterceptor extends HandlerInterceptorAdapter {
 			logger.info("username: " + "null");
 			request.getRequestDispatcher("/login").forward(request, response);
 			return false;
-		}else
+		}else if ("admin".equals(user)){
+
+			request.getRequestDispatcher("/adminIndex").forward(request, response);
+
+			logger.info("username: " + user.getXm());
+
+		}
+		else
 			logger.info("username: " + user.getXm());
 		logger.info(">>>: " + url);
 		return flag;

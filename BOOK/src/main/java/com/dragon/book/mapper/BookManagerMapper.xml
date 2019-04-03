@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="com.dragon.book.mapper.BookManagerMapper" >
+<mapper namespace="com.dragon.book.mapper.BookManagerMapper">
     <resultMap id="HistoryResult" type="com.dragon.book.pojo.HistoryInfo">
         <id column="id" property="id"/>
         <result column="jyrq" property="jyrq"/>
@@ -27,7 +27,8 @@
         </association>
 
     </resultMap>
-    <select id="selectByDimPage" resultType="com.dragon.book.pojo.BookInfo" parameterType="com.dragon.book.pojo.QueryVo">
+    <select id="selectByDimPage" resultType="com.dragon.book.pojo.BookInfo"
+            parameterType="com.dragon.book.pojo.QueryVo">
         select
         su.id,tb.isbn,tb.sm,tb.cbsmc,tb.cbrq,tb.zz,tb.lxmc,tb.tsdl,su.xm uname,su.wz,su.sh,su.rksj,su.status,tb.jj,tb.picture
         from (
@@ -82,7 +83,8 @@
       from t_comment c LEFT JOIN t_sys_user u on c.user_id = u.user_id
       where c.comment_id = #{commentId}
   </select>
-    <select id="selectCommentByIsbnList" resultType="com.dragon.book.pojo.CommentInfo" parameterType="com.dragon.book.pojo.QueryVo">
+    <select id="selectCommentByIsbnList" resultType="com.dragon.book.pojo.CommentInfo"
+            parameterType="com.dragon.book.pojo.QueryVo">
         select u.xm,c.pjrq,c.nr,c.comment_id commentId
         from t_comment c LEFT JOIN t_sys_user u on c.user_id = u.user_id
         <if test="dim != null and dim != ''">
@@ -91,23 +93,24 @@
         limit #{start},${end}
     </select>
     <select id="selectBookInfoById" resultType="com.dragon.book.pojo.BookInfo" parameterType="int">
-      select
-	    su.id,tb.isbn,tb.sm,tb.cbsmc,tb.cbrq,tb.zz,tb.lxmc,tb.tsdl,su.xm uname,su.wz,su.sh,su.rksj,su.status
+       select
+	    su.id,tb.isbn,tb.sm,tb.cbsmc,tb.cbrq,tb.zz,tb.lxmc,tb.tsdl,su.xm uname,su.wz,su.sh,su.rksj,su.status,tb.picture,tb.jj,(SELECT u.xm FROM t_store s,t_sys_user u,t_borrow b WHERE u.user_id = b.user_id AND b.s_id=s.id  AND s.`status`=0 AND b.jyzt!=2 AND s.id=#{id}) jyxm
       from (
                   select s.*,u.xm
                   from t_store s
                   left join t_sys_user u
                   on s.user_id = u.user_id
                   where s.id = #{id}
-                  c
-          ) su
-      left join (
+
+          ) su,
+      (
                   select b.*,t.lxmc
                   from t_book b
                   left join t_type t
                   on b.type_id = t.type_id
           ) tb
-      on su.isbn = tb.isbn
+      where
+			su.isbn = tb.isbn
   </select>
     <select id="bookExport" resultType="com.dragon.book.pojo.BookInfo">
         select

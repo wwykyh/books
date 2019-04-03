@@ -9,6 +9,14 @@ public class Book extends TBook {
 
     private TStore tStore;
 
+    @Override
+    public String toString() {
+        return "Book{" +
+                "tType=" + tType +
+                ", tStore=" + tStore +
+                '}';
+    }
+
     public TType gettType() {
         return tType;
     }

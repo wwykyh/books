@@ -13,17 +13,21 @@
 package com.dragon.book.controller;
 
 
-import java.io.IOException;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
-import javax.websocket.Session;
 
 import com.dragon.book.model.*;
 import com.dragon.book.pojo.Book;
+
+import com.dragon.book.pojo.BookInfo;
+import com.dragon.book.service.BookManagerService;
+import com.dragon.book.util.Page;
+import com.github.pagehelper.PageInfo;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpRequest;
+
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -49,6 +53,9 @@ public class BookController {
     @Autowired
     private UserService userService;
 
+    @Autowired
+    private BookManagerService bookServices ;
+
     /**
      * 用户主页
      *
@@ -59,6 +66,15 @@ public class BookController {
 
 
         return "index";
+    }
+
+    @GetMapping("/book_info")
+    public String booksIndex(@RequestParam String id,Model model) {
+        BookInfo bookInfo = bookServices.selectBookInfoById(id);
+        System.out.println(bookInfo.toString()+"================");
+        model.addAttribute("bookInfo",bookInfo) ;
+
+        return "book/book_info";
     }
 
     /**
@@ -110,38 +126,62 @@ public class BookController {
     public String Sea(Model model) {
         List<TType> typeList = typeService.getAllTypes();
         model.addAttribute("typeList", typeList);
-        return "book/search";
+
+
+        int pageNo=1;      //设置默认页码，当pageNumber类型转换出错时，会起作用，否则值被覆盖
+
+        Page<Book> pagebean = new Page<Book>();
+
+        String dim = "多线程";
+        String s_type = "shuyy";
+        PageBean page = new PageBean();
+        try {
+            //servlet层获取的参数类型为string，需要转换为整型
+            pageNo=Integer.parseInt("1");
+        } catch (Exception e) {
+            System.out.println("字符串转换出错");
+        }
+        int total = bookService.getTotal(page);// 计算总数
+      //  System.out.println("-=-=-=-="+total);
+
+        pagebean = bookService.getPage(pageNo, 2, dim, s_type,total);  //获取页面信息
+
+System.out.println("12121212-----"+pagebean.getPageSize()+"  /n totl:"+pagebean.getTotalPage());
+
+        model.addAttribute("page", pagebean);
+       // return "0";
+        // return "book/books";
+
+        return "book/book";
     }
 
-    /**
-     * @param dim      书名、作者
-     * @param s_tsdl   图书大类
-     * @param s_type   图书类型
-     * @param page     当前页
-     * @param pagesize 页面大小
-     * @param model    返回数据
-     * @return
-     */
-    @GetMapping("/search")
-    @ResponseBody
-    public String search(@RequestParam String dim, @RequestParam String s_tsdl,
-                         @RequestParam String s_type, @RequestParam int page,
-                         @RequestParam int pagesize, Model model) {
-        PageBean pagebean = new PageBean();
-        pagebean.setDim(dim);
-        pagebean.setPage(page - 1);// 当前页要-1
-        pagebean.setPagesize(pagesize);
-        pagebean.setS_tsdl(s_tsdl);
-        pagebean.setS_type(s_type);
-        List<BookAndEBook> allBookList = bookService
-                .joinBook(bookService.getBooks(pagebean),
-                        bookService.getEBooks(pagebean));
 
-        int total = bookService.getTotal(pagebean);// 计算总数
-        pagebean.setRows(allBookList);
-        pagebean.setTotal(total);
-        return JSON.toJSONString(pagebean).replaceAll("rows", "Rows")
-                .replaceAll("total", "Total");
+    @GetMapping("/page")
+    public String search(@RequestParam("pageNumber") String pageNumber, Model model, HttpServletRequest request, HttpServletResponse resopnse
+    ) {
+        int pageNo=1;      //设置默认页码，当pageNumber类型转换出错时，会起作用，否则值被覆盖
+
+        Page<Book> pagebean = new Page<Book>();
+
+        String dim = "多线程";
+        String s_type = "shuyy";
+        PageBean page = new PageBean();
+        try {
+            //servlet层获取的参数类型为string，需要转换为整型
+            pageNo=Integer.parseInt(pageNumber);
+        } catch (Exception e) {
+            System.out.println("字符串转换出错");
+        }
+        int total = bookService.getTotal(page);// 计算总数
+        System.out.println("-=-=-=-="+total);
+
+        pagebean = bookService.getPage(pageNo, 2, dim, s_type,total);  //获取页面信息
+
+        System.out.println("12121212-----"+pagebean.getPageSize()+"  /n totl:"+pagebean.getTotalPage());
+
+        model.addAttribute("page", pagebean);
+         return "book/book";
+
     }
 
     /**
@@ -157,7 +197,7 @@ public class BookController {
                          HttpSession session) {
 
         model.addAttribute("user",
-                (TSysUser)session.getAttribute("user"));
+                (TSysUser) session.getAttribute("user"));
         Book book = bookService.getBook(id);
         model.addAttribute("book", book);
         if (0 == book.gettStore().getStatus()) {
@@ -188,14 +228,14 @@ public class BookController {
             @RequestParam String jhghrq, @RequestParam String userId,
             Model model) {
 
-        TBorrow borrow = bookService.setBorrow(id, Integer.parseInt(userId), sm, lxfs, jyrq, bookService.getTime(jyrq, jhghrq), 2,0);
+        TBorrow borrow = bookService.setBorrow(id, Integer.parseInt(userId), sm, lxfs, jyrq, bookService.getTime(jyrq, jhghrq), 2, 0);
         int i = bookService.insertBorrow(borrow);
 
-if (i>0){
-    bookService.updateByKey(id, 0);
-    return "0";
-}else
-    return "1";
+        if (i > 0) {
+            bookService.updateByKey(id, 0);
+            return "0";
+        } else
+            return "1";
 
     }
 
@@ -207,15 +247,13 @@ if (i>0){
         TSysUser user = (TSysUser) session.getAttribute("user");
         String id = user.getBookId();
         System.out.println(id);
-
-        if ("".equals(id)||id==null){
-            id=bookId;
+        if (id.contains(bookId)) {
+            return "0";
         }
-        else{
-            if (id.contains(bookId)){
-                return "0";
-            }
-            id = id + ","+bookId;
+        if ("".equals(id) || id == null) {
+            id = bookId;
+        } else {
+            id = id + "," + bookId;
         }
 
         user.setBookId(id);
@@ -233,10 +271,10 @@ if (i>0){
 
         // model.addAttribute("url",
         // "https://view.officeapps.live.com/op/view.aspx?src=http://storage.xuetangx.com/public_assets/xuetangx/PDF/1.xls");
-       // model.addAttribute("url", "images/1.doc");
+        // model.addAttribute("url", "images/1.doc");
 
 
-        /*    WordToPDF wordToPDF = new WordToPDF();
+          /*  WordToPDF wordToPDF = new WordToPDF();
             try {
                 wordToPDF.WordToPDF("e://简历.doc","e://成了.pdf");
             } catch (IOException e) {
@@ -245,6 +283,21 @@ if (i>0){
 
         }*/
         return "PDF";
+    }
+
+
+    @GetMapping("pageinfo")
+    public  String pageInfo(@RequestParam(value = "currentPage",required=false,defaultValue="1") int currentPage,Model model){
+        List<Book> list= bookService.getPageInfo("1","2",currentPage);
+        System.out.println(currentPage);
+        PageInfo<Book> page =new PageInfo<>(list);
+        model.addAttribute("pageInfo",page);
+        System.out.println("===============");
+        System.out.println(list);
+        for(int i = 0;i < list.size();i++) {
+            System.out.println(list.get(i));
+        }
+        return "/book/pageInfo";
     }
 
     public BookService getBookService() {
@@ -274,4 +327,7 @@ if (i>0){
     public int getMax() {
         return Max;
     }
+
+
+
 }
