@@ -60,7 +60,14 @@
                      <tr  style="background:#a7d0ef;">
                          <td style="padding-left:10px" ><h1  style="font-family:微软雅黑 ">${arr.xm}：</h1></td>
                          <td  width="15%" >${arr.pjrq}</td>
-                         <td width="10%" style="text-align: right"><a href="javascript:void(0);"  onclick="delComment('${arr.commentId}')">删除</a></td>
+                         <c:choose>
+                             <c:when test="${user.xm =='admin'}" >
+                                 <td width="10%" style="text-align: right"><a href="javascript:void(0);"  onclick="delComment('${arr.commentId}')">删除</a></td>
+                             </c:when>
+                             <c:otherwise>
+                                 <td></td>
+                             </c:otherwise>
+                         </c:choose>
                      </tr>
                      <tr style="background:#EFEFEF;">
                          <td width="80%" style="padding-left: 35px">
@@ -77,8 +84,6 @@
 
 </body>
 <script type="text/javascript">
-
-
     function delComment(id) {
         if (confirm("确定删除该评论？")){
             $.ajax({

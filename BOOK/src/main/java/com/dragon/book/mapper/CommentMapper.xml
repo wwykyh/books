@@ -43,7 +43,7 @@
             WHERE
                 tw.id = #{borrowId}
         )
-        AND tc.user_id = ts.user_id
+        AND tc.user_id = ts.user_id ORDER BY tc.pjrq  DESC
   </select>
    <select id="selectByBorrow" resultMap="NewResultMap" parameterType="com.dragon.book.pojo.CommentInfo">
     SELECT
@@ -82,6 +82,6 @@
            t_comment tc
         LEFT OUTER JOIN t_store tst ON tst.isbn = tc.isbn
         LEFT OUTER JOIN t_sys_user ts ON ts.user_id=tc.user_id
-        where tst.id=#{id} ORDER BY tc.pjrq DESC
+        where tst.isbn=#{id} ORDER BY tc.pjrq DESC
     </select>
 </mapper>

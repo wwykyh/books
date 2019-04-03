@@ -3,7 +3,7 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <html>
 <head>
-    <title>图书详情</title>
+    <title>评论详情</title>
     <link rel="stylesheet" type="text/css" href="css/common/iconfont/iconfont.css" />
     <link rel="stylesheet" type="text/css" href="css/common/layout.css" />
     <link rel="stylesheet" type="text/css" href="dvpt/css/libs.css" />
@@ -37,31 +37,30 @@
                 </tr>
             </div>
         </div>
-        <div class="write-box">
-            <form  method="post" class="form_eva" name="form_eva"id="form_eva"  action="userBorrow/commentService">
-                <table>
-                    <tr style="display:none" >
-                        <td>用户id：<input type="text" value="${history.user.userId}" disabled="disabled" name="userId" id="userId"/></td>
-                        <td>图书id：<input type="text" value="${history.book.isbn}" disabled="disabled" name="bookId" id="bookId"/></td>
-                    </tr>
-                </table>
-            </form>
-        </div>
+
         <th width="10%" style="text-align: left" ><span> <font size="4">历史评论：</font></span></th>
         <div style="padding-left:5% ; padding-right: 5%">
-            <table class="form-table" width="100%" id="commentTable" border="1">
+            <table class="form-table" width="100%" id="commentTable" >
 
-                <c:forEach items="${tCommentInfo}" var="arr">
+                <c:forEach items="${commentInfos}" var="arr">
                    <div >
                      <tr style="background:#a7d0ef;" >
                          <td width="50%" style="padding-left:10px" ><h1  style="font-family:微软雅黑 ">${arr.xm}：</h1></td>
-                         <td  width="30%" >${arr.pjrq}</td>
-                         <td width="10%"  ><a href="javascript:void(0);"  onclick="delComment('${arr.commentId}')">删除</a></td>
+                         <td  width="10%" >${arr.pjrq}</td>
+                         <td width="10%"  style="padding-left: 2%">
+                          <c:choose>
+                             <c:when test="${arr.xm==user.xm}">
+                                 <a href="javascript:void(0);"  onclick="delComment('${arr.commentId}')">删除</a></td>
+                             </c:when>
+                             <c:otherwise>
+                                 <td></td>
+                             </c:otherwise>
+                          </c:choose>
                      </tr>
                      <tr style="background:#EFEFEF;">
                          <td width="80%" style="padding-left: 35px">${arr.nr}</td>
-                         <td width="10%"></td>
-                         <td width="10%"></td>
+                         <td ></td>
+                         <td ></td>
                      </tr>
                 </c:forEach>
                    </div>
@@ -80,16 +79,22 @@
         });
     }
     function qingkong() {
-
     //     document.execCommand("Delete",null);
         if (confirm("确定清空当前文档么？")){
             UE.getEditor('container').execCommand("cleardoc");
         }
-
     }
     function tijiao() {
-        var userId=form_eva.userId.value;
-        var bookId=form_eva.bookId.value;
+        var userId=${user.userId};
+        var bookId=${bookIsbn};
+        if(UE.getEditor('container').getContent()==null|| UE.getEditor('container').getContent()=="" ){
+            alert("评论不能为空");
+            return;
+        }
+        if(bookId==undefined || bookId==" " || bookId==null ){
+            alert("评论失败");
+            return;
+        }
         $.ajax({
             type: "GET",
             url:"/commentService",
@@ -147,4 +152,5 @@
         });
     });
 </script>
+
 </html>

@@ -45,8 +45,7 @@ public class BookManagerController {
     private PublishManagerService publishManagerService;
     @Autowired
     private BookAnalyzeService bookAnalyzeService;
-    @Autowired
-    private UserBorrowService userBorrowService;
+
     @RequestMapping("/book_manager")
     public String showBookManagerPage(){
         return "manager/book_manager";
@@ -317,16 +316,6 @@ public class BookManagerController {
         List<TBookAnalyze> user =bookAnalyzeService.getBoorowNum();
         return user;
     }
-    /**
-     * 查找书评
-     */
-    @RequestMapping("/getBookComment")
-    public String getBookComment(String id,Model model){
-        List<CommentInfo> commentInfos =userBorrowService.selBookComment(id);
 
-        //HistoryInfo historyInfo = bookService.selectHistoryById(id);
-        model.addAttribute("commentInfos",commentInfos);
-        //model.addAttribute("historyInfo",historyInfo);
-        return "/manager/bookComment";
-    }
+
 }

@@ -225,6 +225,9 @@
 																html = html+'<a href="javascript:void(0);" onclick="like(\''
                                                                     + row.id
                                                                     + '\')">喜欢&nbsp;&nbsp;</a>';
+                                                                html = html+'<a href="javascript:void(0);" onclick="comment(\''
+                                                                    + row.isbn
+                                                                    + '\')">评论&nbsp;&nbsp;</a>';
 
 																return html;
 															} else
@@ -311,6 +314,14 @@
 				cancelVal : "关闭"
 			});
 		}
+		function comment(id) {
+            art.dialog.open('getBookCommentByBookId?id='+id, {
+                title: '评价',
+                width: 850,
+                height: 550,
+                id:'commentInfo_window'
+            });
+        }
 	</script>
 </body>
 </html>

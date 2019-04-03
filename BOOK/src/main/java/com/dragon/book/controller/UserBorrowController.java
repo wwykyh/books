@@ -50,49 +50,7 @@ public class UserBorrowController {
         return "manager/userBorrowHistory";
     }
 
-    //评价对话框
-    @RequestMapping("/commentInfo")
-    public String EvaluationInfo(Integer id,Model model){
-        List<CommentInfo> tCommentInfo = userBorrowService.selUserComment(id);
-        HistoryInfo history = bookService.selectHistoryById(id);
-        model.addAttribute("tCommentInfo",tCommentInfo);
-        model.addAttribute("history",history);
-        return "manager/commentInfo";
-    }
 
-    //用户评论处理
-    @RequestMapping("/commentService")
-    @ResponseBody
-    public String userEvaluation(HttpServletRequest request){
-        TComment tComment = new TComment();
-        //获取评论的各项数据
-        String userId= request.getParameter("userId");
-        Integer userid = Integer.valueOf(userId);
-        String userComment= request.getParameter("userComment");
-        String bookId = request.getParameter("bookId");
-        //把数据塞进去
-        tComment.setIsbn(bookId);
-        tComment.setNr(userComment);
-        tComment.setUserId(userid);
-        SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd  HH:mm:ss  ");
-        tComment.setPjrq(dateFormat.format(new Date()));
-        String status="0";
-        int i =userBorrowService.addUserComment(tComment);
-        if(i>=0){
-            status = "1";
-        }
-        return status  ;
-    }
 
-    @RequestMapping("/delCommentByid")
-    @ResponseBody
-    public  String delComment(String id){
 
-        String status="0";
-        boolean i =bookService.delComment(id);
-        if (i==true){
-            status="1";
-        }
-        return status  ;
-    }
 }
