@@ -1,8 +1,6 @@
 package com.dragon.book.controller;
 import com.dragon.book.model.TBorrow;
-import com.dragon.book.pojo.Book;
 import com.dragon.book.pojo.Borrow;
-import com.dragon.book.pojo.UserBorrow;
 import com.dragon.book.service.HomeService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -10,7 +8,6 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
 
 
 import java.util.List;
@@ -30,8 +27,11 @@ public class HomeController {
     }
 
     //主页
-    @GetMapping("/Home")
-    public String getRankList(Model model) {
+    @RequestMapping("/Home")
+    public String getRankList(@RequestParam(value = "isadmin" ,required = false)int isadmin, Model model) {
+        String home ="home";
+        if (isadmin==1)
+            home="homeAdmin";
         List<Borrow> rankingListUsers = homeService.getRankingList();
         List<Borrow> hotBooks = homeService.getHotBooks();
         List<Borrow> newBooks = homeService.getNewBooks();
@@ -40,6 +40,6 @@ public class HomeController {
         model.addAttribute("hotBooks",hotBooks);
         model.addAttribute("newBooks",newBooks);
         model.addAttribute("overTimeUsers",overTimeUsers);
-        return "home" ;
+        return home ;
     }
 }

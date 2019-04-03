@@ -7,6 +7,7 @@
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn"%>
 <html>
 <head>
     <title>快捷还书</title>
@@ -26,27 +27,45 @@
             <a href="javascript:;" class="arrow up"></a></div>
         <div class="panel-body panel-noborder">
             <div class="write-box">
-                <form action="/usermanage/userEdit" method="post" class="form-libs" name="form-libs" id="form-libs">
+                <form action="" method="post" class="form-libs" name="form-libs" id="form-libs">
                 <table class="form-table" width="100%">
-                    <c:forEach items="${books}" var="base">
-                    <tr>
-                        <th width="17%"><span class="ft-need"></span>已借图书：</th>
-                        <td width="33%">${base.sm}<input type="checkbox" name="category" value="${base.sId}"/></td>
-                    </tr>
+                    <c:if test="${empty books}">
+                        <tr><th width="17%"><span class="ft-need"></span></th>
+                            <td width="33%">未借图书，无需还书</td>
+                        </tr>
+                    </c:if>
+                    <c:forEach items="${books}" var="base" varStatus="sta">
+                            <c:if test="${not empty base}">
+                            <c:if test="${sta.first}">
+                                <tr>
+                                    <th width="17%"><span class="ft-need"></span>已借图书：</th>
+                                    <td width="33%">${base.sm}&nbsp;<input type="checkbox" name="category" value="${base.sId}" checked="checked"/></td>
+                                </tr>
+                            </c:if>
+                            <c:if test="${not sta.first and not sta.last}">
+                                <tr>
+                                    <th width="17%"><span class="ft-need"></span>已借图书：</th>
+                                    <td width="33%">${base.sm}&nbsp;<input type="checkbox" name="category" value="${base.sId}" /></td>
+                                </tr>
+                            </c:if>
+                            <c:if test="${sta.last}">
+                                <tr>
+                                    <th width="17%"><span class="ft-need"></span>已借图书：</th>
+                                    <td width="33%">${base.sm}&nbsp;<input type="checkbox" name="category" value="${base.sId}" /></td>
+                                </tr>
+                                <tr>
+                                <th></th>
+                                <td><input  type="button" class="btn" value="还书"  onclick="sub()"><input  type="button" class="btn" value="取消"  onclick="close();"></td>
+                                </tr>
+                            </c:if>
+                        </c:if>
                     </c:forEach>
-                        <th></th>
-                        <td><input  type="button" class="btn" value="还书"  onclick="sub()"><input  type="button" class="btn" value="取消"  onclick="close();"></td>
-                    </tr>
                 </table>
                 </form>
             </div>
         </div>
     </div>
     <script type="text/javascript">
-        $(document).ready(function (){
-
-        });
-
         //ajax提交表单
         function sub() {
             $.ajax({

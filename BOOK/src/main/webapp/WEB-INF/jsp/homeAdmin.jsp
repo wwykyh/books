@@ -1,6 +1,10 @@
 <%@ page language="java" import="java.util.*" pageEncoding="utf-8"%>
 <%@ page contentType="text/html;charset=utf-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!-- Material Design fonts -->
+<html>
+
+<body>
 <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Roboto:300,400,500,700" type="text/css">
 <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 
@@ -21,7 +25,6 @@
 <link href="home/css/style.css" rel="stylesheet" type="text/css">
 
 
-
 <section id="hero_section" class="top_cont_outer">
 <div class="hero_wrapper">
 <div class="container">
@@ -30,13 +33,13 @@
 	  <div class="col-lg-5 col-sm-7">
 		<div class="top_left_cont zoomIn wow animated">
             <div style="margin-left: 90px "><h2><strong>巨龙</strong> 图书馆</h2></div>
-            <div style="width: 500px;margin-left: 90px "><p>巨龙图书馆成立于2019年4月21日，管理的图书高达50本；其中囊括了大多数精品图书。</p></div>
-            <div style="margin-left: 90px "><a href="#service" class="btn btn-raised btn-lg">了解更多</a></div>
+            <div style="width: 500px;margin-left: 90px "><p id="dragonLibraryIntro">巨龙图书馆成立于2019年4月21日，管理的图书高达50本,活跃用户20人；图书馆中囊括了大多数精品图书和电子书。</p></div>
+            <div style="margin-left: 90px "><a href="javascript:0" class="btn btn-raised btn-lg">了解更多</a></div>
 		</div>
       </div>
-		<img src="home/img/booker1.png" class="zoomIn wow animated" alt="" />
+		<img  src="home/img/booker1.png"  class="zoomIn wow animated" alt="" style="margin-left: 150px"/>
         <marquee id="affiche" align="right"  behavior="scroll"   loop="-1"  onMouseOut="this.start()" onMouseOver="this.stop()">
-            <font color=red size="4px" style="font-weight: bold" >大数据事业部周赵茂借的“Java编程思想”逾期未还，请尽快归还！！！</font>
+            <div id="scrollbar"  style="height:23px;font-size:16px;color:red" >${overTimeUsers}&emsp;</div>
         </marquee>
 	</div>
   </div>
@@ -64,24 +67,22 @@
                           <td width="200px"><font size="4px">部门</font></td>
                           <td width="150px"><font size="4px">借阅次数</font></td>
                       </tr>
+                     <c:forEach items="${rankingListUsers}" var="list" varStatus="st">
                       <tr >
-                          <td ><img src="home/img/num1.png" height="40" width="40"></td>
-                          <td ><font size="4px">周赵茂</font></td>
-                          <td ><font size="4px">大数据事业部</font></td>
-                          <td ><font size="4px">16次</font></td>
+                          <c:if test="${st.count==1}">
+                              <td ><img src="home/img/num1.png" height="40" width="40"></td>
+                          </c:if>
+                          <c:if test="${st.count==2}">
+                              <td ><img src="home/img/num2.png" height="40" width="40"></td>
+                          </c:if>
+                          <c:if test="${st.count==3}">
+                              <td ><img src="home/img/num3.png" height="40" width="40"></td>
+                          </c:if>
+                          <td ><font size="4px">${list.user.xm}</font></td>
+                          <td ><font size="4px">${list.user.bm}</font></td>
+                          <td ><font size="4px">${list.cs}</font></td>
                       </tr>
-                      <tr s>
-                          <td ><img src="home/img/num2.png" height="40" width="40"></td>
-                          <td ><font size="4px">周赵茂</font></td>
-                          <td ><font size="4px">QB事业部</font></td>
-                          <td ><font size="4px">14次</font></td>
-                      </tr>
-                      <tr >
-                          <td ><img src="home/img/num3.png" height="40" width="40"></td>
-                          <td ><font size="4px">周赵茂</font></td>
-                          <td ><font size="4px">保洁部</font></td>
-                          <td ><font size="4px">12次</font></td>
-                      </tr>
+                     </c:forEach>
                   </table>
               </div>
 		  </div>
@@ -98,53 +99,33 @@
 <div class="container">
 <h2>热门图书</h2>
 <div class="service_wrapper">
-  <div class="row">
+
+<c:forEach items="${hotBooks}" var="hot" varStatus="sta">
+    <c:if test="${sta.count==1}">
+    <div class="row">
+    </c:if>
+     <c:if test="${sta.count==4}">
+     <div class="row borderTop">
+      </c:if>
 	<div class="col-lg-4 col-md-4 col-sm-4">
-	  <div class="service_block withripple">
-          <img src="home/img/noPicture.png" style="width: 200px;height: 178px">
-		<h3 class="animated fadeInUp wow">创新与法制</h3>
-		<p class="animated fadeInDown wow">这是简介这是简介这是简介这是简介这是简介这是简介这是简介这是简介这是简介这是简介这是简介这是简介这是简介这是简介这是简介.</p>
+	  <div class="service_block withripple" style="height:360px">
+          <td >
+              <c:if test="${not empty hot.book.picture}">
+                  <img id="bookCover3" src="${hot.book.picture}" style="width: 200px;height: 178px">
+              </c:if>
+          <c:if test="${empty  hot.book.picture}">
+              <img id="bookCover3" src="home/img/noPicture.png" style="width: 200px;height: 178px">
+          </c:if>
+          </td>
+		<h3  class="animated fadeInUp wow">${hot.book.sm}</h3>
+		<p    class="" style="height: 190px;overflow:hidden;">&nbsp;&nbsp;&nbsp;&nbsp;${hot.book.jj}</p>
 	  </div>
 	</div>
-	<div class="col-lg-4 col-md-4 col-sm-4 borderLeft">
-	  <div class="service_block withripple">
-          <img src="home/img/noPicture.png" style="width: 200px;height: 178px">
-          <h3 class="animated fadeInUp wow">创新与法制</h3>
-          <p class="animated fadeInDown wow">这是简介这是简介这是简介这是简介这是简介这是简介这是简介这是简介这是简介这是简介这是简介这是简介这是简介这是简介这是简介.</p>
-	  </div>
-	</div>
-	<div class="col-lg-4 col-md-4 col-sm-4 borderLeft">
-	  <div class="service_block withripple">
-          <img src="home/img/noPicture.png" style="width: 200px;height: 178px">
-          <h3 class="animated fadeInUp wow">创新与法制</h3>
-          <p class="animated fadeInDown wow">这是简介这是简介这是简介这是简介这是简介这是简介这是简介这是简介这是简介这是简介这是简介这是简介这是简介这是简介这是简介.</p>
-	  </div>
-	</div>
-  </div>
-   <div class="row borderTop">
-	<div class="col-lg-4 col-md-4 col-sm-4 mrgTop">
-	  <div class="service_block withripple">
-          <img src="home/img/noPicture.png" style="width: 200px;height: 178px">
-          <h3 class="animated fadeInUp wow">创新与法制</h3>
-          <p class="animated fadeInDown wow">这是简介这是简介这是简介这是简介这是简介这是简介这是简介这是简介这是简介这是简介这是简介这是简介这是简介这是简介这是简介.</p>
-	  </div>
-	</div>
-	<div class="col-lg-4 col-md-4 col-sm-4 borderLeft mrgTop">
-	  <div class="service_block withripple">
-          <img src="home/img/noPicture.png" style="width: 200px;height: 178px">
-          <h3 class="animated fadeInUp wow">创新与法制</h3>
-          <p class="animated fadeInDown wow">这是简介这是简介这是简介这是简介这是简介这是简介这是简介这是简介这是简介这是简介这是简介这是简介这是简介这是简介这是简介.</p>
-	  </div>
-	</div>
-	<div class="col-lg-4 col-md-4 col-sm-4 borderLeft mrgTop">
-	  <div class="service_block withripple">
-          <img src="home/img/noPicture.png" style="width: 200px;height: 178px">
-          <h3 class="animated fadeInUp wow">创新与法制</h3>
-          <p class="animated fadeInDown wow">这是简介这是简介这是简介这是简介这是简介这是简介这是简介这是简介这是简介这是简介这是简介这是简介这是简介这是简介这是简介.</p>
-	  </div>
-	</div>
-  </div>
-</div>
+        <c:if test="${sta.count==3 or sta.count==6 }">
+            </div>
+            </c:if>
+</c:forEach>
+
 </div>
 </section>
 <!--Service-->
@@ -155,60 +136,57 @@
         <div class="container">
             <h2>新书推荐</h2>
             <div class="service_wrapper">
+                <c:forEach items="${newBooks}" var="new1" varStatus="sta1">
+                <c:if test="${sta1.count==1}">
                 <div class="row">
-                    <div class="col-lg-4 col-md-4 col-sm-4">
-                        <div class="service_block withripple">
-                            <img src="home/img/noPicture.png" style="width: 200px;height: 178px">
-                            <h3 class="animated fadeInUp wow">创新与法制</h3>
-                            <p class="animated fadeInDown wow">这是简介这是简介这是简介这是简介这是简介这是简介这是简介这是简介这是简介这是简介这是简介这是简介这是简介这是简介这是简介.</p>
+                    </c:if>
+                    <c:if test="${sta1.count==4}">
+                    <div class="row borderTop">
+                        </c:if>
+                        <div class="col-lg-4 col-md-4 col-sm-4">
+                            <div class="service_block withripple" style="height:360px">
+                                <td >
+                                    <c:if test="${not empty new1.book.picture}">
+                                        <img id="bookCover3" src="${new1.book.picture}" style="width: 200px;height: 178px">
+                                    </c:if>
+                                    <c:if test="${empty  new1.book.picture}">
+                                        <img  src="home/img/noPicture.png" style="width: 200px;height: 178px">
+                                    </c:if>
+                                </td>
+                                <h3  class="animated fadeInUp wow">${new1.book.sm}</h3>
+                                <p    class="" style="height: 190px;overflow:hidden;">&nbsp;&nbsp;&nbsp;&nbsp;${new1.book.jj}</p>
+                            </div>
                         </div>
+                        <c:if test="${sta1.count==3 or sta1.count==6 }">
                     </div>
-                    <div class="col-lg-4 col-md-4 col-sm-4 borderLeft">
-                        <div class="service_block withripple">
-                            <img src="home/img/noPicture.png" style="width: 200px;height: 178px">
-                            <h3 class="animated fadeInUp wow">创新与法制</h3>
-                            <p class="animated fadeInDown wow">这是简介这是简介这是简介这是简介这是简介这是简介这是简介这是简介这是简介这是简介这是简介这是简介这是简介这是简介这是简介.</p>
-                        </div>
-                    </div>
-                    <div class="col-lg-4 col-md-4 col-sm-4 borderLeft">
-                        <div class="service_block withripple">
-                            <img src="home/img/noPicture.png" style="width: 200px;height: 178px">
-                            <h3 class="animated fadeInUp wow">创新与法制</h3>
-                            <p class="animated fadeInDown wow">这是简介这是简介这是简介这是简介这是简介这是简介这是简介这是简介这是简介这是简介这是简介这是简介这是简介这是简介这是简介.</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="row borderTop">
-                    <div class="col-lg-4 col-md-4 col-sm-4 mrgTop">
-                        <div class="service_block withripple">
-                            <img src="home/img/noPicture.png" style="width: 200px;height: 178px">
-                            <h3 class="animated fadeInUp wow">创新与法制</h3>
-                            <p class="animated fadeInDown wow">这是简介这是简介这是简介这是简介这是简介这是简介这是简介这是简介这是简介这是简介这是简介这是简介这是简介这是简介这是简介.</p>
-                        </div>
-                    </div>
-                    <div class="col-lg-4 col-md-4 col-sm-4 borderLeft mrgTop">
-                        <div class="service_block withripple">
-                            <img src="home/img/noPicture.png" style="width: 200px;height: 178px">
-                            <h3 class="animated fadeInUp wow">创新与法制</h3>
-                            <p class="animated fadeInDown wow">这是简介这是简介这是简介这是简介这是简介这是简介这是简介这是简介这是简介这是简介这是简介这是简介这是简介这是简介这是简介.</p>
-                        </div>
-                    </div>
-                    <div class="col-lg-4 col-md-4 col-sm-4 borderLeft mrgTop">
-                        <div class="service_block withripple">
-                            <img src="home/img/noPicture.png" style="width: 200px;height: 178px">
-                            <h3 class="animated fadeInUp wow">创新与法制</h3>
-                            <p class="animated fadeInDown wow">这是简介这是简介这是简介这是简介这是简介这是简介这是简介这是简介这是简介这是简介这是简介这是简介这是简介这是简介这是简介.</p>
-                        </div>
-                    </div>
-                </div>
+                    </c:if>
+                    </c:forEach>
             </div>
+        </div>
         </div>
     </section>
     <!--Service-->
     <div class="footer_bottom"><span><font color="black">Copyright ©2015 厦门市巨龙信息科技有限公司 技术支持   建议使用1280*768及以上分辨率</font></span> </div>
+</section>
 
-<%--<script>--%>
-<%--$(function () {--%>
-<%--$.material.init(); --%>
-<%--});--%>
-<%--</script>--%>
+<script type="text/javascript">
+
+
+    requirejs(['jquery','dg.datePicker', 'artdialog'], function($) {
+    //快捷还书方法
+        $("#returnBook").click(function () {
+            art.dialog.open('/return_book?userid='+${ user.userId}, {
+                title: '快捷还书',
+                width: 700,
+                height: 350,
+                cancel: true,
+                cancelVal: "关闭"
+            });
+        })
+    });
+</script>
+</body>
+</html>
+
+
+

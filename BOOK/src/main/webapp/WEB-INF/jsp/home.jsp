@@ -1,7 +1,9 @@
 <%@ page language="java" import="java.util.*" pageEncoding="utf-8"%>
 <%@ page contentType="text/html;charset=utf-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!-- Material Design fonts -->
 <html>
+
 <body>
 <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Roboto:300,400,500,700" type="text/css">
 <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
@@ -21,7 +23,6 @@
 
 <!-- Custome Styles -->
 <link href="home/css/style.css" rel="stylesheet" type="text/css">
-
 
 
 <section id="hero_section" class="top_cont_outer">
@@ -72,24 +73,22 @@
                           <td width="200px"><font size="4px">部门</font></td>
                           <td width="150px"><font size="4px">借阅次数</font></td>
                       </tr>
+                     <c:forEach items="${rankingListUsers}" var="list" varStatus="st">
                       <tr >
-                          <td ><img src="home/img/num1.png" height="40" width="40"></td>
-                          <td id="name1"><font size="4px">周赵茂${rankingListUsers}</font></td>
-                          <td id="depart1"><font size="4px">大数据事业部</font></td>
-                          <td id="times1"><font size="4px">16次</font></td>
+                          <c:if test="${st.count==1}">
+                              <td ><img src="home/img/num1.png" height="40" width="40"></td>
+                          </c:if>
+                          <c:if test="${st.count==2}">
+                              <td ><img src="home/img/num2.png" height="40" width="40"></td>
+                          </c:if>
+                          <c:if test="${st.count==3}">
+                              <td ><img src="home/img/num3.png" height="40" width="40"></td>
+                          </c:if>
+                          <td ><font size="4px">${list.user.xm}</font></td>
+                          <td ><font size="4px">${list.user.bm}</font></td>
+                          <td ><font size="4px">${list.cs}</font></td>
                       </tr>
-                      <tr >
-                          <td ><img src="home/img/num2.png" height="40" width="40"></td>
-                          <td id="name2"><font size="4px">周赵茂</font></td>
-                          <td id="depart2"><font size="4px">QB事业部</font></td>
-                          <td id="times2"><font size="4px">14次</font></td>
-                      </tr>
-                      <tr >
-                          <td ><img src="home/img/num3.png" height="40" width="40"></td>
-                          <td id="name3"><font size="4px">周赵茂</font></td>
-                          <td id="depart3"><font size="4px">保洁部</font></td>
-                          <td id="times3"><font size="4px">12次</font></td>
-                      </tr>
+                     </c:forEach>
                   </table>
               </div>
 		  </div>
@@ -106,53 +105,33 @@
 <div class="container">
 <h2>热门图书</h2>
 <div class="service_wrapper">
-  <div class="row">
+
+<c:forEach items="${hotBooks}" var="hot" varStatus="sta">
+    <c:if test="${sta.count==1}">
+    <div class="row">
+    </c:if>
+     <c:if test="${sta.count==4}">
+     <div class="row borderTop">
+      </c:if>
 	<div class="col-lg-4 col-md-4 col-sm-4">
-	  <div class="service_block withripple">
-          <img id="bookCover1" src="home/img/noPicture.png" style="width: 200px;height: 178px">
-		<h3 id="bookName1" class="animated fadeInUp wow">创新与法制</h3>
-		<p id="intro1" class="animated fadeInDown wow">这是简介这是简介这是简介这是简介这是简介这是简介这是简介这是简介这是简介这是简介这是简介这是简介这是简介这是简介这是简介.</p>
+	  <div class="service_block withripple" style="height:360px">
+          <td >
+              <c:if test="${not empty hot.book.picture}">
+                  <img id="bookCover3" src="${hot.book.picture}" style="width: 200px;height: 178px">
+              </c:if>
+          <c:if test="${empty  hot.book.picture}">
+              <img id="bookCover3" src="home/img/noPicture.png" style="width: 200px;height: 178px">
+          </c:if>
+          </td>
+		<h3  class="animated fadeInUp wow">${hot.book.sm}</h3>
+		<p    class="" style="height: 190px;overflow:hidden;">&nbsp;&nbsp;&nbsp;&nbsp;${hot.book.jj}</p>
 	  </div>
 	</div>
-	<div class="col-lg-4 col-md-4 col-sm-4 borderLeft">
-	  <div class="service_block withripple">
-          <img id="bookCover2" src="home/img/noPicture.png" style="width: 200px;height: 178px">
-          <h3 id="bookName2" class="animated fadeInUp wow">创新与法制</h3>
-          <p id="intro2" class="animated fadeInDown wow">这是简介这是简介这是简介这是简介这是简介这是简介这是简介这是简介这是简介这是简介这是简介这是简介这是简介这是简介这是简介.</p>
-	  </div>
-	</div>
-	<div class="col-lg-4 col-md-4 col-sm-4 borderLeft">
-	  <div class="service_block withripple">
-          <img id="bookCover3" src="home/img/noPicture.png" style="width: 200px;height: 178px">
-          <h3 id="bookName3" class="animated fadeInUp wow">创新与法制</h3>
-          <p id="intro3" class="animated fadeInDown wow">这是简介这是简介这是简介这是简介这是简介这是简介这是简介这是简介这是简介这是简介这是简介这是简介这是简介这是简介这是简介.</p>
-	  </div>
-	</div>
-  </div>
-   <div class="row borderTop">
-	<div class="col-lg-4 col-md-4 col-sm-4 mrgTop">
-	  <div class="service_block withripple">
-          <img id="bookCover4" src="home/img/noPicture.png" style="width: 200px;height: 178px">
-          <h3 id="bookName4" class="animated fadeInUp wow">创新与法制</h3>
-          <p id="intro4" class="animated fadeInDown wow">这是简介这是简介这是简介这是简介这是简介这是简介这是简介这是简介这是简介这是简介这是简介这是简介这是简介这是简介这是简介.</p>
-	  </div>
-	</div>
-	<div class="col-lg-4 col-md-4 col-sm-4 borderLeft mrgTop">
-	  <div class="service_block withripple">
-          <img id="bookCover5" src="home/img/noPicture.png" style="width: 200px;height: 178px">
-          <h3 id="bookName5" class="animated fadeInUp wow">创新与法制</h3>
-          <p id="intro5" class="animated fadeInDown wow">这是简介这是简介这是简介这是简介这是简介这是简介这是简介这是简介这是简介这是简介这是简介这是简介这是简介这是简介这是简介.</p>
-	  </div>
-	</div>
-	<div class="col-lg-4 col-md-4 col-sm-4 borderLeft mrgTop">
-	  <div class="service_block withripple">
-          <img id="bookCover6" src="home/img/noPicture.png" style="width: 200px;height: 178px">
-          <h3 id="bookName6" class="animated fadeInUp wow">创新与法制</h3>
-          <p id="intro6" class="animated fadeInDown wow">这是简介这是简介这是简介这是简介这是简介这是简介这是简介这是简介这是简介这是简介这是简介这是简介这是简介这是简介这是简介.</p>
-	  </div>
-	</div>
-  </div>
-</div>
+        <c:if test="${sta.count==3 or sta.count==6 }">
+            </div>
+            </c:if>
+</c:forEach>
+
 </div>
 </section>
 <!--Service-->
@@ -163,53 +142,33 @@
         <div class="container">
             <h2>新书推荐</h2>
             <div class="service_wrapper">
+                <c:forEach items="${newBooks}" var="new1" varStatus="sta1">
+                <c:if test="${sta1.count==1}">
                 <div class="row">
-                    <div class="col-lg-4 col-md-4 col-sm-4">
-                        <div class="service_block withripple">
-                            <img id="bookCover7" src="home/img/noPicture.png" style="width: 200px;height: 178px">
-                            <h3 id="bookName7" class="animated fadeInUp wow">创新与法制</h3>
-                            <p id="intro7" class="animated fadeInDown wow">这是简介这是简介这是简介这是简介这是简介这是简介这是简介这是简介这是简介这是简介这是简介这是简介这是简介这是简介这是简介.</p>
+                    </c:if>
+                    <c:if test="${sta1.count==4}">
+                    <div class="row borderTop">
+                        </c:if>
+                        <div class="col-lg-4 col-md-4 col-sm-4">
+                            <div class="service_block withripple" style="height:360px">
+                                <td >
+                                    <c:if test="${not empty new1.book.picture}">
+                                        <img id="bookCover3" src="${new1.book.picture}" style="width: 200px;height: 178px">
+                                    </c:if>
+                                    <c:if test="${empty  new1.book.picture}">
+                                        <img  src="home/img/noPicture.png" style="width: 200px;height: 178px">
+                                    </c:if>
+                                </td>
+                                <h3  class="animated fadeInUp wow">${new1.book.sm}</h3>
+                                <p    class="" style="height: 190px;overflow:hidden;">&nbsp;&nbsp;&nbsp;&nbsp;${new1.book.jj}</p>
+                            </div>
                         </div>
+                        <c:if test="${sta1.count==3 or sta1.count==6 }">
                     </div>
-                    <div class="col-lg-4 col-md-4 col-sm-4 borderLeft">
-                        <div class="service_block withripple">
-                            <img id="bookCover8" src="home/img/noPicture.png" style="width: 200px;height: 178px">
-                            <h3 id="bookName8" class="animated fadeInUp wow">创新与法制</h3>
-                            <p id="intro8" class="animated fadeInDown wow">这是简介这是简介这是简介这是简介这是简介这是简介这是简介这是简介这是简介这是简介这是简介这是简介这是简介这是简介这是简介.</p>
-                        </div>
-                    </div>
-                    <div class="col-lg-4 col-md-4 col-sm-4 borderLeft">
-                        <div class="service_block withripple">
-                            <img id="bookCover9" src="home/img/noPicture.png" style="width: 200px;height: 178px">
-                            <h3 id="bookName9" class="animated fadeInUp wow">创新与法制</h3>
-                            <p id="intro9" class="animated fadeInDown wow">这是简介这是简介这是简介这是简介这是简介这是简介这是简介这是简介这是简介这是简介这是简介这是简介这是简介这是简介这是简介.</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="row borderTop">
-                    <div class="col-lg-4 col-md-4 col-sm-4 mrgTop">
-                        <div class="service_block withripple">
-                            <img id="bookCover10" src="home/img/noPicture.png" style="width: 200px;height: 178px">
-                            <h3 id="bookName10" class="animated fadeInUp wow">创新与法制</h3>
-                            <p id="intro10" class="animated fadeInDown wow">这是简介这是简介这是简介这是简介这是简介这是简介这是简介这是简介这是简介这是简介这是简介这是简介这是简介这是简介这是简介.</p>
-                        </div>
-                    </div>
-                    <div class="col-lg-4 col-md-4 col-sm-4 borderLeft mrgTop">
-                        <div class="service_block withripple">
-                            <img id="bookCover11" src="home/img/noPicture.png" style="width: 200px;height: 178px">
-                            <h3 id="bookName11" class="animated fadeInUp wow">创新与法制</h3>
-                            <p id="intro11" class="animated fadeInDown wow">这是简介这是简介这是简介这是简介这是简介这是简介这是简介这是简介这是简介这是简介这是简介这是简介这是简介这是简介这是简介.</p>
-                        </div>
-                    </div>
-                    <div class="col-lg-4 col-md-4 col-sm-4 borderLeft mrgTop">
-                        <div class="service_block withripple">
-                            <img id="bookCover12" src="home/img/noPicture.png" style="width: 200px;height: 178px">
-                            <h3 id="bookName12" class="animated fadeInUp wow">创新与法制</h3>
-                            <p id="intro12" class="animated fadeInDown wow">这是简介这是简介这是简介这是简介这是简介这是简介这是简介这是简介这是简介这是简介这是简介这是简介这是简介这是简介这是简介.</p>
-                        </div>
-                    </div>
-                </div>
+                    </c:if>
+                    </c:forEach>
             </div>
+        </div>
         </div>
     </section>
     <!--Service-->
@@ -217,28 +176,9 @@
 </section>
 
 <script type="text/javascript">
-    // requirejs(['jquery', 'ligerGrid','dg.datePicker', 'artdialog'], function($) {
-    // $(document).ready(function (){
-    //     $.ajax({
-    //         cache: true,
-    //         type: "GET",
-    //         url:"/get_home",
-    //         async: false,
-    //         error: function(request) {
-    //             alert("Connection error:"+request.error);
-    //         },
-    //         success: function(data) {
-    //             if(data !=null){
-    //                 $("#scrollbar").text(data);
-    //             }
-    //         }
-    //     });
-    // });
-    //
-    // });
 
 
-    requirejs(['jquery', 'ligerGrid','dg.datePicker', 'artdialog'], function($) {
+    requirejs(['jquery','dg.datePicker', 'artdialog'], function($) {
     //快捷还书方法
         $("#returnBook").click(function () {
             art.dialog.open('/return_book?userid='+${ user.userId}, {
