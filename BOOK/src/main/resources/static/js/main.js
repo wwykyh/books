@@ -15,12 +15,12 @@ requirejs(['jquery', 'jquery.extend', 'basic-global'], function(jquery, extend, 
 		// });
 	}
 
-	$(function() {
+/*	$(function() {
 		// 默认加载页面
-		$.openWindow({ url: 'Home' });
-
+		$.openWindow({ url:'Home?isadmin=1'});
+        $('#myHome').click();
 		// 换肤操作
 		$.switchSkin('css');
-	});
+	});*/
 });
 

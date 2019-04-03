@@ -16,6 +16,7 @@
         </association>
 		<association property="book" javaType="com.dragon.book.model.TBook"
 					 column="isbn" foreignColumn="isbn">
+			<id column="isbn" property="isbn"/>
 			<id column="sm" property="sm"/>
 			<result column="jj" property="jj"/>
 			<result column="picture" property="picture"  />

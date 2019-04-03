@@ -18,6 +18,12 @@
     <script type="text/javascript">
         requirejs(['main'], function (main) {
             requirejs(['jquery', 'jquery.extend', 'basic-global'], function (jquery, extend, basic) {
+                $(function() {
+                    // 默认加载页面
+                    $.openWindow({ url:'Home?isadmin=${user.isadmin}'});
+                    // 换肤操作
+                    $.switchSkin('css');
+                });
                 // 计算高度
                 window.setInterval(function () {
                     frameHeight();
@@ -145,7 +151,7 @@
             <div id="main-tab">
                 <div class="main-tab">
                     <ul>
-                        <li class="active"><a _href="Home">主页</a></li>
+                        <li class="active"><a _href="Home?isadmin=${user.isadmin}" id="myHome">主页</a></li>
                     </ul>
                 </div>
             </div>

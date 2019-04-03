@@ -112,11 +112,6 @@
             })
 
 
-        //ajax提交表单
-        function sub() {
-
-        }
-
 
         $(document).ready(function (){
             var isadmin = "${userInfo.isadmin}";
