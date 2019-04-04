@@ -30,26 +30,14 @@
 					value="${user.userId }"> <input type="text"
 					class="input-text" readonly="readonly" name="username"
 					value="${user.xm }" /></td>
-				<th width="20%">部门：</th>
-				<td><input type="text" class="input-text" readonly="readonly"
-					name="bm" value="${user.bm }" /></td>
+
 			</tr>
-			<tr>
-				<th width="20%">手机号：</th>
-				<td width="35%"><input type="text" class="input-text"
-					name="lxfs" value="${user.lxfs }" readonly="readonly" /></td>
-				<th width="20%">邮箱：</th>
-				<td><input type="text" class="input-text" name="email"
-					value="${user.email }" readonly="readonly" /></td>
-			</tr>
+
 			<tr><th width="20%">图书编号：</th>
 				<td width="35%">
 				 <input type="text" class="input-text"
 					readonly="readonly" name="id" value="${book.tStore.id }" /></td>
-				<th width="20%">isbn：</th>
-				<td width="35%">
-				 <input type="text" class="input-text"
-					readonly="readonly" name="isbn" value="${book.isbn }" /></td>
+
 				
 			</tr>
 			<tr>
@@ -62,12 +50,7 @@
 				
 			</tr>
 			<tr>
-			<th width="20%">状态：</th>
-				<td><input type="hidden" class="input-text" readonly="readonly"
-					value="${book.tStore.status }" name="status" />
-                    <input type="text"
-					class="input-text" readonly="readonly"   value="${status }"
-					name="status" /></td>
+
 				<th width="20%">出版社：</th>
 				<td width="35%"><input type="text" class="input-text"
 					value="${book.cbsmc }" readonly="readonly"
@@ -80,9 +63,7 @@
 					SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd");
 					String now = df.format(d);
 				%>
-				<th width="20%">出版日期：</th>
-				<td><input type="text" class="input-text" readonly="readonly"
-					value="${book.cbrq }" name="cbrq" /></td>
+
 				<th width="20%">借阅日期：</th>
 				<td width="35%"><input type="text" class="input-text"
 					readonly="readonly" value="<%=now%>" name="jyrq" /></td>
@@ -104,7 +85,7 @@
 		</table>
 	</form>
 </body>
-<
+
 <script type="text/javascript">
     //ajax提交表单
     function sub() {

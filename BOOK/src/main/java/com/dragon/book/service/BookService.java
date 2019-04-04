@@ -99,7 +99,7 @@ public interface BookService {
 	 * 
 	 * @return 序号，三位数 eg：001
 	 */
-	public String getDbKey();
+	public String getDbKey(String tsdl);
 
 	/**
 	 * 计算计划归还日期
@@ -148,5 +148,7 @@ public interface BookService {
 	public Page<Book> getPage(int pageNumber,int pageSize,String dim,String s_type,int total);
 
 	public List<Book> getPageInfo(String dim,String s_type,int pageNum);
+
+	public String NowTime();
 
 }
