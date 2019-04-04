@@ -9,7 +9,6 @@
 <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 
 <!-- Bootstrap -->
-<%--<link href="home/css/bootstrap.min.css" rel="stylesheet">--%>
 <link href="home/css/font-awesome.css" rel="stylesheet" type="text/css">
 <link rel="stylesheet" href="home/fancybox/jquery.fancybox.css" type="text/css" media="screen" />
 <link href="home/css/animate.css" rel="stylesheet" type="text/css">
@@ -45,7 +44,7 @@
             <span  style="display: block;font-size: 20px;margin-top: 20px">还书</span><i class="icon-envelope"></i><i class="icon-envelope"></i>
         </a>
         <marquee id="affiche" align="right"  behavior="scroll"   loop="-1"  onMouseOut="this.start()" onMouseOver="this.stop()">
-            <div id="scrollbar"  style="height:23px;font-size:16px;color:red" >${overTimeUsers}&emsp;</div>
+            <div id="scrollbar"  style="height:23px;font-size:16px" >${overTimeUsers}</div>
         </marquee>
 	</div>
   </div>
@@ -113,17 +112,18 @@
      <c:if test="${sta.count==4}">
      <div class="row borderTop">
       </c:if>
-	<div class="col-lg-4 col-md-4 col-sm-4">
-	  <div class="service_block withripple" style="height:360px">
+	<div class="col-lg-4 col-md-4 col-sm-4" >
+	  <div class="service_block withripple" style="height:360px" >
           <td >
               <c:if test="${not empty hot.book.picture}">
-                  <img id="bookCover3" src="${hot.book.picture}" style="width: 200px;height: 178px">
+                  <img id="hot${sta.count}" src="${hot.book.picture}" style="width: 200px;height: 178px;CURSOR: pointer" >
               </c:if>
           <c:if test="${empty  hot.book.picture}">
-              <img id="bookCover3" src="home/img/noPicture.png" style="width: 200px;height: 178px">
+              <img id="hot${sta.count}" src="home/img/noPicture.png" style="width: 200px;height: 178px;CURSOR: pointer">
           </c:if>
           </td>
-		<h3  class="animated fadeInUp wow">${hot.book.sm}</h3>
+		<a id="hot${sta.count}" style="CURSOR: pointer" ><h3  class="animated fadeInUp wow">${hot.book.sm}</h3></a>
+          <p id="hotIsbn${sta.count}" hidden>${hot.book.isbn}</p>
 		<p    class="" style="height: 190px;overflow:hidden;">&nbsp;&nbsp;&nbsp;&nbsp;${hot.book.jj}</p>
 	  </div>
 	</div>
@@ -149,18 +149,19 @@
                     <c:if test="${sta1.count==4}">
                     <div class="row borderTop">
                         </c:if>
-                        <div class="col-lg-4 col-md-4 col-sm-4">
+                        <div class="col-lg-4 col-md-4 col-sm-4" >
                             <div class="service_block withripple" style="height:360px">
                                 <td >
                                     <c:if test="${not empty new1.book.picture}">
-                                        <img id="bookCover3" src="${new1.book.picture}" style="width: 200px;height: 178px">
+                                        <img id="new${sta1.count}" src="${new1.book.picture}" style="width: 200px;height: 178px;CURSOR: pointer">
                                     </c:if>
                                     <c:if test="${empty  new1.book.picture}">
-                                        <img  src="home/img/noPicture.png" style="width: 200px;height: 178px">
+                                        <img  id="new${sta1.count}" src="home/img/noPicture.png" style="width: 200px;height: 178px;CURSOR: pointer">
                                     </c:if>
                                 </td>
-                                <h3  class="animated fadeInUp wow">${new1.book.sm}</h3>
-                                <p    class="" style="height: 190px;overflow:hidden;">&nbsp;&nbsp;&nbsp;&nbsp;${new1.book.jj}</p>
+                                <a id="new${sta1.count}" style="CURSOR: pointer" ><h3  class="animated fadeInUp wow">${new1.book.sm}</h3></a>
+                                <p id="newIsbn${sta1.count}" hidden>${hot.book.isbn}</p>
+                                <p  style="height: 190px;overflow:hidden;">&nbsp;&nbsp;&nbsp;&nbsp;${new1.book.jj}</p>
                             </div>
                         </div>
                         <c:if test="${sta1.count==3 or sta1.count==6 }">
@@ -177,14 +178,36 @@
 
 <script type="text/javascript">
 
-
     requirejs(['jquery','dg.datePicker', 'artdialog'], function($) {
     //快捷还书方法
         $("#returnBook").click(function () {
             art.dialog.open('/return_book?userid='+${ user.userId}, {
                 id:'returnMyBook',
-                title: '快捷还书',
+                title: '快捷还书'
             });
+        })
+        //查看图书详情
+        $("[id^=hot]").click(function () {
+            var val=$(this).attr("id");
+            var v2 = val.substring(3,val.length);//取后半部分
+            var bookIsbn = "hotIsbn"+v2;
+            alert(bookIsbn);
+            <%--art.dialog.open('/return_book?userid='+${ user.userId}, {--%>
+                <%--id:'bookDetail',--%>
+                <%--title: '图书详情'--%>
+            <%--});--%>
+        })
+
+        //查看图书详情
+        $("[id^=new]").click(function () {
+            var val=$(this).attr("id");
+            var v2 = val.substring(3,val.length);//取后半部分
+            var bookIsbn = "newIsbn"+v2;
+            alert(bookIsbn);
+            <%--art.dialog.open('/return_book?userid='+${ user.userId}, {--%>
+            <%--id:'bookDetail',--%>
+            <%--title: '图书详情'--%>
+            <%--});--%>
         })
     });
 </script>

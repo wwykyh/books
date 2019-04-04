@@ -31,12 +31,14 @@ public class HomeServiceImpl implements HomeService {
 
     @Override
     public String getOverTimeUser() {
-        String a = "";
+        String a = "<font color='red'>";
         List<UserBorrow> users  = overtimePaymentDao.findOvertimeUser();
         for (int i=0;i<users.size();i++){
-            a = a+users.get(i).gettSysUser().getBm()+users.get(i).gettSysUser().getXm()+"借的"+
-                    users.get(i).getSm()+"逾期尚未归还，请尽快归还！！！&emsp;&emsp;&emsp;";
+            a = a+users.get(i).gettSysUser().getBm()+"</font><font color='yellow'><b>"+users.get(i).gettSysUser().getXm()+
+                    "</b></font><font color='red'>借的"+ users.get(i).getSm()+"逾期尚未归还，请尽快归还！！！&emsp;&emsp;&emsp;&" +
+                    "emsp;&emsp;&emsp;&emsp;&emsp;&emsp;";
         }
+        a=a+"</font>";
         return a;
     }
 
@@ -46,15 +48,30 @@ public class HomeServiceImpl implements HomeService {
         return users;
     }
 
+    //传递的数据保证6个，防止主页样式崩溃
     @Override
     public List<Borrow> getHotBooks() {
         List<Borrow> hotBooks = borrowMapper.selectByBookTop();
+        if (hotBooks.size()<6){
+            do {
+                Borrow borrow = new Borrow();
+                hotBooks.add(borrow);
+            }while (hotBooks.size()==6);
+        }
         return hotBooks;
     }
 
+
+    //传递的数据保证6个，防止主页样式崩溃
     @Override
     public List<Borrow> getNewBooks() {
         List<Borrow> newBooks = borrowMapper.selectByBookNew();
+        if (newBooks.size()<6){
+            do {
+                Borrow borrow = new Borrow();
+                newBooks.add(borrow);
+            }while (newBooks.size()==6);
+        }
         return newBooks;
     }
 
