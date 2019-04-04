@@ -14,10 +14,16 @@
     <!-- 改造的脚本 -->
     <script type="text/javascript" src="js/extend.js"></script>
     <!-- 共有的控件 -->
-    <script data-main="main" src="dvpt/require.min.2.1.11.js"></script>
+    <script data-main="main" src="${pageContext.request.contextPath}/dvpt/require.min.2.1.11.js"></script>
     <script type="text/javascript">
         requirejs(['main'], function (main) {
             requirejs(['jquery', 'jquery.extend', 'basic-global'], function (jquery, extend, basic) {
+                $(function() {
+                    // 默认加载页面
+                    $.openWindow({ url:'Home?isadmin=${user.isadmin}'});
+                    // 换肤操作
+                    $.switchSkin('css');
+                });
                 // 计算高度
                 window.setInterval(function () {
                     frameHeight();
@@ -54,7 +60,7 @@
                             class="data"></label> <label class="week"></label> <label
                             class="time"></label>
 						</span></li>
-                    <li><i class="header-icon i-user"></i>欢迎您！${user.xm}</a>
+                    <li><i class="header-icon i-user"></i>欢迎您！${user.xm}
                     </li>
                     <li class="skin-change"><a href="javascript:;" title="皮肤"
                                                class="skin-change-acitve"><span><i
@@ -91,6 +97,7 @@
                                    data-js="prettify" href="javascript:;">借阅审核</a></li>
                             <li><a _href="${pageContext.request.contextPath}/revertCheck/revert" data-name="归还审核"
                                    data-js="prettify" href="javascript:;">归还审核</a></li>
+
                         </ul>
                     </dd>
                 </dl>
@@ -103,12 +110,10 @@
                     </dt>
                     <dd>
                         <ul>
-                            <li><a _href="${pageContext.request.contextPath}/usermanage/showuser" data-name="用户管理"
-                                   href="javascript:;">用户管理</a></li>
-                            <li><a _href=${pageContext.request.contextPath}/usermanage/show_pc" data-name="赔偿" href="javascript:;">赔偿</a></li>
+                            <li><a _href="${pageContext.request.contextPath}/usermanage/showuser" data-name="用户管理" href="javascript:;">用户管理</a></li>
+                            <li><a _href="${pageContext.request.contextPath}/usermanage/showallpc" data-name="赔偿" href="javascript:;">赔偿</a></li>
                             <li><a _href="${pageContext.request.contextPath}/usermanage/show_blacklist" data-name="黑名单" href="javascript:;">黑名单</a></li>
-                            <li><a _href="addUser" data-name="添加用户"
-                                   href="javascript:;">添加用户</a></li>
+                            <li><a _href="addUser" data-name="添加用户" href="javascript:;">添加用户</a></li>
                         </ul>
                     </dd>
                 </dl>
@@ -131,7 +136,7 @@
                                    data-js="prettify" href="javascript:;">资产分析</a></li>
                             <li><a _href="${pageContext.request.contextPath}/borrow_history" data-name="借阅历史"
                                    data-js="prettify" href="javascript:;">借阅历史</a></li>
-                            <li><a _href="${pageContext.request.contextPath}/book_analyze" data-name="图书分析"
+                            <li><a _href="${pageContext.request.contextPath}/bookAnalyze" data-name="图书分析"
                                    data-js="prettify" href="javascript:;">图书分析</a></li>
                             <li><a _href="${pageContext.request.contextPath}/type_manager" data-name="种类管理"
                                    data-js="prettify" href="javascript:;">种类管理</a></li>
@@ -139,8 +144,6 @@
                                    data-js="prettify" href="javascript:;">电子书种类管理</a></li>
                             <li><a _href="${pageContext.request.contextPath}/publish_house_manager" data-name="出版社管理"
                                    data-js="prettify" href="javascript:;">出版社管理</a></li>
-
-
                         </ul>
                     </dd>
                 </dl>
@@ -150,7 +153,7 @@
             <div id="main-tab">
                 <div class="main-tab">
                     <ul>
-                        <li class="active"><a _href="Home">主页</a></li>
+                        <li class="active"><a _href="Home?isadmin=${user.isadmin}" id="myHome">主页</a></li>
                     </ul>
                 </div>
             </div>

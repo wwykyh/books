@@ -29,9 +29,12 @@ requireManage.config({
 		'dg.dropDownTree': './libs/dropDown/dg.dropDownTree',
 		
 		// 编辑器
-		'bdeditor': './libs/ueditor/bdeditor.min',
-		'bdlang': './libs/ueditor/lang/zh-cn/zh-cn',
-		'zeroclipboard': './libs/ueditor/third-party/zeroclipboard/ZeroClipboard.min',
+        'ueditor':'./libs/ueditor/ueditor.config',
+        'bdeditor': './libs/ueditor/ueditor.all',
+        'lang': './libs/ueditor/lang/zh-cn/zh-cn',
+		'uParse':'./lib/ueditor/ueditor.parse',
+        'zeroclipboard': './libs/ueditor/third-party/zeroclipboard/ZeroClipboard',
+
 
 		// 弹出层
 		'iDialog': './libs/iDialog/jquery.iDialog',
@@ -60,7 +63,9 @@ requireManage.config({
 
 		// d3 组件
 		'd3.v3': './libs/d3/d3.v3.min',
-		'd3.force': './libs/d3/d3.force'
+		'd3.force': './libs/d3/d3.force',
+        'echarts':'./echarts.min'
+
 	},
 	shim: {
 		// 系统结构

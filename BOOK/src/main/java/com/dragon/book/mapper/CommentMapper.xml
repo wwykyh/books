@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.dragon.book.mapper.CommentMapper" >
+
+    <resultMap id="NewResultMap" type="com.dragon.book.pojo.CommentInfo">
+        <id column="comment_id" property="commentId" jdbcType="INTEGER" />
+        <result column="isbn" property="isbn" jdbcType="VARCHAR" />
+        <result column="user_id" property="userId" jdbcType="INTEGER" />
+        <result column="pjrq" property="pjrq" jdbcType="VARCHAR" />
+        <result column="xm" property="xm" jdbcType="VARCHAR" />
+        <result column="nr" property="nr" jdbcType="LONGVARCHAR" />
+    </resultMap>
+
+  <select id="selectByBorrowId" resultMap="NewResultMap" parameterType="com.dragon.book.pojo.CommentInfo">
+
+        SELECT
+            tc.comment_id,
+            tc.isbn,
+            tc.user_id,
+            tc.pjrq,
+            tc.nr,
+            ts.xm
+        FROM
+            t_comment tc,
+            t_sys_user ts
+        WHERE
+            tc.isbn IN (
+                SELECT
+                    tst.isbn
+                FROM
+                    t_borrow tw
+                LEFT JOIN t_sys_user ts ON tw.user_id = ts.user_id
+                LEFT JOIN t_store tst ON tw.s_id = tst.id
+                LEFT JOIN t_comment tc ON tst.isbn = tc.isbn
+                WHERE
+                    tw.id = #{borrowId}
+            )
+        AND tc.user_id = (
+            SELECT
+                tw.user_id
+            FROM
+                t_borrow tw
+            WHERE
+                tw.id = #{borrowId}
+        )
+        AND tc.user_id = ts.user_id ORDER BY tc.pjrq  DESC
+  </select>
+   <select id="selectByBorrow" resultMap="NewResultMap" parameterType="com.dragon.book.pojo.CommentInfo">
+    SELECT
+        tc.comment_id,
+        tc.isbn,
+        tc.user_id,
+        tc.pjrq,
+        tc.nr,
+        ts.xm
+    FROM
+        t_comment tc,
+        t_sys_user ts
+    WHERE
+        tc.isbn IN (
+            SELECT
+                tst.isbn
+            FROM
+                t_borrow tw
+            LEFT JOIN t_sys_user ts ON tw.user_id = ts.user_id
+            LEFT JOIN t_store tst ON tw.s_id = tst.id
+            LEFT JOIN t_comment tc ON tst.isbn = tc.isbn
+            WHERE
+                tw.id = #{borrowId}
+        )
+    AND tc.user_id = ts.user_id
+   </select>
+    <select id="selectComment" resultMap="NewResultMap" parameterType="com.dragon.book.pojo.CommentInfo">
+        SELECT
+            tc.comment_id,
+            tc.isbn,
+            tc.user_id,
+            tc.pjrq,
+            tc.nr,
+            ts.xm
+        FROM
+           t_comment tc
+        LEFT OUTER JOIN t_store tst ON tst.isbn = tc.isbn
+        LEFT OUTER JOIN t_sys_user ts ON ts.user_id=tc.user_id
+        where tst.isbn=#{id} ORDER BY tc.pjrq DESC
+    </select>
+</mapper>

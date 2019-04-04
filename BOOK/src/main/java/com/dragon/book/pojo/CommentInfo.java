@@ -18,4 +18,11 @@ public class CommentInfo extends TComment {
     public void setXm(String xm) {
         this.xm = xm;
     }
+
+    @Override
+    public String toString() {
+        return "CommentInfo{" +
+                "xm='" + xm + '\'' +
+                '}';
+    }
 }

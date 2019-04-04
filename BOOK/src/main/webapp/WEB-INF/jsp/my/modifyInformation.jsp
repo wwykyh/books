@@ -19,7 +19,7 @@
 <div class="panel-body panel-noborder">
     <div class="write-box">
         <form role="form" method="post" class="form-modifypwd" >
-            <input id="userid" value="${sessionScope.userId}" type="hidden">
+            <input id="userid" value="${user.userId}" type="hidden">
             <table class="form-table" width="100%">
                 <tr>
                     <th width="17%"><span class="ft-need">*</span>姓名：</th>
@@ -58,19 +58,15 @@
         var dz=$("#dz").val();
         var bm=$("#bm").val();
         var grsm=$("#grsm").val();
-        var userid=${sessionScope.userId};
+        var userid=${user.userId};
         // alert(xm);
         // alert(lxfs);
         // alert(dz);
         $.ajax({
-                url: "/modifyinformation/domodifyinfotmation",
+                url: "/modifyInformation/doModifyInfortmation",
                 data: {"xm":xm,"lxfs":lxfs,"dz":dz,"bm":bm,"grsm":grsm,"userid":userid},
                 success: function (data) {
-                    if (data == "success") {
-                        alert("信息修改成功！");
-                    } else {
-                        alert("信息修改失败！");
-                    }
+                   alert(data);
                 }
             });
 

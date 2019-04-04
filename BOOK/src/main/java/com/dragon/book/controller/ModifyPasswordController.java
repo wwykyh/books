@@ -1,49 +1,49 @@
 package com.dragon.book.controller;
 
-import com.dragon.book.service.my.ModifyPasswordService;
+import com.dragon.book.service.my.impl.ModifyPasswordServiceImpl;
 import org.apache.ibatis.annotations.Param;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.bind.annotation.RequestParam;
 
 /**
  * 我的模块：修改密码Conrtoller层
  */
 @Controller
-@RequestMapping("/modifypassword")
+@RequestMapping("/modifyPassword")
 public class ModifyPasswordController {
 
     @Autowired
-    private ModifyPasswordService modifyPasswordService;
+    private ModifyPasswordServiceImpl modifyPasswordServiceImpl;
 
     /**
      * 跳转到修改密码界面
      * @return
      * zzm
      */
-    @RequestMapping("/tomodifypassword")
+    @RequestMapping("/toModifyPassword")
     public String modifyPasswordIndex(){
         return "/my/modifyPassword";
     }
 
     /**
-     * 修改密码
+     * 密码修改
+     * @param oldPwd 旧密码
+     * @param newPwd 新密码
+     * @param userId 用户ID
      * @return
      */
-    @RequestMapping("/updatapassword")
+    @RequestMapping("/updataPassword")
     @ResponseBody
-    public String upDataPassword(@Param("oldpwd")String oldpwd,@Param("newpwd")String newpwd,@Param("userid")int userid){
-        if(newpwd!=null){
-            int flag;
-            flag =  modifyPasswordService.modifyPassword(oldpwd,userid,newpwd);
-            if(flag==1){
-            return "success";
-            }else {
-                return  "error";
-            }
-        }else {
-        return  "error";}
+    public String upDataPassword(@Param("oldPwd")String oldPwd,@Param("newPwd")String newPwd,@Param("userId")int userId) {
+        String message;
+        if (null != oldPwd && null != newPwd &&  userId!=0&& "" != oldPwd&& "" != newPwd) {
+            message = modifyPasswordServiceImpl.modifyPassword(oldPwd, userId, newPwd);
+            return message;
+        } else {
+            message = "用户ID与新密码或旧密码不能为空！";
+            return message;
+        }
     }
 }

@@ -3,7 +3,7 @@
 <mapper namespace="com.dragon.book.mapper.TCompensateMapper" >
   <resultMap id="BaseResultMap" type="com.dragon.book.model.TCompensate" >
     <id column="id" property="id" jdbcType="INTEGER" />
-    <result column="isbn" property="isbn" jdbcType="VARCHAR" />
+    <result column="s_id" property="sId" jdbcType="VARCHAR" />
     <result column="user_id" property="userId" jdbcType="INTEGER" />
     <result column="sh" property="sh" jdbcType="INTEGER" />
     <result column="pcdate" property="pcdate" jdbcType="VARCHAR" />
@@ -72,7 +72,7 @@
     </where>
   </sql>
   <sql id="Base_Column_List" >
-    id, isbn, user_id, sh, pcdate, ispc, iscount
+    id, s_id, user_id, sh, pcdate, ispc, iscount
   </sql>
   <sql id="Blob_Column_List" >
     pc
@@ -126,10 +126,10 @@
     </if>
   </delete>
   <insert id="insert" parameterType="com.dragon.book.model.TCompensate" >
-    insert into t_compensate (id, isbn, user_id, 
+    insert into t_compensate (id, s_id, user_id, 
       sh, pcdate, ispc, iscount, 
       pc)
-    values (#{id,jdbcType=INTEGER}, #{isbn,jdbcType=VARCHAR}, #{userId,jdbcType=INTEGER}, 
+    values (#{id,jdbcType=INTEGER}, #{sId,jdbcType=VARCHAR}, #{userId,jdbcType=INTEGER}, 
       #{sh,jdbcType=INTEGER}, #{pcdate,jdbcType=VARCHAR}, #{ispc,jdbcType=INTEGER}, #{iscount,jdbcType=INTEGER}, 
       #{pc,jdbcType=LONGVARCHAR})
   </insert>
@@ -139,8 +139,8 @@
       <if test="id != null" >
         id,
       </if>
-      <if test="isbn != null" >
-        isbn,
+      <if test="sId != null" >
+        s_id,
       </if>
       <if test="userId != null" >
         user_id,
@@ -165,8 +165,8 @@
       <if test="id != null" >
         #{id,jdbcType=INTEGER},
       </if>
-      <if test="isbn != null" >
-        #{isbn,jdbcType=VARCHAR},
+      <if test="sId != null" >
+        #{sId,jdbcType=VARCHAR},
       </if>
       <if test="userId != null" >
         #{userId,jdbcType=INTEGER},
@@ -200,8 +200,8 @@
       <if test="record.id != null" >
         id = #{record.id,jdbcType=INTEGER},
       </if>
-      <if test="record.isbn != null" >
-        isbn = #{record.isbn,jdbcType=VARCHAR},
+      <if test="record.sId != null" >
+        s_id = #{record.sId,jdbcType=VARCHAR},
       </if>
       <if test="record.userId != null" >
         user_id = #{record.userId,jdbcType=INTEGER},
@@ -229,7 +229,7 @@
   <update id="updateByExampleWithBLOBs" parameterType="map" >
     update t_compensate
     set id = #{record.id,jdbcType=INTEGER},
-      isbn = #{record.isbn,jdbcType=VARCHAR},
+      s_id = #{record.sId,jdbcType=VARCHAR},
       user_id = #{record.userId,jdbcType=INTEGER},
       sh = #{record.sh,jdbcType=INTEGER},
       pcdate = #{record.pcdate,jdbcType=VARCHAR},
@@ -243,7 +243,7 @@
   <update id="updateByExample" parameterType="map" >
     update t_compensate
     set id = #{record.id,jdbcType=INTEGER},
-      isbn = #{record.isbn,jdbcType=VARCHAR},
+      s_id = #{record.sId,jdbcType=VARCHAR},
       user_id = #{record.userId,jdbcType=INTEGER},
       sh = #{record.sh,jdbcType=INTEGER},
       pcdate = #{record.pcdate,jdbcType=VARCHAR},
@@ -256,8 +256,8 @@
   <update id="updateByPrimaryKeySelective" parameterType="com.dragon.book.model.TCompensate" >
     update t_compensate
     <set >
-      <if test="isbn != null" >
-        isbn = #{isbn,jdbcType=VARCHAR},
+      <if test="sId != null" >
+        s_id = #{sId,jdbcType=VARCHAR},
       </if>
       <if test="userId != null" >
         user_id = #{userId,jdbcType=INTEGER},
@@ -282,7 +282,7 @@
   </update>
   <update id="updateByPrimaryKeyWithBLOBs" parameterType="com.dragon.book.model.TCompensate" >
     update t_compensate
-    set isbn = #{isbn,jdbcType=VARCHAR},
+    set s_id = #{sId,jdbcType=VARCHAR},
       user_id = #{userId,jdbcType=INTEGER},
       sh = #{sh,jdbcType=INTEGER},
       pcdate = #{pcdate,jdbcType=VARCHAR},
@@ -293,7 +293,7 @@
   </update>
   <update id="updateByPrimaryKey" parameterType="com.dragon.book.model.TCompensate" >
     update t_compensate
-    set isbn = #{isbn,jdbcType=VARCHAR},
+    set s_id = #{sId,jdbcType=VARCHAR},
       user_id = #{userId,jdbcType=INTEGER},
       sh = #{sh,jdbcType=INTEGER},
       pcdate = #{pcdate,jdbcType=VARCHAR},

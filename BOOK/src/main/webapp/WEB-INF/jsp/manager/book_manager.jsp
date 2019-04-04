@@ -51,54 +51,41 @@
     });
     function select() {
         $("#booksInfo").ligerGrid({
-            columns: [{
-                display: 'ISBN',
-                name: 'isbn'
-            }, {
-                display: '书名',
-                name: 'sm'
-            }, {
-                display: '出版社名称',
-                name: 'cbsmc'
-            }, {
-                display: '出版日期',
-                name: 'cbrq'
-            }, {
-                display: '作者',
-                name: 'zz'
-            }, {
-                display: '类型',
-                name: 'lxmc'
-            }, {
-                display: '所属类型',
-                name: 'tsdl'
-            }, {
-                display: '图书提供者',
-                name: 'uname'
-            }, {
-                display: '位置',
-                name: 'wz'
-            }, {
-                display: '损毁程度',
-                name: 'sh'
-            }, {
-                display: '入库时间',
-                name: 'rksj'
-            }, {
-                display: '图书状态',
-                name: 'status'
-            }, {
-                display: '操作',
-                isAllowHide: false,
-                render: function (row){
-                    if (row.id != undefined && row.id != null && row.id != ""){
-                        var html = '<a href="javascript:void(0);" onclick="onBookInfo(' + row.id + ')">查看详情</a>&nbsp;&nbsp;' ;
-                        //html = html + '<a href="javascript:void(0);" onclick="onBookEdit(' + row.id + ')">库存管理</a>&nbsp;&nbsp;';
-                        html = html + '<a href="javascript:void(0);" onclick="onBookDel(' + row.id + ')">出库</a>';
-                        return html;
-                    }else return "" ;
-                }
-            }],
+            columns: [
+                {
+                    display: '书名',
+                    name: 'sm'
+                }, {
+                    display: '作者',
+                    name: 'zz'
+                }, {
+                    display: '类型',
+                    name: 'lxmc'
+                }, {
+                    display: '图书提供者',
+                    name: 'uname'
+                }, {
+                    display: '位置',
+                    name: 'wz'
+                }, {
+                    display: '损毁程度',
+                    name: 'sh'
+                }, {
+                    display: '图书状态',
+                    name: 'status'
+                }, {
+                    display: '操作',
+                    isAllowHide: false,
+                    render: function (row){
+                        if (row.id != undefined && row.id != null && row.id != ""){
+                            var html = '<a href="javascript:void(0);" onclick="onBookInfo(' + row.id + ')">查看详情</a>&nbsp;&nbsp;' ;
+                            //html = html + '<a href="javascript:void(0);" onclick="onBookEdit(' + row.id + ')">库存管理</a>&nbsp;&nbsp;';
+                            html = html + '<a href="javascript:void(0);" onclick="onBookDel(' + row.id + ')">出库</a>&nbsp;&nbsp';
+                            html = html + '<a href="javascript:void(0);" onclick="onCommentManager(' + row.isbn+ ')">评论管理</a>&nbsp;&nbsp;';
+                            return html;
+                        }else return "" ;
+                    }
+                }],
             url: '/bookPage_manager',
             method:'get',
             dataType: 'server',
@@ -142,7 +129,13 @@
             cancelVal: "关闭"
         });
     }
-
+    function onCommentManager(id) {
+        art.dialog.open('getBookComment?id='+id, {
+            title: '评论详情',
+            width: 850,
+            height: 575
+        });
+    }
 </script>
 <!--http://localhost:9090/bookPage_manager?dim=a&page=1&pagesize=10-->
 </body>

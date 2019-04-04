@@ -3,9 +3,12 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+   <%-- <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">--%>
+    <meta name=”viewport” content=”width=device-width, initial-scale=1″ />
     <title>图书管理系统</title>
-    <link rel="stylesheet" type="text/css" href="css/common/iconfont/iconfont.css"/>
+       <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+
+       <link rel="stylesheet" type="text/css" href="css/common/iconfont/iconfont.css"/>
     <link rel="stylesheet" type="text/css" href="css/common/layout.css"/>
     <link rel="stylesheet" type="text/css" href="dvpt/css/libs.css"/>
     <link rel="stylesheet" type="text/css" href="css/demo/style.css"/>
@@ -18,6 +21,12 @@
     <script type="text/javascript">
         requirejs(['main'], function (main) {
             requirejs(['jquery', 'jquery.extend', 'basic-global'], function (jquery, extend, basic) {
+                $(function() {
+                    // 默认加载页面
+                    $.openWindow({ url:'Home?isadmin=${user.isadmin}'});
+                    // 换肤操作
+                    $.switchSkin('css');
+                });
                 // 计算高度
                 window.setInterval(function () {
                     frameHeight();
@@ -41,14 +50,48 @@
                 });
             });
         });
+
+        /*var dim = null;
+        var s_tsdl = null;
+        var s_type = null;*/
+
+       /* $("#btnLoad").click(function() {
+            dim = $("#dim").val();
+            s_type = $("#s_type").val();
+            select();
+        });
+*/
+
+        function page(num) {
+            //alert(num);
+            $("#page").attr("_href","page?pageNumber="+num).trigger("click");
+            $("#page").attr("_href","sea")
+
+        }
+
     </script>
 </head>
 <body>
 <div id="wrap" class="lr-layout">
     <div id="header" class="header clearfix">
         <div class="header-inner">
-            <div class="logo"></div>
-            <div class="header-right">
+           <%-- <div class="logo"></div>--%>
+           <%-- <div style="float: left;height: 100%;width: auto;padding-left: 20%"><form action="">
+
+                <select id="s_type" name="s_type" class="select">
+                    <option value="">------------------请选择图书类型------------------</option>
+                    <c:forEach items="${typeList }" var="t">
+                        <option value="${t.typeId }">${t.lxmc }</option>
+                    </c:forEach>
+                </select>
+                <input style="height: 40px" id="dim" type="text" placeholder="书名、作者"
+                       class="input-text" />
+                <a href="javascript:;" class="btn"><span style="height: 40px"
+                            id="btnLoad"><i class="icon icon-search"></i>查询</span></a>
+
+
+            </form></div>--%>
+            <div style="float: right;height: auto;width: auto;padding-right: 10px">
                 <ul class="header-right-list">
                     <li class="nowtime">
                         <span id="nowTime">
@@ -58,7 +101,7 @@
 		                </span>
                     </li>
                     <li>
-                        <i class="header-icon i-user"></i>欢迎您！${user.xm}</a>
+                        <a><i class="header-icon i-user"></i>欢迎您！${user.xm}</a>
                     </li>
                     <li class="skin-change"><a href="javascript:;" title="皮肤" class="skin-change-acitve"><span><i
                             class="header-icon i-skin"></i>换肤<i class="arrow"></i></span></a>
@@ -89,7 +132,7 @@
                     </dt>
                     <dd>
                         <ul>
-                            <li><a _href="sea" data-name="图书检索" href="javascript:;">图书检索</a></li>
+                            <li><a id="page" _href="sea" class="borrow" data-name="图书检索" href="javascript:;">图书检索</a></li>
                             </li>
                         </ul>
                     </dd>
@@ -104,15 +147,16 @@
                     </dt>
                     <dd>
                         <ul>
-                            <li><a _href="" data-name="我的个人" data-js="prettify">我的个人</a></li>
-                            <li><a _href="修改资料.html" data-name="修改资料" data-js="prettify" href="javascript:;">修改资料</a>
+                            <li><a id="pager" _href="${pageContext.request.contextPath}/personal/toPersonalIndex?userId=${user.userId}" data-name="个人中心" data-js="prettify" href="javascript:;">个人中心</a></li>
+                            <li><a _href="${pageContext.request.contextPath}/modifyInformation/modifyIndex" data-name="修改资料" data-js="prettify" href="javascript:;">修改资料</a>
                             </li>
-                            <li><a _href="修改密码.html" data-name="修改密码" data-js="prettify" href="javascript:;">修改密码</a>
+                            <li><a _href="${pageContext.request.contextPath}/modifyPassword/toModifyPassword" data-name="修改密码" data-js="prettify" href="javascript:;">修改密码</a>
                             </li>
-                            <li><a _href="${pageContext.request.contextPath}/borrow_history" data-name="借阅历史"
-                                   data-js="prettify" href="javascript:;">借阅历史</a>
                             </li>
-                            <li><a _href="超时归还.html" data-name="超时归还" href="javascript:;">超时归还</a></li>
+                            <li><a _href="${pageContext.request.contextPath}/news/toNews?userId=${user.userId}" data-name="消息通知" data-js="prettify" href="javascript:;">消息通知</a>
+                            <li><a _href="${pageContext.request.contextPath}/userBorrow/userBorrowHistory" data-name="借阅历史" data-js="prettify" href="javascript:;">借阅历史</a>
+                            </li>
+                            <li><a _href="${pageContext.request.contextPath}/overtimePayment/toOvertimePayment?userId=${user.userId}" data-name="超时归还" href="javascript:;">超时归还</a></li>
 
                         </ul>
                     </dd>
@@ -142,7 +186,7 @@
             <div id="main-tab">
                 <div class="main-tab">
                     <ul>
-                        <li class="active"><a _href="Home" href="javascript:;">主页</a></li>
+                        <li class="active"><a _href="Home?isadmin=${user.isadmin}" href="javascript:;" id="myHome">主页</a></li>
                     </ul>
                 </div>
             </div>

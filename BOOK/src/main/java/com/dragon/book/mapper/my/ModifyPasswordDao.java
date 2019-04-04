@@ -10,16 +10,16 @@ public interface ModifyPasswordDao {
 
     /**
      * 更新密码
-     * @param userid
+     * @param userId
      * @param pwd
      */
-    void upDataPwd(@Param("userid")int userid,@Param("pwd")String pwd);
+    void upDataPwd(@Param("userId")int userId,@Param("pwd")String pwd);
 
     /**
      * 查询密码
-     * @param userid
+     * @param userId
      * @return
      */
-    String selectolddpwd(int userid);
+    String selectOldPwd(int userId);
 
 }

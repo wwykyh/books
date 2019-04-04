@@ -2,7 +2,7 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="com.dragon.book.mapper.my.PersonalDao" >
 
-    <resultMap id="bookborrow" type="com.dragon.book.pojo.BookBorrow">
+    <resultMap id="bookBorrow" type="com.dragon.book.pojo.BookBorrow">
         <id column="isbn"  property="isbn"/>
         <result column="sm" property="sm"/>
         <result column="zz" property="zz"/>
@@ -13,12 +13,22 @@
         </collection>
     </resultMap>
 
-    <select id="selectBookInformation" resultMap="bookborrow">
-        SELECT
-        t_book.isbn,t_book.sm,t_book.zz,t_borrow.id,t_borrow.jyrq,t_borrow.jhghrq
-         FROM t_book RIGHT JOIN t_borrow
-         on t_book.isbn=t_borrow.s_id
-         where t_borrow.user_id=#{userid}
+    <select id="selectBookInformation" resultMap="bookBorrow">
+        select
+        t_book.isbn,
+        t_book.sm,
+        t_book.zz,
+        t_borrow.id,
+        t_borrow.jyrq,
+        t_borrow.jhghrq
+         from
+         t_book
+        right join
+         t_borrow
+         on
+         t_book.isbn=t_borrow.s_id
+         where
+         t_borrow.user_id=#{userId}
     </select>
 
     <select id="selectUserInformation" resultType="com.dragon.book.model.TSysUser">
@@ -31,19 +41,45 @@
          a.grsm
          from
          t_sys_user as a
-         where user_id=#{userid}
+         where user_id=#{userId}
     </select>
 
     <update id="updateBorrow">
-      UPDATE t_borrow  set jyzt=2 WHERE s_id=#{isbn} and user_id=#{userid}
+      update
+      t_borrow
+      set
+      jyzt=2
+      where
+      s_id=#{isbn}
+      and
+      user_id=#{userId}
     </update>
 
     <update id="updatejszt">
-      UPDATE t_borrow  set jyzt=1 WHERE s_id=#{isbn} and user_id=#{userid}
+      update
+      t_borrow
+       set
+       jyzt=1
+       where
+       s_id=#{isbn}
+        and
+        user_id=#{userId}
     </update>
 
     <select id="selectBorrowInfo" resultType="com.dragon.book.model.TBorrow">
-        select id,s_id as sId,sm,jyrq,jhghrq,xjrq,ghrq,status,jyzt,bz from t_borrow where id=#{id}
+        select
+         id,s_id as sId,
+         sm,
+         jyrq,
+         jhghrq,
+         xjrq,
+         ghrq,
+         status,
+         jyzt,
+         bz
+         from
+         t_borrow
+          where id=#{id}
     </select>
 
 </mapper>

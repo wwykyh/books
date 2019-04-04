@@ -15,31 +15,31 @@ public interface PersonalDao {
 
     /**
      * 查询借书信息
-     * @param userid
+     * @param userId
      * @return
      */
-    public List<BookBorrow> selectBookInformation(@Param("userid")int userid);
+    public List<BookBorrow> selectBookInformation(@Param("userId")int userId);
 
     /**
      * 查询用户信息
-     * @param userid
+     * @param userId
      * @return
      */
-    public TSysUser selectUserInformation(@Param("userid")int userid);
+    public TSysUser selectUserInformation(@Param("userId")int userId);
 
     /**
      * 归还图书
      * @param isbn
-     * @param userid
+     * @param userId
      */
-    public void updateBorrow(@Param("isbn")String isbn,@Param("userid")int userid);
+    public void updateBorrow(@Param("isbn")String isbn,@Param("userId")int userId);
 
     /**
      * 续借图书
      * @param isbn
-     * @param userid
+     * @param userId
      */
-    public void updatejszt(@Param("isbn")String isbn,@Param("userid")int userid);
+    public void updatejszt(@Param("isbn")String isbn,@Param("userId")int userId);
 
     /**
      * 借阅详情

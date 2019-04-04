@@ -48,6 +48,17 @@ public class TComment {
     }
 
     public void setNr(String nr) {
-        this.nr = nr == null ? null : nr.trim();
+        this.nr = nr;
+    }
+
+    @Override
+    public String toString() {
+        return "TComment{" +
+                "commentId=" + commentId +
+                ", isbn='" + isbn + '\'' +
+                ", userId=" + userId +
+                ", pjrq='" + pjrq + '\'' +
+                ", nr='" + nr + '\'' +
+                '}';
     }
 }

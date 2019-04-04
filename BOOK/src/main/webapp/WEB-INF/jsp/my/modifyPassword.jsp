@@ -45,26 +45,21 @@
 <script type="text/javascript">
 
     function updata(){
-        var oldpwd=$("#oldPwd").val();
-        var newpwd=$("#newPwd").val();
-        var newpwdt=$("#newPwdT").val();
-        var userid=${sessionScope.userId};
+        var oldPwd=$("#oldPwd").val();
+        var newPwd=$("#newPwd").val();
+        var newPwdt=$("#newPwdT").val();
+        var userId=${user.userId};
         // alert(userid);
         // alert(oldpwd);
         // alert(newpwd);
-        if (oldpwd==null){
+        if (null==oldPwd && ""==oldPwd){
             alert("旧密码不能为空！")
-
-        } else if(newpwdt==newpwd){
+        } else if(newPwdt==newPwd){
             $.ajax({
-                url: "/modifypassword/updatapassword",
-                data: {"oldpwd":oldpwd,"newpwd":newpwd,"userid":userid},
+                url: "/modifyPassword/updataPassword",
+                data: {"oldPwd":oldPwd,"newPwd":newPwd,"userId":userId},
                 success: function (data) {
-                    if (data == "success") {
-                        alert("密码修改成功！");
-                    } else {
-                        alert("密码修改失败！");
-                    }
+                    alert(data);
                 }
             });
         } else {

@@ -3,7 +3,7 @@ package com.dragon.book.model;
 public class TCompensate {
     private Integer id;
 
-    private String isbn;
+    private String sId;
 
     private Integer userId;
 
@@ -25,12 +25,12 @@ public class TCompensate {
         this.id = id;
     }
 
-    public String getIsbn() {
-        return isbn;
+    public String getsId() {
+        return sId;
     }
 
-    public void setIsbn(String isbn) {
-        this.isbn = isbn == null ? null : isbn.trim();
+    public void setsId(String sId) {
+        this.sId = sId == null ? null : sId.trim();
     }
 
     public Integer getUserId() {

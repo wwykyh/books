@@ -11,15 +11,71 @@ import java.io.Serializable;
  * @Date 2019/1/29
  */
 public class BookInfo extends TBook implements Serializable {
+    @Override
+    public String toString() {
+        return "BookInfo{" +
+                "id='" + id + '\'' +
+                ", sxmc='" + sxmc + '\'' +
+                ", uname='" + uname + '\'' +
+                ", wz='" + wz + '\'' +
+                ", sh=" + sh +
+                ", rksj='" + rksj + '\'' +
+                ", lxmc='" + lxmc + '\'' +
+                ", xm='" + xm + '\'' +
+                ", picture='" + picture + '\'' +
+                ", jj='" + jj + '\'' +
+                ", status=" + status +
+                '}';
+    }
 
-    private String id ;
-    private String sxmc ;
-    private String uname ;
-    private String wz ;
-    private Integer sh ;
-    private String rksj ;
-    private String lxmc ;
-    private Integer status ;
+    @Override
+    public String getPicture() {
+        return picture;
+    }
+
+    @Override
+    public String getJj() {
+        return jj;
+    }
+
+    @Override
+    public void setJj(String jj) {
+        this.jj = jj;
+    }
+
+    @Override
+    public void setPicture(String picture) {
+        this.picture = picture;
+    }
+
+    private String id;
+    private String sxmc;
+    private String uname;
+    private String wz;
+    private Integer sh;
+    private String rksj;
+    private String lxmc;
+    private String xm;
+    private String picture;
+    private String jj;
+    private Integer status;
+    private String jyxm;
+
+    public String getJyxm() {
+        return jyxm;
+    }
+
+    public void setJyxm(String jyxm) {
+        this.jyxm = jyxm;
+    }
+
+    public String getXm() {
+        return xm;
+    }
+
+    public void setXm(String xm) {
+        this.xm = xm;
+    }
 
     public String getId() {
         return id;
@@ -54,14 +110,14 @@ public class BookInfo extends TBook implements Serializable {
     }
 
     public String getSh() {
-        if(this.sh == 0){
-            return "无损毁" ;
-        }else if(this.sh == 1){
-            return "轻微损毁" ;
-        }else if (this.sh == 2){
-            return "中度损毁" ;
-        }else{
-            return "重度损毁" ;
+        if (this.sh == 0) {
+            return "无损毁";
+        } else if (this.sh == 1) {
+            return "轻微损毁";
+        } else if (this.sh == 2) {
+            return "中度损毁";
+        } else {
+            return "重度损毁";
         }
     }
 
@@ -86,14 +142,12 @@ public class BookInfo extends TBook implements Serializable {
     }
 
     public String getStatus() {
-        if(this.status == 0){
-            return "在库" ;
-        }else if(this.status == 1){
-            return "借出" ;
-        }else if (this.status == 2){
-            return "续借" ;
-        }else
-            return "" ;
+        if (this.status == 1) {
+            return "在库";
+        } else if (this.status == 0) {
+            return "出库";
+        }  else
+            return "";
     }
 
     public void setStatus(Integer status) {

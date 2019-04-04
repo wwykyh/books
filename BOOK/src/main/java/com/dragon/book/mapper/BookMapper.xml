@@ -9,6 +9,7 @@
 		<result column="zz" property="zz" jdbcType="VARCHAR" />
 		<result column="type_id" property="typeId" jdbcType="INTEGER" />
 		<result column="tsdl" property="tsdl" jdbcType="VARCHAR" />
+		<result column="picture" property="picture" jdbcType="VARCHAR" />
 		<association property="tStore" javaType="com.dragon.book.model.TStore"
 			column="isbn" foreignColumn="isbn">
 			<id column="id" property="id" jdbcType="INTEGER" />
@@ -57,8 +58,8 @@
 		<result column="user_id" property="userId" jdbcType="INTEGER" />
 
 		
-			<result column="type_id" property="typeId" jdbcType="INTEGER" />
-			<result column="lxmc" property="lxmc" jdbcType="VARCHAR" />
+		<result column="type_id" property="typeId" jdbcType="INTEGER" />
+		<result column="lxmc" property="lxmc" jdbcType="VARCHAR" />
 		
 	</resultMap>
 
@@ -85,10 +86,10 @@
 		</if>
 	</select>
 
-	<select id="selectByDim" resultMap="BookResultMap"
+	<select id="selectByDim" resultMap="BaseResultMap"
 		parameterType="com.dragon.book.util.PageBean">
 		select
-		b.isbn isbn, b.sm sm ,s.id id,
+		b.isbn isbn, b.sm sm ,s.id id,b.picture picture,
 		b.cbsmc
 		cbsmc, b.zz
 		zz,t.type_id
@@ -105,20 +106,9 @@
 		b.isbn=s.isbn and b.type_id =
 		t.type_id
 
-		<if test="s_type !=null and s_type !=''">
-			and t.type_id ='${s_type}'
-		</if>
-		<if test="s_tsdl !=null and s_tsdl !=''">
-			and b.tsdl ='${s_tsdl}'
-		</if>
 
-		<if test="dim !=null and dim !=''">
-			and b.sm like '%${dim}%' or
-			b.zz like
-			'%${dim}%'
-		</if>
 
-		ORDER BY sm limit #{page},#{pagesize}
+
 	</select>
 
 	<select id="getBooksKey" resultMap="BookResultMap">

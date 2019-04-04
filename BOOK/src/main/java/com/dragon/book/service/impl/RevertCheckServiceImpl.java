@@ -61,7 +61,7 @@ public class RevertCheckServiceImpl implements RevertCheckService {
         tCompensate.setIspc(Integer.parseInt(statusPay));
         tCompensate.setSh(sh);
         tCompensate.setUserId(tBorrow.getUserId());
-        tCompensate.setIsbn(tStore.getIsbn());
+        tCompensate.setsId(tStore.getIsbn());
         return checkMapper.updateRevertTBorrowSh(filter) >= 0 &&
                 tBorrowMapper.updateByPrimaryKey(tBorrow) > 0 &&
                 tCompensateMapper.insert(tCompensate) > 0;

@@ -3,6 +3,8 @@ package com.dragon.book.mapper;
 import com.dragon.book.model.TComment;
 import com.dragon.book.model.TCommentExample;
 import java.util.List;
+
+import com.dragon.book.pojo.CommentInfo;
 import org.apache.ibatis.annotations.Param;
 
 public interface TCommentMapper {
@@ -33,4 +35,6 @@ public interface TCommentMapper {
     int updateByPrimaryKeyWithBLOBs(TComment record);
 
     int updateByPrimaryKey(TComment record);
+
+
 }

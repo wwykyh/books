@@ -2,6 +2,7 @@ package com.dragon.book.controller;
 
 import com.alibaba.fastjson.JSON;
 import com.dragon.book.model.TBook;
+import com.dragon.book.model.TBookAnalyze;
 import com.dragon.book.model.TPublish;
 import com.dragon.book.model.TType;
 import com.dragon.book.pojo.BookInfo;
@@ -18,6 +19,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.servlet.ServletOutputStream;
@@ -41,6 +43,8 @@ public class BookManagerController {
     private BookManagerService bookService ;
     @Autowired
     private PublishManagerService publishManagerService;
+    @Autowired
+    private BookAnalyzeService bookAnalyzeService;
 
     @RequestMapping("/book_manager")
     public String showBookManagerPage(){
@@ -62,10 +66,8 @@ public class BookManagerController {
     public String showBorrowHistoryPage(){
         return "manager/borrow_history";
     }
-    @RequestMapping("/book_analyze")
-    public String showBookAnalyzePage(){
-        return "manager/book_analyze";
-    }
+
+
     @RequestMapping("/type_manager")
     public String showTypeManagerPage(){
         return "manager/type_manager";
@@ -294,16 +296,26 @@ public class BookManagerController {
     }
     @RequestMapping("/history_info")
     public String HistoryInfo(Integer id,Model model){
-        System.out.println(id);
         HistoryInfo history = bookService.selectHistoryById(id);
         model.addAttribute("history",history) ;
         return "manager/history_info";
     }
-    @RequestMapping("/evaluation_info")
-    public String EvaluationInfo(Integer id,Model model){
-        System.out.println(id);
-        HistoryInfo history = bookService.selectHistoryById(id);
-        model.addAttribute("history",history) ;
-        return "manager/evaluation_info";
+    /**
+     * 图书分析控制
+     */
+    @RequestMapping("/bookAnalyze")
+    public String showBookAnalyzePage(){
+        return "manager/bookAnalyze";
     }
+
+    /**
+     * 异步获取数据
+     */
+    @RequestMapping(value="/borrowInfo",method=RequestMethod.GET)
+    public @ResponseBody List<TBookAnalyze> charts(){
+        List<TBookAnalyze> user =bookAnalyzeService.getBoorowNum();
+        return user;
+    }
+
+
 }

@@ -55,11 +55,10 @@
                     </tr>
                     <tr>
                         <th width="17%"><span class="ft-need"></span>是否黑名单：</th>
-                        <td width="33%"><input id="ishmd" name="ishmd" value="${userInfo.ishmd}" data-validate="required" type="text" class="input-text "></td>
-                    </tr>
-                    <tr>
-                        <th width="17%"><span class="ft-need"></span>个人说明：</th>
-                        <td width="33%"><input id="grsm" name="grsm" value="${userInfo.grsm}" data-validate="required" type="text" class="input-text "></td>
+                        <td width="33%"><select id="ishmd" name="ishmd" value="${userInfo.ishmd}" style="width: 200px">
+                            <option value="1" selected>是</option>
+                            <option value="0" >否</option>
+                        </select></td>
                     </tr>
                     <tr>
                         <th width="17%"><span class="ft-need"></span>可借图书册数：</th>
@@ -71,11 +70,18 @@
                     </tr>
                     <tr>
                         <th width="17%"><span class="ft-need"></span>是否为管理员：</th>
-                        <td width="33%"><input id="isadmin" name="isadmin" value="${userInfo.isadmin}" data-validate="required" type="text" class="input-text "></td>
+                        <td width="33%"><select id="isadmin" name="isadmin" value="${userInfo.isadmin}" style="width: 200px">
+                            <option value="1" selected>是</option>
+                            <option value="0" >否</option>
+                        </select></td>
+                    </tr>
+                    <tr>
+                        <th width="17%"><span class="ft-need"></span>个人说明：</th>
+                        <td width="33%"><textarea id="grsm" name="grsm" style="width: 200px;height:100px">${userInfo.grsm}</textarea></td>
                     </tr>
                     <tr>
                         <th></th>
-                        <td><input  type="button" class="btn" value="修改"  onclick="sub()"></td>
+                        <td><input  type="button" class="btn" value="修改"  id="sub1" ><input  type="button" class="btn" value="重置"  onclick="reset()"></td>
                     </tr>
                 </table>
                 </form>
@@ -83,32 +89,42 @@
         </div>
     </div>
     <script type="text/javascript">
-
-
-        //ajax提交表单
-        function sub() {
-            $.ajax({
-                cache: true,
-                type: "POST",
-                url:"/usermanage/user_edit",
-                data:$('#form-libs').serialize(),// 你的formid
-                async: false,
-                error: function(request) {
-                    alert("Connection error:"+request.error);
-                },
-                success: function(data) {
-                    if(data == "0"){
-                        parent.select();
-                        parent.art.dialog({id:'user_edit_window'}).close() ;
-                    }else {
-                        alert("用户信息修改失败！");
+            //快捷还书方法
+            $("#sub1").click(function () {
+                $.ajax({
+                    cache: true,
+                    type: "POST",
+                    url:"/usermanage/user_edit",
+                    data:$('#form-libs').serialize(),// 你的formid
+                    async: false,
+                    error: function(request) {
+                        alert("Connection error:"+request.error);
+                    },
+                    success: function(data) {
+                        if(data == "0"){
+                            parent.select();
+                            parent.art.dialog({id:'user_edit_window'}).close() ;
+                        }else {
+                            alert("用户信息修改失败！");
+                        }
                     }
-                }
-            });
-        }
+                });
+            })
 
 
 
+        $(document).ready(function (){
+            var isadmin = "${userInfo.isadmin}";
+            var ishmd  = "${userInfo.ishmd}";
+
+            if (isadmin==0){
+                $("#isadmin").val('0');
+            }
+
+            if (ishmd==0){
+                $("#ishmd").val('0');
+            }
+        });
 
 
     </script>
