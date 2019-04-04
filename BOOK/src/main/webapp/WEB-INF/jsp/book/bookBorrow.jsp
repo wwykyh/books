@@ -28,9 +28,6 @@
                             <tr>
                                 <th></th>
                                 <td>
-                                    <input type="text" id="eBookXm" name="eBookXm" placeholder="书名" class="input-text"/>
-                                </td>
-                                <td>
                                     类型：
                                     <select class="select" name="typeId" id="typeId">
                                         <option value="">==请选择==</option>
@@ -40,6 +37,9 @@
                                     </select>
                                 </td>
                                 <td>
+                                    <input type="text" id="eBookXm" name="eBookXm" placeholder="书名" class="input-text"/>
+                                </td>
+                                <%--<td>
                                     审核状态：
                                     <select class="select" name="status" id="status">
                                         <option value="">==请选择==</option>
@@ -47,7 +47,7 @@
                                         <option value="1">通过</option>
                                         <option value="2">待审核</option>
                                     </select>
-                                </td>
+                                </td>--%>
                                 <td colspan="2"><a href="javascript:;" class="btn" onclick="submit();"><span>
                                     <i class="icon icon-search"></i>查询</span></a>
                                 </td>
@@ -64,13 +64,11 @@
 </div>
 </body>
 <script type="text/javascript">
-    var status = "";
     var typeId = "";
     var eBookXm = "";
 
     function submit() {
         typeId = $("#typeId").val();
-        status = $("#status").val();
         eBookXm = $("#eBookXm").val();
         borrowInfo();
     }
@@ -94,15 +92,6 @@
                 name: 'sm',
                 width: 200
             }, {
-                display: '类型名称',
-                name: 'lxmc'
-            }, {
-                display: '图书大类',
-                name: 'tsdl'
-            }, {
-                display: '联系方式',
-                name: 'lxfs'
-            }, {
                 display: '借阅日期',
                 name: 'jyrq',
                 render: function (row) {
@@ -119,6 +108,15 @@
                     }
                 }
             }, {
+                display: '类型名称',
+                name: 'lxmc'
+            }, {
+                display: '图书大类',
+                name: 'tsdl'
+            }, {
+                display: '联系方式',
+                name: 'lxfs'
+            }, {
                 display: '借阅人',
                 name: 'xm'
             }, {
@@ -128,35 +126,20 @@
                     var id = row.id;
                     if (row.status != null && row.status !== "" && row.status === 2) {
                         var html = '<div style="margin-top: 10px;">' +
-                            '<input name="check" type="button" class="layer-btn" id="check" value="审核" onclick="borCheck(' + id + ')"/>' +
-                            '</div>';
-                        return html;
-                    } else if (row.status != null && row.status !== "" && row.status === 1) {
-                        var html = '<div style="margin-top: 10px;">' +
-                            '<input name="check" type="button" class="layer-btn" id="check" value="已通过" onclick="borCheck(' + id + ')"/>' +
-                            '</div>';
-                        return html;
-                    } else if (row.status != null && row.status !== "" && row.status === 0) {
-                        var html = '<div style="margin-top: 10px;">' +
-                            '<input name="check" type="button" class="layer-btn" id="check" value="未通过" onclick="borCheck(' + id + ')"/>' +
+                            '<input name="check" type="button" class="layer-btn" id="check" value="同意" onclick="borCheck(' + id + ')"/>' +
                             '</div>';
                         return html;
                     }
-                    ;
                 }
             }
             ],
             method: 'get',
-            url: '${path}/borrowCheck/page',
+            url: '${path}/borrowCheck/',
             dataType: 'server',
             dataAction: 'server',
             pageSize: 5,
             width: '100%',
-            parms: [
-                {name: "search_typeId", value: typeId},
-                {name: "search_status", value: status},
-                {name: "search_eBookXm", value: eBookXm}
-            ],
+            parms: [{name: "search_typeId", value: typeId}, {name: "search_eBookXm", value: eBookXm}],
             checkbox: false,
             rownumbers: true,
             fixedCellHeight: false,
@@ -175,15 +158,13 @@
     function borCheck(id) {
         requirejs(['jquery', 'artdialog'], function ($) {
             $(function () {
-                art.dialog.open('${path}/borrowCheck/toCheck?id=' + id, {
+                art.dialog.open('${path}/borrowCheck/' + id + '', {
                     title: '借阅审核',
                     width: 950,
                     height: 500,
                     ok: true,
-                    okVal: "确定",
-                    cancel: true,
-                    cancelVal: "取消",
-                    id:"borrowCheckChild"
+                    okVal: "关闭",
+                    id: "borrowCheckChild"
                 });
             });
         });

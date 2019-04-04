@@ -3,15 +3,14 @@ package com.dragon.book.controller;
 import com.alibaba.fastjson.JSON;
 import com.dragon.book.model.TType;
 import com.dragon.book.pojo.TBorrowInfo;
-import com.dragon.book.service.ebookService.EbookFileService;
+import com.dragon.book.service.ebookService.EBookFileService;
 import com.dragon.book.service.ebookService.RevertCheckService;
 import com.dragon.book.util.PageBean;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.util.StringUtils;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
 import org.springside.modules.web.Servlets;
 
 import javax.servlet.http.HttpServletRequest;
@@ -26,19 +25,19 @@ import java.util.Map;
 public class BorrowRevertController {
 
     @Autowired
-    private EbookFileService ebookFileService;
+    private EBookFileService ebookFileService;
 
     @Autowired
     private RevertCheckService revertCheckService;
 
-    @RequestMapping("/revert")
+    @GetMapping("/revert")
     public String showBookBorrow(HttpServletRequest request) {
-        List<TType> types = ebookFileService.getPageTypeList();
+        List<TType> types = ebookFileService.getTypeList();
         request.setAttribute("types", types);
         return "book/bookRevert";
     }
 
-    @RequestMapping("/page")
+    @GetMapping("/")
     @ResponseBody
     public String showBookBorrowPage(PageBean pageBean, HttpServletRequest request) {
         Map<String, Object> searchParams = Servlets.getParametersStartingWith(request, "search_");
@@ -53,15 +52,15 @@ public class BorrowRevertController {
         return JSON.toJSONString(pageBean).replaceAll("rows", "Rows").replaceAll("total", "Total");
     }
 
-    @RequestMapping("/toRevertCheck")
-    public String toBorrowCheck(Model model, String id) {
+    @GetMapping("/{id}")
+    public String toBorrowCheck(Model model, @PathVariable String id) {
         if (!StringUtils.isEmpty(id)) {
             model.addAttribute("singleTBorrow", revertCheckService.getSingleRevertTBorrow(Integer.parseInt(id)));
         }
         return "book/bookRevertCheck";
     }
 
-    @RequestMapping("/check")
+    @PutMapping("/")
     @ResponseBody
     public Object borrowCheck(String id, String sh, String status) {
         return revertCheckService.updateRevertTBorrowSh(Integer.parseInt(id),Integer.parseInt(sh), status);

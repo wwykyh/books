@@ -12,141 +12,85 @@
 <head>
     <title>电子书上传</title>
     <script type="text/javascript" src="../js/ebook/ebook.js"></script>
+    <script type="text/javascript" src="${path}/dvpt/libs/artdialog/artDialog.source.js"></script>
+    <script type="text/javascript" src="${path}/dvpt/libs/artdialog/iframeTools.source.js"></script>
+    <style type="text/css">
+        #documentListContainer {
+            width: 100%;
+            height: 500px;
+            margin: 0;
+            padding: 0;
+            list-style: none;
+            border: none;
+            outline: none;
+            text-decoration: none;
+        }
+
+        .LV_Header {
+            width: 100%;
+            height: 25px;
+            line-height: 27px;
+            vertical-align: middle;
+            background-color: #FAFAFA;
+            border-bottom: solid 1px #dcdcdc;
+            border-top: solid 1px #dcdcdc;
+        }
+
+        .LV_Header div {
+            float: left;
+            margin-top: 5px;
+        }
+
+        .file_list {
+            width: 100%;
+            height: 30px;
+            line-height: 30px;
+        }
+
+        .file_list div {
+            float: left;
+            margin-top: 5px;
+        }
+
+        .uploadForm {
+            width: 100%;
+        }
+    </style>
 </head>
 <body>
 <div class="panel">
     <div class="panel-header">
         <h2>电子书上传</h2>
-        <a href="javascript:;" class="arrow up"></a></div>
-    <form id="uploadForm" method="post" enctype="multipart/form-data">
-        <div class="panel-body panel-noborder">
-            <div class="write-box">
-                <table class="form-table" width="100%">
-                    <tr>
-                        <th width="17%"><span class="ft-need">*</span>电子书管理：</th>
-                        <td width="33%">
-                            <button id="attachmentAddBtn" type="button" class="btn btn-default">Add File</button>&nbsp;&nbsp;
-                            <button id="attachmentDeleteBtn" type="button" class="btn btn-default">Delete File</button>
-                            &nbsp;&nbsp;&nbsp;&nbsp;<span class="ft-need">可上传多个文件(至少一个)</span>
-                        </td>
-                    </tr>
-                    <tr>
-                        <th width="17%"><span class="ft-need">*</span>电子书：</th>
-                        <td width="33%">
-                            <div id="attachmentInputs" style="width: 200px;line-height: 5px;">
+        <a href="javascript:;" class="arrow up"></a>
+    </div>
 
-                            </div>
-                        </td>
-                    </tr>
-                    <tr>
-                        <th width="17%"><span class="ft-need">*</span>文件格式：</th>
-                        <td width="33%">
-                            <span class="ft-need">请上传pdf、txt、html、chm、epub等文件</span>
-                        </td>
-                    </tr>
-                    <%--<tr>
-                        <th width="17%"><span class="ft-need">*</span>图书名称：</th>
-                        <td width="33%">
-                            <input id="bookName" name="eBookXm" type="text" class="input-text " onblur="confirmName()"
-                                   placeholder="多个文件时，如：测试文件1.txt;测试文件2.txt;" style="font-size: 12px;width: 300px">
-                            <span class="ft-need">有多个文件时，以分号" ; "区别</span>
-                        </td>
-                    </tr>--%>
-                    <tr>
-                        <th width="17%"><span class="ft-need">*</span>电子书类型：</th>
-                        <td width="33%">
-                            <select class="select" name="typeId" id="type">
-                                <option value="">==请选择==</option>
-                                <c:forEach items="${types}" var="type">
-                                    <option value="${type.ebookTypeid}">${type.ebookTypemc}</option>
-                                </c:forEach>
-                            </select>
-                        </td>
-                    </tr>
-                    <tr>
-                        <th width="17%"><span class="ft-need">*</span>电子书种类：</th>
-                        <td width="33%">
-                            <select class="select" name="tszl" id="tszl">
-                                <option selected="selected" value="电子书">电子书</option>
-                                <option value="CSDN">CSDN</option>
-                                <option value="txt">txt</option>
-                            </select>
-                        </td>
-                    </tr>
-                    <tr>
-                        <th width="17%"><span class="ft-need">*</span>描述：</th>
-                        <td width="33%">
-                            <input id="ms" type="text" class="input-text" name="ms" style="width: 300px;"
-                                   placeholder="请简要描述书籍，有多个文件时，以分号 ; 结束  ！">
-                            <span class="ft-need">有多个文件时，以分号" ; "结束</span>
-                        </td>
-                    </tr>
-                    <tr>
-                        <th width="17%"></th>
-                        <td width="33%">
-                            <input type="reset" class="btn" value="重置">
-                            <input type="button" class="btn" value="提交" onclick="sub();">
-                        </td>
-                    </tr>
-                </table>
+
+    <div id="documentListContainer" style="clear:both;">
+
+        <div class="actions" style="height: 27px;width: 900px;">
+            <a id="all" onclick="checkAll();" href="javascript:;" class="btn"><i class="icon icon-batchreview"></i>全选</a>
+            <a id="up" onclick="up();" href="javascript:;" class="btn"><i class="icon icon-upload"></i>批量上传</a>
+            <a id="add" onclick="add();" href="javascript:;" class="btn btn-default"><i class="icon icon-add"></i>新建</a>
+            <a id="del" onclick="del();" href="javascript:;" class="btn btn-danger"><i class="icon icon-delete"></i>删除</a>
+        </div>
+
+        <div class="LV_Header" style="clear:both;margin-top: 5px;">
+            <div style="width: 10%; padding-left:4px;">
+            </div>
+            <div style="text-align: center; text-indent: 20px;width:20%;">
+                文件
+            </div>
+            <div style="text-align: center;width:20%;">
+                类型
+            </div>
+            <div style="width: 20%; text-align: center;">
+                种类
+            </div>
+            <div style="width: 20%; text-align: center;">
+                描述
             </div>
         </div>
-    </form>
+    </div>
 </div>
 </body>
-<script type="text/javascript">
-    var n = -1;
-    // add
-    $("#attachmentAddBtn").click(function (even) {
-        n++;
-        //name值一样就可以
-        $("#attachmentInputs").append("<input name=\"ebookFile\" type=\"file\" class=\"input-text\" onchange=\"judageEbook("+ n +");\"/>");
-    });
-    // delete
-    $("#attachmentDeleteBtn").click(function (even) {
-        var files = $("#attachmentInputs input[type='file']");
-        files.each(function (index, element) {
-            //从最下面开始删除，至少保留一个
-            if (!(index === 0) && index === (files.length - 1)) {
-                $(element).next().remove();
-                $(element).remove();
-                n--;
-            }
-        });
-    });
-
-    // ajax提交表单
-    function sub() {
-        // $("#uploadForm").submit();
-        var formData = new FormData($("#uploadForm")[0]);
-        // 获取key值
-        // var eBookXm = formData.get("eBookXm");
-        var ebookFile = formData.get("ebookFile");
-        var typeId = formData.get("typeId");
-        var tszl = formData.get("tszl");
-        var ms = formData.get("ms");
-        if (ebookFile === null || typeId === "" || tszl === "" ||ms === "") {
-            alert("请填写上传文件参数！");
-        } else {
-            $.ajax({
-                type: "post",
-                data: formData,
-                url: "eBookFile/bookUpload",
-                async: false,
-                cache: false,
-                contentType: false, //必须
-                processData: false, //必须
-                success: function (data) {
-                    if (data === "success") {
-                        alert("文件上传成功！");
-                        $("input[type=reset]").trigger("click");
-                    } else {
-                        alert("文件上传失败！");
-                    }
-                }
-            });
-        }
-    }
-
-</script>
 </html>

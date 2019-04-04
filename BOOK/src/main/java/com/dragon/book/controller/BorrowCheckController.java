@@ -5,14 +5,13 @@ import com.dragon.book.model.TBorrow;
 import com.dragon.book.model.TType;
 import com.dragon.book.pojo.TBorrowInfo;
 import com.dragon.book.service.ebookService.BorrowCheckService;
-import com.dragon.book.service.ebookService.EbookFileService;
+import com.dragon.book.service.ebookService.EBookFileService;
 import com.dragon.book.util.PageBean;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.util.StringUtils;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
 import org.springside.modules.web.Servlets;
 
 import javax.servlet.http.HttpServletRequest;
@@ -24,19 +23,19 @@ import java.util.Map;
 public class BorrowCheckController {
 
     @Autowired
-    private EbookFileService ebookFileService;
+    private EBookFileService ebookFileService;
 
     @Autowired
     private BorrowCheckService borrowCheckService;
 
-    @RequestMapping("/borrow")
+    @GetMapping("/borrow")
     public String showBookBorrow(HttpServletRequest request) {
-        List<TType> types = ebookFileService.getPageTypeList();
+        List<TType> types = ebookFileService.getTypeList();
         request.setAttribute("types", types);
         return "book/bookBorrow";
     }
 
-    @RequestMapping("/page")
+    @GetMapping("/")
     @ResponseBody
     public String showBookBorrowPage(PageBean pageBean, HttpServletRequest request) {
         Map<String, Object> searchParams = Servlets.getParametersStartingWith(request, "search_");
@@ -51,15 +50,15 @@ public class BorrowCheckController {
         return JSON.toJSONString(pageBean).replaceAll("rows", "Rows").replaceAll("total", "Total");
     }
 
-    @RequestMapping("/toCheck")
-    public String toBorrowCheck(Model model, String id) {
+    @GetMapping("/{id}")
+    public String toBorrowCheck(Model model, @PathVariable String id) {
         if (!StringUtils.isEmpty(id)) {
             model.addAttribute("singleTBorrow", borrowCheckService.getSingleTBorrow(Integer.parseInt(id)));
         }
         return "book/bookBorrowCheck";
     }
 
-    @RequestMapping("/check")
+    @PutMapping("/")
     @ResponseBody
     public Object borrowCheck(String id, String status, String bz) {
         TBorrow tBorrow;
@@ -69,10 +68,10 @@ public class BorrowCheckController {
                 tBorrow.setStatus(1);
                 tBorrow.setJyzt(0);
             }
-            if ("0".equals(status)) {  // 审核不通过，并设置不通过理由 bz：备注
-                tBorrow.setBz(bz);
+           /* if ("0".equals(status)) {  // 审核不通过，并设置不通过理由 bz：备注  没有不通过之说
                 tBorrow.setStatus(0);
-            }
+                tBorrow.setBz(bz);
+            }*/
             return borrowCheckService.updateTBorrow(tBorrow);
         } else {
             return false;

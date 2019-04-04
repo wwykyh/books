@@ -58,7 +58,7 @@
 		                </span>
                     </li>
                     <li>
-                        <i class="header-icon i-user"></i>欢迎您！${sessionScope.userName}</a>
+                        <i class="header-icon i-user"></i>欢迎您！${user.xm}</a>
                     </li>
                     <li class="skin-change"><a href="javascript:;" title="皮肤" class="skin-change-acitve"><span><i
                             class="header-icon i-skin"></i>换肤<i class="arrow"></i></span></a>
@@ -121,17 +121,17 @@
                 <dl>
                     <dt>
                         <a href="javascript:;">
-                            <i class="icon">&#xe657;</i><span>电子图书库</span>
+                            <i class="icon">&#xe657;</i><span>电子书库</span>
                             <i class="icon arrow">&#xe658;</i>
                             <i class="icon arrow hide">&#xe659;</i>
                         </a>
                     </dt>
                     <dd>
                         <ul>
-                            <li><a _href="${pageContext.request.contextPath}/eBookFile/toUpload" data-name="电子书入库"
-                                   data-js="prettify" href="javascript:;">图书上传</a></li>
-                            <li><a _href="${pageContext.request.contextPath}/eBookFile/ebookManger" data-name="电子书下载"
-                                   data-js="prettify" href="javascript:;">图书浏览和下载</a></li>
+                            <li><a _href="${pageContext.request.contextPath}/eBookFile/page/upload" data-name="电子书上传"
+                                   data-js="prettify" href="javascript:;">电子书上传</a></li>
+                            <li><a _href="${pageContext.request.contextPath}/eBookFile/page/manage" data-name="电子书下载"
+                                   data-js="prettify" href="javascript:;">电子书下载</a></li>
                         </ul>
                     </dd>
                 </dl>
