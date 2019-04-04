@@ -28,16 +28,16 @@ public class PersonalController {
 
     /**
      * 转到personal界面，并加载数据
-     * @param uid 用户id
+     * @param uId 用户id
      * @param map
      * @return
      */
     @RequestMapping("/toPersonalIndex")
-    public String toPersonalIndex(@RequestParam("userId")int uid,Map map){
+    public String toPersonalIndex(@RequestParam("userId")int uId,Map map){
 //        System.out.print(uid);
-        if(0!=uid){
-            TSysUser userInformation = personalService.selectUserIndormation(uid);
-            List<BookBorrow> bookBorrow = personalService.selectBookInformation(uid);
+        if(0!=uId){
+            TSysUser userInformation = personalService.selectUserIndormation(uId);
+            List<BookBorrow> bookBorrow = personalService.selectBookInformation(uId);
             map.put("userInformation",userInformation);
             map.put("bookBorrow",bookBorrow);
             return "/my/personal";

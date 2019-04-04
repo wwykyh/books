@@ -27,7 +27,7 @@
         ghrq,
         status,
         jyzt,
-        DATEDIFF(#{currentTime},jhghrq) as bz
+        DATEDIFF(now(),jhghrq) as bz
         from
         t_borrow
         where

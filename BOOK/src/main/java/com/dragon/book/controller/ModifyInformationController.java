@@ -5,12 +5,16 @@ package com.dragon.book.controller;
  * zzm
  */
 
+import com.dragon.book.model.TSysUser;
 import com.dragon.book.service.my.impl.ModifyInformationServiceImpl;
 import org.apache.ibatis.annotations.Param;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
+
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 @Controller
 @RequestMapping("/modifyInformation")
@@ -35,16 +39,21 @@ public class ModifyInformationController {
      * @param dz 地址
      * @param bm 部门
      * @param grsm 个人说明
-     * @param userid 用户ID
+     * @param userId 用户ID
      * @return
      */
     @RequestMapping("/doModifyInfortmation")
     @ResponseBody
-    public String modifyInfotmation(@Param("xm")String xm,@Param("lxfs")String lxfs,@Param("dz")String dz,@Param("bm")String bm,@Param("grsm")String grsm,@Param("userid")int userid){
+    public String modifyInfotmation(@Param("xm")String xm,@Param("lxfs")String lxfs,@Param("dz")String dz,@Param("bm")String bm,@Param("grsm")String grsm,@Param("userId")int userId,HttpSession session,
+                                    HttpServletRequest request){
         String message;
         if(""!=xm||""!=lxfs||""!=dz||""!=bm||""!=grsm){
-            modifyInformationServiceImpl.modifyInformation(xm,lxfs,dz,bm,grsm,userid);
+            modifyInformationServiceImpl.modifyInformation(xm,lxfs,dz,bm,grsm,userId);
             message = "修改成功！";
+            TSysUser tSysUser = modifyInformationServiceImpl.findUserInfo(userId);
+            if(null!=tSysUser){
+            session.setAttribute("user", tSysUser);
+            session.setMaxInactiveInterval(30 * 60);}
         return message;
         }else {
             message = "修改失败！";

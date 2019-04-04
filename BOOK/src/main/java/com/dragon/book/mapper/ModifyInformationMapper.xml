@@ -24,4 +24,13 @@
       where user_id=#{userId}
     </update>
 
+    <select id="findUserInfo">
+        select
+        *
+        from
+        t_sys_user
+        where
+        user_id=#{userId}
+    </select>
+
 </mapper>
