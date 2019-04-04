@@ -92,7 +92,7 @@
         </if>
         limit #{start},${end}
     </select>
-    <select id="selectBookInfoById" resultType="com.dragon.book.pojo.BookInfo" parameterType="int">
+    <select id="selectBookInfoById" resultType="com.dragon.book.pojo.BookInfo" parameterType="java.lang.String">
        select
 	    su.id,tb.isbn,tb.sm,tb.cbsmc,tb.cbrq,tb.zz,tb.lxmc,tb.tsdl,su.xm uname,su.wz,su.sh,su.rksj,su.status,tb.picture,tb.jj,(SELECT u.xm FROM t_store s,t_sys_user u,t_borrow b WHERE u.user_id = b.user_id AND b.s_id=s.id  AND s.`status`=0 AND b.jyzt!=2 AND s.id=#{id}) jyxm
       from (

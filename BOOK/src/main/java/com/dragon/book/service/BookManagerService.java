@@ -6,12 +6,15 @@ import com.dragon.book.pojo.CommentInfo;
 import com.dragon.book.pojo.HistoryInfo;
 import com.dragon.book.pojo.QueryVo;
 import com.dragon.book.util.PageBean;
+import org.springframework.web.multipart.MultipartFile;
 
+import javax.servlet.http.HttpServletRequest;
+import java.io.IOException;
 import java.util.List;
 
 public interface BookManagerService {
     TBook getBookById(String bookId) ;
-    boolean insertBook(QueryVo vo) ;
+    boolean insertBook(QueryVo vo, MultipartFile file,HttpServletRequest request) throws IllegalStateException, IOException;
     PageBean selectBookInfo(PageBean pageBean, QueryVo vo) ;
     BookInfo selectBookInfoById(String id) ;
     CommentInfo selectCommentInfoById(String id) ;
@@ -21,4 +24,5 @@ public interface BookManagerService {
     List<BookInfo> selectAllBookInfo() ;
     PageBean selectHistoryInfo(PageBean pageBean) ;
     HistoryInfo selectHistoryById(Integer id) ;
+    String upPicture(MultipartFile file, HttpServletRequest request)throws IllegalStateException, IOException;
 }

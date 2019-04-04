@@ -11,12 +11,17 @@ import com.dragon.book.pojo.CommentInfo;
 import com.dragon.book.pojo.HistoryInfo;
 import com.dragon.book.pojo.QueryVo;
 import com.dragon.book.service.BookManagerService;
+import com.dragon.book.service.BookService;
 import com.dragon.book.util.PageBean;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.web.multipart.MultipartFile;
 
+import javax.servlet.http.HttpServletRequest;
+import java.io.File;
+import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
@@ -39,6 +44,9 @@ public class BookManagerServiceImpl implements BookManagerService {
     @Autowired
     private TCommentMapper commentMapper ;
 
+    @Autowired
+    private BookService bookService;
+
 
     @Override
     public TBook getBookById(String bookId) {
@@ -46,11 +54,12 @@ public class BookManagerServiceImpl implements BookManagerService {
     }
 
     @Override
-    public boolean insertBook(QueryVo vo) {
+    public boolean insertBook(QueryVo vo, MultipartFile file,HttpServletRequest request) throws IllegalStateException, IOException {
 
         TBook book = vo.getBook();
         TBook tBook = tBookMapper.selectByPrimaryKey(book.getIsbn());
         if (tBook == null){
+            book.setPicture(upPicture(file,request));
             tBookMapper.insert(book) ;
         }
         TStore store = vo.getStore();
@@ -60,10 +69,42 @@ public class BookManagerServiceImpl implements BookManagerService {
         SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd") ;
         String time = format.format(date);
         store.setRksj(time);
+       // System.out.println(store.getWz()+"-------------");
+        store.setId(bookService.getKey(store.getWz(),book.getTsdl()));
+       // System.out.println(book.getTsdl()+"-------------");
+
         //是否在库 0 不在，1 在库
         store.setStatus(1);
         storeMapper.insert(store) ;
         return true;
+    }
+
+    @Override
+    public String upPicture(MultipartFile file, HttpServletRequest request)throws IllegalStateException, IOException {
+
+        String filenewname = "";
+        if (file.isEmpty()) {
+            System.out.println("图片为空");
+
+        } else {
+
+            String fileName = file.getOriginalFilename();
+            System.out.println("------file----------" + fileName);
+
+            String path1 = request.getSession().getServletContext().getRealPath("/picture") + File.separator;
+
+            filenewname = new SimpleDateFormat("yyyyMMddHHmmss").format(new Date()) + fileName;
+            System.out.println("++++++++" + filenewname);
+            String path = path1 + filenewname;
+
+            System.out.println(path);
+
+            File localFile = new File(path);
+            file.transferTo(localFile);
+
+            return "picture/"+filenewname;
+        }
+        return "";
     }
 
     @Override
@@ -89,7 +130,7 @@ public class BookManagerServiceImpl implements BookManagerService {
 
     @Override
     public BookInfo selectBookInfoById(String id) {
-        return mapperBook.selectBookInfoById(Integer.parseInt(id));
+        return mapperBook.selectBookInfoById(id);
     }
 
     @Override
