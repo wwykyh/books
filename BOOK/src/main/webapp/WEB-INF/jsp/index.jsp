@@ -140,7 +140,7 @@
                 <dl>
                     <dt>
                         <a href="javascript:;">
-                            <i class="icon">&#xe6c2;</i><span>我的</span>
+                            <i class="icon">&#xe6c2;</i><span>个人中心</span>
                             <i class="icon arrow">&#xe658;</i>
                             <i class="icon arrow hide">&#xe659;</i>
                         </a>

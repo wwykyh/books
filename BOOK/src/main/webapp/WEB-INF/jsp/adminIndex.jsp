@@ -87,16 +87,16 @@
 
                 <dl>
                     <dt>
-                        <a href="javascript:;"> <i class="icon">&#xe655;</i><span>审核</span>
+                        <a href="javascript:;"> <i class="icon">&#xe655;</i><span>图书确认</span>
                             <i class="icon arrow">&#xe658;</i> <i class="icon arrow hide">&#xe659;</i>
                         </a>
                     </dt>
                     <dd>
                         <ul>
-                            <li><a _href="${pageContext.request.contextPath}/borrowCheck/borrow" data-name="借阅审核"
-                                   data-js="prettify" href="javascript:;">借阅审核</a></li>
-                            <li><a _href="${pageContext.request.contextPath}/revertCheck/revert" data-name="归还审核"
-                                   data-js="prettify" href="javascript:;">归还审核</a></li>
+                            <li><a _href="${pageContext.request.contextPath}/borrowCheck/borrow" data-name="确认借出"
+                                   data-js="prettify" href="javascript:;">确认借出</a></li>
+                            <li><a _href="${pageContext.request.contextPath}/revertCheck/revert" data-name="确认归还"
+                                   data-js="prettify" href="javascript:;">确认归还</a></li>
 
                         </ul>
                     </dd>
@@ -104,7 +104,7 @@
 
                 <dl>
                     <dt>
-                        <a href="javascript:;"> <i class="icon">&#xe654;</i><span>用户</span>
+                        <a href="javascript:;"> <i class="icon">&#xe654;</i><span>用户管理</span>
                             <i class="icon arrow">&#xe658;</i> <i class="icon arrow hide">&#xe659;</i>
                         </a>
                     </dt>
@@ -138,10 +138,21 @@
                                    data-js="prettify" href="javascript:;">借阅历史</a></li>
                             <li><a _href="${pageContext.request.contextPath}/bookAnalyze" data-name="图书分析"
                                    data-js="prettify" href="javascript:;">图书分析</a></li>
+
+                        </ul>
+                    </dd>
+                </dl>
+                <dl>
+                    <dt>
+                        <a href="javascript:;"> <i class="icon">&#xe654;</i><span>系统管理</span>
+                            <i class="icon arrow">&#xe658;</i> <i class="icon arrow hide">&#xe659;</i>
+                        </a>
+                    </dt>
+                    <dd>
+                        <ul>
                             <li><a _href="${pageContext.request.contextPath}/type_manager" data-name="种类管理"
                                    data-js="prettify" href="javascript:;">种类管理</a></li>
-                            <li><a _href="${pageContext.request.contextPath}/eBookFile/eBookTypeManager" data-name="电子书种类管理"
-                                   data-js="prettify" href="javascript:;">电子书种类管理</a></li>
+
                             <li><a _href="${pageContext.request.contextPath}/publish_house_manager" data-name="出版社管理"
                                    data-js="prettify" href="javascript:;">出版社管理</a></li>
                         </ul>
