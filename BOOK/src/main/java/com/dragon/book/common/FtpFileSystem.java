@@ -1,11 +1,13 @@
 package com.dragon.book.common;
 
 
+import com.dragon.book.config.FtpConfig;
 import org.apache.commons.net.ftp.FTPClient;
-import org.apache.commons.net.ftp.FTPClientConfig;
 import org.apache.commons.net.ftp.FTPFile;
+import org.apache.commons.net.ftp.FTPReply;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.context.request.RequestContextHolder;
 import org.springframework.web.context.request.ServletRequestAttributes;
@@ -34,11 +36,43 @@ public class FtpFileSystem extends AbFileSystems implements FileSystemInterface 
 
     private static FTPClient ftpClient;
 
+    @Autowired
+    private FtpConfig ftpConfig;
+
     @PostConstruct
     public void init() {
         ftpClient = (FTPClient) this.getServerConnection();
     }
 
+    /**
+     * @return ftpClient 对象
+     */
+    @Override
+    protected Object getServerConnection() {
+        FTPClient ftpClient = null;
+        try {
+            ftpClient = new FTPClient();
+            ftpClient.connect(ftpConfig.getFtpHost(), ftpConfig.getFtpPort()); // 连接FTP服务器
+            ftpClient.login(ftpConfig.getFtpUserName(), ftpConfig.getFtpPassWord());// 登陆FTP服务器
+
+            ftpClient.setControlEncoding("GBK");
+            ftpClient.setFileType(FTPClient.BINARY_FILE_TYPE);
+            ftpClient.enterLocalPassiveMode();
+            if (!FTPReply.isPositiveCompletion(ftpClient.getReplyCode())) {
+                logger.info("未连接到FTP，用户名或密码错误");
+                ftpClient.disconnect();
+            } else {
+                logger.info("AbFileSystems  FTP连接成功");
+            }
+        } catch (SocketException e) {
+            e.printStackTrace();
+            logger.error("FTP的IP地址可能错误," + e.getMessage());
+        } catch (IOException e) {
+            e.printStackTrace();
+            logger.error("FTP的端口可能错误," + e.getMessage());
+        }
+        return ftpClient;
+    }
     /**
      * @param file 上传的文件
      * @param path 路径
@@ -61,8 +95,6 @@ public class FtpFileSystem extends AbFileSystems implements FileSystemInterface 
             String fileName = file.getOriginalFilename();
             assert fileName != null;
             OutputStream out = ftpClient.storeFileStream(new String(fileName.getBytes("GBK"), StandardCharsets.ISO_8859_1));
-            System.out.println("OutputStream --------------------: " + out);
-            System.out.println("ftpClient --------------------: " + ftpClient);
             result = fileReadWrite(input, out);
             logger.info(fileName + " 上传状态:" + result);
 
@@ -127,7 +159,7 @@ public class FtpFileSystem extends AbFileSystems implements FileSystemInterface 
                 out.write(byteArray, 0, read);
             }
         } catch (IOException e) {
-            logger.warn("fileReadWrite异常-------"+e.getMessage());
+            logger.warn("fileReadWrite异常------->"+e.getMessage());
             e.printStackTrace();
             return false;
         }

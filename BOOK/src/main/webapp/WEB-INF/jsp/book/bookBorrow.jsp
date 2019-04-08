@@ -36,6 +36,7 @@
                                         </c:forEach>
                                     </select>
                                 </td>
+                                <td></td>
                                 <td>
                                     <input type="text" id="eBookXm" name="eBookXm" placeholder="书名" class="input-text"/>
                                 </td>
@@ -107,19 +108,19 @@
                         return getColumnDate(row.jhghrq);
                     }
                 }
-            }, {
-                display: '类型名称',
-                name: 'lxmc'
-            }, {
-                display: '图书大类',
-                name: 'tsdl'
-            }, {
-                display: '联系方式',
-                name: 'lxfs'
-            }, {
+            },  {
                 display: '借阅人',
                 name: 'xm'
-            }, {
+            },  {
+                display: '联系方式',
+                name: 'lxfs'
+            }, /*{
+                display: '图书大类',
+                name: 'tsdl'
+            },*/{
+                display: '图书类型',
+                name: 'lxmc'
+            },{
                 display: '操作',
                 isAllowHide: false,
                 render: function (row) {
