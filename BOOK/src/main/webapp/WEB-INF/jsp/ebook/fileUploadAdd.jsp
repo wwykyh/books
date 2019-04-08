@@ -57,7 +57,6 @@
                     <select class="select" name="tszl" id="tszl" data-validate="required">
                         <option selected="selected" value="电子书">电子书</option>
                         <option value="CSDN">CSDN</option>
-                        <option value="txt">txt</option>
                     </select>
                 </td>
             </tr>

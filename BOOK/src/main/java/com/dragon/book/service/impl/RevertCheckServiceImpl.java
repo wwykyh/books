@@ -12,6 +12,8 @@ import com.dragon.book.pojo.TBorrowInfo;
 import com.dragon.book.service.ebookService.RevertCheckService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Propagation;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.HashMap;
 import java.util.List;
@@ -47,6 +49,7 @@ public class RevertCheckServiceImpl implements RevertCheckService {
         return checkMapper.getSingleRevertTBorrow(id);
     }
 
+    @Transactional(propagation = Propagation.REQUIRED)
     @Override
     public boolean updateRevertTBorrowSh(Integer id, Integer sh, String statusPay) {
         TBorrow tBorrow = tBorrowMapper.selectByPrimaryKey(id);

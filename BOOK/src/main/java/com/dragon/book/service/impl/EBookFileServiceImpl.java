@@ -1,9 +1,9 @@
 package com.dragon.book.service.impl;
 
 import com.dragon.book.common.FileSystemInterface;
-import com.dragon.book.common.FtpFileSystem;
 import com.dragon.book.mapper.*;
 import com.dragon.book.model.*;
+import com.dragon.book.service.BookService;
 import com.dragon.book.service.ebookService.EBookFileService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -40,6 +40,8 @@ public class EBookFileServiceImpl implements EBookFileService {
     @Autowired
     private FileSystemInterface fileSystemInterface;
 
+    @Autowired
+    private BookService bookService;
 
     @Override
     @Transactional(propagation = Propagation.REQUIRED)
@@ -92,7 +94,8 @@ public class EBookFileServiceImpl implements EBookFileService {
                 // TODO 新的文件上传封装
                 result = fileSystemInterface.uploadFile(multipartFile, typeName);
 
-                String eBookId = UUID.randomUUID().toString().replace("-", "");
+//                String eBookId = UUID.randomUUID().toString().replace("-", "");
+                String eBookId = bookService.getKey("00","电子书");
                 // 上传到服务器的文件名
                 String fileName = multipartFile.getOriginalFilename();
 
@@ -104,7 +107,6 @@ public class EBookFileServiceImpl implements EBookFileService {
                     flag = saveEBookFile(teBook);
                 }
             }
-//            new FtpFileSystem().closeConnection();  // 关闭连接 这里有个bug
         } catch (Exception e) {
             logger.info("上传失败--->" + e.getMessage());
             e.printStackTrace();
