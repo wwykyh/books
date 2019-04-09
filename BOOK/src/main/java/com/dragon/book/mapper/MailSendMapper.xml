@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.dragon.book.mapper.my.MailSendDao" >
+
+    <resultMap id="userBorrow" type="com.dragon.book.pojo.UserBorrow">
+        <id column="id" property="id"/>
+        <result column="sm" property="sm"/>
+        <result column="jhghrq" property="jhghrq"/>
+        <collection property="tSysUser" ofType="com.dragon.book.model.TSysUser">
+            <result column="userId" property="userId"/>
+            <result column="xm" property="xm"/>
+            <result column="bm" property="bm"/>
+            <result column="pwd" property="pwd"/>
+            <result column="email" property="email"/>
+        </collection>
+    </resultMap>
+
+    <resultMap id="BorrowResultMap" type="com.dragon.book.pojo.Borrow">
+        <id column="id" property="id"  />
+        <result column="s_id" property="sId"  />
+        <result column="sm" property="sm"  />
+        <result column="cs" property="cs"/>
+        <result column="rksj" property="rksj"/>
+        <association property="user" javaType="com.dragon.book.model.TSysUser"
+                     column="userId" foreignColumn="userId">
+            <id column="user_id" property="userId"/>
+            <result column="xm" property="xm"/>
+            <result column="bm" property="bm"  />
+        </association>
+        <association property="book" javaType="com.dragon.book.model.TBook"
+                     column="isbn" foreignColumn="isbn">
+            <id column="isbn" property="isbn"/>
+            <id column="sm" property="sm"/>
+            <result column="jj" property="jj"/>
+            <result column="picture" property="picture"  />
+        </association>
+    </resultMap>
+
+    <select id="findOvertimeUser" resultMap="userBorrow">
+        select
+        t_borrow.id as id,
+        t_sys_user.user_id as userId,
+        t_sys_user.xm,
+        t_sys_user.bm,
+        jhghrq,
+        sm,
+        email as email
+        from
+        t_sys_user
+        right join
+        t_borrow
+        on
+        t_sys_user.user_id = t_borrow.user_id
+        where
+        now()>jhghrq
+        and
+        jyzt = 0
+    </select>
+
+    <select id="findReminderUser" resultMap="userBorrow">
+       select
+        t_borrow.id as id,
+        t_sys_user.user_id as userId,
+        t_sys_user.xm,
+        t_sys_user.bm,
+        sm,
+        email as email,
+        datediff(jhghrq,now())
+        from
+        t_sys_user
+        right join
+        t_borrow
+        on
+        t_sys_user.user_id = t_borrow.user_id
+        where
+        datediff(jhghrq,now())=1
+		and
+        jyzt = 0
+    </select>
+
+    <select id="findBook" resultType="com.dragon.book.model.TBook">
+        select
+		book.sm,
+		jj,
+		picture,
+		COUNT(s_id) as cs
+		from
+		t_borrow b
+		left outer join
+		t_store s
+		ON
+		b.s_id = s.id
+		left outer join
+		t_book book
+		ON
+		s.isbn = book.isbn
+        where
+        s.`status`= 1
+        group by
+        book.isbn
+        order by
+        cs
+        desc
+        LIMIT 3
+    </select>
+
+    <select id="findUser" resultType="com.dragon.book.model.TSysUser">
+        select
+        *
+        from
+        t_sys_user
+        where not exists
+        (
+        select
+        *
+        from
+        t_borrow
+        where
+        t_sys_user.user_id = t_borrow.user_id
+        )
+    </select>
+
+</mapper>
