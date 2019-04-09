@@ -109,16 +109,7 @@
     }
 
     function getDateString(data) {
-        return data.getFullYear() + "-" + (data.getMonth() + 1) + "-" + data.getDate() + " " +
-            data.getHours() + ":" + change(data.getMinutes()) + ":" + change(data.getSeconds());
-
-        function change(t) {
-            if (t < 10) {
-                return "0" + t;
-            } else {
-                return t;
-            }
-        }
+        return data.getFullYear() + "-" + (data.getMonth() + 1) + "-" + data.getDate();
     }
 
     function pass() {

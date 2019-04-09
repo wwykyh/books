@@ -90,15 +90,6 @@
                 display: '图书名称',
                 name: 'sm',
                 width: 200
-            }, , {
-                display: '类型名称',
-                name: 'lxmc'
-            }, {
-                display: '图书大类',
-                name: 'tsdl'
-            }, {
-                display: '联系方式',
-                name: 'lxfs'
             }, {
                 display: '借阅日期',
                 name: 'jyrq',
@@ -116,22 +107,20 @@
                     }
                 }
             }, {
-                display: '归还日期',
-                name: 'ghrq',
-                render: function (row) {
-                    if (row.ghrq != null && row.ghrq !== "") {
-                        return getColumnDate(row.ghrq);
-                    }
-                }
-            }, {
                 display: '借阅人',
                 name: 'xm'
             }, {
+                display: '联系方式',
+                name: 'lxfs'
+            }, {
+                display: '图书类型',
+                name: 'lxmc'
+            },{
                 display: '操作',
                 isAllowHide: false,
                 render: function (row) {
                     var id = row.id;
-                    if (row.status != null && row.status !== "" && row.status === 1) {
+                    if (row.jyzt != null && row.jyzt !== "" && row.jyzt === 0) {
                         var html = '<div style="margin-top: 10px;">' +
                             '<input name="check" type="button" class="layer-btn" id="check" value="同意" onclick="borCheck(' + id + ')"/>' +
                             '</div>';
