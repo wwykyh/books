@@ -1,12 +1,18 @@
 package com.dragon.book.service.impl;
 
+import com.dragon.book.mapper.TBlackListMapper;
 import com.dragon.book.mapper.TSysUserMapper;
 import com.dragon.book.mapper.UserMapper;
+import com.dragon.book.model.TBlackList;
 import com.dragon.book.model.TCompensate;
 import com.dragon.book.model.TSysUser;
 import com.dragon.book.model.TSysUserExample;
 import com.dragon.book.model.TSysUserExample.Criteria;
-import com.dragon.book.pojo.HistoryInfo;
+import com.dragon.book.pojo.BlackList;
+
+import java.text.ParseException;
+import java.util.Date;
+import java.text.SimpleDateFormat;
 import com.dragon.book.pojo.PcInfo;
 import com.dragon.book.pojo.QueryVo;
 import com.dragon.book.service.UserService;
@@ -17,6 +23,7 @@ import com.dragon.book.util.PasswordAdapter;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -30,6 +37,9 @@ public class UserSreviceImpl implements UserService {
 
     @Autowired
     private UserMapper userMapperWn;
+
+    @Autowired
+    private TBlackListMapper blackListMapper;
 
     @Override
     public TSysUser getUser(String username, String pwd) {
@@ -122,19 +132,14 @@ public class UserSreviceImpl implements UserService {
     @Override
     public boolean deleteBlackUser(int userId) {
         int i = userMapperWn.deleteBlackUser(userId);
-        return i>0 ? true:false;
+        int j = blackListMapper.updataById(userId);
+        return j>0 ? true:false;
     }
 
     @Override
-    public PageBean getBlackListByPage(PageBean pageBean, QueryVo vo) {
-        if (vo.getDim() == null || vo.getDim() ==""){
-            vo.setDim(null);
-        }
-        List<TSysUser> users = userMapperWn.selectBlackListByPage(vo);
-        int Total =userMapperWn.selectBlackListTotalByDim(vo);
-        pageBean.setTotal(Total);
-        pageBean.setRows(users);
-        return pageBean;
+    public List<BlackList> getBlackListByPage(Map<String, Object> searchParams) {
+        List<BlackList> blackUsers = blackListMapper.selectBypage(searchParams);
+        return blackUsers;
     }
 
     @Override
@@ -216,4 +221,41 @@ public class UserSreviceImpl implements UserService {
         int i = userMapperWn.updatePc(tCompensate);
         return i>0?true:false;
     }
+
+    @Override
+    public Integer getBlCounts(Map<String, Object> searchParams) {
+        return blackListMapper.selectCount(searchParams);
+    }
+
+    @Override
+    public boolean deleteBlUser(int userId) {
+        int i = blackListMapper.updataById(userId);
+        return i>0?true:false;
+    }
+
+    @Scheduled(cron = "0 0 0 * * ?")
+    public void releaseUser() {
+        SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd");
+        Date sdate = null;
+        Date now = new Date();
+        long penTime;
+       List<TBlackList>blackLists =  blackListMapper.selectBlackList();
+
+       for (int i=0;i<blackLists.size();i++){
+           String startTime = blackLists.get(i).getStartTime();
+           try {
+               sdate = df.parse(startTime);
+           } catch (ParseException e) {
+               e.printStackTrace();
+           }
+           penTime = (long)blackLists.get(i).getPenTime();
+           long betweendays = (long) ((now.getTime() - sdate.getTime())
+                   / (1000 * 60 * 60 * 24) + 0.5);
+           if (betweendays>penTime){
+               blackListMapper.updataById(blackLists.get(i).getUserId());
+               blackListMapper.removeUserBlackList(blackLists.get(i).getUserId());
+           }
+       }
+    }
+
 }

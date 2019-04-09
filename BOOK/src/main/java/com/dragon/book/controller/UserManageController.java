@@ -4,6 +4,7 @@ package com.dragon.book.controller;
 import com.alibaba.fastjson.JSON;
 import com.dragon.book.model.TCompensate;
 import com.dragon.book.model.TSysUser;
+import com.dragon.book.pojo.BlackList;
 import com.dragon.book.pojo.PcInfo;
 import com.dragon.book.pojo.QueryVo;
 import com.dragon.book.service.UserService;
@@ -37,7 +38,6 @@ public class UserManageController {
     @ResponseBody
     public String showUser(PageBean pageBean, HttpServletRequest request) {
         Map<String, Object> searchParams = Servlets.getParametersStartingWith(request, "search_");
-
         Integer total = userService.getCounts(searchParams);
         searchParams.put("first", (pageBean.getPage() - 1) * pageBean.getPagesize());
         searchParams.put("rowNum", pageBean.getPagesize());
@@ -95,19 +95,22 @@ public class UserManageController {
 
     @RequestMapping("/get_blacklist_data")
     @ResponseBody
-    public String showBlackListUser(PageBean pageBean, String dim) {
-        QueryVo vo = new QueryVo() ;
-        vo.setDim(dim);
-        vo.setStart((pageBean.getPage()-1) * pageBean.getPagesize());
-        vo.setEnd(pageBean.getPage() * pageBean.getPagesize());
-        PageBean pageBean1 = userService.getBlackListByPage(pageBean,vo);
-        return JSON.toJSONString(pageBean1).replaceAll("rows","Rows").replaceAll("total","Total");
+    public String showBlackListUser(PageBean pageBean, HttpServletRequest request) {
+        Map<String, Object> searchParams = Servlets.getParametersStartingWith(request, "search_");
+        Integer total = userService.getBlCounts(searchParams);
+        searchParams.put("first", (pageBean.getPage() - 1) * pageBean.getPagesize());
+        searchParams.put("rowNum", pageBean.getPagesize());
+        List<BlackList> blackLists = userService.getBlackListByPage(searchParams);
+        pageBean.setRows(blackLists);
+        pageBean.setTotal(total);
+        return JSON.toJSONString(pageBean).replaceAll("rows","Rows").replaceAll("total","Total");
     }
 
     @RequestMapping("/del_black_user")
     @ResponseBody
     public boolean delBlackUser(int id){
         boolean status = userService.deleteBlackUser(id);
+        status =userService.deleteBlUser(id);
         return status ;
     }
 

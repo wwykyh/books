@@ -57,6 +57,13 @@
     var bookName ;
     var userName ;
     requirejs(['jquery', 'ligerGrid','dg.datePicker', 'artdialog'], function($) {
+        $(document).ready(function (){
+            start_time = $("#start_time").val() ;
+            end_time = $("#end_time").val() ;
+            bookName = $("#bookName").val();
+            userName = $("#userName").val() ;
+            select() ;
+        });
         $(function () {
             select() ;
         }) ;
@@ -71,14 +78,8 @@
     function select() {
         $("#pcInfo").ligerGrid({
             columns: [{
-                display: 'ISBN',
-                name: 'book.isbn'
-            }, {
                 display: '书名',
                 name: 'book.sm'
-            }, {
-                display: '用户ID',
-                name: 'userId'
             }, {
                 display: '用户姓名',
                 name: 'user.xm'
@@ -113,9 +114,7 @@
                 display: '生成赔偿记录日期',
                 name: 'pcdate'
             },{
-                display: '备注信息',
-                name: 'pc'
-            },{
+
                 display: '操作',
                 isAllowHide: false,
                 render: function (row){
@@ -157,7 +156,7 @@
         art.dialog.open('usermanage/pc_info?id='+id, {
             title: '赔偿详情',
             width: 880,
-            height: 580,
+            height: 620,
             cancel: true,
             cancelVal: "关闭"
         });
