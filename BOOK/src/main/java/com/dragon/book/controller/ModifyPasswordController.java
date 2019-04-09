@@ -38,7 +38,7 @@ public class ModifyPasswordController {
     @ResponseBody
     public String upDataPassword(@Param("oldPwd")String oldPwd,@Param("newPwd")String newPwd,@Param("userId")int userId) {
         String message;
-        if (null != oldPwd && null != newPwd &&  userId!=0&& "" != oldPwd&& "" != newPwd) {
+        if (null != oldPwd && null != newPwd && 0!=userId&& "" != oldPwd&& "" != newPwd) {
             message = modifyPasswordServiceImpl.modifyPassword(oldPwd, userId, newPwd);
             return message;
         } else {

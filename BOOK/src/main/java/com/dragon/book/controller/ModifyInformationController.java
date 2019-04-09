@@ -60,11 +60,11 @@ public class ModifyInformationController {
                 return message;
             }
         }else {
-            message = "修改失败1！";
+            message = "修改失败！";
             return message;
         }
 
-        message = "修改失败2！";
+        message = "修改失败！";
         return message;
     }
 
