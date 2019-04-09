@@ -162,8 +162,8 @@
        // alert("详情" + id) ;
         art.dialog.open('book_info?id=' + id, {
             title : '图书详情',
-            width : 900,
-            height : 500,
+            width : 1000,
+            height : 820,
             //ok: true,
             // okVal: "打印",
             cancel : true,

@@ -33,13 +33,9 @@
 
 
 </head>
-<body>
+<body style="overflow-y: scroll;overflow-x: hidden">
 <div id="wrap">
-
-
     <div class="left_content" style="width: 100%;height: 100%">
-
-
         <div class="feat_prod_box_details" style="height:30%;width: auto">
 
             <div class="prod_img" style="height: 80%;width: 30%;margin-left:100px"><a href="details.html" ><img
@@ -70,37 +66,60 @@
         </div>
 
 
-        <div id="demo" class="demolayout" style="margin-left:20%;margin-top:5%">
-
+        <div id="demo" class="demolayout" style="margin-left:5%;margin-top:5%">
             <ul id="demo-nav" class="demolayout">
                 <li><a class="active" href="#tab1">详情</a></li>
-                <li><a class="" href="#tab2">评论</a></li>
-
+                <li><a class=""  href="#tab2" >评论</a></li>
             </ul>
-
             <div class="tabs-container">
-
                 <div style="display: block;" class="tab" id="tab1">
                     <p class="more_details">${bookInfo.jj}
                     </p>
-
                 </div>
                 <div style="display: none;" class="tab" id="tab2">
-                    <p class="more_details">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-                        tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud
-                        exercitation.
-                    </p>
+                    <div class="divtable"id="divtable" >
+                        <table class="form-table" width="100%" id="commentTable" >
+                            <c:forEach items="${commentInfos}" var="arr">
+                                <tr  style="background:#a7d0ef; " >
+                                    <td style="padding-left:10px ;" width="80%">${arr.xm} &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;${arr.pjrq}</td>
+                                    <c:choose>
+                                        <c:when test="${arr.xm==user.xm || user.xm =='admin'}" >
+                                            <td width="20%" style="padding-left: 5%" onclick="delComment('${arr.commentId}')">删除</td>
+                                        </c:when>
+                                        <c:otherwise>
+                                            <td></td>
+                                        </c:otherwise>
+                                    </c:choose>
+                                </tr>
+                                <tr style="background:#EFEFEF; ">
+                                    <td width="80%" style="padding-left: 35px;" >
+                                        <div  class="innerCtn" id="innerCtn-id" >
+                                            <span >${arr.nr}</span>
+                                        </div>
+                                    </td>
+                                    <td style="padding-left: 5%" onclick="xiangqing(this)">查看更多/收起</td>
+                                </tr>
+                            </c:forEach>
+                        </table>
+                    </div>
+                    <h3 onclick="allComment()" style="padding-left: 85%">查看全部/收起</h3>
+                    <tr style="text-align:center">
+                        <textarea id="container" ></textarea>
+                    </tr>
+                    <div style="text-align:right">
+                        <tr >
+                            <input type="button" class="btn" value="清空文档" onclick="qingkong()" />
+                            <input type="button"  class="btn" value="发表评论"  onclick="tijiao()"/>
+                        </tr>
+                    </div>
                 </div>
-
             </div>
-
-
         </div>
+    </div>
 
 
         <div class="clear"></div>
     </div><!--end of left content-->
-
 
     <div class="clear"></div>
 
@@ -110,9 +129,9 @@
 </body>
 <script type="text/javascript">
 
-    requirejs(['jquery','artdialog'], function($) {
+  /*  requirejs(['jquery','artdialog'], function($) {
 
-    });
+    });*/
 
     var tabber1 = new Yetii({
         id: 'demo'
@@ -131,5 +150,100 @@
             cancelVal : "关闭"
         });
     }
+
+    function xiangqing(obj) {
+        var trObj = obj.previousElementSibling;
+        var divObj = trObj.children[0];
+        if(divObj.className=="innerCtn"){
+            divObj.className="innerCtn1"
+        }else {
+            divObj.className="innerCtn"
+        }
+        //divObj.style.height = 'auto';
+    }
+
+    function allComment() {
+        var divEle= document.getElementById('divtable');
+        if(divEle.className=="divtable"){
+            divEle.className='divtable1'
+        }else {
+            divEle.className='divtable'
+        }
+    }
+
+
+    function qingkong() {
+        //     document.execCommand("Delete",null);
+        if (confirm("确定清空当前文档么？")){
+            UE.getEditor('container').execCommand("cleardoc");
+        }
+    }
+    function tijiao() {
+        var userId=${user.userId};
+        var bookId=${bookInfo.isbn};
+        if(UE.getEditor('container').getContent()==null|| UE.getEditor('container').getContent()=="" ){
+            alert("评论不能为空");
+            return;
+        }
+        if(bookId==undefined || bookId==" " || bookId==null ){
+            alert("评论失败");
+            return;
+        }
+        $.ajax({
+            type: "GET",
+            url:"/commentService",
+            data:{
+                userId:userId,
+                bookId:bookId,
+                userComment:UE.getEditor('container').getContent()
+            },
+            async: false,
+            success: function(data) {
+                if(data == 0){
+                    alert("评价失败");
+                }
+                //清空文档内容
+                UE.getEditor('container').execCommand("cleardoc");
+                //刷新评论区
+                $("#commentTable").load(location.href+" #commentTable");
+                //parent.art.dialog({id:'commentInfo_window'}).location.reload();
+
+            }
+        });
+    };
+
+    function delComment(id) {
+        if (confirm("确定删除该评论？")){
+            $.ajax({
+                type: "GET",
+                url:"/delCommentByid?id="+id+"",
+                async: false,
+                success: function(data) {
+                    if(data == 0){
+                        alert("删除失败");
+                    }else {
+                        $("#commentTable").load(location.href+" #commentTable");
+                    }
+                }
+            });
+        }
+    }
+    requirejs(['jquery', 'bdeditor', 'zeroclipboard','artdialog'], function (jqeury, bdeditor, zeroclipboard) {
+        window['ZeroClipboard'] = zeroclipboard;
+        var ue = UE.getEditor('container',{
+            toolbars: [[
+                'fullscreen', 'source', '|', 'undo', 'redo', '|',
+                'bold', 'italic', 'underline', 'fontborder', 'strikethrough', 'superscript', 'subscript',    'removeformat', 'formatmatch', 'autotypeset', 'blockquote', 'pasteplain', '|', 'forecolor', 'backcolor', 'insertorderedlist', 'insertunorderedlist', 'selectall', 'cleardoc', '|',
+                'rowspacingtop', 'rowspacingbottom', 'lineheight', '|',
+                'customstyle', 'paragraph', 'fontfamily', 'fontsize', '|',
+                'directionalityltr', 'directionalityrtl', 'indent', '|',
+                'justifyleft', 'justifycenter', 'justifyright', 'justifyjustify', '|', 'touppercase', 'tolowercase', '|',
+                'link', 'unlink',  '|',
+                'emotion',    'insertcode',  'pagebreak',   '|',
+                'horizontal', 'date', 'time', 'spechars', 'snapscreen',  '|',
+                'print', 'preview', 'searchreplace','help'
+            ]]
+        });
+    });
 </script>
 </html>

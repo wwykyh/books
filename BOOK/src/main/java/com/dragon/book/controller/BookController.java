@@ -23,7 +23,8 @@ import com.dragon.book.model.*;
 import com.dragon.book.pojo.Book;
 
 import com.dragon.book.pojo.BookInfo;
-import com.dragon.book.service.BookManagerService;
+import com.dragon.book.pojo.CommentInfo;
+import com.dragon.book.service.*;
 import com.dragon.book.util.Page;
 import com.github.pagehelper.PageInfo;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -33,9 +34,6 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 import com.alibaba.fastjson.JSON;
-import com.dragon.book.service.BookService;
-import com.dragon.book.service.TypeService;
-import com.dragon.book.service.UserService;
 import com.dragon.book.util.PageBean;
 
 @Controller
@@ -56,6 +54,8 @@ public class BookController {
     @Autowired
     private BookManagerService bookServices ;
 
+    @Autowired
+    private UserBorrowService userBorrowService;
     /**
      * 用户主页
      *
@@ -73,8 +73,11 @@ public class BookController {
         BookInfo bookInfo = bookServices.selectBookInfoById(id);
         System.out.println(bookInfo.toString()+"================");
         model.addAttribute("bookInfo",bookInfo) ;
-
+        String isbn = bookInfo.getIsbn();
+        List<CommentInfo> commentInfos =userBorrowService.selBookComment(isbn);
+        model.addAttribute("commentInfos",commentInfos);
         return "book/book_info";
+
     }
 
     /**
