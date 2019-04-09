@@ -87,6 +87,7 @@ public class CommentController {
         model.addAttribute("commentInfos",commentInfos);
         model.addAttribute("bookIsbn",id);
         //model.addAttribute("historyInfo",historyInfo);
-        return "/comment/addComment";
+        System.out.println(id);
+        return "book/book_info";
     }
 }

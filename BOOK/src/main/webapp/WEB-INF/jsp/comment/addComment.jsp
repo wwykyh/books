@@ -4,11 +4,7 @@
 <html>
 <head>
     <title>评论详情</title>
-    <link rel="stylesheet" type="text/css" href="css/common/iconfont/iconfont.css" />
-    <link rel="stylesheet" type="text/css" href="css/common/layout.css" />
-    <link rel="stylesheet" type="text/css" href="dvpt/css/libs.css" />
-    <link rel="stylesheet" type="text/css" href="css/demo/style.css" />
-    <link rel="stylesheet" type="text/css" href="css/theme/blue.css" id="style" />
+
     <script type="text/javascript" src="dvpt/config.js"></script>
     <!-- 改造的脚本 -->
     <script type="text/javascript" src="js/extend.js"></script>
@@ -17,18 +13,10 @@
 </head>
 <body style="overflow-x: hidden">
 <div class="panel">
-    <%--<div class="panel-header">
-        <form>
-            <tr style="width: 100%;height: 600px">
-                <textarea id="container"></textarea>
-            </tr>
-            <input type="button" value="提交" onclick="tijiao()"/>
-        </form>
-    </div>--%>
     <div >
         <div >
             <tr style="text-align:center">
-            <textarea id="container" style="width:815px; height: 180px"></textarea>
+                <textarea id="container" style="width:815px; height: 180px"></textarea>
             </tr>
             <div style="text-align:right">
                 <tr >
@@ -43,27 +31,27 @@
             <table class="form-table" width="100%" id="commentTable" >
 
                 <c:forEach items="${commentInfos}" var="arr">
-                   <div >
-                     <tr style="background:#a7d0ef;" >
-                         <td width="50%" style="padding-left:10px" ><h1  style="font-family:微软雅黑 ">${arr.xm}：</h1></td>
-                         <td  width="10%" >${arr.pjrq}</td>
-                         <td width="10%"  style="padding-left: 2%">
-                          <c:choose>
-                             <c:when test="${arr.xm==user.xm}">
-                                 <a href="javascript:void(0);"  onclick="delComment('${arr.commentId}')">删除</a></td>
-                             </c:when>
-                             <c:otherwise>
-                                 <td></td>
-                             </c:otherwise>
-                          </c:choose>
-                     </tr>
-                     <tr style="background:#EFEFEF;">
-                         <td width="80%" style="padding-left: 35px">${arr.nr}</td>
-                         <td ></td>
-                         <td ></td>
-                     </tr>
-                </c:forEach>
-                   </div>
+                <div >
+                    <tr style="background:#a7d0ef;" >
+                        <td width="50%" style="padding-left:10px" ><h1  style="font-family:微软雅黑 ">${arr.xm}：</h1></td>
+                        <td  width="10%" >${arr.pjrq}</td>
+                        <td width="10%"  style="padding-left: 2%">
+                            <c:choose>
+                            <c:when test="${arr.xm==user.xm}">
+                            <a href="javascript:void(0);"  onclick="delComment('${arr.commentId}')">删除</a></td>
+                        </c:when>
+                        <c:otherwise>
+                            <td></td>
+                        </c:otherwise>
+                        </c:choose>
+                    </tr>
+                    <tr style="background:#EFEFEF;">
+                        <td width="80%" style="padding-left: 35px">${arr.nr}</td>
+                        <td ></td>
+                        <td ></td>
+                    </tr>
+                    </c:forEach>
+                </div>
             </table>
         </div>
 
@@ -72,14 +60,9 @@
 
 </body>
 <script type="text/javascript">
-    function select() {
-        $.ajax({
-            type:"GET",
-            URL:"/commentInfo"
-        });
-    }
+
     function qingkong() {
-    //     document.execCommand("Delete",null);
+        //     document.execCommand("Delete",null);
         if (confirm("确定清空当前文档么？")){
             UE.getEditor('container').execCommand("cleardoc");
         }
@@ -151,6 +134,7 @@
             ]]
         });
     });
+
 </script>
 
 </html>
