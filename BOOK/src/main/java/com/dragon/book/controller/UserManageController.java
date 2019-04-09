@@ -6,7 +6,6 @@ import com.dragon.book.model.TCompensate;
 import com.dragon.book.model.TSysUser;
 import com.dragon.book.pojo.BlackList;
 import com.dragon.book.pojo.PcInfo;
-import com.dragon.book.pojo.QueryVo;
 import com.dragon.book.service.UserService;
 import com.dragon.book.util.PageBean;
 import org.springframework.beans.factory.annotation.Autowired;
