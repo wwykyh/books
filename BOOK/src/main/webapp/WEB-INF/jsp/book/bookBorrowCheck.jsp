@@ -31,11 +31,6 @@
 </head>
 <body>
 <div class="panel">
-    <div class="panel-header">
-        <h2>借阅审核</h2>
-        <a href="javascript:;" class="arrow up"></a>
-    </div>
-
     <div class="panel-body panel-noborder">
         <div class="write-box">
             <table class="form-table" width="100%">
@@ -66,12 +61,6 @@
                     </td>
                 </tr>
                 <tr>
-                    <th width="17%">联系方式：</th>
-                    <td width="33%">
-                        <span>${singleTBorrow.lxfs}</span>
-                    </td>
-                </tr>
-                <tr>
                     <th width="17%">借阅时间：</th>
                     <td width="33%">
                         <input id="jyrq" value="${singleTBorrow.jyrq}" class="myInput" readonly="readonly"/>
@@ -84,7 +73,13 @@
                     </td>
                 </tr>
                 <tr>
-                    <th width="17%">备注(不同意请填写理由)：</th>
+                    <th width="17%">联系方式：</th>
+                    <td width="33%">
+                        <span>${singleTBorrow.lxfs}</span>
+                    </td>
+                </tr>
+                <tr>
+                    <th width="17%">备注：</th>
                     <td width="33%">
                         <textarea class="textarea input-wl" id="bz" name="bz">${singleTBorrow.bz}</textarea>
                     </td>
@@ -93,10 +88,8 @@
                     <th width="17%"></th>
                     <td width="33%">
                         <c:if test="${singleTBorrow.status == 2}">
-                            <input name="check" type="button" class="layer-btn" id="check" value="通过"
+                            <input name="check" type="button" class="layer-btn" id="check" value="同意"
                                    onclick="pass();"/>
-                            <input name="uncheck" type="button" class="layer-btn" id="uncheck" value="不通过"
-                                   onclick="unPass();"/>
                         </c:if>
                     </td>
                 </tr>
@@ -116,41 +109,26 @@
     }
 
     function getDateString(data) {
-        return data.getFullYear() + "-" + (data.getMonth() + 1) + "-" + data.getDate() + " " +
-            data.getHours() + ":" + change(data.getMinutes()) + ":" + change(data.getSeconds());
-        function change(t) {
-            if (t < 10) {
-                return "0" + t;
-            } else {
-                return t;
-            }
-        }
+        return data.getFullYear() + "-" + (data.getMonth() + 1) + "-" + data.getDate();
     }
 
     function pass() {
         var idPk = $("#idPk").val();
         var bz = $("#bz").val();
-        $.get('${path}/borrowCheck/check', {id: idPk, status: 1, bz: bz}, function (msg) {
-            if (msg) {
-                alert("审核完成");
-                // 调用父级窗口的方法，重新刷新界面
-                parent.borrowInfo();
-                // 调用框架的close事件
-                parent.art.dialog({id:'borrowCheckChild'}).close();
-            } else {
-                alert("审核出错");
-            }
-        });
-    }
-
-    function unPass() {
-        var idPk = $("#idPk").val();
-        var bz = $("#bz").val();
-        $.get('${path}/borrowCheck/check', {id: idPk, status: 0, bz: bz}, function (msg) {
-            if (msg) {
-                alert("审核完成");
-            } else {
-                alert("审核出错");
+        $.ajax({
+            type: 'post',
+            url: '${path}/borrowCheck/',
+            data: {_method: "PUT", id: idPk, status: 1, bz: bz},
+            success: function (msg) {
+                if (msg) {
+                    alert("审核完成");
+                    // 调用父级窗口的方法，重新刷新界面
+                    parent.borrowInfo();
+                    // 调用框架的close事件
+                    parent.art.dialog({id: 'borrowCheckChild'}).close();
+                } else {
+                    alert("审核出错");
+                }
             }
         });
     }

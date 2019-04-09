@@ -33,7 +33,7 @@
 	  <div class="col-lg-5 col-sm-7">
 		<div class="top_left_cont zoomIn wow animated">
             <div style="margin-left: 90px "><h2><strong>巨龙</strong> 图书馆</h2></div>
-            <div style="width: 500px;margin-left: 90px "><p id="dragonLibraryIntro">巨龙图书馆成立于2019年4月21日，管理的图书高达50本,活跃用户20人；图书馆中囊括了大多数精品图书和电子书。</p></div>
+            <div style="width: 500px;margin-left: 90px "><p id="dragonLibraryIntro">巨龙图书馆成立于2019年4月15日，管理的图书高达${bookTotal}本,活跃用户${userTotal}人；图书馆中囊括了大多数精品图书和电子书。</p></div>
             <div style="margin-left: 90px "><a href="javascript:0" class="btn btn-raised btn-lg">了解更多</a></div>
 		</div>
       </div>
@@ -94,41 +94,44 @@
 
 
 
-<!--Service-->
-<section  id="service">
-<div class="container">
-<h2>热门图书</h2>
-<div class="service_wrapper">
+    <!--Service-->
+    <section  id="service">
+        <div class="container">
+            <h2>热门图书</h2>
+            <div class="service_wrapper">
 
-<c:forEach items="${hotBooks}" var="hot" varStatus="sta">
-    <c:if test="${sta.count==1}">
-    <div class="row">
-    </c:if>
-     <c:if test="${sta.count==4}">
-     <div class="row borderTop">
-      </c:if>
-	<div class="col-lg-4 col-md-4 col-sm-4">
-	  <div class="service_block withripple" style="height:360px">
-          <td >
-              <c:if test="${not empty hot.book.picture}">
-                  <img id="bookCover3" src="${hot.book.picture}" style="width: 200px;height: 178px">
-              </c:if>
-          <c:if test="${empty  hot.book.picture}">
-              <img id="bookCover3" src="home/img/noPicture.png" style="width: 200px;height: 178px">
-          </c:if>
-          </td>
-		<h3  class="animated fadeInUp wow">${hot.book.sm}</h3>
-		<p    class="" style="height: 190px;overflow:hidden;">&nbsp;&nbsp;&nbsp;&nbsp;${hot.book.jj}</p>
-	  </div>
-	</div>
-        <c:if test="${sta.count==3 or sta.count==6 }">
-            </div>
-            </c:if>
-</c:forEach>
+                <c:forEach items="${hotBooks}" var="hot" varStatus="sta">
+                <c:if test="${sta.count==1}">
+                <div class="row">
+                    </c:if>
+                    <c:if test="${sta.count==4}">
+                    <div class="row borderTop">
+                        </c:if>
+                        <div class="col-lg-4 col-md-4 col-sm-4" >
+                            <div class="service_block withripple" style="height:360px" >
+                                <div style="width: 30px;height:30px;float: right" align="center"><span style="font-size: 24px;color: black" >${hot.cs}</span></div>
+                                <td>
+                                    <c:if test="${not empty hot.book.picture}">
+                                        <img id="hot${sta.count}" src="${hot.book.picture}" style="width: 200px;height: 178px;CURSOR: pointer;margin-left: 60px" >
+                                    </c:if>
+                                    <c:if test="${empty  hot.book.picture}">
+                                        <img id="hot${sta.count}" src="home/img/noPicture.png" style="width: 200px;height: 178px;CURSOR: pointer;margin-left: 60px">
+                                    </c:if>
+                                    <div style="width: 30px;height: 30px;float: right"align="top"><img  src="home/img/hot.png" style="width: 30px;height: 30px;" ></div>
+                                </td>
+                                <a id="hot${sta.count}" style="CURSOR: pointer" ><h3  class="animated fadeInUp wow">${hot.book.sm}</h3></a>
+                                <p id="hotIsbn${sta.count}" hidden>${hot.book.isbn}</p>
+                                <p    class="" style="height: 190px;overflow:hidden;">&nbsp;&nbsp;&nbsp;&nbsp;${hot.book.jj}</p>
+                            </div>
+                        </div>
+                        <c:if test="${sta.count==3 or sta.count==6 }">
+                    </div>
+                    </c:if>
+                    </c:forEach>
 
-</div>
-</section>
-<!--Service-->
+                </div>
+    </section>
+    <!--Service-->
 
 
     <!--Service-->
@@ -143,28 +146,34 @@
                     <c:if test="${sta1.count==4}">
                     <div class="row borderTop">
                         </c:if>
-                        <div class="col-lg-4 col-md-4 col-sm-4">
+                        <div class="col-lg-4 col-md-4 col-sm-4" >
                             <div class="service_block withripple" style="height:360px">
+                                <div style="width: 80px;height:30px;float: right" align="center"><span style="font-size: 14px;color: black" >${new1.rksj}</span></div>
                                 <td >
-                                    <c:if test="${not empty new1.book.picture}">
-                                        <img id="bookCover3" src="${new1.book.picture}" style="width: 200px;height: 178px">
+                                    <c:if test="${not empty new1.book.picture}">8
+                                        <img id="new${sta1.count}" src="${new1.book.picture}" style="width: 200px;height: 178px;CURSOR: pointer;margin-left: 100px" >
                                     </c:if>
                                     <c:if test="${empty  new1.book.picture}">
-                                        <img  src="home/img/noPicture.png" style="width: 200px;height: 178px">
+                                        <img  id="new${sta1.count}" src="home/img/noPicture.png" style="width: 200px;height: 178px;CURSOR: pointer;margin-left: 100px">
                                     </c:if>
+                                    <div style="width: 20px;height: 20px;float: right"align="top"><img  src="home/img/time.png" style="width: 20px;height: 20px;" ></div>
                                 </td>
-                                <h3  class="animated fadeInUp wow">${new1.book.sm}</h3>
-                                <p    class="" style="height: 190px;overflow:hidden;">&nbsp;&nbsp;&nbsp;&nbsp;${new1.book.jj}</p>
+                                <a id="new${sta1.count}" style="CURSOR: pointer" ><h3  class="animated fadeInUp wow">${new1.book.sm}</h3></a>
+                                <p id="newIsbn${sta1.count}" hidden>${hot.book.isbn}</p>
+                                <p  style="height: 190px;overflow:hidden;">&nbsp;&nbsp;&nbsp;&nbsp;${new1.book.jj}</p>
                             </div>
                         </div>
                         <c:if test="${sta1.count==3 or sta1.count==6 }">
                     </div>
                     </c:if>
                     </c:forEach>
+                </div>
             </div>
         </div>
-        </div>
     </section>
+    <!--Service-->
+    <div class="footer_bottom"><span><font color="black">Copyright ©2015 厦门市巨龙信息科技有限公司 技术支持   建议使用1280*768及以上分辨率</font></span> </div>
+</section>
     <!--Service-->
     <div class="footer_bottom"><span><font color="black">Copyright ©2015 厦门市巨龙信息科技有限公司 技术支持   建议使用1280*768及以上分辨率</font></span> </div>
 </section>

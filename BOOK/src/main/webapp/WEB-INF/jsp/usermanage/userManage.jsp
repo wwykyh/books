@@ -49,6 +49,11 @@
     var dim ;
     var dim2 ;
     requirejs(['jquery', 'ligerGrid','dg.datePicker', 'artdialog'], function($) {
+        $(document).ready(function (){
+            dim = $("#dim").val();
+            dim2 = $("#dim2").val();
+            select() ;
+        });
         $(function () {
             select() ;
         }) ;

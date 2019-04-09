@@ -24,7 +24,7 @@
             <if test="typeId != null and typeId != '' ">
                 and m.type_id = #{typeId,jdbcType=INTEGER}
             </if>
-            order by e_book_id
+            order by m.e_book_id
             <if test="firstRow != null and rowNum != null">
             limit #{firstRow,jdbcType=INTEGER},#{rowNum,jdbcType=INTEGER}
             </if>

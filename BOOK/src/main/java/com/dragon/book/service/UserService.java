@@ -2,6 +2,7 @@ package com.dragon.book.service;
 
 import com.dragon.book.model.TCompensate;
 import com.dragon.book.model.TSysUser;
+import com.dragon.book.pojo.BlackList;
 import com.dragon.book.pojo.PcInfo;
 import com.dragon.book.pojo.QueryVo;
 import com.dragon.book.util.PageBean;
@@ -58,9 +59,10 @@ public interface UserService {
 
     public PageBean getAllUserByPage(PageBean pageBean, QueryVo vo);
 
+//修改用户是否黑名单字段
     public boolean deleteBlackUser(int userId);
 
-    public PageBean getBlackListByPage(PageBean pageBean, QueryVo vo);
+    public  List<BlackList> getBlackListByPage(Map<String, Object> searchParams);
 
     public PageBean getPcByPage(PageBean pageBean, QueryVo vo);
 
@@ -85,4 +87,10 @@ public interface UserService {
     PcInfo selectPcById(int pcId);
 
     boolean updataByPc(TCompensate tCompensate);
+
+    Integer getBlCounts(Map<String, Object> searchParams);
+    //从黑名单移除用户
+    boolean deleteBlUser(int userId);
+    //定时器检测黑名单释放人员
+    void releaseUser();
 }

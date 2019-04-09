@@ -35,7 +35,7 @@
                                     <select class="select" name="typeId" id="typeId">
                                         <option value="">==请选择==</option>
                                         <c:forEach items="${types}" var="type">
-                                            <option  value="${type.typeId}">${type.lxmc}</option>
+                                            <option value="${type.typeId}">${type.lxmc}</option>
                                         </c:forEach>
                                     </select>
                                 </td>
@@ -57,6 +57,7 @@
 <script type="text/javascript">
     var eBookXm = "";
     var typeId = "";
+
     function submit() {
         eBookXm = $("#eBookXm").val();
         typeId = $("#typeId").val();
@@ -67,52 +68,46 @@
         select();   // 界面第一次加载时调出数据
     });
 
-    function select(){
+    function select() {
         requirejs(['jquery', 'ligerGrid', 'artdialog'], function ($) {
             $("#comment").ligerGrid({
                 columns: [
-                    /*{
-                    display: '图书编号',
-                    name: 'eBookId',
-                    width: 240,
-                    frozen: true
-                },*/ {
-                    display: '书名',
-                    name: 'eBookXm',
-                    width: 240
-                }, {
-                    display: '类型',
-                    name: 'lxmc'
-                }, {
-                    display: '上传时间',
-                    name: 'scsj'
-                },  {
-                    display: '上传用户',
-                    name: 'xm'
-                }, {
-                    display: '描述',
-                    name: 'ms'
-                }, {
-                    display: '操作',
-                    isAllowHide: false,
-                    render: function (row) {
-                        if (row.eBookId != null && row.eBookId !== "") {
-                            var id = row.eBookId;
-                            var html = "<a href='/eBookFile/bookDownload?eBookId="+id+"'>下载</a>&nbsp;&nbsp;&nbsp;";
-                            // var html2 = "<a href='javascript:void(0) ' onclick='downFile(\""+id+"\")';>下载2</a>&nbsp;&nbsp;&nbsp;";
-                            html += "<a href='#'>预览</a>";
-                            return html;
-                        } else return "";
+                    {
+                        display: '书名',
+                        name: 'eBookXm',
+                        width: 240
+                    }, {
+                        display: '类型',
+                        name: 'lxmc'
+                    }, {
+                        display: '上传时间',
+                        name: 'scsj'
+                    }, {
+                        display: '上传用户',
+                        name: 'xm'
+                    }, {
+                        display: '描述',
+                        name: 'ms'
+                    }, {
+                        display: '操作',
+                        isAllowHide: false,
+                        render: function (row) {
+                            if (row.eBookId != null && row.eBookId !== "") {
+                                var id = row.eBookId;
+                                var html = "<a href='${path}/eBookFile/eBook/" + id + "'>下载</a>&nbsp;&nbsp;";
+                                // html += "<a href='javascript:;' onclick='downloadEBook(\"" + id + "\");'>下载2</a>";
+                                return html;
+                            } else return "";
+                        }
                     }
-                }
                 ],
                 method: 'get',
-                url: '${path}/eBookFile/ebookPage',
+                url: '${path}/eBookFile/eBook',
                 dataType: 'server',
                 dataAction: 'server',
                 pageSize: 5,
                 width: '100%',
-                parms: [{name: "search_eBookXm", value: eBookXm},{name:"search_typeId",value:typeId}],
+                parms: [{name: "search_eBookXm", value: eBookXm}, {name: "search_typeId", value: typeId}],
                 checkbox: false,
                 rownumbers: true,
                 fixedCellHeight: false,
@@ -120,19 +115,19 @@
             });
         });
     }
-    /*function downFile(id) {
-        alert(id);
+
+    function downloadEBook(id) {
+        var jsonStr = {"action": "download"};
         $.ajax({
-            data:{eBookId:id},
-            url:'eBookFile/bookDownload',
-            type:'get',
-            success:function () {
-                select();
-            },
-            error:function () {
-                alert("文件下载失败");
+            type:'post',
+            url: '${path}/eBookFile/eBook/' + id,
+            data: jsonStr,
+            // dataType:'json',
+            success:function (data) {
+                console.info("data:"+data);
+                console.info("data type ："+typeof(data));
             }
         });
-    }*/
+    }
 </script>
 </html>

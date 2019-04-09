@@ -45,7 +45,7 @@
     <c:forEach items="${page.list}" var="p">
         <div class="new_prod_box">
 
-            <div class="">
+            <div style="height:60%;width: 100%">
                 <a href="javascript:void(0);" onclick="onBookInfo('${p.tStore.id}')"><img src="${p.picture}" alt="" title="" class="thumb" border="0" style="height:auto;width: 50%"/></a>
             </div>
             <a href="javascript:void(0);" onclick="onBookInfo('${p.tStore.id}')" >${p.sm}</a>
@@ -135,9 +135,7 @@
             $("#d101").on('focus', function () {
                 $(this).datePicker();
             });
-            $(function () {
-                select();
-            });
+
         });
 
 

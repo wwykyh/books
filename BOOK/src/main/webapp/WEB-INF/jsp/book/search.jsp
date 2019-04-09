@@ -180,6 +180,7 @@
 														width : 120,
 														frozen : true,
 														render : function(row) {
+															//alert(row.id);
 															if (row.id != undefined
 																	&& row.id != null
 																	&& row.id != "") {
@@ -282,7 +283,7 @@
 		}
 
         function like(id) {
-            alert("详情" + id) ;
+         //   alert("详情" + id) ;
             $.ajax({
                 type : 'GET',
                 url : "like",

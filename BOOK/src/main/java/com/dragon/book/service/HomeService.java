@@ -48,4 +48,16 @@ public interface HomeService {
      * @return
      */
     public boolean returnBookRequest(String[] BookSid);
+    /**
+     * 获取用户总数
+     *
+     * @return
+     */
+    public int userTotal();
+    /**
+     * 获取图书总数
+     *
+     * @return
+     */
+    public int bookTotal();
 }

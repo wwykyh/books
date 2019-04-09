@@ -93,7 +93,7 @@
             pageSize: 10,
             width: '100%',
             checkbox: false,
-            rownumbers: false,
+            rownumbers: true,
             parms:[{name:"dim",value:dim}],
             fixedCellHeight: false,
             iShowScroll: false,

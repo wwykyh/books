@@ -11,12 +11,9 @@
         ) e,t_store ts
         WHERE e.s_id=ts.id
         ) n,t_book b ,t_type p
-        WHERE n.isbn=b.isbn AND p.type_id=b.type_id
+        WHERE n.isbn=b.isbn AND p.type_id=b.type_id AND n.status = 2
         <if test="typeId != null and typeId != ''">
             and b.type_id = #{typeId,jdbcType=INTEGER}
-        </if>
-        <if test="status != null and status != ''">
-            and n.status = #{status,jdbcType=INTEGER}
         </if>
         <if test="eBookXm != null and eBookXm != ''">
             and n.sm like CONCAT('%',#{eBookXm,jdbcType=VARCHAR},'%')
@@ -35,12 +32,9 @@
         ) e,t_store ts
         WHERE e.s_id=ts.id
         ) n,t_book b ,t_type p
-        WHERE n.isbn=b.isbn AND p.type_id=b.type_id
+        WHERE n.isbn=b.isbn AND p.type_id=b.type_id AND n.status = 2
         <if test="typeId != null and typeId != ''">
             and b.type_id = #{typeId,jdbcType=INTEGER}
-        </if>
-        <if test="status != null and status != ''">
-            and n.status = #{status,jdbcType=INTEGER}
         </if>
         <if test="eBookXm != null and eBookXm != ''">
             and n.sm like CONCAT('%',#{eBookXm,jdbcType=VARCHAR},'%')
@@ -69,12 +63,9 @@
         ) e,t_store ts
         WHERE e.s_id=ts.id
         ) n,t_book b ,t_type p
-        WHERE n.isbn=b.isbn AND p.type_id=b.type_id AND n.status=1
+        WHERE n.isbn=b.isbn AND p.type_id=b.type_id AND n.status=1 AND n.jyzt = 2
         <if test="typeId != null and typeId != '' ">
             and b.type_id = #{typeId,jdbcType=INTEGER}
-        </if>
-        <if test="jyzt != null and jyzt != '' ">
-            and n.jyzt = #{jyzt,jdbcType=INTEGER}
         </if>
         <if test="eBookXm != null and eBookXm != '' ">
             and n.sm like CONCAT('%',#{eBookXm,jdbcType=VARCHAR},'%')
@@ -89,12 +80,9 @@
         ) e,t_store ts
         WHERE e.s_id=ts.id
         ) n,t_book b ,t_type p
-        WHERE n.isbn=b.isbn AND p.type_id=b.type_id AND n.status=1
+        WHERE n.isbn=b.isbn AND p.type_id=b.type_id AND n.status=1 AND n.jyzt = 2
         <if test="typeId != null and typeId != '' ">
             and b.type_id = #{typeId,jdbcType=INTEGER}
-        </if>
-        <if test="jyzt != null and jyzt != '' ">
-            and n.jyzt = #{jyzt,jdbcType=INTEGER}
         </if>
         <if test="eBookXm != null and eBookXm != '' ">
             and n.sm like CONCAT('%',#{eBookXm,jdbcType=VARCHAR},'%')
@@ -115,7 +103,7 @@
 
     <update id="updateRevertTBorrowSh" parameterType="map" >
         update t_store
-        set sh = #{sh,jdbcType=INTEGER},status='0'
+        set sh = #{sh,jdbcType=INTEGER},status='1'
         where id=#{sId,jdbcType=VARCHAR}
     </update>
 </mapper>

@@ -85,4 +85,14 @@ public class HomeServiceImpl implements HomeService {
         return status>0?true:false;
     }
 
+    @Override
+    public int userTotal() {
+        return userMapper.userTotal();
+    }
+
+    @Override
+    public int bookTotal() {
+        return userMapper.bookTotal();
+    }
+
 }

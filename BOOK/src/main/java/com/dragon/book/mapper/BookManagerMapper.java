@@ -19,7 +19,7 @@ public interface BookManagerMapper {
     List<BookInfo> selectByDimPage(QueryVo vo) ;
     int selectCommentByIsbnTotal(QueryVo vo) ;
     List<CommentInfo> selectCommentByIsbnList(QueryVo vo) ;
-    BookInfo selectBookInfoById(Integer id) ;
+    BookInfo selectBookInfoById(String id) ;
     CommentInfo selectCommentInfoById(Integer commentId) ;
     List<BookInfo> bookExport() ;
     List<HistoryInfo> selectHistoryPage(PageBean pageBean) ;

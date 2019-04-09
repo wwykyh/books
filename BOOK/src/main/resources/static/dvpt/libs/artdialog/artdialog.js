@@ -1444,7 +1444,7 @@ artDialog.fn = artDialog.prototype = {
 	},
 	
 	// 获取元素
-	_getDOM: function () {	
+	_getDOM: function () {
 		var wrap = document.createElement('div'),
 			body = document.body;
 		wrap.style.cssText = 'position:absolute;left:0;top:0';

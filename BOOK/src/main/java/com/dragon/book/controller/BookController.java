@@ -224,11 +224,11 @@ System.out.println("12121212-----"+pagebean.getPageSize()+"  /n totl:"+pagebean.
     @ResponseBody
     public String doBorrow(
             @RequestParam String id, @RequestParam String sm,
-            @RequestParam String lxfs, @RequestParam String jyrq,
-            @RequestParam String jhghrq, @RequestParam String userId,
+            @RequestParam String jyrq,
+            @RequestParam String jhghrq, @RequestParam String userId,HttpSession session,
             Model model) {
-
-        TBorrow borrow = bookService.setBorrow(id, Integer.parseInt(userId), sm, lxfs, jyrq, bookService.getTime(jyrq, jhghrq), 2, 0);
+        TSysUser user = (TSysUser) session.getAttribute("user");
+        TBorrow borrow = bookService.setBorrow(id, Integer.parseInt(userId), sm,user.getLxfs(), jyrq, bookService.getTime(jyrq, jhghrq), 2, 0);
         int i = bookService.insertBorrow(borrow);
 
         if (i > 0) {

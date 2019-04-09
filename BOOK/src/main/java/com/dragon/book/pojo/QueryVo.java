@@ -17,6 +17,15 @@ public class QueryVo implements Serializable {
     private String dim ;
     private Integer start ;
     private Integer end ;
+    private int num;
+
+    public int getNum() {
+        return num;
+    }
+
+    public void setNum(int num) {
+        this.num = num;
+    }
 
     public TBook getBook() {
         return book;
