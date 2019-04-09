@@ -45,10 +45,14 @@ public class HomeController {
         String home ="home";
         if (isadmin==1)
             home="homeAdmin";
+        int userTotal = homeService.userTotal();
+        int bookTotal = homeService.bookTotal();
         List<Borrow> rankingListUsers = homeService.getRankingList();
         List<Borrow> hotBooks = homeService.getHotBooks();
         List<Borrow> newBooks = homeService.getNewBooks();
         String overTimeUsers = homeService.getOverTimeUser();
+        model.addAttribute("userTotal",userTotal);
+        model.addAttribute("bookTotal",bookTotal);
         model.addAttribute("rankingListUsers",rankingListUsers);
         model.addAttribute("hotBooks",hotBooks);
         model.addAttribute("newBooks",newBooks);

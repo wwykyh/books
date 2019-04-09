@@ -33,16 +33,16 @@
         <div class="write-box">
                 <table class="form-table" width="100%">
                     <tr>
-                        <th width="17%"><span class="ft-need"></span>图书ISBN：</th>
-                        <td width="33%">${pc.book.isbn}</td>
                         <th width="17%"><span class="ft-need"></span>图书名称：</th>
                         <td width="33%"> ${pc.book.sm}</td>
+                        <th width="17%"><span class="ft-need"></span>图书ISBN：</th>
+                        <td width="33%">${pc.book.isbn}</td>
                     </tr>
                     <tr>
+                        <th width="17%"><span class="ft-need"></span>图书作者：</th>
+                        <td width="33%">${pc.book.zz}</td>
                         <th width="17%"><span class="ft-need"></span>出版社名称：</th>
                         <td width="33%">${pc.book.cbsmc}</td>
-                        <th width="17%"><span class="ft-need"></span>作者：</th>
-                        <td width="33%">${pc.book.zz}</td>
                     </tr>
                     <tr>
                         <th width="17%"><span class="ft-need"></span>图书类型：</th>
@@ -64,14 +64,20 @@
                 <tr>
                     <th width="17%"><span class="ft-need"></span>用户名称：</th>
                     <td width="33%">${pc.user.xm}</td>
-                    <th width="17%"><span class="ft-need"></span>部门：</th>
-                    <td width="33%"> ${pc.user.bm}</td>
+                    <th width="17%"><span class="ft-need"></span>用户ID：</th>
+                    <td width="33%">${pc.userId}</td>
                 </tr>
                 <tr>
-                    <th width="17%"><span class="ft-need"></span>联系方式：</th>
-                    <td width="33%">${pc.user.lxfs}</td>
+                <th width="17%"><span class="ft-need"></span>部门：</th>
+                <td width="33%"> ${pc.user.bm}</td>
+                <th width="17%"><span class="ft-need"></span>联系方式：</th>
+                <td width="33%">${pc.user.lxfs}</td>
+            </tr>
+                <tr>
                     <th width="17%"><span class="ft-need"></span>地址：</th>
                     <td width="33%"> ${pc.user.dz}</td>
+                    <th width="17%"><span class="ft-need"></span></th>
+                    <td width="33%"></td>
                 </tr>
             </table>
         </div>

@@ -23,11 +23,26 @@
                 <div class="search-box">
                     <table class="search-table">
                         <tr>
+                        <th></th>
+                        <td>
+                            <input id="dim" type="text" placeholder="用户姓名" class="input-text" />
+                        </td>
+                            <th>黑名单记录：</th>
+                        <td>
+                            <select class="select"  style="width:180px" name="dim2" id="dim2">
+                                <option value="0" selected>当前</option>
+                                <option value="1" >历史</option>
+                                <option value="" >全部</option>
+                            </select>
+                        </td>
+                        <td colspan="2"><a href="javascript:;" class="btn" ><span id="btnLoad"><i class="icon icon-search"></i>查询</span></a></td>
+                    </tr>
+                        <tr>
                             <th></th>
                             <td>
-                                <input id="dim" type="text" placeholder="用户姓名" class="input-text" />
+                                当前黑名单默认惩罚时长：<span style="font-weight: bold;font-size: 16px">20天</span>
                             </td>
-                            <td colspan="2"><a href="javascript:;" class="btn"><span id="btnLoad"><i class="icon icon-search"></i>查询</span></a></td>
+                            <td colspan="2"><a href="javascript:;" class="btn"><span id="btnLoad1"><i class=""></i>修改</span></a></td>
                         </tr>
                     </table>
                 </div>
@@ -38,13 +53,21 @@
     </div>
 </div>
 <script type="text/javascript">
+
     var dim ;
+    var dim2 ;
     requirejs(['jquery', 'ligerGrid','dg.datePicker', 'artdialog'], function($) {
+        $(document).ready(function (){
+                dim = $("#dim").val();
+                dim2 = $("#dim2").val();
+                select() ;
+        });
         $(function () {
             select() ;
         }) ;
         $("#btnLoad").click(function(){
             dim = $("#dim").val();
+            dim2 = $("#dim2").val();
             select() ;
         }) ;
     });
@@ -52,30 +75,41 @@
         $("#usersInfo").ligerGrid({
             columns: [{
                 display: '用户ID',
-                name: 'userId',
+                name: 'user.userId',
                 width: 180,
                 frozen: true
             }, {
                 display: '姓名',
-                name: 'xm',
+                name: 'user.xm',
                 width: 180,
                 frozen: true
             }, {
                 display: '部门',
-                name: 'bm',
-                width: 350,
+                name: 'user.bm',
+                width: 180,
                 frozen: true
             }, {
-                display: '联系方式',
-                name: 'lxfs',
-                width: 350,
+                display: '惩罚时间（天）',
+                name: 'penTime',
+                width: 300,
+                frozen: true
+            }, {
+                display: '加入黑名单时间',
+                name: 'startTime',
+                width: 300,
+                frozen: true
+            }, {
+                display: '移除黑名单时间',
+                name: 'endTime',
+                width: 300,
                 frozen: true
             }, {
                 display: '操作',
                 isAllowHide: false,
                 render: function (row){
                     if (row.userId != undefined && row.userId != null && row.userId != ""){
-                        var   html =  '&nbsp;&nbsp;&nbsp;<a href="javascript:void(0);" onclick="onDelInfo(' + row.userId + ')">删除</a>';
+                        var   html =  '&nbsp;&nbsp;&nbsp;<a href="javascript:void(0);" onclick="onDelInfo(' + row.userId + ')">移除</a>';
+                        if (row.status==1){html = '历史记录，只限查看'}
                         return html;
                     }else return "" ;
                 }
@@ -88,7 +122,7 @@
             width: '100%',
             checkbox: false,
             rownumbers: false,
-            parms:[{name:"dim",value:dim}],
+            parms:[{name:"search_dim",value:dim},{name:"search_dim2",value:dim2}],
             fixedCellHeight: false,
             iShowScroll: false,
             allowAdjustColWidth: true

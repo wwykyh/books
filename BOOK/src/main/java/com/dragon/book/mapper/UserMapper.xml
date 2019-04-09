@@ -216,4 +216,12 @@ where 1=1
   <select id="selectUserBorrow" resultMap="BorrowResultMap" parameterType="java.lang.Integer"  >
     select * from t_borrow where jyzt!='2' and user_id = #{userid,jdbcType=INTEGER}
   </select>
+  <!--查询用户总数-->
+  <select id="userTotal"  resultType="int" >
+    select COUNT(*) from t_sys_user;
+  </select>
+  <!--查询图书总数-->
+  <select id="bookTotal" resultType="int"  >
+    select COUNT(*) from t_store;
+  </select>
   </mapper>

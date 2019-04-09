@@ -37,11 +37,11 @@
                 <table class="form-table" width="100%">
                     <tr>
                         <th width="17%"><span class="ft-need">*</span>用户ID：</th>
-                        <td width="33%"><input id="userId" name="userId" value="${pc.userId}" data-validate="required" type="text" class="input-text "><input id="id" name="id" value="${pc.id}" data-validate="required" type="hidden" class="input-text "></td>
+                        <td width="33%"><input id="userId" name="userId" value="${pc.userId}" readonly="readonly" data-validate="required" type="text" class="input-text "><input id="id" name="id" value="${pc.id}" data-validate="required" type="hidden" class="input-text "></td>
                     </tr>
                     <tr>
                         <th width="17%"><span class="ft-need">*</span>图书编号：</th>
-                        <td width="33%"><input id="sId" name="sId" value="${pc.sId}" data-validate="required" type="text" class="input-text "></td>
+                        <td width="33%"><input id="sId" name="sId" value="${pc.sId}"   readonly="readonly" data-validate="required" type="text" class="input-text "></td>
                     </tr>
                     <tr>
                         <th width="17%"><span class="ft-need">*</span>损毁程度：</th>

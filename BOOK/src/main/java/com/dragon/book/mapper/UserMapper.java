@@ -1,5 +1,6 @@
 package com.dragon.book.mapper;
 
+import com.dragon.book.model.TBlackList;
 import com.dragon.book.model.TBorrow;
 import com.dragon.book.pojo.Book;
 import com.dragon.book.model.TCompensate;
@@ -46,5 +47,9 @@ public interface UserMapper {
 
     //主页
     List<TBorrow> selectUserBorrow(int userid);
+
+    int userTotal();
+
+    int bookTotal();
 
 }

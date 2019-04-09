@@ -32,7 +32,7 @@
 	  <div class="col-lg-5 col-sm-7">
 		<div class="top_left_cont zoomIn wow animated">
             <div style="margin-left: 90px "><h2><strong>巨龙</strong> 图书馆</h2></div>
-            <div style="width: 500px;margin-left: 90px "><p id="dragonLibraryIntro">巨龙图书馆成立于2019年4月21日，管理的图书高达50本,活跃用户20人；图书馆中囊括了大多数精品图书和电子书。</p></div>
+            <div style="width: 500px;margin-left: 90px "><p id="dragonLibraryIntro">巨龙图书馆成立于2019年4月15日，管理的图书高达${bookTotal}本,活跃用户${userTotal}人；图书馆中囊括了大多数精品图书和电子书。</p></div>
             <div style="margin-left: 90px "><a href="javascript:0" class="btn btn-raised btn-lg">了解更多</a></div>
 		</div>
       </div>
