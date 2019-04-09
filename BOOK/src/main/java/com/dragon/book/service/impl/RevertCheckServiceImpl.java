@@ -60,13 +60,14 @@ public class RevertCheckServiceImpl implements RevertCheckService {
         Map<String,Object> filter = new HashMap<>();
         filter.put("sId",sId);
         filter.put("sh", sh);
-        tBorrow.setJyzt(2);  // 2  代表的是归还状态；tBorrow.setJyzt(3); 3 代表超时归还
+//        tBorrow.setJyzt(2);  // 2  代表的是归还状态
+        tBorrow.setStatus(1); // 1 审核状态为审核通过
         SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
         try {
-            Date ghrq = format.parse(tBorrow.getGhrq());
+//            Date ghrq = format.parse(tBorrow.getGhrq());
             Date jhghrq = format.parse(tBorrow.getJhghrq());
             // 超时归还
-            if (ghrq.getTime() > jhghrq.getTime()){
+            if (new Date().getTime() > jhghrq.getTime()){
                 TOvertime tOvertime = new TOvertime();
                 tOvertime.setBookId(Integer.parseInt(sId));
                 tOvertime.setUserId(tBorrow.getUserId());

@@ -69,7 +69,6 @@ public class BorrowCheckController {
             SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
             if ("1".equals(status)) {  // 审核通过
                 tBorrow.setStatus(1);
-                tBorrow.setJyzt(0);
                 String jyri = format.format(new Date());
                 tBorrow.setJyrq(jyri);
             }

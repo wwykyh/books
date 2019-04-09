@@ -48,17 +48,24 @@ public class ModifyInformationController {
                                     HttpServletRequest request){
         String message;
         if(""!=xm||""!=lxfs||""!=dz||""!=bm||""!=grsm){
-            modifyInformationServiceImpl.modifyInformation(xm,lxfs,dz,bm,grsm,userId);
-            message = "修改成功！";
-            TSysUser tSysUser = modifyInformationServiceImpl.findUserInfo(userId);
-            if(null!=tSysUser){
-            session.setAttribute("user", tSysUser);
-            session.setMaxInactiveInterval(30 * 60);}
-        return message;
+            message=modifyInformationServiceImpl.modifyInformation(xm,lxfs,dz,bm,grsm,userId);
+
+            if("成功".equals(message)){
+                message = "修改成功！";
+                TSysUser tSysUser = modifyInformationServiceImpl.findUserInfo(userId);
+
+                if(null!=tSysUser){
+                    session.setAttribute("user", tSysUser);
+                    session.setMaxInactiveInterval(30 * 60);}
+                return message;
+            }
         }else {
-            message = "修改失败！";
+            message = "修改失败1！";
             return message;
         }
+
+        message = "修改失败2！";
+        return message;
     }
 
 }

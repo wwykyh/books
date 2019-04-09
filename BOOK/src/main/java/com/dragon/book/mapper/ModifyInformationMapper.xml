@@ -24,7 +24,7 @@
       where user_id=#{userId}
     </update>
 
-    <select id="findUserInfo">
+    <select id="findUserInfo" resultType="com.dragon.book.model.TSysUser">
         select
         *
         from
