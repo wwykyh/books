@@ -15,6 +15,8 @@ import org.springframework.web.bind.annotation.*;
 import org.springside.modules.web.Servlets;
 
 import javax.servlet.http.HttpServletRequest;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 import java.util.Map;
 
@@ -64,14 +66,13 @@ public class BorrowCheckController {
         TBorrow tBorrow;
         if (!StringUtils.isEmpty(id) && !StringUtils.isEmpty(status)) {
             tBorrow = borrowCheckService.getSingleTBorrow(Integer.parseInt(id));
+            SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
             if ("1".equals(status)) {  // 审核通过
                 tBorrow.setStatus(1);
                 tBorrow.setJyzt(0);
+                String jyri = format.format(new Date());
+                tBorrow.setJyrq(jyri);
             }
-           /* if ("0".equals(status)) {  // 审核不通过，并设置不通过理由 bz：备注  没有不通过之说
-                tBorrow.setStatus(0);
-                tBorrow.setBz(bz);
-            }*/
             return borrowCheckService.updateTBorrow(tBorrow);
         } else {
             return false;

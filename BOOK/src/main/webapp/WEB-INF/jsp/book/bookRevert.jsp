@@ -107,14 +107,6 @@
                     }
                 }
             }, {
-                display: '归还日期',
-                name: 'ghrq',
-                render: function (row) {
-                    if (row.ghrq != null && row.ghrq !== "") {
-                        return getColumnDate(row.ghrq);
-                    }
-                }
-            }, {
                 display: '借阅人',
                 name: 'xm'
             }, {
@@ -123,10 +115,7 @@
             }, {
                 display: '图书类型',
                 name: 'lxmc'
-            },/* {
-                display: '图书大类',
-                name: 'tsdl'
-            },*/{
+            },{
                 display: '操作',
                 isAllowHide: false,
                 render: function (row) {
