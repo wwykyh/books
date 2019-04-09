@@ -87,36 +87,16 @@
                 <tr>
                     <th width="17%">图书损耗程度：</th>
                     <td width="33%">
-                        <c:choose>
-                            <c:when test="${singleTBorrow.jyzt == 2 or singleTBorrow.jyzt == 3}">
-                                <select class="select" name="sh" id="sh">
-                                    <c:if test="${singleTBorrow.sh == 0}">
-                                        <option value="0">无损耗</option>
-                                    </c:if>
-                                    <c:if test="${singleTBorrow.sh == 1}">
-                                        <option value="1">轻度</option>
-                                    </c:if>
-                                    <c:if test="${singleTBorrow.sh == 2}">
-                                        <option value="2">中度</option>
-                                    </c:if>
-                                    <c:if test="${singleTBorrow.sh == 3}">
-                                        <option value="3">重度</option>
-                                    </c:if>
-                                </select>
-                            </c:when>
-                            <c:otherwise>
-                                <select class="select" name="sh" id="sh" onchange="changeSh();">
-                                    <option value="">==请选择==</option>
-                                    <option value="0">无损耗</option>
-                                    <option value="1">轻度</option>
-                                    <option value="2">中度</option>
-                                    <option value="3">重度</option>
-                                </select>
-                            </c:otherwise>
-                        </c:choose>
+                        <select class="select" name="sh" id="sh" onchange="changeSh();">
+                            <option value="">==请选择==</option>
+                            <option value="0">无损耗</option>
+                            <option value="1">轻度</option>
+                            <option value="2">中度</option>
+                            <option value="3">重度</option>
+                        </select>
                     </td>
                 </tr>
-                <c:if test="${singleTBorrow.jyzt == 0}">
+                <c:if test="${singleTBorrow.jyzt == 2}">
                     <tr>
                         <th width="17%">是否需要赔偿：</th>
                         <td width="33%">
@@ -124,7 +104,8 @@
                                 <input type="radio" name="pay" value="1" id="yes"/>&nbsp;<label>是</label>
                             </label>&nbsp;&nbsp;&nbsp;&nbsp;
                             <label>
-                                <input type="radio" name="pay" value="0" checked="checked" id="no"/>&nbsp;<label>否</label>
+                                <input type="radio" name="pay" value="0" checked="checked"
+                                       id="no"/>&nbsp;<label>否</label>
                             </label>
                         </td>
                     </tr>
@@ -182,10 +163,10 @@
 
     function changeSh() {
         var value = $("#sh option:selected").val();
-        if("2" === value || "3" === value){
-           $("#yes").attr("checked","checked");
-        }else{
-            $("#no").attr("checked","checked");
+        if ("2" === value || "3" === value) {
+            $("#yes").attr("checked", "checked");
+        } else {
+            $("#no").attr("checked", "checked");
         }
     }
 </script>
