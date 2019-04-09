@@ -42,8 +42,8 @@ public class BorrowCheckServiceImpl implements BorrowCheckService {
     @Override
     public boolean updateTBorrow(TBorrow tBorrow) {
         TStore tStore = tStoreMapper.selectByPrimaryKey(tBorrow.getsId());
-        // 修改图书的库存状态，0：在库，1：出库
-        tStore.setStatus(1);
+        // 修改图书的库存状态，1：在库，0：出库
+        tStore.setStatus(0);
         tStoreMapper.updateByPrimaryKey(tStore);
         return tBorrowMapper.updateByPrimaryKeyWithBLOBs(tBorrow) > 0;
     }
