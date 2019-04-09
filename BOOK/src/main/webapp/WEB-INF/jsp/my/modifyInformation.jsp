@@ -1,10 +1,4 @@
-<%--
-  Created by IntelliJ IDEA.
-  User: Administrator
-  Date: 2019/1/24
-  Time: 22:21
-  To change this template use File | Settings | File Templates.
---%>
+
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <c:set var="path" value="${pageContext.request.contextPath}"/>
@@ -58,13 +52,13 @@
         var dz=$("#dz").val();
         var bm=$("#bm").val();
         var grsm=$("#grsm").val();
-        var userid=${user.userId};
+        var userId=${user.userId};
         // alert(xm);
         // alert(lxfs);
         // alert(dz);
         $.ajax({
                 url: "/modifyInformation/doModifyInfortmation",
-                data: {"xm":xm,"lxfs":lxfs,"dz":dz,"bm":bm,"grsm":grsm,"userid":userid},
+                data: {"xm":xm,"lxfs":lxfs,"dz":dz,"bm":bm,"grsm":grsm,"userId":userId},
                 success: function (data) {
                    alert(data);
                 }

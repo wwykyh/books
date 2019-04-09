@@ -27,8 +27,9 @@ public class ModifyInformationServiceImpl implements IModifyInformationService {
      */
     public String modifyInformation(String xm,String lxfs,String dz,String bm,String grsm,int userId){
         String message;
-        if(0!=userId&&"".equals(xm)&&"".equals(lxfs)&&"".equals(dz)&&"".equals(bm)&&"".equals(grsm)){
+        if(0!=userId||"".equals(xm)||"".equals(lxfs)||"".equals(dz)||"".equals(bm)||"".equals(grsm)){
         modifyInformationDao.upDataInformation(xm,lxfs,dz,bm,grsm,userId);
+        return "成功";
         }
         message = "用户ID不能为空！";
         return message;
