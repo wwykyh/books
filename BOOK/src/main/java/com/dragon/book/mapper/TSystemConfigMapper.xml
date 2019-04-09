@@ -1,0 +1,199 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.dragon.book.mapper.TSystemConfigMapper" >
+  <resultMap id="BaseResultMap" type="com.dragon.book.model.TSystemConfig" >
+    <result column="id" property="id" jdbcType="INTEGER" />
+    <result column="pen_time" property="penTime" jdbcType="INTEGER" />
+    <result column="book_num" property="bookNum" jdbcType="INTEGER" />
+    <result column="book_time" property="bookTime" jdbcType="INTEGER" />
+    <result column="infractions" property="infractions" jdbcType="INTEGER" />
+    <result column="admin_books" property="adminBooks" jdbcType="INTEGER" />
+    <result column="admin_time" property="adminTime" jdbcType="INTEGER" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    id, pen_time, book_num, book_time, infractions, admin_books, admin_time
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.dragon.book.model.TSystemConfigExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from t_system_config
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <delete id="deleteByExample" parameterType="com.dragon.book.model.TSystemConfigExample" >
+    delete from t_system_config
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.dragon.book.model.TSystemConfig" >
+    insert into t_system_config (id, pen_time, book_num, 
+      book_time, infractions, admin_books, 
+      admin_time)
+    values (#{id,jdbcType=INTEGER}, #{penTime,jdbcType=INTEGER}, #{bookNum,jdbcType=INTEGER}, 
+      #{bookTime,jdbcType=INTEGER}, #{infractions,jdbcType=INTEGER}, #{adminBooks,jdbcType=INTEGER}, 
+      #{adminTime,jdbcType=INTEGER})
+  </insert>
+  <insert id="insertSelective" parameterType="com.dragon.book.model.TSystemConfig" >
+    insert into t_system_config
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="penTime != null" >
+        pen_time,
+      </if>
+      <if test="bookNum != null" >
+        book_num,
+      </if>
+      <if test="bookTime != null" >
+        book_time,
+      </if>
+      <if test="infractions != null" >
+        infractions,
+      </if>
+      <if test="adminBooks != null" >
+        admin_books,
+      </if>
+      <if test="adminTime != null" >
+        admin_time,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="penTime != null" >
+        #{penTime,jdbcType=INTEGER},
+      </if>
+      <if test="bookNum != null" >
+        #{bookNum,jdbcType=INTEGER},
+      </if>
+      <if test="bookTime != null" >
+        #{bookTime,jdbcType=INTEGER},
+      </if>
+      <if test="infractions != null" >
+        #{infractions,jdbcType=INTEGER},
+      </if>
+      <if test="adminBooks != null" >
+        #{adminBooks,jdbcType=INTEGER},
+      </if>
+      <if test="adminTime != null" >
+        #{adminTime,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.dragon.book.model.TSystemConfigExample" resultType="java.lang.Integer" >
+    select count(*) from t_system_config
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update t_system_config
+    <set >
+      <if test="record.id != null" >
+        id = #{record.id,jdbcType=INTEGER},
+      </if>
+      <if test="record.penTime != null" >
+        pen_time = #{record.penTime,jdbcType=INTEGER},
+      </if>
+      <if test="record.bookNum != null" >
+        book_num = #{record.bookNum,jdbcType=INTEGER},
+      </if>
+      <if test="record.bookTime != null" >
+        book_time = #{record.bookTime,jdbcType=INTEGER},
+      </if>
+      <if test="record.infractions != null" >
+        infractions = #{record.infractions,jdbcType=INTEGER},
+      </if>
+      <if test="record.adminBooks != null" >
+        admin_books = #{record.adminBooks,jdbcType=INTEGER},
+      </if>
+      <if test="record.adminTime != null" >
+        admin_time = #{record.adminTime,jdbcType=INTEGER},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update t_system_config
+    set id = #{record.id,jdbcType=INTEGER},
+      pen_time = #{record.penTime,jdbcType=INTEGER},
+      book_num = #{record.bookNum,jdbcType=INTEGER},
+      book_time = #{record.bookTime,jdbcType=INTEGER},
+      infractions = #{record.infractions,jdbcType=INTEGER},
+      admin_books = #{record.adminBooks,jdbcType=INTEGER},
+      admin_time = #{record.adminTime,jdbcType=INTEGER}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+</mapper>
