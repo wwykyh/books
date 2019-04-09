@@ -4,13 +4,13 @@ import com.dragon.book.model.TBlackList;
 import com.dragon.book.model.TSysUser;
 
 public class BlackList extends TBlackList {
-    TSysUser tSysUser;
+    TSysUser user;
 
-    public TSysUser gettSysUser() {
-        return tSysUser;
+    public TSysUser getUser() {
+        return user;
     }
 
-    public void settSysUser(TSysUser tSysUser) {
-        this.tSysUser = tSysUser;
+    public void setUser(TSysUser user) {
+        this.user = user;
     }
 }

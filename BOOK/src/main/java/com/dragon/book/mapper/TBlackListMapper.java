@@ -6,7 +6,6 @@ import java.util.List;
 import java.util.Map;
 
 import com.dragon.book.pojo.BlackList;
-import com.dragon.book.util.PageBean;
 import org.apache.ibatis.annotations.Param;
 
 public interface TBlackListMapper {

@@ -14,9 +14,4 @@ public interface IOvertimePaymentService {
      */
     public List<TBorrow> findOvertimeBorrow(int uid);
 
-    /**
-     * 差寻用户是否有超时图书,有超时则发送提醒邮件
-     * @return
-     */
-    public void findOvertimeUser();
 }
