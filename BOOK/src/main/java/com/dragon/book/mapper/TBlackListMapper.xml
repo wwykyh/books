@@ -211,8 +211,10 @@
       </if >
       <if test="dim2 != null and dim2 != ''">
           and status = '${dim2}'
-      </if >
-      limit #{first,jdbcType=INTEGER},#{rowNum,jdbcType=INTEGER}
+      </if>
+      <if test="first != null and rowNum != null">
+          limit #{first,jdbcType=INTEGER},#{rowNum,jdbcType=INTEGER}
+      </if>
   </select>
     <select id="selectCount" parameterType="map"  resultType="int"  >
         select COUNT(1) ROWS

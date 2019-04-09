@@ -1,7 +1,7 @@
 package com.dragon.book.service.my.impl;
 
 
-import com.dragon.book.service.mail.DoSendEmail;
+import com.dragon.book.mail.DoSendEmail;
 import com.dragon.book.mapper.my.OvertimePaymentDao;
 import com.dragon.book.model.TBorrow;
 import com.dragon.book.pojo.UserBorrow;
