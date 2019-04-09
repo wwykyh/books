@@ -6,6 +6,7 @@ package com.dragon.book.controller;
  */
 
 import com.dragon.book.model.TSysUser;
+import com.dragon.book.service.my.IModifyInformationService;
 import com.dragon.book.service.my.impl.ModifyInformationServiceImpl;
 import org.apache.ibatis.annotations.Param;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,7 +21,7 @@ import javax.servlet.http.HttpSession;
 @RequestMapping("/modifyInformation")
 public class ModifyInformationController {
     @Autowired
-    private ModifyInformationServiceImpl modifyInformationServiceImpl;
+    private IModifyInformationService modifyInformationService;
 
     /**
      * 跳转到修改信息界面
@@ -48,11 +49,11 @@ public class ModifyInformationController {
                                     HttpServletRequest request){
         String message;
         if(""!=xm||""!=lxfs||""!=dz||""!=bm||""!=grsm){
-            message=modifyInformationServiceImpl.modifyInformation(xm,lxfs,dz,bm,grsm,userId);
+            message=modifyInformationService.modifyInformation(xm,lxfs,dz,bm,grsm,userId);
 
             if("成功".equals(message)){
                 message = "修改成功！";
-                TSysUser tSysUser = modifyInformationServiceImpl.findUserInfo(userId);
+                TSysUser tSysUser = modifyInformationService.findUserInfo(userId);
 
                 if(null!=tSysUser){
                     session.setAttribute("user", tSysUser);

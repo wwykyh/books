@@ -1,5 +1,6 @@
 package com.dragon.book.controller;
 
+import com.dragon.book.service.my.IModifyPasswordService;
 import com.dragon.book.service.my.impl.ModifyPasswordServiceImpl;
 import org.apache.ibatis.annotations.Param;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,7 +16,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 public class ModifyPasswordController {
 
     @Autowired
-    private ModifyPasswordServiceImpl modifyPasswordServiceImpl;
+    private IModifyPasswordService modifyPasswordService;
 
     /**
      * 跳转到修改密码界面
@@ -39,7 +40,7 @@ public class ModifyPasswordController {
     public String upDataPassword(@Param("oldPwd")String oldPwd,@Param("newPwd")String newPwd,@Param("userId")int userId) {
         String message;
         if (null != oldPwd && null != newPwd && 0!=userId&& "" != oldPwd&& "" != newPwd) {
-            message = modifyPasswordServiceImpl.modifyPassword(oldPwd, userId, newPwd);
+            message = modifyPasswordService.modifyPassword(oldPwd, userId, newPwd);
             return message;
         } else {
             message = "用户ID与新密码或旧密码不能为空！";
