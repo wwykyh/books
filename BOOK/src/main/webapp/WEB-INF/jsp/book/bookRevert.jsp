@@ -120,7 +120,7 @@
                 isAllowHide: false,
                 render: function (row) {
                     var id = row.id;
-                    if (row.jyzt != null && row.jyzt !== "" && row.jyzt === 0) {
+                    if (row.jyzt != null && row.jyzt !== "" && row.jyzt === 2) {
                         var html = '<div style="margin-top: 10px;">' +
                             '<input name="check" type="button" class="layer-btn" id="check" value="同意" onclick="borCheck(' + id + ')"/>' +
                             '</div>';
