@@ -148,7 +148,7 @@
                     <dd>
                         <ul>
                             <li><a id="pager" _href="${pageContext.request.contextPath}/personal/toPersonalIndex?userId=${user.userId}" data-name="个人中心" data-js="prettify" href="javascript:;">个人中心</a></li>
-                            <li><a _href="${pageContext.request.contextPath}/modifyInformation/modifyIndex" data-name="修改资料" data-js="prettify" href="javascript:;">修改资料</a>
+                            <li><a _href="${pageContext.request.contextPath}/modifyInformation/modifyIndex?userId=${user.userId}" data-name="修改资料" data-js="prettify" href="javascript:;">修改资料</a>
                             </li>
                             <li><a _href="${pageContext.request.contextPath}/modifyPassword/toModifyPassword" data-name="修改密码" data-js="prettify" href="javascript:;">修改密码</a>
                             </li>
