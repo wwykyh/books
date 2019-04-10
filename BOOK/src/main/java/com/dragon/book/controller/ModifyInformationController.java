@@ -61,7 +61,7 @@ public class ModifyInformationController {
                 return message;
             }
         }else {
-            message = "修改失败！";
+            message = "修改信息不能全为空！";
             return message;
         }
 

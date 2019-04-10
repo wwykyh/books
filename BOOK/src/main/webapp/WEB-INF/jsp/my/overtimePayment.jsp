@@ -35,7 +35,7 @@
                 <td>${tBorrows.jhghrq}</td>
                 <td>${tBorrows.bz}天</td>
                 <td>
-                    <a href="javascript:void(0);" onclick="renew(${tBorrows.sId},${tBorrows.userId})">续借</a>&nbsp;&nbsp;
+                    <%--<a href="javascript:void(0);" onclick="renew(${tBorrows.sId},${tBorrows.userId})">续借</a>&nbsp;&nbsp;--%>
                     <a href="javascript:void(0);" onclick="rbook(${tBorrows.sId},${tBorrows.userId})">归还</a>
                 </td>
             </tr>
@@ -49,21 +49,21 @@
     requirejs(['jquery', 'ligerGrid','dg.datePicker', 'artdialog'], function($) {
     });
 
-    function renew(isbn,userid) {
-        if (confirm("你是否要续借图书？")){
-            $.ajax({
-                url:"/overtimePayment/renew?isbn="+isbn+"&userId="+userid+"",
-                success:function(data){
-                    if (data=="success"){
-                        alert("续借申请成功，请等待管理员审核");
-                        // $("tr").remove("#tr_"+isbn);
-                    } else {
-                        alert("续借申请失败！") ;
-                    }
-                }
-            });
-        }
-    }
+    // function renew(isbn,userid) {
+    //     if (confirm("你是否要续借图书？")){
+    //         $.ajax({
+    //             url:"/overtimePayment/renew?isbn="+isbn+"&userId="+userid+"",
+    //             success:function(data){
+    //                 if (data=="success"){
+    //                     alert("续借申请成功，请等待管理员审核");
+    //                     // $("tr").remove("#tr_"+isbn);
+    //                 } else {
+    //                     alert("续借申请失败！") ;
+    //                 }
+    //             }
+    //         });
+    //     }
+    // }
 
     function rbook(isbn,userid) {
         // alert(isbn);

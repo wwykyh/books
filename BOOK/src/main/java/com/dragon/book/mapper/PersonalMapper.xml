@@ -30,7 +30,7 @@
          where
          t_borrow.user_id=#{userId}
          and
-         t_borrow.jyzt = 0
+         t_borrow.`status`!=1
          and
          t_borrow.jhghrq>now()
     </select>
@@ -62,9 +62,9 @@
 
     <update id="updatejszt">
       update
-      t_borrow,
-      `status` = 2
-       set
+      t_borrow
+      set
+      `status` = 2,
        jyzt=1
        where
        s_id=#{isbn}
