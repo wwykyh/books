@@ -19,4 +19,8 @@ public interface TSystemConfigMapper {
     int updateByExampleSelective(@Param("record") TSystemConfig record, @Param("example") TSystemConfigExample example);
 
     int updateByExample(@Param("record") TSystemConfig record, @Param("example") TSystemConfigExample example);
+
+    TSystemConfig selectOneConfig();
+
+    int updataPenTime(int penTime);
 }

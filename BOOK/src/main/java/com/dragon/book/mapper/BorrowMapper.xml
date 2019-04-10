@@ -30,7 +30,7 @@
 		as cs
 		from t_borrow b 
 		left outer join t_sys_user u on b.user_id = u.user_id 
-		GROUP BY u.user_id ORDER BY cs DESC LIMIT 3
+		GROUP BY u.user_id ORDER BY cs DESC LIMIT 8
 
 	</select>
 

@@ -67,22 +67,25 @@
                           <td width="200px"><font size="4px">部门</font></td>
                           <td width="150px"><font size="4px">借阅次数</font></td>
                       </tr>
-                     <c:forEach items="${rankingListUsers}" var="list" varStatus="st">
-                      <tr >
-                          <c:if test="${st.count==1}">
-                              <td ><img src="home/img/num1.png" height="40" width="40"></td>
-                          </c:if>
-                          <c:if test="${st.count==2}">
-                              <td ><img src="home/img/num2.png" height="40" width="40"></td>
-                          </c:if>
-                          <c:if test="${st.count==3}">
-                              <td ><img src="home/img/num3.png" height="40" width="40"></td>
-                          </c:if>
-                          <td ><font size="4px">${list.user.xm}</font></td>
-                          <td ><font size="4px">${list.user.bm}</font></td>
-                          <td ><font size="4px">${list.cs}</font></td>
-                      </tr>
-                     </c:forEach>
+                      <c:forEach items="${rankingListUsers}" var="list" varStatus="st">
+                          <tr >
+                              <c:if test="${st.count==1}">
+                                  <td ><img src="home/img/first.png" height="35" width="35"></td>
+                              </c:if>
+                              <c:if test="${st.count==2}">
+                                  <td ><img src="home/img/second.png" height="35" width="35"></td>
+                              </c:if>
+                              <c:if test="${st.count==3}">
+                                  <td ><img src="home/img/third.png" height="35" width="35"></td>
+                              </c:if>
+                              <c:if test="${st.count!=1 and st.count!=2 and st.count!=3 }">
+                                  <td ></td>
+                              </c:if>
+                              <td ><font size="4px">${list.user.xm}</font></td>
+                              <td ><font size="4px">${list.user.bm}</font></td>
+                              <td ><font size="4px">${list.cs}</font></td>
+                          </tr>
+                      </c:forEach>
                   </table>
               </div>
 		  </div>
@@ -174,8 +177,7 @@
     <!--Service-->
     <div class="footer_bottom"><span><font color="black">Copyright ©2015 厦门市巨龙信息科技有限公司 技术支持   建议使用1280*768及以上分辨率</font></span> </div>
 </section>
-    <!--Service-->
-    <div class="footer_bottom"><span><font color="black">Copyright ©2015 厦门市巨龙信息科技有限公司 技术支持   建议使用1280*768及以上分辨率</font></span> </div>
+
 </section>
 
 <script type="text/javascript">

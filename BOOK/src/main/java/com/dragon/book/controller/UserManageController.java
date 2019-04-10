@@ -4,8 +4,10 @@ package com.dragon.book.controller;
 import com.alibaba.fastjson.JSON;
 import com.dragon.book.model.TCompensate;
 import com.dragon.book.model.TSysUser;
+import com.dragon.book.model.TSystemConfig;
 import com.dragon.book.pojo.BlackList;
 import com.dragon.book.pojo.PcInfo;
+import com.dragon.book.service.HomeService;
 import com.dragon.book.service.UserService;
 import com.dragon.book.util.PageBean;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -27,6 +29,8 @@ import java.util.Map;
 public class UserManageController {
     @Autowired
     private UserService userService;
+    @Autowired
+    private HomeService homeService;
 
     @RequestMapping("/showuser")
     public  String backView(){
@@ -88,13 +92,16 @@ public class UserManageController {
 
 //    黑名单
    @RequestMapping("/show_blacklist")
-    public  String backBlackListView(){
-    return "/usermanage/blacListManage";
+    public  String backBlackListView(Model model){
+       TSystemConfig tSystemConfig = homeService.getConfig();
+       int penTime = tSystemConfig.getPenTime();
+       model.addAttribute("PenTime",penTime);
+        return "/usermanage/blacListManage";
 }
 
     @RequestMapping("/get_blacklist_data")
     @ResponseBody
-    public String showBlackListUser(PageBean pageBean, HttpServletRequest request) {
+    public String showBlackListUser(PageBean pageBean, HttpServletRequest request,Model model) {
         Map<String, Object> searchParams = Servlets.getParametersStartingWith(request, "search_");
         Integer total = userService.getBlCounts(searchParams);
         searchParams.put("first", (pageBean.getPage() - 1) * pageBean.getPagesize());
@@ -104,6 +111,22 @@ public class UserManageController {
         pageBean.setTotal(total);
         return JSON.toJSONString(pageBean).replaceAll("rows","Rows").replaceAll("total","Total");
     }
+//跳转到修改黑名单惩罚时间
+    @RequestMapping("/show_penTime")
+    public  String backPenTimeView(Model model){
+        TSystemConfig tSystemConfig = homeService.getConfig();
+        int penTime = tSystemConfig.getPenTime();
+        model.addAttribute("PenTime",penTime);
+        return "/usermanage/alterPenTime";
+    }
+    //修改黑名单惩罚时间
+    @RequestMapping("/alterPenTime")
+    @ResponseBody
+    public boolean editPcInfo(int penTime){
+        int status = homeService.modifyPenTime(penTime);
+        return  status>0?true:false;
+    }
+
 
     @RequestMapping("/del_black_user")
     @ResponseBody
