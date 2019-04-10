@@ -71,7 +71,10 @@ public class BookController {
     @GetMapping("/book_info")
     public String booksIndex(@RequestParam String id,Model model) {
         BookInfo bookInfo = bookServices.selectBookInfoById(id);
-        System.out.println(bookInfo.toString()+"================");
+        if (id.substring(0,1).equals("a")){
+            String Isbn =id.substring(1);
+            bookInfo = bookServices.selectBookByIsbn(Isbn);
+        }
         model.addAttribute("bookInfo",bookInfo) ;
         String isbn = bookInfo.getIsbn();
         List<CommentInfo> commentInfos =userBorrowService.selBookComment(isbn);
@@ -216,7 +219,6 @@ System.out.println("12121212-----"+pagebean.getPageSize()+"  /n totl:"+pagebean.
      *
      * @param id     图书id
      * @param sm     图书书名
-     * @param lxfs   用户联系方式
      * @param jyrq   借阅日期
      * @param jhghrq 借阅周期
      * @param userId 用户id

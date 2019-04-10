@@ -25,4 +25,6 @@ public interface BookManagerService {
     PageBean selectHistoryInfo(PageBean pageBean) ;
     HistoryInfo selectHistoryById(Integer id) ;
     String upPicture(MultipartFile file, HttpServletRequest request)throws IllegalStateException, IOException;
+    //通过Isbn查一本在库的图书信息，如果没有在库的图书则返回一个不在库的图书信息
+    BookInfo selectBookByIsbn(String Isbn);
 }

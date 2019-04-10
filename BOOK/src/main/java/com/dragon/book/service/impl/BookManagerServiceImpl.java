@@ -170,4 +170,19 @@ public class BookManagerServiceImpl implements BookManagerService {
     public HistoryInfo selectHistoryById(Integer id) {
         return mapperBook.selectHistoryById(id);
     }
+
+    @Override
+    public BookInfo selectBookByIsbn(String Isbn) {
+        BookInfo bookInfo = new BookInfo();
+        List<BookInfo> bookInfos = mapperBook.selectBookInfoByIsbn(Isbn);
+        for (int i =0;i<bookInfos.size();i++){
+            if (bookInfos.get(i).getStatus().equals("在库")){
+                bookInfo =bookInfos.get(i);
+                break;
+            }
+        }
+        if (null==bookInfo.getId()&&bookInfos!=null&&bookInfos.size()!=0)
+            bookInfo = bookInfos.get(0);
+        return bookInfo;
+    }
 }
