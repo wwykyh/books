@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
+import java.util.Map;
 
 @Controller
 @RequestMapping("/modifyInformation")
@@ -29,7 +30,11 @@ public class ModifyInformationController {
      * zzm
      */
     @RequestMapping("/modifyIndex")
-    public String modifyInfotmationIndex(){
+    public String modifyInfotmationIndex(@Param("userId") int userId, Map map){
+        if(0!=userId){
+            TSysUser tSysUser = modifyInformationService.findUserInfo(userId);
+            map.put("tSysUser",tSysUser);
+        }
         return "my/modifyInformation";
     }
 

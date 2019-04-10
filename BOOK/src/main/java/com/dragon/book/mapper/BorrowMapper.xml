@@ -55,4 +55,9 @@
 		set status=2,jyzt=2
 		where s_id = #{sId,jdbcType=VARCHAR}
 	</update>
+
+	<select id="getBorrow" parameterType="int" resultType="int">
+		select COUNT(*) from t_borrow where user_id=#{id} and jyzt !=#{status}
+	</select>
+
 </mapper>

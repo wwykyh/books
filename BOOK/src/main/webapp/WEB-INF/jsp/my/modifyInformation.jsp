@@ -16,24 +16,24 @@
             <input id="userid" value="${user.userId}" type="hidden">
             <table class="form-table" width="100%">
                 <tr>
-                    <th width="17%"><span class="ft-need">*</span>姓名：</th>
-                    <td width="33%"><input id="xm" name="user.xm" data-validate="required number" type="text" class="input-text " ></td>
+                    <th width="17%"><span class="ft-need"></span>姓名：</th>
+                    <td width="33%"><input id="xm" name="user.xm" data-validate="required number" type="text" class="input-text " placeholder="请输入内容" value="${tSysUser.xm}"></td>
                 </tr>
                 <tr>
-                    <th width="17%"><span class="ft-need">*</span>联系方式：</th>
-                    <td><input id="lxfs" name="user.lxfs" data-validate="required" type="text" class="input-text "></td>
+                    <th width="17%"><span class="ft-need"></span>联系方式：</th>
+                    <td width="33%"><input id="lxfs" name="user.lxfs" data-validate="required" type="text" class="input-text"placeholder="请输入内容" value="${tSysUser.lxfs}"></td>
                 </tr>
                 <tr>
-                    <th width="17%"><span class="ft-need">*</span>地址：</th>
-                    <td><input id="dz" name="user.dz" data-validate="required" type="text" class="input-text "></td>
+                    <th width="17%"><span class="ft-need"></span>地址：</th>
+                    <td width="33%"><input id="dz" name="user.dz" data-validate="required" type="text" class="input-text "placeholder="请输入内容" value="${tSysUser.dz}"></td>
                 </tr>
                 <tr>
-                    <th width="17%"><span class="ft-need">*</span>部门：</th>
-                    <td width="33%"><input id="bm" name="user.bm" data-validate="required number" type="text" class="input-text " ></td>
+                    <th width="17%"><span class="ft-need"></span>部门：</th>
+                    <td width="33%"><input id="bm" name="user.bm" data-validate="required number" type="text" class="input-text "placeholder="请输入内容" value="${tSysUser.bm}" ></td>
                 </tr>
                 <tr>
-                    <th width="17%"><span class="ft-need">*</span>个人说明：</th>
-                    <td width="33%"><input id="grsm" name="user.grsm" data-validate="required number" type="text" class="input-text " ></td>
+                    <th width="17%"><span class="ft-need"></span>个人说明：</th>
+                    <td width="33%"><input id="grsm" name="user.grsm" data-validate="required number" type="text" class="input-text "placeholder="请输入内容" value="${tSysUser.grsm}" ></td>
                 </tr>
                 <tr>
                     <th><input type="reset" class="btn" value="重置"></th>
