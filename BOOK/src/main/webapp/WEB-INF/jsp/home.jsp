@@ -75,13 +75,16 @@
                      <c:forEach items="${rankingListUsers}" var="list" varStatus="st">
                       <tr >
                           <c:if test="${st.count==1}">
-                              <td ><img src="home/img/num1.png" height="40" width="40"></td>
+                              <td ><img src="home/img/first.png" height="35" width="35"></td>
                           </c:if>
                           <c:if test="${st.count==2}">
-                              <td ><img src="home/img/num2.png" height="40" width="40"></td>
+                              <td ><img src="home/img/second.png" height="35" width="35"></td>
                           </c:if>
                           <c:if test="${st.count==3}">
-                              <td ><img src="home/img/num3.png" height="40" width="40"></td>
+                              <td ><img src="home/img/third.png" height="35" width="35"></td>
+                          </c:if>
+                          <c:if test="${st.count!=1 and st.count!=2 and st.count!=3 }">
+                              <td ></td>
                           </c:if>
                           <td ><font size="4px">${list.user.xm}</font></td>
                           <td ><font size="4px">${list.user.bm}</font></td>
@@ -155,7 +158,7 @@
                             <div class="service_block withripple" style="height:360px">
                                 <div style="width: 80px;height:30px;float: right" align="center"><span style="font-size: 14px;color: black" >${new1.rksj}</span></div>
                                 <td >
-                                    <c:if test="${not empty new1.book.picture}">8
+                                    <c:if test="${not empty new1.book.picture}">
                                         <img id="new${sta1.count}" src="${new1.book.picture}" style="width: 200px;height: 178px;CURSOR: pointer;margin-left: 100px" >
                                     </c:if>
                                     <c:if test="${empty  new1.book.picture}">

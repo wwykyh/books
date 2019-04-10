@@ -112,7 +112,7 @@
                         <ul>
                             <li><a _href="${pageContext.request.contextPath}/usermanage/showuser" data-name="用户管理" href="javascript:;">用户管理</a></li>
                             <li><a _href="${pageContext.request.contextPath}/usermanage/showallpc" data-name="赔偿" href="javascript:;">赔偿</a></li>
-                            <li><a _href="${pageContext.request.contextPath}/usermanage/show_blacklist" data-name="黑名单" href="javascript:;">黑名单</a></li>
+                            <li><a _href="${pageContext.request.contextPath}/usermanage/show_blacklist" data-name="黑名单" id="blackList" href="javascript:;">黑名单</a></li>
                             <li><a _href="addUser" data-name="添加用户" href="javascript:;">添加用户</a></li>
                         </ul>
                     </dd>
