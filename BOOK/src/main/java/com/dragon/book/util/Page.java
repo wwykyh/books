@@ -86,4 +86,16 @@ public class Page<T> {
         this.path = path;
     }
 
+    @Override
+    public String toString() {
+        return "Page{" +
+                "list=" + list +
+                ", pageNumber=" + pageNumber +
+                ", totalRecord=" + totalRecord +
+                ", pageSize=" + pageSize +
+                ", path='" + path + '\'' +
+                ", dim='" + dim + '\'' +
+                ", s_type='" + s_type + '\'' +
+                '}';
+    }
 }

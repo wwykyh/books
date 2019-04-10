@@ -1,6 +1,22 @@
 package com.dragon.book.model;
 
 public class TBook {
+
+    @Override
+    public String toString() {
+        return "TBook{" +
+                "isbn='" + isbn + '\'' +
+                ", sm='" + sm + '\'' +
+                ", cbsmc='" + cbsmc + '\'' +
+                ", cbrq='" + cbrq + '\'' +
+                ", zz='" + zz + '\'' +
+                ", typeId=" + typeId +
+                ", tsdl='" + tsdl + '\'' +
+                ", picture='" + picture + '\'' +
+                ", jj='" + jj + '\'' +
+                '}';
+    }
+
     private String isbn;
 
     private String sm;

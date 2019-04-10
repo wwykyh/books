@@ -6,6 +6,8 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=windows-1252"/>
     <title>Book Store</title>
@@ -35,11 +37,15 @@
 </head>
 <body style="overflow-y: scroll;overflow-x: hidden">
 <div id="wrap">
+
+
     <div class="left_content" style="width: 100%;height: 100%">
+
+
         <div class="feat_prod_box_details" style="height:30%;width: auto">
 
             <div class="prod_img" style="height: 80%;width: 30%;margin-left:100px"><a href="details.html" ><img
-                    src="${bookInfo.picture}" alt="" title="" style="height:100%;width: auto"
+                    src="${bookInfo.picture}" alt="" title="" style="height:150px;width: auto"
                     border="0"/></a>
                 <br/><br/>
                 <a href="${bookInfo.picture}" rel="lightbox"><img src="images/zoom.gif" alt="" title="" border="0"/></a>
@@ -50,6 +56,7 @@
                 <div class="box_center">
                     <div class="price"><strong>书名:</strong> <span class="red">${bookInfo.sm}</span></div>
                     <div class="price"><strong>出版社:</strong> <span class="red">${bookInfo.cbsmc}</span></div>
+                    <div class="price"><strong>出版日期:</strong> <span class="red">${bookInfo.cbrq}</span></div>
                     <div class="price"><strong>作者:</strong> <span class="red">${bookInfo.zz}</span></div>
                     <div class="price"><strong>图书类型:</strong> <span class="red">${bookInfo.lxmc}</span></div>
                     <div class="price"><strong>状态:</strong><span class="red">${bookInfo.status}</span></div>
@@ -57,6 +64,9 @@
                     <div class="price"><strong>当前借阅人:</strong><span class="red">${bookInfo.jyxm}</span></div></c:if>
                     <c:if test="${bookInfo.status=='在库'}">
                     <a href="javascript:void(0);" onclick="borrow('${bookInfo.id}')" class="more" ><img src="images/jy.jpg" alt="" title="" border="0" style="height:26px;width: 96px"/></a></c:if>
+                    <a href="javascript:void(0);" onclick="like('${bookInfo.id}')" class="more" ><img src="images/sc.jpg" alt="" title="" border="0" style="height:26px;width: 96px"/></a>
+
+
                     <div class="clear"></div>
                 </div>
 
@@ -66,15 +76,20 @@
         </div>
 
 
-        <div id="demo" class="demolayout" style="margin-left:5%;margin-top:5%">
+        <div id="demo" class="demolayout" style="margin-left:20%;margin-top:5%">
+
             <ul id="demo-nav" class="demolayout">
                 <li><a class="active" href="#tab1">详情</a></li>
-                <li><a class=""  href="#tab2" >评论</a></li>
+                <li><a class="" href="#tab2">评论</a></li>
+
             </ul>
+
             <div class="tabs-container">
+
                 <div style="display: block;" class="tab" id="tab1">
                     <p class="more_details">${bookInfo.jj}
                     </p>
+
                 </div>
                 <div style="display: none;" class="tab" id="tab2">
                     <div class="divtable"id="divtable" >
@@ -141,14 +156,34 @@
            // alert("详情" + id) ;
         art.dialog.open('borrow?id='+id, {
             title : '图书借阅',
-            width : 200,
-            height : 250,
+            width : 300,
+            height : 300,
             id:'borrow_id',
             //ok: true,
             // okVal: "打印",
-            cancel : true,
-            cancelVal : "关闭"
+           // cancel : true,
+           // cancelVal : "关闭"
         });
+    }
+
+    function like(id) {
+        //   alert("详情" + id) ;
+        $.ajax({
+            type : 'GET',
+            url : "like",
+            data :{"bookId":id},
+            success : function(data) {
+                if(data=='1'){
+                    alert("收藏成功");
+
+                }
+                else {
+                    alert("收藏失败,您已收藏");
+                }
+              //  parent.art.dialog({id:'book_info'}).close() ;
+
+            }
+        })
     }
 
     function xiangqing(obj) {

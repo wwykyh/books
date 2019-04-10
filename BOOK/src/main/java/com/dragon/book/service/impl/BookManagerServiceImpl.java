@@ -60,6 +60,7 @@ public class BookManagerServiceImpl implements BookManagerService {
         TBook tBook = tBookMapper.selectByPrimaryKey(book.getIsbn());
         if (tBook == null){
             book.setPicture(upPicture(file,request));
+            System.out.println(book.toString());
             tBookMapper.insert(book) ;
         }
         TStore store = vo.getStore();
@@ -115,6 +116,7 @@ public class BookManagerServiceImpl implements BookManagerService {
         int total = mapperBook.selectByDimTotal(vo);
         pageBean.setTotal(total);
         List<BookInfo> tBooks = mapperBook.selectByDimPage(vo);
+        System.out.println(tBooks.toString());
         pageBean.setRows(tBooks);
         return pageBean;
     }

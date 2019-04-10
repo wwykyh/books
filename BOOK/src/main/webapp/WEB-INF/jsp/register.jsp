@@ -4,6 +4,7 @@
 <html>
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+
     <link rel="stylesheet" type="text/css" href="css/common/register.css"/>
     <link rel="stylesheet" type="text/css" href="css/common/iconfont/iconfont.css"/>
     <link rel="stylesheet" type="text/css" href="css/common/layout.css"/>
@@ -21,6 +22,7 @@
         function checkcpwd() {
             var pwd = document.getElementById("pwd").value;
             var cpwd = document.getElementById("cpwd").value;
+          //
             if (pwd == cpwd) {
                 return true;
             } else {
@@ -40,7 +42,16 @@
                     }
                 });
             });
+
         });
+
+        $(document).ready(function(){
+            $("form").submit(function(e){
+                alert("Submitted");
+            });
+
+        });
+
 
     </script>
 
@@ -50,6 +61,7 @@
          * ajax验证用户名是否重复
          */
         function checkName() {
+
             $.ajax({
                 type: 'GET',
                 url: "checkName",
@@ -61,6 +73,8 @@
                     }
                 }
             })
+
+
         }
 
     </script>
@@ -122,4 +136,22 @@
     <p>Copyright©2015 厦门市巨龙信息科技有限公司 版权所有</p>
 </div>
 </body>
+
+
+<script type="text/javascript">
+
+
+    window.onload = function () {
+        //  var agoto = document.getElementById("goto");
+        var agoto = $("#btnSubmitOne").val();
+        alert(1111);
+        agoto.onclick = function () {
+            alert(111);
+           /* var setPage = document.getElementById("setPage").value;
+            //  page(setPage);
+            window.location.href = "page?pageNumber=" + setPage;*/
+            return false;
+        };
+    };
+</script>
 </html>

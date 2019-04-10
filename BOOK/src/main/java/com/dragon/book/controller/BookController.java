@@ -23,8 +23,7 @@ import com.dragon.book.model.*;
 import com.dragon.book.pojo.Book;
 
 import com.dragon.book.pojo.BookInfo;
-import com.dragon.book.pojo.CommentInfo;
-import com.dragon.book.service.*;
+import com.dragon.book.service.BookManagerService;
 import com.dragon.book.util.Page;
 import com.github.pagehelper.PageInfo;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -34,6 +33,9 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 import com.alibaba.fastjson.JSON;
+import com.dragon.book.service.BookService;
+import com.dragon.book.service.TypeService;
+import com.dragon.book.service.UserService;
 import com.dragon.book.util.PageBean;
 
 @Controller
@@ -52,10 +54,9 @@ public class BookController {
     private UserService userService;
 
     @Autowired
-    private BookManagerService bookServices ;
+    private BookManagerService bookServices;
 
-    @Autowired
-    private UserBorrowService userBorrowService;
+
     /**
      * 用户主页
      *
@@ -69,15 +70,12 @@ public class BookController {
     }
 
     @GetMapping("/book_info")
-    public String booksIndex(@RequestParam String id,Model model) {
+    public String booksIndex(@RequestParam String id, Model model) {
         BookInfo bookInfo = bookServices.selectBookInfoById(id);
-        System.out.println(bookInfo.toString()+"================");
-        model.addAttribute("bookInfo",bookInfo) ;
-        String isbn = bookInfo.getIsbn();
-        List<CommentInfo> commentInfos =userBorrowService.selBookComment(isbn);
-        model.addAttribute("commentInfos",commentInfos);
-        return "book/book_info";
+        System.out.println(bookInfo.toString() + "================");
+        model.addAttribute("bookInfo", bookInfo);
 
+        return "book/book_info";
     }
 
     /**
@@ -100,6 +98,11 @@ public class BookController {
         return "login";
     }
 
+    @GetMapping("/search")
+    public String search() {
+        return "book/searchList";
+    }
+
     /**
      * 首页
      *
@@ -119,71 +122,79 @@ public class BookController {
         return "home";
     }
 
-    /**
+   /* *//**
      * 第一次进入检索界面
      *
      * @param model
      * @return
-     */
+     *//*
     @GetMapping("/sea")
     public String Sea(Model model) {
         List<TType> typeList = typeService.getAllTypes();
         model.addAttribute("typeList", typeList);
 
 
-        int pageNo=1;      //设置默认页码，当pageNumber类型转换出错时，会起作用，否则值被覆盖
+        int pageNo = 1;      //设置默认页码，当pageNumber类型转换出错时，会起作用，否则值被覆盖
 
         Page<Book> pagebean = new Page<Book>();
 
-        String dim = "多线程";
-        String s_type = "shuyy";
+       *//* String dim = "多线程";
+        String s_type = "shuyy";*//*
         PageBean page = new PageBean();
         try {
             //servlet层获取的参数类型为string，需要转换为整型
-            pageNo=Integer.parseInt("1");
+            pageNo = Integer.parseInt("1");
         } catch (Exception e) {
             System.out.println("字符串转换出错");
         }
         int total = bookService.getTotal(page);// 计算总数
-      //  System.out.println("-=-=-=-="+total);
+        //  System.out.println("-=-=-=-="+total);
 
-        pagebean = bookService.getPage(pageNo, 2, dim, s_type,total);  //获取页面信息
+        // pagebean = bookService.getPage(pageNo, 10, dim, s_type, total);  //获取页面信息
 
-System.out.println("12121212-----"+pagebean.getPageSize()+"  /n totl:"+pagebean.getTotalPage());
+        System.out.println("12121212-----" + pagebean.getPageSize() + "  /n totl:" + pagebean.getTotalPage());
 
         model.addAttribute("page", pagebean);
-       // return "0";
+        // return "0";
         // return "book/books";
 
         return "book/book";
-    }
+    }*/
 
 
     @GetMapping("/page")
-    public String search(@RequestParam("pageNumber") String pageNumber, Model model, HttpServletRequest request, HttpServletResponse resopnse
+    public String search(@RequestParam(value = "pageNumber",defaultValue = "1") String pageNumber, @RequestParam(value = "dim", defaultValue = "") String dim, @RequestParam(value = "s_type", defaultValue = "") String s_type,
+                         Model model, HttpServletRequest request, HttpServletResponse resopnse
     ) {
-        int pageNo=1;      //设置默认页码，当pageNumber类型转换出错时，会起作用，否则值被覆盖
+
+
+        System.out.println("number:"+pageNumber+"dim:"+dim+"type:"+s_type);
+
+
+        List<TType> typeList = typeService.getAllTypes();
+        model.addAttribute("typeList", typeList);
+
+        int pageNo = 1;      //设置默认页码，当pageNumber类型转换出错时，会起作用，否则值被覆盖
 
         Page<Book> pagebean = new Page<Book>();
 
-        String dim = "多线程";
-        String s_type = "shuyy";
+
         PageBean page = new PageBean();
         try {
             //servlet层获取的参数类型为string，需要转换为整型
-            pageNo=Integer.parseInt(pageNumber);
+            pageNo = Integer.parseInt(pageNumber);
         } catch (Exception e) {
             System.out.println("字符串转换出错");
         }
         int total = bookService.getTotal(page);// 计算总数
-        System.out.println("-=-=-=-="+total);
+       // System.out.println("-=-=-=-=" + total);
 
-        pagebean = bookService.getPage(pageNo, 2, dim, s_type,total);  //获取页面信息
+        pagebean = bookService.getPage(pageNo, 10, dim, s_type, total);  //获取页面信息
 
-        System.out.println("12121212-----"+pagebean.getPageSize()+"  /n totl:"+pagebean.getTotalPage());
+        System.out.println("12121212-----" + pagebean.getPageSize() + "  /n totl:" + pagebean.getTotalPage()+pagebean.toString());
 
         model.addAttribute("page", pagebean);
-         return "book/book";
+        return "book/book";
 
     }
 
@@ -216,7 +227,7 @@ System.out.println("12121212-----"+pagebean.getPageSize()+"  /n totl:"+pagebean.
      *
      * @param id     图书id
      * @param sm     图书书名
-     * @param lxfs   用户联系方式
+     * @param
      * @param jyrq   借阅日期
      * @param jhghrq 借阅周期
      * @param userId 用户id
@@ -228,18 +239,24 @@ System.out.println("12121212-----"+pagebean.getPageSize()+"  /n totl:"+pagebean.
     public String doBorrow(
             @RequestParam String id, @RequestParam String sm,
             @RequestParam String jyrq,
-            @RequestParam String jhghrq, @RequestParam String userId,HttpSession session,
+            @RequestParam String jhghrq, @RequestParam String userId, HttpSession session,
             Model model) {
         TSysUser user = (TSysUser) session.getAttribute("user");
-        TBorrow borrow = bookService.setBorrow(id, Integer.parseInt(userId), sm,user.getLxfs(), jyrq, bookService.getTime(jyrq, jhghrq), 2, 0);
-        int i = bookService.insertBorrow(borrow);
+        int borrow1 = bookService.getBorrow(user.getUserId());
+        if (borrow1 < 1) {
+            TBorrow borrow = bookService.setBorrow(id, Integer.parseInt(userId), sm, user.getLxfs(), jyrq, bookService.getTime(jyrq, jhghrq), 2, 0);
+            int i = bookService.insertBorrow(borrow);
 
-        if (i > 0) {
-            bookService.updateByKey(id, 0);
-            return "0";
-        } else
-            return "1";
-
+            if (i > 0) {
+                int i1 = bookService.updateByKey(id, 0);
+                if (i1 > 0)
+                    return "0";
+                else
+                    return "1";
+            } else
+                return "1";
+        }
+        return "1";
     }
 
 
@@ -290,14 +307,14 @@ System.out.println("12121212-----"+pagebean.getPageSize()+"  /n totl:"+pagebean.
 
 
     @GetMapping("pageinfo")
-    public  String pageInfo(@RequestParam(value = "currentPage",required=false,defaultValue="1") int currentPage,Model model){
-        List<Book> list= bookService.getPageInfo("1","2",currentPage);
+    public String pageInfo(@RequestParam(value = "currentPage", required = false, defaultValue = "1") int currentPage, Model model) {
+        List<Book> list = bookService.getPageInfo("1", "2", currentPage);
         System.out.println(currentPage);
-        PageInfo<Book> page =new PageInfo<>(list);
-        model.addAttribute("pageInfo",page);
+        PageInfo<Book> page = new PageInfo<>(list);
+        model.addAttribute("pageInfo", page);
         System.out.println("===============");
         System.out.println(list);
-        for(int i = 0;i < list.size();i++) {
+        for (int i = 0; i < list.size(); i++) {
             System.out.println(list.get(i));
         }
         return "/book/pageInfo";
@@ -330,7 +347,6 @@ System.out.println("12121212-----"+pagebean.getPageSize()+"  /n totl:"+pagebean.
     public int getMax() {
         return Max;
     }
-
 
 
 }

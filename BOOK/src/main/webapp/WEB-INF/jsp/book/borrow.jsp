@@ -44,10 +44,15 @@
 			<th width="20%">书名：</th>
 				<td><input type="text" class="input-text" readonly="readonly"
 					value="${book.sm }" name="sm" /></td>
+
+			</tr>
+			<tr>
+
 				<th width="20%">图书类型：</th>
 				<td width="35%"><input type="text" class="input-text"
-					value="${book.tType.lxmc }" readonly="readonly" name="lxmc" /></td>
-				
+									   value="${book.tType.lxmc}" readonly="readonly"
+									   name="lxmc" /></td>
+
 			</tr>
 			<tr>
 
@@ -101,12 +106,13 @@
             success: function(data) {
                 if(data == "0"){
                     alert("图书借阅申请成功，请到图书管理员处拿书！") ;
-                    parent.select();
-                    parent.art.dialog({id:'borrow_id'}).close() ;
+                  //  parent.select();
                 }else {
-                    alert("图书借阅申请失败！");
+                    alert("图书借阅申请失败,超出当前最大借阅数量！");
                 }
-            }
+				parent.art.dialog({id:'borrow_id'}).close() ;
+
+			}
         });
     }
 </script>

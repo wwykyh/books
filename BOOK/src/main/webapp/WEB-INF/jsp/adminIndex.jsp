@@ -53,7 +53,7 @@
 <div id="wrap" class="lr-layout">
     <div id="header" class="header clearfix">
         <div class="header-inner">
-            <div class="logo"></div>
+
             <div class="header-right">
                 <ul class="header-right-list">
                     <li class="nowtime"><span id="nowTime"> <label
@@ -150,8 +150,8 @@
                     </dt>
                     <dd>
                         <ul>
-                            <li><a _href="${pageContext.request.contextPath}/type_manager" data-name="种类管理"
-                                   data-js="prettify" href="javascript:;">种类管理</a></li>
+                            <li><a _href="${pageContext.request.contextPath}/type_manager" data-name="图书类型管理"
+                                   data-js="prettify" href="javascript:;">图书类型管理</a></li>
 
                             <li><a _href="${pageContext.request.contextPath}/publish_house_manager" data-name="出版社管理"
                                    data-js="prettify" href="javascript:;">出版社管理</a></li>
