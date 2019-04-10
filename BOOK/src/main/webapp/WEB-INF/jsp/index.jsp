@@ -3,12 +3,12 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
-    <%-- <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">--%>
-    <meta name=”viewport” content=”width=device-width, initial-scale=1″/>
+   <%-- <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">--%>
+    <meta name=”viewport” content=”width=device-width, initial-scale=1″ />
     <title>图书管理系统</title>
-    <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+       <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
-    <link rel="stylesheet" type="text/css" href="css/common/iconfont/iconfont.css"/>
+       <link rel="stylesheet" type="text/css" href="css/common/iconfont/iconfont.css"/>
     <link rel="stylesheet" type="text/css" href="css/common/layout.css"/>
     <link rel="stylesheet" type="text/css" href="dvpt/css/libs.css"/>
     <link rel="stylesheet" type="text/css" href="css/demo/style.css"/>
@@ -21,9 +21,9 @@
     <script type="text/javascript">
         requirejs(['main'], function (main) {
             requirejs(['jquery', 'jquery.extend', 'basic-global'], function (jquery, extend, basic) {
-                $(function () {
+                $(function() {
                     // 默认加载页面
-                    $.openWindow({url: 'Home?isadmin=${user.isadmin}'});
+                    $.openWindow({ url:'Home?isadmin=${user.isadmin}'});
                     // 换肤操作
                     $.switchSkin('css');
                 });
@@ -55,17 +55,17 @@
         var s_tsdl = null;
         var s_type = null;*/
 
-        /* $("#btnLoad").click(function() {
-             dim = $("#dim").val();
-             s_type = $("#s_type").val();
-             select();
-         });
- */
+       /* $("#btnLoad").click(function() {
+            dim = $("#dim").val();
+            s_type = $("#s_type").val();
+            select();
+        });
+*/
 
         function page(num) {
             //alert(num);
-            $("#page").attr("_href", "page?pageNumber=" + num).trigger("click");
-            $("#page").attr("_href", "sea")
+            $("#page").attr("_href","page?pageNumber="+num).trigger("click");
+            $("#page").attr("_href","sea")
 
         }
 
@@ -75,22 +75,22 @@
 <div id="wrap" class="lr-layout">
     <div id="header" class="header clearfix">
         <div class="header-inner">
-            <%-- <div class="logo"></div>--%>
-            <%-- <div style="float: left;height: 100%;width: auto;padding-left: 20%"><form action="">
+           <%-- <div class="logo"></div>--%>
+           <%-- <div style="float: left;height: 100%;width: auto;padding-left: 20%"><form action="">
 
-                 <select id="s_type" name="s_type" class="select">
-                     <option value="">------------------请选择图书类型------------------</option>
-                     <c:forEach items="${typeList }" var="t">
-                         <option value="${t.typeId }">${t.lxmc }</option>
-                     </c:forEach>
-                 </select>
-                 <input style="height: 40px" id="dim" type="text" placeholder="书名、作者"
-                        class="input-text" />
-                 <a href="javascript:;" class="btn"><span style="height: 40px"
-                             id="btnLoad"><i class="icon icon-search"></i>查询</span></a>
+                <select id="s_type" name="s_type" class="select">
+                    <option value="">------------------请选择图书类型------------------</option>
+                    <c:forEach items="${typeList }" var="t">
+                        <option value="${t.typeId }">${t.lxmc }</option>
+                    </c:forEach>
+                </select>
+                <input style="height: 40px" id="dim" type="text" placeholder="书名、作者"
+                       class="input-text" />
+                <a href="javascript:;" class="btn"><span style="height: 40px"
+                            id="btnLoad"><i class="icon icon-search"></i>查询</span></a>
 
 
-             </form></div>--%>
+            </form></div>--%>
             <div style="float: right;height: auto;width: auto;padding-right: 10px">
                 <ul class="header-right-list">
                     <li class="nowtime">
@@ -150,11 +150,8 @@
                     </dt>
                     <dd>
                         <ul>
-                            <li><a id="pager"
-                                   _href="${pageContext.request.contextPath}/personal/toPersonalIndex?userId=${user.userId}"
-                                   data-name="个人中心" data-js="prettify" href="javascript:;">个人中心</a></li>
-                            <li><a _href="${pageContext.request.contextPath}/modifyInformation/modifyIndex"
-                                   data-name="修改资料" data-js="prettify" href="javascript:;">修改资料</a>
+                            <li><a id="pager" _href="${pageContext.request.contextPath}/personal/toPersonalIndex?userId=${user.userId}" data-name="个人中心" data-js="prettify" href="javascript:;">个人中心</a></li>
+                            <li><a _href="${pageContext.request.contextPath}/modifyInformation/modifyIndex?userId=${user.userId}" data-name="修改资料" data-js="prettify" href="javascript:;">修改资料</a>
                             </li>
                             <li><a _href="${pageContext.request.contextPath}/modifyPassword/toModifyPassword"
                                    data-name="修改密码" data-js="prettify" href="javascript:;">修改密码</a>
