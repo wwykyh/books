@@ -60,6 +60,7 @@ public class BookManagerServiceImpl implements BookManagerService {
         TBook tBook = tBookMapper.selectByPrimaryKey(book.getIsbn());
         if (tBook == null){
             book.setPicture(upPicture(file,request));
+            System.out.println(book.toString());
             tBookMapper.insert(book) ;
         }
         TStore store = vo.getStore();
@@ -115,6 +116,7 @@ public class BookManagerServiceImpl implements BookManagerService {
         int total = mapperBook.selectByDimTotal(vo);
         pageBean.setTotal(total);
         List<BookInfo> tBooks = mapperBook.selectByDimPage(vo);
+        System.out.println(tBooks.toString());
         pageBean.setRows(tBooks);
         return pageBean;
     }
@@ -169,5 +171,20 @@ public class BookManagerServiceImpl implements BookManagerService {
     @Override
     public HistoryInfo selectHistoryById(Integer id) {
         return mapperBook.selectHistoryById(id);
+    }
+
+    @Override
+    public BookInfo selectBookByIsbn(String Isbn) {
+        BookInfo bookInfo = new BookInfo();
+        List<BookInfo> bookInfos = mapperBook.selectBookInfoByIsbn(Isbn);
+        for (int i =0;i<bookInfos.size();i++){
+            if (bookInfos.get(i).getStatus().equals("在库")){
+                bookInfo =bookInfos.get(i);
+                break;
+            }
+        }
+        if (null==bookInfo.getId()&&bookInfos!=null&&bookInfos.size()!=0)
+            bookInfo = bookInfos.get(0);
+        return bookInfo;
     }
 }

@@ -2,11 +2,9 @@ package com.dragon.book.service.impl;
 
 import com.dragon.book.mapper.TBlackListMapper;
 import com.dragon.book.mapper.TSysUserMapper;
+import com.dragon.book.mapper.TTypeMapper;
 import com.dragon.book.mapper.UserMapper;
-import com.dragon.book.model.TBlackList;
-import com.dragon.book.model.TCompensate;
-import com.dragon.book.model.TSysUser;
-import com.dragon.book.model.TSysUserExample;
+import com.dragon.book.model.*;
 import com.dragon.book.model.TSysUserExample.Criteria;
 import com.dragon.book.pojo.BlackList;
 
@@ -40,6 +38,9 @@ public class UserSreviceImpl implements UserService {
 
     @Autowired
     private TBlackListMapper blackListMapper;
+
+    @Autowired
+    private TTypeMapper tTypeMapper;
 
     @Override
     public TSysUser getUser(String username, String pwd) {
@@ -256,6 +257,11 @@ public class UserSreviceImpl implements UserService {
                blackListMapper.removeUserBlackList(blackLists.get(i).getUserId());
            }
        }
+    }
+
+    @Override
+    public TType selectTypeById(int Id) {
+        return tTypeMapper.selectByPrimaryKey(Id);
     }
 
 }

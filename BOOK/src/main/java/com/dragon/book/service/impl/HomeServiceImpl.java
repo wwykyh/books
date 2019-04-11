@@ -61,7 +61,7 @@ public class HomeServiceImpl implements HomeService {
             do {
                 Borrow borrow = new Borrow();
                 hotBooks.add(borrow);
-            }while (hotBooks.size()==6);
+            }while (hotBooks.size()<6);
         }
         return hotBooks;
     }
@@ -75,7 +75,7 @@ public class HomeServiceImpl implements HomeService {
             do {
                 Borrow borrow = new Borrow();
                 newBooks.add(borrow);
-            }while (newBooks.size()==6);
+            }while (newBooks.size()<6);
         }
         return newBooks;
     }

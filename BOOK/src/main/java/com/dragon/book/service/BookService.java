@@ -151,4 +151,6 @@ public interface BookService {
 
 	public String NowTime();
 
+	public int getBorrow(int id);
+
 }

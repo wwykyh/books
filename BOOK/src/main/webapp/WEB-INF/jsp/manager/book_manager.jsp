@@ -78,10 +78,10 @@
                     isAllowHide: false,
                     render: function (row){
                         if (row.id != undefined && row.id != null && row.id != ""){
-                            var html = '<a href="javascript:void(0);" onclick="onBookInfo(' + row.id + ')">查看详情</a>&nbsp;&nbsp;' ;
+                            var html = '<a href="javascript:void(0);" onclick="onBookInfo(\'' + row.id + '\')">查看详情</a>&nbsp;&nbsp;' ;
                             //html = html + '<a href="javascript:void(0);" onclick="onBookEdit(' + row.id + ')">库存管理</a>&nbsp;&nbsp;';
-                            html = html + '<a href="javascript:void(0);" onclick="onBookDel(' + row.id + ')">出库</a>&nbsp;&nbsp';
-                            html = html + '<a href="javascript:void(0);" onclick="onCommentManager(' + row.isbn+ ')">评论管理</a>&nbsp;&nbsp;';
+                            html = html + '<a href="javascript:void(0);" onclick="onBookDel(\'' + row.id + '\')">出库</a>&nbsp;&nbsp';
+                            html = html + '<a href="javascript:void(0);" onclick="onCommentManager(\'' + row.isbn+ '\')">评论管理</a>&nbsp;&nbsp;';
                             return html;
                         }else return "" ;
                     }

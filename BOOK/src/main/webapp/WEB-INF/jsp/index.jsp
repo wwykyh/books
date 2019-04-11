@@ -23,7 +23,7 @@
             requirejs(['jquery', 'jquery.extend', 'basic-global'], function (jquery, extend, basic) {
                 $(function() {
                     // 默认加载页面
-                    $.openWindow({ url:'Home?isadmin=${user.isadmin}'});
+                    $.openWindow({ url:'Home?admin=${user.xm}'});
                     // 换肤操作
                     $.switchSkin('css');
                 });
@@ -132,8 +132,11 @@
                     </dt>
                     <dd>
                         <ul>
-                            <li><a id="page" _href="sea" class="borrow" data-name="图书检索" href="javascript:;">图书检索</a></li>
+                            <li><a id="page" _href="search" class="borrow" data-name="图书检索" href="javascript:;">图书检索</a>
                             </li>
+                            <li><a _href="${pageContext.request.contextPath}/eBookFile/page/manage" data-name="电子书下载"
+                                   data-js="prettify" href="javascript:;">电子书下载</a></li>
+
                         </ul>
                     </dd>
                 </dl>
@@ -150,13 +153,18 @@
                             <li><a id="pager" _href="${pageContext.request.contextPath}/personal/toPersonalIndex?userId=${user.userId}" data-name="个人中心" data-js="prettify" href="javascript:;">个人中心</a></li>
                             <li><a _href="${pageContext.request.contextPath}/modifyInformation/modifyIndex?userId=${user.userId}" data-name="修改资料" data-js="prettify" href="javascript:;">修改资料</a>
                             </li>
-                            <li><a _href="${pageContext.request.contextPath}/modifyPassword/toModifyPassword" data-name="修改密码" data-js="prettify" href="javascript:;">修改密码</a>
+                            <li><a _href="${pageContext.request.contextPath}/modifyPassword/toModifyPassword"
+                                   data-name="修改密码" data-js="prettify" href="javascript:;">修改密码</a>
                             </li>
                             </li>
-                            <li><a _href="${pageContext.request.contextPath}/news/toNews?userId=${user.userId}" data-name="消息通知" data-js="prettify" href="javascript:;">消息通知</a>
-                            <li><a _href="${pageContext.request.contextPath}/userBorrowHistory" data-name="借阅历史" data-js="prettify" href="javascript:;">借阅历史</a>
+                            <li><a _href="${pageContext.request.contextPath}/news/toNews?userId=${user.userId}"
+                                   data-name="消息通知" data-js="prettify" href="javascript:;">消息通知</a>
+                            <li><a _href="${pageContext.request.contextPath}/userBorrowHistory" data-name="借阅历史"
+                                   data-js="prettify" href="javascript:;">借阅历史</a>
                             </li>
-                            <li><a _href="${pageContext.request.contextPath}/overtimePayment/toOvertimePayment?userId=${user.userId}" data-name="超时归还" href="javascript:;">超时归还</a></li>
+                            <li>
+                                <a _href="${pageContext.request.contextPath}/overtimePayment/toOvertimePayment?userId=${user.userId}"
+                                   data-name="超时归还" href="javascript:;">超时归还</a></li>
 
                         </ul>
                     </dd>
@@ -174,8 +182,7 @@
                         <ul>
                             <li><a _href="${pageContext.request.contextPath}/eBookFile/page/upload" data-name="电子书上传"
                                    data-js="prettify" href="javascript:;">电子书上传</a></li>
-                            <li><a _href="${pageContext.request.contextPath}/eBookFile/page/manage" data-name="电子书下载"
-                                   data-js="prettify" href="javascript:;">电子书下载</a></li>
+                            <li></li>
                         </ul>
                     </dd>
                 </dl>
@@ -186,7 +193,8 @@
             <div id="main-tab">
                 <div class="main-tab">
                     <ul>
-                        <li class="active"><a _href="Home?isadmin=${user.isadmin}" href="javascript:;" id="myHome">主页</a></li>
+                        <li class="active"><a _href="Home?admin=${user.xm}" href="javascript:;"
+                                              id="myHome">主页</a></li>
                     </ul>
                 </div>
             </div>

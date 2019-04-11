@@ -197,24 +197,32 @@
         $("[id^=hot]").click(function () {
             var val=$(this).attr("id");
             var v2 = val.substring(3,val.length);//取后半部分
-            var bookIsbn = "hotIsbn"+v2;
-            alert(bookIsbn);
-            <%--art.dialog.open('/return_book?userid='+${ user.userId}, {--%>
-                <%--id:'bookDetail',--%>
-                <%--title: '图书详情'--%>
-            <%--});--%>
+            var bookIsbn = "a"+v2;
+            art.dialog.open('book_info?id=' + bookIsbn, {
+                title : '图书详情',
+                width : 1000,
+                height : 820,
+                //ok: true,
+                // okVal: "打印",
+                cancel : true,
+                cancelVal : "关闭"
+            });
         })
 
         //查看图书详情
         $("[id^=new]").click(function () {
             var val=$(this).attr("id");
             var v2 = val.substring(3,val.length);//取后半部分
-            var bookIsbn = "newIsbn"+v2;
-            alert(bookIsbn);
-            <%--art.dialog.open('/return_book?userid='+${ user.userId}, {--%>
-            <%--id:'bookDetail',--%>
-            <%--title: '图书详情'--%>
-            <%--});--%>
+            var bookIsbn = "a"+v2;
+            art.dialog.open('book_info?id=' + bookIsbn, {
+                title : '图书详情',
+                width : 1000,
+                height : 820,
+                //ok: true,
+                // okVal: "打印",
+                cancel : true,
+                cancelVal : "关闭"
+            });
         })
     });
 </script>

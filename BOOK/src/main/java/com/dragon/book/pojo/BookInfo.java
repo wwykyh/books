@@ -142,12 +142,15 @@ public class BookInfo extends TBook implements Serializable {
     }
 
     public String getStatus() {
-        if (this.status == 1) {
-            return "在库";
-        } else if (this.status == 0) {
-            return "出库";
-        }  else
-            return "";
+        String result= "";
+        if (this.status!=null){
+            if (this.status == 1) {
+                result= "在库";
+            } else if (this.status == 0) {
+                result = "出库";
+            }
+        }
+       return result;
     }
 
     public void setStatus(Integer status) {
