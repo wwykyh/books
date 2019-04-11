@@ -1,7 +1,7 @@
 package com.dragon.book.mapper.my;
 
-import com.dragon.book.model.TBookNews;
 import com.dragon.book.model.TBorrow;
+import com.dragon.book.pojo.BookNews;
 import org.apache.ibatis.annotations.Param;
 
 import java.util.List;
@@ -13,7 +13,7 @@ public interface NewsDao {
      * @param userId
      * @return
      */
-    public List<TBookNews> findNews(@Param("userId") int userId);
+    public List<BookNews> findNews(@Param("userId") int userId);
 
     /**
      * 删除用户信息
