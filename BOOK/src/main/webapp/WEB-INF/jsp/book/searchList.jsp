@@ -131,7 +131,8 @@
 
 <head>
     <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-    <script type="text/javascript" src="js/jQuery1.7.js"></script>
+    <link rel="stylesheet" type="text/css" href="css/style.css"/>
+    <%--<script type="text/javascript" src="js/jQuery1.7.js"></script>
 
     <link rel="stylesheet" type="text/css" href="css/style2.css"/>
 
@@ -145,7 +146,7 @@
     <!-- 改造的脚本 -->
     <script type="text/javascript" src="js/extend.js"></script>
     <!-- 共有的控件 -->
-    <script data-main="main" src="dvpt/require.min.2.1.11.js"></script>
+    <script data-main="main" src="dvpt/require.min.2.1.11.js"></script>--%>
     <meta charset="UTF-8">
     <title>图书检索</title>
     <style type="text/css">
@@ -239,29 +240,34 @@
     <form><input id="searchText" name="dim"><input id="submitBtn" type="button" value="GO" style="margin-top:30px"
                                                    onclick="sub()"></form>
 </div>
-<div style="margin-left: 30px;margin-top: 40px; height: 30%;width: 100%"><p style="text-align: left; font-size: 20px;">热门图书</p>
-<c:forEach items="${borrow}" var="p">
-    <div class="new_prod_box">
+<div style="height: 190px;width: 100%">
+    <div style="margin-left: 30px;margin-top: 40px;margin-right:10px;height: 40%;width: 100%">
+        <p style="text-align: left; font-size: 20px;margin-left: 10px">热门图书</p>
+        <c:forEach items="${borrow}" var="p">
+            <div class="new_prod_box" style="margin: 10px 10px 10px 10px">
 
-        <div style="height:60%;width: 100%">
-            <a href="javascript:void(0);" onclick="onBookInfo('${p.sId}')"><img src="${p.book.picture}"
-                                                                                      alt="" title=""
-                                                                                      class="thumb"
-                                                                                      border="0"
-                                                                                      style="height: 100px;width: 50%"/></a>
-        </div>
-        <div style="width: auto;height: 20%">
-            <a href="javascript:void(0);"
-               onclick="onBookInfo('${p.sId}')"><strong>${p.sm}</strong></a></div>
+                <div style="height:60%;width: 100%">
+                    <a href="javascript:void(0);" onclick="onBookInfo('${p.sId}')">
+                        <img src="${p.book.picture}"
+                             alt="" title=""
+                             class="thumb"
+                             border="0"
+                             style="height: 100px;width: 50%"/></a>
+                </div>
+                <div style="width: auto;height: 20%">
+                    <a href="javascript:void(0);"
+                       onclick="onBookInfo('${p.sId}')"><strong>${p.sm}</strong></a>
+                </div>
+            </div>
+        </c:forEach>
     </div>
-
 </div>
 <script>
 
     requirejs(
         ['jquery', 'ligerGrid', 'dg.datePicker', 'artdialog'],
-
     );
+
     //ajax提交表单
     function sub() {
         var dim = $("input[name='dim']").val();
@@ -276,6 +282,20 @@
             //cancelVal: "关闭"
         });
 
+    }
+
+    function onBookInfo(id) {
+        // alert("详情" + id) ;
+        art.dialog.open('book_info?id=' + id, {
+            title: '图书详情',
+            width: 900,
+            height: 500,
+            id: 'book_info',
+            //ok: true,
+            // okVal: "打印",
+            //cancel: true,
+            // cancelVal: "关闭"
+        });
     }
 
 </script>
