@@ -5,6 +5,7 @@ import com.alibaba.fastjson.JSON;
 import com.dragon.book.model.TCompensate;
 import com.dragon.book.model.TSysUser;
 import com.dragon.book.model.TSystemConfig;
+import com.dragon.book.model.TType;
 import com.dragon.book.pojo.BlackList;
 import com.dragon.book.pojo.PcInfo;
 import com.dragon.book.service.HomeService;
@@ -161,7 +162,9 @@ public class UserManageController {
     @GetMapping("/pc_info")
     public String showPcInfo(@RequestParam("id") int id,Model model){
         PcInfo pcInfo = userService.selectPcById(id);
+        TType type = userService.selectTypeById(pcInfo.getBook().getTypeId());
         model.addAttribute("pc",pcInfo) ;
+        model.addAttribute("type",type) ;
         return  "/usermanage/pc_info";
     }
     @GetMapping("/showPc_edit")

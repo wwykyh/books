@@ -23,7 +23,7 @@
             requirejs(['jquery', 'jquery.extend', 'basic-global'], function (jquery, extend, basic) {
                 $(function() {
                     // 默认加载页面
-                    $.openWindow({ url:'Home?isadmin=${user.isadmin}'});
+                    $.openWindow({ url:'Home?admin=${user.xm}'});
                     // 换肤操作
                     $.switchSkin('css');
                 });
@@ -193,7 +193,7 @@
             <div id="main-tab">
                 <div class="main-tab">
                     <ul>
-                        <li class="active"><a _href="Home?isadmin=${user.isadmin}" href="javascript:;"
+                        <li class="active"><a _href="Home?admin=${user.xm}" href="javascript:;"
                                               id="myHome">主页</a></li>
                     </ul>
                 </div>

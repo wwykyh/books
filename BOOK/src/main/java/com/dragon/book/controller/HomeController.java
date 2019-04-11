@@ -41,9 +41,9 @@ public class HomeController {
 
     //主页
     @RequestMapping("/Home")
-    public String getRankList(@RequestParam(value = "isadmin" ,required = false)int isadmin, Model model) {
+    public String getRankList(@RequestParam(value = "admin" ,required = false)String admin, Model model) {
         String home ="home";
-        if (isadmin==1)
+        if (admin.equals("admin"))
             home="homeAdmin";
         int userTotal = homeService.userTotal();
         int bookTotal = homeService.bookTotal();

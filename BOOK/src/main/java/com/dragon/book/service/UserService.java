@@ -2,6 +2,7 @@ package com.dragon.book.service;
 
 import com.dragon.book.model.TCompensate;
 import com.dragon.book.model.TSysUser;
+import com.dragon.book.model.TType;
 import com.dragon.book.pojo.BlackList;
 import com.dragon.book.pojo.PcInfo;
 import com.dragon.book.pojo.QueryVo;
@@ -93,4 +94,7 @@ public interface UserService {
     boolean deleteBlUser(int userId);
     //定时器检测黑名单释放人员
     void releaseUser();
+
+    //通过主键查询type信息
+    TType selectTypeById(int Id);
 }
