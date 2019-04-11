@@ -270,6 +270,11 @@ public class UserSreviceImpl implements UserService {
     }
 
     @Override
+    public int updataUserPwd(int userId) {
+        return userMapperWn.updataUserPwd(userId);
+    }
+
+    @Override
     public TSystemConfig getConfic() {
         return tSystemConfigMapper.selectOneConfig();
     }
