@@ -209,6 +209,10 @@
 
     function checkAll(){
         var ck=document.getElementsByName("ck");
+        if(ck.length==0||ck.length==""){
+            alert("暂无评论信息");
+            return;
+        }
         for(var i=0;i<ck.length;i++){
             var c=ck[i];
             if(c.checked==true){

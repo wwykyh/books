@@ -77,7 +77,7 @@
         </div>
 
 
-        <div id="demo" class="demolayout" style="margin-left:20%;margin-top:5%">
+        <div id="demo" class="demolayout" style="margin-left:5%;margin-top:5%">
 
             <ul id="demo-nav" class="demolayout">
                 <li><a class="active" href="#tab1">详情</a></li>
