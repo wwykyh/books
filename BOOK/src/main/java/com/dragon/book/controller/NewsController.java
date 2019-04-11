@@ -1,14 +1,19 @@
 package com.dragon.book.controller;
 
+import com.alibaba.fastjson.JSONObject;
 import com.dragon.book.model.TBookNews;
 import com.dragon.book.model.TBorrow;
+import com.dragon.book.pojo.BookNews;
+import com.dragon.book.service.my.INewsService;
 import com.dragon.book.service.my.impl.NewsServiceImpl;
+import org.apache.ibatis.annotations.Param;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import javax.servlet.http.HttpServletRequest;
 import java.util.List;
 import java.util.Map;
 
@@ -21,7 +26,7 @@ import java.util.Map;
 public class NewsController {
 
     @Autowired
-    private NewsServiceImpl newsServiceImpl;
+    private INewsService newsService;
 
     /**
      * 获得个人消息总览
@@ -32,8 +37,8 @@ public class NewsController {
     @RequestMapping("/toNews")
     public String toNewsIndex(@RequestParam("userId")int uId, Map map){
         if(0!=uId){
-            List<TBookNews> tBookNews = newsServiceImpl.findNews(uId);
-            map.put("tBookNews",tBookNews);
+            List<BookNews> bookNews = newsService.findNews(uId);
+            map.put("tBookNews",bookNews);
             return "/my/news";
         }else {
             return "/my/error";
@@ -50,12 +55,26 @@ public class NewsController {
     public String deleteNews(@RequestParam("id")int id){
         String message;
         if(0!=id){
-            newsServiceImpl.deleteNews(id);
+            newsService.deleteNews(id);
             return "success";
         }
         message = "删除失败！";
         return message;
     }
+
+    @RequestMapping("/deleteMultipleNews")
+    @ResponseBody
+    public String deleteMultipleNews(@Param("check") Integer[] check){
+        String message;
+        message = newsService.deleteMultipleNews(check);
+        if("删除成功".equals(message)){
+            return "success";
+        }else {
+            return "error";
+        }
+    }
+
+
 
     /**
      * 获取详细信息
@@ -67,7 +86,7 @@ public class NewsController {
     @RequestMapping("/toNewsDetailInfo")
     public String toNewsDetailInfo(@RequestParam("isbn")String isbn, @RequestParam("userId")int uId, Map map){
         if(null!=isbn&&""!=isbn&&0!= uId) {
-            TBorrow tBorrow = newsServiceImpl.findDetailInfo(isbn, uId);
+            TBorrow tBorrow = newsService.findDetailInfo(isbn, uId);
             map.put("tborrow", tBorrow);
             return "/my/bookNewsInfo";
         }else {

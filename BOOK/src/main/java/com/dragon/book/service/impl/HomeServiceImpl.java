@@ -1,9 +1,11 @@
 package com.dragon.book.service.impl;
 
 import com.dragon.book.mapper.BorrowMapper;
+import com.dragon.book.mapper.TSystemConfigMapper;
 import com.dragon.book.mapper.UserMapper;
 import com.dragon.book.mapper.my.OvertimePaymentDao;
 import com.dragon.book.model.TBorrow;
+import com.dragon.book.model.TSystemConfig;
 import com.dragon.book.pojo.Borrow;
 import com.dragon.book.pojo.UserBorrow;
 import com.dragon.book.service.HomeService;
@@ -22,6 +24,9 @@ public class HomeServiceImpl implements HomeService {
 
     @Autowired
     private OvertimePaymentDao overtimePaymentDao;
+
+    @Autowired
+    private TSystemConfigMapper tSystemConfigMapper;
 
     @Override
     public List<TBorrow> getUserBorrow(int userid) {
@@ -56,7 +61,7 @@ public class HomeServiceImpl implements HomeService {
             do {
                 Borrow borrow = new Borrow();
                 hotBooks.add(borrow);
-            }while (hotBooks.size()==6);
+            }while (hotBooks.size()<6);
         }
         return hotBooks;
     }
@@ -70,7 +75,7 @@ public class HomeServiceImpl implements HomeService {
             do {
                 Borrow borrow = new Borrow();
                 newBooks.add(borrow);
-            }while (newBooks.size()==6);
+            }while (newBooks.size()<6);
         }
         return newBooks;
     }
@@ -93,6 +98,16 @@ public class HomeServiceImpl implements HomeService {
     @Override
     public int bookTotal() {
         return userMapper.bookTotal();
+    }
+
+    @Override
+    public TSystemConfig getConfig() {
+        return tSystemConfigMapper.selectOneConfig();
+    }
+
+    @Override
+    public int modifyPenTime(int penTime) {
+        return tSystemConfigMapper.updataPenTime(penTime);
     }
 
 }

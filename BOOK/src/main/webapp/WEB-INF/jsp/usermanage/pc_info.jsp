@@ -35,20 +35,20 @@
                     <tr>
                         <th width="17%"><span class="ft-need"></span>图书名称：</th>
                         <td width="33%"> ${pc.book.sm}</td>
-                        <th width="17%"><span class="ft-need"></span>图书ISBN：</th>
-                        <td width="33%">${pc.book.isbn}</td>
+                        <th width="17%"><span class="ft-need"></span> 图书类别：</th>
+                        <td width="33%">${type.lxmc}</td>
                     </tr>
                     <tr>
                         <th width="17%"><span class="ft-need"></span>图书作者：</th>
                         <td width="33%">${pc.book.zz}</td>
-                        <th width="17%"><span class="ft-need"></span>出版社名称：</th>
-                        <td width="33%">${pc.book.cbsmc}</td>
+                        <th width="17%"><span class="ft-need"></span>图书ISBN：</th>
+                        <td width="33%">${pc.book.isbn}</td>
                     </tr>
                     <tr>
                         <th width="17%"><span class="ft-need"></span>图书类型：</th>
                         <td width="33%">${pc.book.tsdl}</td>
-                        <th width="17%"><span class="ft-need"></span> </th>
-                        <td width="33%"> </td>
+                        <th width="17%"><span class="ft-need"></span>出版社名称：</th>
+                        <td width="33%">${pc.book.cbsmc}</td>
                     </tr>
                 </table>
         </div>

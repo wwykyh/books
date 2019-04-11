@@ -40,7 +40,7 @@
                         <tr>
                             <th></th>
                             <td>
-                                当前黑名单默认惩罚时长：<span style="font-weight: bold;font-size: 16px">20天</span>
+                                当前黑名单默认惩罚时长：<span style="font-weight: bold;font-size: 16px">${PenTime}天</span>
                             </td>
                             <td colspan="2"><a href="javascript:;" class="btn"><span id="btnLoad1"><i class=""></i>修改</span></a></td>
                         </tr>
@@ -69,6 +69,9 @@
             dim = $("#dim").val();
             dim2 = $("#dim2").val();
             select() ;
+        }) ;
+        $("#btnLoad1").click(function(){
+            onModifyPenTime();
         }) ;
     });
     function select() {
@@ -140,6 +143,17 @@
                 }
             });
         }
+    }
+    function onModifyPenTime(){
+        art.dialog.open('/usermanage/show_penTime', {
+            title: '黑名单',
+            id:"alterPenTime",
+            width: 900,
+            height: 260,
+        });
+    }
+    function refresh() {
+        $("#blackList").click();
     }
 
 </script>

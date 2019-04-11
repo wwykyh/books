@@ -3,6 +3,8 @@ package com.dragon.book.controller;
 
 import com.dragon.book.model.TBookNews;
 import com.dragon.book.model.TBorrow;
+import com.dragon.book.service.my.IOvertimePaymentService;
+import com.dragon.book.service.my.IPersonalService;
 import com.dragon.book.service.my.impl.OvertimePaymentServiceImpl;
 import com.dragon.book.service.my.impl.PersonalServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,9 +24,9 @@ import java.util.Map;
 public class OvertimePaymentController {
 
     @Autowired
-    private OvertimePaymentServiceImpl overtimePaymentService;
+    private IOvertimePaymentService overtimePaymentService;
     @Autowired
-    private PersonalServiceImpl personalService;
+    private IPersonalService personalService;
 
     /**
      * 跳转到超时归还界面

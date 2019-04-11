@@ -70,7 +70,7 @@
                                    accept="image/*"></td>
 
                         <%--<th><span class="ft-need">*</span>所属种类：</th>--%>
-                        <td><input id="tsdl" name="book.tsdl" data-validate="required" type="hidden" class="input-text "
+                        <td><input  name="book.tsdl"  type="hidden"
                                    value="纸质"></td>
                         <%--<td>
 <select id="tsdl" name="book.tsdl" data-validate="required" class="select">
@@ -89,6 +89,8 @@
                         <th><span class="ft-need">*</span>入库数量：</th>
                         <td><input id="num" name="num" data-validate="required number" type="number"
                                    class="input-text" value="1"></td>
+                        <%--<td><input id="tsdl" name="book.tsdl" data-validate="required number" type="hidden"
+                                   class="input-text" value="纸质"></td>--%>
                     </tr>
                     <tr>
                         <th><span class="ft-need">*</span>损毁程度：</th>
@@ -111,6 +113,13 @@
                                 <option value="4">4号书架</option>
                             </select>
                         </td>
+                    </tr>
+
+                    <tr>
+                        <th><span class="ft-need">*</span>简介：</th>
+                        <td><input id="jj" name="book.jj" data-validate="required" type="text" class="input-text "></td>
+
+                    <%--  <textarea name="descript" id="descript" cols="60" rows="10"></textarea>--%>
                     </tr>
                     <tr>
                         <th><input type="reset" class="btn" value="重置"></th>
@@ -167,6 +176,7 @@
                 //     times=d.getFullYear() + '-' + (d.getMonth() + 1 < 10 ? "0" + (d.getMonth() + 1) : d.getMonth() + 1) + '-' + (d.getDate() < 10 ? "0" + d.getDate() : d.getDate()) ;
                 // }
                 $("#cbrq").val(data.cbrq);
+                $("#jj").val(data.jj);
                 $("#zz").val(data.zz);
                 $("#typeId").find("option[value=" + data.typeId + "]").attr("selected", true);
                 // $("#tsdl").find("option[value=" + data.tsdl + "]").attr("selected", true);

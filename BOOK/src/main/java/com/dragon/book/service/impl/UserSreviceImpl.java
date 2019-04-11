@@ -1,12 +1,7 @@
 package com.dragon.book.service.impl;
 
-import com.dragon.book.mapper.TBlackListMapper;
-import com.dragon.book.mapper.TSysUserMapper;
-import com.dragon.book.mapper.UserMapper;
-import com.dragon.book.model.TBlackList;
-import com.dragon.book.model.TCompensate;
-import com.dragon.book.model.TSysUser;
-import com.dragon.book.model.TSysUserExample;
+import com.dragon.book.mapper.*;
+import com.dragon.book.model.*;
 import com.dragon.book.model.TSysUserExample.Criteria;
 import com.dragon.book.pojo.BlackList;
 
@@ -41,6 +36,12 @@ public class UserSreviceImpl implements UserService {
     @Autowired
     private TBlackListMapper blackListMapper;
 
+    @Autowired
+    private TTypeMapper tTypeMapper;
+
+    @Autowired
+    private TSystemConfigMapper tSystemConfigMapper;
+
     @Override
     public TSysUser getUser(String username, String pwd) {
         // TODO Auto-generated method stub
@@ -60,9 +61,14 @@ public class UserSreviceImpl implements UserService {
     public int regUser(String username, String pwd, String email) {
         // TODO Auto-generated method stub
         TSysUser user = new TSysUser();
+        TSystemConfig confic = getConfic();
         user.setEmail(email);
         user.setXm(username);
         user.setPwd(pwd);
+        user.setIsadmin(0);
+        user.setIshmd(0);
+        user.setKjsc(confic.getBookTime());
+        user.setKjtscs(confic.getBookNum());
         return userMapper.insert(user);
     }
 
@@ -258,4 +264,13 @@ public class UserSreviceImpl implements UserService {
        }
     }
 
+    @Override
+    public TType selectTypeById(int Id) {
+        return tTypeMapper.selectByPrimaryKey(Id);
+    }
+
+    @Override
+    public TSystemConfig getConfic() {
+        return tSystemConfigMapper.selectOneConfig();
+    }
 }

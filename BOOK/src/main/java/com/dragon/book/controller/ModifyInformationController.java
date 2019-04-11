@@ -6,6 +6,7 @@ package com.dragon.book.controller;
  */
 
 import com.dragon.book.model.TSysUser;
+import com.dragon.book.service.my.IModifyInformationService;
 import com.dragon.book.service.my.impl.ModifyInformationServiceImpl;
 import org.apache.ibatis.annotations.Param;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,12 +16,13 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
+import java.util.Map;
 
 @Controller
 @RequestMapping("/modifyInformation")
 public class ModifyInformationController {
     @Autowired
-    private ModifyInformationServiceImpl modifyInformationServiceImpl;
+    private IModifyInformationService modifyInformationService;
 
     /**
      * 跳转到修改信息界面
@@ -28,7 +30,11 @@ public class ModifyInformationController {
      * zzm
      */
     @RequestMapping("/modifyIndex")
-    public String modifyInfotmationIndex(){
+    public String modifyInfotmationIndex(@Param("userId") int userId, Map map){
+        if(0!=userId){
+            TSysUser tSysUser = modifyInformationService.findUserInfo(userId);
+            map.put("tSysUser",tSysUser);
+        }
         return "my/modifyInformation";
     }
 
@@ -48,11 +54,11 @@ public class ModifyInformationController {
                                     HttpServletRequest request){
         String message;
         if(""!=xm||""!=lxfs||""!=dz||""!=bm||""!=grsm){
-            message=modifyInformationServiceImpl.modifyInformation(xm,lxfs,dz,bm,grsm,userId);
+            message=modifyInformationService.modifyInformation(xm,lxfs,dz,bm,grsm,userId);
 
             if("成功".equals(message)){
                 message = "修改成功！";
-                TSysUser tSysUser = modifyInformationServiceImpl.findUserInfo(userId);
+                TSysUser tSysUser = modifyInformationService.findUserInfo(userId);
 
                 if(null!=tSysUser){
                     session.setAttribute("user", tSysUser);
@@ -60,11 +66,11 @@ public class ModifyInformationController {
                 return message;
             }
         }else {
-            message = "修改失败1！";
+            message = "修改信息不能全为空！";
             return message;
         }
 
-        message = "修改失败2！";
+        message = "修改失败！";
         return message;
     }
 

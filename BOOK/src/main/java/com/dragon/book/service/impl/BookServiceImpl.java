@@ -10,7 +10,7 @@ import java.util.List;
 import java.util.Random;
 
 import com.dragon.book.mapper.TStoreMapper;
-import com.dragon.book.model.TStore;
+import com.dragon.book.model.*;
 import com.dragon.book.pojo.Book;
 import com.dragon.book.util.Page;
 import com.github.pagehelper.PageHelper;
@@ -20,9 +20,6 @@ import org.springframework.stereotype.Service;
 import com.dragon.book.mapper.BookMapper;
 import com.dragon.book.mapper.BorrowMapper;
 import com.dragon.book.mapper.TBorrowMapper;
-import com.dragon.book.model.BookAndEBook;
-import com.dragon.book.model.TBook;
-import com.dragon.book.model.TBorrow;
 import com.dragon.book.service.BookService;
 import com.dragon.book.util.PageBean;
 
@@ -269,14 +266,16 @@ public class BookServiceImpl implements BookService {
         //1.获取总记录数
         int totalRecord = bookMapper.getTotal(pageBean);
         //2.封装page对象
-        System.out.println("+++++" + pageNumber);
+        System.out.println("+++++" + pageNumber+":"+dim);
 
         page = new Page<Book>(pageNumber, total, pageSize);
         pageBean.setPage(page.getIndex());
-        System.out.println("page:" + pageBean.getPage() + "pagesize:" + pageBean.getPagesize());
+        System.out.println("page:" + pageBean.getPage() + "pagesize:" + pageBean.getPagesize()+pageBean.toString());
         //3.查询当前页对应的数据列表并封装到page对象中
         List<Book> list = bookMapper.selectByDim(pageBean);
         page.setList(list);
+        page.setDim(dim);
+        page.setS_type(s_type);
         System.out.println(list.toString() + "size:" + list.size() + list.get(0).gettStore().getId());
         return page;
     }
@@ -287,6 +286,14 @@ public class BookServiceImpl implements BookService {
         PageBean pageBean = new PageBean();
         List<Book> list = bookMapper.selectByDim(pageBean);
         return list;
+    }
+
+    @Override
+    public int getBorrow(int id) {
+        int borrow = borrowMapper.getBorrow(id, 2);
+        //  System.out.println(borrow.toString());
+
+        return borrow;
     }
 
     public BorrowMapper getBorrowMapper() {
@@ -304,5 +311,7 @@ public class BookServiceImpl implements BookService {
     public void setBookMapper(BookMapper bookMapper) {
         this.bookMapper = bookMapper;
     }
+
+
 
 }

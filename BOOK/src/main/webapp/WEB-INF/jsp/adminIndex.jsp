@@ -20,7 +20,7 @@
             requirejs(['jquery', 'jquery.extend', 'basic-global'], function (jquery, extend, basic) {
                 $(function() {
                     // 默认加载页面
-                    $.openWindow({ url:'Home?isadmin=${user.isadmin}'});
+                    $.openWindow({ url:'Home?admin=${user.xm}'});
                     // 换肤操作
                     $.switchSkin('css');
                 });
@@ -53,7 +53,7 @@
 <div id="wrap" class="lr-layout">
     <div id="header" class="header clearfix">
         <div class="header-inner">
-            <div class="logo"></div>
+
             <div class="header-right">
                 <ul class="header-right-list">
                     <li class="nowtime"><span id="nowTime"> <label
@@ -112,7 +112,7 @@
                         <ul>
                             <li><a _href="${pageContext.request.contextPath}/usermanage/showuser" data-name="用户管理" href="javascript:;">用户管理</a></li>
                             <li><a _href="${pageContext.request.contextPath}/usermanage/showallpc" data-name="赔偿" href="javascript:;">赔偿</a></li>
-                            <li><a _href="${pageContext.request.contextPath}/usermanage/show_blacklist" data-name="黑名单" href="javascript:;">黑名单</a></li>
+                            <li><a _href="${pageContext.request.contextPath}/usermanage/show_blacklist" data-name="黑名单" id="blackList" href="javascript:;">黑名单</a></li>
                             <li><a _href="addUser" data-name="添加用户" href="javascript:;">添加用户</a></li>
                         </ul>
                     </dd>
@@ -150,8 +150,8 @@
                     </dt>
                     <dd>
                         <ul>
-                            <li><a _href="${pageContext.request.contextPath}/type_manager" data-name="种类管理"
-                                   data-js="prettify" href="javascript:;">种类管理</a></li>
+                            <li><a _href="${pageContext.request.contextPath}/type_manager" data-name="图书类型管理"
+                                   data-js="prettify" href="javascript:;">图书类型管理</a></li>
 
                             <li><a _href="${pageContext.request.contextPath}/publish_house_manager" data-name="出版社管理"
                                    data-js="prettify" href="javascript:;">出版社管理</a></li>
@@ -164,7 +164,7 @@
             <div id="main-tab">
                 <div class="main-tab">
                     <ul>
-                        <li class="active"><a _href="Home?isadmin=${user.isadmin}" id="myHome">主页</a></li>
+                        <li class="active"><a _href="Home?admin=${user.xm}" id="myHome">主页</a></li>
                     </ul>
                 </div>
             </div>

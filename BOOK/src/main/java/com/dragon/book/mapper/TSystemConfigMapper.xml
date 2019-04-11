@@ -196,4 +196,12 @@
       <include refid="Update_By_Example_Where_Clause" />
     </if>
   </update>
+
+    <select id="selectOneConfig" resultMap="BaseResultMap">
+        select * from t_system_config limit 1
+    </select>
+
+    <update id="updataPenTime" parameterType="int">
+        UPDATE t_system_config SET pen_time = #{penTime,jdbcType=INTEGER}
+    </update>
 </mapper>

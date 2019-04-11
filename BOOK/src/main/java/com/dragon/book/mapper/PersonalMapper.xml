@@ -29,6 +29,10 @@
          t_book.isbn=t_borrow.s_id
          where
          t_borrow.user_id=#{userId}
+         and
+         t_borrow.`status`!=1
+         and
+         t_borrow.jhghrq>now()
     </select>
 
     <select id="selectUserInformation" resultType="com.dragon.book.model.TSysUser">
@@ -48,7 +52,8 @@
       update
       t_borrow
       set
-      jyzt=2
+      jyzt=2,
+      `status` = 2
       where
       s_id=#{isbn}
       and
@@ -58,7 +63,8 @@
     <update id="updatejszt">
       update
       t_borrow
-       set
+      set
+      `status` = 2,
        jyzt=1
        where
        s_id=#{isbn}
@@ -79,7 +85,8 @@
          bz
          from
          t_borrow
-          where id=#{id}
+         where
+         id=#{id}
     </select>
 
 </mapper>

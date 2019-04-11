@@ -1,6 +1,7 @@
 package com.dragon.book.service;
 
 import com.dragon.book.model.TBorrow;
+import com.dragon.book.model.TSystemConfig;
 import com.dragon.book.pojo.Borrow;
 
 import java.util.List;
@@ -60,4 +61,15 @@ public interface HomeService {
      * @return
      */
     public int bookTotal();
+    /**
+     * 获取配置信息
+     *
+     * @return
+     */
+    public TSystemConfig getConfig();/**
+     * 修改黑名单惩罚时间
+     *
+     * @return
+     */
+    public int modifyPenTime(int penTime);
 }

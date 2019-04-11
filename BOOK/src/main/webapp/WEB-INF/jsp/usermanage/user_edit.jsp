@@ -65,8 +65,8 @@
                         <td width="33%"><input id="kjtscs" name="kjtscs" value="${userInfo.kjtscs}" data-validate="required" type="text" class="input-text "></td>
                     </tr>
                     <tr>
-                        <th width="17%"><span class="ft-need"></span>次数：</th>
-                        <td width="33%"><input id="cs" name="cs" value="${userInfo.cs}" data-validate="required" type="text" class="input-text "></td>
+                        <th width="17%"><span class="ft-need"></span>可借时长（天）：</th>
+                        <td width="33%"><input id="cs" name="cs" value="${userInfo.kjsc}" data-validate="required" type="text" class="input-text "></td>
                     </tr>
                     <tr>
                         <th width="17%"><span class="ft-need"></span>是否为管理员：</th>
