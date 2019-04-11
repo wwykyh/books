@@ -17,6 +17,15 @@ public class HistoryInfo extends TBorrow implements Serializable {
 
     private TBook book ;
     private TSysUser user ;
+    private String lxmc;
+
+    public String getLxmc() {
+        return lxmc;
+    }
+
+    public void setLxmc(String lxmc) {
+        this.lxmc = lxmc;
+    }
 
     public TBook getBook() {
         return book;

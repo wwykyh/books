@@ -322,9 +322,14 @@ public class BookManagerController {
     @RequestMapping("/history_info")
     public String HistoryInfo(Integer id, Model model) {
         HistoryInfo history = bookService.selectHistoryById(id);
+
+        model.addAttribute("jyzts",transLationjy(history));
+        model.addAttribute("status",transLation(history));
         model.addAttribute("history", history);
+
         return "manager/history_info";
     }
+
 
     /**
      * 图书分析控制
@@ -342,7 +347,37 @@ public class BookManagerController {
     List<TBookAnalyze> charts() {
         List<TBookAnalyze> user = bookAnalyzeService.getBoorowNum();
         return user;
+        }
+    //审核转译
+    public String transLation(HistoryInfo historyInfo){
+
+        int statu= historyInfo.getStatus();
+        String status ="审核转译";
+        if(statu==0){
+            status="审核不通过";
+        }else if(statu==1){
+            status="审核通过";
+        }else if(statu==2){
+            status="待审核";
+        }else{
+            status="未备注信息";
+        }
+        return status;
     }
-
-
+    //借阅转译
+    public String transLationjy(HistoryInfo historyInfo){
+        int jyzt = historyInfo.getJyzt();
+        String jyzts = "借阅转译";
+        if(jyzt==0){
+            jyzts="借阅";
+        }
+        else if(jyzt==1){
+            jyzts="续借";
+        }else if(jyzt==2){
+            jyzts="归还";
+        }else {
+            jyzts="未备注信息";
+        }
+        return jyzts;
+    }
 }

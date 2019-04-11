@@ -15,20 +15,12 @@
 </head>
 <body style="overflow-x: hidden">
 <div class="panel">
-    <%--<div class="panel-header">
-        <form>
-            <tr style="width: 100%;height: 600px">
-                <textarea id="container"></textarea>
-            </tr>
-            <input type="button" value="提交" onclick="tijiao()"/>
-        </form>
-    </div>--%>
     <div >
         <div >
             <tr style="text-align:center">
-                <textarea id="container" style="width:815px; height: 180px"></textarea>
+                <textarea id="container" style="width:870px; height: 180px"></textarea>
             </tr>
-            <div style="text-align:right">
+            <div style="padding-left: 78%">
                 <tr >
                     <input type="button" class="btn" value="清空文档" onclick="qingkong()" />
                     <input type="button"  class="btn" value="发表评论"  onclick="tijiao()"/>
@@ -46,54 +38,55 @@
             </form>
         </div>
         <th width="10%" style="text-align: left" ><span> <font size="4">历史评论：</font></span></th>
-        <div style="padding-left:5% ; padding-right: 5%" class="parentid"id="parentid" >
-            <table class="form-table" width="100%" id="commentTable" >
+        <div  id="textComment" class="textComment"></div>
+        <div style="padding-left:5% ; padding-right: 5%" class="parentid3" id="parentid" >
+            <table class="form-table" width="100%" id="commentTable"  >
 
                 <c:forEach items="${commentInfos}" var="arr">
-                <div >
-                    <tr style="background:#a7d0ef;" >
-                        <td style="padding-left:10px ;" width="80%">${arr.xm} &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;${arr.pjrq}</td>
-                        <td width="20%"  style="padding-left: 5%" onclick="delComment('${arr.commentId}')">
-                            <c:choose>
-                            <c:when test="${arr.xm==user.xm}">
-                            删除</td>
-                        </c:when>
-                        <c:otherwise>
-                            <td></td>
-                        </c:otherwise>
-                        </c:choose>
-                    </tr>
-                    <tr style="background:#EFEFEF;">
-                        <td width="80%" style="padding-left: 35px">
-                            <div  class="innerCtn" id="innerCtn-id" >
-                                <span >${arr.nr}</span>
-                            </div>
-                        </td>
-                        <td style="padding-left: 5%" onclick="xiangqing(this)">查看更多/收起</td>
-                    </tr>
-                    </c:forEach>
-                </div>
+                     <div >
+                        <tr style="background:#a7d0ef;" >
+                            <td style="padding-left:10px ;" width="80%">${arr.xm} &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;${arr.pjrq}</td>
+                            <td width="20%"  style="padding-left: 5%;" onclick="delComment('${arr.commentId}')">
+                                <c:choose>
+                                     <c:when test="${arr.xm==user.xm}">
+                                       <span style="cursor: pointer">删除</span>
+                            </td>
+                                    </c:when>
+                                    <c:otherwise>
+                                    <td></td>
+                                    </c:otherwise>
+                                </c:choose>
+                        </tr>
+                        <tr style="background:#EFEFEF;">
+                            <td width="80%" style="padding-left: 35px">
+                                <div  class="innerCtn" id="innerCtn-id" >
+                                    <span >${arr.nr}</span>
+                                </div>
+                            </td>
+                            <td style="padding-left: 5%" onclick="xiangqing(this)"><span style="cursor: pointer">查看更多/收起</span></td>
+                        </tr>
+                         <c:choose>
+                             <c:when test="${arr==null ||arr==' '}">
+                                 暂无消息
+                             </c:when>
+                         </c:choose>
+
+                </c:forEach>
+                     </div>
             </table>
         </div>
     </div>
-    <div style="height: 10px ;padding-left: 81%"><h3 onclick="allComment()" >查看全部/收起</h3></div>
+    <div style="height: 10px ;padding-left: 81% ;" >
+        <h3 onclick="allComment()"style="cursor: pointer;" >查看全部/收起</h3>
+    </div>
 </div>
 
 </body>
 <script type="text/javascript">
-    function select() {
-        $.ajax({
-            type:"GET",
-            URL:"/commentInfo"
-        });
-    }
     function qingkong() {
-
-        //     document.execCommand("Delete",null);
         if (confirm("确定清空当前文档么？")){
             UE.getEditor('container').execCommand("cleardoc");
         }
-
     }
     function tijiao() {
         var userId=form_eva.userId.value;
@@ -124,7 +117,9 @@
                 //刷新评论区
                 $("#commentTable").load(location.href+" #commentTable");
                 //parent.art.dialog({id:'commentInfo_window'}).location.reload();
-
+                var num = (document.getElementById('commentTable').getElementsByTagName('tr').length)/2 ;
+                num=num+1;
+                controllerline(num);
             }
         });
     };
@@ -140,6 +135,9 @@
                         alert("删除失败");
                     }else {
                         $("#commentTable").load(location.href+" #commentTable");
+                        var num = (document.getElementById('commentTable').getElementsByTagName('tr').length)/2 ;
+                            num=num-1;
+                        controllerline(num);
                     }
                 }
             });
@@ -159,14 +157,47 @@
     }
     function allComment() {
         var divEle= document.getElementById('parentid');
-        if(divEle.className=="parentid"){
-            divEle.className='parentid1'
-        }else {
+        var num = (document.getElementById('commentTable').getElementsByTagName('tr').length)/2 ;
+        debugger
+        if(num<=3){
+            alert("无更多评论！");
+            return;
+        }
+        if(divEle.className=="parentid3"){
             divEle.className='parentid'
+        }
+       else if(divEle.className=="parentid2"){
+            divEle.className='parentid'
+        }
+       else if(divEle.className=="parentid1"){
+            divEle.className='parentid'
+        }
+       else if(divEle.className=="parentid"){
+            if(num<=3){
+                divEle.className='parentid'
+            }else {
+                divEle.className='parentid3'
+            }
         }
     }
 
-
+    function controllerline(num) {
+      var divEle= document.getElementById('parentid');
+      var divText = document.getElementById('textComment');
+      if(num<=3){
+            divEle.className='parentid'
+        }
+        else if(num>3){
+            divEle.className='parentid3';
+        }
+        if(num==0){
+            divText.className='parentid0';
+            divText.innerHTML="<html><span ><font size='3' face='微软雅黑'>暂无评论哦，来做第一个评论的人吧！          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; --来自书评小精灵</font></span></html>";
+        }else {
+            divText.className="textComment";
+            divText.innerHTML=null;
+        }
+    }
     requirejs(['jquery', 'bdeditor', 'zeroclipboard'], function (jqeury, bdeditor, zeroclipboard) {
         window['ZeroClipboard'] = zeroclipboard;
         var ue = UE.getEditor('container',{
@@ -183,6 +214,8 @@
                 'print', 'preview', 'searchreplace','help'
             ]]
         });
+        var num = (document.getElementById('commentTable').getElementsByTagName('tr').length)/2 ;
+        controllerline(num);
     });
 </script>
 </html>

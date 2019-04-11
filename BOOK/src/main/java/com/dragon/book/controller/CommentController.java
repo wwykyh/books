@@ -1,10 +1,12 @@
 package com.dragon.book.controller;
 
 import com.dragon.book.model.TComment;
+import com.dragon.book.pojo.BookInfo;
 import com.dragon.book.pojo.CommentInfo;
 import com.dragon.book.pojo.HistoryInfo;
 import com.dragon.book.service.BookManagerService;
 import com.dragon.book.service.UserBorrowService;
+import org.apache.ibatis.annotations.Param;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -24,14 +26,17 @@ public class CommentController {
     @Autowired
     private BookManagerService bookService ;
     @Autowired
+    private BookManagerService bookServices ;
+    @Autowired
     private UserBorrowService userBorrowService;
     @RequestMapping("/getBookComment")
     public String getBookComment(String id,Model model){
-        List<CommentInfo> commentInfos =userBorrowService.selBookComment(id);
+        BookInfo bookInfo = bookServices.selectBookInfoById(id);
+        String isbn = bookInfo.getIsbn();
+        List<CommentInfo> commentInfos =userBorrowService.selBookComment(isbn);
 
-        //HistoryInfo historyInfo = bookService.selectHistoryById(id);
         model.addAttribute("commentInfos",commentInfos);
-        //model.addAttribute("historyInfo",historyInfo);
+        model.addAttribute("bookInfo",bookInfo);
         return "/comment/bookComment";
     }
 
@@ -71,6 +76,21 @@ public class CommentController {
         }
         return status  ;
     }
+    @RequestMapping("/delAllCommentByid")
+    @ResponseBody
+    public String delAllComment(@Param("check") String[] check){
+        String status="0";
+        for(int i=0;i<check.length ;i++){
+            boolean is =bookService.delComment(check[i]);
+            if (is==true){
+                status="1";
+            }else{
+                status="0";
+                return status;
+            }
+        }
+        return status;
+    }
     //评价对话框
     @RequestMapping("/commentInfo")
     public String EvaluationInfo(Integer id,Model model){
@@ -87,7 +107,6 @@ public class CommentController {
         model.addAttribute("commentInfos",commentInfos);
         model.addAttribute("bookIsbn",id);
         //model.addAttribute("historyInfo",historyInfo);
-        System.out.println(id);
         return "book/book_info";
     }
 }

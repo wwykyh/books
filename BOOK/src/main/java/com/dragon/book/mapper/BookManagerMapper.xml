@@ -9,6 +9,7 @@
         <result column="jyzt" property="jyzt"/>
         <result column="jhghrq" property="jhghrq"/>
         <result column="xjrq" property="xjrq"/>
+        <result column="lxmc" property="lxmc"/>
         <association property="book" javaType="com.dragon.book.model.TBook">
             <id column="isbn" property="isbn"/>
             <result column="sm" property="sm"/>
@@ -133,7 +134,7 @@
     <select id="selectHistoryPage" resultMap="HistoryResult" parameterType="com.dragon.book.util.PageBean">
         SELECT temp.id,temp.jyrq,temp.ghrq,temp.isbn,temp.xm,tb.sm,tb.tsdl,tb.zz,tb.cbsmc,
         temp.`status`,temp.jyzt,temp.jhghrq,temp.xjrq,
-        temp.lxfs,temp.bm,temp.dz,temp.user_id userId
+        temp.lxfs,temp.bm,temp.dz,temp.user_id userId,ty.lxmc
         FROM
         (SELECT b.id id,b.jyrq,b.ghrq,
         b.`status`,b.jyzt,b.jhghrq,b.xjrq,
@@ -153,13 +154,14 @@
         </if>
         ) temp
         LEFT JOIN t_book tb ON temp.isbn = tb.isbn
+        LEFT JOIN t_type ty ON ty.type_id=tb.type_id
         <if test="dim != null and dim != ''">
             WHERE tb.sm LIKE '%${dim}%' OR tb.zz LIKE '%${dim}%'
         </if>
         ORDER BY temp.jyrq DESC
     </select>
     <select id="selectHistoryById" resultMap="HistoryResult" parameterType="Integer">
-        SELECT temp.id,temp.jyrq,temp.ghrq,temp.isbn,temp.xm,tb.sm,tb.tsdl,tb.zz,tb.cbsmc,tb.jj,tb.picture,temp.`status`,temp.jyzt,temp.jhghrq,temp.xjrq,
+        SELECT temp.id,temp.jyrq,temp.ghrq,temp.isbn,temp.xm,tb.sm,tb.tsdl,tb.zz,tb.cbsmc,tb.jj,tb.picture,temp.`status`,temp.jyzt,temp.jhghrq,temp.xjrq,ty.lxmc,
         temp.lxfs,temp.bm,temp.dz,temp.user_id userId
         FROM
         (SELECT b.id id,b.jyrq,b.ghrq,
@@ -171,5 +173,6 @@
         WHERE b.id = #{id}
         ) temp
         LEFT JOIN t_book tb ON temp.isbn = tb.isbn
+        LEFT JOIN t_type ty ON ty.type_id=tb.type_id
     </select>
 </mapper>
