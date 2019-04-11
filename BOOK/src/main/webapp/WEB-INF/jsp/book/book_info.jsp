@@ -82,9 +82,7 @@
             <div class="tabs-container">
 
                 <div style="display: block;" class="tab" id="tab1">
-                    <p class="more_details">${bookInfo.jj}
-                    </p>
-
+                    <p class="more_details">${bookInfo.jj}</p>
                 </div>
                 <div style="display: none;" class="tab" id="tab2">
                     <div class="divtable2"id="divtable" >

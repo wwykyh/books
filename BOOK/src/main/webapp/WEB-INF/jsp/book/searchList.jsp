@@ -253,7 +253,7 @@
         <div style="width: auto;height: 20%">
             <a href="javascript:void(0);"
                onclick="onBookInfo('${p.sId}')"><strong>${p.sm}</strong></a></div>
-    </div>
+    </div></c:forEach>
 
 </div>
 <script>
