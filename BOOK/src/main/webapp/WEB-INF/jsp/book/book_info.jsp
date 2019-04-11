@@ -61,9 +61,11 @@
                     <div class="price"><strong>状态:</strong><span class="red">${bookInfo.status}</span></div>
                     <c:if test="${bookInfo.jyxm!=null}">
                     <div class="price"><strong>当前借阅人:</strong><span class="red">${bookInfo.jyxm}</span></div></c:if>
-                    <c:if test="${bookInfo.status=='在库'}">
+                    <c:if test="${bookInfo.status=='在库' && user.xm!='admin'}">
                     <a href="javascript:void(0);" onclick="borrow('${bookInfo.id}')" class="more" ><img src="images/jy.jpg" alt="" title="" border="0" style="height:26px;width: 96px"/></a></c:if>
+<%--
                     <a href="javascript:void(0);" onclick="like('${bookInfo.id}')" class="more" ><img src="images/sc.jpg" alt="" title="" border="0" style="height:26px;width: 96px"/></a>
+--%>
 
 
                     <div class="clear"></div>
@@ -160,7 +162,7 @@
 
     function borrow(id) {
            // alert("详情" + id) ;
-        art.dialog.open('borrow?id='+id, {
+        /*art.dialog.open('borrow?id='+id, {
             title : '图书借阅',
             width : 300,
             height : 300,
@@ -169,7 +171,27 @@
             // okVal: "打印",
            // cancel : true,
            // cancelVal : "关闭"
-        });
+        });*/
+
+        $.ajax({
+            type : 'post',
+            url : "doBorrow",
+            data :{"id":id},
+            error: function(request) {
+                alert("Connection error:"+request.error);
+            },
+            success: function(data) {
+                if(data == "0"){
+                    alert("图书借阅申请成功，请到图书管理员处拿书！") ;
+                    //  parent.select();
+                }else {
+                    alert("图书借阅申请失败,超出当前最大借阅数量！");
+                }
+                parent.art.dialog({id:'book_info'}).close() ;
+
+            }
+        })
+
     }
 
     function like(id) {

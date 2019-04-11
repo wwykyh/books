@@ -13,6 +13,8 @@
 package com.dragon.book.controller;
 
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
@@ -221,11 +223,11 @@ public class BookController {
                 (TSysUser) session.getAttribute("user"));
         Book book = bookService.getBook(id);
         model.addAttribute("book", book);
-        if (0 == book.gettStore().getStatus()) {
+       /* if (0 == book.gettStore().getStatus()) {
             model.addAttribute("status", "出库");
         } else {
             model.addAttribute("status", "在库");
-        }
+        }*/
         return "book/borrow";
     }
 
@@ -244,14 +246,16 @@ public class BookController {
     @PostMapping("/doBorrow")
     @ResponseBody
     public String doBorrow(
-            @RequestParam String id, @RequestParam String sm,
-            @RequestParam String jyrq,
-            @RequestParam String jhghrq, @RequestParam String userId, HttpSession session,
-            Model model) {
+            @RequestParam String id, HttpSession session) {
+        Date d = new Date();
+        SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd");
+        String now = df.format(d);
+        Book book = bookService.getBook(id);
         TSysUser user = (TSysUser) session.getAttribute("user");
+        System.out.println("user:"+user.toString());
         int borrow1 = bookService.getBorrow(user.getUserId());
-        if (borrow1 < 1) {
-            TBorrow borrow = bookService.setBorrow(id, Integer.parseInt(userId), sm, user.getLxfs(), jyrq, bookService.getTime(jyrq, jhghrq), 2, 0);
+        if (borrow1 < user.getKjtscs()) {
+            TBorrow borrow = bookService.setBorrow(id, user.getUserId(), book.getSm(), user.getLxfs(), now, bookService.getTime(now, Integer.toString(user.getKjsc())), 2, 0);
             int i = bookService.insertBorrow(borrow);
 
             if (i > 0) {
