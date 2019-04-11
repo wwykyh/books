@@ -190,18 +190,19 @@
                 },
                 url:"/delAllCommentByid",
                 success:function (data) {
+                    var num = (document.getElementById('commentTable').getElementsByTagName('tr').length)/2 ;
                     if(data==0){
                         alert("删除失败！");
                     }else {
                         alert("删除成功！");
                         for(var i=0;i<ck.length;i++){
                             $("tr").remove("#tr_"+ck[i]);
-                            $("#commentTable").load(location.href+" #commentTable");
-                            var num = (document.getElementById('commentTable').getElementsByTagName('tr').length)/2 ;
-                            num=num-1;
-                            controllerline(num);
+                            num=num-i;
                         }
                     }
+                    $("#commentTable").load(location.href+" #commentTable");
+                    console.log(num);
+                    controllerline(num);
                 }
             });
         }

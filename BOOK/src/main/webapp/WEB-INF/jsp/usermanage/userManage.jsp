@@ -129,8 +129,8 @@
         art.dialog.open('/usermanage/showuser_edit?id='+userId, {
             title: '用户信息修改',
             id:'user_edit_window',
-            width: 700,
-            height: 650,
+            width: 822,
+            height: 600,
             cancel: true,
             cancelVal: "关闭"
         });
@@ -139,7 +139,7 @@
         art.dialog.open('/usermanage/user_info?id='+userId, {
             title: '用户详情',
             width: 1000,
-            height: 400,
+            height: 320,
             cancel: true,
             cancelVal: "关闭"
         });

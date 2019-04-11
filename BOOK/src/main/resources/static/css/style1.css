@@ -568,7 +568,7 @@ div.pagination span.disabled {
 }
 .parentid3{
     overflow-x:hidden;
-    height: 385px;
+    height: 390px;
     overflow-y:hidden;
 }
 .parentid{
@@ -612,12 +612,12 @@ div.pagination span.disabled {
  }
 .divtable1{
     overflow-x:hidden;
-    height:130px;
+    height:150px;
     overflow-y:hidden;
 }
 .divtable2{
     overflow-x:hidden;
-    height:260px;
+    height:300px;
     overflow-y:hidden;
 }
 .textComment{
