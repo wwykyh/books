@@ -196,10 +196,10 @@
                         alert("删除成功！");
                         for(var i=0;i<ck.length;i++){
                             $("tr").remove("#tr_"+ck[i]);
-                            $("#commentTable").load(location.href+" #commentTable");
                             var num = (document.getElementById('commentTable').getElementsByTagName('tr').length)/2 ;
                             num=num-1;
                             controllerline(num);
+                            $("#commentTable").load(location.href+" #commentTable");
                         }
                     }
                 }
