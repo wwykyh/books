@@ -30,9 +30,9 @@
          where
          t_borrow.user_id=#{userId}
          and
-         t_borrow.`status`!=1
-         and
          t_borrow.jhghrq>now()
+         and
+         t_borrow.jyzt!=2
     </select>
 
     <select id="selectUserInformation" resultType="com.dragon.book.model.TSysUser">

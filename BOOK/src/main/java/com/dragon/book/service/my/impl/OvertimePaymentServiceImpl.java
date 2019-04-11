@@ -5,7 +5,11 @@ import com.dragon.book.mapper.my.OvertimePaymentDao;
 import com.dragon.book.model.TBorrow;
 import com.dragon.book.service.my.IOvertimePaymentService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Service;
+import org.springframework.util.CollectionUtils;
+
+import java.time.LocalDate;
 import java.util.List;
 
 /**
@@ -19,9 +23,18 @@ public class OvertimePaymentServiceImpl implements IOvertimePaymentService {
 
 
     public List<TBorrow> findOvertimeBorrow(int uid){
-//        SimpleDateFormat timeFormat = new SimpleDateFormat("yyyy-MM-dd");
-//        String currentTime = timeFormat.format(new Date());
         return overtimePaymentDao.findOvertimeBorrow(uid);
+    }
+
+    @Scheduled(cron = "0 0 0 * * ?")
+    public void addOvertimeNews(){
+        List<TBorrow> tBorrowList = overtimePaymentDao.findAllOvertimeBorrow();
+        String currentDate = LocalDate.now().toString();
+        if(!CollectionUtils.isEmpty(tBorrowList)){
+            for (TBorrow tBorrow:tBorrowList) {
+                overtimePaymentDao.addOvertimeNews(tBorrow.getUserId(),tBorrow.getsId(),currentDate);
+            }
+        }
     }
 
 }

@@ -26,4 +26,14 @@ public interface OvertimePaymentDao {
      */
     public List<UserBorrow> findOvertimeUser();
 
+    /**
+     * 查找所有借阅信息
+     * @return
+     */
+    public List<TBorrow> findAllOvertimeBorrow();
+
+    /**
+     * 添加新的超时消息
+     */
+    public void addOvertimeNews(@Param("userId") int uId,@Param("isbn") String s_id,@Param("date") String date);
 }
