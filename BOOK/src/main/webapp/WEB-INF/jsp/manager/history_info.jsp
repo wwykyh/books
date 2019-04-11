@@ -43,10 +43,10 @@
                         <td width="33%">${history.book.zz}</td>
                     </tr>
                     <tr>
-                        <th width="17%"><span class="ft-need"></span>图书类型：</th>
+                        <th width="17%"><span class="ft-need"></span>图书类别：</th>
                         <td width="33%">${history.book.tsdl}</td>
-                        <th width="17%"><span class="ft-need"></span> </th>
-                        <td width="33%"> </td>
+                        <th width="17%"><span class="ft-need"></span>图书类型：</th>
+                        <td width="33%">${history.lxmc}</td>
                     </tr>
                 </table>
         </div>
@@ -90,9 +90,9 @@
                 </tr>
                 <tr>
                     <th width="17%"><span class="ft-need"></span>审核状态：</th>
-                    <td width="33%">${history.status}</td>
+                    <td width="33%">${status}</td>
                     <th width="17%"><span class="ft-need"></span>借阅状态：</th>
-                    <td width="33%"> ${history.jyzt}</td>
+                    <td width="33%"> ${jyzts}</td>
                 </tr>
                 <tr>
                     <th width="17%"><span class="ft-need"></span>计划归还时间：</th>

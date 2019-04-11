@@ -73,6 +73,9 @@
                     display: '作者',
                     name: 'book.zz'
                 },{
+                    display:'图书类型',
+                    name:'lxmc'
+                },{
                     display: '借阅用户',
                     name: 'user.xm'
                 }, {

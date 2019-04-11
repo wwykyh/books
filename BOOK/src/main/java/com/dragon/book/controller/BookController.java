@@ -13,6 +13,8 @@
 package com.dragon.book.controller;
 
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
@@ -23,6 +25,7 @@ import com.dragon.book.model.*;
 import com.dragon.book.pojo.Book;
 
 import com.dragon.book.pojo.BookInfo;
+import com.dragon.book.pojo.Borrow;
 import com.dragon.book.pojo.CommentInfo;
 import com.dragon.book.service.*;
 import com.dragon.book.util.Page;
@@ -56,6 +59,9 @@ public class BookController {
 
     @Autowired
     private UserBorrowService userBorrowService;
+    @Autowired
+    private HomeService homeService;
+
     /**
      * 用户主页
      *
@@ -74,14 +80,14 @@ public class BookController {
         System.out.println(bookInfo.toString() + "================");
         model.addAttribute("bookInfo", bookInfo);
 
-        if (id.substring(0,1).equals("a")){
-            String Isbn =id.substring(1);
+        if (id.substring(0, 1).equals("a")) {
+            String Isbn = id.substring(1);
             bookInfo = bookServices.selectBookByIsbn(Isbn);
         }
-        model.addAttribute("bookInfo",bookInfo) ;
+        model.addAttribute("bookInfo", bookInfo);
         String isbn = bookInfo.getIsbn();
-        List<CommentInfo> commentInfos =userBorrowService.selBookComment(isbn);
-        model.addAttribute("commentInfos",commentInfos);
+        List<CommentInfo> commentInfos = userBorrowService.selBookComment(isbn);
+        model.addAttribute("commentInfos", commentInfos);
         return "book/book_info";
     }
 
@@ -106,7 +112,11 @@ public class BookController {
     }
 
     @GetMapping("/search")
-    public String search() {
+    public String search(Model model) {
+        List<Borrow> hotBooks = homeService.getHotBooks();
+        List<Borrow> borrows = hotBooks.subList(0, 3);
+      //  System.out.println(borrows.size());
+        model.addAttribute("borrow",borrows);
         return "book/searchList";
     }
 
@@ -129,7 +139,9 @@ public class BookController {
         return "home";
     }
 
-   /* *//**
+    /* */
+
+    /**
      * 第一次进入检索界面
      *
      * @param model
@@ -167,15 +179,13 @@ public class BookController {
 
         return "book/book";
     }*/
-
-
     @GetMapping("/page")
-    public String search(@RequestParam(value = "pageNumber",defaultValue = "1") String pageNumber, @RequestParam(value = "dim", defaultValue = "") String dim, @RequestParam(value = "s_type", defaultValue = "") String s_type,
+    public String search(@RequestParam(value = "pageNumber", defaultValue = "1") String pageNumber, @RequestParam(value = "dim", defaultValue = "") String dim, @RequestParam(value = "s_type", defaultValue = "") String s_type,
                          Model model, HttpServletRequest request, HttpServletResponse resopnse
     ) {
 
 
-        System.out.println("number:"+pageNumber+"dim:"+dim+"type:"+s_type);
+        System.out.println("number:" + pageNumber + "dim:" + dim + "type:" + s_type);
 
 
         List<TType> typeList = typeService.getAllTypes();
@@ -194,11 +204,11 @@ public class BookController {
             System.out.println("字符串转换出错");
         }
         int total = bookService.getTotal(page);// 计算总数
-       // System.out.println("-=-=-=-=" + total);
+        // System.out.println("-=-=-=-=" + total);
 
         pagebean = bookService.getPage(pageNo, 10, dim, s_type, total);  //获取页面信息
 
-        System.out.println("12121212-----" + pagebean.getPageSize() + "  /n totl:" + pagebean.getTotalPage()+pagebean.toString());
+        System.out.println("12121212-----" + pagebean.getPageSize() + "  /n totl:" + pagebean.getTotalPage() + pagebean.toString());
 
         model.addAttribute("page", pagebean);
         return "book/book";
@@ -221,47 +231,38 @@ public class BookController {
                 (TSysUser) session.getAttribute("user"));
         Book book = bookService.getBook(id);
         model.addAttribute("book", book);
-        if (0 == book.gettStore().getStatus()) {
+       /* if (0 == book.gettStore().getStatus()) {
             model.addAttribute("status", "出库");
         } else {
             model.addAttribute("status", "在库");
-        }
+        }*/
         return "book/borrow";
     }
 
     /**
      * 借阅申请处理
      *
-     * @param id     图书id
-     * @param sm     图书书名
-     * @param
-     * @param jyrq   借阅日期
-     * @param jhghrq 借阅周期
-     * @param userId 用户id
-     * @param model
+     * @param id 图书id
      * @return
      */
     @PostMapping("/doBorrow")
     @ResponseBody
     public String doBorrow(
-            @RequestParam String id, @RequestParam String sm,
-            @RequestParam String jyrq,
-            @RequestParam String jhghrq, @RequestParam String userId, HttpSession session,
-            Model model) {
+            @RequestParam String id, HttpSession session) {
+        Date d = new Date();
+        SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd");
+        String now = df.format(d);
+        Book book = bookService.getBook(id);
         TSysUser user = (TSysUser) session.getAttribute("user");
         int borrow1 = bookService.getBorrow(user.getUserId());
-        if (borrow1 < 1) {
-            TBorrow borrow = bookService.setBorrow(id, Integer.parseInt(userId), sm, user.getLxfs(), jyrq, bookService.getTime(jyrq, jhghrq), 2, 0);
+        if (borrow1 < user.getKjtscs()) {
+            TBorrow borrow = bookService.setBorrow(id, user.getUserId(), book.getSm(), user.getLxfs(), now, bookService.getTime(now, Integer.toString(user.getKjsc())), 2, 0);
             int i = bookService.insertBorrow(borrow);
-
             if (i > 0) {
                 int i1 = bookService.updateByKey(id, 0);
                 if (i1 > 0)
                     return "0";
-                else
-                    return "1";
-            } else
-                return "1";
+            }
         }
         return "1";
     }
