@@ -834,63 +834,63 @@ public class TSysUserExample {
             return (Criteria) this;
         }
 
-        public Criteria andCsIsNull() {
-            addCriterion("cs is null");
+        public Criteria andKjscIsNull() {
+            addCriterion("kjsc is null");
             return (Criteria) this;
         }
 
-        public Criteria andCsIsNotNull() {
-            addCriterion("cs is not null");
+        public Criteria andKjscIsNotNull() {
+            addCriterion("kjsc is not null");
             return (Criteria) this;
         }
 
-        public Criteria andCsEqualTo(Integer value) {
-            addCriterion("cs =", value, "cs");
+        public Criteria andKjscEqualTo(Integer value) {
+            addCriterion("kjsc =", value, "kjsc");
             return (Criteria) this;
         }
 
-        public Criteria andCsNotEqualTo(Integer value) {
-            addCriterion("cs <>", value, "cs");
+        public Criteria andKjscNotEqualTo(Integer value) {
+            addCriterion("kjsc <>", value, "kjsc");
             return (Criteria) this;
         }
 
-        public Criteria andCsGreaterThan(Integer value) {
-            addCriterion("cs >", value, "cs");
+        public Criteria andKjscGreaterThan(Integer value) {
+            addCriterion("kjsc >", value, "kjsc");
             return (Criteria) this;
         }
 
-        public Criteria andCsGreaterThanOrEqualTo(Integer value) {
-            addCriterion("cs >=", value, "cs");
+        public Criteria andKjscGreaterThanOrEqualTo(Integer value) {
+            addCriterion("kjsc >=", value, "kjsc");
             return (Criteria) this;
         }
 
-        public Criteria andCsLessThan(Integer value) {
-            addCriterion("cs <", value, "cs");
+        public Criteria andKjscLessThan(Integer value) {
+            addCriterion("kjsc <", value, "kjsc");
             return (Criteria) this;
         }
 
-        public Criteria andCsLessThanOrEqualTo(Integer value) {
-            addCriterion("cs <=", value, "cs");
+        public Criteria andKjscLessThanOrEqualTo(Integer value) {
+            addCriterion("kjsc <=", value, "kjsc");
             return (Criteria) this;
         }
 
-        public Criteria andCsIn(List<Integer> values) {
-            addCriterion("cs in", values, "cs");
+        public Criteria andKjscIn(List<Integer> values) {
+            addCriterion("kjsc in", values, "kjsc");
             return (Criteria) this;
         }
 
-        public Criteria andCsNotIn(List<Integer> values) {
-            addCriterion("cs not in", values, "cs");
+        public Criteria andKjscNotIn(List<Integer> values) {
+            addCriterion("kjsc not in", values, "kjsc");
             return (Criteria) this;
         }
 
-        public Criteria andCsBetween(Integer value1, Integer value2) {
-            addCriterion("cs between", value1, value2, "cs");
+        public Criteria andKjscBetween(Integer value1, Integer value2) {
+            addCriterion("kjsc between", value1, value2, "kjsc");
             return (Criteria) this;
         }
 
-        public Criteria andCsNotBetween(Integer value1, Integer value2) {
-            addCriterion("cs not between", value1, value2, "cs");
+        public Criteria andKjscNotBetween(Integer value1, Integer value2) {
+            addCriterion("kjsc not between", value1, value2, "kjsc");
             return (Criteria) this;
         }
 

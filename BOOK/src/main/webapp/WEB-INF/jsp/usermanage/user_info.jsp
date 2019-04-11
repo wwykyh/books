@@ -47,8 +47,8 @@
                         <td width="33%"> ${userInfo.pwd}</td>
                     </tr>
                     <tr>
-                        <th width="17%"><span class="ft-need"></span>次数：</th>
-                        <td width="33%">${userInfo.cs}</td>
+                        <th width="17%"><span class="ft-need"></span>可借时长（天）：</th>
+                        <td width="33%">${userInfo.kjsc}</td>
                         <th width="17%"><span class="ft-need"></span>地址：</th>
                         <td width="33%"> ${userInfo.dz}</td>
                     </tr>
