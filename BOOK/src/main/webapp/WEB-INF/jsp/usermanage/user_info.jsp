@@ -35,40 +35,34 @@
         <div class="write-box">
                 <table class="form-table" width="100%">
                     <tr>
-                        <th width="17%"><span class="ft-need"></span>用户ID：</th>
-                        <td width="33%">${userInfo.userId}</td>
                         <th width="17%"><span class="ft-need"></span>姓名：</th>
                         <td width="33%"> ${userInfo.xm}</td>
+                        <th width="17%"><span class="ft-need"></span>用户ID：</th>
+                        <td width="33%">${userInfo.userId}</td>
                     </tr>
                     <tr>
                         <th width="17%"><span class="ft-need"></span>部门：</th>
                         <td width="33%">${userInfo.bm}</td>
-                        <th width="17%"><span class="ft-need"></span>密码：</th>
-                        <td width="33%"> ${userInfo.pwd}</td>
-                    </tr>
-                    <tr>
-                        <th width="17%"><span class="ft-need"></span>可借时长（天）：</th>
-                        <td width="33%">${userInfo.kjsc}</td>
                         <th width="17%"><span class="ft-need"></span>地址：</th>
                         <td width="33%"> ${userInfo.dz}</td>
                     </tr>
                     <tr>
-                        <th width="17%"><span class="ft-need"></span>Email：</th>
-                        <td width="33%">${userInfo.email}</td>
-                        <th width="17%"><span class="ft-need"></span>个人说明：</th>
-                        <td width="33%"> ${userInfo.grsm}</td>
-                    </tr>
-                    <tr>
                         <th width="17%"><span class="ft-need"></span>是否黑名单：</th>
                         <td width="33%" id="ishmd"><div id="showIshmd" style="font-size: 16px">未赔偿</div></td>
-                        <th width="17%"><span class="ft-need"></span>可借图书册数：</th>
-                        <td width="33%"> ${userInfo.kjtscs}</td>
+                        <th width="17%"><span class="ft-need"></span>可借时长：</th>
+                        <td width="33%">${userInfo.kjsc}天</td>
                     </tr>
                     <tr>
-                        <th width="17%"><span class="ft-need"></span>当前借阅图书ID：</th>
-                        <td width="33%">${userInfo.isbn}</td>
                         <th width="17%"><span class="ft-need"></span>是否为管理员：</th>
                         <td width="33%" id="isadmin"><div id="showIsadmin" style="font-size: 16px">未赔偿</div></td>
+                        <th width="17%"><span class="ft-need"></span>Email：</th>
+                        <td width="33%">${userInfo.email}</td>
+                    </tr>
+                    <tr>
+                        <th width="17%"><span class="ft-need"></span>可借图书册数：</th>
+                        <td width="33%"> ${userInfo.kjtscs}</td>
+                        <th width="17%"><span class="ft-need"></span>个人说明：</th>
+                        <td width="33%"> ${userInfo.grsm}</td>
                     </tr>
                 </table>
         </div>

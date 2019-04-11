@@ -2,6 +2,7 @@ package com.dragon.book.controller;
 
 
 import com.alibaba.fastjson.JSON;
+import com.dragon.book.mapper.TSystemConfigMapper;
 import com.dragon.book.model.TCompensate;
 import com.dragon.book.model.TSysUser;
 import com.dragon.book.model.TSystemConfig;
@@ -87,8 +88,26 @@ public class UserManageController {
     @RequestMapping("/user_edit")
     @ResponseBody
     public String userUpdate(TSysUser user){
+        TSystemConfig tSystemConfig =userService.getConfic();
+        if (user.getIsadmin()==0){
+            user.setKjtscs(tSystemConfig.getBookNum());
+            user.setKjsc(tSystemConfig.getBookTime());
+        }else {
+            user.setKjtscs(tSystemConfig.getAdminBooks());
+            user.setKjsc(tSystemConfig.getAdminTime());
+        }
         boolean status = userService.updataUser(user);
         return status == true ? "0" : "1" ;
+    }
+
+    @RequestMapping("/reset_pwd")
+    @ResponseBody
+    public boolean resetPwd(int userId){
+        boolean status = false;
+        int i = userService.updataUserPwd(userId);
+        if (i>0)
+            status= true;
+        return status ;
     }
 
 //    黑名单

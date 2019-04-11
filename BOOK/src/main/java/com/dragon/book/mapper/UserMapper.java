@@ -52,4 +52,6 @@ public interface UserMapper {
 
     int bookTotal();
 
+    //重置密码
+    int updataUserPwd(int userId);
 }

@@ -100,4 +100,7 @@ public interface UserService {
 
     //通过主键查询type信息
     TType selectTypeById(int Id);
+
+    //重置密码
+    int updataUserPwd(int userId);
 }
