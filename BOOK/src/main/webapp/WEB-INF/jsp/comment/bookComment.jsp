@@ -23,32 +23,27 @@
         </form>
     </div>--%>
     <div >
-        <%--   <div >
+           <div >
                <div style="text-align:center">
                    <table width="100%">
                        <tr>
-                           <td style="text-align: center">书名：${historyInfo.book.sm}</td>
+                           <td style="text-align: center">书名：${bookInfo.sm}</td>
                        </tr>
                    </table>
-                   <img src="https://gss0.baidu.com/94o3dSag_xI4khGko9WTAnF6hhy/zhidao/wh%3D600%2C800/sign=7e15cda791529822056631c5e7fa57f3/0b55b319ebc4b7457b9f4676cefc1e178a821542.jpg" width="150px" height="200px"/>
+                   <img src="${bookInfo.picture}" width="auto" height="200px"/>
                </div>
-               <div>
-                    <table width="100%" >
-                        <tr >
-                           <td style="text-align:center">
-                               作者：${historyInfo.book.zz}
-                           </td>
-                        </tr>
-                        <tr width="40%" >
-                            <td style="padding-left: 25% ;padding-right: 25% ;" >
-                                简介：${historyInfo.book.jj}
-                            </td>
-                        </tr>
-                    </table>
-               </div>
-           </div>--%>
-            <th width="10%" style="text-align: left" ><span> <font size="4">历史评论：</font></span></th>
-        <div style="padding-left:5% ; padding-right: 5% ;" class="parentid"id="parentid"  >
+           </div>
+
+            <div style="width: 100%">
+                <table width="100%">
+                    <tr>
+                        <td width="20%" style="text-align: left" ><span> <font size="4" f>历史评论：</font></span></td>
+                        <td width="80%" style="padding-left: 62%" ><span onclick="checkAll()" id="checkAll"  style="margin-top: 10px;float: left;cursor: pointer"><font face="黑体" >全选/反选</font></span></td>
+                    </tr>
+                </table>
+            </div>
+            <div  id="textComment" class="textComment"></div>
+        <div style="padding-left:5% ; padding-right: 5% ;" class="parentid3"id="parentid"  >
             <table class="form-table" width="100%" id="commentTable"  >
                 <c:forEach items="${commentInfos}" var="arr">
                 <div >
@@ -56,7 +51,9 @@
                         <td style="padding-left:10px ;" width="80%">${arr.xm} &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;${arr.pjrq}</td>
                         <c:choose>
                             <c:when test="${user.xm =='admin'}" >
-                                <td width="20%" style="padding-left: 5%" onclick="delComment('${arr.commentId}')"> 删除
+                                <td width="20%" style="padding-left: 5%" >
+                                    <span style="cursor: pointer" onclick="delComment('${arr.commentId}')">删除</span>
+                                    <input type="checkbox" name="ck" value="${arr.commentId}" style="margin-top: 3px;float: left" >
                                 </td>
                             </c:when>
                             <c:otherwise>
@@ -70,20 +67,35 @@
                                 <span >${arr.nr}</span>
                             </div>
                         </td>
-                        <td style="padding-left: 5%" onclick="xiangqing(this)">查看更多/收起</td>
+                        <td style="padding-left: 5%" onclick="xiangqing(this)">
+                            <span style="cursor: pointer">
+                                查看更多/收起
+                            </span>
+                        </td>
                     </tr>
 
                     </c:forEach>
                 </div>
             </table>
         </div>
-        <div style="height: 10px ;padding-left: 81%"><h3 onclick="allComment()" >查看全部/收起</h3></div>
+        <div style="height: 10px ;padding-left: 75%">
+            <table>
+                <tr>
+                    <td onclick="allComment()" style="cursor: pointer">查看全部/收起</td>&nbsp;
+                    <td style="cursor: pointer" onclick="deleteAll()"id="deleteAll">批量删除</td>
+                </tr>
+            </table>
+        </div>
 
     </div>
 </div>
 
 </body>
 <script type="text/javascript">
+    requirejs(['jquery' ], function (jqeury){
+        var num = (document.getElementById('commentTable').getElementsByTagName('tr').length)/2 ;
+        controllerline(num);
+    });
     function delComment(id) {
         if (confirm("确定删除该评论？")){
             $.ajax({
@@ -95,6 +107,9 @@
                         alert("删除失败");
                     }else {
                         $("#commentTable").load(location.href+" #commentTable");
+                        var num = (document.getElementById('commentTable').getElementsByTagName('tr').length)/2 ;
+                            num=num-1;
+                        controllerline(num);
                     }
                 }
             });
@@ -113,14 +128,100 @@
     }
     function allComment() {
         var divEle= document.getElementById('parentid');
-
-        if(divEle.className=="parentid"){
-            divEle.className='parentid1'
-        }else {
+        var num = (document.getElementById('commentTable').getElementsByTagName('tr').length)/2 ;
+        if(num<=3){
+            alert("无更多评论！");
+            return;
+        }
+        if(divEle.className=="parentid3"){
             divEle.className='parentid'
+        }
+        else if(divEle.className=="parentid2"){
+            divEle.className='parentid'
+        }else if(divEle.className=="parentid1"){
+            divEle.className='parentid'
+        }
+        else if(divEle.className=="parentid"){
+            if(num<3){
+                divEle.className='parentid'
+            }else {
+                divEle.className='parentid3'
+            }
         }
     }
 
+    function controllerline(num) {
+        var divEle= document.getElementById('parentid');
+        var divText = document.getElementById('textComment');
+        if(num<3){
+            divEle.className='parentid'
+        }
+        else if(num>3){
+            divEle.className='parentid3';
+        }
+        if(num==0){
+            divText.className='parentid0';
+            divText.innerHTML="<html><span ><font size='3' face='微软雅黑'>暂无评论哦，来做第一个评论的人吧！          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; --来自书评小精灵</font></span></html>";
+        }else {
+            divText.className="textComment";
+            divText.innerHTML=null;
+        }
+    }
+
+    function deleteAll() {
+        var check=document.getElementsByName("ck");
+        var ck = [];
+        for(var i=0;i<check.length;i++){
+            var a=check[i];
+            if(a.checked==true){
+                ck.push(check[i].value);
+            }
+        }
+        if(ck==null||ck==""){
+            alert("请选择你要删除的评论！");
+            return;
+        }
+        if(ck.length!=0){
+            $.ajax({
+                traditional: true,
+                data : {
+                    check:ck,
+                    i:1
+                },
+                url:"/delAllCommentByid",
+                success:function (data) {
+                    if(data==0){
+                        alert("删除失败！");
+                    }else {
+                        alert("删除成功！");
+                        for(var i=0;i<ck.length;i++){
+                            $("tr").remove("#tr_"+ck[i]);
+                            $("#commentTable").load(location.href+" #commentTable");
+                            var num = (document.getElementById('commentTable').getElementsByTagName('tr').length)/2 ;
+                            num=num-1;
+                            controllerline(num);
+                        }
+                    }
+                }
+            });
+        }
+    }
+
+    function checkAll(){
+        var ck=document.getElementsByName("ck");
+        if(ck.length==0||ck.length==""){
+            alert("暂无评论信息");
+            return;
+        }
+        for(var i=0;i<ck.length;i++){
+            var c=ck[i];
+            if(c.checked==true){
+                c.checked=false;
+            }else {
+                c.checked=true;
+            }
+        }
+    }
 
 </script>
 </html>

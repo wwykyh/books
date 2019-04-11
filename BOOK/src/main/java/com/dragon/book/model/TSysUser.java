@@ -23,7 +23,7 @@ public class TSysUser {
 
     private Integer kjtscs;
 
-    private Integer cs;
+    private Integer kjsc;
 
     private String bookId;
 
@@ -117,12 +117,12 @@ public class TSysUser {
         this.kjtscs = kjtscs;
     }
 
-    public Integer getCs() {
-        return cs;
+    public Integer getKjsc() {
+        return kjsc;
     }
 
-    public void setCs(Integer cs) {
-        this.cs = cs;
+    public void setKjsc(Integer kjsc) {
+        this.kjsc = kjsc;
     }
 
     public String getBookId() {

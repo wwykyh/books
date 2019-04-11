@@ -78,10 +78,10 @@
                     isAllowHide: false,
                     render: function (row){
                         if (row.id != undefined && row.id != null && row.id != ""){
-                            var html = '<a href="javascript:void(0);" onclick="onBookInfo(\'' + row.id + '\')">查看详情</a>&nbsp;&nbsp;' ;
+                            var html = '<a href="javascript:void(0);" onclick="onBookInfo(' + row.id + ')">查看详情</a>&nbsp;&nbsp;' ;
                             //html = html + '<a href="javascript:void(0);" onclick="onBookEdit(' + row.id + ')">库存管理</a>&nbsp;&nbsp;';
-                            html = html + '<a href="javascript:void(0);" onclick="onBookDel(\'' + row.id + '\')">出库</a>&nbsp;&nbsp';
-                            html = html + '<a href="javascript:void(0);" onclick="onCommentManager(\'' + row.isbn+ '\')">评论管理</a>&nbsp;&nbsp;';
+                            html = html + '<a href="javascript:void(0);" onclick="onBookDel(' + row.id + ')">出库</a>&nbsp;&nbsp';
+                            html = html + '<a href="javascript:void(0);" onclick="onCommentManager(' + row.id+ ')">评论管理</a>&nbsp;&nbsp;';
                             return html;
                         }else return "" ;
                     }
@@ -121,8 +121,8 @@
         //alert("详情" + id) ;
         art.dialog.open('book_info?id='+id, {
             title: '图书详情',
-            width: 1200,
-            height: 675,
+            width: 1000,
+            height: 820,
             //ok: true,
            // okVal: "打印",
             cancel: true,
@@ -132,8 +132,8 @@
     function onCommentManager(id) {
         art.dialog.open('getBookComment?id='+id, {
             title: '评论详情',
-            width: 850,
-            height: 575
+            width: 900,
+            height: 700,
         });
     }
 </script>

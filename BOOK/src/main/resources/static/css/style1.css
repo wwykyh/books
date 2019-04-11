@@ -566,23 +566,60 @@ div.pagination span.disabled {
     height: auto;
     overflow: hidden;
 }
-.parentid{
+.parentid3{
     overflow-x:hidden;
     height: 385px;
     overflow-y:hidden;
 }
-.parentid1{
+.parentid{
     overflow-x:hidden;
     height:auto;
     overflow-y:hidden;
+}
+.parentid1{
+    overflow-x:hidden;
+    height: 130px;
+    overflow-y:hidden;
+}
+.parentid2{
+    overflow-x:hidden;
+    height:260px;
+    overflow-y:hidden;
+}
+.parentid0{
+    overflow-x:hidden;
+    height:50px;
+    width:900px;
+    overflow-y:hidden;
+    background: #EFEFEF;
+    line-height:50px;
+    text-align: center;
 }
 .divtable{
     overflow-x:hidden;
-    height: 260px;
+    height: auto;
     overflow-y:hidden;
 }
+
+.divtable0{
+    overflow-x:hidden;
+    height:50px;
+    width:800px;
+    overflow-y:hidden;
+    background: #EFEFEF;
+    line-height:50px;
+    text-align: center;
+ }
 .divtable1{
     overflow-x:hidden;
-    height:auto;
+    height:130px;
     overflow-y:hidden;
+}
+.divtable2{
+    overflow-x:hidden;
+    height:260px;
+    overflow-y:hidden;
+}
+.textComment{
+    height:0px;
 }

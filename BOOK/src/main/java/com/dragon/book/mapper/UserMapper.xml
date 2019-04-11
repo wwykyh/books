@@ -13,7 +13,7 @@
     <result column="ishmd" property="ishmd" jdbcType="INTEGER" />
     <result column="isbn" property="isbn" jdbcType="VARCHAR" />
     <result column="kjtscs" property="kjtscs" jdbcType="INTEGER" />
-    <result column="cs" property="cs" jdbcType="INTEGER" />
+    <result column="kjsc" property="kjsc" jdbcType="INTEGER" />
   </resultMap>
   <resultMap id="PcInfoResult" type="com.dragon.book.pojo.PcInfo">
     <id column="id" property="id"/>
@@ -73,7 +73,7 @@
     <result column="s_id" property="sId" jdbcType="VARCHAR" />
   </resultMap>
   <sql id="Base_Column_List" >
-    user_id, xm, bm, pwd, lxfs, email, dz, isadmin, ishmd, isbn, kjtscs, cs
+    user_id, xm, bm, pwd, lxfs, email, dz, isadmin, ishmd, isbn, kjtscs, kjsc
   </sql>
   <!--通过主键修改用户-->
   <update id="updataUser" parameterType="com.dragon.book.model.TSysUser" >
@@ -89,7 +89,7 @@
       isbn = #{isbn,jdbcType=VARCHAR},
       grsm=#{grsm,jdbcType=VARCHAR},
       kjtscs = #{kjtscs,jdbcType=INTEGER},
-      cs = #{cs,jdbcType=INTEGER}
+      kjsc = #{kjsc,jdbcType=INTEGER}
     where user_id = #{userId,jdbcType=INTEGER}
 </update>
 <!--删除-->

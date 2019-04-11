@@ -10,8 +10,6 @@ public interface TSysUserMapper {
 
     int deleteByExample(TSysUserExample example);
 
-    int deleteByPrimaryKey(Integer userId);
-
     int insert(TSysUser record);
 
     int insertSelective(TSysUser record);
@@ -20,17 +18,20 @@ public interface TSysUserMapper {
 
     List<TSysUser> selectByExample(TSysUserExample example);
 
-    TSysUser selectByPrimaryKey(Integer userId);
-
     int updateByExampleSelective(@Param("record") TSysUser record, @Param("example") TSysUserExample example);
 
     int updateByExampleWithBLOBs(@Param("record") TSysUser record, @Param("example") TSysUserExample example);
 
     int updateByExample(@Param("record") TSysUser record, @Param("example") TSysUserExample example);
+    
+    TSysUser selectByPrimaryKey(Integer userId);
+
+    int deleteByPrimaryKey(Integer userId);
 
     int updateByPrimaryKeySelective(TSysUser record);
 
     int updateByPrimaryKeyWithBLOBs(TSysUser record);
 
     int updateByPrimaryKey(TSysUser record);
+    
 }

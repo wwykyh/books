@@ -74,7 +74,10 @@
                 }, {
                     display: '作者',
                     name: 'book.zz'
-                },  {
+                }, {
+                    display:'图书类型',
+                    name:'lxmc'
+                },{
                     display: '借阅用户',
                     name: 'user.xm'
                 }, {
@@ -146,8 +149,8 @@
     function commentInfo(id){
         art.dialog.open('commentInfo?id='+id, {
             title: '评价',
-            width: 850,
-            height: 550,
+            width: 900,
+            height: 700,
             id:'commentInfo_window'
         });
     }

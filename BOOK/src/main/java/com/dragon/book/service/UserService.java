@@ -2,6 +2,7 @@ package com.dragon.book.service;
 
 import com.dragon.book.model.TCompensate;
 import com.dragon.book.model.TSysUser;
+import com.dragon.book.model.TSystemConfig;
 import com.dragon.book.model.TType;
 import com.dragon.book.pojo.BlackList;
 import com.dragon.book.pojo.PcInfo;
@@ -88,6 +89,8 @@ public interface UserService {
     PcInfo selectPcById(int pcId);
 
     boolean updataByPc(TCompensate tCompensate);
+
+    TSystemConfig getConfic();
 
     Integer getBlCounts(Map<String, Object> searchParams);
     //从黑名单移除用户
