@@ -55,4 +55,24 @@
         now()>jhghrq
     </select>
 
+    <select id="findAllOvertimeBorrow" resultType="com.dragon.book.model.TBorrow">
+        select
+        s_id as sId,
+        user_id as userId
+        from
+        t_borrow
+        where
+        datediff(jhghrq,now())=-1
+		and
+        jyzt = 0
+    </select>
+
+    <insert id="addOvertimeNews" parameterType="com.dragon.book.model.TBookNews">
+        insert into
+        t_book_news
+        (user_id,book_isbn,news_name,news_date,news_type)
+        values
+        (${userId},#{isbn},"超时",#{date},2)
+    </insert>
+
 </mapper>

@@ -14,4 +14,10 @@ public interface IOvertimePaymentService {
      */
     public List<TBorrow> findOvertimeBorrow(int uid);
 
+    /**
+     * 添加超时信息
+     */
+    public void addOvertimeNews();
+
+
 }
