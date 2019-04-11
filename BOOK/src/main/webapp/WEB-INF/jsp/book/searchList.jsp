@@ -240,11 +240,11 @@
                                                    onclick="sub()"></form>
 </div>
 <div style="margin-left: 30px;margin-top: 40px; height: 30%;width: 100%"><p style="text-align: left; font-size: 20px;">热门图书</p>
-
+<c:forEach items="${borrow}" var="p">
     <div class="new_prod_box">
 
         <div style="height:60%;width: 100%">
-            <a href="javascript:void(0);" onclick="onBookInfo('${p.tStore.id}')"><img src="${p.picture}"
+            <a href="javascript:void(0);" onclick="onBookInfo('${p.sId}')"><img src="${p.book.picture}"
                                                                                       alt="" title=""
                                                                                       class="thumb"
                                                                                       border="0"
@@ -252,7 +252,7 @@
         </div>
         <div style="width: auto;height: 20%">
             <a href="javascript:void(0);"
-               onclick="onBookInfo('${p.tStore.id}')"><strong>${p.sm}</strong></a></div>
+               onclick="onBookInfo('${p.sId}')"><strong>${p.sm}</strong></a></div>
     </div>
 
 </div>

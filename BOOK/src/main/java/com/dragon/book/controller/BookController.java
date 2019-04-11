@@ -115,7 +115,8 @@ public class BookController {
     public String search(Model model) {
         List<Borrow> hotBooks = homeService.getHotBooks();
         List<Borrow> borrows = hotBooks.subList(0, 3);
-        System.out.println(borrows.size());
+      //  System.out.println(borrows.size());
+        model.addAttribute("borrow",borrows);
         return "book/searchList";
     }
 
