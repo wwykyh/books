@@ -2,7 +2,7 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="com.dragon.book.mapper.CheckMapper">
 
-    <!--借阅审核-->
+    <!--借阅确认-->
     <select id="getTBorrowCheckList" resultType="com.dragon.book.pojo.TBorrowInfo" parameterType="map">
         SELECT n.*,b.type_id typeId,b.tsdl,p.lxmc FROM
         (SELECT ts.isbn,e.* FROM
@@ -53,7 +53,7 @@
         AND n.id = #{id,jdbcType=INTEGER}
     </select>
 
-   <!--归还审核-->
+   <!--归还确认-->
 
     <select id="getTBorrowRevertListCounts" resultType="com.dragon.book.pojo.TBorrowInfo" parameterType="map">
         SELECT count(*) FROM

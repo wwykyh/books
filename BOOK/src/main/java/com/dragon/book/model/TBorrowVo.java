@@ -2,7 +2,7 @@ package com.dragon.book.model;
 
 /**
  *
- * 用来返回数据到图书归还审核界面(bookRevertCheck.jsp)，提供图书损耗程度选项
+ * 用来返回数据到图书归还确认界面(bookRevertCheck.jsp)，提供图书损耗程度选项
  */
 public class TBorrowVo extends TBorrow {
     private Integer sh;         // 图书损耗程度

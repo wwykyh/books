@@ -7,7 +7,7 @@ import java.util.List;
 import java.util.Map;
 
 /**
- * 借阅审核接口
+ * 借阅确认接口
  */
 public interface BorrowCheckService {
 
@@ -17,6 +17,6 @@ public interface BorrowCheckService {
 
     Integer getCounts(Map filter);
 
-    // 审核更新
+    // 确认更新
     boolean updateTBorrow(TBorrow tBorrow);
 }

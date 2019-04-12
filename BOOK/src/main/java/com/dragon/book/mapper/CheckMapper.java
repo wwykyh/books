@@ -8,14 +8,14 @@ import java.util.Map;
 
 public interface CheckMapper {
 
-    // 借阅审核
+    // 借阅确认
     List<TBorrowInfo> getTBorrowCheckList(Map filter);
 
     TBorrowInfo getSingleCheckTBorrow(Integer id);
 
     Integer getCounts(Map filter);
 
-    // 归还审核
+    // 归还确认
     List<TBorrowInfo> getTBorrowRevertList(Map filter);
 
     Integer getTBorrowRevertListCounts(Map filter);
