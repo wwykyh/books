@@ -10,7 +10,7 @@
 <c:set var="path" value="${pageContext.request.contextPath}"/>
 <html>
 <head>
-    <title>借阅审核</title>
+    <title>借阅确认</title>
     <link rel="stylesheet" type="text/css" href="../css/common/iconfont/iconfont.css"/>
     <link rel="stylesheet" type="text/css" href="../css/common/layout.css"/>
     <link rel="stylesheet" type="text/css" href="../dvpt/css/libs.css"/>
@@ -121,13 +121,13 @@
             data: {_method: "PUT", id: idPk, status: 1, bz: bz},
             success: function (msg) {
                 if (msg) {
-                    alert("审核完成");
+                    alert("确认成功");
                     // 调用父级窗口的方法，重新刷新界面
                     parent.borrowInfo();
                     // 调用框架的close事件
                     parent.art.dialog({id: 'borrowCheckChild'}).close();
                 } else {
-                    alert("审核出错");
+                    alert("确认出错");
                 }
             }
         });

@@ -80,7 +80,7 @@
                 url:"/overtimePayment/returnbook?isbn="+isbn+"&userId="+userid+"",
                 success:function(data){
                     if (data=="success"){
-                        alert("归还申请成功，请等待管理员审核");
+                        alert("归还申请成功，请等待管理员确认");
                         // $("tr").remove("#tr_"+isbn);
                     } else {
                         alert(data) ;
