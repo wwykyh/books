@@ -39,7 +39,7 @@
         <div class="feat_prod_box_details" style="height:30%;width: auto">
 
             <div class="prod_img" style="height: 80%;width: 30%;margin-left:100px"><a href="details.html" ><img
-                    src="${bookInfo.picture}" alt="" title="" style="height:150px;width: 200px"
+                    src="${bookInfo.picture}" alt="" title="" style="height:187.5px;width: 125px"
                     border="0"/></a>
                 <br/><br/>
                 <a href="${bookInfo.picture}" rel="lightbox"><img src="images/zoom.gif" alt="" title="" border="0"/></a>

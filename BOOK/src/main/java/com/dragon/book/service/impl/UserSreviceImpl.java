@@ -8,6 +8,7 @@ import com.dragon.book.pojo.BlackList;
 import java.text.ParseException;
 import java.util.Date;
 import java.text.SimpleDateFormat;
+
 import com.dragon.book.pojo.PcInfo;
 import com.dragon.book.pojo.QueryVo;
 import com.dragon.book.service.UserService;
@@ -110,7 +111,7 @@ public class UserSreviceImpl implements UserService {
 
         int i = userMapper.updateByPrimaryKeySelective(user);
 
-        return i>0 ? true:false;
+        return i > 0 ? true : false;
     }
 
     public TSysUserMapper getUserMapper() {
@@ -124,11 +125,11 @@ public class UserSreviceImpl implements UserService {
     //加入的按页查找信息
     @Override
     public PageBean getAllUserByPage(PageBean pageBean, QueryVo vo) {
-        if (vo.getDim() == null || vo.getDim() ==""){
+        if (vo.getDim() == null || vo.getDim() == "") {
             vo.setDim(null);
         }
         List<TSysUser> users = userMapperWn.selectAllUserByPage(vo);
-        int Total =userMapperWn.selectByDimTotal(vo);
+        int Total = userMapperWn.selectByDimTotal(vo);
         pageBean.setTotal(Total);
         pageBean.setRows(users);
         return pageBean;
@@ -139,7 +140,7 @@ public class UserSreviceImpl implements UserService {
     public boolean deleteBlackUser(int userId) {
         int i = userMapperWn.deleteBlackUser(userId);
         int j = blackListMapper.updataById(userId);
-        return j>0 ? true:false;
+        return j > 0 ? true : false;
     }
 
     @Override
@@ -156,13 +157,13 @@ public class UserSreviceImpl implements UserService {
     @Override
     public boolean deleteUser(int userId) {
         int i = userMapperWn.deleteUser(userId);
-        return i>0 ? true:false;
+        return i > 0 ? true : false;
     }
 
     @Override
     public boolean updataUser(TSysUser user) {
         int row = userMapperWn.updataUser(user);
-        return row > 0 ? true : false ;
+        return row > 0 ? true : false;
     }
 
     @Override
@@ -202,9 +203,9 @@ public class UserSreviceImpl implements UserService {
 
     @Override
     public PageBean gestAllPcInfoByPage(PageBean pageBean) {
-        PageHelper.startPage(pageBean.getPage(),pageBean.getPagesize()) ;
-        List<PcInfo> list =  userMapperWn.selectAllPcInfoByPage(pageBean);
-        PageInfo<PcInfo> info = new PageInfo<>(list) ;
+        PageHelper.startPage(pageBean.getPage(), pageBean.getPagesize());
+        List<PcInfo> list = userMapperWn.selectAllPcInfoByPage(pageBean);
+        PageInfo<PcInfo> info = new PageInfo<>(list);
         pageBean.setTotal(userMapperWn.getPcCounts());
         pageBean.setRows(info.getList());
         return pageBean;
@@ -213,7 +214,7 @@ public class UserSreviceImpl implements UserService {
     @Override
     public boolean deletePcById(int pcId) {
         int status = userMapperWn.deletePcById(pcId);
-        return status>0?true:false;
+        return status > 0 ? true : false;
     }
 
     @Override
@@ -225,7 +226,7 @@ public class UserSreviceImpl implements UserService {
     @Override
     public boolean updataByPc(TCompensate tCompensate) {
         int i = userMapperWn.updatePc(tCompensate);
-        return i>0?true:false;
+        return i > 0 ? true : false;
     }
 
     @Override
@@ -236,7 +237,7 @@ public class UserSreviceImpl implements UserService {
     @Override
     public boolean deleteBlUser(int userId) {
         int i = blackListMapper.updataById(userId);
-        return i>0?true:false;
+        return i > 0 ? true : false;
     }
 
     @Scheduled(cron = "0 0 0 * * ?")
@@ -245,23 +246,35 @@ public class UserSreviceImpl implements UserService {
         Date sdate = null;
         Date now = new Date();
         long penTime;
-       List<TBlackList>blackLists =  blackListMapper.selectBlackList();
+        List<TBlackList> blackLists = blackListMapper.selectBlackList();
 
-       for (int i=0;i<blackLists.size();i++){
-           String startTime = blackLists.get(i).getStartTime();
-           try {
-               sdate = df.parse(startTime);
-           } catch (ParseException e) {
-               e.printStackTrace();
-           }
-           penTime = (long)blackLists.get(i).getPenTime();
-           long betweendays = (long) ((now.getTime() - sdate.getTime())
-                   / (1000 * 60 * 60 * 24) + 0.5);
-           if (betweendays>penTime){
-               blackListMapper.updataById(blackLists.get(i).getUserId());
-               blackListMapper.removeUserBlackList(blackLists.get(i).getUserId());
-           }
-       }
+        for (int i = 0; i < blackLists.size(); i++) {
+            String startTime = blackLists.get(i).getStartTime();
+            try {
+                sdate = df.parse(startTime);
+            } catch (ParseException e) {
+                e.printStackTrace();
+            }
+            penTime = (long) blackLists.get(i).getPenTime();
+            long betweendays = (long) ((now.getTime() - sdate.getTime())
+                    / (1000 * 60 * 60 * 24) + 0.5);
+            if (betweendays > penTime) {
+                blackListMapper.updataById(blackLists.get(i).getUserId());
+                blackListMapper.removeUserBlackList(blackLists.get(i).getUserId());
+            }
+        }
+    }
+
+    @Override
+    public int managerDoReg(TSysUser tSysUser) {
+        TSystemConfig confic = getConfic();
+
+        tSysUser.setKjtscs(confic.getBookNum());
+        tSysUser.setKjsc(confic.getBookTime());
+        tSysUser.setIshmd(0);
+        tSysUser.setIsadmin(0);
+        System.out.println(tSysUser.toString());
+        return userMapper.insert(tSysUser);
     }
 
     @Override

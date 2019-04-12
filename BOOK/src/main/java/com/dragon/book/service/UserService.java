@@ -103,4 +103,6 @@ public interface UserService {
 
     //重置密码
     int updataUserPwd(int userId);
+
+    public int managerDoReg(TSysUser tSysUser);
 }

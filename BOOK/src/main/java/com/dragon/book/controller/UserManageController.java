@@ -15,10 +15,7 @@ import com.dragon.book.util.PageBean;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
 import org.springside.modules.web.Servlets;
 
 import javax.servlet.http.HttpServletRequest;
@@ -202,5 +199,14 @@ public class UserManageController {
     public String userEvaluation(){
         boolean status =false;
         return status == true ? "0" : "1" ;
+    }
+
+    @PostMapping("doReg")
+    @ResponseBody
+    public String doReg(TSysUser tSysUser){
+        System.out.println(tSysUser.toString());
+        int i = userService.managerDoReg(tSysUser);
+
+        return i>0?"1":"0";
     }
 }

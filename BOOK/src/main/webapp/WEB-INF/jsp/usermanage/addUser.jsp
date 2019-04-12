@@ -20,54 +20,34 @@
     <script type="text/javascript" src="js/extend.js"></script>
     <!-- 共有的控件 -->
     <script data-main="main" src="dvpt/require.min.2.1.11.js"></script>
-    <script type="text/javascript">
-        requirejs(['main'], function (main) {
-            requirejs(['jquery', 'jquery.extend', 'basic-global'], function (jquery, extend, basic) {
-                // 计算高度
-                window.setInterval(function () {
-                    frameHeight();
-                }, 200);
 
-                $(function () {
-                    // 加载导航事件
-                    var sidebar = $("#sidebar").children(".sidebar-list");
-                    sidebar.sidebarEffect();
-                    $.menuLink(sidebar);
-
-                    // 菜单扩展
-                    $("#main-tab").menuLinkExtend({
-                        contain: ".main-tab ul", // 盒容器
-                        childItem: "li", // 列表容器
-                        dataItem: "a", // 数据容器
-                        closeItem: ".tab-close", // 关闭标签
-                        menuClick: "#sidebar .sidebar-list dd a", // 菜单点击
-                        rightMenu: ['closeThis', 'closeOthers', 'closeAll'], // 部署不同的功能及排序
-                    });
-                });
-            });
-        });
-    </script>
 </head>
-<form action="doreg" method="post" onsubmit="return checkcpwd()"
-      >
-<table class="form-table">
-    <tr>
-        <th width="15%"><span class="ft-need">*</span>姓名：</th>
-        <td width="35%"><input type="text" class="input-text" name="username" /></td>
-        <th width="15%">邮箱</th>
-        <td><input type="text" class="input-text" name="email"/></td>
-    </tr>
-    <tr>
-        <th>密码</th>
-        <td><input type="text" class="input-text" name="pwd"/></td>
-        <th>确认密码</th>
-        <td><input type="text" class="input-text" name="cpwd"/></td>
-    </tr>
-    <tr>
+<form id="form">
+    <table class="form-table">
+        <tr>
+            <th width="15%"><span class="ft-need">*</span>姓名</th>
+            <td width="35%"><input type="text" class="input-text" name="xm" id="username" data-validate="required"
+                                   onblur='checkName()'/></td>
+            <th width="15%">部门</th>
+            <td width="35%"><input type="text" class="input-text" name="bm" data-validate="required"/></td>
+        </tr>
+        <tr>
 
-        <th width="20%"><input type="submit" class="btn btn-default" value="提交"></th>
-    </tr>
-</table>
+            <th width="15%">邮箱</th>
+            <td width="35%"><input type="text" class="input-text" name="email" data-validate="required"/></td>
+            <th width="15%">联系方式</th>
+            <td width="35%"><input type="text" class="input-text" name="lxfs" data-validate="required"/></td>
+        </tr>
+        <tr>
+            <th width="15%"><span class="ft-need">*</span>密码</th>
+            <td width="35%"><input type="text" class="input-text" id="pwd" name="pwd" value="123456"/></td>
+        </tr>
+        <tr>
+
+            <th width="20%"><input type="button" class="btn btn-default" value="提交" onclick="doreg()">
+                <input type="button" class="btn" value="重置" onclick="reset()"></th>
+        </tr>
+    </table>
 </form>
 </body>
 <script>
@@ -77,11 +57,11 @@
      */
     function checkName() {
         $.ajax({
-            type : 'GET',
-            url : "checkName",
-            data :{"username":$("#username").val()},
-            success : function(data) {
-                if(data=='0'){
+            type: 'GET',
+            url: "checkName",
+            data: {"username": $("#username").val()},// 你的form id
+            success: function (data) {
+                if (data == '0') {
                     alert("用户名已被注册");
                     $("#username").val("");
                 }
@@ -89,16 +69,43 @@
         })
     }
 
-        //验证是否重复密码
-        function checkcpwd() {
-            var pwd = document.getElementById("pwd").value;
-            var cpwd = document.getElementById("cpwd").value;
-            if (pwd == cpwd) {
-                return true;
-            } else {
-                alert("密码不一致");
-                return false;
-            }
+
+    function doreg() {
+
+        var username = $("#username").val();
+        var pwd = $("#pwd").val();
+        //alert(username.length==0 );
+        if (username.length == 0 || pwd.length == 0) {
+            alert("用户名密码为空")
+        } else {
+            $.ajax({
+                type: 'post',
+                url: "usermanage/doReg",
+                data: $('#form').serialize(),
+                success: function (data) {
+                    if (data == '1') {
+                        alert("添加成功");
+
+                    } else {
+                        alert("添加失败")
+                    }
+                }
+            })
         }
+
+
+    }
+
+    //验证是否重复密码
+    function checkcpwd() {
+        var pwd = document.getElementById("pwd").value;
+        var cpwd = document.getElementById("cpwd").value;
+        if (pwd == cpwd) {
+            return true;
+        } else {
+            alert("密码不一致");
+            return false;
+        }
+    }
 </script>
 </html>

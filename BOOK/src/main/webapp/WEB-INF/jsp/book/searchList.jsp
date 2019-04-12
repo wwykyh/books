@@ -252,7 +252,7 @@
                              alt="" title=""
                              class="thumb"
                              border="0"
-                             style="height: 100px;width: 50%"/></a>
+                             style="height: 150px;width: 100px"/></a>
                 </div>
                 <div style="width: auto;height: 20%">
                     <a href="javascript:void(0);"
