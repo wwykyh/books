@@ -10,12 +10,12 @@
 <c:set var="path" value="${pageContext.request.contextPath}"/>
 <html>
 <head>
-    <title>归还确认</title>
+    <title>续借审核</title>
 </head>
 <body>
 <div class="panel">
     <div class="panel-header">
-        <h2>归还确认</h2>
+        <h2>续借审核</h2>
         <a href="javascript:;" class="arrow up"></a>
     </div>
 
@@ -120,7 +120,7 @@
                 isAllowHide: false,
                 render: function (row) {
                     var id = row.id;
-                    if (row.jyzt != null && row.jyzt !== "" && row.jyzt === 2) {
+                    if (row.jyzt != null && row.jyzt !== "" && row.jyzt === 1) {
                         var html = '<div style="margin-top: 10px;">' +
                             '<input name="check" type="button" class="layer-btn" id="check" value="同意" onclick="borCheck(' + id + ')"/>' +
                             '</div>';
@@ -130,7 +130,7 @@
             }
             ],
             method: 'get',
-            url: '${path}/revertCheck/',
+            url: '${path}/renewCheck/',
             dataType: 'server',
             dataAction: 'server',
             pageSize: 5,
@@ -154,13 +154,13 @@
     function borCheck(id) {
         requirejs(['jquery', 'artdialog'], function ($) {
             $(function () {
-                art.dialog.open('${path}/revertCheck/' + id + '', {
-                    title: '归还确认',
+                art.dialog.open('${path}/renewCheck/' + id + '', {
+                    title: '续借审核',
                     width: 950,
                     height: 500,
                     ok: true,
                     okVal: "关闭",
-                    id: "borrowRevertChild"
+                    id: "borrowRenewChild"
                 });
             });
         });

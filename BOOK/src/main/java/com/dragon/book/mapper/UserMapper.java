@@ -54,4 +54,7 @@ public interface UserMapper {
 
     //重置密码
     int updataUserPwd(int userId);
+
+
+    TSysUser selectByName(String name);
 }

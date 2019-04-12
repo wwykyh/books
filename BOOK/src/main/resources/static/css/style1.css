@@ -1,6 +1,5 @@
 body
 {
-
     font-family:Arial, Helvetica, sans-serif;
     padding:0;
     font-size:12px;
@@ -31,7 +30,7 @@ p.details_cart{
 }
 p.more_details{
     padding:25px 20px 0px 20px;
-    font-size:11px;
+    font-size:15px;
 
 }
 #wrap{
@@ -568,7 +567,7 @@ div.pagination span.disabled {
 }
 .parentid3{
     overflow-x:hidden;
-    height: 385px;
+    height: 380px;
     overflow-y:hidden;
 }
 .parentid{
@@ -578,12 +577,12 @@ div.pagination span.disabled {
 }
 .parentid1{
     overflow-x:hidden;
-    height: 130px;
+    height: 125px;
     overflow-y:hidden;
 }
 .parentid2{
     overflow-x:hidden;
-    height:260px;
+    height:250px;
     overflow-y:hidden;
 }
 .parentid0{
@@ -612,12 +611,12 @@ div.pagination span.disabled {
  }
 .divtable1{
     overflow-x:hidden;
-    height:130px;
+    height:125px;
     overflow-y:hidden;
 }
 .divtable2{
     overflow-x:hidden;
-    height:260px;
+    height:250px;
     overflow-y:hidden;
 }
 .textComment{

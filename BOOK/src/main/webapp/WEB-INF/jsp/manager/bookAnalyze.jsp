@@ -79,18 +79,13 @@ function fuzhi(myChart){
             console.log(msg)
         }
     });
-    myChart.hideLoading();
 }
-requirejs(['jquery', 'echarts'], function (jqeury, echarts) {
-	var myChart = echarts.init(document.getElementById("testMain"));
-    myChart.showLoading();
-	fuzhi(myChart);
-});
 
-        requirejs(['jquery', 'echarts'], function (jqeury, echarts) {
-            var myChart = echarts.init(document.getElementById("testMain"));
-            fuzhi(myChart);
-        });
+
+	requirejs(['jquery', 'echarts'], function (jqeury, echarts) {
+		var myChart = echarts.init(document.getElementById("testMain"));
+		fuzhi(myChart);
+	});
 
 </script>
 

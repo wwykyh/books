@@ -113,9 +113,9 @@ public class BookController {
     @GetMapping("/search")
     public String search(Model model) {
         List<Borrow> hotBooks = homeService.getHotBooks();
-        List<Borrow> borrows = hotBooks.subList(0, 3);
-      //  System.out.println(borrows.size());
-        model.addAttribute("borrow",borrows);
+        List<Borrow> borrows = hotBooks.subList(0, 4);
+        System.out.println(borrows.toString());
+        model.addAttribute("borrow", borrows);
         return "book/searchList";
     }
 

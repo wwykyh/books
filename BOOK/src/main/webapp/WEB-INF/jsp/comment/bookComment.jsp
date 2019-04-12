@@ -119,12 +119,14 @@
     function xiangqing(obj) {
         var trObj = obj.previousElementSibling;
         var divObj = trObj.children[0];
+        var num = (document.getElementById('commentTable').getElementsByTagName('tr').length)/2 ;
         if(divObj.className=="innerCtn"){
             divObj.className="innerCtn1"
         }else {
             divObj.className="innerCtn"
         }
         //divObj.style.height = 'auto';
+
     }
     function allComment() {
         var divEle= document.getElementById('parentid');
@@ -153,7 +155,7 @@
     function controllerline(num) {
         var divEle= document.getElementById('parentid');
         var divText = document.getElementById('textComment');
-        if(num<3){
+        if(num<=3){
             divEle.className='parentid'
         }
         else if(num>3){
@@ -190,18 +192,19 @@
                 },
                 url:"/delAllCommentByid",
                 success:function (data) {
+                    var num = (document.getElementById('commentTable').getElementsByTagName('tr').length)/2 ;
                     if(data==0){
                         alert("删除失败！");
                     }else {
                         alert("删除成功！");
                         for(var i=0;i<ck.length;i++){
                             $("tr").remove("#tr_"+ck[i]);
-                            $("#commentTable").load(location.href+" #commentTable");
-                            var num = (document.getElementById('commentTable').getElementsByTagName('tr').length)/2 ;
-                            num=num-1;
-                            controllerline(num);
+                            num=num-i;
                         }
                     }
+                    $("#commentTable").load(location.href+" #commentTable");
+                    console.log(num);
+                    controllerline(num);
                 }
             });
         }
