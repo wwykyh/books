@@ -2892,3 +2892,350 @@ java.lang.StringIndexOutOfBoundsException: String index out of range: 1
 14:44:34.675 logback-mybatis [http-nio-9090-exec-7] INFO  c.d.b.interceptor.LoginInterceptor - >>>: http://127.0.0.1:9090/home/css/bootstrap-material-design.css.map
 14:44:37.406 logback-mybatis [http-nio-9090-exec-1] INFO  c.d.b.interceptor.LoginInterceptor - username: 王炜焱
 14:44:37.406 logback-mybatis [http-nio-9090-exec-1] INFO  c.d.b.interceptor.LoginInterceptor - >>>: http://127.0.0.1:9090/book_info
+14:45:57.388 logback-mybatis [restartedMain] INFO  com.dragon.book.BookApplication - Starting BookApplication on CN-20181122UGYX with PID 3288 (F:\bookMy\BOOK\target\classes started by Administrator in F:\bookMy\BOOK)
+14:45:57.393 logback-mybatis [restartedMain] INFO  com.dragon.book.BookApplication - No active profile set, falling back to default profiles: default
+14:45:57.624 logback-mybatis [restartedMain] INFO  o.s.b.d.e.DevToolsPropertyDefaultsPostProcessor - Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+14:45:57.624 logback-mybatis [restartedMain] INFO  o.s.b.d.e.DevToolsPropertyDefaultsPostProcessor - For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+14:45:58.384 logback-mybatis [restartedMain] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Multiple Spring Data modules found, entering strict repository configuration mode!
+14:45:58.386 logback-mybatis [restartedMain] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data repositories in DEFAULT mode.
+14:45:58.430 logback-mybatis [restartedMain] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 30ms. Found 0 repository interfaces.
+14:45:58.718 logback-mybatis [restartedMain] INFO  o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker - Bean 'org.springframework.ws.config.annotation.DelegatingWsConfiguration' of type [org.springframework.ws.config.annotation.DelegatingWsConfiguration$$EnhancerBySpringCGLIB$$89c8b22e] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+14:45:58.740 logback-mybatis [restartedMain] INFO  o.s.w.s.a.s.AnnotationActionEndpointMapping - Supporting [WS-Addressing August 2004, WS-Addressing 1.0]
+14:45:58.755 logback-mybatis [restartedMain] INFO  o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker - Bean 'org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration' of type [org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration$$EnhancerBySpringCGLIB$$e530ed2f] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+14:45:59.100 logback-mybatis [restartedMain] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port(s): 9090 (http)
+14:45:59.112 logback-mybatis [restartedMain] INFO  o.a.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-9090"]
+14:45:59.120 logback-mybatis [restartedMain] INFO  o.a.catalina.core.StandardService - Starting service [Tomcat]
+14:45:59.120 logback-mybatis [restartedMain] INFO  o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/9.0.14]
+14:45:59.125 logback-mybatis [restartedMain] INFO  o.a.c.core.AprLifecycleListener - The APR based Apache Tomcat Native library which allows optimal performance in production environments was not found on the java.library.path: [C:\Program Files\Java\jdk1.8.0_131\bin;C:\Windows\Sun\Java\bin;C:\Windows\system32;C:\Windows;C:\ProgramData\Oracle\Java\javapath;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\; C:\Program Files\Java\jdk1.8.0_131\bin;C:\Program Files\Java\jdk1.8.0_131\jre\bin;C:\Program Files\TortoiseSVN\bin;C:\Program Files\MySQL\MySQL Server 5.6\bin;C:\Program Files (x86)\Rational\common;C:\Program Files\TortoiseGit\bin;C:\Program Files\Git\cmd;.]
+14:45:59.450 logback-mybatis [restartedMain] INFO  org.apache.jasper.servlet.TldScanner - At least one JAR was scanned for TLDs yet contained no TLDs. Enable debug logging for this logger for a complete list of JARs that were scanned but no TLDs were found in them. Skipping unneeded JARs during scanning can improve startup time and JSP compilation time.
+14:45:59.456 logback-mybatis [restartedMain] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+14:45:59.456 logback-mybatis [restartedMain] INFO  o.s.web.context.ContextLoader - Root WebApplicationContext: initialization completed in 1832 ms
+14:46:00.380 logback-mybatis [restartedMain] INFO  o.s.s.c.ThreadPoolTaskExecutor - Initializing ExecutorService 'applicationTaskExecutor'
+14:46:00.498 logback-mybatis [restartedMain] INFO  o.s.b.a.w.s.WelcomePageHandlerMapping - Adding welcome page template: index
+14:46:00.756 logback-mybatis [restartedMain] WARN  o.s.b.a.f.FreeMarkerAutoConfiguration - Cannot find template location(s): [classpath:/BOOK/src/main/resources/template] (please add some templates, check your FreeMarker configuration, or set spring.freemarker.checkTemplateLocation=false)
+14:46:00.796 logback-mybatis [restartedMain] INFO  o.s.s.c.ThreadPoolTaskScheduler - Initializing ExecutorService 'taskScheduler'
+14:46:01.157 logback-mybatis [restartedMain] INFO  o.s.b.d.a.OptionalLiveReloadServer - LiveReload server is running on port 35729
+14:46:01.191 logback-mybatis [restartedMain] INFO  o.a.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-9090"]
+14:46:01.220 logback-mybatis [restartedMain] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat started on port(s): 9090 (http) with context path ''
+14:46:01.222 logback-mybatis [restartedMain] INFO  com.dragon.book.BookApplication - Started BookApplication in 4.351 seconds (JVM running for 5.243)
+14:46:06.995 logback-mybatis [http-nio-9090-exec-1] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring DispatcherServlet 'dispatcherServlet'
+14:46:06.996 logback-mybatis [http-nio-9090-exec-1] INFO  o.s.web.servlet.DispatcherServlet - Initializing Servlet 'dispatcherServlet'
+14:46:07.004 logback-mybatis [http-nio-9090-exec-1] INFO  o.s.web.servlet.DispatcherServlet - Completed initialization in 8 ms
+14:46:07.091 logback-mybatis [http-nio-9090-exec-1] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting...
+14:46:07.178 logback-mybatis [http-nio-9090-exec-1] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Start completed.
+14:46:07.777 logback-mybatis [http-nio-9090-exec-3] INFO  c.d.b.interceptor.LoginInterceptor - username: 王炜焱
+14:46:07.777 logback-mybatis [http-nio-9090-exec-3] INFO  c.d.b.interceptor.LoginInterceptor - >>>: http://127.0.0.1:9090/Home
+14:46:11.179 logback-mybatis [http-nio-9090-exec-5] INFO  c.d.b.interceptor.LoginInterceptor - username: 王炜焱
+14:46:11.179 logback-mybatis [http-nio-9090-exec-5] INFO  c.d.b.interceptor.LoginInterceptor - >>>: http://127.0.0.1:9090/book_info
+14:46:14.401 logback-mybatis [http-nio-9090-exec-1] INFO  c.d.b.interceptor.LoginInterceptor - username: 王炜焱
+14:46:14.401 logback-mybatis [http-nio-9090-exec-1] INFO  c.d.b.interceptor.LoginInterceptor - >>>: http://127.0.0.1:9090/book_info
+14:46:17.691 logback-mybatis [http-nio-9090-exec-8] INFO  c.d.b.interceptor.LoginInterceptor - username: 王炜焱
+14:46:17.691 logback-mybatis [http-nio-9090-exec-8] INFO  c.d.b.interceptor.LoginInterceptor - >>>: http://127.0.0.1:9090/book_info
+14:46:20.419 logback-mybatis [http-nio-9090-exec-4] INFO  c.d.b.interceptor.LoginInterceptor - username: 王炜焱
+14:46:20.419 logback-mybatis [http-nio-9090-exec-4] INFO  c.d.b.interceptor.LoginInterceptor - >>>: http://127.0.0.1:9090/book_info
+14:46:33.659 logback-mybatis [http-nio-9090-exec-7] INFO  c.d.b.interceptor.LoginInterceptor - username: 王炜焱
+14:46:33.660 logback-mybatis [http-nio-9090-exec-7] INFO  c.d.b.interceptor.LoginInterceptor - >>>: http://127.0.0.1:9090/logout
+14:46:39.313 logback-mybatis [http-nio-9090-exec-4] INFO  c.d.b.interceptor.LoginInterceptor - username: admin
+14:46:39.313 logback-mybatis [http-nio-9090-exec-4] INFO  c.d.b.interceptor.LoginInterceptor - >>>: http://127.0.0.1:9090/Home
+14:46:42.247 logback-mybatis [http-nio-9090-exec-3] INFO  c.d.b.interceptor.LoginInterceptor - username: admin
+14:46:42.247 logback-mybatis [http-nio-9090-exec-3] INFO  c.d.b.interceptor.LoginInterceptor - >>>: http://127.0.0.1:9090/addUser
+14:46:44.118 logback-mybatis [http-nio-9090-exec-7] INFO  c.d.b.interceptor.LoginInterceptor - username: admin
+14:46:44.118 logback-mybatis [http-nio-9090-exec-7] INFO  c.d.b.interceptor.LoginInterceptor - >>>: http://127.0.0.1:9090/usermanage/show_blacklist
+14:46:44.195 logback-mybatis [http-nio-9090-exec-10] INFO  c.d.b.interceptor.LoginInterceptor - username: admin
+14:46:44.196 logback-mybatis [http-nio-9090-exec-10] INFO  c.d.b.interceptor.LoginInterceptor - >>>: http://127.0.0.1:9090/usermanage/show_blacklist
+14:46:44.259 logback-mybatis [http-nio-9090-exec-9] INFO  c.d.b.interceptor.LoginInterceptor - username: admin
+14:46:44.259 logback-mybatis [http-nio-9090-exec-9] INFO  c.d.b.interceptor.LoginInterceptor - >>>: http://127.0.0.1:9090/usermanage/get_blacklist_data
+14:46:44.480 logback-mybatis [http-nio-9090-exec-1] INFO  c.d.b.interceptor.LoginInterceptor - username: admin
+14:46:44.480 logback-mybatis [http-nio-9090-exec-1] INFO  c.d.b.interceptor.LoginInterceptor - >>>: http://127.0.0.1:9090/usermanage/get_blacklist_data
+14:46:44.485 logback-mybatis [http-nio-9090-exec-2] INFO  c.d.b.interceptor.LoginInterceptor - username: admin
+14:46:44.486 logback-mybatis [http-nio-9090-exec-2] INFO  c.d.b.interceptor.LoginInterceptor - >>>: http://127.0.0.1:9090/usermanage/get_blacklist_data
+14:46:44.491 logback-mybatis [http-nio-9090-exec-4] INFO  c.d.b.interceptor.LoginInterceptor - username: admin
+14:46:44.491 logback-mybatis [http-nio-9090-exec-4] INFO  c.d.b.interceptor.LoginInterceptor - >>>: http://127.0.0.1:9090/usermanage/get_blacklist_data
+14:46:45.385 logback-mybatis [http-nio-9090-exec-3] INFO  c.d.b.interceptor.LoginInterceptor - username: admin
+14:46:45.385 logback-mybatis [http-nio-9090-exec-3] INFO  c.d.b.interceptor.LoginInterceptor - >>>: http://127.0.0.1:9090/usermanage/showallpc
+14:46:45.460 logback-mybatis [http-nio-9090-exec-6] INFO  c.d.b.interceptor.LoginInterceptor - username: admin
+14:46:45.460 logback-mybatis [http-nio-9090-exec-6] INFO  c.d.b.interceptor.LoginInterceptor - >>>: http://127.0.0.1:9090/usermanage/showallpc
+14:46:45.596 logback-mybatis [http-nio-9090-exec-9] INFO  c.d.b.interceptor.LoginInterceptor - username: admin
+14:46:45.597 logback-mybatis [http-nio-9090-exec-9] INFO  c.d.b.interceptor.LoginInterceptor - >>>: http://127.0.0.1:9090/usermanage/getpcdata
+14:46:45.635 logback-mybatis [http-nio-9090-exec-1] INFO  c.d.b.interceptor.LoginInterceptor - username: admin
+14:46:45.635 logback-mybatis [http-nio-9090-exec-1] INFO  c.d.b.interceptor.LoginInterceptor - >>>: http://127.0.0.1:9090/usermanage/getpcdata
+14:46:45.642 logback-mybatis [http-nio-9090-exec-2] INFO  c.d.b.interceptor.LoginInterceptor - username: admin
+14:46:45.643 logback-mybatis [http-nio-9090-exec-2] INFO  c.d.b.interceptor.LoginInterceptor - >>>: http://127.0.0.1:9090/usermanage/getpcdata
+14:46:45.649 logback-mybatis [http-nio-9090-exec-4] INFO  c.d.b.interceptor.LoginInterceptor - username: admin
+14:46:45.650 logback-mybatis [http-nio-9090-exec-4] INFO  c.d.b.interceptor.LoginInterceptor - >>>: http://127.0.0.1:9090/usermanage/getpcdata
+14:46:45.771 logback-mybatis [http-nio-9090-exec-3] INFO  c.d.b.interceptor.LoginInterceptor - username: admin
+14:46:45.772 logback-mybatis [http-nio-9090-exec-3] INFO  c.d.b.interceptor.LoginInterceptor - >>>: http://127.0.0.1:9090/usermanage/showuser
+14:46:45.854 logback-mybatis [http-nio-9090-exec-6] INFO  c.d.b.interceptor.LoginInterceptor - username: admin
+14:46:45.854 logback-mybatis [http-nio-9090-exec-6] INFO  c.d.b.interceptor.LoginInterceptor - >>>: http://127.0.0.1:9090/usermanage/showuser
+14:46:45.880 logback-mybatis [http-nio-9090-exec-5] INFO  c.d.b.interceptor.LoginInterceptor - username: admin
+14:46:45.880 logback-mybatis [http-nio-9090-exec-5] INFO  c.d.b.interceptor.LoginInterceptor - >>>: http://127.0.0.1:9090/usermanage/usergetdata
+14:46:45.895 logback-mybatis [http-nio-9090-exec-8] INFO  c.d.b.interceptor.LoginInterceptor - username: admin
+14:46:45.896 logback-mybatis [http-nio-9090-exec-8] INFO  c.d.b.interceptor.LoginInterceptor - >>>: http://127.0.0.1:9090/usermanage/usergetdata
+14:46:45.906 logback-mybatis [http-nio-9090-exec-7] INFO  c.d.b.interceptor.LoginInterceptor - username: admin
+14:46:45.906 logback-mybatis [http-nio-9090-exec-7] INFO  c.d.b.interceptor.LoginInterceptor - >>>: http://127.0.0.1:9090/usermanage/usergetdata
+14:46:45.913 logback-mybatis [http-nio-9090-exec-10] INFO  c.d.b.interceptor.LoginInterceptor - username: admin
+14:46:45.913 logback-mybatis [http-nio-9090-exec-10] INFO  c.d.b.interceptor.LoginInterceptor - >>>: http://127.0.0.1:9090/usermanage/usergetdata
+14:46:46.649 logback-mybatis [http-nio-9090-exec-9] INFO  c.d.b.interceptor.LoginInterceptor - username: admin
+14:46:46.649 logback-mybatis [http-nio-9090-exec-9] INFO  c.d.b.interceptor.LoginInterceptor - >>>: http://127.0.0.1:9090/addUser
+14:46:46.654 logback-mybatis [http-nio-9090-exec-1] INFO  c.d.b.interceptor.LoginInterceptor - username: admin
+14:46:46.654 logback-mybatis [http-nio-9090-exec-1] INFO  c.d.b.interceptor.LoginInterceptor - >>>: http://127.0.0.1:9090/addUser
+14:46:55.830 logback-mybatis [http-nio-9090-exec-7] INFO  c.d.b.interceptor.LoginInterceptor - username: admin
+14:46:55.830 logback-mybatis [http-nio-9090-exec-7] INFO  c.d.b.interceptor.LoginInterceptor - >>>: http://127.0.0.1:9090/logout
+14:48:56.035 logback-mybatis [restartedMain] INFO  com.dragon.book.BookApplication - Starting BookApplication on CN-20181122UGYX with PID 10208 (F:\bookMy\BOOK\target\classes started by Administrator in F:\bookMy\BOOK)
+14:48:56.037 logback-mybatis [restartedMain] INFO  com.dragon.book.BookApplication - No active profile set, falling back to default profiles: default
+14:48:56.172 logback-mybatis [restartedMain] INFO  o.s.b.d.e.DevToolsPropertyDefaultsPostProcessor - Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+14:48:56.172 logback-mybatis [restartedMain] INFO  o.s.b.d.e.DevToolsPropertyDefaultsPostProcessor - For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+14:48:56.902 logback-mybatis [restartedMain] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Multiple Spring Data modules found, entering strict repository configuration mode!
+14:48:56.904 logback-mybatis [restartedMain] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data repositories in DEFAULT mode.
+14:48:56.953 logback-mybatis [restartedMain] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 39ms. Found 0 repository interfaces.
+14:48:57.220 logback-mybatis [restartedMain] INFO  o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker - Bean 'org.springframework.ws.config.annotation.DelegatingWsConfiguration' of type [org.springframework.ws.config.annotation.DelegatingWsConfiguration$$EnhancerBySpringCGLIB$$67c958f8] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+14:48:57.240 logback-mybatis [restartedMain] INFO  o.s.w.s.a.s.AnnotationActionEndpointMapping - Supporting [WS-Addressing August 2004, WS-Addressing 1.0]
+14:48:57.253 logback-mybatis [restartedMain] INFO  o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker - Bean 'org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration' of type [org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration$$EnhancerBySpringCGLIB$$c33193f9] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+14:48:57.580 logback-mybatis [restartedMain] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port(s): 9090 (http)
+14:48:57.591 logback-mybatis [restartedMain] INFO  o.a.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-9090"]
+14:48:57.599 logback-mybatis [restartedMain] INFO  o.a.catalina.core.StandardService - Starting service [Tomcat]
+14:48:57.600 logback-mybatis [restartedMain] INFO  o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/9.0.14]
+14:48:57.605 logback-mybatis [restartedMain] INFO  o.a.c.core.AprLifecycleListener - The APR based Apache Tomcat Native library which allows optimal performance in production environments was not found on the java.library.path: [C:\Program Files\Java\jdk1.8.0_131\bin;C:\Windows\Sun\Java\bin;C:\Windows\system32;C:\Windows;C:\ProgramData\Oracle\Java\javapath;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\; C:\Program Files\Java\jdk1.8.0_131\bin;C:\Program Files\Java\jdk1.8.0_131\jre\bin;C:\Program Files\TortoiseSVN\bin;C:\Program Files\MySQL\MySQL Server 5.6\bin;C:\Program Files (x86)\Rational\common;C:\Program Files\TortoiseGit\bin;C:\Program Files\Git\cmd;.]
+14:48:57.871 logback-mybatis [restartedMain] INFO  org.apache.jasper.servlet.TldScanner - At least one JAR was scanned for TLDs yet contained no TLDs. Enable debug logging for this logger for a complete list of JARs that were scanned but no TLDs were found in them. Skipping unneeded JARs during scanning can improve startup time and JSP compilation time.
+14:48:57.876 logback-mybatis [restartedMain] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+14:48:57.877 logback-mybatis [restartedMain] INFO  o.s.web.context.ContextLoader - Root WebApplicationContext: initialization completed in 1705 ms
+14:48:58.893 logback-mybatis [restartedMain] INFO  o.s.s.c.ThreadPoolTaskExecutor - Initializing ExecutorService 'applicationTaskExecutor'
+14:48:59.011 logback-mybatis [restartedMain] INFO  o.s.b.a.w.s.WelcomePageHandlerMapping - Adding welcome page template: index
+14:48:59.271 logback-mybatis [restartedMain] WARN  o.s.b.a.f.FreeMarkerAutoConfiguration - Cannot find template location(s): [classpath:/BOOK/src/main/resources/template] (please add some templates, check your FreeMarker configuration, or set spring.freemarker.checkTemplateLocation=false)
+14:48:59.306 logback-mybatis [restartedMain] INFO  o.s.s.c.ThreadPoolTaskScheduler - Initializing ExecutorService 'taskScheduler'
+14:48:59.653 logback-mybatis [restartedMain] INFO  o.s.b.d.a.OptionalLiveReloadServer - LiveReload server is running on port 35729
+14:48:59.685 logback-mybatis [restartedMain] INFO  o.a.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-9090"]
+14:48:59.713 logback-mybatis [restartedMain] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat started on port(s): 9090 (http) with context path ''
+14:48:59.715 logback-mybatis [restartedMain] INFO  com.dragon.book.BookApplication - Started BookApplication in 4.192 seconds (JVM running for 5.072)
+14:49:11.204 logback-mybatis [http-nio-9090-exec-1] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring DispatcherServlet 'dispatcherServlet'
+14:49:11.205 logback-mybatis [http-nio-9090-exec-1] INFO  o.s.web.servlet.DispatcherServlet - Initializing Servlet 'dispatcherServlet'
+14:49:11.211 logback-mybatis [http-nio-9090-exec-1] INFO  o.s.web.servlet.DispatcherServlet - Completed initialization in 6 ms
+14:49:11.287 logback-mybatis [http-nio-9090-exec-1] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting...
+14:49:11.367 logback-mybatis [http-nio-9090-exec-1] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Start completed.
+14:49:11.884 logback-mybatis [http-nio-9090-exec-2] INFO  c.d.b.interceptor.LoginInterceptor - username: 王炜焱
+14:49:11.884 logback-mybatis [http-nio-9090-exec-2] INFO  c.d.b.interceptor.LoginInterceptor - >>>: http://127.0.0.1:9090/Home
+14:49:22.041 logback-mybatis [http-nio-9090-exec-5] INFO  c.d.b.interceptor.LoginInterceptor - username: 王炜焱
+14:49:22.042 logback-mybatis [http-nio-9090-exec-5] INFO  c.d.b.interceptor.LoginInterceptor - >>>: http://127.0.0.1:9090/book_info
+14:50:03.113 logback-mybatis [http-nio-9090-exec-1] INFO  c.d.b.interceptor.LoginInterceptor - username: 王炜焱
+14:50:03.113 logback-mybatis [http-nio-9090-exec-1] INFO  c.d.b.interceptor.LoginInterceptor - >>>: http://127.0.0.1:9090/logout
+14:50:11.060 logback-mybatis [http-nio-9090-exec-3] INFO  c.d.b.interceptor.LoginInterceptor - username: 王楠
+14:50:11.061 logback-mybatis [http-nio-9090-exec-3] INFO  c.d.b.interceptor.LoginInterceptor - >>>: http://127.0.0.1:9090/Home
+14:50:12.720 logback-mybatis [http-nio-9090-exec-5] INFO  c.d.b.interceptor.LoginInterceptor - username: 王楠
+14:50:12.720 logback-mybatis [http-nio-9090-exec-5] INFO  c.d.b.interceptor.LoginInterceptor - >>>: http://127.0.0.1:9090/search
+15:02:05.100 logback-mybatis [http-nio-9090-exec-10] INFO  c.d.b.interceptor.LoginInterceptor - username: 王楠
+15:02:05.100 logback-mybatis [http-nio-9090-exec-10] INFO  c.d.b.interceptor.LoginInterceptor - >>>: http://127.0.0.1:9090/search
+15:02:06.623 logback-mybatis [http-nio-9090-exec-2] INFO  c.d.b.interceptor.LoginInterceptor - username: 王楠
+15:02:06.623 logback-mybatis [http-nio-9090-exec-2] INFO  c.d.b.interceptor.LoginInterceptor - >>>: http://127.0.0.1:9090/Home
+15:02:07.053 logback-mybatis [http-nio-9090-exec-4] INFO  c.d.b.interceptor.LoginInterceptor - username: 王楠
+15:02:07.053 logback-mybatis [http-nio-9090-exec-4] INFO  c.d.b.interceptor.LoginInterceptor - >>>: http://127.0.0.1:9090/search
+15:02:07.963 logback-mybatis [http-nio-9090-exec-3] INFO  c.d.b.interceptor.LoginInterceptor - username: 王楠
+15:02:07.963 logback-mybatis [http-nio-9090-exec-3] INFO  c.d.b.interceptor.LoginInterceptor - >>>: http://127.0.0.1:9090/Home
+15:02:09.403 logback-mybatis [http-nio-9090-exec-5] INFO  c.d.b.interceptor.LoginInterceptor - username: 王楠
+15:02:09.403 logback-mybatis [http-nio-9090-exec-5] INFO  c.d.b.interceptor.LoginInterceptor - >>>: http://127.0.0.1:9090/search
+15:02:17.906 logback-mybatis [http-nio-9090-exec-8] INFO  c.d.b.interceptor.LoginInterceptor - username: 王楠
+15:02:17.906 logback-mybatis [http-nio-9090-exec-8] INFO  c.d.b.interceptor.LoginInterceptor - >>>: http://127.0.0.1:9090/Home
+15:02:28.082 logback-mybatis [http-nio-9090-exec-10] INFO  c.d.b.interceptor.LoginInterceptor - username: 王楠
+15:02:28.082 logback-mybatis [http-nio-9090-exec-10] INFO  c.d.b.interceptor.LoginInterceptor - >>>: http://127.0.0.1:9090/book_info
+15:02:35.259 logback-mybatis [http-nio-9090-exec-6] INFO  c.d.b.interceptor.LoginInterceptor - username: 王楠
+15:02:35.259 logback-mybatis [http-nio-9090-exec-6] INFO  c.d.b.interceptor.LoginInterceptor - >>>: http://127.0.0.1:9090/search
+15:02:36.293 logback-mybatis [http-nio-9090-exec-8] INFO  c.d.b.interceptor.LoginInterceptor - username: 王楠
+15:02:36.293 logback-mybatis [http-nio-9090-exec-8] INFO  c.d.b.interceptor.LoginInterceptor - >>>: http://127.0.0.1:9090/page
+15:02:36.461 logback-mybatis [http-nio-9090-exec-10] INFO  c.d.b.interceptor.LoginInterceptor - username: 王楠
+15:02:36.461 logback-mybatis [http-nio-9090-exec-10] INFO  c.d.b.interceptor.LoginInterceptor - >>>: http://127.0.0.1:9090/home/img/350ccd85fdb171f172f6d2fa1e150173.jpeg
+15:02:36.462 logback-mybatis [http-nio-9090-exec-1] INFO  c.d.b.interceptor.LoginInterceptor - username: 王楠
+15:02:36.462 logback-mybatis [http-nio-9090-exec-1] INFO  c.d.b.interceptor.LoginInterceptor - >>>: http://127.0.0.1:9090/home/img/5a514b62f0cceae57c5b394a74685126.jpeg
+15:02:36.470 logback-mybatis [http-nio-9090-exec-4] INFO  c.d.b.interceptor.LoginInterceptor - username: 王楠
+15:02:36.471 logback-mybatis [http-nio-9090-exec-4] INFO  c.d.b.interceptor.LoginInterceptor - >>>: http://127.0.0.1:9090/home/img/shaxianzhuan.jpeg
+15:02:36.472 logback-mybatis [http-nio-9090-exec-2] INFO  c.d.b.interceptor.LoginInterceptor - username: 王楠
+15:02:36.472 logback-mybatis [http-nio-9090-exec-2] INFO  c.d.b.interceptor.LoginInterceptor - >>>: http://127.0.0.1:9090/home/img/46acd3321be25eeca9c99152e065e7aa.jpeg
+15:02:38.937 logback-mybatis [http-nio-9090-exec-3] INFO  c.d.b.interceptor.LoginInterceptor - username: 王楠
+15:02:38.937 logback-mybatis [http-nio-9090-exec-3] INFO  c.d.b.interceptor.LoginInterceptor - >>>: http://127.0.0.1:9090/page
+15:02:52.300 logback-mybatis [http-nio-9090-exec-5] INFO  c.d.b.interceptor.LoginInterceptor - username: 王楠
+15:02:52.300 logback-mybatis [http-nio-9090-exec-5] INFO  c.d.b.interceptor.LoginInterceptor - >>>: http://127.0.0.1:9090/book_info
+15:02:53.749 logback-mybatis [http-nio-9090-exec-1] INFO  c.d.b.interceptor.LoginInterceptor - username: 王楠
+15:02:53.749 logback-mybatis [http-nio-9090-exec-1] INFO  c.d.b.interceptor.LoginInterceptor - >>>: http://127.0.0.1:9090/doBorrow
+15:02:58.506 logback-mybatis [http-nio-9090-exec-4] INFO  c.d.b.interceptor.LoginInterceptor - username: 王楠
+15:02:58.506 logback-mybatis [http-nio-9090-exec-4] INFO  c.d.b.interceptor.LoginInterceptor - >>>: http://127.0.0.1:9090/logout
+15:03:07.723 logback-mybatis [http-nio-9090-exec-7] INFO  c.d.b.interceptor.LoginInterceptor - username: 小马哥
+15:03:07.723 logback-mybatis [http-nio-9090-exec-7] INFO  c.d.b.interceptor.LoginInterceptor - >>>: http://127.0.0.1:9090/Home
+15:03:07.762 logback-mybatis [http-nio-9090-exec-8] INFO  c.d.b.interceptor.LoginInterceptor - username: 小马哥
+15:03:07.763 logback-mybatis [http-nio-9090-exec-8] INFO  c.d.b.interceptor.LoginInterceptor - >>>: http://127.0.0.1:9090/home/img/second.png
+15:03:11.304 logback-mybatis [http-nio-9090-exec-9] INFO  c.d.b.interceptor.LoginInterceptor - username: 小马哥
+15:03:11.304 logback-mybatis [http-nio-9090-exec-9] INFO  c.d.b.interceptor.LoginInterceptor - >>>: http://127.0.0.1:9090/search
+15:03:12.944 logback-mybatis [http-nio-9090-exec-1] INFO  c.d.b.interceptor.LoginInterceptor - username: 小马哥
+15:03:12.944 logback-mybatis [http-nio-9090-exec-1] INFO  c.d.b.interceptor.LoginInterceptor - >>>: http://127.0.0.1:9090/page
+15:03:15.522 logback-mybatis [http-nio-9090-exec-4] INFO  c.d.b.interceptor.LoginInterceptor - username: 小马哥
+15:03:15.522 logback-mybatis [http-nio-9090-exec-4] INFO  c.d.b.interceptor.LoginInterceptor - >>>: http://127.0.0.1:9090/book_info
+15:03:16.872 logback-mybatis [http-nio-9090-exec-8] INFO  c.d.b.interceptor.LoginInterceptor - username: 小马哥
+15:03:16.872 logback-mybatis [http-nio-9090-exec-8] INFO  c.d.b.interceptor.LoginInterceptor - >>>: http://127.0.0.1:9090/doBorrow
+15:03:25.406 logback-mybatis [http-nio-9090-exec-9] INFO  c.d.b.interceptor.LoginInterceptor - username: 小马哥
+15:03:25.406 logback-mybatis [http-nio-9090-exec-9] INFO  c.d.b.interceptor.LoginInterceptor - >>>: http://127.0.0.1:9090/Home
+15:03:25.442 logback-mybatis [http-nio-9090-exec-10] INFO  c.d.b.interceptor.LoginInterceptor - username: 小马哥
+15:03:25.442 logback-mybatis [http-nio-9090-exec-10] INFO  c.d.b.interceptor.LoginInterceptor - >>>: http://127.0.0.1:9090/home/img/third.png
+15:03:36.601 logback-mybatis [http-nio-9090-exec-2] INFO  c.d.b.interceptor.LoginInterceptor - username: 小马哥
+15:03:36.601 logback-mybatis [http-nio-9090-exec-2] INFO  c.d.b.interceptor.LoginInterceptor - >>>: http://127.0.0.1:9090/logout
+15:03:48.553 logback-mybatis [http-nio-9090-exec-6] INFO  c.d.b.interceptor.LoginInterceptor - username: 白金兴
+15:03:48.553 logback-mybatis [http-nio-9090-exec-6] INFO  c.d.b.interceptor.LoginInterceptor - >>>: http://127.0.0.1:9090/Home
+15:03:52.345 logback-mybatis [http-nio-9090-exec-7] INFO  c.d.b.interceptor.LoginInterceptor - username: 白金兴
+15:03:52.345 logback-mybatis [http-nio-9090-exec-7] INFO  c.d.b.interceptor.LoginInterceptor - >>>: http://127.0.0.1:9090/search
+15:03:53.415 logback-mybatis [http-nio-9090-exec-10] INFO  c.d.b.interceptor.LoginInterceptor - username: 白金兴
+15:03:53.415 logback-mybatis [http-nio-9090-exec-10] INFO  c.d.b.interceptor.LoginInterceptor - >>>: http://127.0.0.1:9090/page
+15:03:55.769 logback-mybatis [http-nio-9090-exec-1] INFO  c.d.b.interceptor.LoginInterceptor - username: 白金兴
+15:03:55.769 logback-mybatis [http-nio-9090-exec-1] INFO  c.d.b.interceptor.LoginInterceptor - >>>: http://127.0.0.1:9090/book_info
+15:03:56.990 logback-mybatis [http-nio-9090-exec-7] INFO  c.d.b.interceptor.LoginInterceptor - username: 白金兴
+15:03:56.990 logback-mybatis [http-nio-9090-exec-7] INFO  c.d.b.interceptor.LoginInterceptor - >>>: http://127.0.0.1:9090/doBorrow
+15:04:01.350 logback-mybatis [http-nio-9090-exec-8] INFO  c.d.b.interceptor.LoginInterceptor - username: 白金兴
+15:04:01.350 logback-mybatis [http-nio-9090-exec-8] INFO  c.d.b.interceptor.LoginInterceptor - >>>: http://127.0.0.1:9090/logout
+15:04:18.586 logback-mybatis [http-nio-9090-exec-1] INFO  c.d.b.interceptor.LoginInterceptor - username: 刘雷
+15:04:18.586 logback-mybatis [http-nio-9090-exec-1] INFO  c.d.b.interceptor.LoginInterceptor - >>>: http://127.0.0.1:9090/Home
+15:04:22.480 logback-mybatis [http-nio-9090-exec-4] INFO  c.d.b.interceptor.LoginInterceptor - username: 刘雷
+15:04:22.480 logback-mybatis [http-nio-9090-exec-4] INFO  c.d.b.interceptor.LoginInterceptor - >>>: http://127.0.0.1:9090/search
+15:04:23.262 logback-mybatis [http-nio-9090-exec-2] INFO  c.d.b.interceptor.LoginInterceptor - username: 刘雷
+15:04:23.262 logback-mybatis [http-nio-9090-exec-2] INFO  c.d.b.interceptor.LoginInterceptor - >>>: http://127.0.0.1:9090/page
+15:04:26.383 logback-mybatis [http-nio-9090-exec-3] INFO  c.d.b.interceptor.LoginInterceptor - username: 刘雷
+15:04:26.383 logback-mybatis [http-nio-9090-exec-3] INFO  c.d.b.interceptor.LoginInterceptor - >>>: http://127.0.0.1:9090/book_info
+15:04:27.700 logback-mybatis [http-nio-9090-exec-1] INFO  c.d.b.interceptor.LoginInterceptor - username: 刘雷
+15:04:27.700 logback-mybatis [http-nio-9090-exec-1] INFO  c.d.b.interceptor.LoginInterceptor - >>>: http://127.0.0.1:9090/doBorrow
+15:04:33.424 logback-mybatis [http-nio-9090-exec-4] INFO  c.d.b.interceptor.LoginInterceptor - username: 刘雷
+15:04:33.424 logback-mybatis [http-nio-9090-exec-4] INFO  c.d.b.interceptor.LoginInterceptor - >>>: http://127.0.0.1:9090/logout
+15:04:44.736 logback-mybatis [http-nio-9090-exec-3] INFO  c.d.b.interceptor.LoginInterceptor - username: 凯哥
+15:04:44.736 logback-mybatis [http-nio-9090-exec-3] INFO  c.d.b.interceptor.LoginInterceptor - >>>: http://127.0.0.1:9090/Home
+15:04:46.004 logback-mybatis [http-nio-9090-exec-6] INFO  c.d.b.interceptor.LoginInterceptor - username: 凯哥
+15:04:46.004 logback-mybatis [http-nio-9090-exec-6] INFO  c.d.b.interceptor.LoginInterceptor - >>>: http://127.0.0.1:9090/search
+15:04:46.892 logback-mybatis [http-nio-9090-exec-7] INFO  c.d.b.interceptor.LoginInterceptor - username: 凯哥
+15:04:46.892 logback-mybatis [http-nio-9090-exec-7] INFO  c.d.b.interceptor.LoginInterceptor - >>>: http://127.0.0.1:9090/page
+15:04:49.576 logback-mybatis [http-nio-9090-exec-9] INFO  c.d.b.interceptor.LoginInterceptor - username: 凯哥
+15:04:49.576 logback-mybatis [http-nio-9090-exec-9] INFO  c.d.b.interceptor.LoginInterceptor - >>>: http://127.0.0.1:9090/page
+15:04:55.432 logback-mybatis [http-nio-9090-exec-10] INFO  c.d.b.interceptor.LoginInterceptor - username: 凯哥
+15:04:55.433 logback-mybatis [http-nio-9090-exec-10] INFO  c.d.b.interceptor.LoginInterceptor - >>>: http://127.0.0.1:9090/book_info
+15:04:56.418 logback-mybatis [http-nio-9090-exec-6] INFO  c.d.b.interceptor.LoginInterceptor - username: 凯哥
+15:04:56.418 logback-mybatis [http-nio-9090-exec-6] INFO  c.d.b.interceptor.LoginInterceptor - >>>: http://127.0.0.1:9090/doBorrow
+15:04:59.145 logback-mybatis [http-nio-9090-exec-8] INFO  c.d.b.interceptor.LoginInterceptor - username: 凯哥
+15:04:59.146 logback-mybatis [http-nio-9090-exec-8] INFO  c.d.b.interceptor.LoginInterceptor - >>>: http://127.0.0.1:9090/search
+15:05:16.250 logback-mybatis [http-nio-9090-exec-7] INFO  c.d.b.interceptor.LoginInterceptor - username: 凯哥
+15:05:16.251 logback-mybatis [http-nio-9090-exec-7] INFO  c.d.b.interceptor.LoginInterceptor - >>>: http://127.0.0.1:9090/logout
+15:05:21.959 logback-mybatis [http-nio-9090-exec-1] INFO  c.d.b.interceptor.LoginInterceptor - username: admin
+15:05:21.959 logback-mybatis [http-nio-9090-exec-1] INFO  c.d.b.interceptor.LoginInterceptor - >>>: http://127.0.0.1:9090/Home
+15:06:32.284 logback-mybatis [http-nio-9090-exec-2] INFO  c.d.b.interceptor.LoginInterceptor - username: admin
+15:06:32.284 logback-mybatis [http-nio-9090-exec-2] INFO  c.d.b.interceptor.LoginInterceptor - >>>: http://127.0.0.1:9090/borrowCheck/borrow
+15:06:32.490 logback-mybatis [http-nio-9090-exec-3] INFO  c.d.b.interceptor.LoginInterceptor - username: admin
+15:06:32.490 logback-mybatis [http-nio-9090-exec-3] INFO  c.d.b.interceptor.LoginInterceptor - >>>: http://127.0.0.1:9090/borrowCheck/
+15:06:34.312 logback-mybatis [http-nio-9090-exec-8] INFO  c.d.b.interceptor.LoginInterceptor - username: admin
+15:06:34.312 logback-mybatis [http-nio-9090-exec-8] INFO  c.d.b.interceptor.LoginInterceptor - >>>: http://127.0.0.1:9090/borrowCheck/2
+15:06:35.817 logback-mybatis [http-nio-9090-exec-7] INFO  c.d.b.interceptor.LoginInterceptor - username: admin
+15:06:35.817 logback-mybatis [http-nio-9090-exec-7] INFO  c.d.b.interceptor.LoginInterceptor - >>>: http://127.0.0.1:9090/borrowCheck/
+15:06:37.025 logback-mybatis [http-nio-9090-exec-9] INFO  c.d.b.interceptor.LoginInterceptor - username: admin
+15:06:37.025 logback-mybatis [http-nio-9090-exec-9] INFO  c.d.b.interceptor.LoginInterceptor - >>>: http://127.0.0.1:9090/borrowCheck/
+15:06:37.875 logback-mybatis [http-nio-9090-exec-10] INFO  c.d.b.interceptor.LoginInterceptor - username: admin
+15:06:37.875 logback-mybatis [http-nio-9090-exec-10] INFO  c.d.b.interceptor.LoginInterceptor - >>>: http://127.0.0.1:9090/borrowCheck/3
+15:06:39.372 logback-mybatis [http-nio-9090-exec-1] INFO  c.d.b.interceptor.LoginInterceptor - username: admin
+15:06:39.373 logback-mybatis [http-nio-9090-exec-1] INFO  c.d.b.interceptor.LoginInterceptor - >>>: http://127.0.0.1:9090/borrowCheck/
+15:06:40.333 logback-mybatis [http-nio-9090-exec-5] INFO  c.d.b.interceptor.LoginInterceptor - username: admin
+15:06:40.334 logback-mybatis [http-nio-9090-exec-5] INFO  c.d.b.interceptor.LoginInterceptor - >>>: http://127.0.0.1:9090/borrowCheck/
+15:06:41.549 logback-mybatis [http-nio-9090-exec-4] INFO  c.d.b.interceptor.LoginInterceptor - username: admin
+15:06:41.549 logback-mybatis [http-nio-9090-exec-4] INFO  c.d.b.interceptor.LoginInterceptor - >>>: http://127.0.0.1:9090/borrowCheck/4
+15:06:42.388 logback-mybatis [http-nio-9090-exec-2] INFO  c.d.b.interceptor.LoginInterceptor - username: admin
+15:06:42.388 logback-mybatis [http-nio-9090-exec-2] INFO  c.d.b.interceptor.LoginInterceptor - >>>: http://127.0.0.1:9090/borrowCheck/
+15:06:43.229 logback-mybatis [http-nio-9090-exec-3] INFO  c.d.b.interceptor.LoginInterceptor - username: admin
+15:06:43.229 logback-mybatis [http-nio-9090-exec-3] INFO  c.d.b.interceptor.LoginInterceptor - >>>: http://127.0.0.1:9090/borrowCheck/
+15:06:44.002 logback-mybatis [http-nio-9090-exec-6] INFO  c.d.b.interceptor.LoginInterceptor - username: admin
+15:06:44.002 logback-mybatis [http-nio-9090-exec-6] INFO  c.d.b.interceptor.LoginInterceptor - >>>: http://127.0.0.1:9090/borrowCheck/5
+15:06:44.968 logback-mybatis [http-nio-9090-exec-8] INFO  c.d.b.interceptor.LoginInterceptor - username: admin
+15:06:44.968 logback-mybatis [http-nio-9090-exec-8] INFO  c.d.b.interceptor.LoginInterceptor - >>>: http://127.0.0.1:9090/borrowCheck/
+15:06:46.041 logback-mybatis [http-nio-9090-exec-7] INFO  c.d.b.interceptor.LoginInterceptor - username: admin
+15:06:46.041 logback-mybatis [http-nio-9090-exec-7] INFO  c.d.b.interceptor.LoginInterceptor - >>>: http://127.0.0.1:9090/borrowCheck/
+15:06:47.137 logback-mybatis [http-nio-9090-exec-9] INFO  c.d.b.interceptor.LoginInterceptor - username: admin
+15:06:47.137 logback-mybatis [http-nio-9090-exec-9] INFO  c.d.b.interceptor.LoginInterceptor - >>>: http://127.0.0.1:9090/borrowCheck/6
+15:06:48.106 logback-mybatis [http-nio-9090-exec-10] INFO  c.d.b.interceptor.LoginInterceptor - username: admin
+15:06:48.106 logback-mybatis [http-nio-9090-exec-10] INFO  c.d.b.interceptor.LoginInterceptor - >>>: http://127.0.0.1:9090/borrowCheck/
+15:06:49.049 logback-mybatis [http-nio-9090-exec-1] INFO  c.d.b.interceptor.LoginInterceptor - username: admin
+15:06:49.049 logback-mybatis [http-nio-9090-exec-1] INFO  c.d.b.interceptor.LoginInterceptor - >>>: http://127.0.0.1:9090/borrowCheck/
+15:06:53.352 logback-mybatis [http-nio-9090-exec-5] INFO  c.d.b.interceptor.LoginInterceptor - username: admin
+15:06:53.352 logback-mybatis [http-nio-9090-exec-5] INFO  c.d.b.interceptor.LoginInterceptor - >>>: http://127.0.0.1:9090/revertCheck/revert
+15:06:53.471 logback-mybatis [http-nio-9090-exec-4] INFO  c.d.b.interceptor.LoginInterceptor - username: admin
+15:06:53.471 logback-mybatis [http-nio-9090-exec-4] INFO  c.d.b.interceptor.LoginInterceptor - >>>: http://127.0.0.1:9090/revertCheck/
+15:06:54.550 logback-mybatis [http-nio-9090-exec-2] INFO  c.d.b.interceptor.LoginInterceptor - username: admin
+15:06:54.550 logback-mybatis [http-nio-9090-exec-2] INFO  c.d.b.interceptor.LoginInterceptor - >>>: http://127.0.0.1:9090/borrowCheck/borrow
+15:06:54.595 logback-mybatis [http-nio-9090-exec-3] INFO  c.d.b.interceptor.LoginInterceptor - username: admin
+15:06:54.595 logback-mybatis [http-nio-9090-exec-3] INFO  c.d.b.interceptor.LoginInterceptor - >>>: http://127.0.0.1:9090/borrowCheck/
+15:06:59.673 logback-mybatis [http-nio-9090-exec-6] INFO  c.d.b.interceptor.LoginInterceptor - username: admin
+15:06:59.674 logback-mybatis [http-nio-9090-exec-6] INFO  c.d.b.interceptor.LoginInterceptor - >>>: http://127.0.0.1:9090/Home
+15:07:00.531 logback-mybatis [http-nio-9090-exec-8] INFO  c.d.b.interceptor.LoginInterceptor - username: admin
+15:07:00.531 logback-mybatis [http-nio-9090-exec-8] INFO  c.d.b.interceptor.LoginInterceptor - >>>: http://127.0.0.1:9090/revertCheck/revert
+15:07:00.570 logback-mybatis [http-nio-9090-exec-7] INFO  c.d.b.interceptor.LoginInterceptor - username: admin
+15:07:00.570 logback-mybatis [http-nio-9090-exec-7] INFO  c.d.b.interceptor.LoginInterceptor - >>>: http://127.0.0.1:9090/revertCheck/
+15:07:01.288 logback-mybatis [http-nio-9090-exec-9] INFO  c.d.b.interceptor.LoginInterceptor - username: admin
+15:07:01.289 logback-mybatis [http-nio-9090-exec-9] INFO  c.d.b.interceptor.LoginInterceptor - >>>: http://127.0.0.1:9090/Home
+15:09:00.549 logback-mybatis [http-nio-9090-exec-2] INFO  c.d.b.interceptor.LoginInterceptor - username: admin
+15:09:00.549 logback-mybatis [http-nio-9090-exec-2] INFO  c.d.b.interceptor.LoginInterceptor - >>>: http://127.0.0.1:9090/Home
+15:15:20.490 logback-mybatis [restartedMain] INFO  com.dragon.book.BookApplication - Starting BookApplication on CN-20181122UGYX with PID 9420 (F:\bookMy\BOOK\target\classes started by Administrator in F:\bookMy\BOOK)
+15:15:20.494 logback-mybatis [restartedMain] INFO  com.dragon.book.BookApplication - No active profile set, falling back to default profiles: default
+15:15:20.669 logback-mybatis [restartedMain] INFO  o.s.b.d.e.DevToolsPropertyDefaultsPostProcessor - Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+15:15:20.669 logback-mybatis [restartedMain] INFO  o.s.b.d.e.DevToolsPropertyDefaultsPostProcessor - For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+15:15:21.404 logback-mybatis [restartedMain] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Multiple Spring Data modules found, entering strict repository configuration mode!
+15:15:21.406 logback-mybatis [restartedMain] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data repositories in DEFAULT mode.
+15:15:21.448 logback-mybatis [restartedMain] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 30ms. Found 0 repository interfaces.
+15:15:21.711 logback-mybatis [restartedMain] INFO  o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker - Bean 'org.springframework.ws.config.annotation.DelegatingWsConfiguration' of type [org.springframework.ws.config.annotation.DelegatingWsConfiguration$$EnhancerBySpringCGLIB$$71ccbb65] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+15:15:21.732 logback-mybatis [restartedMain] INFO  o.s.w.s.a.s.AnnotationActionEndpointMapping - Supporting [WS-Addressing August 2004, WS-Addressing 1.0]
+15:15:21.745 logback-mybatis [restartedMain] INFO  o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker - Bean 'org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration' of type [org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration$$EnhancerBySpringCGLIB$$cd34f666] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+15:15:22.072 logback-mybatis [restartedMain] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port(s): 9090 (http)
+15:15:22.082 logback-mybatis [restartedMain] INFO  o.a.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-9090"]
+15:15:22.090 logback-mybatis [restartedMain] INFO  o.a.catalina.core.StandardService - Starting service [Tomcat]
+15:15:22.090 logback-mybatis [restartedMain] INFO  o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/9.0.14]
+15:15:22.095 logback-mybatis [restartedMain] INFO  o.a.c.core.AprLifecycleListener - The APR based Apache Tomcat Native library which allows optimal performance in production environments was not found on the java.library.path: [C:\Program Files\Java\jdk1.8.0_131\bin;C:\Windows\Sun\Java\bin;C:\Windows\system32;C:\Windows;C:\ProgramData\Oracle\Java\javapath;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\; C:\Program Files\Java\jdk1.8.0_131\bin;C:\Program Files\Java\jdk1.8.0_131\jre\bin;C:\Program Files\TortoiseSVN\bin;C:\Program Files\MySQL\MySQL Server 5.6\bin;C:\Program Files (x86)\Rational\common;C:\Program Files\TortoiseGit\bin;C:\Program Files\Git\cmd;.]
+15:15:22.430 logback-mybatis [restartedMain] INFO  org.apache.jasper.servlet.TldScanner - At least one JAR was scanned for TLDs yet contained no TLDs. Enable debug logging for this logger for a complete list of JARs that were scanned but no TLDs were found in them. Skipping unneeded JARs during scanning can improve startup time and JSP compilation time.
+15:15:22.435 logback-mybatis [restartedMain] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+15:15:22.435 logback-mybatis [restartedMain] INFO  o.s.web.context.ContextLoader - Root WebApplicationContext: initialization completed in 1765 ms
+15:15:23.418 logback-mybatis [restartedMain] INFO  o.s.s.c.ThreadPoolTaskExecutor - Initializing ExecutorService 'applicationTaskExecutor'
+15:15:23.522 logback-mybatis [restartedMain] INFO  o.s.b.a.w.s.WelcomePageHandlerMapping - Adding welcome page template: index
+15:15:23.790 logback-mybatis [restartedMain] WARN  o.s.b.a.f.FreeMarkerAutoConfiguration - Cannot find template location(s): [classpath:/BOOK/src/main/resources/template] (please add some templates, check your FreeMarker configuration, or set spring.freemarker.checkTemplateLocation=false)
+15:15:23.825 logback-mybatis [restartedMain] INFO  o.s.s.c.ThreadPoolTaskScheduler - Initializing ExecutorService 'taskScheduler'
+15:15:24.191 logback-mybatis [restartedMain] INFO  o.s.b.d.a.OptionalLiveReloadServer - LiveReload server is running on port 35729
+15:15:24.229 logback-mybatis [restartedMain] INFO  o.a.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-9090"]
+15:15:24.259 logback-mybatis [restartedMain] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat started on port(s): 9090 (http) with context path ''
+15:15:24.261 logback-mybatis [restartedMain] INFO  com.dragon.book.BookApplication - Started BookApplication in 4.26 seconds (JVM running for 5.157)
+15:16:57.520 logback-mybatis [restartedMain] INFO  com.dragon.book.BookApplication - Starting BookApplication on CN-20181122UGYX with PID 13492 (F:\bookMy\BOOK\target\classes started by Administrator in F:\bookMy\BOOK)
+15:16:57.522 logback-mybatis [restartedMain] INFO  com.dragon.book.BookApplication - No active profile set, falling back to default profiles: default
+15:16:57.618 logback-mybatis [restartedMain] INFO  o.s.b.d.e.DevToolsPropertyDefaultsPostProcessor - Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+15:16:57.619 logback-mybatis [restartedMain] INFO  o.s.b.d.e.DevToolsPropertyDefaultsPostProcessor - For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+15:16:58.492 logback-mybatis [restartedMain] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Multiple Spring Data modules found, entering strict repository configuration mode!
+15:16:58.494 logback-mybatis [restartedMain] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data repositories in DEFAULT mode.
+15:16:58.534 logback-mybatis [restartedMain] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 31ms. Found 0 repository interfaces.
+15:16:58.824 logback-mybatis [restartedMain] INFO  o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker - Bean 'org.springframework.ws.config.annotation.DelegatingWsConfiguration' of type [org.springframework.ws.config.annotation.DelegatingWsConfiguration$$EnhancerBySpringCGLIB$$fe35e63e] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+15:16:58.844 logback-mybatis [restartedMain] INFO  o.s.w.s.a.s.AnnotationActionEndpointMapping - Supporting [WS-Addressing August 2004, WS-Addressing 1.0]
+15:16:58.860 logback-mybatis [restartedMain] INFO  o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker - Bean 'org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration' of type [org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration$$EnhancerBySpringCGLIB$$599e213f] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+15:16:59.192 logback-mybatis [restartedMain] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port(s): 9090 (http)
+15:16:59.206 logback-mybatis [restartedMain] INFO  o.a.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-9090"]
+15:16:59.214 logback-mybatis [restartedMain] INFO  o.a.catalina.core.StandardService - Starting service [Tomcat]
+15:16:59.214 logback-mybatis [restartedMain] INFO  o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/9.0.14]
+15:16:59.220 logback-mybatis [restartedMain] INFO  o.a.c.core.AprLifecycleListener - The APR based Apache Tomcat Native library which allows optimal performance in production environments was not found on the java.library.path: [C:\Program Files\Java\jdk1.8.0_131\bin;C:\Windows\Sun\Java\bin;C:\Windows\system32;C:\Windows;C:\ProgramData\Oracle\Java\javapath;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\; C:\Program Files\Java\jdk1.8.0_131\bin;C:\Program Files\Java\jdk1.8.0_131\jre\bin;C:\Program Files\TortoiseSVN\bin;C:\Program Files\MySQL\MySQL Server 5.6\bin;C:\Program Files (x86)\Rational\common;C:\Program Files\TortoiseGit\bin;C:\Program Files\Git\cmd;.]
+15:16:59.548 logback-mybatis [restartedMain] INFO  org.apache.jasper.servlet.TldScanner - At least one JAR was scanned for TLDs yet contained no TLDs. Enable debug logging for this logger for a complete list of JARs that were scanned but no TLDs were found in them. Skipping unneeded JARs during scanning can improve startup time and JSP compilation time.
+15:16:59.553 logback-mybatis [restartedMain] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+15:16:59.553 logback-mybatis [restartedMain] INFO  o.s.web.context.ContextLoader - Root WebApplicationContext: initialization completed in 1933 ms
+15:17:00.502 logback-mybatis [restartedMain] INFO  o.s.s.c.ThreadPoolTaskExecutor - Initializing ExecutorService 'applicationTaskExecutor'
+15:17:00.618 logback-mybatis [restartedMain] INFO  o.s.b.a.w.s.WelcomePageHandlerMapping - Adding welcome page template: index
+15:17:00.892 logback-mybatis [restartedMain] WARN  o.s.b.a.f.FreeMarkerAutoConfiguration - Cannot find template location(s): [classpath:/BOOK/src/main/resources/template] (please add some templates, check your FreeMarker configuration, or set spring.freemarker.checkTemplateLocation=false)
+15:17:00.931 logback-mybatis [restartedMain] INFO  o.s.s.c.ThreadPoolTaskScheduler - Initializing ExecutorService 'taskScheduler'
+15:17:01.286 logback-mybatis [restartedMain] INFO  o.s.b.d.a.OptionalLiveReloadServer - LiveReload server is running on port 35729
+15:17:01.320 logback-mybatis [restartedMain] INFO  o.a.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-9090"]
+15:17:01.352 logback-mybatis [restartedMain] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat started on port(s): 9090 (http) with context path ''
+15:17:01.355 logback-mybatis [restartedMain] INFO  com.dragon.book.BookApplication - Started BookApplication in 4.314 seconds (JVM running for 5.25)
+15:17:33.939 logback-mybatis [http-nio-9090-exec-1] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring DispatcherServlet 'dispatcherServlet'
+15:17:33.939 logback-mybatis [http-nio-9090-exec-1] INFO  o.s.web.servlet.DispatcherServlet - Initializing Servlet 'dispatcherServlet'
+15:17:33.948 logback-mybatis [http-nio-9090-exec-1] INFO  o.s.web.servlet.DispatcherServlet - Completed initialization in 9 ms
+15:17:34.038 logback-mybatis [http-nio-9090-exec-1] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting...
+15:17:34.143 logback-mybatis [http-nio-9090-exec-1] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Start completed.
+15:17:34.760 logback-mybatis [http-nio-9090-exec-3] INFO  c.d.b.interceptor.LoginInterceptor - username: admin
+15:17:34.760 logback-mybatis [http-nio-9090-exec-3] INFO  c.d.b.interceptor.LoginInterceptor - >>>: http://127.0.0.1:9090/Home
+15:17:35.045 logback-mybatis [http-nio-9090-exec-5] INFO  c.d.b.interceptor.LoginInterceptor - username: admin
+15:17:35.045 logback-mybatis [http-nio-9090-exec-5] INFO  c.d.b.interceptor.LoginInterceptor - >>>: http://127.0.0.1:9090/home/img/34530s.jpg
+15:17:35.045 logback-mybatis [http-nio-9090-exec-4] INFO  c.d.b.interceptor.LoginInterceptor - username: admin
+15:17:35.045 logback-mybatis [http-nio-9090-exec-4] INFO  c.d.b.interceptor.LoginInterceptor - >>>: http://127.0.0.1:9090/home/img/34536s.jpg
+15:17:35.046 logback-mybatis [http-nio-9090-exec-6] INFO  c.d.b.interceptor.LoginInterceptor - username: admin
+15:17:35.046 logback-mybatis [http-nio-9090-exec-6] INFO  c.d.b.interceptor.LoginInterceptor - >>>: http://127.0.0.1:9090/home/img/19048s.jpg
+15:17:56.608 logback-mybatis [http-nio-9090-exec-7] INFO  c.d.b.interceptor.LoginInterceptor - username: admin
+15:17:56.608 logback-mybatis [http-nio-9090-exec-7] INFO  c.d.b.interceptor.LoginInterceptor - >>>: http://127.0.0.1:9090/logout
+15:18:01.457 logback-mybatis [http-nio-9090-exec-10] INFO  c.d.b.interceptor.LoginInterceptor - username: 王炜焱
+15:18:01.458 logback-mybatis [http-nio-9090-exec-10] INFO  c.d.b.interceptor.LoginInterceptor - >>>: http://127.0.0.1:9090/Home
+15:18:22.326 logback-mybatis [http-nio-9090-exec-1] INFO  c.d.b.interceptor.LoginInterceptor - username: 王炜焱
+15:18:22.326 logback-mybatis [http-nio-9090-exec-1] INFO  c.d.b.interceptor.LoginInterceptor - >>>: http://127.0.0.1:9090/search

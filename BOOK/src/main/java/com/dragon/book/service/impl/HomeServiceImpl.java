@@ -40,7 +40,7 @@ public class HomeServiceImpl implements HomeService {
         List<UserBorrow> users  = overtimePaymentDao.findOvertimeUser();
         for (int i=0;i<users.size();i++){
             a = a+users.get(i).gettSysUser().getBm()+"</font><font color='yellow'>"+users.get(i).gettSysUser().getXm()+
-                    "</font><font color='red'>借的"+ users.get(i).getSm()+"逾期尚未归还，请尽快归还！！！&emsp;&emsp;&emsp;&" +
+                    "</font><font color='red'>借的《"+ users.get(i).getSm()+"》逾期尚未归还，请尽快归还！！！&emsp;&emsp;&emsp;&" +
                     "emsp;&emsp;&emsp;&emsp;&emsp;&emsp;";
         }
         a=a+"</b></font>";
