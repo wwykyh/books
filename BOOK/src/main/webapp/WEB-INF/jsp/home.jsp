@@ -116,20 +116,20 @@
      <div class="row borderTop">
       </c:if>
 	<div class="col-lg-4 col-md-4 col-sm-4" >
-	  <div class="service_block withripple" style="height:360px" >
+	  <div class="service_block withripple" style="height:460px" >
           <div style="width: 30px;height:30px;float: right" align="center"><span style="font-size: 24px;color: black" >${hot.cs}</span></div>
           <td>
               <c:if test="${not empty hot.book.picture}">
-                  <img id="hot${sta.count}" src="${hot.book.picture}" style="width: 200px;height: 178px;CURSOR: pointer;margin-left: 60px" >
+                  <img id="hot${sta.count}" src="${hot.book.picture}" style="width: 200px;height: 250px;CURSOR: pointer;margin-left: 60px" >
               </c:if>
           <c:if test="${empty  hot.book.picture}">
-              <img id="hot${sta.count}" src="home/img/noPicture.png" style="width: 200px;height: 178px;CURSOR: pointer;margin-left: 60px">
+              <img id="hot${sta.count}" src="home/img/noPicture.png" style="width: 200px;height: 250px;CURSOR: pointer;margin-left: 60px">
           </c:if>
               <div style="width: 30px;height: 30px;float: right"align="top"><img  src="home/img/hot.png" style="width: 30px;height: 30px;" ></div>
           </td>
 		<a id="hot${sta.count}" style="CURSOR: pointer" ><h3  class="animated fadeInUp wow">${hot.book.sm}</h3></a>
           <p id="hotIsbn${sta.count}" hidden>${hot.book.isbn}</p>
-		<p    class="" style="height: 190px;overflow:hidden;">&nbsp;&nbsp;&nbsp;&nbsp;${hot.book.jj}</p>
+		<p    class="" style="height: 170px;overflow:hidden;">&nbsp;&nbsp;&nbsp;&nbsp;${hot.book.jj}</p>
 	  </div>
 	</div>
         <c:if test="${sta.count==3 or sta.count==6 }">
@@ -155,20 +155,20 @@
                     <div class="row borderTop">
                         </c:if>
                         <div class="col-lg-4 col-md-4 col-sm-4" >
-                            <div class="service_block withripple" style="height:360px">
+                            <div class="service_block withripple" style="height:460px">
                                 <div style="width: 80px;height:30px;float: right" align="center"><span style="font-size: 14px;color: black" >${new1.rksj}</span></div>
                                 <td >
                                     <c:if test="${not empty new1.book.picture}">
-                                        <img id="new${sta1.count}" src="${new1.book.picture}" style="width: 200px;height: 178px;CURSOR: pointer;margin-left: 100px" >
+                                        <img id="new${sta1.count}" src="${new1.book.picture}" style="width: 200px;height: 250px;CURSOR: pointer;margin-left: 100px" >
                                     </c:if>
                                     <c:if test="${empty  new1.book.picture}">
-                                        <img  id="new${sta1.count}" src="home/img/noPicture.png" style="width: 200px;height: 178px;CURSOR: pointer;margin-left: 100px">
+                                        <img  id="new${sta1.count}" src="home/img/noPicture.png" style="width: 200px;height: 250px;CURSOR: pointer;margin-left: 100px">
                                     </c:if>
                                     <div style="width: 20px;height: 20px;float: right"align="top"><img  src="home/img/time.png" style="width: 20px;height: 20px;" ></div>
                                 </td>
                                 <a id="new${sta1.count}" style="CURSOR: pointer" ><h3  class="animated fadeInUp wow">${new1.book.sm}</h3></a>
-                                <p id="newIsbn${sta1.count}" hidden>${hot.book.isbn}</p>
-                                <p  style="height: 190px;overflow:hidden;">&nbsp;&nbsp;&nbsp;&nbsp;${new1.book.jj}</p>
+                                <p id="newIsbn${sta1.count}" hidden>${new1.book.isbn}</p>
+                                <p  style="height: 170px;overflow:hidden;">&nbsp;&nbsp;&nbsp;&nbsp;${new1.book.jj}</p>
                             </div>
                         </div>
                         <c:if test="${sta1.count==3 or sta1.count==6 }">
@@ -195,9 +195,19 @@
         })
         //查看图书详情
         $("[id^=hot]").click(function () {
-            var val=$(this).attr("id");
-            var v2 = val.substring(3,val.length);//取后半部分
-            var bookIsbn = "a"+v2;
+            var val1=$(this).attr("id");
+            var v1 = val1.substring(3,val1.length);//取后半部分
+            var bookIsbn = $("#hotIsbn1").html();
+            if (v1==2)
+                bookIsbn=$("#hotIsbn2").html();
+            if (v1==3)
+                bookIsbn=$("#hotIsbn3").html();
+            if (v1==4)
+                bookIsbn=$("#hotIsbn4").html();
+            if (v1==5)
+                bookIsbn=$("#hotIsbn5").html();
+            if (v1==6)
+                bookIsbn=$("#hotIsbn6").html();
             art.dialog.open('book_info?id=' + bookIsbn, {
                 title : '图书详情',
                 width : 1000,
@@ -213,7 +223,17 @@
         $("[id^=new]").click(function () {
             var val=$(this).attr("id");
             var v2 = val.substring(3,val.length);//取后半部分
-            var bookIsbn = "a"+v2;
+            var bookIsbn = $("#newIsbn1").html();
+            if (v2==2)
+                 bookIsbn=$("#newIsbn2").html();
+            if (v2==3)
+                bookIsbn=$("#newIsbn3").html();
+            if (v2==4)
+                bookIsbn=$("#newIsbn4").html();
+            if (v2==5)
+                bookIsbn=$("#newIsbn5").html();
+            if (v2==6)
+                bookIsbn=$("#newIsbn6").html();
             art.dialog.open('book_info?id=' + bookIsbn, {
                 title : '图书详情',
                 width : 1000,
