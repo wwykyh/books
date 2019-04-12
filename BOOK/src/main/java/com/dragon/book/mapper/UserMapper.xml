@@ -231,4 +231,9 @@ where 1=1
     set pwd = 123456
     where user_id = #{userId,jdbcType=INTEGER}
 </update>
+  <select id="selectByName" resultMap="BaseResultMap" parameterType="java.lang.String">
+    select  * from t_sys_user where xm=#{0}
+
+
+  </select>
   </mapper>
