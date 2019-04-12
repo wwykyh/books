@@ -67,7 +67,7 @@ public class BorrowCheckController {
         if (!StringUtils.isEmpty(id) && !StringUtils.isEmpty(status)) {
             tBorrow = borrowCheckService.getSingleTBorrow(Integer.parseInt(id));
             SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
-            if ("1".equals(status)) {  // 审核通过
+            if ("1".equals(status)) {  // 确认通过
                 tBorrow.setStatus(1);
                 String jyri = format.format(new Date());
                 tBorrow.setJyrq(jyri);

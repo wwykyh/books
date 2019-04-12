@@ -13,8 +13,6 @@
     <title>Book Store</title>
     <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
-
-
     <script src="js/prototype.js" type="text/javascript"></script>
     <script src="js/scriptaculous.js?load=effects" type="text/javascript"></script>
     <script src="js/lightbox.js" type="text/javascript"></script>
@@ -25,7 +23,6 @@
     <link rel="stylesheet" type="text/css" href="css/common/iconfont/iconfont.css" />
 
     <link rel="stylesheet" type="text/css" href="dvpt/css/libs.css" />
-
     <link rel="stylesheet" type="text/css" href="css/theme/blue.css" id="style" />
     <script type="text/javascript" src="dvpt/config.js"></script>
     <!-- 改造的脚本 -->
@@ -33,26 +30,23 @@
     <!-- 共有的控件 -->
     <script data-main="main" src="dvpt/require.min.2.1.11.js"></script>
 
-
 </head>
-<body style="overflow-y: scroll;overflow-x: hidden">
+<body style="overflow-y: scroll;overflow-x: hidden;font-size:16px" >
 <div id="wrap">
 
-
     <div class="left_content" style="width: 100%;height: 100%">
-
 
         <div class="feat_prod_box_details" style="height:30%;width: auto">
 
             <div class="prod_img" style="height: 80%;width: 30%;margin-left:100px"><a href="details.html" ><img
-                    src="${bookInfo.picture}" alt="" title="" style="height:150px;width: auto"
+                    src="${bookInfo.picture}" alt="" title="" style="height:150px;width: 200px"
                     border="0"/></a>
                 <br/><br/>
                 <a href="${bookInfo.picture}" rel="lightbox"><img src="images/zoom.gif" alt="" title="" border="0"/></a>
             </div>
 
-            <div class="prod_det_box">
-                <div class="box_center">
+            <div class="prod_det_box" >
+                <div class="box_center" >
                     <div class="price"><strong>书名:</strong> <span class="red">${bookInfo.sm}</span></div>
                     <div class="price"><strong>出版社:</strong> <span class="red">${bookInfo.cbsmc}</span></div>
                     <div class="price"><strong>出版日期:</strong> <span class="red">${bookInfo.cbrq}</span></div>
@@ -82,15 +76,12 @@
             <ul id="demo-nav" class="demolayout">
                 <li><a class="active" href="#tab1">详情</a></li>
                 <li><a class="" href="#tab2">评论</a></li>
-
             </ul>
 
             <div class="tabs-container">
 
                 <div style="display: block;" class="tab" id="tab1">
-                    <p class="more_details">${bookInfo.jj}
-                    </p>
-
+                    <p class="more_details">${bookInfo.jj}</p>
                 </div>
                 <div style="display: none;" class="tab" id="tab2">
                     <div class="divtable2"id="divtable" >

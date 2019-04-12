@@ -7,11 +7,11 @@ import java.util.List;
 import java.util.Map;
 
 /**
- * 归还审核接口
+ * 归还确认接口
  */
 public interface RevertCheckService {
 
-    // 归还审核
+    // 归还确认
     List<TBorrowInfo> getTBorrowRevertList(Map filter);
 
     Integer getTBorrowRevertListCounts(Map filter);

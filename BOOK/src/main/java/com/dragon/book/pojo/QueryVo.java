@@ -12,12 +12,34 @@ import java.io.Serializable;
  * @Date 2019/1/28
  */
 public class QueryVo implements Serializable {
+    @Override
+    public String toString() {
+        return "QueryVo{" +
+                "book=" + book +
+                ", store=" + store +
+                ", dim='" + dim + '\'' +
+                ", start=" + start +
+                ", end=" + end +
+                ", num=" + num +
+                ", userName='" + userName + '\'' +
+                '}';
+    }
+
     private TBook book ;
     private TStore store ;
     private String dim ;
     private Integer start ;
     private Integer end ;
     private int num;
+    private String userName;
+
+    public String getUserName() {
+        return userName;
+    }
+
+    public void setUserName(String userName) {
+        this.userName = userName;
+    }
 
     public int getNum() {
         return num;

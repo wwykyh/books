@@ -61,7 +61,7 @@ public class RevertCheckServiceImpl implements RevertCheckService {
         filter.put("sId",sId);
         filter.put("sh", sh);
 //        tBorrow.setJyzt(2);  // 2  代表的是归还状态
-        tBorrow.setStatus(1); // 1 审核状态为审核通过
+        tBorrow.setStatus(1); // 1 确认状态为确认通过
         SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
         try {
 //            Date ghrq = format.parse(tBorrow.getGhrq());

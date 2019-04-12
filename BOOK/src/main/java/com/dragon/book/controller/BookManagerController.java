@@ -348,17 +348,17 @@ public class BookManagerController {
         List<TBookAnalyze> user = bookAnalyzeService.getBoorowNum();
         return user;
         }
-    //审核转译
+    //确认转译
     public String transLation(HistoryInfo historyInfo){
 
         int statu= historyInfo.getStatus();
-        String status ="审核转译";
+        String status ="确认转译";
         if(statu==0){
-            status="审核不通过";
+            status="确认不通过";
         }else if(statu==1){
-            status="审核通过";
+            status="确认通过";
         }else if(statu==2){
-            status="待审核";
+            status="待确认";
         }else{
             status="未备注信息";
         }

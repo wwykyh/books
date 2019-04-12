@@ -81,9 +81,9 @@
 </td>--%>
                     </tr>
                     <tr>
-                        <th><span class="ft-need">*</span>图书提供者编号：</th>
-                        <td><input id="userId" name="store.userId" data-validate="required number" type="text"
-                                   class="input-text" value="6"></td>
+                        <th><span class="ft-need">*</span>图书提供者：</th>
+                        <td><input id="userId" name="userName" data-validate="required " type="text"
+                                   class="input-text" value="公司"></td>
                     </tr>
                     <tr>
                         <th><span class="ft-need">*</span>入库数量：</th>

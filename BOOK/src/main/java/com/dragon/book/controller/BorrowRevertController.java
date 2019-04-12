@@ -18,7 +18,7 @@ import java.util.List;
 import java.util.Map;
 
 /**
- * 借阅归还审核控制层
+ * 借阅归还确认控制层
  */
 @Controller
 @RequestMapping("/revertCheck")

@@ -35,7 +35,10 @@
                     </tr>
                     <tr>
                         <th width="17%"><span class="ft-need">*</span>密码：</th>
-                        <td width="33%"><input id="pwd" name="pwd" value="${userInfo.pwd}" data-validate="required" type="text" class="input-text "></td>
+                        <td width="33%">
+                            <input id="pwd" name="pwd" value="**********" data-validate="required" type="text" disabled="disabled"class="input-text ">
+                            <input id="rePwd" name="rePwd" type="button" class="btn" value="重置密码" >
+                        </td>
                     </tr>
                     <tr>
                         <th width="17%"><span class="ft-need">*</span>部门：</th>
@@ -60,14 +63,14 @@
                             <option value="0" >否</option>
                         </select></td>
                     </tr>
-                    <tr>
-                        <th width="17%"><span class="ft-need"></span>可借图书册数：</th>
-                        <td width="33%"><input id="kjtscs" name="kjtscs" value="${userInfo.kjtscs}" data-validate="required" type="text" class="input-text "></td>
-                    </tr>
-                    <tr>
-                        <th width="17%"><span class="ft-need"></span>可借时长（天）：</th>
-                        <td width="33%"><input id="cs" name="cs" value="${userInfo.kjsc}" data-validate="required" type="text" class="input-text "></td>
-                    </tr>
+                    <%--<tr>--%>
+                        <%--<th width="17%"><span class="ft-need"></span>可借图书册数：</th>--%>
+                        <%--<td width="33%"><input id="kjtscs" name="kjtscs" value="${userInfo.kjtscs}" data-validate="required" type="text" class="input-text "></td>--%>
+                    <%--</tr>--%>
+                    <%--<tr>--%>
+                        <%--<th width="17%"><span class="ft-need"></span>可借时长（天）：</th>--%>
+                        <%--<td width="33%"><input id="cs" name="cs" value="${userInfo.kjsc}" data-validate="required" type="text" class="input-text "></td>--%>
+                    <%--</tr>--%>
                     <tr>
                         <th width="17%"><span class="ft-need"></span>是否为管理员：</th>
                         <td width="33%"><select id="isadmin" name="isadmin" value="${userInfo.isadmin}" style="width: 200px">
@@ -111,16 +114,37 @@
                 });
             })
 
+//重置密码
+            $("#rePwd").click(function () {
+                var userId = "${userInfo.userId}";
+                $.ajax({
+                    cache: true,
+                    type: "POST",
+                    url:"/usermanage/reset_pwd?userId="+userId,
+                    async: false,
+                    error: function(request) {
+                        alert("Connection error:"+request.error);
+                    },
+                    success: function(data) {
+                        if(data){
+                            alert("密码重置成功，初始密码为123456！");
+                            parent.select();
+                            parent.art.dialog({id:'user_edit_window'}).close() ;
+                        }else {
+                            alert("密码重置失败！");
+                        }
+                    }
+                });
+            })
+
 
 
         $(document).ready(function (){
             var isadmin = "${userInfo.isadmin}";
             var ishmd  = "${userInfo.ishmd}";
-
             if (isadmin==0){
                 $("#isadmin").val('0');
             }
-
             if (ishmd==0){
                 $("#ishmd").val('0');
             }

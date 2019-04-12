@@ -89,7 +89,7 @@
                     <td width="33%"> ${history.ghrq}</td>
                 </tr>
                 <tr>
-                    <th width="17%"><span class="ft-need"></span>审核状态：</th>
+                    <th width="17%"><span class="ft-need"></span>确认状态：</th>
                     <td width="33%">${status}</td>
                     <th width="17%"><span class="ft-need"></span>借阅状态：</th>
                     <td width="33%"> ${jyzts}</td>

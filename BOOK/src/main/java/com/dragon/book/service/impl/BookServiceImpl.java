@@ -276,7 +276,7 @@ public class BookServiceImpl implements BookService {
         page.setList(list);
         page.setDim(dim);
         page.setS_type(s_type);
-        System.out.println(list.toString() + "size:" + list.size() + list.get(0).gettStore().getId());
+//        System.out.println(list.toString() + "size:" + list.size() + list.get(0).gettStore().getId());
         return page;
     }
 

@@ -5,7 +5,7 @@ import com.dragon.book.model.TBorrow;
 /**
  * author:lanwq
  * date:2019/03/08
- * description:用来显示数据到图书借阅、归还审核界面
+ * description:用来显示数据到图书借阅、归还确认界面
  */
 public class TBorrowInfo extends TBorrow {
 

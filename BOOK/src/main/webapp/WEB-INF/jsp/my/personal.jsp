@@ -115,7 +115,7 @@
                 url:"/personal/reNew?isbn="+isbn+"&userId="+userid+"",
                 success:function(data){
                     if (data=="success"){
-                        alert("续借申请成功，请等待管理员审核");
+                        alert("续借申请成功，请等待管理员确认");
                         // $("tr").remove("#tr_"+isbn);
                     } else {
                         alert("续借申请失败！") ;
@@ -133,7 +133,7 @@
                 url:"/personal/returnBook?isbn="+isbn+"&userId="+userid+"",
                 success:function(data){
                     if (data=="success"){
-                        alert("归还申请成功，请等待管理员审核");
+                        alert("归还申请成功，请等待管理员确认");
                         // $("tr").remove("#tr_"+isbn);
                     } else {
                         alert(data) ;

@@ -132,7 +132,7 @@ public interface BookService {
      * @param lxfs 联系方式
      * @param jyrq 借阅日期
      * @param time 计划归还日期
-     * @param i 待审核
+     * @param i 待确认
      * @return
      */
 	public TBorrow setBorrow(String isbn, int parseInt, String sm, String lxfs, String jyrq, String time, int i,int jyzt);

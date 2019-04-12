@@ -10,12 +10,12 @@
 <c:set var="path" value="${pageContext.request.contextPath}"/>
 <html>
 <head>
-    <title>归还审核</title>
+    <title>归还确认</title>
 </head>
 <body>
 <div class="panel">
     <div class="panel-header">
-        <h2>归还审核</h2>
+        <h2>归还确认</h2>
         <a href="javascript:;" class="arrow up"></a>
     </div>
 
@@ -155,7 +155,7 @@
         requirejs(['jquery', 'artdialog'], function ($) {
             $(function () {
                 art.dialog.open('${path}/revertCheck/' + id + '', {
-                    title: '归还审核',
+                    title: '归还确认',
                     width: 950,
                     height: 500,
                     ok: true,

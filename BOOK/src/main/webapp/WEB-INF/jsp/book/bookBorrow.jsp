@@ -10,12 +10,12 @@
 <c:set var="path" value="${pageContext.request.contextPath}"/>
 <html>
 <head>
-    <title>借阅审核</title>
+    <title>借阅确认</title>
 </head>
 <body>
 <div class="panel">
     <div class="panel-header">
-        <h2>借阅审核</h2>
+        <h2>借阅确认</h2>
         <a href="javascript:;" class="arrow up"></a>
     </div>
 
@@ -160,7 +160,7 @@
         requirejs(['jquery', 'artdialog'], function ($) {
             $(function () {
                 art.dialog.open('${path}/borrowCheck/' + id + '', {
-                    title: '借阅审核',
+                    title: '借阅确认',
                     width: 950,
                     height: 500,
                     ok: true,

@@ -1,11 +1,9 @@
 package com.dragon.book.service.impl;
 
-import com.dragon.book.mapper.BookManagerMapper;
-import com.dragon.book.mapper.TBookMapper;
-import com.dragon.book.mapper.TCommentMapper;
-import com.dragon.book.mapper.TStoreMapper;
+import com.dragon.book.mapper.*;
 import com.dragon.book.model.TBook;
 import com.dragon.book.model.TStore;
+import com.dragon.book.model.TSysUser;
 import com.dragon.book.pojo.BookInfo;
 import com.dragon.book.pojo.CommentInfo;
 import com.dragon.book.pojo.HistoryInfo;
@@ -46,6 +44,8 @@ public class BookManagerServiceImpl implements BookManagerService {
 
     @Autowired
     private BookService bookService;
+    @Autowired
+    private UserMapper userMapper;
 
 
     @Override
@@ -70,7 +70,12 @@ public class BookManagerServiceImpl implements BookManagerService {
         SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd") ;
         String time = format.format(date);
         store.setRksj(time);
-       // System.out.println(store.getWz()+"-------------");
+        if ("公司".equals(vo.getUserName())){
+           vo.setUserName("admin");
+        }
+        TSysUser tSysUser = userMapper.selectByName(vo.getUserName());
+        store.setUserId(tSysUser.getUserId());
+        // System.out.println(store.getWz()+"-------------");
         store.setId(bookService.getKey(store.getWz(),book.getTsdl()));
        // System.out.println(book.getTsdl()+"-------------");
 
