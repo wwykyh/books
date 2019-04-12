@@ -75,45 +75,28 @@
 <div id="wrap" class="lr-layout">
     <div id="header" class="header clearfix">
         <div class="header-inner">
-           <%-- <div class="logo"></div>--%>
-           <%-- <div style="float: left;height: 100%;width: auto;padding-left: 20%"><form action="">
-
-                <select id="s_type" name="s_type" class="select">
-                    <option value="">------------------请选择图书类型------------------</option>
-                    <c:forEach items="${typeList }" var="t">
-                        <option value="${t.typeId }">${t.lxmc }</option>
-                    </c:forEach>
-                </select>
-                <input style="height: 40px" id="dim" type="text" placeholder="书名、作者"
-                       class="input-text" />
-                <a href="javascript:;" class="btn"><span style="height: 40px"
-                            id="btnLoad"><i class="icon icon-search"></i>查询</span></a>
-
-
-            </form></div>--%>
-            <div style="float: right;height: auto;width: auto;padding-right: 10px">
+            <div class="header-right">
                 <ul class="header-right-list">
-                    <li class="nowtime">
-                        <span id="nowTime">
-                          <label class="data"></label>
-                          <label class="week"></label>
-                          <label class="time"></label>
-		                </span>
+                    <li class="nowtime"><span id="nowTime"> <label
+                            class="data"></label> <label class="week"></label> <label
+                            class="time"></label>
+						</span></li>
+                    <li><i class="header-icon i-user"></i>欢迎您！${user.xm}
                     </li>
-                    <li>
-                        <a><i class="header-icon i-user"></i>欢迎您！${user.xm}</a>
-                    </li>
-                    <li class="skin-change"><a href="javascript:;" title="皮肤" class="skin-change-acitve"><span><i
+                    <li class="skin-change"><a href="javascript:;" title="皮肤"
+                                               class="skin-change-acitve"><span><i
                             class="header-icon i-skin"></i>换肤<i class="arrow"></i></span></a>
                         <div class="skin-changelist hide">
                             <a href="javascript:;" class="skin-dark" title="dark"><i></i></a>
-                            <a href="javascript:;" class="skin-microStereo" title="microStereo"><i></i></a>
-                            <a href="javascript:;" class="skin-blue" title="blue"><i></i></a>
-                            <a href="javascript:;" class="skin-green" title="green"><i></i></a>
+                            <a href="javascript:;" class="skin-microStereo"
+                               title="microStereo"><i></i></a> <a href="javascript:;"
+                                                                  class="skin-blue" title="blue"><i></i></a> <a
+                                href="javascript:;" class="skin-green" title="green"><i></i></a>
                             <a href="javascript:;" class="skin-red" title="red"><i></i></a>
                         </div>
                     </li>
-                    <li><span><a href="logout" title="退出"><i class="header-icon i-logout"></i>退出</a></span></li>
+                    <li><span><a href="logout" title="退出"><i
+                            class="header-icon i-logout"></i>退出</a></span></li>
                 </ul>
             </div>
         </div>

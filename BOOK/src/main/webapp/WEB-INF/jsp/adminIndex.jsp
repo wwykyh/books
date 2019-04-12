@@ -53,7 +53,6 @@
 <div id="wrap" class="lr-layout">
     <div id="header" class="header clearfix">
         <div class="header-inner">
-
             <div class="header-right">
                 <ul class="header-right-list">
                     <li class="nowtime"><span id="nowTime"> <label
