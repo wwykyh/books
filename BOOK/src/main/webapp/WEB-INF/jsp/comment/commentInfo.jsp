@@ -154,7 +154,6 @@
             divObj.className="innerCtn"
         }
         //divObj.style.height = 'auto';
-        controllerline(num);
     }
     function allComment() {
         var divEle= document.getElementById('parentid');
@@ -183,6 +182,7 @@
     }
 
     function controllerline(num) {
+        debugger
       var divEle= document.getElementById('parentid');
       var divText = document.getElementById('textComment');
       if(num<=3){

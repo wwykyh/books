@@ -11,6 +11,7 @@ import com.dragon.book.service.mail.DoSendEmail;
 import com.dragon.book.service.mail.mailFactory.EmailFactory;
 import com.dragon.book.service.mail.mailFactory.IEmailTemplate;
 import com.dragon.book.service.my.IEmailService;
+import freemarker.template.Template;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.mail.javamail.JavaMailSender;
@@ -37,6 +38,18 @@ public class EmailServiceImpl implements IEmailService {
     private JavaMailSender sender;
     @Autowired
     private FreeMarkerConfigurer freeMarkerConfigurer;
+
+//    private Template getTemplate(String path) {
+//        return null;
+//    }
+//
+//    private String createMailText() {
+//        return null;
+//    }
+//
+//    public void sendMail(){
+//
+//    }
 
     /**
      * 发送超时邮件
@@ -65,7 +78,7 @@ public class EmailServiceImpl implements IEmailService {
     /**
      * 发送推荐邮件
      */
-    @Scheduled(cron = "0 0/1 11 * * ?")
+    @Scheduled(cron = "0 0 8 * * 2")
     public void sendRecommenderMail() {
         DoSendCCEmail doSendCCEmail = new DoSendCCEmail();
         EmailFactory emailFactory = new EmailFactory();
@@ -85,7 +98,7 @@ public class EmailServiceImpl implements IEmailService {
     /**
      * 发送提醒邮件
      */
-    @Scheduled(cron = "0 0 0 * * ?")
+    @Scheduled(cron = "0 0 9 * * ?")
     public void sendReminderMail() {
         DoSendEmail doSendEmail = new DoSendEmail();
         EmailFactory emailFactory = new EmailFactory();

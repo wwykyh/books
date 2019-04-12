@@ -289,7 +289,7 @@
         art.dialog.open('book_info?id=' + id, {
             title: '图书详情',
             width: 900,
-            height: 500,
+            height: 820,
             id: 'book_info',
             //ok: true,
             // okVal: "打印",
