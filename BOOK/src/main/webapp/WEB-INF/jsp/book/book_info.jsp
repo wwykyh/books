@@ -31,7 +31,7 @@
     <script data-main="main" src="dvpt/require.min.2.1.11.js"></script>
 
 </head>
-<body style="overflow-y: scroll;overflow-x: hidden">
+<body style="overflow-y: scroll;overflow-x: hidden;font-size:16px" >
 <div id="wrap">
 
     <div class="left_content" style="width: 100%;height: 100%">
@@ -76,7 +76,6 @@
             <ul id="demo-nav" class="demolayout">
                 <li><a class="active" href="#tab1">详情</a></li>
                 <li><a class="" href="#tab2">评论</a></li>
-
             </ul>
 
             <div class="tabs-container">

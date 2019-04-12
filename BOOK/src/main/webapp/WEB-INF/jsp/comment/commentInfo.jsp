@@ -154,6 +154,7 @@
             divObj.className="innerCtn"
         }
         //divObj.style.height = 'auto';
+        controllerline(num);
     }
     function allComment() {
         var divEle= document.getElementById('parentid');
