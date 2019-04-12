@@ -77,7 +77,6 @@ public class BookController {
     @GetMapping("/book_info")
     public String booksIndex(@RequestParam String id, Model model) {
         BookInfo bookInfo = bookServices.selectBookInfoById(id);
-        System.out.println(bookInfo.toString() + "================");
         model.addAttribute("bookInfo", bookInfo);
 
         if (id.substring(0, 1).equals("a")) {
