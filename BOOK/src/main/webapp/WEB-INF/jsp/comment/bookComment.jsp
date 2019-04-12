@@ -119,12 +119,14 @@
     function xiangqing(obj) {
         var trObj = obj.previousElementSibling;
         var divObj = trObj.children[0];
+        var num = (document.getElementById('commentTable').getElementsByTagName('tr').length)/2 ;
         if(divObj.className=="innerCtn"){
             divObj.className="innerCtn1"
         }else {
             divObj.className="innerCtn"
         }
         //divObj.style.height = 'auto';
+
     }
     function allComment() {
         var divEle= document.getElementById('parentid');
@@ -153,7 +155,7 @@
     function controllerline(num) {
         var divEle= document.getElementById('parentid');
         var divText = document.getElementById('textComment');
-        if(num<3){
+        if(num<=3){
             divEle.className='parentid'
         }
         else if(num>3){
