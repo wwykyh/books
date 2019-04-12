@@ -90,11 +90,45 @@ public class PersonalController {
     @RequestMapping("/borrowInfo")
     public String borrowInfo(@RequestParam("id")int id,Map map){
         if(0!=id){
-        TBorrow tborrow = personalService.borrowInfo(id);
-        map.put("tborrow",tborrow);
-        return "/my/bookBorrowInfo";
+            TBorrow tborrow = personalService.borrowInfo(id);
+
+            map.put("tborrow",tborrow);
+            map.put("status", transLation(tborrow));
+            map.put("jyzt",transLationjy(tborrow));
+            return "/my/bookBorrowInfo";
         }else {
             return "/my/error";
         }
+    }
+    //审核转译
+    public String transLation(TBorrow tborrow){
+        int statu= tborrow.getStatus();
+        String status ="审核转译";
+        if(statu==0){
+            status="审核不通过";
+        }else if(statu==1){
+            status="审核通过";
+        }else if(statu==2){
+            status="待审核";
+        }else{
+            status="未备注信息";
+        }
+        return status;
+    }
+    //借阅转译
+    public String transLationjy(TBorrow tborrow){
+        int jyzt = tborrow.getJyzt();
+        String jyzts = "借阅转译";
+        if(jyzt==0){
+            jyzts="借阅";
+        }
+        else if(jyzt==1){
+            jyzts="续借";
+        }else if(jyzt==2){
+            jyzts="归还";
+        }else {
+            jyzts="未备注信息";
+        }
+        return jyzts;
     }
 }
