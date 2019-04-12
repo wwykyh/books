@@ -97,6 +97,8 @@
                                    data-js="prettify" href="javascript:;">确认借出</a></li>
                             <li><a _href="${pageContext.request.contextPath}/revertCheck/revert" data-name="确认归还"
                                    data-js="prettify" href="javascript:;">确认归还</a></li>
+                            <li><a _href="${pageContext.request.contextPath}/renewCheck/renew" data-name="确认续借"
+                                   data-js="prettify" href="javascript:;">确认续借</a></li>
 
                         </ul>
                     </dd>
