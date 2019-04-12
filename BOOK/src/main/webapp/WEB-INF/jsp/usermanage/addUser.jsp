@@ -29,10 +29,10 @@
                 }, 200);
 
                 $(function () {
-                    // 加载导航事件
+                  /*  // 加载导航事件
                     var sidebar = $("#sidebar").children(".sidebar-list");
                     sidebar.sidebarEffect();
-                    $.menuLink(sidebar);
+                    $.menuLink(sidebar);*/
 
                     // 菜单扩展
                     $("#main-tab").menuLinkExtend({
