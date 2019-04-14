@@ -52,7 +52,7 @@
             <input id="dim" type="text" placeholder="书名、作者"
                    class="input-text" value="${page.dim}" name="dim"/>
 
-            <input type="submit" value="查询" <%--onclick="sub()"--%>></form>
+            <input type="submit" value="查询" class="btn" <%--onclick="sub()"--%>></form>
     </div>
     <c:forEach items="${page.list}" var="p">
         <div class="new_prod_box">

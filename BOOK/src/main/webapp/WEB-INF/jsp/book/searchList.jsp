@@ -237,10 +237,10 @@
 <div class="centerdiv"><img src="images/bookLog.jpg" width="270" style="margin-top:100px" style="color:#999"></img>
 </div>
 <div class="centerdiv">
-    <form><input id="searchText" name="dim"><input id="submitBtn" type="button" value="GO" style="margin-top:30px"
+    <form><input id="searchText" name="dim" placeholder="书名、作者"><input id="submitBtn" type="button" value="GO" style="margin-top:30px"
                                                    onclick="sub()"></form>
 </div>
-<div style="height: 210px;width: 100%">
+<div style="height: 270px;width: 100%">
     <div style="margin-left: 30px;margin-top: 40px;margin-right:10px;height: 40%;width: 100%">
         <p style="text-align: left; font-size: 20px;margin-left: 10px"><strong>热门图书</strong></p>
         <c:forEach items="${borrow}" var="p">
