@@ -291,4 +291,36 @@ public class UserSreviceImpl implements UserService {
     public TSystemConfig getConfic() {
         return tSystemConfigMapper.selectOneConfig();
     }
+
+    public UserMapper getUserMapperWn() {
+        return userMapperWn;
+    }
+
+    public void setUserMapperWn(UserMapper userMapperWn) {
+        this.userMapperWn = userMapperWn;
+    }
+
+    public TBlackListMapper getBlackListMapper() {
+        return blackListMapper;
+    }
+
+    public void setBlackListMapper(TBlackListMapper blackListMapper) {
+        this.blackListMapper = blackListMapper;
+    }
+
+    public TTypeMapper gettTypeMapper() {
+        return tTypeMapper;
+    }
+
+    public void settTypeMapper(TTypeMapper tTypeMapper) {
+        this.tTypeMapper = tTypeMapper;
+    }
+
+    public TSystemConfigMapper gettSystemConfigMapper() {
+        return tSystemConfigMapper;
+    }
+
+    public void settSystemConfigMapper(TSystemConfigMapper tSystemConfigMapper) {
+        this.tSystemConfigMapper = tSystemConfigMapper;
+    }
 }

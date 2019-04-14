@@ -126,9 +126,6 @@ public class BookServiceImpl implements BookService {
         }
 
 
-
-
-
         id = id + wz + NowTime() + st;
 
         return id;
@@ -140,23 +137,23 @@ public class BookServiceImpl implements BookService {
 
         try {
             List<BookAndEBook> allKey = new ArrayList<BookAndEBook>();
-            if ("Z".equals(tsdl)){
+            if ("Z".equals(tsdl)) {
                 allKey = getBooksKey();
-            }else if("E".equals(tsdl)){
+            } else if ("E".equals(tsdl)) {
                 allKey = getEBookKey();
             }
 
            /* allKey.addAll(bookKey);
             allKey.addAll(ebookKey);*/
-           // HashSet<String> set = new HashSet<String>();
+            // HashSet<String> set = new HashSet<String>();
             List<String> set = new ArrayList();
             for (BookAndEBook b : allKey) {
 
                 String str = b.getId().substring(b.getId().length() - 11);
-              //  System.out.println("key"+str);
-                if (str.contains(NowTime())){
-                    String s=str.substring(str.length()-3);
-                  //  System.out.println("key"+s);
+                //  System.out.println("key"+str);
+                if (str.contains(NowTime())) {
+                    String s = str.substring(str.length() - 3);
+                    //  System.out.println("key"+s);
                     set.add(s);
                 }
             }
@@ -170,11 +167,11 @@ public class BookServiceImpl implements BookService {
             do {
                 String st;
                 int num = rd.nextInt(Max);
-                if (num<10)
-                    st="00"+num;
+                if (num < 10)
+                    st = "00" + num;
                 else
-                    st="0"+num;
-             //   String st = "" + t;
+                    st = "0" + num;
+                //   String st = "" + t;
                 if (!set.contains(st)) {
                   /*  System.out.println("st+"+st);
                     if (st.length() == 1) {
@@ -184,7 +181,7 @@ public class BookServiceImpl implements BookService {
                         st = "0" + st;
                     }*/
 
-                   // System.out.println(flag+"================flag");
+                    // System.out.println(flag+"================flag");
 
                     flag = false;
                     return st;
@@ -266,11 +263,11 @@ public class BookServiceImpl implements BookService {
         //1.获取总记录数
         int totalRecord = bookMapper.getTotal(pageBean);
         //2.封装page对象
-        System.out.println("+++++" + pageNumber+":"+dim);
+        System.out.println("+++++" + pageNumber + ":" + dim);
 
         page = new Page<Book>(pageNumber, total, pageSize);
         pageBean.setPage(page.getIndex());
-        System.out.println("page:" + pageBean.getPage() + "pagesize:" + pageBean.getPagesize()+pageBean.toString());
+        System.out.println("page:" + pageBean.getPage() + "pagesize:" + pageBean.getPagesize() + pageBean.toString());
         //3.查询当前页对应的数据列表并封装到page对象中
         List<Book> list = bookMapper.selectByDim(pageBean);
         page.setList(list);
@@ -312,6 +309,23 @@ public class BookServiceImpl implements BookService {
         this.bookMapper = bookMapper;
     }
 
+    public int getMax() {
+        return Max;
+    }
 
+    public TBorrowMapper gettBorrowMapper() {
+        return tBorrowMapper;
+    }
 
+    public void settBorrowMapper(TBorrowMapper tBorrowMapper) {
+        this.tBorrowMapper = tBorrowMapper;
+    }
+
+    public TStoreMapper getStoreMapper() {
+        return storeMapper;
+    }
+
+    public void setStoreMapper(TStoreMapper storeMapper) {
+        this.storeMapper = storeMapper;
+    }
 }

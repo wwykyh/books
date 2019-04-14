@@ -39,4 +39,20 @@ public class EBookInfoServiceImpl implements EBookInfoService {
     public Integer getCount(Map filter) {
         return ebookInfoMapper.countTEBookVo(filter);
     }
+
+    public TEBookMapper getTeBookMapper() {
+        return teBookMapper;
+    }
+
+    public void setTeBookMapper(TEBookMapper teBookMapper) {
+        this.teBookMapper = teBookMapper;
+    }
+
+    public EbookInfoMapper getEbookInfoMapper() {
+        return ebookInfoMapper;
+    }
+
+    public void setEbookInfoMapper(EbookInfoMapper ebookInfoMapper) {
+        this.ebookInfoMapper = ebookInfoMapper;
+    }
 }

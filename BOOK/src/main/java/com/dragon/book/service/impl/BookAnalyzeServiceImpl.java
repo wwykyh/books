@@ -12,9 +12,17 @@ import java.util.List;
 public class BookAnalyzeServiceImpl implements BookAnalyzeService {
     @Autowired
     private BookAnalyzeMapper bookAnalyzeMapper;
-    public List<TBookAnalyze> getBoorowNum(){
+
+    public List<TBookAnalyze> getBoorowNum() {
 
         return bookAnalyzeMapper.selBorrowNum();
     }
 
+    public BookAnalyzeMapper getBookAnalyzeMapper() {
+        return bookAnalyzeMapper;
+    }
+
+    public void setBookAnalyzeMapper(BookAnalyzeMapper bookAnalyzeMapper) {
+        this.bookAnalyzeMapper = bookAnalyzeMapper;
+    }
 }

@@ -12,6 +12,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Map;
+
 @Service
 public class BorrowCheckServiceImpl implements BorrowCheckService {
 
@@ -46,5 +47,29 @@ public class BorrowCheckServiceImpl implements BorrowCheckService {
         tStore.setStatus(0);
         tStoreMapper.updateByPrimaryKey(tStore);
         return tBorrowMapper.updateByPrimaryKeyWithBLOBs(tBorrow) > 0;
+    }
+
+    public CheckMapper getCheckMapper() {
+        return checkMapper;
+    }
+
+    public void setCheckMapper(CheckMapper checkMapper) {
+        this.checkMapper = checkMapper;
+    }
+
+    public TBorrowMapper gettBorrowMapper() {
+        return tBorrowMapper;
+    }
+
+    public void settBorrowMapper(TBorrowMapper tBorrowMapper) {
+        this.tBorrowMapper = tBorrowMapper;
+    }
+
+    public TStoreMapper gettStoreMapper() {
+        return tStoreMapper;
+    }
+
+    public void settStoreMapper(TStoreMapper tStoreMapper) {
+        this.tStoreMapper = tStoreMapper;
     }
 }
