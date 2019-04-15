@@ -17,7 +17,7 @@ import java.util.List;
 @Service
 public class HomeServiceImpl implements HomeService {
     @Autowired
-     private UserMapper userMapper;
+    private UserMapper userMapper;
 
     @Autowired
     private BorrowMapper borrowMapper;
@@ -37,13 +37,13 @@ public class HomeServiceImpl implements HomeService {
     @Override
     public String getOverTimeUser() {
         String a = "<font color='red'><b>";
-        List<UserBorrow> users  = overtimePaymentDao.findOvertimeUser();
-        for (int i=0;i<users.size();i++){
-            a = a+users.get(i).gettSysUser().getBm()+"</font><font color='yellow'>"+users.get(i).gettSysUser().getXm()+
-                    "</font><font color='red'>借的"+ users.get(i).getSm()+"逾期尚未归还，请尽快归还！！！&emsp;&emsp;&emsp;&" +
+        List<UserBorrow> users = overtimePaymentDao.findOvertimeUser();
+        for (int i = 0; i < users.size(); i++) {
+            a = a + users.get(i).gettSysUser().getBm() + "</font><font color='yellow'>" + users.get(i).gettSysUser().getXm() +
+                    "</font><font color='red'>借的《" + users.get(i).getSm() + "》逾期尚未归还，请尽快归还！！！&emsp;&emsp;&emsp;&" +
                     "emsp;&emsp;&emsp;&emsp;&emsp;&emsp;";
         }
-        a=a+"</b></font>";
+        a = a + "</b></font>";
         return a;
     }
 
@@ -57,11 +57,11 @@ public class HomeServiceImpl implements HomeService {
     @Override
     public List<Borrow> getHotBooks() {
         List<Borrow> hotBooks = borrowMapper.selectByBookTop();
-        if (hotBooks.size()<6){
+        if (hotBooks.size() < 6) {
             do {
                 Borrow borrow = new Borrow();
                 hotBooks.add(borrow);
-            }while (hotBooks.size()<6);
+            } while (hotBooks.size() < 6);
         }
         return hotBooks;
     }
@@ -71,11 +71,11 @@ public class HomeServiceImpl implements HomeService {
     @Override
     public List<Borrow> getNewBooks() {
         List<Borrow> newBooks = borrowMapper.selectByBookNew();
-        if (newBooks.size()<6){
+        if (newBooks.size() < 6) {
             do {
                 Borrow borrow = new Borrow();
                 newBooks.add(borrow);
-            }while (newBooks.size()<6);
+            } while (newBooks.size() < 6);
         }
         return newBooks;
     }
@@ -83,11 +83,11 @@ public class HomeServiceImpl implements HomeService {
     @Override
     public boolean returnBookRequest(String[] BookSid) {
         int status = 0;
-        for (int i=0;i<BookSid.length;i++){
+        for (int i = 0; i < BookSid.length; i++) {
             int a = borrowMapper.returnBookRequest(BookSid[i]);
-            status=status+a;
+            status = status + a;
         }
-        return status>0?true:false;
+        return status > 0 ? true : false;
     }
 
     @Override
@@ -110,4 +110,35 @@ public class HomeServiceImpl implements HomeService {
         return tSystemConfigMapper.updataPenTime(penTime);
     }
 
+    public UserMapper getUserMapper() {
+        return userMapper;
+    }
+
+    public void setUserMapper(UserMapper userMapper) {
+        this.userMapper = userMapper;
+    }
+
+    public BorrowMapper getBorrowMapper() {
+        return borrowMapper;
+    }
+
+    public void setBorrowMapper(BorrowMapper borrowMapper) {
+        this.borrowMapper = borrowMapper;
+    }
+
+    public OvertimePaymentDao getOvertimePaymentDao() {
+        return overtimePaymentDao;
+    }
+
+    public void setOvertimePaymentDao(OvertimePaymentDao overtimePaymentDao) {
+        this.overtimePaymentDao = overtimePaymentDao;
+    }
+
+    public TSystemConfigMapper gettSystemConfigMapper() {
+        return tSystemConfigMapper;
+    }
+
+    public void settSystemConfigMapper(TSystemConfigMapper tSystemConfigMapper) {
+        this.tSystemConfigMapper = tSystemConfigMapper;
+    }
 }

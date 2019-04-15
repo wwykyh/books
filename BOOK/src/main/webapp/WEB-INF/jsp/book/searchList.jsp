@@ -237,10 +237,10 @@
 <div class="centerdiv"><img src="images/bookLog.jpg" width="270" style="margin-top:100px" style="color:#999"></img>
 </div>
 <div class="centerdiv">
-    <form><input id="searchText" name="dim"><input id="submitBtn" type="button" value="GO" style="margin-top:30px"
+    <form><input id="searchText" name="dim" placeholder="书名、作者"><input id="submitBtn" type="button" value="GO" style="margin-top:30px"
                                                    onclick="sub()"></form>
 </div>
-<div style="height: 210px;width: 100%">
+<div style="height: 270px;width: 100%">
     <div style="margin-left: 30px;margin-top: 40px;margin-right:10px;height: 40%;width: 100%">
         <p style="text-align: left; font-size: 20px;margin-left: 10px"><strong>热门图书</strong></p>
         <c:forEach items="${borrow}" var="p">
@@ -252,7 +252,7 @@
                              alt="" title=""
                              class="thumb"
                              border="0"
-                             style="height: 100px;width: 50%"/></a>
+                             style="height: 150px;width: 100px"/></a>
                 </div>
                 <div style="width: auto;height: 20%">
                     <a href="javascript:void(0);"
@@ -289,7 +289,7 @@
         art.dialog.open('book_info?id=' + id, {
             title: '图书详情',
             width: 900,
-            height: 500,
+            height: 820,
             id: 'book_info',
             //ok: true,
             // okVal: "打印",

@@ -46,10 +46,10 @@ public class RenewCheckServiceImpl implements IRenewCheckService {
     }
 
 
-    public boolean updateTBorrow(TBorrow tBorrow,String id, String status, String bz) {
+    public boolean updateTBorrow(TBorrow tBorrow, String id, String status, String bz) {
 
         SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
-        Date date  =new Date();
+        Date date = new Date();
         String xjrq = format.format(date);
 
         tBorrow.setStatus(1);
@@ -59,19 +59,41 @@ public class RenewCheckServiceImpl implements IRenewCheckService {
         TSysUser tSysUser = checkMapper.getUser(tBorrow.getUserId());
         TSystemConfig tSystemConfig = checkMapper.getSystemConfig();
         Calendar ca = Calendar.getInstance();
-        if(tSysUser.getIsadmin()==1){
-            ca.add(Calendar.DATE, tSystemConfig.getAdminTime()/2);
-            date= ca.getTime();
+        if (tSysUser.getIsadmin() == 1) {
+            ca.add(Calendar.DATE, tSystemConfig.getAdminTime() / 2);
+            date = ca.getTime();
             String jhghrq = format.format(date);
             tBorrow.setJhghrq(jhghrq);
-        }else if(tSysUser.getIsadmin()==0){
-            ca.add(Calendar.DATE, tSystemConfig.getBookTime()/2);
-            date= ca.getTime();
+        } else if (tSysUser.getIsadmin() == 0) {
+            ca.add(Calendar.DATE, tSystemConfig.getBookTime() / 2);
+            date = ca.getTime();
             String jhghrq = format.format(date);
             tBorrow.setJhghrq(jhghrq);
         }
         return tBorrowMapper.updateByPrimaryKeyWithBLOBs(tBorrow) > 0;
     }
 
+    public CheckMapper getCheckMapper() {
+        return checkMapper;
+    }
 
+    public void setCheckMapper(CheckMapper checkMapper) {
+        this.checkMapper = checkMapper;
+    }
+
+    public TBorrowMapper gettBorrowMapper() {
+        return tBorrowMapper;
+    }
+
+    public void settBorrowMapper(TBorrowMapper tBorrowMapper) {
+        this.tBorrowMapper = tBorrowMapper;
+    }
+
+    public TStoreMapper gettStoreMapper() {
+        return tStoreMapper;
+    }
+
+    public void settStoreMapper(TStoreMapper tStoreMapper) {
+        this.tStoreMapper = tStoreMapper;
+    }
 }

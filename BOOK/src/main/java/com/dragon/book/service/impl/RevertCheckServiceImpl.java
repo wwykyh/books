@@ -57,8 +57,8 @@ public class RevertCheckServiceImpl implements RevertCheckService {
     public boolean updateRevertTBorrowSh(Integer id, Integer sh, String statusPay) {
         TBorrow tBorrow = tBorrowMapper.selectByPrimaryKey(id);
         String sId = tBorrow.getsId();
-        Map<String,Object> filter = new HashMap<>();
-        filter.put("sId",sId);
+        Map<String, Object> filter = new HashMap<>();
+        filter.put("sId", sId);
         filter.put("sh", sh);
 //        tBorrow.setJyzt(2);  // 2  代表的是归还状态
         tBorrow.setStatus(1); // 1 确认状态为确认通过
@@ -67,7 +67,7 @@ public class RevertCheckServiceImpl implements RevertCheckService {
 //            Date ghrq = format.parse(tBorrow.getGhrq());
             Date jhghrq = format.parse(tBorrow.getJhghrq());
             // 超时归还
-            if (new Date().getTime() > jhghrq.getTime()){
+            if (new Date().getTime() > jhghrq.getTime()) {
                 TOvertime tOvertime = new TOvertime();
                 tOvertime.setBookId(Integer.parseInt(sId));
                 tOvertime.setUserId(tBorrow.getUserId());
@@ -77,7 +77,7 @@ public class RevertCheckServiceImpl implements RevertCheckService {
                 TOvertimeExample.Criteria criteria = tOvertimeExample.createCriteria();
                 criteria.andUserIdEqualTo(tBorrow.getUserId());
                 int total = tOvertimeMapper.countByExample(tOvertimeExample);
-                if(total >= 2){
+                if (total >= 2) {
                     TSysUser tSysUser = tSysUserMapper.selectByPrimaryKey(tBorrow.getUserId());
                     tSysUser.setIshmd(1);
                     int f = tSysUserMapper.updateByPrimaryKey(tSysUser);
@@ -98,5 +98,53 @@ public class RevertCheckServiceImpl implements RevertCheckService {
         return checkMapper.updateRevertTBorrowSh(filter) >= 0 &&
                 tBorrowMapper.updateByPrimaryKey(tBorrow) > 0 &&
                 tCompensateMapper.insert(tCompensate) > 0;
+    }
+
+    public CheckMapper getCheckMapper() {
+        return checkMapper;
+    }
+
+    public void setCheckMapper(CheckMapper checkMapper) {
+        this.checkMapper = checkMapper;
+    }
+
+    public TBorrowMapper gettBorrowMapper() {
+        return tBorrowMapper;
+    }
+
+    public void settBorrowMapper(TBorrowMapper tBorrowMapper) {
+        this.tBorrowMapper = tBorrowMapper;
+    }
+
+    public TCompensateMapper gettCompensateMapper() {
+        return tCompensateMapper;
+    }
+
+    public void settCompensateMapper(TCompensateMapper tCompensateMapper) {
+        this.tCompensateMapper = tCompensateMapper;
+    }
+
+    public TStoreMapper gettStoreMapper() {
+        return tStoreMapper;
+    }
+
+    public void settStoreMapper(TStoreMapper tStoreMapper) {
+        this.tStoreMapper = tStoreMapper;
+    }
+
+    public TOvertimeMapper gettOvertimeMapper() {
+        return tOvertimeMapper;
+    }
+
+    public void settOvertimeMapper(TOvertimeMapper tOvertimeMapper) {
+        this.tOvertimeMapper = tOvertimeMapper;
+    }
+
+    public TSysUserMapper gettSysUserMapper() {
+        return tSysUserMapper;
+    }
+
+    public void settSysUserMapper(TSysUserMapper tSysUserMapper) {
+        this.tSysUserMapper = tSysUserMapper;
     }
 }

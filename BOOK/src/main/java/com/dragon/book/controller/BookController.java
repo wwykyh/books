@@ -76,8 +76,12 @@ public class BookController {
 
     @GetMapping("/book_info")
     public String booksIndex(@RequestParam String id, Model model) {
+      //  System.out.println(id);
+        id = id.trim();
+      //  System.out.println(id);
+
         BookInfo bookInfo = bookServices.selectBookInfoById(id);
-        System.out.println(bookInfo.toString() + "================");
+//        System.out.println(bookInfo.toString() + "================");
         model.addAttribute("bookInfo", bookInfo);
 
         if (id.substring(0, 1).equals("a")) {

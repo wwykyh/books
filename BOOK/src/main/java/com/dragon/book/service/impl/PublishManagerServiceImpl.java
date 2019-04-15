@@ -21,44 +21,53 @@ import java.util.List;
 public class PublishManagerServiceImpl implements PublishManagerService {
 
     @Autowired
-    private TPublishMapper publishMapper ;
+    private TPublishMapper publishMapper;
 
     @Override
     public List<TPublish> getPublishList() {
-        TPublishExample example = new TPublishExample() ;
-        return publishMapper.selectByExample(example) ;
+        TPublishExample example = new TPublishExample();
+        return publishMapper.selectByExample(example);
     }
 
     @Override
     public PageBean getPublishListByPageBean(PageBean pageBean) {
-        TPublishExample example = new TPublishExample() ;
+        TPublishExample example = new TPublishExample();
         int count = publishMapper.countByExample(example);
         pageBean.setTotal(count);
-        PageHelper.startPage(pageBean.getPage(),pageBean.getPagesize()) ;
+        PageHelper.startPage(pageBean.getPage(), pageBean.getPagesize());
         List<TPublish> publishList = publishMapper.selectByExample(example);
         pageBean.setRows(publishList);
-        return pageBean ;
+        return pageBean;
     }
+
     @Override
-    public boolean deletePublish(String pubId){
-        int row = publishMapper.deleteByPrimaryKey(Integer.parseInt(pubId)) ;
-        return row > 0 ? true : false ;
+    public boolean deletePublish(String pubId) {
+        int row = publishMapper.deleteByPrimaryKey(Integer.parseInt(pubId));
+        return row > 0 ? true : false;
     }
 
     @Override
     public boolean addPublish(TPublish publish) {
-        int row = publishMapper.insert(publish) ;
-        return row > 0 ? true : false ;
+        int row = publishMapper.insert(publish);
+        return row > 0 ? true : false;
     }
 
     @Override
     public boolean updatePublish(TPublish publish) {
-        int row = publishMapper.updateByPrimaryKey(publish) ;
-        return row > 0 ? true : false ;
+        int row = publishMapper.updateByPrimaryKey(publish);
+        return row > 0 ? true : false;
     }
 
     @Override
     public TPublish getPublishById(String pubId) {
         return publishMapper.selectByPrimaryKey(Integer.parseInt(pubId));
+    }
+
+    public TPublishMapper getPublishMapper() {
+        return publishMapper;
+    }
+
+    public void setPublishMapper(TPublishMapper publishMapper) {
+        this.publishMapper = publishMapper;
     }
 }

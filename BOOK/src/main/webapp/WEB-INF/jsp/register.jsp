@@ -31,13 +31,29 @@
             }
         }
 
+        function checkAllNull() {
+
+            $("input").trigger("blur")
+            var username = document.getElementById("username").value;
+            var pwd = document.getElementById("pwd").value;
+            var email = document.getElementById("email").value;
+
+            //
+            if (username.length>0 && email.length>0 && pwd.length>0) {
+                return true;
+            } else {
+                alert("必选项不能为空");
+                return false;
+            }
+        }
+
         requirejs(['jquery', 'jquery.form'], function ($) {
             $(function () {
                 $("#register").formPrefer({
                     showTipsType: 'lineTips', // 报错信息提示方式 lineTips layerTips otherTips
                     submitBtn: '#btnSubmitOne',   // href="/bookAdd"
                     success: function () {
-                        alert("验证通过");
+                       // alert("验证通过");
                         $("form[name='register']").submit();
                     }
                 });
@@ -89,7 +105,7 @@
             <div class="system-img"></div>
             <div class="login-con">
                 <span style="color: red">${tip}<br/></span>
-                <form action="doreg" method="post" onsubmit="return checkcpwd()"
+                <form action="doreg" method="post" <%--onsubmit="return checkAllNull()"--%>
                       name="register" id="register">
                     <table>
                             <tr>
@@ -119,12 +135,12 @@
                         </tr>
                         <tr>
                             <td><input type="password" class="input-text" name="cpwd"
-                                       id="cpwd" placeholder="确认密码" data-validate="required Ab_8_20"/></td>
+                                       id="cpwd" placeholder="确认密码" data-validate="required Ab_8_20" onblur="checkcpwd()"/></td>
                         </tr>
 
                     </table>
                     <div class="login-btnbar">
-                        <input type="submit" value="注册" class="btn btn-zsdl" id="btnSubmitOne" name="btnSubmitOne"> <a
+                        <input type="button" value="注册" class="btn btn-zsdl" id="btnSubmitOne" name="btnSubmitOne"> <a
                             href="login" class="btn btn-zsdl">返回登录</a>
                     </div>
                 </form>

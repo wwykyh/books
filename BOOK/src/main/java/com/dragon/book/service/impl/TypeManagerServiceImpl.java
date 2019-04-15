@@ -20,19 +20,20 @@ import java.util.List;
 @Service
 public class TypeManagerServiceImpl implements TypeManagerService {
     @Autowired
-    private TTypeMapper tTypeMapper ;
+    private TTypeMapper tTypeMapper;
+
     @Override
     public TType getTypeByName(String typeName) {
-        TTypeExample example = new TTypeExample() ;
+        TTypeExample example = new TTypeExample();
         TTypeExample.Criteria criteria = example.createCriteria();
-        criteria.andLxmcEqualTo(typeName) ;
+        criteria.andLxmcEqualTo(typeName);
         List<TType> list = tTypeMapper.selectByExample(example);
         return list.get(0);
     }
 
     @Override
     public List<TType> getTypeList() {
-        TTypeExample example = new TTypeExample() ;
+        TTypeExample example = new TTypeExample();
         List<TType> types = tTypeMapper.selectByExample(example);
         return types;
     }
@@ -40,19 +41,19 @@ public class TypeManagerServiceImpl implements TypeManagerService {
     @Override
 
     public PageBean getTypePageByPageBean(PageBean pageBean) {
-        TTypeExample example = new TTypeExample() ;
-        int count = tTypeMapper.countByExample(example) ;
-        pageBean.setTotal(count) ;
-        PageHelper.startPage(pageBean.getPage(),pageBean.getPagesize()) ;
-        List<TType> tTypes = tTypeMapper.selectByExample(example) ;
-        pageBean.setRows(tTypes) ;
-        return pageBean ;
+        TTypeExample example = new TTypeExample();
+        int count = tTypeMapper.countByExample(example);
+        pageBean.setTotal(count);
+        PageHelper.startPage(pageBean.getPage(), pageBean.getPagesize());
+        List<TType> tTypes = tTypeMapper.selectByExample(example);
+        pageBean.setRows(tTypes);
+        return pageBean;
     }
 
     @Override
     public boolean deleteTypeByTyepId(String typeId) {
         int rows = tTypeMapper.deleteByPrimaryKey(Integer.parseInt(typeId));
-        return rows > 0 ? true : false ;
+        return rows > 0 ? true : false;
     }
 
     @Override
@@ -62,13 +63,22 @@ public class TypeManagerServiceImpl implements TypeManagerService {
 
     @Override
     public boolean addType(TType type) {
-        int rows = tTypeMapper.insert(type) ;
-        return rows > 0 ? true : false ;
+        int rows = tTypeMapper.insert(type);
+        return rows > 0 ? true : false;
     }
 
     @Override
     public boolean updateType(TType type) {
         int rows = tTypeMapper.updateByPrimaryKey(type);
-        return rows > 0 ? true : false ;
+        return rows > 0 ? true : false;
+    }
+
+
+    public TTypeMapper gettTypeMapper() {
+        return tTypeMapper;
+    }
+
+    public void settTypeMapper(TTypeMapper tTypeMapper) {
+        this.tTypeMapper = tTypeMapper;
     }
 }

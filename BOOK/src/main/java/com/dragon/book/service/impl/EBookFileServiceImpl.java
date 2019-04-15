@@ -95,7 +95,7 @@ public class EBookFileServiceImpl implements EBookFileService {
                 result = fileSystemInterface.uploadFile(multipartFile, typeName);
 
 //                String eBookId = UUID.randomUUID().toString().replace("-", "");
-                String eBookId = bookService.getKey("00","电子书");
+                String eBookId = bookService.getKey("00", "电子书");
                 // 上传到服务器的文件名
                 String fileName = multipartFile.getOriginalFilename();
 
@@ -126,5 +126,57 @@ public class EBookFileServiceImpl implements EBookFileService {
         TSysUser user = (TSysUser) request.getSession().getAttribute("user");
         tEbookDown.setUserId(user.getUserId());
         tEbookDownMapper.insert(tEbookDown);
+    }
+
+    public Logger getLogger() {
+        return logger;
+    }
+
+    public TEBookMapper getTeBookMapper() {
+        return teBookMapper;
+    }
+
+    public void setTeBookMapper(TEBookMapper teBookMapper) {
+        this.teBookMapper = teBookMapper;
+    }
+
+    public TTypeMapper gettTypeMapper() {
+        return tTypeMapper;
+    }
+
+    public void settTypeMapper(TTypeMapper tTypeMapper) {
+        this.tTypeMapper = tTypeMapper;
+    }
+
+    public TUserBookMapper gettUserBookMapper() {
+        return tUserBookMapper;
+    }
+
+    public void settUserBookMapper(TUserBookMapper tUserBookMapper) {
+        this.tUserBookMapper = tUserBookMapper;
+    }
+
+    public TEbookDownMapper gettEbookDownMapper() {
+        return tEbookDownMapper;
+    }
+
+    public void settEbookDownMapper(TEbookDownMapper tEbookDownMapper) {
+        this.tEbookDownMapper = tEbookDownMapper;
+    }
+
+    public FileSystemInterface getFileSystemInterface() {
+        return fileSystemInterface;
+    }
+
+    public void setFileSystemInterface(FileSystemInterface fileSystemInterface) {
+        this.fileSystemInterface = fileSystemInterface;
+    }
+
+    public BookService getBookService() {
+        return bookService;
+    }
+
+    public void setBookService(BookService bookService) {
+        this.bookService = bookService;
     }
 }

@@ -15,12 +15,20 @@ import com.dragon.book.service.TypeService;
 @Service
 public class TypeServiceImpl implements TypeService {
 
-	@Autowired
-	private TypeMapper typeMapper;
+    @Autowired
+    private TypeMapper typeMapper;
 
-	@Override
-public List<TType> getAllTypes() {
-	// TODO Auto-generated method stub
-	return typeMapper.getAllType();
-}
+    @Override
+    public List<TType> getAllTypes() {
+        // TODO Auto-generated method stub
+        return typeMapper.getAllType();
+    }
+
+    public TypeMapper getTypeMapper() {
+        return typeMapper;
+    }
+
+    public void setTypeMapper(TypeMapper typeMapper) {
+        this.typeMapper = typeMapper;
+    }
 }
