@@ -79,7 +79,10 @@
                                 <td>${bookBorrow.tBorrow.jhghrq}</td>
                                 <td>
                                     <a href="javascript:void(0);" onclick="onCheckInfo(${bookBorrow.tBorrow.id})">查看详情</a>&nbsp;&nbsp;
-                                    <a href="javascript:void(0);" onclick="renew(${bookBorrow.isbn},${user.userId})">续借</a>&nbsp;&nbsp;
+                                    <c:set var="type" scope="session" value="${bookBorrow.tBorrow.jyzt}"/>
+                                    <c:if test="${type!=1}">
+                                    <a id="tr_${bookBorrow.tBorrow.id}" href="javascript:void(0);" onclick="renew(${bookBorrow.tBorrow.id},${user.userId},${bookBorrow.isbn})">续借</a>&nbsp;&nbsp;
+                                    </c:if>
                                     <a href="javascript:void(0);" onclick="rbook(${bookBorrow.isbn},${user.userId})">归还</a>
                                 </td>
                             </tr>
@@ -115,7 +118,7 @@
                 url:"/personal/reNew?isbn="+isbn+"&userId="+userid+"",
                 success:function(data){
                     if (data=="success"){
-                        alert("续借申请成功");
+                        alert("续借申请成功，请等待管理员确认");
                         // $("tr").remove("#tr_"+isbn);
                     } else {
                         alert("续借申请失败！") ;

@@ -57,4 +57,12 @@
         t_book_news.user_id=#{userId}
     </select>
 
+    <insert id="addRenewNews" parameterType="com.dragon.book.model.TBookNews">
+        insert into
+        t_book_news
+        (user_id,book_isbn,news_name,news_date,news_type)
+        values
+        (${userId},#{isbn},"续借",#{date},1)
+    </insert>
+
 </mapper>

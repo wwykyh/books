@@ -98,7 +98,7 @@ public class BorrowRenewController {
         if (!StringUtils.isEmpty(id) && !StringUtils.isEmpty(status)) {
             tBorrow = renewCheckService.getSingleRenewTBorrow(Integer.parseInt(id));
             if ("1".equals(status)) {  // 审核通过
-                renewCheckService.updateTBorrow(tBorrow, id, status, bz);
+//                renewCheckService.updateTBorrow(tBorrow, id, status, bz);
                 return true;
             }
         } else {

@@ -4,6 +4,15 @@
 
     <!--续借审核-->
 
+    <update id="updateTBorrowById" parameterType="com.dragon.book.model.TBorrow">
+        update t_borrow
+    set
+      jhghrq = #{jhghrq,jdbcType=VARCHAR},
+      xjrq = #{xjrq,jdbcType=VARCHAR},
+      jyzt = #{jyzt,jdbcType=INTEGER}
+    where id = #{id,jdbcType=INTEGER}
+    </update>
+
     <select id="getUser" resultType="com.dragon.book.model.TSysUser">
         select
         *
@@ -88,8 +97,6 @@
     </select>
 
 
-
-
     <!--借阅审核-->
     <select id="getTBorrowCheckList" resultType="com.dragon.book.pojo.TBorrowInfo" parameterType="map">
         SELECT n.*,b.type_id typeId,b.tsdl,p.lxmc FROM
@@ -110,7 +117,7 @@
         <if test="first != null and rowNum != null">
             limit #{first,jdbcType=INTEGER},#{rowNum,jdbcType=INTEGER}
         </if>
-	</select>
+    </select>
 
     <select id="getCounts" resultType="int">
         SELECT count(*) FROM
@@ -141,7 +148,7 @@
         AND n.id = #{id,jdbcType=INTEGER}
     </select>
 
-   <!--归还审核-->
+    <!--归还审核-->
 
     <select id="getTBorrowRevertListCounts" resultType="com.dragon.book.pojo.TBorrowInfo" parameterType="map">
         SELECT count(*) FROM
@@ -189,7 +196,7 @@
           WHERE n.s_id=b.id and n.id = #{id,jdbcType=INTEGER}
     </select>
 
-    <update id="updateRevertTBorrowSh" parameterType="map" >
+    <update id="updateRevertTBorrowSh" parameterType="map">
         update t_store
         set sh = #{sh,jdbcType=INTEGER},status='1'
         where id=#{sId,jdbcType=VARCHAR}
