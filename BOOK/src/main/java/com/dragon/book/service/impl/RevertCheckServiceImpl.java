@@ -3,6 +3,7 @@ package com.dragon.book.service.impl;
 import com.dragon.book.mapper.*;
 import com.dragon.book.model.*;
 import com.dragon.book.pojo.TBorrowInfo;
+import com.dragon.book.service.BookManagerService;
 import com.dragon.book.service.ebookService.RevertCheckService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -36,6 +37,9 @@ public class RevertCheckServiceImpl implements RevertCheckService {
 
     @Autowired
     private TSysUserMapper tSysUserMapper;
+
+    @Autowired
+    private BookManagerService bookManagerService;
 
     @Override
     public List<TBorrowInfo> getTBorrowRevertList(Map filter) {
@@ -91,19 +95,20 @@ public class RevertCheckServiceImpl implements RevertCheckService {
         // 更新赔偿表
         boolean f;
         if ("1".equals(statusPay)) {
-
-
+            Date date = new Date();
+             format = new SimpleDateFormat("yyyy-MM-dd");
+            String time = format.format(date);
+           // System.out.println(true);
             TStore tStore = tStoreMapper.selectByPrimaryKey(sId);
             TCompensate tCompensate = new TCompensate();
-            tCompensate.setIspc(Integer.parseInt(statusPay));
+            tCompensate.setIspc(0);
             tCompensate.setSh(sh);
             tCompensate.setUserId(tBorrow.getUserId());
+            tCompensate.setPcdate(time);
             tCompensate.setsId(tStore.getIsbn());
-            f = tCompensateMapper.insert(tCompensate) > 0;
-        }
+            f = tCompensateMapper.insert(tCompensate) > 0; }
         return checkMapper.updateRevertTBorrowSh(filter) >= 0 &&
-                tBorrowMapper.updateByPrimaryKey(tBorrow) > 0
-                ;
+                tBorrowMapper.updateByPrimaryKey(tBorrow) > 0;
     }
 
     public CheckMapper getCheckMapper() {
