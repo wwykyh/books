@@ -76,9 +76,9 @@ public class BookController {
 
     @GetMapping("/book_info")
     public String booksIndex(@RequestParam String id, Model model) {
-      //  System.out.println(id);
+        //  System.out.println(id);
         id = id.trim();
-      //  System.out.println(id);
+        //  System.out.println(id);
 
         BookInfo bookInfo = bookServices.selectBookInfoById(id);
 //        System.out.println(bookInfo.toString() + "================");
@@ -89,6 +89,7 @@ public class BookController {
             bookInfo = bookServices.selectBookByIsbn(Isbn);
         }
         model.addAttribute("bookInfo", bookInfo);
+/*        System.out.println(bookInfo.toString());*/
         String isbn = bookInfo.getIsbn();
         List<CommentInfo> commentInfos = userBorrowService.selBookComment(isbn);
         model.addAttribute("commentInfos", commentInfos);

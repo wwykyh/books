@@ -89,15 +89,21 @@ public class RevertCheckServiceImpl implements RevertCheckService {
             e.printStackTrace();
         }
         // 更新赔偿表
-        TStore tStore = tStoreMapper.selectByPrimaryKey(sId);
-        TCompensate tCompensate = new TCompensate();
-        tCompensate.setIspc(Integer.parseInt(statusPay));
-        tCompensate.setSh(sh);
-        tCompensate.setUserId(tBorrow.getUserId());
-        tCompensate.setsId(tStore.getIsbn());
+        boolean f;
+        if ("1".equals(statusPay)) {
+
+
+            TStore tStore = tStoreMapper.selectByPrimaryKey(sId);
+            TCompensate tCompensate = new TCompensate();
+            tCompensate.setIspc(Integer.parseInt(statusPay));
+            tCompensate.setSh(sh);
+            tCompensate.setUserId(tBorrow.getUserId());
+            tCompensate.setsId(tStore.getIsbn());
+            f = tCompensateMapper.insert(tCompensate) > 0;
+        }
         return checkMapper.updateRevertTBorrowSh(filter) >= 0 &&
-                tBorrowMapper.updateByPrimaryKey(tBorrow) > 0 &&
-                tCompensateMapper.insert(tCompensate) > 0;
+                tBorrowMapper.updateByPrimaryKey(tBorrow) > 0
+                ;
     }
 
     public CheckMapper getCheckMapper() {

@@ -237,8 +237,9 @@
 <div class="centerdiv"><img src="images/bookLog.jpg" width="270" style="margin-top:100px" style="color:#999"></img>
 </div>
 <div class="centerdiv">
-    <form><input id="searchText" name="dim" placeholder="书名、作者"><input id="submitBtn" type="button" value="GO" style="margin-top:30px"
-                                                   onclick="sub()"></form>
+    <form><input id="searchText" name="dim" placeholder="书名、作者"><input id="submitBtn" type="button" value="GO"
+                                                                       style="margin-top:30px"
+                                                                       onclick="sub()"></form>
 </div>
 <div style="height: 270px;width: 100%">
     <div style="margin-left: 30px;margin-top: 40px;margin-right:10px;height: 40%;width: 100%">
