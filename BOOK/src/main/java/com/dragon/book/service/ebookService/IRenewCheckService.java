@@ -16,7 +16,8 @@ public interface IRenewCheckService {
     Integer getRenewCounts(Map filter);
 
     // 审核更新
-    boolean updateTBorrow(TBorrow tBorrow,String id, String status, String bz);
+    boolean updateTBorrow(int id, int uId ,String jhghrq,String isbn);
 
+    public TBorrow selectBorrowInfo(int id);
 
 }

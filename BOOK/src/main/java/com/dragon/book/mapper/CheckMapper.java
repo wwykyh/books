@@ -12,6 +12,8 @@ import java.util.Map;
 public interface CheckMapper {
 
     //续借审核
+    int updateTBorrowById(TBorrow tBorrow);
+
     List<TBorrowInfo> getTBorrowRenewList(Map filter);
 
     TBorrowInfo getSingleRenewTBorrow(Integer id);
