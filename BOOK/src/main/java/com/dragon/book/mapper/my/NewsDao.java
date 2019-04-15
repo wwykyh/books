@@ -30,4 +30,12 @@ public interface NewsDao {
      * @param userId
      */
     public TBorrow findDetailInfo(@Param("isbn") String isbn, @Param("userId") int userId);
+
+    /**
+     * 添加新的续借消息
+     * @param uId
+     * @param s_id
+     * @param date
+     */
+    public void addRenewNews(@Param("userId") int uId, @Param("isbn") String isbn, @Param("date") String date);
 }

@@ -4,6 +4,7 @@ package com.dragon.book.controller;
 import com.dragon.book.model.TBorrow;
 import com.dragon.book.model.TSysUser;
 import com.dragon.book.pojo.BookBorrow;
+import com.dragon.book.service.ebookService.IRenewCheckService;
 import com.dragon.book.service.my.IPersonalService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -25,6 +26,8 @@ public class PersonalController {
 
     @Autowired
     private IPersonalService personalService;
+    @Autowired
+    private IRenewCheckService renewCheckService;
 
     /**
      * 转到personal界面，并加载数据
@@ -69,19 +72,22 @@ public class PersonalController {
     /**
      * 续借
      *
-     * @param isbn 图书编号
-     * @param uId  用户id
+     * @param id
      * @return
      */
     @RequestMapping("/reNew")
     @ResponseBody
-    public String renew(@RequestParam("isbn") String isbn, @RequestParam("userId") int uId) {
-        if ("" == isbn && null == isbn && 0 == uId) {
-            String data = "图书编号或用户ID不能为空！";
-            return data;
+    public String renew(@RequestParam("id") int id, @RequestParam("userId") int uId,@RequestParam("isbn")String isbn) {
+        TBorrow tBorrow = renewCheckService.selectBorrowInfo(id);
+        String jhghrq = tBorrow.getJhghrq();
+        int jyzt = tBorrow.getJyzt();
+        if (1 != jyzt) {
+            boolean flag = renewCheckService.updateTBorrow(id, uId, jhghrq,isbn);
+            if (flag) {
+                return "success";
+            }
         }
-        personalService.renew(isbn, uId);
-        return "success";
+        return "error";
     }
 
     /**

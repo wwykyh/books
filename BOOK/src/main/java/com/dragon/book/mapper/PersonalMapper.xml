@@ -10,6 +10,7 @@
             <result column="id" property="id"/>
             <result column="jyrq" property="jyrq"/>
             <result column="jhghrq" property="jhghrq"/>
+            <result column="jyzt" property="jyzt"/>
         </collection>
     </resultMap>
 
@@ -20,7 +21,8 @@
         t_book.zz,
         t_borrow.id,
         t_borrow.jyrq,
-        t_borrow.jhghrq
+        t_borrow.jhghrq,
+        t_borrow.jyzt
          from
          t_borrow
         right join
