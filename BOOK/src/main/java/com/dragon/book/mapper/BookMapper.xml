@@ -2,22 +2,23 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="com.dragon.book.mapper.BookMapper">
     <resultMap id="BaseResultMap" type="com.dragon.book.pojo.Book">
-        <id column="isbn" property="isbn" jdbcType="VARCHAR"/>
-        <result column="sm" property="sm" jdbcType="VARCHAR"/>
-        <result column="cbsmc" property="cbsmc" jdbcType="VARCHAR"/>
-        <result column="cbrq" property="cbrq" jdbcType="VARCHAR"/>
-        <result column="zz" property="zz" jdbcType="VARCHAR"/>
-        <result column="type_id" property="typeId" jdbcType="INTEGER"/>
-        <result column="tsdl" property="tsdl" jdbcType="VARCHAR"/>
-        <result column="picture" property="picture" jdbcType="VARCHAR"/>
-        <association property="tStore" javaType="com.dragon.book.model.TStore"
+        <id column="id" property="id" jdbcType="INTEGER"/>
+        <result column="user_id" property="userId" jdbcType="INTEGER"/>
+        <result column="wz" property="wz" jdbcType="VARCHAR"/>
+        <result column="sh" property="sh" jdbcType="INTEGER"/>
+        <result column="rksj" property="rksj" jdbcType="VARCHAR"/>
+        <result column="status" property="status" jdbcType="INTEGER"/>
+        <association property="tBook" javaType="com.dragon.book.model.TBook"
                      column="isbn" foreignColumn="isbn">
-            <id column="id" property="id" jdbcType="INTEGER"/>
-            <result column="user_id" property="userId" jdbcType="INTEGER"/>
-            <result column="wz" property="wz" jdbcType="VARCHAR"/>
-            <result column="sh" property="sh" jdbcType="INTEGER"/>
-            <result column="rksj" property="rksj" jdbcType="VARCHAR"/>
-            <result column="status" property="status" jdbcType="INTEGER"/>
+            <id column="isbn" property="isbn" jdbcType="VARCHAR"/>
+            <result column="sm" property="sm" jdbcType="VARCHAR"/>
+            <result column="cbsmc" property="cbsmc" jdbcType="VARCHAR"/>
+            <result column="cbrq" property="cbrq" jdbcType="VARCHAR"/>
+            <result column="zz" property="zz" jdbcType="VARCHAR"/>
+            <result column="type_id" property="typeId" jdbcType="INTEGER"/>
+            <result column="tsdl" property="tsdl" jdbcType="VARCHAR"/>
+            <result column="picture" property="picture" jdbcType="VARCHAR"/>
+
         </association>
 
         <association property="tType" javaType="com.dragon.book.model.TType"
