@@ -53,7 +53,7 @@
 		update
 		t_borrow
 		set status=2,jyzt=2
-		where s_id = #{sId,jdbcType=VARCHAR}
+		where s_id = #{sId,jdbcType=VARCHAR} and jyzt!=2 and status=1
 	</update>
 
 	<select id="getBorrow" parameterType="int" resultType="int">

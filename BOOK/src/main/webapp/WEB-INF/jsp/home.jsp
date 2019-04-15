@@ -208,7 +208,7 @@
                 bookIsbn=$("#hotIsbn5").html();
             if (v1==6)
                 bookIsbn=$("#hotIsbn6").html();
-            art.dialog.open('book_info?id=' + bookIsbn, {
+            art.dialog.open('book_info?id=a' + bookIsbn, {
                 title : '图书详情',
                 width : 1000,
                 height : 820,
@@ -234,7 +234,7 @@
                 bookIsbn=$("#newIsbn5").html();
             if (v2==6)
                 bookIsbn=$("#newIsbn6").html();
-            art.dialog.open('book_info?id=' + bookIsbn, {
+            art.dialog.open('book_info?id=a' + bookIsbn, {
                 title : '图书详情',
                 width : 1000,
                 height : 820,
