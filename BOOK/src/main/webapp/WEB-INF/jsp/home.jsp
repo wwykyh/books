@@ -38,10 +38,10 @@
       </div>
 		<img src="home/img/booker1.png"  class="zoomIn wow animated" alt="" />
         <a onclick="javascript:$('.borrow').click();"  class="btn btn-effect scroll-link" style="position: absolute;left: 1280px;top: 60px;height:80px;width:230px;">
-            <span  style="display: block;font-size: 20px;margin-top: 20px">借书</span><i class="icon-envelope"></i>
+            <span  style="display: block;font-size: 25px;margin-top: 25px">借书</span><i class="icon-envelope"></i>
         </a>
         <a href="javascript:;" id="returnBook" class="btn btn-effect scroll-link" style="position: absolute;left: 1280px;top: 230px;height:80px;width:230px; " >
-            <span  style="display: block;font-size: 20px;margin-top: 20px">还书</span><i class="icon-envelope"></i><i class="icon-envelope"></i>
+            <span  style="display: block;font-size: 25px;margin-top: 20px">还书</span><i class="icon-envelope"></i><i class="icon-envelope"></i>
         </a>
         <marquee id="affiche" align="right"  behavior="scroll"   loop="-1"  onMouseOut="this.start()" onMouseOver="this.stop()">
             <div id="scrollbar"  style="height:23px;font-size:16px" >${overTimeUsers}</div>
@@ -129,7 +129,7 @@
           </td>
 		<a id="hot${sta.count}" style="CURSOR: pointer" ><h3  class="animated fadeInUp wow">${hot.book.sm}</h3></a>
           <p id="hotIsbn${sta.count}" hidden>${hot.book.isbn}</p>
-		<p    class="" style="height: 170px;overflow:hidden;">&nbsp;&nbsp;&nbsp;&nbsp;${hot.book.jj}</p>
+		<p    class="" style="height: 170px;overflow:hidden;font-size: 20px">&nbsp;&nbsp;&nbsp;&nbsp;${hot.book.jj}</p>
 	  </div>
 	</div>
         <c:if test="${sta.count==3 or sta.count==6 }">
@@ -168,7 +168,7 @@
                                 </td>
                                 <a id="new${sta1.count}" style="CURSOR: pointer" ><h3  class="animated fadeInUp wow">${new1.book.sm}</h3></a>
                                 <p id="newIsbn${sta1.count}" hidden>${new1.book.isbn}</p>
-                                <p  style="height: 170px;overflow:hidden;">&nbsp;&nbsp;&nbsp;&nbsp;${new1.book.jj}</p>
+                                <p  style="height: 170px;overflow:hidden; font-size: 20px">&nbsp;&nbsp;&nbsp;&nbsp;${new1.book.jj}</p>
                             </div>
                         </div>
                         <c:if test="${sta1.count==3 or sta1.count==6 }">
