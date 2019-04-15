@@ -80,7 +80,6 @@
     update t_sys_user
     set xm = #{xm,jdbcType=VARCHAR},
       bm = #{bm,jdbcType=VARCHAR},
-      pwd = #{pwd,jdbcType=VARCHAR},
       lxfs = #{lxfs,jdbcType=VARCHAR},
       email = #{email,jdbcType=VARCHAR},
       dz = #{dz,jdbcType=VARCHAR},
