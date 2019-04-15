@@ -122,7 +122,7 @@
                     </div>
                     <h3 onclick="allComment()" style="padding-left: 85%;cursor: pointer">查看全部/收起</h3>
                     <tr style="text-align:center">
-                        <textarea id="container" ></textarea>
+                        <textarea id="container"style="height: 180px" ></textarea>
                     </tr>
                     <div style="text-align:right">
                         <tr >

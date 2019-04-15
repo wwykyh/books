@@ -202,9 +202,9 @@
                             num=num-i;
                         }
                     }
-                    $("#commentTable").load(location.href+" #commentTable");
                     console.log(num);
                     controllerline(num);
+                    $("#commentTable").load(location.href+" #commentTable");
                 }
             });
         }
