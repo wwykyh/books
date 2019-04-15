@@ -13847,7 +13847,7 @@ UE.plugin.register('anchor', function (){
 
 UE.plugins['wordcount'] = function(){
     var me = this;
-    me.setOpt('wordCount',true);
+    me.setOpt('wordCount',false);
     me.addListener('contentchange',function(){
         me.fireEvent('wordcount');
     });
@@ -22654,7 +22654,7 @@ UE.plugins['elementpath'] = function(){
     var currentLevel,
         tagNames,
         me = this;
-    me.setOpt('elementPathEnabled',true);
+    me.setOpt('elementPathEnabled',false);
     if(!me.options.elementPathEnabled){
         return;
     }
@@ -28760,7 +28760,7 @@ UE.ui = baidu.editor.ui = {};
             });
             function setCount(editor,ui) {
                 editor.setOpt({
-                    wordCount:true,
+                    wordCount:false,
                     maximumWords:10000,
                     wordCountMsg:editor.options.wordCountMsg || editor.getLang("wordCountMsg"),
                     wordOverFlowMsg:editor.options.wordOverFlowMsg || editor.getLang("wordOverFlowMsg")
@@ -29167,7 +29167,7 @@ UE.ui = baidu.editor.ui = {};
         enableElementPath:function () {
             var bottom = this.getDom('elementpath');
             bottom.style.display = '';
-            this.elementPathEnabled = true;
+            this.elementPathEnabled = false;
             this._updateElementPath();
         },
         _scale:function () {
