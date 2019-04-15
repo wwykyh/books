@@ -6,6 +6,11 @@
     <title>评论详情</title>
 
     <link rel="stylesheet" type="text/css" href="css/style1.css"/>
+    <link rel="stylesheet" href="css/lightbox.css" type="text/css" media="screen"/>
+    <link rel="stylesheet" type="text/css" href="css/common/iconfont/iconfont.css" />
+
+    <link rel="stylesheet" type="text/css" href="dvpt/css/libs.css" />
+    <link rel="stylesheet" type="text/css" href="css/theme/blue.css" id="style" />
     <script type="text/javascript" src="dvpt/config.js"></script>
     <!-- 改造的脚本 -->
     <script type="text/javascript" src="js/extend.js"></script>
