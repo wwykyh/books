@@ -1372,3 +1372,160 @@ java.lang.NullPointerException: null
 11:26:42.576 logback-mybatis [http-nio-9090-exec-4] INFO  c.d.b.interceptor.LoginInterceptor - >>>: http://127.0.0.1:9090/Home
 11:26:46.986 logback-mybatis [http-nio-9090-exec-5] INFO  c.d.b.interceptor.LoginInterceptor - username: 王楠
 11:26:46.986 logback-mybatis [http-nio-9090-exec-5] INFO  c.d.b.interceptor.LoginInterceptor - >>>: http://127.0.0.1:9090/book_info
+15:11:50.929 logback-mybatis [restartedMain] INFO  com.dragon.book.BookApplication - Starting BookApplication on CN-20181122UGYX with PID 5708 (F:\bookMy\BOOK\target\classes started by Administrator in F:\bookMy\BOOK)
+15:11:50.933 logback-mybatis [restartedMain] INFO  com.dragon.book.BookApplication - No active profile set, falling back to default profiles: default
+15:11:50.997 logback-mybatis [restartedMain] INFO  o.s.b.d.e.DevToolsPropertyDefaultsPostProcessor - Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+15:11:50.997 logback-mybatis [restartedMain] INFO  o.s.b.d.e.DevToolsPropertyDefaultsPostProcessor - For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+15:11:53.242 logback-mybatis [restartedMain] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Multiple Spring Data modules found, entering strict repository configuration mode!
+15:11:53.244 logback-mybatis [restartedMain] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data repositories in DEFAULT mode.
+15:11:53.288 logback-mybatis [restartedMain] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 32ms. Found 0 repository interfaces.
+15:11:53.576 logback-mybatis [restartedMain] INFO  o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker - Bean 'org.springframework.ws.config.annotation.DelegatingWsConfiguration' of type [org.springframework.ws.config.annotation.DelegatingWsConfiguration$$EnhancerBySpringCGLIB$$3b91e4fb] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+15:11:53.602 logback-mybatis [restartedMain] INFO  o.s.w.s.a.s.AnnotationActionEndpointMapping - Supporting [WS-Addressing August 2004, WS-Addressing 1.0]
+15:11:53.613 logback-mybatis [restartedMain] INFO  o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker - Bean 'org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration' of type [org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration$$EnhancerBySpringCGLIB$$96fa1ffc] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+15:11:53.989 logback-mybatis [restartedMain] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port(s): 9090 (http)
+15:11:54.001 logback-mybatis [restartedMain] INFO  o.a.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-9090"]
+15:11:54.010 logback-mybatis [restartedMain] INFO  o.a.catalina.core.StandardService - Starting service [Tomcat]
+15:11:54.010 logback-mybatis [restartedMain] INFO  o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/9.0.14]
+15:11:54.016 logback-mybatis [restartedMain] INFO  o.a.c.core.AprLifecycleListener - The APR based Apache Tomcat Native library which allows optimal performance in production environments was not found on the java.library.path: [C:\Program Files\Java\jdk1.8.0_131\bin;C:\Windows\Sun\Java\bin;C:\Windows\system32;C:\Windows;C:\ProgramData\Oracle\Java\javapath;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\; C:\Program Files\Java\jdk1.8.0_131\bin;C:\Program Files\Java\jdk1.8.0_131\jre\bin;C:\Program Files\TortoiseSVN\bin;C:\Program Files\MySQL\MySQL Server 5.6\bin;C:\Program Files (x86)\Rational\common;C:\Program Files\TortoiseGit\bin;C:\Program Files\Git\cmd;.]
+15:11:54.429 logback-mybatis [restartedMain] INFO  org.apache.jasper.servlet.TldScanner - At least one JAR was scanned for TLDs yet contained no TLDs. Enable debug logging for this logger for a complete list of JARs that were scanned but no TLDs were found in them. Skipping unneeded JARs during scanning can improve startup time and JSP compilation time.
+15:11:54.434 logback-mybatis [restartedMain] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+15:11:54.434 logback-mybatis [restartedMain] INFO  o.s.web.context.ContextLoader - Root WebApplicationContext: initialization completed in 3437 ms
+15:12:15.527 logback-mybatis [restartedMain] ERROR com.dragon.book.common.FtpFileSystem - FTP的IP地址可能错误,Connection timed out: connect
+15:12:16.681 logback-mybatis [restartedMain] INFO  o.s.s.c.ThreadPoolTaskExecutor - Initializing ExecutorService 'applicationTaskExecutor'
+15:12:16.791 logback-mybatis [restartedMain] INFO  o.s.b.a.w.s.WelcomePageHandlerMapping - Adding welcome page template: index
+15:12:17.082 logback-mybatis [restartedMain] WARN  o.s.b.a.f.FreeMarkerAutoConfiguration - Cannot find template location(s): [classpath:/BOOK/src/main/resources/template] (please add some templates, check your FreeMarker configuration, or set spring.freemarker.checkTemplateLocation=false)
+15:12:17.126 logback-mybatis [restartedMain] INFO  o.s.s.c.ThreadPoolTaskScheduler - Initializing ExecutorService 'taskScheduler'
+15:12:17.510 logback-mybatis [restartedMain] INFO  o.s.b.d.a.OptionalLiveReloadServer - LiveReload server is running on port 35729
+15:12:17.542 logback-mybatis [restartedMain] INFO  o.a.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-9090"]
+15:12:17.573 logback-mybatis [restartedMain] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat started on port(s): 9090 (http) with context path ''
+15:12:17.576 logback-mybatis [restartedMain] INFO  com.dragon.book.BookApplication - Started BookApplication in 27.02 seconds (JVM running for 28.05)
+15:12:22.300 logback-mybatis [http-nio-9090-exec-3] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring DispatcherServlet 'dispatcherServlet'
+15:12:22.300 logback-mybatis [http-nio-9090-exec-3] INFO  o.s.web.servlet.DispatcherServlet - Initializing Servlet 'dispatcherServlet'
+15:12:22.311 logback-mybatis [http-nio-9090-exec-3] INFO  o.s.web.servlet.DispatcherServlet - Completed initialization in 11 ms
+15:12:23.223 logback-mybatis [http-nio-9090-exec-4] INFO  c.d.b.interceptor.LoginInterceptor - username: null
+15:12:53.768 logback-mybatis [restartedMain] INFO  com.dragon.book.BookApplication - Starting BookApplication on CN-20181122UGYX with PID 18308 (F:\bookMy\BOOK\target\classes started by Administrator in F:\bookMy\BOOK)
+15:12:53.771 logback-mybatis [restartedMain] INFO  com.dragon.book.BookApplication - No active profile set, falling back to default profiles: default
+15:12:53.956 logback-mybatis [restartedMain] INFO  o.s.b.d.e.DevToolsPropertyDefaultsPostProcessor - Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+15:12:53.957 logback-mybatis [restartedMain] INFO  o.s.b.d.e.DevToolsPropertyDefaultsPostProcessor - For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+15:12:54.613 logback-mybatis [restartedMain] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Multiple Spring Data modules found, entering strict repository configuration mode!
+15:12:54.614 logback-mybatis [restartedMain] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data repositories in DEFAULT mode.
+15:12:54.654 logback-mybatis [restartedMain] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 30ms. Found 0 repository interfaces.
+15:12:54.918 logback-mybatis [restartedMain] INFO  o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker - Bean 'org.springframework.ws.config.annotation.DelegatingWsConfiguration' of type [org.springframework.ws.config.annotation.DelegatingWsConfiguration$$EnhancerBySpringCGLIB$$dd646845] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+15:12:54.941 logback-mybatis [restartedMain] INFO  o.s.w.s.a.s.AnnotationActionEndpointMapping - Supporting [WS-Addressing August 2004, WS-Addressing 1.0]
+15:12:54.953 logback-mybatis [restartedMain] INFO  o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker - Bean 'org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration' of type [org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration$$EnhancerBySpringCGLIB$$38cca346] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+15:12:55.284 logback-mybatis [restartedMain] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port(s): 9090 (http)
+15:12:55.296 logback-mybatis [restartedMain] INFO  o.a.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-9090"]
+15:12:55.303 logback-mybatis [restartedMain] INFO  o.a.catalina.core.StandardService - Starting service [Tomcat]
+15:12:55.303 logback-mybatis [restartedMain] INFO  o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/9.0.14]
+15:12:55.309 logback-mybatis [restartedMain] INFO  o.a.c.core.AprLifecycleListener - The APR based Apache Tomcat Native library which allows optimal performance in production environments was not found on the java.library.path: [C:\Program Files\Java\jdk1.8.0_131\bin;C:\Windows\Sun\Java\bin;C:\Windows\system32;C:\Windows;C:\ProgramData\Oracle\Java\javapath;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\; C:\Program Files\Java\jdk1.8.0_131\bin;C:\Program Files\Java\jdk1.8.0_131\jre\bin;C:\Program Files\TortoiseSVN\bin;C:\Program Files\MySQL\MySQL Server 5.6\bin;C:\Program Files (x86)\Rational\common;C:\Program Files\TortoiseGit\bin;C:\Program Files\Git\cmd;.]
+15:12:55.634 logback-mybatis [restartedMain] INFO  org.apache.jasper.servlet.TldScanner - At least one JAR was scanned for TLDs yet contained no TLDs. Enable debug logging for this logger for a complete list of JARs that were scanned but no TLDs were found in them. Skipping unneeded JARs during scanning can improve startup time and JSP compilation time.
+15:12:55.640 logback-mybatis [restartedMain] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+15:12:55.640 logback-mybatis [restartedMain] INFO  o.s.web.context.ContextLoader - Root WebApplicationContext: initialization completed in 1683 ms
+15:12:56.584 logback-mybatis [restartedMain] INFO  o.s.s.c.ThreadPoolTaskExecutor - Initializing ExecutorService 'applicationTaskExecutor'
+15:12:56.690 logback-mybatis [restartedMain] INFO  o.s.b.a.w.s.WelcomePageHandlerMapping - Adding welcome page template: index
+15:12:56.953 logback-mybatis [restartedMain] WARN  o.s.b.a.f.FreeMarkerAutoConfiguration - Cannot find template location(s): [classpath:/BOOK/src/main/resources/template] (please add some templates, check your FreeMarker configuration, or set spring.freemarker.checkTemplateLocation=false)
+15:12:56.987 logback-mybatis [restartedMain] INFO  o.s.s.c.ThreadPoolTaskScheduler - Initializing ExecutorService 'taskScheduler'
+15:12:57.347 logback-mybatis [restartedMain] INFO  o.s.b.d.a.OptionalLiveReloadServer - LiveReload server is running on port 35729
+15:12:57.379 logback-mybatis [restartedMain] INFO  o.a.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-9090"]
+15:12:57.406 logback-mybatis [restartedMain] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat started on port(s): 9090 (http) with context path ''
+15:12:57.409 logback-mybatis [restartedMain] INFO  com.dragon.book.BookApplication - Started BookApplication in 4.108 seconds (JVM running for 4.919)
+15:13:05.425 logback-mybatis [http-nio-9090-exec-1] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring DispatcherServlet 'dispatcherServlet'
+15:13:05.425 logback-mybatis [http-nio-9090-exec-1] INFO  o.s.web.servlet.DispatcherServlet - Initializing Servlet 'dispatcherServlet'
+15:13:05.432 logback-mybatis [http-nio-9090-exec-1] INFO  o.s.web.servlet.DispatcherServlet - Completed initialization in 7 ms
+15:13:05.969 logback-mybatis [http-nio-9090-exec-2] INFO  c.d.b.interceptor.LoginInterceptor - username: null
+15:13:15.987 logback-mybatis [http-nio-9090-exec-6] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting...
+15:13:16.072 logback-mybatis [http-nio-9090-exec-6] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Start completed.
+15:13:16.166 logback-mybatis [http-nio-9090-exec-7] INFO  c.d.b.interceptor.LoginInterceptor - username: 王炜焱
+15:13:16.167 logback-mybatis [http-nio-9090-exec-7] INFO  c.d.b.interceptor.LoginInterceptor - >>>: http://127.0.0.1:9090/Home
+15:15:43.347 logback-mybatis [http-nio-9090-exec-10] INFO  c.d.b.interceptor.LoginInterceptor - username: 王炜焱
+15:15:43.348 logback-mybatis [http-nio-9090-exec-10] INFO  c.d.b.interceptor.LoginInterceptor - >>>: http://127.0.0.1:9090/search
+15:15:45.314 logback-mybatis [http-nio-9090-exec-1] INFO  c.d.b.interceptor.LoginInterceptor - username: 王炜焱
+15:15:45.314 logback-mybatis [http-nio-9090-exec-1] INFO  c.d.b.interceptor.LoginInterceptor - >>>: http://127.0.0.1:9090/Home
+15:15:57.312 logback-mybatis [http-nio-9090-exec-3] INFO  c.d.b.interceptor.LoginInterceptor - username: 王炜焱
+15:15:57.312 logback-mybatis [http-nio-9090-exec-3] INFO  c.d.b.interceptor.LoginInterceptor - >>>: http://127.0.0.1:9090/search
+15:15:58.743 logback-mybatis [http-nio-9090-exec-6] INFO  c.d.b.interceptor.LoginInterceptor - username: 王炜焱
+15:15:58.744 logback-mybatis [http-nio-9090-exec-6] INFO  c.d.b.interceptor.LoginInterceptor - >>>: http://127.0.0.1:9090/book_info
+15:16:03.980 logback-mybatis [http-nio-9090-exec-2] INFO  c.d.b.interceptor.LoginInterceptor - username: 王炜焱
+15:16:03.981 logback-mybatis [http-nio-9090-exec-2] INFO  c.d.b.interceptor.LoginInterceptor - >>>: http://127.0.0.1:9090/book_info
+15:16:31.841 logback-mybatis [http-nio-9090-exec-1] INFO  c.d.b.interceptor.LoginInterceptor - username: 王炜焱
+15:16:31.842 logback-mybatis [http-nio-9090-exec-1] INFO  c.d.b.interceptor.LoginInterceptor - >>>: http://127.0.0.1:9090/Home
+15:16:33.220 logback-mybatis [http-nio-9090-exec-2] INFO  c.d.b.interceptor.LoginInterceptor - username: 王炜焱
+15:16:33.220 logback-mybatis [http-nio-9090-exec-2] INFO  c.d.b.interceptor.LoginInterceptor - >>>: http://127.0.0.1:9090/search
+15:16:34.578 logback-mybatis [http-nio-9090-exec-3] INFO  c.d.b.interceptor.LoginInterceptor - username: 王炜焱
+15:16:34.579 logback-mybatis [http-nio-9090-exec-3] INFO  c.d.b.interceptor.LoginInterceptor - >>>: http://127.0.0.1:9090/Home
+15:18:09.401 logback-mybatis [restartedMain] INFO  com.dragon.book.BookApplication - Starting BookApplication on CN-20181122UGYX with PID 1684 (F:\bookMy\BOOK\target\classes started by Administrator in F:\bookMy\BOOK)
+15:18:09.404 logback-mybatis [restartedMain] INFO  com.dragon.book.BookApplication - No active profile set, falling back to default profiles: default
+15:18:09.484 logback-mybatis [restartedMain] INFO  o.s.b.d.e.DevToolsPropertyDefaultsPostProcessor - Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+15:18:09.484 logback-mybatis [restartedMain] INFO  o.s.b.d.e.DevToolsPropertyDefaultsPostProcessor - For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+15:18:10.278 logback-mybatis [restartedMain] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Multiple Spring Data modules found, entering strict repository configuration mode!
+15:18:10.280 logback-mybatis [restartedMain] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data repositories in DEFAULT mode.
+15:18:10.320 logback-mybatis [restartedMain] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 32ms. Found 0 repository interfaces.
+15:18:10.615 logback-mybatis [restartedMain] INFO  o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker - Bean 'org.springframework.ws.config.annotation.DelegatingWsConfiguration' of type [org.springframework.ws.config.annotation.DelegatingWsConfiguration$$EnhancerBySpringCGLIB$$cad91baf] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+15:18:10.637 logback-mybatis [restartedMain] INFO  o.s.w.s.a.s.AnnotationActionEndpointMapping - Supporting [WS-Addressing August 2004, WS-Addressing 1.0]
+15:18:10.652 logback-mybatis [restartedMain] INFO  o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker - Bean 'org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration' of type [org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration$$EnhancerBySpringCGLIB$$264156b0] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+15:18:10.978 logback-mybatis [restartedMain] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port(s): 9090 (http)
+15:18:10.989 logback-mybatis [restartedMain] INFO  o.a.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-9090"]
+15:18:10.997 logback-mybatis [restartedMain] INFO  o.a.catalina.core.StandardService - Starting service [Tomcat]
+15:18:10.997 logback-mybatis [restartedMain] INFO  o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/9.0.14]
+15:18:11.002 logback-mybatis [restartedMain] INFO  o.a.c.core.AprLifecycleListener - The APR based Apache Tomcat Native library which allows optimal performance in production environments was not found on the java.library.path: [C:\Program Files\Java\jdk1.8.0_131\bin;C:\Windows\Sun\Java\bin;C:\Windows\system32;C:\Windows;C:\ProgramData\Oracle\Java\javapath;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\; C:\Program Files\Java\jdk1.8.0_131\bin;C:\Program Files\Java\jdk1.8.0_131\jre\bin;C:\Program Files\TortoiseSVN\bin;C:\Program Files\MySQL\MySQL Server 5.6\bin;C:\Program Files (x86)\Rational\common;C:\Program Files\TortoiseGit\bin;C:\Program Files\Git\cmd;.]
+15:18:11.386 logback-mybatis [restartedMain] INFO  org.apache.jasper.servlet.TldScanner - At least one JAR was scanned for TLDs yet contained no TLDs. Enable debug logging for this logger for a complete list of JARs that were scanned but no TLDs were found in them. Skipping unneeded JARs during scanning can improve startup time and JSP compilation time.
+15:18:11.393 logback-mybatis [restartedMain] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+15:18:11.394 logback-mybatis [restartedMain] INFO  o.s.web.context.ContextLoader - Root WebApplicationContext: initialization completed in 1910 ms
+15:18:12.466 logback-mybatis [restartedMain] INFO  o.s.s.c.ThreadPoolTaskExecutor - Initializing ExecutorService 'applicationTaskExecutor'
+15:18:12.578 logback-mybatis [restartedMain] INFO  o.s.b.a.w.s.WelcomePageHandlerMapping - Adding welcome page template: index
+15:18:12.864 logback-mybatis [restartedMain] WARN  o.s.b.a.f.FreeMarkerAutoConfiguration - Cannot find template location(s): [classpath:/BOOK/src/main/resources/template] (please add some templates, check your FreeMarker configuration, or set spring.freemarker.checkTemplateLocation=false)
+15:18:12.898 logback-mybatis [restartedMain] INFO  o.s.s.c.ThreadPoolTaskScheduler - Initializing ExecutorService 'taskScheduler'
+15:18:13.262 logback-mybatis [restartedMain] INFO  o.s.b.d.a.OptionalLiveReloadServer - LiveReload server is running on port 35729
+15:18:13.297 logback-mybatis [restartedMain] INFO  o.a.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-9090"]
+15:18:13.328 logback-mybatis [restartedMain] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat started on port(s): 9090 (http) with context path ''
+15:18:13.330 logback-mybatis [restartedMain] INFO  com.dragon.book.BookApplication - Started BookApplication in 4.525 seconds (JVM running for 5.414)
+15:18:22.068 logback-mybatis [http-nio-9090-exec-1] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring DispatcherServlet 'dispatcherServlet'
+15:18:22.068 logback-mybatis [http-nio-9090-exec-1] INFO  o.s.web.servlet.DispatcherServlet - Initializing Servlet 'dispatcherServlet'
+15:18:22.075 logback-mybatis [http-nio-9090-exec-1] INFO  o.s.web.servlet.DispatcherServlet - Completed initialization in 7 ms
+15:18:22.744 logback-mybatis [http-nio-9090-exec-2] INFO  c.d.b.interceptor.LoginInterceptor - username: null
+15:18:27.840 logback-mybatis [http-nio-9090-exec-6] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting...
+15:18:27.920 logback-mybatis [http-nio-9090-exec-6] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Start completed.
+15:18:28.005 logback-mybatis [http-nio-9090-exec-7] INFO  c.d.b.interceptor.LoginInterceptor - username: 王炜焱
+15:18:28.005 logback-mybatis [http-nio-9090-exec-7] INFO  c.d.b.interceptor.LoginInterceptor - >>>: http://127.0.0.1:9090/Home
+15:18:53.832 logback-mybatis [restartedMain] INFO  com.dragon.book.BookApplication - Starting BookApplication on CN-20181122UGYX with PID 9480 (F:\bookMy\BOOK\target\classes started by Administrator in F:\bookMy\BOOK)
+15:18:53.835 logback-mybatis [restartedMain] INFO  com.dragon.book.BookApplication - No active profile set, falling back to default profiles: default
+15:18:53.988 logback-mybatis [restartedMain] INFO  o.s.b.d.e.DevToolsPropertyDefaultsPostProcessor - Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+15:18:53.988 logback-mybatis [restartedMain] INFO  o.s.b.d.e.DevToolsPropertyDefaultsPostProcessor - For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+15:18:54.671 logback-mybatis [restartedMain] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Multiple Spring Data modules found, entering strict repository configuration mode!
+15:18:54.673 logback-mybatis [restartedMain] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data repositories in DEFAULT mode.
+15:18:54.713 logback-mybatis [restartedMain] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 29ms. Found 0 repository interfaces.
+15:18:54.976 logback-mybatis [restartedMain] INFO  o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker - Bean 'org.springframework.ws.config.annotation.DelegatingWsConfiguration' of type [org.springframework.ws.config.annotation.DelegatingWsConfiguration$$EnhancerBySpringCGLIB$$6ddf715b] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+15:18:54.996 logback-mybatis [restartedMain] INFO  o.s.w.s.a.s.AnnotationActionEndpointMapping - Supporting [WS-Addressing August 2004, WS-Addressing 1.0]
+15:18:55.009 logback-mybatis [restartedMain] INFO  o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker - Bean 'org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration' of type [org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration$$EnhancerBySpringCGLIB$$c947ac5c] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+15:18:55.350 logback-mybatis [restartedMain] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port(s): 9090 (http)
+15:18:55.362 logback-mybatis [restartedMain] INFO  o.a.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-9090"]
+15:18:55.369 logback-mybatis [restartedMain] INFO  o.a.catalina.core.StandardService - Starting service [Tomcat]
+15:18:55.369 logback-mybatis [restartedMain] INFO  o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/9.0.14]
+15:18:55.375 logback-mybatis [restartedMain] INFO  o.a.c.core.AprLifecycleListener - The APR based Apache Tomcat Native library which allows optimal performance in production environments was not found on the java.library.path: [C:\Program Files\Java\jdk1.8.0_131\bin;C:\Windows\Sun\Java\bin;C:\Windows\system32;C:\Windows;C:\ProgramData\Oracle\Java\javapath;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\; C:\Program Files\Java\jdk1.8.0_131\bin;C:\Program Files\Java\jdk1.8.0_131\jre\bin;C:\Program Files\TortoiseSVN\bin;C:\Program Files\MySQL\MySQL Server 5.6\bin;C:\Program Files (x86)\Rational\common;C:\Program Files\TortoiseGit\bin;C:\Program Files\Git\cmd;.]
+15:18:55.696 logback-mybatis [restartedMain] INFO  org.apache.jasper.servlet.TldScanner - At least one JAR was scanned for TLDs yet contained no TLDs. Enable debug logging for this logger for a complete list of JARs that were scanned but no TLDs were found in them. Skipping unneeded JARs during scanning can improve startup time and JSP compilation time.
+15:18:55.701 logback-mybatis [restartedMain] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+15:18:55.701 logback-mybatis [restartedMain] INFO  o.s.web.context.ContextLoader - Root WebApplicationContext: initialization completed in 1713 ms
+15:18:56.655 logback-mybatis [restartedMain] INFO  o.s.s.c.ThreadPoolTaskExecutor - Initializing ExecutorService 'applicationTaskExecutor'
+15:18:56.761 logback-mybatis [restartedMain] INFO  o.s.b.a.w.s.WelcomePageHandlerMapping - Adding welcome page template: index
+15:18:57.028 logback-mybatis [restartedMain] WARN  o.s.b.a.f.FreeMarkerAutoConfiguration - Cannot find template location(s): [classpath:/BOOK/src/main/resources/template] (please add some templates, check your FreeMarker configuration, or set spring.freemarker.checkTemplateLocation=false)
+15:18:57.063 logback-mybatis [restartedMain] INFO  o.s.s.c.ThreadPoolTaskScheduler - Initializing ExecutorService 'taskScheduler'
+15:18:57.427 logback-mybatis [restartedMain] INFO  o.s.b.d.a.OptionalLiveReloadServer - LiveReload server is running on port 35729
+15:18:57.463 logback-mybatis [restartedMain] INFO  o.a.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-9090"]
+15:18:57.493 logback-mybatis [restartedMain] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat started on port(s): 9090 (http) with context path ''
+15:18:57.495 logback-mybatis [restartedMain] INFO  com.dragon.book.BookApplication - Started BookApplication in 4.095 seconds (JVM running for 4.978)
+15:19:06.774 logback-mybatis [http-nio-9090-exec-1] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring DispatcherServlet 'dispatcherServlet'
+15:19:06.774 logback-mybatis [http-nio-9090-exec-1] INFO  o.s.web.servlet.DispatcherServlet - Initializing Servlet 'dispatcherServlet'
+15:19:06.786 logback-mybatis [http-nio-9090-exec-1] INFO  o.s.web.servlet.DispatcherServlet - Completed initialization in 12 ms
+15:19:07.401 logback-mybatis [http-nio-9090-exec-2] INFO  c.d.b.interceptor.LoginInterceptor - username: null
+15:19:12.185 logback-mybatis [http-nio-9090-exec-6] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting...
+15:19:12.299 logback-mybatis [http-nio-9090-exec-6] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Start completed.
+15:19:12.392 logback-mybatis [http-nio-9090-exec-7] INFO  c.d.b.interceptor.LoginInterceptor - username: 王楠
+15:19:12.393 logback-mybatis [http-nio-9090-exec-7] INFO  c.d.b.interceptor.LoginInterceptor - >>>: http://127.0.0.1:9090/Home
+15:19:19.024 logback-mybatis [http-nio-9090-exec-10] INFO  c.d.b.interceptor.LoginInterceptor - username: 王楠
+15:19:19.025 logback-mybatis [http-nio-9090-exec-10] INFO  c.d.b.interceptor.LoginInterceptor - >>>: http://127.0.0.1:9090/search
+15:19:32.623 logback-mybatis [http-nio-9090-exec-2] INFO  c.d.b.interceptor.LoginInterceptor - username: 王楠
+15:19:32.623 logback-mybatis [http-nio-9090-exec-2] INFO  c.d.b.interceptor.LoginInterceptor - >>>: http://127.0.0.1:9090/Home
+15:23:19.820 logback-mybatis [http-nio-9090-exec-4] INFO  c.d.b.interceptor.LoginInterceptor - username: 王楠
+15:23:19.820 logback-mybatis [http-nio-9090-exec-4] INFO  c.d.b.interceptor.LoginInterceptor - >>>: http://127.0.0.1:9090/search
+15:23:21.857 logback-mybatis [http-nio-9090-exec-6] INFO  c.d.b.interceptor.LoginInterceptor - username: 王楠
+15:23:21.857 logback-mybatis [http-nio-9090-exec-6] INFO  c.d.b.interceptor.LoginInterceptor - >>>: http://127.0.0.1:9090/book_info
