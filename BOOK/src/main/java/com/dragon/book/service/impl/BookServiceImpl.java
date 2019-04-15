@@ -246,13 +246,14 @@ public class BookServiceImpl implements BookService {
     }
 
     @Override
-    public Page<Book> getPage(int pageNumber, int pageSize, String dim, String s_type, int total) {
+    public Page<Book> getPage(int pageNumber, int pageSize, String dim, String s_type, int total, String status) {
         //	int pageNo=1;      //设置默认页码，当pageNumber类型转换出错时，会起作用，否则值被覆盖
         Page<Book> page = null;
         PageBean pageBean = new PageBean();
         pageBean.setDim(dim);
         pageBean.setS_type(s_type);
         pageBean.setPagesize(pageSize);
+        pageBean.setStatus(status);
 
 		/*try {
 			//servlet层获取的参数类型为string，需要转换为整型
@@ -273,6 +274,7 @@ public class BookServiceImpl implements BookService {
         page.setList(list);
         page.setDim(dim);
         page.setS_type(s_type);
+        page.setStatus(status);
 //        System.out.println(list.toString() + "size:" + list.size() + list.get(0).gettStore().getId());
         return page;
     }
