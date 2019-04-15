@@ -11,6 +11,7 @@ public interface ModifyInformationDao {
 
     /**
      * 修改信息接口
+     *
      * @param xm
      * @param lxfs
      * @param dz
@@ -18,13 +19,14 @@ public interface ModifyInformationDao {
      * @param grsm
      * @param userId
      */
-    public void upDataInformation(@Param("xm")String xm, @Param("lxfs")String lxfs, @Param("dz")String dz, @Param("bm")String bm, @Param("grsm")String grsm, @Param("userId")int userId);
+    public void upDataInformation(@Param("xm") String xm, @Param("lxfs") String lxfs, @Param("dz") String dz, @Param("bm") String bm, @Param("grsm") String grsm, @Param("userId") int userId);
 
     /**
      * 查询新的用户信息
+     *
      * @param userId
      * @return
      */
-    public TSysUser findUserInfo(@Param("userId")int userId);
+    public TSysUser findUserInfo(@Param("userId") int userId);
 
 }

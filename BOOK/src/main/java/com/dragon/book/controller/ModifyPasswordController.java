@@ -1,7 +1,6 @@
 package com.dragon.book.controller;
 
 import com.dragon.book.service.my.IModifyPasswordService;
-import com.dragon.book.service.my.impl.ModifyPasswordServiceImpl;
 import org.apache.ibatis.annotations.Param;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -20,16 +19,17 @@ public class ModifyPasswordController {
 
     /**
      * 跳转到修改密码界面
-     * @return
-     * zzm
+     *
+     * @return zzm
      */
     @RequestMapping("/toModifyPassword")
-    public String modifyPasswordIndex(){
+    public String modifyPasswordIndex() {
         return "/my/modifyPassword";
     }
 
     /**
      * 密码修改
+     *
      * @param oldPwd 旧密码
      * @param newPwd 新密码
      * @param userId 用户ID
@@ -37,9 +37,9 @@ public class ModifyPasswordController {
      */
     @RequestMapping("/updataPassword")
     @ResponseBody
-    public String upDataPassword(@Param("oldPwd")String oldPwd,@Param("newPwd")String newPwd,@Param("userId")int userId) {
+    public String upDataPassword(@Param("oldPwd") String oldPwd, @Param("newPwd") String newPwd, @Param("userId") int userId) {
         String message;
-        if (null != oldPwd && null != newPwd && 0!=userId&& "" != oldPwd&& "" != newPwd) {
+        if (null != oldPwd && null != newPwd && 0 != userId && "" != oldPwd && "" != newPwd) {
             message = modifyPasswordService.modifyPassword(oldPwd, userId, newPwd);
             return message;
         } else {

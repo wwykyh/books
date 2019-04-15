@@ -1,12 +1,9 @@
 package com.dragon.book.controller;
 
 
-import com.dragon.book.model.TBookNews;
 import com.dragon.book.model.TBorrow;
 import com.dragon.book.service.my.IOvertimePaymentService;
 import com.dragon.book.service.my.IPersonalService;
-import com.dragon.book.service.my.impl.OvertimePaymentServiceImpl;
-import com.dragon.book.service.my.impl.PersonalServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -30,50 +27,53 @@ public class OvertimePaymentController {
 
     /**
      * 跳转到超时归还界面
+     *
      * @return
      */
     @RequestMapping("/toOvertimePayment")
-    public  String  overtimePaymentIndex(@RequestParam("userId") int uid,Map map){
-        if(0!=uid){
+    public String overtimePaymentIndex(@RequestParam("userId") int uid, Map map) {
+        if (0 != uid) {
             List<TBorrow> tBorrows = overtimePaymentService.findOvertimeBorrow(uid);
-            map.put("tBorrows",tBorrows);
+            map.put("tBorrows", tBorrows);
             return "/my/overtimePayment";
-        }else {
+        } else {
             return "/my/error";
         }
     }
 
     /**
      * 归还图书
-     *@param isbn 图书编号
-     *@param uId 用户id
+     *
+     * @param isbn 图书编号
+     * @param uId  用户id
      * @return
      */
     @RequestMapping("/returnbook")
     @ResponseBody
-    public String returnBook(@RequestParam("isbn")String isbn,@RequestParam("userId")int uId){
-        if(""==isbn&&null==isbn&&0==uId) {
+    public String returnBook(@RequestParam("isbn") String isbn, @RequestParam("userId") int uId) {
+        if ("" == isbn && null == isbn && 0 == uId) {
             String data = "图书编号或用户ID不能为空！";
             return data;
         }
-        personalService.returnBook(isbn,uId);
+        personalService.returnBook(isbn, uId);
         return "success";
     }
 
     /**
      * 续借
+     *
      * @param isbn 图书编号
-     * @param uid 用户id
+     * @param uid  用户id
      * @return
      */
     @RequestMapping("/renew")
     @ResponseBody
-    public String renew(@RequestParam("isbn")String isbn,@RequestParam("userId")int uid){
-        if(""==isbn&&null==isbn&&0==uid) {
+    public String renew(@RequestParam("isbn") String isbn, @RequestParam("userId") int uid) {
+        if ("" == isbn && null == isbn && 0 == uid) {
             String data = "图书编号或用户ID不能为空！";
             return data;
         }
-        personalService.renew(isbn,uid);
+        personalService.renew(isbn, uid);
         return "success";
     }
 

@@ -12,9 +12,9 @@ public interface IPersonalService {
 
     public List<BookBorrow> selectBookInformation(int userId);
 
-    public void returnBook(String isbn,int userId);
+    public void returnBook(String isbn, int userId);
 
-    public void renew(String isbn,int userId);
+    public void renew(String isbn, int userId);
 
     public TBorrow borrowInfo(int id);
 }

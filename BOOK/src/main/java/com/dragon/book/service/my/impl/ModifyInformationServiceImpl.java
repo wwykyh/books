@@ -1,7 +1,7 @@
 package com.dragon.book.service.my.impl;
 /**
  * 我的模块：修改信息service层
- *zzm
+ * zzm
  */
 
 import com.dragon.book.mapper.my.ModifyInformationDao;
@@ -25,11 +25,11 @@ public class ModifyInformationServiceImpl implements IModifyInformationService {
      * @param grsm
      * @param userId
      */
-    public String modifyInformation(String xm,String lxfs,String dz,String bm,String grsm,int userId){
+    public String modifyInformation(String xm, String lxfs, String dz, String bm, String grsm, int userId) {
         String message;
-        if(0!=userId){
-            if(null!=xm||null!=lxfs||null!=dz||null!=bm||null!=grsm){
-                modifyInformationDao.upDataInformation(xm,lxfs,dz,bm,grsm,userId);
+        if (0 != userId) {
+            if (null != xm || null != lxfs || null != dz || null != bm || null != grsm) {
+                modifyInformationDao.upDataInformation(xm, lxfs, dz, bm, grsm, userId);
                 return "成功";
             }
             return "修改信息不能全为空!";
@@ -43,7 +43,7 @@ public class ModifyInformationServiceImpl implements IModifyInformationService {
      * @param userId
      * @return
      */
-    public TSysUser findUserInfo(int userId){
-    return modifyInformationDao.findUserInfo(userId);
+    public TSysUser findUserInfo(int userId) {
+        return modifyInformationDao.findUserInfo(userId);
     }
 }

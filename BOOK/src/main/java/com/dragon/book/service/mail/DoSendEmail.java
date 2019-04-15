@@ -1,19 +1,19 @@
 package com.dragon.book.service.mail;
 
 
-
 import com.dragon.book.model.MailParameter;
-import freemarker.template.*;
+import freemarker.template.Configuration;
+import freemarker.template.Template;
+import freemarker.template.TemplateExceptionHandler;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.mail.javamail.MimeMessageHelper;
 import org.springframework.ui.freemarker.FreeMarkerTemplateUtils;
 
-
-
 import javax.mail.internet.MimeMessage;
 import java.io.File;
 import java.time.LocalDate;
-import java.util.*;
+import java.util.HashMap;
+import java.util.Map;
 
 
 /**
@@ -24,7 +24,7 @@ public class DoSendEmail {
 
     Configuration cfg = new Configuration(Configuration.VERSION_2_3_28);
 
-    public void sendEmail(JavaMailSender sender,MailParameter mailParameter,String templatePath) {
+    public void sendEmail(JavaMailSender sender, MailParameter mailParameter, String templatePath) {
         try {
             //Configurationz配置
             cfg.setDirectoryForTemplateLoading(new File(templatePath));
@@ -47,24 +47,24 @@ public class DoSendEmail {
             //设置模板参数
             String currentDate = LocalDate.now().toString();
             Map<String, Object> model = new HashMap<String, Object>();
-            if(mailParameter.getBookNameList().size()==1){
-                model.put("bookName",mailParameter.getBookNameList().get(0));
-            }else if(mailParameter.getBookNameList().size()==2){
-                model.put("bookNameA",mailParameter.getBookNameList().get(0));
-                model.put("bookNameB",mailParameter.getBookNameList().get(1));
-            }else{
-                model.put("bookNameA",mailParameter.getBookNameList().get(0));
-                model.put("bookNameB",mailParameter.getBookNameList().get(1));
-                model.put("bookNameC",mailParameter.getBookNameList().get(2));
+            if (mailParameter.getBookNameList().size() == 1) {
+                model.put("bookName", mailParameter.getBookNameList().get(0));
+            } else if (mailParameter.getBookNameList().size() == 2) {
+                model.put("bookNameA", mailParameter.getBookNameList().get(0));
+                model.put("bookNameB", mailParameter.getBookNameList().get(1));
+            } else {
+                model.put("bookNameA", mailParameter.getBookNameList().get(0));
+                model.put("bookNameB", mailParameter.getBookNameList().get(1));
+                model.put("bookNameC", mailParameter.getBookNameList().get(2));
             }
             model.put("userName", mailParameter.getUserName());
-            model.put("url",mailParameter.getUrl());
-            model.put("date",LocalDate.now());
+            model.put("url", mailParameter.getUrl());
+            model.put("date", LocalDate.now());
 
             try {
                 Template temp = cfg.getTemplate(mailParameter.getTemplate());
                 String text = FreeMarkerTemplateUtils.processTemplateIntoString(temp, model);
-                message.setText(text,true);
+                message.setText(text, true);
                 sender.send(mimeMessage);
             } catch (Exception e) {
                 // TODO Auto-generated catch block

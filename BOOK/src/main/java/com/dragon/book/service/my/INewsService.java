@@ -9,6 +9,7 @@ public interface INewsService {
 
     /**
      * 获得个人消息总览
+     *
      * @param userId
      * @return
      */
@@ -16,12 +17,14 @@ public interface INewsService {
 
     /**
      * 删除信息
+     *
      * @param id
      */
     public void deleteNews(int id);
 
     /**
-     *查找详细信息
+     * 查找详细信息
+     *
      * @param isbn
      * @param uId
      * @return
@@ -30,6 +33,7 @@ public interface INewsService {
 
     /**
      * 删除多个消息
+     *
      * @param check
      */
     public String deleteMultipleNews(Integer[] check);

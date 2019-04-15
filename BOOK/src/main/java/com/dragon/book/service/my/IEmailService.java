@@ -1,7 +1,5 @@
 package com.dragon.book.service.my;
 
-import javax.servlet.http.HttpSession;
-
 public interface IEmailService {
 
     /**
