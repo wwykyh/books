@@ -22,11 +22,15 @@
         t_borrow.jyrq,
         t_borrow.jhghrq
          from
-         t_book
-        right join
          t_borrow
+        right join
+         t_store
          on
-         t_book.isbn=t_borrow.s_id
+         t_store.id=t_borrow.s_id
+		 right join
+		 t_book
+		 on
+		 t_book.isbn=t_store.isbn
          where
          t_borrow.user_id=#{userId}
          and
