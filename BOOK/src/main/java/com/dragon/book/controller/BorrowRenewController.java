@@ -15,8 +15,6 @@ import org.springframework.web.bind.annotation.*;
 import org.springside.modules.web.Servlets;
 
 import javax.servlet.http.HttpServletRequest;
-import java.text.SimpleDateFormat;
-import java.util.Date;
 import java.util.List;
 import java.util.Map;
 
@@ -37,11 +35,12 @@ public class BorrowRenewController {
 
     /**
      * 跳转到续借界面，并加载图书类型
+     *
      * @param request
      * @return
      */
     @RequestMapping("/renew")
-    public String showBookRenew(HttpServletRequest request){
+    public String showBookRenew(HttpServletRequest request) {
         List<TType> types = ebookFileService.getTypeList();
         request.setAttribute("types", types);
         return "book/bookRenew";
@@ -49,6 +48,7 @@ public class BorrowRenewController {
 
     /**
      * 查找借书信息并分页
+     *
      * @param pageBean
      * @param request
      * @return
@@ -70,6 +70,7 @@ public class BorrowRenewController {
 
     /**
      * 获得解约详细信息，并跳转到审核弹窗
+     *
      * @param model
      * @param id
      * @return
@@ -84,6 +85,7 @@ public class BorrowRenewController {
 
     /**
      * 更新审核信息
+     *
      * @param id
      * @param status
      * @param bz
@@ -96,7 +98,7 @@ public class BorrowRenewController {
         if (!StringUtils.isEmpty(id) && !StringUtils.isEmpty(status)) {
             tBorrow = renewCheckService.getSingleRenewTBorrow(Integer.parseInt(id));
             if ("1".equals(status)) {  // 审核通过
-                renewCheckService.updateTBorrow(tBorrow,id,status,bz);
+                renewCheckService.updateTBorrow(tBorrow, id, status, bz);
                 return true;
             }
         } else {

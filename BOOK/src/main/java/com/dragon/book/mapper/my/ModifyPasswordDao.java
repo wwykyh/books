@@ -10,13 +10,15 @@ public interface ModifyPasswordDao {
 
     /**
      * 更新密码
+     *
      * @param userId
      * @param pwd
      */
-    void upDataPwd(@Param("userId")int userId,@Param("pwd")String pwd);
+    void upDataPwd(@Param("userId") int userId, @Param("pwd") String pwd);
 
     /**
      * 查询密码
+     *
      * @param userId
      * @return
      */

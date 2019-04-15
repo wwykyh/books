@@ -4,21 +4,18 @@ import com.dragon.book.mapper.my.MailSendDao;
 import com.dragon.book.model.MailParameter;
 import com.dragon.book.model.TBook;
 import com.dragon.book.model.TSysUser;
-import com.dragon.book.pojo.Borrow;
 import com.dragon.book.pojo.UserBorrow;
 import com.dragon.book.service.mail.DoSendCCEmail;
 import com.dragon.book.service.mail.DoSendEmail;
 import com.dragon.book.service.mail.mailFactory.EmailFactory;
 import com.dragon.book.service.mail.mailFactory.IEmailTemplate;
 import com.dragon.book.service.my.IEmailService;
-import freemarker.template.Template;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Service;
 import org.springframework.util.CollectionUtils;
-import org.springframework.web.servlet.ViewResolver;
 import org.springframework.web.servlet.view.freemarker.FreeMarkerConfigurer;
 
 import java.util.List;
@@ -65,8 +62,8 @@ public class EmailServiceImpl implements IEmailService {
 
             if (!CollectionUtils.isEmpty(userBorrowList)) {
                 for (UserBorrow userBorrow : userBorrowList) {
-                  MailParameter mailParameter =  overtimeTemplate.createParameter(fromMail,userBorrow.gettSysUser().getEmail(),userBorrow.gettSysUser().getXm(),userBorrow.getSm());
-                  doSendEmail.sendEmail(sender,mailParameter,templatePath);
+                    MailParameter mailParameter = overtimeTemplate.createParameter(fromMail, userBorrow.gettSysUser().getEmail(), userBorrow.gettSysUser().getXm(), userBorrow.getSm());
+                    doSendEmail.sendEmail(sender, mailParameter, templatePath);
                 }
             }
         } catch (Exception e) {
@@ -83,12 +80,12 @@ public class EmailServiceImpl implements IEmailService {
         DoSendCCEmail doSendCCEmail = new DoSendCCEmail();
         EmailFactory emailFactory = new EmailFactory();
         List<TBook> books = mailSendDao.findBook();
-        List<TSysUser> users  = mailSendDao.findUser();
+        List<TSysUser> users = mailSendDao.findUser();
         try {
             IEmailTemplate recommenderTemplate = emailFactory.createMail("recommenderMail");
-            if(!CollectionUtils.isEmpty(books)&&!CollectionUtils.isEmpty(users)){
-                MailParameter mailParameter = recommenderTemplate.createParameter(fromMail,books,users);
-                doSendCCEmail.sendEmail(sender,mailParameter,templatePath);
+            if (!CollectionUtils.isEmpty(books) && !CollectionUtils.isEmpty(users)) {
+                MailParameter mailParameter = recommenderTemplate.createParameter(fromMail, books, users);
+                doSendCCEmail.sendEmail(sender, mailParameter, templatePath);
             }
         } catch (Exception e) {
             e.printStackTrace();
@@ -109,8 +106,8 @@ public class EmailServiceImpl implements IEmailService {
 
             if (!CollectionUtils.isEmpty(userBorrowList)) {
                 for (UserBorrow userBorrow : userBorrowList) {
-                    MailParameter mailParameter =  overtimeTemplate.createParameter(fromMail,userBorrow.gettSysUser().getEmail(),userBorrow.gettSysUser().getXm(),userBorrow.getSm());
-                    doSendEmail.sendEmail(sender,mailParameter,templatePath);
+                    MailParameter mailParameter = overtimeTemplate.createParameter(fromMail, userBorrow.gettSysUser().getEmail(), userBorrow.gettSysUser().getXm(), userBorrow.getSm());
+                    doSendEmail.sendEmail(sender, mailParameter, templatePath);
                 }
             }
         } catch (Exception e) {

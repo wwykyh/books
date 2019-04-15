@@ -10,12 +10,14 @@ public interface MailSendDao {
 
     /**
      * 查询有超时图书记录的人员信息
+     *
      * @return
      */
     public List<UserBorrow> findOvertimeUser();
 
     /**
      * 查询即将超时需要提醒用户
+     *
      * @return
      */
     public List<UserBorrow> findReminderUser();

@@ -13,7 +13,7 @@ import java.time.LocalDate;
 import java.util.List;
 
 /**
- *超时归还
+ * 超时归还
  */
 @Service
 public class OvertimePaymentServiceImpl implements IOvertimePaymentService {
@@ -22,17 +22,17 @@ public class OvertimePaymentServiceImpl implements IOvertimePaymentService {
     private OvertimePaymentDao overtimePaymentDao;
 
 
-    public List<TBorrow> findOvertimeBorrow(int uid){
+    public List<TBorrow> findOvertimeBorrow(int uid) {
         return overtimePaymentDao.findOvertimeBorrow(uid);
     }
 
     @Scheduled(cron = "0 0 0 * * ?")
-    public void addOvertimeNews(){
+    public void addOvertimeNews() {
         List<TBorrow> tBorrowList = overtimePaymentDao.findAllOvertimeBorrow();
         String currentDate = LocalDate.now().toString();
-        if(!CollectionUtils.isEmpty(tBorrowList)){
-            for (TBorrow tBorrow:tBorrowList) {
-                overtimePaymentDao.addOvertimeNews(tBorrow.getUserId(),tBorrow.getsId(),currentDate);
+        if (!CollectionUtils.isEmpty(tBorrowList)) {
+            for (TBorrow tBorrow : tBorrowList) {
+                overtimePaymentDao.addOvertimeNews(tBorrow.getUserId(), tBorrow.getsId(), currentDate);
             }
         }
     }

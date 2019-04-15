@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="com.dragon.book.mapper.my.PersonalDao" >
+<mapper namespace="com.dragon.book.mapper.my.PersonalDao">
 
     <resultMap id="bookBorrow" type="com.dragon.book.pojo.BookBorrow">
-        <id column="isbn"  property="isbn"/>
+        <id column="isbn" property="isbn"/>
         <result column="sm" property="sm"/>
         <result column="zz" property="zz"/>
         <collection property="tBorrow" ofType="com.dragon.book.model.TBorrow">
@@ -22,11 +22,15 @@
         t_borrow.jyrq,
         t_borrow.jhghrq
          from
-         t_book
-        right join
          t_borrow
+        right join
+         t_store
          on
-         t_book.isbn=t_borrow.s_id
+         t_store.id=t_borrow.s_id
+		 right join
+		 t_book
+		 on
+		 t_book.isbn=t_store.isbn
          where
          t_borrow.user_id=#{userId}
          and

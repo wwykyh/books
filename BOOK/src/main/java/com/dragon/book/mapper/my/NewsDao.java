@@ -10,6 +10,7 @@ public interface NewsDao {
 
     /**
      * 获得个人消息总览
+     *
      * @param userId
      * @return
      */
@@ -17,12 +18,14 @@ public interface NewsDao {
 
     /**
      * 删除用户信息
+     *
      * @param id
      */
     public void deleteNews(@Param("id") int id);
 
     /**
      * 查询消息详情
+     *
      * @param isbn
      * @param userId
      */

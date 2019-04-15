@@ -6,6 +6,7 @@ public interface IModifyInformationService {
 
     /**
      * 修改用户信息
+     *
      * @param xm
      * @param lxfs
      * @param dz
@@ -14,10 +15,11 @@ public interface IModifyInformationService {
      * @param userId
      * @return
      */
-    public String modifyInformation(String xm,String lxfs,String dz,String bm,String grsm,int userId);
+    public String modifyInformation(String xm, String lxfs, String dz, String bm, String grsm, int userId);
 
     /**
      * 重新设置session信息
+     *
      * @param userId
      * @return
      */
