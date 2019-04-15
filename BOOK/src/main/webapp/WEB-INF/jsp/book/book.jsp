@@ -41,6 +41,20 @@
 <div style="height: 550px ;width: 100%">
     <div style="height: 10%;width: auto;margin-left: 10px;margin-top: 10px">
         <form method="get" action="page" id="pagebean">
+
+            <select id="status" name="status" class="select">
+                <option value="">-------------请选择图书状态------------------</option>
+                <option value="" <c:if
+                        test="${page.status==''}"> selected="selected"</c:if>>全部
+                </option>
+                <option value="1" <c:if
+                        test="${page.status=='1'}"> selected="selected"</c:if>>可借
+                </option>
+                <option value="0" <c:if
+                        test="${page.status=='0'}"> selected="selected"</c:if>>不可借
+                </option>
+            </select>
+
             <select id="s_type" name="s_type" class="select">
                 <option value="">-------------请选择图书类型------------------</option>
                 <c:forEach items="${typeList }" var="t">
@@ -147,7 +161,7 @@
             cache: true,
             type: "GET",
             url: "page",
-            data: {"pageNumber": id, "dim": $("#dim").val(), "s_type": $("#s_type").val()},// 你的form id
+            data: {"pageNumber": id, "dim": $("#dim").val(), "s_type": $("#s_type").val(), "status": $("#status")},// 你的form id
             async: false,
             error: function (request) {
                 alert("Connection error:" + request.error);
