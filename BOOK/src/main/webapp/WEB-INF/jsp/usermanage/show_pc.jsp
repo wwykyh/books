@@ -103,14 +103,14 @@
                     }else return "" ;
                 }
             }, {
-                display: '是否已被黑名单计数',
-                render: function (row){
-                    if (row.id != undefined && row.id != null && row.id != ""){
-                        if (row.iscount==1){return "已计数";}
-                        else {return "未计数";}
-                    }else return "" ;
-                }
-            }, {
+            //     display: '是否已被黑名单计数',
+            //     render: function (row){
+            //         if (row.id != undefined && row.id != null && row.id != ""){
+            //             if (row.iscount==1){return "已计数";}
+            //             else {return "未计数";}
+            //         }else return "" ;
+            //     }
+            // }, {
                 display: '生成赔偿记录日期',
                 name: 'pcdate'
             },{

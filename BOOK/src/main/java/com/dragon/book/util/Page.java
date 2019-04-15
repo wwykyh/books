@@ -31,6 +31,16 @@ public class Page<T> {
     }
 
     private  String s_type;
+    private String status;
+
+    public String getStatus() {
+        return status;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
+    }
+
     public Page() {
         super();
     }

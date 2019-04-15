@@ -22,6 +22,15 @@ public class PageBean implements Serializable {
 	private String s_tsdl;// 图书大类
 	private String s_type;// 图书类型
 	private String user ;//用户名称或用户id
+	private String status;
+
+	public String getStatus() {
+		return status;
+	}
+
+	public void setStatus(String status) {
+		this.status = status;
+	}
 
 	@Override
 	public String toString() {

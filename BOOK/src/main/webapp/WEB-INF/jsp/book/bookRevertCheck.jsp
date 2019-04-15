@@ -7,6 +7,9 @@
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@page import="java.text.SimpleDateFormat" %>
+
+<%@page import="java.util.*" %>
 <c:set var="path" value="${pageContext.request.contextPath}"/>
 <html>
 <head>
@@ -67,21 +70,27 @@
                     </td>
                 </tr>
                 <tr>
-                    <th width="17%">借阅时间：</th>
+                    <th width="17%">借阅日期：</th>
                     <td width="33%">
                         <input id="jyrq" value="${singleTBorrow.jyrq}" class="myInput" readonly="readonly"/>
                     </td>
                 </tr>
                 <tr>
-                    <th width="17%">计划归还时间：</th>
+                    <th width="17%">计划归还日期：</th>
                     <td width="33%">
                         <input id="jhghrq" value="${singleTBorrow.jhghrq}" class="myInput" readonly="readonly"/>
                     </td>
                 </tr>
+
+                <%
+                    Date d = new Date();
+                    SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd");
+                    String now = df.format(d);
+                %>
                 <tr>
-                    <th width="17%">归还时间：</th>
+                    <th width="17%">归还日期：</th>
                     <td width="33%">
-                        <input id="ghrq" value="${singleTBorrow.ghrq}" class="myInput" readonly="readonly"/>
+                        <input id="ghrq" value="<%=now%>" class="myInput" readonly="readonly"/>
                     </td>
                 </tr>
                 <tr>
@@ -89,7 +98,7 @@
                     <td width="33%">
                         <select class="select" name="sh" id="sh" onchange="changeSh();">
                             <option value="">==请选择==</option>
-                            <option value="0">无损耗</option>
+                            <option value="0" selected="selected">无损耗</option>
                             <option value="1">轻度</option>
                             <option value="2">中度</option>
                             <option value="3">重度</option>
@@ -123,7 +132,7 @@
 </div>
 </body>
 <script type="text/javascript">
-    // 界面上的时间格式转化
+    // 界面上的日期格式转化
     window.onload = function () {
         var newjyrq = new Date($("#jyrq").val());
         $("#jyrq").val(getDateString(newjyrq));

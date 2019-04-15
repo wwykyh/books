@@ -101,17 +101,17 @@ public class BookManagerController {
         return bookService.getBookById(isbn);
     }
 
-    @RequestMapping(path = {"/bookAdd"},method = {RequestMethod.POST})
+    @RequestMapping(path = {"/bookAdd"}, method = {RequestMethod.POST})
     @ResponseBody
-    public String bookAdd(@RequestParam("pic") MultipartFile file,QueryVo vo, HttpServletRequest request) throws IllegalStateException, IOException{
+    public String bookAdd(@RequestParam("pic") MultipartFile file, QueryVo vo, HttpServletRequest request) throws IllegalStateException, IOException {
         boolean result = true;
-        for(int i=0;i<vo.getNum();i++){
-        try {
-            result = bookService.insertBook(vo,file,request);
-        } catch (Exception e) {
-            e.printStackTrace();
-            result = false;
-        }
+        for (int i = 0; i < vo.getNum(); i++) {
+            try {
+                result = bookService.insertBook(vo, file, request);
+            } catch (Exception e) {
+                e.printStackTrace();
+                result = false;
+            }
         }
         if (result == true)
             return "0";
@@ -323,8 +323,8 @@ public class BookManagerController {
     public String HistoryInfo(Integer id, Model model) {
         HistoryInfo history = bookService.selectHistoryById(id);
 
-        model.addAttribute("jyzts",transLationjy(history));
-        model.addAttribute("status",transLation(history));
+        model.addAttribute("jyzts", transLationjy(history));
+        model.addAttribute("status", transLation(history));
         model.addAttribute("history", history);
 
         return "manager/history_info";
@@ -347,36 +347,37 @@ public class BookManagerController {
     List<TBookAnalyze> charts() {
         List<TBookAnalyze> user = bookAnalyzeService.getBoorowNum();
         return user;
-        }
-    //确认转译
-    public String transLation(HistoryInfo historyInfo){
+    }
 
-        int statu= historyInfo.getStatus();
-        String status ="确认转译";
-        if(statu==0){
-            status="确认不通过";
-        }else if(statu==1){
-            status="确认通过";
-        }else if(statu==2){
-            status="待确认";
-        }else{
-            status="未备注信息";
+    //确认转译
+    public String transLation(HistoryInfo historyInfo) {
+
+        int statu = historyInfo.getStatus();
+        String status = "确认转译";
+        if (statu == 0) {
+            status = "确认不通过";
+        } else if (statu == 1) {
+            status = "确认通过";
+        } else if (statu == 2) {
+            status = "待确认";
+        } else {
+            status = "未备注信息";
         }
         return status;
     }
+
     //借阅转译
-    public String transLationjy(HistoryInfo historyInfo){
+    public String transLationjy(HistoryInfo historyInfo) {
         int jyzt = historyInfo.getJyzt();
         String jyzts = "借阅转译";
-        if(jyzt==0){
-            jyzts="借阅";
-        }
-        else if(jyzt==1){
-            jyzts="续借";
-        }else if(jyzt==2){
-            jyzts="归还";
-        }else {
-            jyzts="未备注信息";
+        if (jyzt == 0) {
+            jyzts = "借阅";
+        } else if (jyzt == 1) {
+            jyzts = "续借";
+        } else if (jyzt == 2) {
+            jyzts = "归还";
+        } else {
+            jyzts = "未备注信息";
         }
         return jyzts;
     }

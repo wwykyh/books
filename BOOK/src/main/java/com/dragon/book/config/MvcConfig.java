@@ -12,28 +12,29 @@ import com.dragon.book.interceptor.LoginInterceptor;
 @Configuration
 public class MvcConfig implements WebMvcConfigurer {
 
-	/**
-	 * 过滤器配置，去除部分路径
-	 */
-	@Override
-	public void addInterceptors(InterceptorRegistry registry) {
+    /**
+     * 过滤器配置，去除部分路径
+     */
+    @Override
+    public void addInterceptors(InterceptorRegistry registry) {
 
-		String[] excludes = new String[] { "/login", "/dologin", "/css/**",
-				"/js/**", "/images/**", "/data/**", "/dvpt/**", "/html5/**",
-				"/error", "/register", "/doreg", "/checkName" };
-		registry.addInterceptor(new LoginInterceptor()).addPathPatterns("/**")
-				.excludePathPatterns(excludes);
-	}
+        String[] excludes = new String[]{"/login", "/dologin", "/css/**",
+                "/js/**", "/images/**", "/data/**", "/dvpt/**", "/html5/**",
+                "/error", "/register", "/doreg", "/checkName", "/home/*", "/picture/*"};
+        registry.addInterceptor(new LoginInterceptor()).addPathPatterns("/**")
+                .excludePathPatterns(excludes);
+    }
 
-	/**
-	 * 监听器配置，单点登录
-	 * @return
-	 */
-	@SuppressWarnings({ "rawtypes", "unchecked" })
-	@Bean
-	public ServletListenerRegistrationBean listenerRegist() {
-		ServletListenerRegistrationBean srb = new ServletListenerRegistrationBean();
-		srb.setListener(new LoginListener());
-		return srb;
-	}
+    /**
+     * 监听器配置，单点登录
+     *
+     * @return
+     */
+    @SuppressWarnings({"rawtypes", "unchecked"})
+    @Bean
+    public ServletListenerRegistrationBean listenerRegist() {
+        ServletListenerRegistrationBean srb = new ServletListenerRegistrationBean();
+        srb.setListener(new LoginListener());
+        return srb;
+    }
 }

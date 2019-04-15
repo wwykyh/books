@@ -59,11 +59,13 @@
                                     <th width="30%"><span class="ft-need"></span>已借图书：</th>
                                     <td width="33%">${base.sm}&nbsp;<input  type="checkbox" name="category" value="${base.sId}" /></td>
                                 </tr>
-                                <tr>
-                                    <th><input  type="button" class="btn" value="还书"  onclick="sub()"></th>
-                                    <td><input  type="button" class="btn" value="取消"  onclick="myClose();"></td>
-                                </tr>
                             </c:if>
+                                <c:if test="${sta.last}">
+                                    <tr>
+                                        <th><input  type="button" class="btn" value="还书"  onclick="sub()"></th>
+                                        <td><input  type="button" class="btn" value="取消"  onclick="myClose();"></td>
+                                    </tr>
+                                </c:if>
                         </c:if>
                     </c:forEach>
                 </table>
@@ -88,10 +90,10 @@
                 },
                 success: function(status) {
                     if(status){
-                        alert("还书成功！");
+                        alert("提交还书申请成功！");
                         parent.art.dialog({id:'returnMyBook'}).close() ;
                     }else {
-                        alert("还书操作失败！");
+                        alert("提交还书申请失败！");
                     }
                 }
             });
