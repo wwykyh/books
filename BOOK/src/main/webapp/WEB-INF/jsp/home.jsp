@@ -168,7 +168,7 @@
                                 </td>
                                 <a id="new${sta1.count}" style="CURSOR: pointer" ><h3  class="animated fadeInUp wow">${new1.book.sm}</h3></a>
                                 <p id="newIsbn${sta1.count}" hidden>${new1.book.isbn}</p>
-                                <p  style="height: 170px;overflow:hidden; font-size: 20px">&nbsp;&nbsp;&nbsp;&nbsp;${new1.book.jj}</p>
+                                <p  style="height: 170px;overflow:hidden;font-size: 20px">&nbsp;&nbsp;&nbsp;&nbsp;${new1.book.jj}</p>
                             </div>
                         </div>
                         <c:if test="${sta1.count==3 or sta1.count==6 }">

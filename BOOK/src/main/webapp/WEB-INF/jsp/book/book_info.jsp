@@ -81,12 +81,12 @@
             <div class="tabs-container">
 
                 <div style="display: block;" class="tab" id="tab1">
-                    <p class="more_details">${bookInfo.jj}</p>
+                    <p class="more_details" style="font-size: 16px">${bookInfo.jj}</p>
                 </div>
                 <div style="display: none;" class="tab" id="tab2">
                     <div class="divtable2"id="divtable" >
                         <div class="textComment" id="textComment"></div>
-                        <table class="form-table" width="100%" id="commentTable" >
+                        <table class="form-table" width="100%" id="commentTable" style="font-size: 18px" >
                             <c:forEach items="${commentInfos}" var="arr">
                                 <tr  style="background:#a7d0ef; " >
                                     <td style="padding-left:10px ;" width="80%">${arr.xm} &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;${arr.pjrq}</td>
@@ -103,14 +103,7 @@
                                 <tr style="background:#EFEFEF; ">
                                     <td width="80%" style="padding-left: 35px;" >
                                         <div  class="innerCtn" id="innerCtn-id" >
-                                            <c:choose>
-                                                <c:when test="${arr.nr==null || arr.nr==''}">
-                                                    <span >暂无评论</span>
-                                                </c:when>
-                                                <c:otherwise>
-                                                    <span >${arr.nr}</span>
-                                                </c:otherwise>
-                                            </c:choose>
+                                            <span >${arr.nr}</span>
                                         </div>
                                     </td>
                                     <td style="padding-left: 5%" onclick="xiangqing(this)">

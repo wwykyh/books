@@ -42,9 +42,9 @@
                 </table>
             </form>
         </div>
-        <th width="10%" style="text-align: left" ><span> <font size="4">历史评论：</font></span></th>
+        <th width="10%" style="text-align: left;" ><span style="font-size: 18px"> 历史评论：</span></th>
         <div  id="textComment" class="textComment"></div>
-        <div style="padding-left:5% ; padding-right: 5%" class="parentid3" id="parentid" >
+        <div style="padding-left:5% ; padding-right: 5%;" class="parentid3" id="parentid" >
             <table class="form-table" width="100%" id="commentTable"  >
 
                 <c:forEach items="${commentInfos}" var="arr">
