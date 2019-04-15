@@ -72,7 +72,7 @@
         <div class="new_prod_box">
 
             <div style="height:60%;width: 100%">
-                <a href="javascript:void(0);" onclick="onBookInfo('${p.tStore.id}')"><img src="${p.picture}"
+                <a href="javascript:void(0);" onclick="onBookInfo('${p.id}')"><img src="${p.tBook.picture}"
                                                                                           alt="" title=""
                                                                                           class="thumb"
                                                                                           border="0"
@@ -80,7 +80,7 @@
             </div>
             <div style="width: auto;height: 20%">
                 <a href="javascript:void(0);"
-                   onclick="onBookInfo('${p.tStore.id}')"><strong>${p.sm}</strong></a></div>
+                   onclick="onBookInfo('${p.id}')"><strong>${p.tBook.sm}</strong></a></div>
         </div>
     </c:forEach>
     <div style="width: 100%;height: 5%;float: left ; text-align: center">

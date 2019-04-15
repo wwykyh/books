@@ -271,6 +271,7 @@ public class BookServiceImpl implements BookService {
         System.out.println("page:" + pageBean.getPage() + "pagesize:" + pageBean.getPagesize() + pageBean.toString());
         //3.查询当前页对应的数据列表并封装到page对象中
         List<Book> list = bookMapper.selectByDim(pageBean);
+        System.out.println("list："+list.toString());
         page.setList(list);
         page.setDim(dim);
         page.setS_type(s_type);

@@ -80,6 +80,7 @@
 
     <select id="findBook" resultType="com.dragon.book.model.TBook">
         select
+		book.isbn,
 		book.sm,
 		jj,
 		picture,
@@ -88,19 +89,13 @@
 		t_borrow b
 		left outer join
 		t_store s
-		ON
+		on
 		b.s_id = s.id
 		left outer join
 		t_book book
-		ON
+		on
 		s.isbn = book.isbn
-        where
-        s.`status`= 1
-        group by
-        book.isbn
-        order by
-        cs
-        desc
+		group by book.isbn order  by cs desc
         LIMIT 3
     </select>
 
