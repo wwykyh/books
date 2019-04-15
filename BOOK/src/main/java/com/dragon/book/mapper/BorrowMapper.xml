@@ -46,7 +46,7 @@
 		select
 		b.isbn,b.sm,jj,picture,s.rksj
 		from t_book b left outer join t_store s ON b.isbn = s.isbn
-	    ORDER BY s.rksj desc LIMIT 6
+	    GROUP BY s.isbn ORDER BY s.rksj desc LIMIT 6
 	</select>
 
 	<update id="returnBookRequest" parameterType="java.lang.String">

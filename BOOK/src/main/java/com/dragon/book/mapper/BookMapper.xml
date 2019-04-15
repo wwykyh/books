@@ -113,6 +113,9 @@
         <if test="s_type !=null and s_type !=''">
             and t.type_id ='${s_type}'
         </if>
+        <if test="status !=null and status !=''">
+            and s.status ='${status}'
+        </if>
         limit #{page},#{pagesize}
 
 

@@ -187,11 +187,11 @@ public class BookController {
     }*/
     @GetMapping("/page")
     public String search(@RequestParam(value = "pageNumber", defaultValue = "1") String pageNumber, @RequestParam(value = "dim", defaultValue = "") String dim, @RequestParam(value = "s_type", defaultValue = "") String s_type,
-                         Model model, HttpServletRequest request, HttpServletResponse resopnse
+                        @RequestParam(value = "status",defaultValue = "") String status, Model model, HttpServletRequest request, HttpServletResponse resopnse
     ) {
 
 
-        System.out.println("number:" + pageNumber + "dim:" + dim + "type:" + s_type);
+       // System.out.println("number:" + pageNumber + "dim:" + dim + "type:" + s_type);
 
 
         List<TType> typeList = typeService.getAllTypes();
@@ -212,7 +212,7 @@ public class BookController {
         int total = bookService.getTotal(page);// 计算总数
         // System.out.println("-=-=-=-=" + total);
 
-        pagebean = bookService.getPage(pageNo, 10, dim, s_type, total);  //获取页面信息
+        pagebean = bookService.getPage(pageNo, 10, dim, s_type, total,status);  //获取页面信息
 
         System.out.println("12121212-----" + pagebean.getPageSize() + "  /n totl:" + pagebean.getTotalPage() + pagebean.toString());
 
