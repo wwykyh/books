@@ -48,11 +48,11 @@
                 <tr>
                     <th width="17%"><span class="ft-need"></span>确认状态：</th>
                     <td width="33%">${status}</td>
-                    <th width="17%"><span class="ft-need"></span>申请状态：</th>
+                    <th width="17%"><span class="ft-need"></span>当前状态：</th>
                     <td width="33%"> ${jyzt}</td>
                 </tr>
                 <tr>
-                    <th width="17%"><span class="ft-need"></span>确认不通过原因：</th>
+                    <th width="17%"><span class="ft-need"></span>审核不通过原因：</th>
                     <td width="33%" id="ishmd">${tborrow.bz}</td>
                     <th width="17%"><span class="ft-need"></span></th>
                     <td width="33%"></td>
