@@ -107,6 +107,8 @@ public class RevertCheckServiceImpl implements RevertCheckService {
             tCompensate.setPcdate(time);
             tCompensate.setsId(tStore.getIsbn());
             f = tCompensateMapper.insert(tCompensate) > 0; }
+            //归还日期
+            tBorrow.setGhrq(format.format(new Date()));
         return checkMapper.updateRevertTBorrowSh(filter) >= 0 &&
                 tBorrowMapper.updateByPrimaryKey(tBorrow) > 0;
     }

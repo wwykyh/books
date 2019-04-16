@@ -84,9 +84,6 @@
                     display: '借阅日期',
                     name: 'jyrq'
                 }, {
-                    display: '归还日期',
-                    name: 'ghrq'
-                },{
                     display: '操作',
                     isAllowHide: false,
                     render: function (row){

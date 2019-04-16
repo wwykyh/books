@@ -67,7 +67,14 @@
                 </tr>
                 <tr>
                     <th width="17%"><span class="ft-need"></span>联系方式：</th>
-                    <td width="33%">${history.user.lxfs}</td>
+                   <c:choose>
+                       <c:when test="${history.user.lxfs == null || history.user.lxfs=='' || history.user.lxfs=='undefine'}">
+                           <td width="33%">暂无联系方式</td>
+                       </c:when>
+                       <c:otherwise>
+                           <td width="33%">${history.user.lxfs}</td>
+                       </c:otherwise>
+                   </c:choose>
                     <th width="17%"><span class="ft-need"></span>地址：</th>
                     <td width="33%"> ${history.user.dz}</td>
                 </tr>
@@ -86,7 +93,14 @@
                     <th width="17%"><span class="ft-need"></span>借阅日期：</th>
                     <td width="33%">${history.jyrq}</td>
                     <th width="17%"><span class="ft-need"></span>归还日期：</th>
-                    <td width="33%"> ${history.ghrq}</td>
+                    <c:choose>
+                        <c:when test="${history.jyzt == 0|| history.jyzt==1 }">
+                            <td width="33%">暂未归还</td>
+                        </c:when>
+                        <c:otherwise>
+                            <td width="33%"> ${history.ghrq}</td>
+                        </c:otherwise>
+                    </c:choose>
                 </tr>
                 <tr>
                     <th width="17%"><span class="ft-need"></span>确认状态：</th>
@@ -98,7 +112,14 @@
                     <th width="17%"><span class="ft-need"></span>计划归还时间：</th>
                     <td width="33%">${history.jhghrq}</td>
                     <th width="17%"><span class="ft-need"></span>续借日期：</th>
-                    <td width="33%"> ${history.xjrq}</td>
+                    <c:choose>
+                        <c:when test="${history.xjrq == null || history.xjrq=='' || history.xjrq=='undefine'}">
+                            <td width="33%">暂无续借信息</td>
+                        </c:when>
+                        <c:otherwise>
+                            <td width="33%"> ${history.xjrq}</td>
+                        </c:otherwise>
+                    </c:choose>
                 </tr>
             </table>
         </div>
