@@ -35,16 +35,17 @@
            </div>
 
             <div style="width: 100%">
-                <table width="100%">
+                <table width="100%" >
                     <tr>
                         <td width="20%" style="text-align: left" ><span> <font size="4" f>历史评论：</font></span></td>
-                        <td width="80%" style="padding-left: 62%" ><span onclick="checkAll()" id="checkAll"  style="margin-top: 10px;float: left;cursor: pointer"><font face="黑体" >全选/反选</font></span></td>
+                        <td width="67%"  ><span onclick="checkAll()" id="checkAll"  style="float: left;cursor: pointer;padding-left: 87%">全选/反选</span></td>
+                        <td width="13%" style="cursor: pointer" onclick="deleteAll()"id="deleteAll">批量删除</td>
                     </tr>
                 </table>
             </div>
             <div  id="textComment" class="textComment"></div>
         <div style="padding-left:5% ; padding-right: 5% ;" class="parentid3"id="parentid"  >
-            <table class="form-table" width="100%" id="commentTable"  >
+            <table class="form-table" width="100%" id="commentTable" style="font-size: 18px" >
                 <c:forEach items="${commentInfos}" var="arr">
                 <div >
                     <tr  style="background:#a7d0ef; " >
@@ -78,14 +79,7 @@
                 </div>
             </table>
         </div>
-        <div style="height: 10px ;padding-left: 75%">
-            <table>
-                <tr>
-                    <td onclick="allComment()" style="cursor: pointer">查看全部/收起</td>&nbsp;
-                    <td style="cursor: pointer" onclick="deleteAll()"id="deleteAll">批量删除</td>
-                </tr>
-            </table>
-        </div>
+        <h3 onclick="allComment()"style="cursor: pointer;height: 10px ;padding-left: 81.5% ;font-size: 18px" >查看全部/收起</h3>
 
     </div>
 </div>

@@ -4,17 +4,25 @@ import com.dragon.book.model.TBook;
 import com.dragon.book.model.TStore;
 import com.dragon.book.model.TType;
 
-public class Book extends TBook {
+public class Book extends TStore {
     private TType tType;
 
-    private TStore tStore;
+    private TBook tBook;
 
     @Override
     public String toString() {
         return "Book{" +
                 "tType=" + tType +
-                ", tStore=" + tStore +
+                ", tBook=" + tBook +
                 '}';
+    }
+
+    public TBook gettBook() {
+        return tBook;
+    }
+
+    public void settBook(TBook tBook) {
+        this.tBook = tBook;
     }
 
     public TType gettType() {
@@ -25,11 +33,5 @@ public class Book extends TBook {
         this.tType = tType;
     }
 
-    public TStore gettStore() {
-        return tStore;
-    }
 
-    public void settStore(TStore tStore) {
-        this.tStore = tStore;
-    }
 }
