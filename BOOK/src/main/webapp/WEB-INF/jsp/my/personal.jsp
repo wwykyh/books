@@ -44,7 +44,14 @@
                         <tbody>
                             <tr>
                                 <td>${userInformation.xm}</td>
-                                <td>${userInformation.lxfs}</td>
+                                <c:choose>
+                                    <c:when test="${userInformation.lxfs == null || userInformation.lxfs=='' || userInformation.lxfs=='undefine'}">
+                                        <td >暂无联系方式</td>
+                                    </c:when>
+                                    <c:otherwise>
+                                        <td >${userInformation.lxfs}</td>
+                                    </c:otherwise>
+                                </c:choose>
                                 <td>${userInformation.dz}</td>
                                 <td>${userInformation.bm}</td>
                                 <td>${userInformation.kjtscs}</td>

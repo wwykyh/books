@@ -71,6 +71,7 @@ public class BorrowCheckController {
                 tBorrow.setStatus(1);
                 String jyri = format.format(new Date());
                 tBorrow.setJyrq(jyri);
+                tBorrow.setBz(bz);
             }
             return borrowCheckService.updateTBorrow(tBorrow);
         } else {
