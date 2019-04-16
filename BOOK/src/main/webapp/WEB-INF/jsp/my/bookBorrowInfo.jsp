@@ -49,13 +49,12 @@
                             <td width="33%"> ${tborrow.xjrq}</td>
                         </c:otherwise>
                     </c:choose>
-                    <th width="17%"><span class="ft-need"></span>确认状态：</th>
-                    <td width="33%">${status}</td>
+                    <th width="17%"><span class="ft-need"></span>当前借阅状态：</th>
+                    <td width="33%"> ${jyzt}</td>
                 </tr>
                 <tr>
-
-                    <th width="17%"><span class="ft-need"></span>申请状态：</th>
-                    <td width="33%"> ${jyzt}</td>
+                    <th width="17%"><span class="ft-need"></span>确认状态：</th>
+                    <td width="33%">${status}</td>
                     <th width="17%"><span class="ft-need"></span>确认不通过原因：</th>
                     <td width="33%" id="ishmd">${tborrow.bz}</td>
                 </tr>
