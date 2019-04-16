@@ -1,6 +1,7 @@
 package com.dragon.book.mapper.my;
 
 import com.dragon.book.model.TBorrow;
+import com.dragon.book.model.TStore;
 import com.dragon.book.pojo.BookNews;
 import org.apache.ibatis.annotations.Param;
 
@@ -33,9 +34,37 @@ public interface NewsDao {
 
     /**
      * 添加新的续借消息
+     *
      * @param uId
-     * @param s_id
+     * @param isbn
      * @param date
      */
     public void addRenewNews(@Param("userId") int uId, @Param("isbn") String isbn, @Param("date") String date);
+
+    /**
+     * 添加新的借书消息
+     *
+     * @param uId
+     * @param isbn
+     * @param date
+     */
+    public void addBorrowNews(@Param("userId") int uId, @Param("isbn") String isbn, @Param("date") String date);
+
+    /**
+     * 添加新的还书消息2
+     *
+     * @param uId
+     * @param isbn
+     * @param date
+     */
+    public void addRevertNews(@Param("userId") int uId, @Param("isbn") String isbn, @Param("date") String date);
+
+    /**
+     * 查找isbn
+     *
+     * @param uId
+     * @param id
+     * @return
+     */
+    public TStore findIsbn(@Param("userId") int uId, @Param("id") int id);
 }

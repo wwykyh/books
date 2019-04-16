@@ -65,4 +65,35 @@
         (${userId},#{isbn},"续借",#{date},1)
     </insert>
 
+    <insert id="addBorrowNews" parameterType="com.dragon.book.model.TBookNews">
+        insert into
+        t_book_news
+        (user_id,book_isbn,news_name,news_date,news_type)
+        values
+        (${userId},#{isbn},"借出",#{date},1)
+    </insert>
+
+    <insert id="addRevertNews" parameterType="com.dragon.book.model.TBookNews">
+        insert into
+        t_book_news
+        (user_id,book_isbn,news_name,news_date,news_type)
+        values
+        (${userId},#{isbn},"归还",#{date},1)
+    </insert>
+
+    <select id="findIsbn" resultType="com.dragon.book.pojo.TBorrowInfo">
+        select
+        isbn
+        from
+        t_borrow
+        right join
+        t_store
+        on
+        t_borrow.s_id=t_store.id
+        where
+        t_borrow.user_id=#{userId}
+        and
+        t_borrow.s_id=#{id}
+    </select>
+
 </mapper>
