@@ -70,9 +70,9 @@
     <insert id="addOvertimeNews" parameterType="com.dragon.book.model.TBookNews">
         insert into
         t_book_news
-        (user_id,book_isbn,news_name,news_date,news_type)
+        (user_id,book_isbn,news_name,news_date,news_type,news_state)
         values
-        (${userId},#{isbn},"超时",#{date},2)
+        (${userId},#{isbn},"超时",#{date},2,0)
     </insert>
 
 </mapper>
