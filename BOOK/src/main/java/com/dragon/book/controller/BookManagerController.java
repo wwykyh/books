@@ -30,6 +30,7 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.File;
 import java.io.IOException;
 import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 
@@ -336,6 +337,15 @@ public class BookManagerController {
      */
     @RequestMapping("/bookAnalyze")
     public String showBookAnalyzePage() {
+       /*
+       SimpleDateFormat dateFormat = new SimpleDateFormat(" M");
+        Date date = new Date();
+        Calendar calendar = Calendar.getInstance();
+        calendar.setTime(date);
+        calendar.set(Calendar.MONTH, calendar.get(Calendar.MONTH) - 1);
+        date = calendar.getTime();
+        String jyrq = dateFormat.format(date);
+        model.addAttribute("jyrq",jyrq);*/
         return "manager/bookAnalyze";
     }
 
@@ -344,8 +354,9 @@ public class BookManagerController {
      */
     @RequestMapping(value = "/borrowInfo", method = RequestMethod.GET)
     public @ResponseBody
-    List<TBookAnalyze> charts() {
-        List<TBookAnalyze> user = bookAnalyzeService.getBoorowNum();
+    List<TBookAnalyze> charts(HttpServletRequest request) {
+        String month = request.getParameter("month");
+        List<TBookAnalyze> user = bookAnalyzeService.getBoorowNum(month);
         return user;
     }
 
