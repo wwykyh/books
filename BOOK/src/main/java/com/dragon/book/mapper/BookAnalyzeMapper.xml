@@ -7,7 +7,7 @@
         <result column="num" property="num" />
     </resultMap>
 
-    <select id="selBorrowNum" resultMap="BaseResultMap" >
+    <select id="selBorrowNum" resultMap="BaseResultMap" parameterType="com.dragon.book.model.TBorrow">
         SELECT
             ty.type_id,
             ty.lxmc,
@@ -25,6 +25,9 @@
                 ts.isbn,ts.id,tw.s_id
             FROM
                 t_borrow tw, t_store ts where tw.s_id = ts.id
+            <if test="jyrq != null and jyrq != ''">
+                And tw.jyrq like '${jyrq}%'
+            </if>
             ) AS tbt ON tbt.isbn= tb.isbn
             GROUP BY
                 tb.type_id

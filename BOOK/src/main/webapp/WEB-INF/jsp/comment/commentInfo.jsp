@@ -180,7 +180,6 @@
     }
 
     function controllerline(num) {
-        debugger
       var divEle= document.getElementById('parentid');
       var divText = document.getElementById('textComment');
       if(num<=3){

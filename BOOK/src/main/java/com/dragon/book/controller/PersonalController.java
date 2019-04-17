@@ -132,11 +132,11 @@ public class PersonalController {
         int jyzt = tborrow.getJyzt();
         String jyzts = "借阅转译";
         if (jyzt == 0) {
-            jyzts = "借阅";
+            jyzts = "借阅中";
         } else if (jyzt == 1) {
-            jyzts = "续借";
+            jyzts = "续借中";
         } else if (jyzt == 2) {
-            jyzts = "归还";
+            jyzts = "已归还";
         } else {
             jyzts = "未备注信息";
         }

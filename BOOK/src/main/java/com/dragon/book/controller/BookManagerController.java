@@ -30,6 +30,7 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.File;
 import java.io.IOException;
 import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 
@@ -336,6 +337,15 @@ public class BookManagerController {
      */
     @RequestMapping("/bookAnalyze")
     public String showBookAnalyzePage() {
+       /*
+       SimpleDateFormat dateFormat = new SimpleDateFormat(" M");
+        Date date = new Date();
+        Calendar calendar = Calendar.getInstance();
+        calendar.setTime(date);
+        calendar.set(Calendar.MONTH, calendar.get(Calendar.MONTH) - 1);
+        date = calendar.getTime();
+        String jyrq = dateFormat.format(date);
+        model.addAttribute("jyrq",jyrq);*/
         return "manager/bookAnalyze";
     }
 
@@ -344,8 +354,9 @@ public class BookManagerController {
      */
     @RequestMapping(value = "/borrowInfo", method = RequestMethod.GET)
     public @ResponseBody
-    List<TBookAnalyze> charts() {
-        List<TBookAnalyze> user = bookAnalyzeService.getBoorowNum();
+    List<TBookAnalyze> charts(HttpServletRequest request) {
+        String month = request.getParameter("month");
+        List<TBookAnalyze> user = bookAnalyzeService.getBoorowNum(month);
         return user;
     }
 
@@ -371,11 +382,11 @@ public class BookManagerController {
         int jyzt = historyInfo.getJyzt();
         String jyzts = "借阅转译";
         if (jyzt == 0) {
-            jyzts = "借阅";
+            jyzts = "借阅中";
         } else if (jyzt == 1) {
-            jyzts = "续借";
+            jyzts = "续借中";
         } else if (jyzt == 2) {
-            jyzts = "归还";
+            jyzts = "已归还";
         } else {
             jyzts = "未备注信息";
         }

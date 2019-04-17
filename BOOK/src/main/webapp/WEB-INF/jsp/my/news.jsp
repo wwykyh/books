@@ -20,10 +20,9 @@
 
     <div class="main-cont">
         <div class="tab tab-default">
-            <div class="tab-contbox">
-
-                <div>
-                    <table class="simple-table">
+            <div class="tab-contbox" >
+                <div id="divId">
+                    <table class="simple-table" id="tableId">
                         <thead>
                         <tr >
                             <th width="20%" >消息名称</th>
@@ -60,8 +59,12 @@
                         </tbody>
                     </table>
                 </div>
-
             </div>
+        </div>
+        <div id="divId_1" style="display: none">
+            <p style=" font-size: 20px;text-align: center;">
+                暂无消息
+            </p>
         </div>
     </div>
 </div>
@@ -69,7 +72,7 @@
 <script type="text/javascript">
 
     requirejs(['jquery', 'ligerGrid','dg.datePicker', 'artdialog'], function($) {
-
+        nullNewsAction();
     });
 
     function checkAll(){
@@ -143,6 +146,16 @@
                 }
             }
         });
+    }
+    function nullNewsAction() {
+        var num = document.getElementById("tableId").getElementsByTagName("tr").length;
+        if(num==1){
+
+           var div = document.getElementById("divId");
+           var div1 = document.getElementById("divId_1");
+            div.style.display='none';
+            div1.style.display='';
+        }
     }
 </script>
 </html>

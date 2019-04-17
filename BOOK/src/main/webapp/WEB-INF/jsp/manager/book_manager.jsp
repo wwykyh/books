@@ -116,7 +116,7 @@
 
 
     function onBookInfo(id){
-        alert("详情" + id) ;
+        //alert("详情" + id) ;
         art.dialog.open('book_info?id='+id, {
             title: '图书详情',
             width: 1000,
