@@ -195,7 +195,6 @@
                             num=num-i;
                         }
                     }
-                    console.log(num);
                     controllerline(num);
                     $("#commentTable").load(location.href+" #commentTable");
                 }

@@ -6,7 +6,10 @@
         <result column="lxmc" property="lxmc" />
         <result column="num" property="num" />
     </resultMap>
-
+    <resultMap id="LineChartResultMap" type="com.dragon.book.pojo.LineChart">
+        <id column="num" property="num"/>
+        <result column="jyrq" property="jyrq"/>
+    </resultMap>
     <select id="selBorrowNum" resultMap="BaseResultMap" parameterType="com.dragon.book.model.TBorrow">
         SELECT
             ty.type_id,
@@ -32,5 +35,25 @@
             GROUP BY
                 tb.type_id
         ) AS tn ON tn.tp = ty.type_id
+    </select>
+    <select id="selLineCharts" resultType="com.dragon.book.pojo.LineChart"  parameterType="com.dragon.book.pojo.LineChart">
+        SELECT
+        COUNT(tbt.jyrq) AS num,
+            tbt.jyrq  as jyrq
+        FROM
+            t_book tb
+        RIGHT OUTER JOIN (
+            SELECT
+                ts.isbn,
+                ts.id,
+                tw.s_id,
+                tw.jyrq
+            FROM
+                t_borrow tw,
+                t_store ts
+            WHERE
+                tw.s_id = ts.id
+            AND tw.jyrq LIKE '${jyrq}%'
+        ) AS tbt ON tbt.isbn = tb.isbn
     </select>
 </mapper>

@@ -5,10 +5,7 @@ import com.dragon.book.model.TBook;
 import com.dragon.book.model.TBookAnalyze;
 import com.dragon.book.model.TPublish;
 import com.dragon.book.model.TType;
-import com.dragon.book.pojo.BookInfo;
-import com.dragon.book.pojo.CommentInfo;
-import com.dragon.book.pojo.HistoryInfo;
-import com.dragon.book.pojo.QueryVo;
+import com.dragon.book.pojo.*;
 import com.dragon.book.service.*;
 import com.dragon.book.util.FileDownloadUtils;
 import com.dragon.book.util.PageBean;
@@ -350,7 +347,7 @@ public class BookManagerController {
     }
 
     /**
-     * 异步获取数据
+     * 异步获取图书分析数据
      */
     @RequestMapping(value = "/borrowInfo", method = RequestMethod.GET)
     public @ResponseBody
@@ -358,6 +355,16 @@ public class BookManagerController {
         String month = request.getParameter("month");
         List<TBookAnalyze> user = bookAnalyzeService.getBoorowNum(month);
         return user;
+    }
+    /**
+     * 异步获取趋势分析数据
+     */
+    @RequestMapping(value = "/lineChartInfo", method = RequestMethod.GET)
+    public @ResponseBody
+    List<LineChart> lineChart() {
+        List<LineChart> lineCharts = bookAnalyzeService.getLineChart();
+
+        return lineCharts;
     }
 
     //确认转译
