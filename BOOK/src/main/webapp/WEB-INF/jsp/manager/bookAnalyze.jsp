@@ -12,9 +12,9 @@
 	<script data-main="main" src="dvpt/require.min.2.1.11.js"></script>
 </head>
 	<body>
-		<div style="width: 100%;height:1200px ;position:relative">
-			<div id="monthAnalyze" style="width: 90%;height:630px;padding-left: 2%" ></div>
-			<div style="width: 20% ;height: 630px;position:absolute;left:3%;top:3%;font-size: 20px">
+		<div style="width: 100%;height:1300px ;position:relative">
+			<div id="monthAnalyze" style="width: 90%;height:680px;padding-left: 2%" ></div>
+			<div style="width: 20% ;height: 680px;position:absolute;left:3%;top:3%;font-size: 20px">
 				<label>查看月份</label>
 				<select  id="months" onchange="change()" style="width: 90px;height: 30px;font-size: 20px">
 					<option value="1">1月份</option>
@@ -33,7 +33,7 @@
 				</select>
 			</div>
 			<div id="testMain" style="height:500px;width:80%;padding-left: 8%" ></div>
-			<div class="footer_bottom" style="text-align: center"><span>Copyright ©2015 厦门市巨龙信息科技有限公司 技术支持   建议使用1280*768及以上分辨率</span> </div>
+			<div class="footer_bottom" style="text-align: center ;font-size: 15px;"><span>Copyright ©2015 厦门市巨龙信息科技有限公司 技术支持   建议使用1280*768及以上分辨率</span> </div>
 
 		</div>
 	</body>
@@ -98,7 +98,7 @@
 						legend: {
 							type: 'scroll',
 							orient: 'vertical',
-							right:10,
+							right:'6%',
 							top:10,
 							bottom:20,
 							data: legendData
@@ -141,7 +141,7 @@
 					myChart1.setOption({
 						tooltip: {
 							trigger: 'axis',
-							formatter: "图书借阅量 : <br/>{b}份 : {c}本"
+							formatter: "{a}  <br/>{b}份 : {c}本"
 						},
 						xAxis: {
 							type: 'category',
