@@ -13,6 +13,16 @@ public class TBookNews {
 
     private String news_type;
 
+    private int news_state;
+
+    public int getNews_state() {
+        return news_state;
+    }
+
+    public void setNews_state(int news_state) {
+        this.news_state = news_state;
+    }
+
     public Integer getId() {
         return id;
     }

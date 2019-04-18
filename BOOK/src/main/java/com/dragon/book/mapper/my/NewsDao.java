@@ -1,5 +1,6 @@
 package com.dragon.book.mapper.my;
 
+import com.dragon.book.model.TBookNews;
 import com.dragon.book.model.TBorrow;
 import com.dragon.book.model.TStore;
 import com.dragon.book.pojo.BookNews;
@@ -67,4 +68,15 @@ public interface NewsDao {
      * @return
      */
     public TStore findIsbn(@Param("userId") int uId, @Param("id") int id);
+
+    /**
+     * 查找未读消息
+     */
+    public List<TBookNews> findNewsState();
+
+    /**
+     * 更新state状态
+     * @param uId
+     */
+    public void updateState(@Param("userId") int uId);
 }

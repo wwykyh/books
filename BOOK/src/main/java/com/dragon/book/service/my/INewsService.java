@@ -1,5 +1,6 @@
 package com.dragon.book.service.my;
 
+import com.dragon.book.model.TBookNews;
 import com.dragon.book.model.TBorrow;
 import com.dragon.book.pojo.BookNews;
 
@@ -37,5 +38,10 @@ public interface INewsService {
      * @param check
      */
     public String deleteMultipleNews(Integer[] check);
+
+    /**
+     * 查找未读消息
+     */
+    public List<TBookNews> findNewsState();
 
 }

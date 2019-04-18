@@ -1,6 +1,7 @@
 package com.dragon.book.service.my.impl;
 
 import com.dragon.book.mapper.my.NewsDao;
+import com.dragon.book.model.TBookNews;
 import com.dragon.book.model.TBorrow;
 import com.dragon.book.pojo.BookNews;
 import com.dragon.book.service.my.INewsService;
@@ -26,6 +27,7 @@ public class NewsServiceImpl implements INewsService {
      */
     public List<BookNews> findNews(int userId) {
         List<BookNews> bookNews = newsDao.findNews(userId);
+        newsDao.updateState(userId);
         return bookNews;
     }
 
@@ -65,5 +67,10 @@ public class NewsServiceImpl implements INewsService {
             return "删除成功";
         }
         return "删除对象不能为空";
+    }
+
+
+    public List<TBookNews> findNewsState(){
+        return newsDao.findNewsState();
     }
 }
