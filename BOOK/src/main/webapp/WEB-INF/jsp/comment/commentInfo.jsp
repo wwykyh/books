@@ -42,10 +42,10 @@
                 </table>
             </form>
         </div>
-        <th width="10%" style="text-align: left" ><span> <font size="4">历史评论：</font></span></th>
+        <th width="10%" style="text-align: left;" ><span style="font-size: 18px"> 历史评论：</span></th>
         <div  id="textComment" class="textComment"></div>
-        <div style="padding-left:5% ; padding-right: 5%" class="parentid3" id="parentid" >
-            <table class="form-table" width="100%" id="commentTable"  >
+        <div style="padding-left:5% ; padding-right: 5%;" class="parentid3" id="parentid" >
+            <table class="form-table" width="100%" id="commentTable" style="font-size: 18px" >
 
                 <c:forEach items="${commentInfos}" var="arr">
                      <div >
@@ -70,19 +70,12 @@
                             </td>
                             <td style="padding-left: 5%" onclick="xiangqing(this)"><span style="cursor: pointer">查看更多/收起</span></td>
                         </tr>
-                         <c:choose>
-                             <c:when test="${arr==null ||arr==' '}">
-                                 暂无消息
-                             </c:when>
-                         </c:choose>
-
                 </c:forEach>
                      </div>
             </table>
         </div>
-    </div>
-    <div style="height: 10px ;padding-left: 81% ;" >
-        <h3 onclick="allComment()"style="cursor: pointer;" >查看全部/收起</h3>
+        <h3 onclick="allComment()"style="cursor: pointer;height: 10px ;padding-left: 81.5% ;font-size: 18px" >查看全部/收起</h3>
+
     </div>
 </div>
 
@@ -187,7 +180,6 @@
     }
 
     function controllerline(num) {
-        debugger
       var divEle= document.getElementById('parentid');
       var divText = document.getElementById('textComment');
       if(num<=3){

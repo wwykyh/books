@@ -41,21 +41,22 @@
                 </tr>
                 <tr>
                     <th width="17%"><span class="ft-need"></span>续借日期：</th>
-                    <td width="33%">${tborrow.xjrq}</td>
-                    <th width="17%"><span class="ft-need"></span>归还日期：</th>
-                    <td width="33%"> ${tborrow.ghrq}</td>
+                    <c:choose>
+                        <c:when test="${tborrow.xjrq == null || tborrow.xjrq=='' || tborrow.xjrq=='undefine'}">
+                            <td width="33%">暂无续借信息</td>
+                        </c:when>
+                        <c:otherwise>
+                            <td width="33%"> ${tborrow.xjrq}</td>
+                        </c:otherwise>
+                    </c:choose>
+                    <th width="17%"><span class="ft-need"></span>当前借阅状态：</th>
+                    <td width="33%"> ${jyzt}</td>
                 </tr>
                 <tr>
                     <th width="17%"><span class="ft-need"></span>确认状态：</th>
                     <td width="33%">${status}</td>
-                    <th width="17%"><span class="ft-need"></span>申请状态：</th>
-                    <td width="33%"> ${jyzt}</td>
-                </tr>
-                <tr>
                     <th width="17%"><span class="ft-need"></span>确认不通过原因：</th>
                     <td width="33%" id="ishmd">${tborrow.bz}</td>
-                    <th width="17%"><span class="ft-need"></span></th>
-                    <td width="33%"></td>
                 </tr>
             </table>
         </div>

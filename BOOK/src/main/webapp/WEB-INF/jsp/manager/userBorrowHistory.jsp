@@ -13,7 +13,7 @@
 <body>
     <div class="panel">
         <div class="panel-header">
-            <h2>借阅历史</h2>
+            <p style="font-size: 20px;text-align: center">借阅历史</p>
             <a href="javascript:;" class="arrow up"></a>
         </div>
 
@@ -84,9 +84,6 @@
                     display: '借阅日期',
                     name: 'jyrq'
                 }, {
-                    display: '归还日期',
-                    name: 'ghrq'
-                },{
                     display: '操作',
                     isAllowHide: false,
                     render: function (row){

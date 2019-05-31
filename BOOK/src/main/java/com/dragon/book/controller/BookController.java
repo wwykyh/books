@@ -262,7 +262,7 @@ public class BookController {
         TSysUser user = (TSysUser) session.getAttribute("user");
         int borrow1 = bookService.getBorrow(user.getUserId());
         if (borrow1 < user.getKjtscs()) {
-            TBorrow borrow = bookService.setBorrow(id, user.getUserId(), book.getSm(), user.getLxfs(), now, bookService.getTime(now, Integer.toString(user.getKjsc())), 2, 0);
+            TBorrow borrow = bookService.setBorrow(id, user.getUserId(), book.gettBook().getSm(), user.getLxfs(), now, bookService.getTime(now, Integer.toString(user.getKjsc())), 2, 0);
             int i = bookService.insertBorrow(borrow);
             if (i > 0) {
                 int i1 = bookService.updateByKey(id, 0);

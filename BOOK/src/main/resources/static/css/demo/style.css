@@ -1,6 +1,19 @@
 @charset "utf-8";
 
 /*首页*/
+.red-point{
+    position: relative;
+}
+
+.red-point::before{
+    float: left;
+    content: " ";
+    border: 3px solid red;/*设置红色*/
+    border-radius:3px;/*设置圆角*/
+    position: absolute;
+    z-index: 1000;
+    right: 0;
+    margin-right: -8px;}
 .handle-list{ margin:20px 0; margin-right:-1%;}
 .handle-list ul li{ float:left; width:33%;}
 .handle-list ul li a{ display:block; margin:0 10px; color:#fff; text-align:center;height:64px; padding:15px; font-size:16px; overflow:hidden;}

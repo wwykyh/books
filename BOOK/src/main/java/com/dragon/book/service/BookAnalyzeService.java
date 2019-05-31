@@ -1,6 +1,8 @@
 package com.dragon.book.service;
 
 import com.dragon.book.model.TBookAnalyze;
+import com.dragon.book.model.TBorrow;
+import com.dragon.book.pojo.LineChart;
 
 import java.util.List;
 /**
@@ -11,5 +13,9 @@ public interface BookAnalyzeService {
     /**
      *获取借阅量接口
      */
-    List<TBookAnalyze>  getBoorowNum();
+    List<TBookAnalyze>  getBoorowNum(String month);
+    /**
+     * 获取十二个月借阅量
+     */
+    List<LineChart> getLineChart();
 }

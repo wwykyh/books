@@ -3,8 +3,11 @@ package com.dragon.book.controller;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
+import com.dragon.book.model.TBookNews;
+import com.dragon.book.service.my.INewsService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.util.CollectionUtils;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -13,11 +16,17 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import com.dragon.book.model.TSysUser;
 import com.dragon.book.service.UserService;
 
+import java.util.List;
+import java.util.Map;
+
 @Controller
 public class UserController {
 
     @Autowired
     private UserService userService;
+
+    @Autowired
+    private INewsService newsService;
 
     /**
      * 登录处理
@@ -30,10 +39,16 @@ public class UserController {
     @PostMapping("/dologin")
     public String doLogin(@RequestParam String username,
                           @RequestParam String pwd, HttpSession session,
-                          HttpServletRequest request) {
+                          HttpServletRequest request,Map map) {
         String pass = userService.encryption(pwd);
         TSysUser user = userService.getUser(username, pass);
-
+        List<TBookNews> tBookNewsList = newsService.findNewsState();
+        if(CollectionUtils.isEmpty(tBookNewsList)){
+            session.setAttribute("flag", 0);
+        }else {
+            int legth = tBookNewsList.size();
+            session.setAttribute("flag", legth);
+        }
         if (user != null) {
             session.setAttribute("user", user);
         //    session.setAttribute("userName", user.getXm());

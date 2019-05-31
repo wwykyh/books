@@ -114,9 +114,7 @@
         }
     }
 
-    function onBookEdit(id) {
-        alert("编辑" + id) ;
-    }
+
     function onBookInfo(id){
         //alert("详情" + id) ;
         art.dialog.open('book_info?id='+id, {

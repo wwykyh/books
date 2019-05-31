@@ -44,7 +44,14 @@
                         <tbody>
                             <tr>
                                 <td>${userInformation.xm}</td>
-                                <td>${userInformation.lxfs}</td>
+                                <c:choose>
+                                    <c:when test="${userInformation.lxfs == null || userInformation.lxfs=='' || userInformation.lxfs=='undefine'}">
+                                        <td >暂无联系方式</td>
+                                    </c:when>
+                                    <c:otherwise>
+                                        <td >${userInformation.lxfs}</td>
+                                    </c:otherwise>
+                                </c:choose>
                                 <td>${userInformation.dz}</td>
                                 <td>${userInformation.bm}</td>
                                 <td>${userInformation.kjtscs}</td>
@@ -112,16 +119,16 @@
         });
     }
 
-    function renew(isbn,userid) {
+    function renew(id,userid,isbn) {
         if (confirm("你是否要续借图书？")){
             $.ajax({
-                url:"/personal/reNew?isbn="+isbn+"&userId="+userid+"",
+                url:"/personal/reNew?isbn="+isbn+"&userId="+userid+"&id="+id,
                 success:function(data){
                     if (data=="success"){
-                        alert("续借申请成功，请等待管理员确认");
+                        alert("续借成功");
                         // $("tr").remove("#tr_"+isbn);
                     } else {
-                        alert("续借申请失败！") ;
+                        alert("续借失败！") ;
                     }
                 }
             });

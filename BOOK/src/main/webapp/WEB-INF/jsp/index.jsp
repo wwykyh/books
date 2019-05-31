@@ -1,14 +1,14 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-         pageEncoding="UTF-8" %>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
-   <%-- <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">--%>
-    <meta name=”viewport” content=”width=device-width, initial-scale=1″ />
+    <%-- <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">--%>
+    <meta name=”viewport” content=”width=device-width, initial-scale=1″/>
     <title>图书管理系统</title>
-       <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+    <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
-       <link rel="stylesheet" type="text/css" href="css/common/iconfont/iconfont.css"/>
+    <link rel="stylesheet" type="text/css" href="css/common/iconfont/iconfont.css"/>
     <link rel="stylesheet" type="text/css" href="css/common/layout.css"/>
     <link rel="stylesheet" type="text/css" href="dvpt/css/libs.css"/>
     <link rel="stylesheet" type="text/css" href="css/demo/style.css"/>
@@ -18,12 +18,13 @@
     <script type="text/javascript" src="js/extend.js"></script>
     <!-- 共有的控件 -->
     <script data-main="main" src="dvpt/require.min.2.1.11.js"></script>
+
     <script type="text/javascript">
         requirejs(['main'], function (main) {
             requirejs(['jquery', 'jquery.extend', 'basic-global'], function (jquery, extend, basic) {
-                $(function() {
+                $(function () {
                     // 默认加载页面
-                    $.openWindow({ url:'Home?admin=${user.xm}'});
+                    $.openWindow({url: 'Home?admin=${user.xm}'});
                     // 换肤操作
                     $.switchSkin('css');
                 });
@@ -55,17 +56,17 @@
         var s_tsdl = null;
         var s_type = null;*/
 
-       /* $("#btnLoad").click(function() {
-            dim = $("#dim").val();
-            s_type = $("#s_type").val();
-            select();
-        });
-*/
+        /* $("#btnLoad").click(function() {
+             dim = $("#dim").val();
+             s_type = $("#s_type").val();
+             select();
+         });
+ */
 
         function page(num) {
             //alert(num);
-            $("#page").attr("_href","page?pageNumber="+num).trigger("click");
-            $("#page").attr("_href","sea")
+            $("#page").attr("_href", "page?pageNumber=" + num).trigger("click");
+            $("#page").attr("_href", "sea")
 
         }
 
@@ -133,21 +134,37 @@
                     </dt>
                     <dd>
                         <ul>
-                            <li><a id="pager" _href="${pageContext.request.contextPath}/personal/toPersonalIndex?userId=${user.userId}" data-name="个人中心" data-js="prettify" href="javascript:;">个人中心</a></li>
-                            <li><a _href="${pageContext.request.contextPath}/modifyInformation/modifyIndex?userId=${user.userId}" data-name="修改资料" data-js="prettify" href="javascript:;">修改资料</a>
+                            <li><a id="pager"
+                                   _href="${pageContext.request.contextPath}/personal/toPersonalIndex?userId=${user.userId}"
+                                   data-name="个人中心" data-js="prettify" href="javascript:;">个人中心</a>
+                            </li>
+                            <li>
+                                <a _href="${pageContext.request.contextPath}/modifyInformation/modifyIndex?userId=${user.userId}"
+                                   data-name="修改资料" data-js="prettify" href="javascript:;">修改资料</a>
                             </li>
                             <li><a _href="${pageContext.request.contextPath}/modifyPassword/toModifyPassword"
                                    data-name="修改密码" data-js="prettify" href="javascript:;">修改密码</a>
                             </li>
+                            <c:set var="type" scope="session" value="${flag}"/>
+                            <c:if test="${type!=0}">
+                            <li><a class="red-point" style="display: inline-block" _href="${pageContext.request.contextPath}/news/toNews?userId=${user.userId}"
+                                      data-name="消息通知" data-js="prettify" href="javascript:;">消息通知</a>
                             </li>
-                            <li><a _href="${pageContext.request.contextPath}/news/toNews?userId=${user.userId}"
-                                   data-name="消息通知" data-js="prettify" href="javascript:;">消息通知</a>
+                            </c:if>
+
+                            <c:if test="${type==0}">
+                                <li><a  _href="${pageContext.request.contextPath}/news/toNews?userId=${user.userId}"
+                                       data-name="消息通知" data-js="prettify" href="javascript:;">消息通知</a>
+                                </li>
+                            </c:if>
+
                             <li><a _href="${pageContext.request.contextPath}/userBorrowHistory" data-name="借阅历史"
                                    data-js="prettify" href="javascript:;">借阅历史</a>
                             </li>
                             <li>
                                 <a _href="${pageContext.request.contextPath}/overtimePayment/toOvertimePayment?userId=${user.userId}"
-                                   data-name="超时归还" href="javascript:;">超时归还</a></li>
+                                   data-name="超时归还" href="javascript:;">超时归还</a>
+                            </li>
 
                         </ul>
                     </dd>

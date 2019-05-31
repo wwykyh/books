@@ -20,7 +20,7 @@
     <!-- 共有的控件 -->
     <script data-main="main" src="../dvpt/jquery.min.js"></script>
 </head>
-<body>
+<body style="overflow-x: hidden">
     <div class="panel">
         <div class="panel-header">
             <h2>快捷还书</h2>

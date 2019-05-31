@@ -5,10 +5,7 @@ import com.dragon.book.model.TBook;
 import com.dragon.book.model.TBookAnalyze;
 import com.dragon.book.model.TPublish;
 import com.dragon.book.model.TType;
-import com.dragon.book.pojo.BookInfo;
-import com.dragon.book.pojo.CommentInfo;
-import com.dragon.book.pojo.HistoryInfo;
-import com.dragon.book.pojo.QueryVo;
+import com.dragon.book.pojo.*;
 import com.dragon.book.service.*;
 import com.dragon.book.util.FileDownloadUtils;
 import com.dragon.book.util.PageBean;
@@ -30,6 +27,7 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.File;
 import java.io.IOException;
 import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 
@@ -336,17 +334,37 @@ public class BookManagerController {
      */
     @RequestMapping("/bookAnalyze")
     public String showBookAnalyzePage() {
+       /*
+       SimpleDateFormat dateFormat = new SimpleDateFormat(" M");
+        Date date = new Date();
+        Calendar calendar = Calendar.getInstance();
+        calendar.setTime(date);
+        calendar.set(Calendar.MONTH, calendar.get(Calendar.MONTH) - 1);
+        date = calendar.getTime();
+        String jyrq = dateFormat.format(date);
+        model.addAttribute("jyrq",jyrq);*/
         return "manager/bookAnalyze";
     }
 
     /**
-     * 异步获取数据
+     * 异步获取图书分析数据
      */
     @RequestMapping(value = "/borrowInfo", method = RequestMethod.GET)
     public @ResponseBody
-    List<TBookAnalyze> charts() {
-        List<TBookAnalyze> user = bookAnalyzeService.getBoorowNum();
+    List<TBookAnalyze> charts(HttpServletRequest request) {
+        String month = request.getParameter("month");
+        List<TBookAnalyze> user = bookAnalyzeService.getBoorowNum(month);
         return user;
+    }
+    /**
+     * 异步获取趋势分析数据
+     */
+    @RequestMapping(value = "/lineChartInfo", method = RequestMethod.GET)
+    public @ResponseBody
+    List<LineChart> lineChart() {
+        List<LineChart> lineCharts = bookAnalyzeService.getLineChart();
+
+        return lineCharts;
     }
 
     //确认转译
@@ -371,11 +389,11 @@ public class BookManagerController {
         int jyzt = historyInfo.getJyzt();
         String jyzts = "借阅转译";
         if (jyzt == 0) {
-            jyzts = "借阅";
+            jyzts = "借阅中";
         } else if (jyzt == 1) {
-            jyzts = "续借";
+            jyzts = "续借中";
         } else if (jyzt == 2) {
-            jyzts = "归还";
+            jyzts = "已归还";
         } else {
             jyzts = "未备注信息";
         }

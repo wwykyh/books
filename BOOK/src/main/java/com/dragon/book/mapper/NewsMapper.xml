@@ -9,6 +9,7 @@
         <result column="news_name" property="news_name"/>
         <result column="news_date" property="news_date"/>
         <result column="news_type" property="news_type"/>
+        <result column="news_state" property="news_state"/>
         <collection property="tBook" ofType="com.dragon.book.model.TBook">
             <result column="isbn" property="isbn"/>
             <result column="sm" property="sm"/>
@@ -60,9 +61,58 @@
     <insert id="addRenewNews" parameterType="com.dragon.book.model.TBookNews">
         insert into
         t_book_news
-        (user_id,book_isbn,news_name,news_date,news_type)
+        (user_id,book_isbn,news_name,news_date,news_type,news_state)
         values
-        (${userId},#{isbn},"续借",#{date},1)
+        (${userId},#{isbn},"续借",#{date},1,0)
     </insert>
+
+    <insert id="addBorrowNews" parameterType="com.dragon.book.model.TBookNews">
+        insert into
+        t_book_news
+        (user_id,book_isbn,news_name,news_date,news_type,news_state)
+        values
+        (${userId},#{isbn},"借出",#{date},1,0)
+    </insert>
+
+    <insert id="addRevertNews" parameterType="com.dragon.book.model.TBookNews">
+        insert into
+        t_book_news
+        (user_id,book_isbn,news_name,news_date,news_type,news_state)
+        values
+        (${userId},#{isbn},"归还",#{date},1,0)
+    </insert>
+
+    <select id="findIsbn" resultType="com.dragon.book.pojo.TBorrowInfo">
+        select
+        isbn
+        from
+        t_borrow
+        right join
+        t_store
+        on
+        t_borrow.s_id=t_store.id
+        where
+        t_borrow.user_id=#{userId}
+        and
+        t_borrow.s_id=#{id}
+    </select>
+
+    <select id="findNewsState" resultType="com.dragon.book.model.TBookNews">
+        select
+        *
+        from
+        t_book_news
+        where
+        t_book_news.news_state=0
+    </select>
+
+    <update id="updateState" parameterType="com.dragon.book.model.TBookNews">
+        update
+        t_book_news
+        set
+        t_book_news.news_state=1
+        where
+        user_id = #{userId}
+    </update>
 
 </mapper>
