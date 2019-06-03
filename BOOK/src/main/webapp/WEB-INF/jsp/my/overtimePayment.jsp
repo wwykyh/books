@@ -73,8 +73,9 @@
     // }
 
     function rbook(isbn,userid) {
-        // alert(isbn);
-        // alert(userid);
+        debugger
+         alert(isbn);
+         alert(userid);
         if (confirm("你是否要归还图书？")){
             $.ajax({
                 url:"/overtimePayment/returnbook?isbn="+isbn+"&userId="+userid+"",

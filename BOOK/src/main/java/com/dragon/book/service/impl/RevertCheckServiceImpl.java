@@ -69,6 +69,7 @@ public class RevertCheckServiceImpl implements RevertCheckService {
         String nowDate = formatA.format(dateA);
 
         TBorrow tBorrow = tBorrowMapper.selectByPrimaryKey(id);
+        tBorrow.setGhrq(nowDate);
         String sId = tBorrow.getsId();
         Map<String, Object> filter = new HashMap<>();
         filter.put("sId", sId);

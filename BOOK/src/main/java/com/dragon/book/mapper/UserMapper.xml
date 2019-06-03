@@ -227,7 +227,7 @@ where 1=1
 
   <update id="updataUserPwd" parameterType="int" >
     update t_sys_user
-    set pwd = 123456
+    set pwd = uu123456
     where user_id = #{userId,jdbcType=INTEGER}
 </update>
   <select id="selectByName" resultMap="BaseResultMap" parameterType="java.lang.String">

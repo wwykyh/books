@@ -20,7 +20,7 @@
             requirejs(['jquery', 'jquery.extend', 'basic-global'], function (jquery, extend, basic) {
                 $(function() {
                     // 默认加载页面
-                    $.openWindow({ url:'Home?admin=${user.xm}'});
+                    $.openWindow({ url:'Home?admin=${user.isadmin}'});
                     // 换肤操作
                     $.switchSkin('css');
                 });

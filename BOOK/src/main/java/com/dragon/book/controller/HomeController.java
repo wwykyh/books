@@ -43,8 +43,9 @@ public class HomeController {
     @RequestMapping("/Home")
     public String getRankList(@RequestParam(value = "admin" ,required = false)String admin, Model model) {
         String home ="home";
-        if (admin.equals("admin"))
+        if (admin.equals("1")){
             home="homeAdmin";
+        }
         int userTotal = homeService.userTotal();
         int bookTotal = homeService.bookTotal();
         List<Borrow> rankingListUsers = homeService.getRankingList();

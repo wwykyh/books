@@ -8,12 +8,12 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <title>种类管理</title>
+    <title>图书类型管理</title>
 </head>
 <body>
     <div class="panel">
         <div class="panel-header">
-            <h2>种类管理</h2>
+            <h2>图书类型管理</h2>
             <a href="javascript:;" class="arrow up"></a>
         </div>
 
@@ -58,7 +58,7 @@
         }
         function onTypeAdd() {
             art.dialog.open('type_add', {
-                title: '出版社添加',
+                title: '图书类型添加',
                 width: 700,
                 height: 375,
                 cancel: true,
@@ -68,7 +68,7 @@
         }
         function onTypeEdit(typeId) {
             art.dialog.open('type_edit?typeId='+typeId, {
-                title: '出版社修改',
+                title: '图书类型修改',
                 width: 700,
                 height: 375,
                 cancel: true,
@@ -77,7 +77,7 @@
             });
         }
         function onTypeDel(typeId) {
-            if (confirm("你是否要删除出版社信息？")){
+            if (confirm("你是否要删除该图书类型？")){
                 $.ajax({url:"${pageContext.request.contextPath}/type_del?typeId="+typeId,
                     success:function(data){
                         if (data == '0'){

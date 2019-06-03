@@ -24,7 +24,7 @@
             requirejs(['jquery', 'jquery.extend', 'basic-global'], function (jquery, extend, basic) {
                 $(function () {
                     // 默认加载页面
-                    $.openWindow({url: 'Home?admin=${user.xm}'});
+                    $.openWindow({url: 'Home?admin=${user.isadmin}'});
                     // 换肤操作
                     $.switchSkin('css');
                 });
@@ -161,7 +161,7 @@
                             <li><a _href="${pageContext.request.contextPath}/userBorrowHistory" data-name="借阅历史"
                                    data-js="prettify" href="javascript:;">借阅历史</a>
                             </li>
-                            <li>
+                           <li>
                                 <a _href="${pageContext.request.contextPath}/overtimePayment/toOvertimePayment?userId=${user.userId}"
                                    data-name="超时归还" href="javascript:;">超时归还</a>
                             </li>

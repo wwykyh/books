@@ -53,7 +53,7 @@ public class UserController {
             session.setAttribute("user", user);
         //    session.setAttribute("userName", user.getXm());
             session.setMaxInactiveInterval(30 * 60);
-            if (user.getXm().equals("admin")) {
+            if (user.getIsadmin().equals(1)) {
                 return "adminIndex";
             }
             return "index";
