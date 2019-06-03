@@ -83,7 +83,7 @@ public class RevertCheckServiceImpl implements RevertCheckService {
             // 超时归还
             if (new Date().getTime() > jhghrq.getTime()) {
                 TOvertime tOvertime = new TOvertime();
-                tOvertime.setBookId(Integer.parseInt(sId));
+                tOvertime.setBookId(sId);
                 tOvertime.setUserId(tBorrow.getUserId());
                 tOvertimeMapper.insert(tOvertime);
                 // 查询用户超时归还次数

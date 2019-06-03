@@ -33,7 +33,7 @@
         where
         user_id = #{userId}
         and
-        now()>jhghrq
+        now()>jhghrq and jyzt=0
     </select>
 
 

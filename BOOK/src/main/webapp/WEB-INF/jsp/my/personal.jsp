@@ -136,15 +136,15 @@
     }
 
     function rbook(isbn,userid) {
-        // alert(isbn);
-        // alert(userid);
+         alert(isbn);
+         alert(userid);
         if (confirm("你是否要归还图书？")){
             $.ajax({
                 url:"/personal/returnBook?isbn="+isbn+"&userId="+userid+"",
                 success:function(data){
                     if (data=="success"){
                         alert("归还申请成功，请等待管理员确认");
-                        // $("tr").remove("#tr_"+isbn);
+                        $("tr").remove("#tr_"+isbn);
                     } else {
                         alert(data) ;
                     }

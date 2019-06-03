@@ -23,7 +23,7 @@
         <div class="tab-contbox">
             <p style="text-align: center; font-size: 20px;">超时信息</p>
             <div>
-                <table class="simple-table">
+                <table class="simple-table" id="overtimeTable">
                     <thead>
                     <tr >
                         <th width="20%">图书名称</th>
@@ -34,13 +34,13 @@
                     </thead>
                     <tbody >
                     <c:forEach items="${tBorrows}" var="tBorrows">
-                        <tr id="tr_${tBorrows.id}">
+                        <tr id="tr_${tBorrows.sId}">
                             <td>${tBorrows.sm}</td>
                             <td>${tBorrows.jhghrq}</td>
                             <td>${tBorrows.bz}天</td>
                             <td>
                                 <%--<a href="javascript:void(0);" onclick="renew(${tBorrows.sId},${tBorrows.userId})">续借</a>&nbsp;&nbsp;--%>
-                                <a href="javascript:void(0);" onclick="rbook(${tBorrows.sId},${tBorrows.userId})">归还</a>
+                                <a href="javascript:void(0);" onclick="rbook('${tBorrows.sId}',${tBorrows.userId})">归还</a>
                             </td>
                         </tr>
                     </c:forEach>
@@ -72,17 +72,14 @@
     //     }
     // }
 
-    function rbook(isbn,userid) {
-        debugger
-         alert(isbn);
-         alert(userid);
+    function rbook(sId,userid) {
         if (confirm("你是否要归还图书？")){
             $.ajax({
-                url:"/overtimePayment/returnbook?isbn="+isbn+"&userId="+userid+"",
+                url:"/overtimePayment/returnbook?isbn="+sId+"&userId="+userid+"",
                 success:function(data){
                     if (data=="success"){
                         alert("归还申请成功，请等待管理员确认");
-                        // $("tr").remove("#tr_"+isbn);
+                        $("tr").remove("#tr_"+sId);
                     } else {
                         alert(data) ;
                     }
