@@ -90,7 +90,7 @@
                                     <c:if test="${type!=1}">
                                     <a id="tr_${bookBorrow.tBorrow.id}" href="javascript:void(0);" onclick="renew(${bookBorrow.tBorrow.id},${user.userId},${bookBorrow.isbn})">续借</a>&nbsp;&nbsp;
                                     </c:if>
-                                    <a href="javascript:void(0);" onclick="rbook(${bookBorrow.isbn},${user.userId})">归还</a>
+                                    <a href="javascript:void(0);" onclick="rbook(${bookBorrow.isbn},'${bookBorrow.tBorrow.sId}',${user.userId})">归还</a>
                                 </td>
                             </tr>
                             </c:forEach>
@@ -135,12 +135,10 @@
         }
     }
 
-    function rbook(isbn,userid) {
-         alert(isbn);
-         alert(userid);
+    function rbook(isbn,sId,userid) {
         if (confirm("你是否要归还图书？")){
             $.ajax({
-                url:"/personal/returnBook?isbn="+isbn+"&userId="+userid+"",
+                url:"/personal/returnBook?isbn="+sId+"&userId="+userid+"",
                 success:function(data){
                     if (data=="success"){
                         alert("归还申请成功，请等待管理员确认");

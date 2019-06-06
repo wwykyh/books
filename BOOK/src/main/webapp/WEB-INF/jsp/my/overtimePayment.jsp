@@ -22,7 +22,7 @@
     <div class="tab tab-default">
         <div class="tab-contbox">
             <p style="text-align: center; font-size: 20px;">超时信息</p>
-            <div>
+            <div id="tablediv" style="display: block">
                 <table class="simple-table" id="overtimeTable">
                     <thead>
                     <tr >
@@ -47,6 +47,9 @@
                     </tbody>
                 </table>
             </div>
+            <div style="display: none ; font-size: 30px;text-align: center" id="divnews"  >
+                <h2>暂无超时信息</h2>
+            </div>
         </div>
     </div>
 </div>
@@ -54,6 +57,7 @@
 <script type="text/javascript">
 
     requirejs(['jquery', 'ligerGrid','dg.datePicker', 'artdialog'], function($) {
+        news();
     });
 
     // function renew(isbn,userid) {
@@ -88,6 +92,14 @@
         }
     }
 
+    function news() {
+        debugger
+        var num = document.getElementById('overtimeTable').getElementsByTagName('tr').length;
+        if(num<2){
+            document.getElementById('divnews').style.display='block';
+           // document.getElementById('tablediv').style.display='none';
+        }
+    }
 </script>
 
 </body>

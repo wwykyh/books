@@ -43,7 +43,7 @@ public class HomeController {
     @RequestMapping("/Home")
     public String getRankList(@RequestParam(value = "admin" ,required = false)String admin, Model model) {
         String home ="home";
-        if (admin.equals("1")){
+        if ("admin".equals(admin)){
             home="homeAdmin";
         }
         int userTotal = homeService.userTotal();
