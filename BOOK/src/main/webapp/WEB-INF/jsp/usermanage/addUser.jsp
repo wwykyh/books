@@ -22,12 +22,15 @@
     <script data-main="main" src="dvpt/require.min.2.1.11.js"></script>
 
 </head>
+
 <form id="form">
-    <table class="form-table">
+    <table class="form-table" >
         <tr>
-            <th width="15%"><span class="ft-need">*</span>姓名</th>
+            <th width="30%"><span class="ft-need">*</span>姓名</th>
             <td width="35%"><input type="text" class="input-text" name="xm" id="username" data-validate="required"
                                    onblur='checkName()'/></td>
+        </tr>
+        <tr>
             <th width="15%">部门</th>
             <td width="35%"><input type="text" class="input-text" name="bm" data-validate="required"/></td>
         </tr>
@@ -35,6 +38,8 @@
 
             <th width="15%">邮箱</th>
             <td width="35%"><input type="text" class="input-text" name="email" data-validate="required"/></td>
+        </tr>
+         <tr>
             <th width="15%">联系方式</th>
             <td width="35%"><input type="text" class="input-text" name="lxfs" data-validate="required"/></td>
         </tr>
@@ -42,13 +47,15 @@
             <th width="15%"><span class="ft-need">*</span>密码</th>
             <td width="35%"><input type="text" class="input-text" id="pwd" name="pwd" value="123456"/></td>
         </tr>
-        <tr>
-
-            <th width="20%"><input type="button" class="btn btn-default" value="提交" onclick="doreg()">
-                <input type="button" class="btn" value="重置" onclick="reset()"></th>
-        </tr>
     </table>
+    <div style="padding-left: 45%">
+        <th>
+            <input type="button" class="btn btn-default" value="提交" onclick="doreg()">
+            <input type="button" class="btn" value="重置" onclick="reset()">
+        </th>
+    </div>
 </form>
+
 </body>
 <script>
 

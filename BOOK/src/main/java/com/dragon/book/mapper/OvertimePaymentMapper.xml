@@ -33,7 +33,7 @@
         where
         user_id = #{userId}
         and
-        now()>jhghrq
+        now()>jhghrq and jyzt=0
     </select>
 
 
@@ -52,7 +52,7 @@
         on
         t_sys_user.user_id = t_borrow.user_id
         where
-        now()>jhghrq
+        now()>jhghrq AND jyzt=0
     </select>
 
     <select id="findAllOvertimeBorrow" resultType="com.dragon.book.model.TBorrow">

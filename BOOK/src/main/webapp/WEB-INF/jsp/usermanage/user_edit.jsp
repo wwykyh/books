@@ -127,7 +127,7 @@
                     },
                     success: function(data) {
                         if(data){
-                            alert("密码重置成功，初始密码为123456！");
+                            alert("密码重置成功，初始密码为uu123456！");
                             parent.select();
                             parent.art.dialog({id:'user_edit_window'}).close() ;
                         }else {

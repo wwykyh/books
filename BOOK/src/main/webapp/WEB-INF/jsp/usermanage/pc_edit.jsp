@@ -76,7 +76,10 @@
                     </tr>
                     <tr>
                         <th></th>
-                        <td><input type="button" class="btn" value="提交" onclick="sub()" ><input type="reset" class="btn" onclick="reset()" value="重置"></td>
+                        <td>
+                            <input type="button" class="btn" value="提交" onclick="sub()" />
+                            <input type="button" onclick="tijiao()" value="tijiao">
+                            <input type="reset" class="btn" onclick="reset()" value="重置"/></td>
                     </tr>
                 </table>
                 </form>
@@ -85,7 +88,8 @@
     </div>
     <script type="text/javascript">
         //日期处理和转义处理
-        $(document).ready(function(){
+        $(document).ready(
+            function(){
             $('#pcdate').datepick({dateFormat: 'yy-mm-dd'});
 
             var ispc = ${pc.ispc};
@@ -108,8 +112,10 @@
                 $("#sh").val('2');
             if (sh==3)
                 $("#sh").val('3');
-        });
-
+        }
+        );
+    </script>
+    <script type="text/javascript">
         //ajax提交表单
         function sub() {
             $.ajax({
@@ -131,7 +137,6 @@
                 }
             });
         }
-
     </script>
 </body>
 </html>

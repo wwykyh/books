@@ -5,7 +5,7 @@ public class TOvertime {
 
     private Integer userId;
 
-    private Integer bookId;
+    private String bookId;
 
     public Integer getId() {
         return id;
@@ -23,11 +23,11 @@ public class TOvertime {
         this.userId = userId;
     }
 
-    public Integer getBookId() {
+    public String getBookId() {
         return bookId;
     }
 
-    public void setBookId(Integer bookId) {
+    public void setBookId(String bookId) {
         this.bookId = bookId;
     }
 }

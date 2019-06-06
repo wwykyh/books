@@ -88,9 +88,11 @@
     </if>
   </delete>
   <insert id="insert" parameterType="com.dragon.book.model.TOvertime" >
-    insert into t_overtime (id, user_id, book_id
+    insert into t_overtime ( user_id, book_id
       )
-    values (#{id,jdbcType=INTEGER}, #{userId,jdbcType=INTEGER}, #{bookId,jdbcType=INTEGER}
+    values (
+    #{userId,jdbcType=INTEGER},
+    #{bookId}
       )
   </insert>
   <insert id="insertSelective" parameterType="com.dragon.book.model.TOvertime" >
