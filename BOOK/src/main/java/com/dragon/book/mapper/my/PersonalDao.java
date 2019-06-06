@@ -32,7 +32,7 @@ public interface PersonalDao {
      * @param isbn
      * @param userId
      */
-    public void updateBorrow(@Param("isbn")String isbn,@Param("userId")int userId);
+    int updateBorrow(@Param("isbn")String isbn,@Param("userId")int userId);
 
     /**
      * 续借图书

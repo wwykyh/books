@@ -119,6 +119,7 @@ public class UserManageController {
     @RequestMapping("/get_blacklist_data")
     @ResponseBody
     public String showBlackListUser(PageBean pageBean, HttpServletRequest request,Model model) {
+        //去除点缀名为“search_”的前缀
         Map<String, Object> searchParams = Servlets.getParametersStartingWith(request, "search_");
         Integer total = userService.getBlCounts(searchParams);
         searchParams.put("first", (pageBean.getPage() - 1) * pageBean.getPagesize());

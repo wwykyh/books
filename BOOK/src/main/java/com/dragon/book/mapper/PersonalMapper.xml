@@ -11,6 +11,7 @@
             <result column="jyrq" property="jyrq"/>
             <result column="jhghrq" property="jhghrq"/>
             <result column="jyzt" property="jyzt"/>
+            <result column="sId" property="sId"/>
         </collection>
     </resultMap>
 
@@ -22,7 +23,8 @@
         t_borrow.id,
         t_borrow.jyrq,
         t_borrow.jhghrq,
-        t_borrow.jyzt
+        t_borrow.jyzt,
+        t_borrow.s_id as sId
          from
          t_borrow
         right join
@@ -54,19 +56,19 @@
          where user_id=#{userId}
     </select>
 
-    <update id="updateBorrow">
+    <update id="updateBorrow" >
       update
       t_borrow
       set
       jyzt=2,
-      `status` = 2
+      status= 2
       where
       s_id=#{isbn}
       and
       user_id=#{userId}
     </update>
 
-    <update id="updatejszt">
+    <update id="updatejszt" >
       update
       t_borrow
       set
