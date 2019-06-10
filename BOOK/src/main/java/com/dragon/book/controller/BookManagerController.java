@@ -1,6 +1,7 @@
 package com.dragon.book.controller;
 
 import com.alibaba.fastjson.JSON;
+import com.alibaba.fastjson.JSONObject;
 import com.dragon.book.model.TBook;
 import com.dragon.book.model.TBookAnalyze;
 import com.dragon.book.model.TPublish;
@@ -24,8 +25,12 @@ import org.springframework.web.multipart.MultipartFile;
 import javax.servlet.ServletOutputStream;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import java.io.BufferedReader;
 import java.io.File;
 import java.io.IOException;
+import java.io.InputStreamReader;
+import java.net.HttpURLConnection;
+import java.net.URL;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
@@ -60,7 +65,7 @@ public class BookManagerController {
         List<TType> typeList = typeService.getTypeList();
         model.addAttribute("publishList", publishList);
         model.addAttribute("typeList", typeList);
-        return "manager/book_add";
+        return "manager/book_add_api";
     }
 
     @RequestMapping("/asset_analyze")
@@ -93,10 +98,44 @@ public class BookManagerController {
     @RequestMapping("/getBookInfo")
     @ResponseBody
     public TBook getBookInfo(String isbn) {
+         String urlStr = "http://feedback.api.juhe.cn/ISBN?key=22912e28377316679b987c0257af96d1&sub="+isbn;
+         TBook tBook = new TBook();
+        /** 网络的url地址 */
+        URL url = null;
+        /** http连接 */
+        HttpURLConnection httpConn = null;
+        /**//** 输入流 */
+        BufferedReader in = null;
+        StringBuffer sb = new StringBuffer();
+        try {
+            url = new URL(urlStr);
+            in = new BufferedReader(new InputStreamReader(url.openStream(), "UTF-8"));
+            String str = null;
+            while ((str = in.readLine()) != null) {
+                sb.append(str);
+            }
+        } catch (Exception ex) {
 
-        //System.out.println(bookById.toString());
-
-        return bookService.getBookById(isbn);
+        } finally {
+            try {
+                if (in != null) {
+                    in.close();
+                }
+            } catch (IOException ex) {
+            }
+        }
+        String result = sb.toString();
+        JSONObject jsonObject = JSONObject.parseObject(result);
+        Object resultBack = jsonObject.get("result");
+        JSONObject jsonObject1 = JSONObject.parseObject(resultBack.toString());
+        tBook.setSm(jsonObject1.get("title").toString());
+        tBook.setPicture(jsonObject1.get("images_large").toString());
+        tBook.setCbsmc(jsonObject1.get("publisher").toString());
+        tBook.setJj(jsonObject1.get("summary").toString());
+        tBook.setZz(jsonObject1.get("author").toString());
+        tBook.setCbrq(jsonObject1.get("pubdate").toString());
+        return tBook;
+        //return bookService.getBookById(isbn);
     }
 
     @RequestMapping(path = {"/bookAdd"}, method = {RequestMethod.POST})
@@ -111,6 +150,16 @@ public class BookManagerController {
                 result = false;
             }
         }
+        if (result == true)
+            return "0";
+        return "1";
+    }
+
+    @RequestMapping(path = {"/bookAddApi"}, method = {RequestMethod.POST})
+    @ResponseBody
+    public String bookAddApi(QueryVo vo) {
+        boolean result = true;
+             result = bookService.insertBook(vo);
         if (result == true)
             return "0";
         return "1";

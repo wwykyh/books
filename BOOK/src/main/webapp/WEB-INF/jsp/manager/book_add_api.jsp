@@ -29,7 +29,7 @@
                     <tr>
                         <th width="17%"><span class="ft-need">*</span>图书ISBN：</th>
                         <td width="33%"><input id="isbn" name="book.isbn" data-validate="required number" type="text"
-                                               class="input-text " onBlur="getBookInfo();"></td>
+                                               class="input-text "  maxlength=13 onPropertyChange="isbnmax(this)" oninput="isbnmax(this)"></td>
                     </tr>
                     <tr>
                         <th width="17%"><span class="ft-need">*</span>图书名称：</th>
@@ -37,12 +37,14 @@
                     </tr>
                     <tr>
                         <th><span class="ft-need">*</span>出版社名称：</th>
-                        <td><select id="cbsmc" name="book.cbsmc" data-validate="required" class="select">
-                            <option>==请选择==</option>
-                            <c:forEach items="${publishList}" var="publish">
-                                <option value="${publish.pubName}">${publish.pubName}</option>
-                            </c:forEach>
-                        </select></td>
+                        <td>
+                            <%--<select id="cbsmc" name="book.cbsmc" data-validate="required" class="select">--%>
+                            <%--<option>==请选择==</option>--%>
+                            <%--<c:forEach items="${publishList}" var="publish">--%>
+                                <%--<option value="${publish.pubName}">${publish.pubName}</option>--%>
+                            <%--</c:forEach>--%>
+                            <%--</select>--%><input id="cbsmc" name="book.cbsmc" data-validate="required" type="text" class="input-text ">
+                        </td>
                     </tr>
                     <tr>
                         <th><span class="ft-need">*</span>出版日期：</th>
@@ -66,8 +68,11 @@
                     </tr>
                     <tr>
                         <th><span class="ft-need">*</span>图片：</th>
-                        <td><input id="pic" name="pic" data-validate="required" type="file"
-                                   accept="image/*"></td>
+                        <td>
+                            <%--<input id="pic" name="pic" data-validate="required" type="file"--%>
+                                   <%--accept="image/*">--%>
+                                <input id="pic" name="book.picture" vdata-validate="required" type="text" class="input-text"/>
+                        </td>
 
                         <%--<th><span class="ft-need">*</span>所属种类：</th>--%>
                         <td><input  name="book.tsdl"  type="hidden"
@@ -117,13 +122,16 @@
 
                     <tr>
                         <th><span class="ft-need">*</span>简介：</th>
-                        <td><input id="jj" name="book.jj" data-validate="required" type="text" class="input-text "></td>
+                        <td>
+                            <textarea id="jj" name="book.jj" style="width: 450px;height:100px;column-span: 20;row-span: 10;"></textarea>
+                            <%--<input id="jj" name="book.jj" data-validate="required" type="text" class="input-text " style="height: 150px;width: 200px;">--%>
+                        </td>
 
                     <%--  <textarea name="descript" id="descript" cols="60" rows="10"></textarea>--%>
                     </tr>
                     <tr>
-                        <th><input type="reset" class="btn" value="重置"></th>
-                        <td><input type="button" class="btn" value="提交" onclick="sub()"></td>
+                        <th></th>
+                        <td><input type="reset" class="btn" value="重置"><input type="button" class="btn" value="提交" onclick="sub()"></td>
                         <%--<td><button id="btnSubmitOne" class="btn">提交</button></td>--%>
                     </tr>
                 </table>
@@ -146,7 +154,7 @@
             contentType: false,
             processData: false,
             type: "POST",
-            url: "bookAdd",
+            url: "bookAddApi",
             data: formData,// 你的form id
             async: false,
             error: function (request) {
@@ -169,7 +177,9 @@
             url: "${pageContext.request.contextPath}/getBookInfo?isbn=" + isbn, success: function (data) {
                 //isbn   sm  cbsmc  cbrq  zz   typeId   tsdl
                 $("#sm").val(data.sm);
-                $("#cbsmc").find("option[value=" + data.cbsmc + "]").attr("selected", true);
+                $("#cbsmc").val(data.cbsmc);
+                $("#pic").val(data.picture);
+                // $("#cbsmc").find("option[value=" + data.cbsmc + "]").attr("selected", true);
                 // var times = "" ;
                 // if (data.cbrq != null){
                 //     var d = new Date(data.cbrq);
@@ -181,8 +191,6 @@
                 $("#typeId").find("option[value=" + data.typeId + "]").attr("selected", true);
                 // $("#tsdl").find("option[value=" + data.tsdl + "]").attr("selected", true);
                 $("#tsdl").val(data.tsdl);
-
-
             }
         });
     }
@@ -193,6 +201,13 @@
         });
     });
 
+
+
+    //输入ISBN触发事件
+    function isbnmax(obj){
+        if(obj.value.length==13){
+            getBookInfo();}
+    }
     //表单校验
     requirejs(['jquery', 'jquery.form'], function ($) {
         $(function () {

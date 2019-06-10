@@ -147,7 +147,7 @@
                             </li>
                             <c:set var="type" scope="session" value="${flag}"/>
                             <c:if test="${type!=0}">
-                            <li><a class="red-point" style="display: inline-block" _href="${pageContext.request.contextPath}/news/toNews?userId=${user.userId}"
+                            <li><a class="red-point" style="display: inline-block;" _href="${pageContext.request.contextPath}/news/toNews?userId=${user.userId}"
                                       data-name="消息通知" data-js="prettify" href="javascript:;">消息通知</a>
                             </li>
                             </c:if>
@@ -165,7 +165,6 @@
                                 <a _href="${pageContext.request.contextPath}/overtimePayment/toOvertimePayment?userId=${user.userId}"
                                    data-name="超时归还" href="javascript:;">超时归还</a>
                             </li>
-
                         </ul>
                     </dd>
                 </dl>

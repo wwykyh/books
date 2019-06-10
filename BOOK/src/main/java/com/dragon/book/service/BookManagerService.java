@@ -15,6 +15,7 @@ import java.util.List;
 public interface BookManagerService {
     TBook getBookById(String bookId) ;
     boolean insertBook(QueryVo vo, MultipartFile file,HttpServletRequest request) throws IllegalStateException, IOException;
+    boolean insertBook(QueryVo vo);
     PageBean selectBookInfo(PageBean pageBean, QueryVo vo) ;
     BookInfo selectBookInfoById(String id) ;
     CommentInfo selectCommentInfoById(String id) ;

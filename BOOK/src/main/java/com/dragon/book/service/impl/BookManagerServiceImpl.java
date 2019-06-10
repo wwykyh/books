@@ -86,6 +86,31 @@ public class BookManagerServiceImpl implements BookManagerService {
     }
 
     @Override
+    public boolean insertBook(QueryVo vo) {
+        boolean flag=true;
+        int i =tBookMapper.insert(vo.getBook());
+        TStore store = vo.getStore();
+        //补全库存信息的属性
+        store.setIsbn(vo.getBook().getIsbn());
+        Date date = new Date();
+        SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
+        String time = format.format(date);
+        store.setRksj(time);
+        if ("公司".equals(vo.getUserName())) {
+            vo.setUserName("admin");
+        }
+        TSysUser tSysUser = userMapper.selectByName(vo.getUserName());
+        store.setUserId(tSysUser.getUserId());
+        // System.out.println(store.getWz()+"-------------");
+        store.setId(bookService.getKey(store.getWz(), vo.getBook().getTsdl()));
+        store.setStatus(1);
+        storeMapper.insert(store);
+        if (i==0)
+            flag=false;
+        return flag;
+    }
+
+    @Override
     public String upPicture(MultipartFile file, HttpServletRequest request) throws IllegalStateException, IOException {
 
         String filenewname = "";
